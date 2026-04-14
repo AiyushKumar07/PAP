@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEET 2026 — Advanced Practice: Breathing & Chemical Kinetics</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0e17;--surface:#111827;--surface2:#1a2236;--surface3:#222d44;
+  --border:#2a3654;--text:#e2e8f0;--text2:#94a3b8;--text3:#64748b;
+  --accent:#06d6a0;--accent2:#118ab2;--red:#ef4444;--green:#22c55e;
+  --amber:#f59e0b;--purple:#a78bfa;--pink:#f472b6;
+  --radius:12px;--radius-sm:8px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 20% 0%,rgba(6,214,160,.06) 0%,transparent 50%),radial-gradient(ellipse at 80% 100%,rgba(17,138,178,.06) 0%,transparent 50%);pointer-events:none;z-index:0}
+.container{max-width:860px;margin:0 auto;padding:20px;position:relative;z-index:1}
+
+/* HERO */
+.hero{text-align:center;padding:50px 20px 40px}
+.hero-badge{display:inline-block;padding:6px 18px;border-radius:50px;background:rgba(6,214,160,.12);color:var(--accent);font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:18px;border:1px solid rgba(6,214,160,.2)}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(28px,5vw,44px);color:#fff;margin-bottom:12px;line-height:1.2}
+.hero h1 span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:var(--text2);font-size:16px;max-width:560px;margin:0 auto 28px}
+.hero-tags{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:32px}
+.hero-tags span{padding:6px 16px;border-radius:8px;font-size:12px;font-weight:600}
+.tag-bio{background:rgba(6,214,160,.1);color:var(--accent);border:1px solid rgba(6,214,160,.22)}
+.tag-chem{background:rgba(245,158,11,.1);color:var(--amber);border:1px solid rgba(245,158,11,.22)}
+.start-btn{display:inline-flex;align-items:center;gap:8px;padding:16px 48px;font-size:17px;font-weight:700;color:var(--bg);background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;border-radius:50px;cursor:pointer;transition:all .3s;letter-spacing:.5px;box-shadow:0 4px 25px rgba(6,214,160,.3);font-family:'IBM Plex Sans',sans-serif}
+.start-btn:hover{transform:translateY(-2px);box-shadow:0 8px 35px rgba(6,214,160,.4)}
+
+/* PROGRESS BAR */
+.progress-wrap{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:14px 20px;border-bottom:1px solid var(--border);display:none}
+.progress-wrap.active{display:block}
+.progress-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;gap:16px}
+.progress-text{font-size:13px;font-weight:600;color:var(--text2);white-space:nowrap;min-width:90px}
+.progress-text b{color:var(--accent)}
+.progress-bar{flex:1;height:6px;background:var(--surface3);border-radius:10px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:10px;transition:width .4s cubic-bezier(.4,0,.2,1);width:0%}
+.progress-timer{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--accent);min-width:60px;text-align:right}
+
+/* QUESTION CARD */
+.q-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin-bottom:24px;display:none;animation:fadeIn .4s ease both}
+.q-card.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.q-header{display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+.q-num{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;color:var(--bg);background:var(--accent);padding:4px 10px;border-radius:6px;white-space:nowrap;flex-shrink:0}
+.q-tag{font-size:11px;padding:4px 10px;border-radius:50px;font-weight:600;letter-spacing:.5px;text-transform:uppercase}
+.q-tag.bio{background:rgba(6,214,160,.12);color:var(--accent)}
+.q-tag.chem{background:rgba(245,158,11,.12);color:var(--amber)}
+.q-tag.type{background:rgba(167,139,250,.12);color:var(--purple)}
+.q-type-label{font-size:11px;color:var(--text3);font-weight:500;margin-left:auto}
+.q-text{font-size:15.5px;color:#fff;line-height:1.75;margin-bottom:22px}
+
+/* OPTIONS */
+.options{display:flex;flex-direction:column;gap:10px}
+.opt-btn{display:flex;align-items:flex-start;gap:12px;padding:14px 18px;background:var(--surface2);border:1.5px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;transition:all .2s;text-align:left;width:100%;font-size:14.5px;color:var(--text);line-height:1.5;font-family:'IBM Plex Sans',sans-serif}
+.opt-btn:hover{border-color:var(--accent);background:rgba(6,214,160,.05);transform:translateX(4px)}
+.opt-btn .opt-letter{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--text3);font-size:13px;min-width:24px;height:24px;display:flex;align-items:center;justify-content:center;border-radius:6px;background:var(--surface3);flex-shrink:0;margin-top:1px;transition:all .2s}
+.opt-btn.selected{border-color:var(--accent);background:rgba(6,214,160,.08)}
+.opt-btn.selected .opt-letter{background:var(--accent);color:var(--bg)}
+
+/* NAV BUTTONS */
+.nav-btns{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+.nav-btn{padding:10px 24px;border-radius:8px;font-family:'IBM Plex Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;border:1.5px solid var(--border);background:var(--surface2);color:var(--text)}
+.nav-btn:hover{border-color:var(--accent)}
+.nav-btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;color:var(--bg);box-shadow:0 2px 12px rgba(6,214,160,.2)}
+.nav-btn.primary:hover{box-shadow:0 4px 20px rgba(6,214,160,.32);transform:translateY(-1px)}
+.nav-btn:disabled{opacity:.4;cursor:not-allowed;transform:none!important}
+.mark-review{margin-left:auto;font-size:13px;color:var(--amber);background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.25)}
+.mark-review.marked{background:rgba(245,158,11,.2);border-color:var(--amber)}
+
+/* PALETTE */
+.palette-toggle{position:fixed;bottom:20px;right:20px;width:48px;height:48px;border-radius:50%;background:var(--accent);color:var(--bg);border:none;font-size:20px;cursor:pointer;z-index:200;box-shadow:0 4px 20px rgba(6,214,160,.4);display:none;align-items:center;justify-content:center;transition:transform .25s}
+.palette-toggle:hover{transform:scale(1.06)}
+.palette-toggle.active{display:flex}
+.palette-panel{position:fixed;bottom:80px;right:20px;width:300px;max-height:400px;overflow-y:auto;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px;z-index:200;display:none;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.palette-panel.open{display:block}
+.palette-title{font-weight:700;font-size:14px;margin-bottom:14px;color:var(--text2);text-transform:uppercase;letter-spacing:1px}
+.palette-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:6px}
+.palette-dot{width:32px;height:32px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;cursor:pointer;border:1.5px solid var(--border);background:var(--surface2);color:var(--text3);transition:all .18s}
+.palette-dot:hover{border-color:var(--accent)}
+.palette-dot.answered{background:rgba(6,214,160,.15);border-color:var(--accent);color:var(--accent)}
+.palette-dot.review{background:rgba(245,158,11,.15);border-color:var(--amber);color:var(--amber)}
+.palette-dot.current{box-shadow:0 0 0 2px var(--accent)}
+.palette-legend{display:flex;gap:16px;margin-top:14px;font-size:11px;color:var(--text3);flex-wrap:wrap}
+.palette-legend span{display:flex;align-items:center;gap:5px}
+.legend-dot{width:10px;height:10px;border-radius:3px}
+
+/* RESULTS */
+#results-section{display:none}
+.results-hero{text-align:center;padding:48px 0 40px;border-bottom:1px solid var(--border);margin-bottom:40px}
+.score-ring{width:180px;height:180px;margin:0 auto 24px;position:relative}
+.score-ring svg{transform:rotate(-90deg)}
+.score-ring .ring-bg{fill:none;stroke:var(--surface3);stroke-width:10}
+.score-ring .ring-fill{fill:none;stroke-width:10;stroke-linecap:round;transition:stroke-dashoffset 1.5s cubic-bezier(.4,0,.2,1)}
+.score-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
+.score-num{font-family:'DM Serif Display',serif;font-size:42px;color:#fff}
+.score-label{font-size:13px;color:var(--text3)}
+
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:36px}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px 16px;text-align:center}
+.stat-val{font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:700;margin-bottom:4px}
+.stat-val.green{color:var(--green)}.stat-val.red{color:var(--red)}.stat-val.yellow{color:var(--amber)}.stat-val.blue{color:var(--accent)}
+.stat-label{font-size:12px;color:var(--text3);text-transform:uppercase;letter-spacing:.6px}
+
+.chapter-breakdown{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:40px}
+.chapter-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:22px}
+.chapter-card h3{font-size:14px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.chapter-card h3 .dot-bio{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.chapter-card h3 .dot-chem{width:8px;height:8px;border-radius:50%;background:var(--amber)}
+.chapter-bar-wrap{height:8px;background:var(--surface3);border-radius:4px;overflow:hidden;margin-bottom:8px}
+.chapter-bar-fill{height:100%;border-radius:4px;transition:width 1s cubic-bezier(.4,0,.2,1)}
+.chapter-bar-fill.bio{background:var(--accent)}
+.chapter-bar-fill.chem{background:var(--amber)}
+.chapter-score{font-size:13px;color:var(--text2)}
+
+.filter-tabs{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+.filter-tab{padding:8px 18px;border-radius:50px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--text2);transition:all .2s;font-family:'IBM Plex Sans',sans-serif}
+.filter-tab:hover,.filter-tab.active{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+
+.review-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:20px}
+.review-card.status-correct{border-left:4px solid var(--green)}
+.review-card.status-wrong{border-left:4px solid var(--red)}
+.review-card.status-skipped{border-left:4px solid var(--amber)}
+.review-header{display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.review-badge{font-size:11px;font-weight:700;padding:3px 10px;border-radius:5px;text-transform:uppercase;letter-spacing:.6px}
+.review-badge.correct{background:rgba(34,197,94,.08);color:var(--green);border:1px solid rgba(34,197,94,.3)}
+.review-badge.wrong{background:rgba(239,68,68,.08);color:var(--red);border:1px solid rgba(239,68,68,.3)}
+.review-badge.skipped{background:rgba(245,158,11,.08);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.review-q-text{font-size:14.5px;line-height:1.75;margin-bottom:16px;color:var(--text)}
+.review-options{margin-bottom:18px}
+.review-opt{padding:10px 14px;margin-bottom:6px;border-radius:8px;font-size:13.5px;line-height:1.6;display:flex;align-items:flex-start;gap:10px;border:1.5px solid transparent}
+.review-opt.is-correct{background:rgba(34,197,94,.08);border-color:rgba(34,197,94,.3)}
+.review-opt.is-wrong{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.3)}
+.review-opt .opt-marker{flex-shrink:0;width:22px;height:22px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
+.review-opt.is-correct .opt-marker{background:var(--green);color:#fff}
+.review-opt.is-wrong .opt-marker{background:var(--red);color:#fff}
+.review-opt:not(.is-correct):not(.is-wrong) .opt-marker{background:var(--surface3);color:var(--text3)}
+
+.explanation-box{background:rgba(6,214,160,.05);border:1px solid rgba(6,214,160,.15);border-radius:10px;padding:18px 20px}
+.explanation-box h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--accent);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.explanation-box p{font-size:13.5px;line-height:1.75;color:var(--text2)}
+.explanation-box .ncert-ref{display:inline-block;margin-top:8px;font-size:11px;padding:3px 8px;background:rgba(6,214,160,.1);border-radius:4px;color:var(--accent);font-weight:600}
+
+.back-to-top{display:flex;justify-content:center;margin-top:40px;margin-bottom:40px}
+
+@media(max-width:640px){
+  .container{padding:12px 16px 60px}
+  .q-card{padding:22px 18px}
+  .review-card{padding:20px 16px}
+  .hero{padding:40px 12px 32px}
+  .hero h1{font-size:26px}
+  .palette-panel{width:calc(100vw - 40px);right:20px}
+  .stats-row{grid-template-columns:1fr 1fr}
+  .chapter-breakdown{grid-template-columns:1fr}
+  .progress-inner{gap:10px}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="hero" id="hero-section">
+    <div class="hero-badge">NEET 2026 · NCERT Aligned</div>
+    <h1>Advanced <span>Practice Test</span></h1>
+    <p>20 questions covering Breathing & Exchange of Gases and Chemical Kinetics. Timed, one-at-a-time practice with full solutions.</p>
+    <div class="hero-tags">
+      <span class="tag-bio">🫁 Breathing &amp; Gas Exchange</span>
+      <span class="tag-chem">⚗️ Chemical Kinetics</span>
+    </div>
+    <button type="button" class="start-btn" onclick="startQuiz()">Begin Test →</button>
+  </div>
+
+  <div id="quiz-area"></div>
+  <div id="results-section"></div>
+</div>
+
+<div class="progress-wrap" id="progress-bar">
+  <div class="progress-inner">
+    <div class="progress-text"><b id="q-counter">Q 1 / 20</b></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    <div class="progress-timer" id="timer">00:00</div>
+  </div>
+</div>
+
+<button type="button" class="palette-toggle" id="palette-toggle" onclick="togglePalette()">☰</button>
+<div class="palette-panel" id="palette-panel">
+  <div class="palette-title">Question Palette</div>
+  <div class="palette-grid" id="palette-grid"></div>
+  <div class="palette-legend">
+    <span><div class="legend-dot" style="background:var(--surface2);border:1px solid var(--border)"></div> Unseen</span>
+    <span><div class="legend-dot" style="background:rgba(6,214,160,.2)"></div> Answered</span>
+    <span><div class="legend-dot" style="background:rgba(245,158,11,.2)"></div> Review</span>
+  </div>
+</div>
+
+<script>
+const questions = [
+  { chapter:"bio", type:"Assertion–Reason", text:"Assertion: In alveoli, PO₂ is lower than atmospheric air. Reason: Mixing with residual volume reduces PO₂.", options:["A true R true R explains","A true R true not explain","A true R false","A false R true"], answer:0, explanation:"NCERT: Mixing with residual air lowers PO₂ (~104 vs 159 mmHg)." },
+  { chapter:"bio", type:"MCQ", text:"Which structure prevents alveolar collapse?", options:["Hemoglobin","Surfactant","Pleura","Cartilage"], answer:1, explanation:"Surfactant reduces surface tension in alveoli, preventing collapse during expiration." },
+  { chapter:"bio", type:"MCQ", text:"Maximum O₂ transport form:", options:["Dissolved in plasma","Oxyhaemoglobin","Carbamino-Hb","Bicarbonate"], answer:1, explanation:"~97% of O₂ is transported as oxyhaemoglobin (bound to Hb)." },
+  { chapter:"bio", type:"MCQ", text:"CO₂ is transported mainly as:", options:["Carbamino-Hb","Dissolved in plasma","Bicarbonate ions","Carbonic acid"], answer:2, explanation:"~70% of CO₂ is transported as bicarbonate ions (HCO₃⁻) in plasma." },
+  { chapter:"bio", type:"MCQ", text:"Haldane effect increases:", options:["O₂ binding to Hb","CO₂ binding when O₂ is low","Blood pH","Hb concentration"], answer:1, explanation:"Deoxygenated Hb has a higher affinity for CO₂ — this is the Haldane effect." },
+  { chapter:"bio", type:"MCQ", text:"Tidal volume is approximately:", options:["1200 mL","500 mL","1500 mL","3000 mL"], answer:1, explanation:"NCERT value for normal tidal volume is ~500 mL." },
+  { chapter:"bio", type:"MCQ", text:"Vital capacity excludes:", options:["Tidal Volume","Inspiratory Reserve Volume","Expiratory Reserve Volume","Residual Volume"], answer:3, explanation:"VC = IRV + TV + ERV. Residual Volume is NOT included; it stays in lungs even after forceful expiration." },
+  { chapter:"bio", type:"MCQ", text:"Which curve describes Hb–O₂ saturation?", options:["Linear","Sigmoid","Exponential","Hyperbolic"], answer:1, explanation:"Sigmoid (S-shaped) curve due to cooperative binding of O₂ to Hb subunits." },
+  { chapter:"bio", type:"MCQ", text:"Bohr effect occurs due to:", options:["High O₂ tension","High CO₂ / low pH","Low temperature","High pH"], answer:1, explanation:"High CO₂ and low pH shift the dissociation curve right, promoting O₂ release at tissues." },
+  { chapter:"bio", type:"MCQ", text:"Chloride shift occurs in:", options:["Plasma","RBCs","Alveolar epithelium","Kidney tubules"], answer:1, explanation:"Cl⁻ ions enter RBCs as HCO₃⁻ moves out — this maintains electrical neutrality (Hamburger phenomenon)." },
+  { chapter:"chem", type:"MCQ", text:"Order of a reaction can be:", options:["Fractional only","Integer only","Zero only","All of the above"], answer:3, explanation:"Order can be zero, positive, fractional, or even negative — determined experimentally." },
+  { chapter:"chem", type:"MCQ", text:"Half-life of a first-order reaction depends on:", options:["Initial concentration","Rate constant only","Temperature only","Pressure"], answer:1, explanation:"t½ = 0.693/k — independent of initial concentration for first-order reactions." },
+  { chapter:"chem", type:"MCQ", text:"Zero-order [R] vs time graph is:", options:["Linear decrease","Exponential decay","Sigmoid","Parabolic curve"], answer:0, explanation:"For zero order: [R] = [R]₀ − kt, giving a straight line with negative slope." },
+  { chapter:"chem", type:"MCQ", text:"Unit of second-order rate constant:", options:["s⁻¹","mol L⁻¹ s⁻¹","L mol⁻¹ s⁻¹","mol² L⁻² s⁻¹"], answer:2, explanation:"For n=2: units = (mol L⁻¹)^(1−2) × s⁻¹ = L mol⁻¹ s⁻¹." },
+  { chapter:"chem", type:"MCQ", text:"Arrhenius equation k = Ae^(−Eₐ/RT) includes:", options:["Eₐ only","T only","A only","All of the above"], answer:3, explanation:"The Arrhenius equation relates k to the frequency factor A, activation energy Eₐ, temperature T, and gas constant R." },
+  { chapter:"chem", type:"MCQ", text:"A catalyst changes:", options:["Activation energy","Enthalpy of reaction","Equilibrium constant","All of the above"], answer:0, explanation:"A catalyst lowers Eₐ by providing an alternative pathway. It does NOT change ΔH or Keq." },
+  { chapter:"chem", type:"MCQ", text:"Pseudo first-order reaction example:", options:["Hydrolysis of ethyl acetate","Decomposition of N₂O₅","Combustion of methane","Neutralization of NaOH"], answer:0, explanation:"Ester hydrolysis in excess water — water concentration stays ~constant, making it pseudo first-order." },
+  { chapter:"chem", type:"MCQ", text:"Slope of ln k vs 1/T plot:", options:["Eₐ/R","−Eₐ/R","R/Eₐ","−R/Eₐ"], answer:1, explanation:"From ln k = ln A − Eₐ/RT, slope = −Eₐ/R (negative slope)." },
+  { chapter:"chem", type:"MCQ", text:"Higher activation energy means:", options:["Faster reaction","Slower reaction","Same rate","Cannot determine"], answer:1, explanation:"Higher Eₐ → fewer molecules have sufficient energy → slower reaction at a given temperature." },
+  { chapter:"chem", type:"MCQ", text:"Rate law is determined by:", options:["Balanced equation","Reaction mechanism","Experiment","Temperature alone"], answer:2, explanation:"Rate law (order) is always determined experimentally — it cannot be deduced from the balanced equation for complex reactions." }
+];
+
+let currentQ = 0;
+let answers = new Array(questions.length).fill(-1);
+const markedForReview = new Array(questions.length).fill(false);
+let timerInterval = null;
+let seconds = 0;
+
+function startQuiz() {
+  document.getElementById("hero-section").style.display = "none";
+  document.getElementById("progress-bar").classList.add("active");
+  document.getElementById("palette-toggle").classList.add("active");
+  buildAllCards();
+  buildPalette();
+  showQuestion(0);
+  startTimer();
+}
+
+function buildAllCards() {
+  const area = document.getElementById("quiz-area");
+  const letters = ["A","B","C","D"];
+  let html = "";
+  questions.forEach((q, i) => {
+    const chClass = q.chapter === "bio" ? "bio" : "chem";
+    const chLabel = q.chapter === "bio" ? "🫁 Breathing" : "⚗️ Kinetics";
+    html += `<div class="q-card" id="qcard-${i}">
+      <div class="q-header">
+        <span class="q-num">Q${i+1}</span>
+        <span class="q-tag ${chClass}">${chLabel}</span>
+        <span class="q-tag type">${q.type}</span>
+      </div>
+      <div class="q-text">${q.text}</div>
+      <div class="options">
+        ${q.options.map((opt,oi) => `
+          <button class="opt-btn" id="opt-${i}-${oi}" onclick="selectOption(${i},${oi})">
+            <span class="opt-letter">${letters[oi]}</span>
+            <span>${opt}</span>
+          </button>
+        `).join("")}
+      </div>
+      <div class="nav-btns">
+        <button type="button" class="nav-btn" onclick="prevQuestion()" ${i===0?"disabled":""}>← Prev</button>
+        <button type="button" class="nav-btn primary" onclick="nextQuestion()" id="next-btn-${i}">
+          ${i===questions.length-1 ? "Finish →" : "Next →"}
+        </button>
+        <button type="button" class="nav-btn mark-review" id="mark-${i}" onclick="toggleReview(${i})">⚑ Mark for Review</button>
+      </div>
+    </div>`;
+  });
+  area.innerHTML = html;
+}
+
+function showQuestion(idx) {
+  document.querySelectorAll(".q-card").forEach(c => c.classList.remove("active"));
+  const card = document.getElementById(`qcard-${idx}`);
+  card.classList.remove("active");
+  void card.offsetWidth;
+  card.classList.add("active");
+  currentQ = idx;
+  updateProgress();
+  updatePalette();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function selectOption(qIdx, optIdx) {
+  for (let i = 0; i < 4; i++) {
+    const el = document.getElementById(`opt-${qIdx}-${i}`);
+    if (el) el.classList.remove("selected");
+  }
+  document.getElementById(`opt-${qIdx}-${optIdx}`).classList.add("selected");
+  answers[qIdx] = optIdx;
+  updateProgress();
+  updatePalette();
+}
+
+function nextQuestion() {
+  if (currentQ < questions.length - 1) {
+    showQuestion(currentQ + 1);
+  } else {
+    submitQuiz();
+  }
+}
+
+function prevQuestion() {
+  if (currentQ > 0) showQuestion(currentQ - 1);
+}
+
+function toggleReview(idx) {
+  markedForReview[idx] = !markedForReview[idx];
+  const btn = document.getElementById(`mark-${idx}`);
+  btn.classList.toggle("marked", markedForReview[idx]);
+  btn.textContent = markedForReview[idx] ? "⚑ Marked" : "⚑ Mark for Review";
+  updatePalette();
+}
+
+function updateProgress() {
+  const answered = answers.filter(a => a !== -1).length;
+  document.getElementById("q-counter").textContent = `Q ${currentQ+1} / ${questions.length}`;
+  document.getElementById("progress-fill").style.width = `${(answered/questions.length)*100}%`;
+}
+
+function buildPalette() {
+  const grid = document.getElementById("palette-grid");
+  let html = "";
+  for (let i = 0; i < questions.length; i++) {
+    html += `<div class="palette-dot" id="pdot-${i}" onclick="showQuestion(${i})">${i+1}</div>`;
+  }
+  grid.innerHTML = html;
+}
+
+function updatePalette() {
+  for (let i = 0; i < questions.length; i++) {
+    const dot = document.getElementById(`pdot-${i}`);
+    dot.className = "palette-dot";
+    if (i === currentQ) dot.classList.add("current");
+    if (answers[i] !== -1) dot.classList.add("answered");
+    if (markedForReview[i]) dot.classList.add("review");
+  }
+}
+
+function togglePalette() {
+  document.getElementById("palette-panel").classList.toggle("open");
+}
+
+function startTimer() {
+  timerInterval = setInterval(() => {
+    seconds++;
+    const m = Math.floor(seconds/60).toString().padStart(2,"0");
+    const s = (seconds%60).toString().padStart(2,"0");
+    document.getElementById("timer").textContent = `${m}:${s}`;
+  }, 1000);
+}
+
+function saveAttempt(data) {
+  try {
+    const results = JSON.parse(localStorage.getItem('papResults') || '[]');
+    results.unshift(data);
+    localStorage.setItem('papResults', JSON.stringify(results));
+  } catch(e) {}
+}
+
+function submitQuiz() {
+  const unanswered = answers.filter(a => a === -1).length;
+  if (!window._isReplay && unanswered > 0) {
+    if (!confirm(`You have ${unanswered} unanswered question(s). Submit anyway?`)) return;
+  }
+
+  clearInterval(timerInterval);
+  document.getElementById("quiz-area").innerHTML = "";
+  document.getElementById("progress-bar").classList.remove("active");
+  document.getElementById("palette-toggle").classList.remove("active");
+  document.getElementById("palette-panel").classList.remove("open");
+
+  let correct = 0, wrong = 0, skipped = 0;
+  let bioCorrect = 0, bioTotal = 0, chemCorrect = 0, chemTotal = 0;
+  const results = [];
+
+  questions.forEach((q, i) => {
+    const userAns = answers[i];
+    let status;
+    if (userAns === -1) { status = "skipped"; skipped++; }
+    else if (userAns === q.answer) { status = "correct"; correct++; }
+    else { status = "wrong"; wrong++; }
+
+    if (q.chapter === "bio") { bioTotal++; if (status === "correct") bioCorrect++; }
+    else { chemTotal++; if (status === "correct") chemCorrect++; }
+    results.push({...q, userAns, status, idx: i});
+  });
+
+  const neetScore = correct * 4 - wrong * 1;
+  const maxScore = questions.length * 4;
+  const percentage = Math.round((correct / questions.length) * 100);
+  const timeTaken = `${Math.floor(seconds/60)}m ${seconds%60}s`;
+
+  if (!window._isReplay) {
+    saveAttempt({
+      id: Date.now(),
+      paperFile: '15AP1.html',
+      paperName: 'Breathing & Chemical Kinetics',
+      paperTag: 'Advanced',
+      correct, wrong, skipped,
+      totalQuestions: questions.length,
+      neetScore, maxScore, percentage,
+      timeTaken,
+      timerSeconds: seconds,
+      userAnswers: [...answers]
+    });
+  }
+
+  renderResults(results, correct, wrong, skipped, neetScore, maxScore, percentage, timeTaken, bioCorrect, bioTotal, chemCorrect, chemTotal);
+}
+
+function renderResults(results, correct, wrong, skipped, neetScore, maxScore, percentage, timeTaken, bc, bt, cc, ct) {
+  const section = document.getElementById("results-section");
+  section.style.display = "block";
+
+  const circumference = 2 * Math.PI * 80;
+  const offset = circumference - (percentage / 100) * circumference;
+
+  let ringColor = percentage >= 80 ? "var(--green)" : percentage >= 50 ? "var(--amber)" : "var(--red)";
+  let gradeEmoji = "🔥", gradeText = "Outstanding!";
+  if (percentage < 40) { gradeEmoji = "📚"; gradeText = "Keep Studying!"; }
+  else if (percentage < 60) { gradeEmoji = "💪"; gradeText = "Good Effort!"; }
+  else if (percentage < 80) { gradeEmoji = "⭐"; gradeText = "Well Done!"; }
+
+  const pctBio = bt ? Math.round((bc/bt)*100) : 0;
+  const pctChem = ct ? Math.round((cc/ct)*100) : 0;
+  const letters = ["A","B","C","D"];
+
+  let html = `
+    <div class="results-hero">
+      <div style="font-size:48px;margin-bottom:12px;">${gradeEmoji}</div>
+      <h2 style="font-family:'DM Serif Display',serif;font-size:28px;color:#fff;margin-bottom:6px;">${gradeText}</h2>
+      <p style="color:var(--text2);font-size:14px;margin-bottom:28px;">Time taken: ${timeTaken}</p>
+      <div class="score-ring">
+        <svg width="180" height="180" viewBox="0 0 180 180">
+          <circle class="ring-bg" cx="90" cy="90" r="80"/>
+          <circle class="ring-fill" id="score-ring-fill" cx="90" cy="90" r="80"
+            stroke="${ringColor}"
+            style="stroke-dasharray:${circumference}; stroke-dashoffset:${circumference};"/>
+        </svg>
+        <div class="score-center">
+          <div class="score-num">${percentage}%</div>
+          <div class="score-label">${correct}/${questions.length}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card"><div class="stat-val blue">${neetScore}/${maxScore}</div><div class="stat-label">NEET Score (+4/−1)</div></div>
+      <div class="stat-card"><div class="stat-val green">${correct}</div><div class="stat-label">Correct</div></div>
+      <div class="stat-card"><div class="stat-val red">${wrong}</div><div class="stat-label">Wrong</div></div>
+      <div class="stat-card"><div class="stat-val yellow">${skipped}</div><div class="stat-label">Skipped</div></div>
+    </div>
+
+    <div class="chapter-breakdown">
+      <div class="chapter-card">
+        <h3><span class="dot-bio"></span> Breathing &amp; Gas Exchange</h3>
+        <div class="chapter-bar-wrap"><div class="chapter-bar-fill bio" id="bio-bar" style="width:0%"></div></div>
+        <div class="chapter-score">${bc} / ${bt} correct (${pctBio}%)</div>
+      </div>
+      <div class="chapter-card">
+        <h3><span class="dot-chem"></span> Chemical Kinetics</h3>
+        <div class="chapter-bar-wrap"><div class="chapter-bar-fill chem" id="chem-bar" style="width:0%"></div></div>
+        <div class="chapter-score">${cc} / ${ct} correct (${pctChem}%)</div>
+      </div>
+    </div>
+
+    <h2 style="font-family:'DM Serif Display',serif;font-size:24px;color:#fff;margin-bottom:8px;">Complete Walkthrough</h2>
+    <p style="color:var(--text2);font-size:14px;margin-bottom:24px;">Review every question with detailed explanations.</p>
+
+    <div class="filter-tabs">
+      <button type="button" class="filter-tab active" onclick="filterReview('all',this)">All (${questions.length})</button>
+      <button type="button" class="filter-tab" onclick="filterReview('wrong',this)">❌ Wrong (${wrong})</button>
+      <button type="button" class="filter-tab" onclick="filterReview('skipped',this)">⏭ Skipped (${skipped})</button>
+      <button type="button" class="filter-tab" onclick="filterReview('correct',this)">✅ Correct (${correct})</button>
+    </div>
+
+    <div id="review-cards">`;
+
+  results.forEach(r => {
+    const chClass = r.chapter === "bio" ? "bio" : "chem";
+    const chLabel = r.chapter === "bio" ? "🫁 Breathing" : "⚗️ Kinetics";
+    const ncertRef = r.chapter === "bio" ? "NCERT Class 11 — Breathing & Exchange of Gases" : "NCERT Class 12 — Chemical Kinetics";
+    html += `
+      <div class="review-card status-${r.status}" data-status="${r.status}">
+        <div class="review-header">
+          <span class="q-num">Q${r.idx+1}</span>
+          <span class="q-tag ${chClass}">${chLabel}</span>
+          <span class="review-badge ${r.status}">${r.status==="correct"?"✓ Correct":r.status==="wrong"?"✗ Wrong":"— Skipped"}</span>
+          <span class="q-tag type">${r.type}</span>
+        </div>
+        <div class="review-q-text">${r.text}</div>
+        <div class="review-options">
+          ${r.options.map((opt,oi) => {
+            let cls = "";
+            if (oi === r.answer) cls = "is-correct";
+            else if (oi === r.userAns && r.userAns !== r.answer) cls = "is-wrong";
+            let marker = letters[oi];
+            if (oi === r.answer) marker = "✓";
+            else if (oi === r.userAns && r.userAns !== r.answer) marker = "✗";
+            return `<div class="review-opt ${cls}">
+              <span class="opt-marker">${marker}</span>
+              <span>${opt}</span>
+            </div>`;
+          }).join("")}
+        </div>
+        <div class="explanation-box">
+          <h4>💡 Explanation</h4>
+          <p>${r.explanation}</p>
+          <span class="ncert-ref">📖 ${ncertRef}</span>
+        </div>
+      </div>`;
+  });
+
+  html += `</div>
+    <div class="back-to-top">
+      <button type="button" class="nav-btn primary" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Back to Top</button>
+    </div>`;
+
+  section.innerHTML = html;
+
+  setTimeout(() => {
+    const ring = document.getElementById("score-ring-fill");
+    if (ring) ring.style.strokeDashoffset = offset;
+    const bbar = document.getElementById("bio-bar");
+    const cbar = document.getElementById("chem-bar");
+    if (bbar) bbar.style.width = `${pctBio}%`;
+    if (cbar) cbar.style.width = `${pctChem}%`;
+  }, 100);
+
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function filterReview(status, btn) {
+  document.querySelectorAll(".filter-tab").forEach(t => t.classList.remove("active"));
+  btn.classList.add("active");
+  document.querySelectorAll(".review-card").forEach(card => {
+    if (status === "all") card.style.display = "block";
+    else card.style.display = card.dataset.status === status ? "block" : "none";
+  });
+}
+
+(function loadSavedAttempt() {
+  const params = new URLSearchParams(window.location.search);
+  const attemptId = params.get('attempt');
+  if (!attemptId) return;
+  const saved = JSON.parse(localStorage.getItem('papResults') || '[]');
+  const attempt = saved.find(r => r.id === Number(attemptId));
+  if (!attempt) return;
+  window._isReplay = true;
+  answers = attempt.userAnswers;
+  seconds = attempt.timerSeconds || 0;
+  document.getElementById("hero-section").style.display = "none";
+  submitQuiz();
+})();
+</script>
+</body>
+</html>

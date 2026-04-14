@@ -1,0 +1,1822 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEET 2026 — Plant Growth & Body Fluids</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --bg: #0a0e17;
+        --surface: #111827;
+        --surface2: #1a2236;
+        --surface3: #222d44;
+        --border: #2a3654;
+        --text: #e2e8f0;
+        --text2: #94a3b8;
+        --text3: #64748b;
+        --accent: #06d6a0;
+        --accent2: #118ab2;
+        --red: #ef4444;
+        --green: #22c55e;
+        --amber: #f59e0b;
+        --purple: #a78bfa;
+        --pink: #f472b6;
+        --radius: 12px;
+        --radius-sm: 8px;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "IBM Plex Sans", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background:
+          radial-gradient(
+            ellipse at 20% 0%,
+            rgba(6, 214, 160, 0.06) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse at 80% 100%,
+            rgba(17, 138, 178, 0.06) 0%,
+            transparent 50%
+          );
+        pointer-events: none;
+        z-index: 0;
+      }
+      .container {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 20px;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* HERO */
+      .hero {
+        text-align: center;
+        padding: 60px 20px 50px;
+        position: relative;
+        z-index: 1;
+      }
+      .hero-badge {
+        display: inline-block;
+        padding: 6px 18px;
+        border-radius: 50px;
+        background: rgba(6, 214, 160, 0.12);
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 18px;
+        border: 1px solid rgba(6, 214, 160, 0.2);
+      }
+      .hero h1 {
+        font-family: "DM Serif Display", serif;
+        font-size: clamp(28px, 5vw, 44px);
+        color: #fff;
+        margin-bottom: 12px;
+        line-height: 1.2;
+      }
+      .hero h1 span {
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .hero p {
+        color: var(--text2);
+        font-size: 16px;
+        max-width: 560px;
+        margin: 0 auto 28px;
+      }
+      .hero-tags {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 32px;
+      }
+      .hero-tag {
+        padding: 6px 16px;
+        border-radius: 50px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .hero-tag.plant {
+        background: rgba(6, 214, 160, 0.12);
+        color: var(--accent);
+        border: 1px solid rgba(6, 214, 160, 0.2);
+      }
+      .hero-tag.blood {
+        background: rgba(244, 114, 182, 0.12);
+        color: var(--pink);
+        border: 1px solid rgba(244, 114, 182, 0.2);
+      }
+      .begin-btn {
+        padding: 16px 48px;
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--bg);
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 25px rgba(6, 214, 160, 0.3);
+      }
+      .begin-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 35px rgba(6, 214, 160, 0.4);
+      }
+
+      /* PROGRESS BAR */
+      .progress-wrap {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(10, 14, 23, 0.92);
+        backdrop-filter: blur(12px);
+        padding: 14px 20px;
+        border-bottom: 1px solid var(--border);
+        display: none;
+        transition: box-shadow 0.3s;
+      }
+      .progress-wrap.scrolled {
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+      }
+      .progress-inner {
+        max-width: 860px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .progress-text {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text2);
+        white-space: nowrap;
+        min-width: 90px;
+      }
+      .progress-text b {
+        color: var(--accent);
+      }
+      .progress-bar {
+        flex: 1;
+        height: 6px;
+        background: var(--surface3);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent), var(--accent2));
+        border-radius: 10px;
+        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        width: 0%;
+      }
+      .progress-timer {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+        color: var(--text3);
+        min-width: 60px;
+        text-align: right;
+      }
+
+      /* QUESTION CARD */
+      .q-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 28px;
+        margin-bottom: 24px;
+        position: relative;
+        animation: fadeUp 0.35s ease;
+      }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .q-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        margin-bottom: 18px;
+      }
+      .q-num {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--bg);
+        background: var(--accent);
+        padding: 4px 10px;
+        border-radius: 6px;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .q-num.blood {
+        background: var(--pink);
+      }
+      .q-meta {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+      }
+      .q-tag {
+        font-size: 11px;
+        padding: 3px 10px;
+        border-radius: 50px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+      .q-tag.plant {
+        background: rgba(6, 214, 160, 0.12);
+        color: var(--accent);
+      }
+      .q-tag.blood {
+        background: rgba(244, 114, 182, 0.12);
+        color: var(--pink);
+      }
+      .q-tag.type {
+        background: rgba(167, 139, 250, 0.12);
+        color: var(--purple);
+      }
+      .q-text {
+        font-size: 15.5px;
+        color: #fff;
+        line-height: 1.7;
+        margin-bottom: 20px;
+      }
+      .q-text b,
+      .q-text em {
+        color: var(--accent);
+        font-style: normal;
+        font-weight: 600;
+      }
+
+      /* OPTIONS */
+      .options {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .opt-btn {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 14px 18px;
+        background: var(--surface2);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        transition: all 0.2s;
+        text-align: left;
+        width: 100%;
+        font-size: 14.5px;
+        color: var(--text);
+        line-height: 1.5;
+        font-family: inherit;
+      }
+      .opt-btn:hover:not(.disabled) {
+        border-color: var(--accent);
+        background: rgba(6, 214, 160, 0.05);
+      }
+      .opt-btn .opt-letter {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        color: var(--text3);
+        font-size: 13px;
+        min-width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        background: var(--surface3);
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+      .opt-btn.selected {
+        border-color: var(--accent);
+        background: rgba(6, 214, 160, 0.08);
+      }
+      .opt-btn.selected .opt-letter {
+        background: var(--accent);
+        color: var(--bg);
+      }
+      .opt-btn.correct-answer {
+        border-color: var(--green) !important;
+        background: rgba(34, 197, 94, 0.08) !important;
+      }
+      .opt-btn.correct-answer .opt-letter {
+        background: var(--green) !important;
+        color: #fff !important;
+      }
+      .opt-btn.wrong-answer {
+        border-color: var(--red) !important;
+        background: rgba(239, 68, 68, 0.08) !important;
+      }
+      .opt-btn.wrong-answer .opt-letter {
+        background: var(--red) !important;
+        color: #fff !important;
+      }
+      .opt-btn.disabled {
+        cursor: default;
+        opacity: 0.85;
+      }
+
+      /* NAV BUTTONS */
+      .q-nav {
+        display: flex;
+        gap: 12px;
+        margin-top: 24px;
+        align-items: center;
+      }
+      .nav-btn {
+        padding: 12px 28px;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: var(--radius-sm);
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-family: inherit;
+      }
+      .nav-btn:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+      .nav-btn.prev {
+        background: var(--surface3);
+        color: var(--text);
+      }
+      .nav-btn.prev:hover:not(:disabled) {
+        background: var(--border);
+      }
+      .nav-btn.next {
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        color: var(--bg);
+        margin-left: auto;
+      }
+      .nav-btn.next:hover:not(:disabled) {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 15px rgba(6, 214, 160, 0.3);
+      }
+      .nav-btn.review-mark {
+        background: transparent;
+        border: 1.5px solid var(--amber);
+        color: var(--amber);
+        font-size: 13px;
+        padding: 10px 16px;
+      }
+      .nav-btn.review-mark.marked {
+        background: rgba(245, 158, 11, 0.15);
+      }
+      .nav-btn.review-mark:hover {
+        background: rgba(245, 158, 11, 0.1);
+      }
+
+      /* QUESTION PALETTE */
+      .palette-toggle {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        color: var(--bg);
+        border: none;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: 700;
+        z-index: 200;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 20px rgba(6, 214, 160, 0.35);
+        transition: all 0.2s;
+      }
+      .palette-toggle:hover {
+        transform: scale(1.08);
+      }
+      .palette-panel {
+        position: fixed;
+        bottom: 86px;
+        right: 24px;
+        width: 280px;
+        max-height: 420px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 20px;
+        z-index: 200;
+        display: none;
+        overflow-y: auto;
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+      }
+      .palette-panel h3 {
+        font-family: "DM Serif Display", serif;
+        font-size: 16px;
+        color: #fff;
+        margin-bottom: 14px;
+      }
+      .palette-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+      }
+      .palette-dot {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 700;
+        font-family: "JetBrains Mono", monospace;
+        cursor: pointer;
+        transition: all 0.15s;
+        background: var(--surface2);
+        color: var(--text3);
+        border: 1.5px solid transparent;
+      }
+      .palette-dot:hover {
+        border-color: var(--accent);
+      }
+      .palette-dot.answered {
+        background: var(--accent);
+        color: var(--bg);
+      }
+      .palette-dot.review {
+        background: rgba(245, 158, 11, 0.2);
+        color: var(--amber);
+        border-color: var(--amber);
+      }
+      .palette-dot.current {
+        border-color: #fff;
+        color: #fff;
+      }
+      .palette-legend {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 14px;
+        padding-top: 12px;
+        border-top: 1px solid var(--border);
+      }
+      .palette-legend span {
+        font-size: 11px;
+        color: var(--text3);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .palette-legend .dot-sample {
+        width: 12px;
+        height: 12px;
+        border-radius: 3px;
+      }
+
+      /* RESULTS */
+      .results-section {
+        display: none;
+        padding: 40px 20px;
+        position: relative;
+        z-index: 1;
+      }
+      .results-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 40px 30px;
+        max-width: 500px;
+        margin: 0 auto 40px;
+        text-align: center;
+      }
+      .results-card h2 {
+        font-family: "DM Serif Display", serif;
+        font-size: 32px;
+        color: #fff;
+        margin-bottom: 8px;
+      }
+      .score-ring {
+        width: 160px;
+        height: 160px;
+        margin: 24px auto;
+        position: relative;
+      }
+      .score-ring svg {
+        transform: rotate(-90deg);
+      }
+      .score-ring .ring-bg {
+        fill: none;
+        stroke: var(--surface3);
+        stroke-width: 10;
+      }
+      .score-ring .ring-fill {
+        fill: none;
+        stroke-width: 10;
+        stroke-linecap: round;
+        transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .score-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+      .score-center .pct {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 36px;
+        font-weight: 700;
+        color: #fff;
+      }
+      .score-center .of {
+        font-size: 13px;
+        color: var(--text3);
+      }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-top: 24px;
+      }
+      .stat-item {
+        padding: 14px 8px;
+        background: var(--surface2);
+        border-radius: var(--radius-sm);
+        text-align: center;
+      }
+      .stat-item .stat-num {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 22px;
+        font-weight: 700;
+      }
+      .stat-item .stat-lbl {
+        font-size: 10px;
+        color: var(--text3);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 4px;
+      }
+      .stat-item.neet .stat-num {
+        color: var(--accent);
+      }
+      .stat-item.correct .stat-num {
+        color: var(--green);
+      }
+      .stat-item.wrong .stat-num {
+        color: var(--red);
+      }
+      .stat-item.skip .stat-num {
+        color: var(--amber);
+      }
+
+      /* CHAPTER BREAKDOWN */
+      .chapter-breakdown {
+        max-width: 500px;
+        margin: 0 auto 40px;
+      }
+      .chapter-breakdown h3 {
+        font-family: "DM Serif Display", serif;
+        font-size: 20px;
+        color: #fff;
+        margin-bottom: 16px;
+        text-align: center;
+      }
+      .chapter-bar-wrap {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 16px 20px;
+        margin-bottom: 12px;
+      }
+      .chapter-bar-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .chapter-bar-track {
+        height: 8px;
+        background: var(--surface3);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .chapter-bar-fill {
+        height: 100%;
+        border-radius: 10px;
+        transition: width 1s ease;
+      }
+
+      /* REVIEW SECTION */
+      .review-section {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 0 20px 60px;
+      }
+      .review-title {
+        font-family: "DM Serif Display", serif;
+        font-size: 28px;
+        color: #fff;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      .review-filter {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+      }
+      .filter-btn {
+        padding: 8px 20px;
+        border-radius: 50px;
+        border: 1px solid var(--border);
+        background: transparent;
+        color: var(--text2);
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-family: inherit;
+      }
+      .filter-btn:hover,
+      .filter-btn.active {
+        background: var(--accent);
+        color: var(--bg);
+        border-color: var(--accent);
+      }
+      .review-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 24px;
+        margin-bottom: 16px;
+      }
+      .review-card .rc-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 12px;
+        flex-wrap: wrap;
+      }
+      .review-card .rc-badge {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 50px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .rc-badge.rc-correct {
+        background: rgba(34, 197, 94, 0.12);
+        color: var(--green);
+      }
+      .rc-badge.rc-wrong {
+        background: rgba(239, 68, 68, 0.12);
+        color: var(--red);
+      }
+      .rc-badge.rc-skipped {
+        background: rgba(245, 158, 11, 0.12);
+        color: var(--amber);
+      }
+      .review-card .rc-q {
+        font-size: 14.5px;
+        color: #fff;
+        line-height: 1.6;
+        margin-bottom: 14px;
+      }
+      .review-card .rc-q b,
+      .review-card .rc-q em {
+        color: var(--accent);
+        font-style: normal;
+      }
+      .review-card .rc-opts {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 14px;
+      }
+      .review-card .rc-opt {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 10px 14px;
+        border-radius: var(--radius-sm);
+        font-size: 13.5px;
+        color: var(--text2);
+        background: var(--surface2);
+        border: 1px solid transparent;
+      }
+      .rc-opt .rc-letter {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 12px;
+        min-width: 22px;
+        height: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        background: var(--surface3);
+        color: var(--text3);
+        flex-shrink: 0;
+      }
+      .rc-opt.rc-opt-correct {
+        border-color: var(--green);
+        background: rgba(34, 197, 94, 0.06);
+        color: var(--green);
+      }
+      .rc-opt.rc-opt-correct .rc-letter {
+        background: var(--green);
+        color: #fff;
+      }
+      .rc-opt.rc-opt-wrong {
+        border-color: var(--red);
+        background: rgba(239, 68, 68, 0.06);
+        color: var(--red);
+      }
+      .rc-opt.rc-opt-wrong .rc-letter {
+        background: var(--red);
+        color: #fff;
+      }
+      .review-card .rc-exp {
+        margin-top: 12px;
+        padding: 14px 16px;
+        background: rgba(6, 214, 160, 0.05);
+        border: 1px solid rgba(6, 214, 160, 0.15);
+        border-radius: var(--radius-sm);
+        font-size: 13.5px;
+        color: var(--text2);
+        line-height: 1.65;
+      }
+      .rc-exp strong {
+        color: var(--text);
+      }
+      .rc-exp i {
+        color: var(--accent);
+        font-style: normal;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          padding: 12px;
+        }
+        .q-card {
+          padding: 20px 16px;
+        }
+        .hero h1 {
+          font-size: 26px;
+        }
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .progress-inner {
+          gap: 10px;
+        }
+        .palette-panel {
+          width: calc(100vw - 48px);
+          right: 24px;
+        }
+        .q-nav {
+          flex-wrap: wrap;
+        }
+        .review-card {
+          padding: 18px 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HERO -->
+    <div class="hero" id="hero">
+      <div class="hero-badge">NEET 2026 · NCERT Aligned</div>
+      <h1>Plant Growth & <span>Body Fluids</span></h1>
+      <p>
+        50 carefully crafted questions covering Plant Growth & Development and
+        Body Fluids & Circulation. Test your NCERT mastery.
+      </p>
+      <div class="hero-tags">
+        <span class="hero-tag plant">🌱 Plant Growth · Q1–25</span>
+        <span class="hero-tag blood">🩸 Body Fluids · Q26–50</span>
+      </div>
+      <button class="begin-btn" onclick="beginTest()">Begin Test →</button>
+    </div>
+
+    <!-- PROGRESS BAR -->
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-inner">
+        <div class="progress-text">
+          <b id="qCounter">1</b> / 50
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-timer" id="timerDisplay">00:00</div>
+      </div>
+    </div>
+
+    <!-- QUESTION AREA -->
+    <div class="container hidden" id="quizArea"></div>
+
+    <!-- QUESTION PALETTE TOGGLE -->
+    <button class="palette-toggle" id="paletteToggle" onclick="togglePalette()">
+      #
+    </button>
+    <!-- QUESTION PALETTE PANEL -->
+    <div class="palette-panel" id="palettePanel">
+      <h3>Question Palette</h3>
+      <div class="palette-grid" id="paletteGrid"></div>
+      <div class="palette-legend">
+        <span
+          ><span
+            class="dot-sample"
+            style="background: var(--surface2)"
+          ></span>
+          Unanswered</span
+        >
+        <span
+          ><span class="dot-sample" style="background: var(--accent)"></span>
+          Answered</span
+        >
+        <span
+          ><span
+            class="dot-sample"
+            style="background: rgba(245,158,11,0.2); border: 1px solid var(--amber)"
+          ></span>
+          Review</span
+        >
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="results-section" id="resultsSection"></div>
+
+    <script>
+      const DATA = [
+        {
+          q: "<b>Growth</b> in plants is defined as an irreversible permanent increase in ____.",
+          opts: [
+            "Fresh weight of an organ",
+            "Cell size, cell number, or both (but reversible)",
+            "Size of an organ or its parts",
+            "Thickness of cell walls",
+          ],
+          ans: 2,
+          exp: "Growth is an irreversible increase in the <i>size</i> of an organ or its parts. Fresh weight can change due to water uptake, so the formal definition stresses permanent increase in size.",
+        },
+        {
+          q: "Plants exhibit indeterminate (open) growth primarily due to the presence of ____.",
+          opts: [
+            "Temporary meristems that form only during embryogenesis",
+            "A fixed number of cells determined at seed germination",
+            "Meristems (apical and lateral) that remain active throughout life",
+            "Lack of photosynthesis in mature tissues",
+          ],
+          ans: 2,
+          exp: "Plant growth is indeterminate (open) because of active meristems throughout life.",
+        },
+        {
+          q: "Which of the following is a characteristic of meristematic cells?",
+          opts: [
+            "Large central vacuoles and thick secondary walls",
+            "Minimal metabolic activity and permanent cell differentiation",
+            "Thin primary cell walls and dense cytoplasm rich in active nucleus",
+            "Presence of lignified walls for water conduction",
+          ],
+          ans: 2,
+          exp: "Meristematic cells have thin primary walls and dense cytoplasm with large nuclei (actively dividing cells).",
+        },
+        {
+          q: "In a growing root tip, the correct order of zones (phases) of growth from the apex is:",
+          opts: [
+            "Elongation → Meristematic → Maturation",
+            "Meristematic → Elongation → Maturation",
+            "Maturation → Elongation → Meristematic",
+            "Meristematic → Maturation → Elongation",
+          ],
+          ans: 1,
+          exp: "The meristematic zone (cell division) is closest to the tip, followed by elongation, then maturation.",
+        },
+        {
+          q: "Formation of cork cambium (a lateral meristem) from fully differentiated parenchyma cells is an example of:",
+          opts: [
+            "Differentiation",
+            "Dedifferentiation",
+            "Heterophylly",
+            "Verbalization",
+          ],
+          ans: 1,
+          exp: "Dedifferentiation is when specialized cells regain the ability to divide (e.g., formation of cork cambium from parenchyma).",
+        },
+        {
+          q: "In plant tissue culture, a fully differentiated cell that regains the ability to divide and develop into a whole plant is termed:",
+          opts: ["Pluripotent", "Totipotent", "Multipotent", "Apical"],
+          ans: 1,
+          exp: "Totipotent cells can develop into an entire plant; in tissue culture, differentiated cells induced to divide exhibit totipotency.",
+        },
+        {
+          q: "In Darwin's coleoptile phototropism experiment, bending of the shoot towards light required the presence of:",
+          opts: [
+            "The coleoptile tip",
+            "Only the coleoptile base",
+            "The absence of light",
+            "Additional gibberellins",
+          ],
+          ans: 0,
+          exp: "Darwin showed coleoptiles only bend toward light if the tip is present, implying the tip produces the bending signal (later identified as auxin).",
+        },
+        {
+          q: "F.W. Went demonstrated that the bending stimulus in phototropism is a diffusible substance (auxin). He isolated which auxin from coleoptile tips?",
+          opts: [
+            "NAA (Naphthalene acetic acid)",
+            "IAA (Indole-3-acetic acid)",
+            "GA₃ (Gibberellic acid)",
+            "Ethylene",
+          ],
+          ans: 1,
+          exp: "Went isolated indole-3-acetic acid (IAA, a natural auxin) from coleoptile tips.",
+        },
+        {
+          q: "Apical dominance in plants is primarily maintained by which hormone?",
+          opts: [
+            "Gibberellin",
+            "Auxin (Indole-3-acetic acid)",
+            "Abscisic acid",
+            "Ethylene",
+          ],
+          ans: 1,
+          exp: "Auxin (IAA) produced by the shoot tip inhibits lateral bud outgrowth; removing the tip removes auxin, allowing lateral growth.",
+        },
+        {
+          q: "The synthetic auxin 2,4-D is commonly used as an herbicide because it:",
+          opts: [
+            "Kills monocot weeds selectively",
+            "Kills dicot weeds but does not affect mature monocots",
+            "Inhibits ethylene production",
+            "Promotes excessive xylem differentiation",
+          ],
+          ans: 1,
+          exp: "2,4-D is a synthetic auxin used as a herbicide that selectively kills dicot (broadleaf) weeds without affecting mature monocots.",
+        },
+        {
+          q: "Synthetic auxins (like NAA and 2,4-D) are used by gardeners to:",
+          opts: [
+            "Delay fruit ripening",
+            "Eliminate broad-leaf (dicot) weeds",
+            "Sterilize soil",
+            "Induce flowering in pineapples",
+          ],
+          ans: 1,
+          exp: "Synthetic auxins (e.g., 2,4-D) are used by gardeners to eliminate broad-leaf weeds (dicots).",
+        },
+        {
+          q: "Which of the following is NOT an effect of gibberellins (GAs)?",
+          opts: [
+            "Causing stem elongation",
+            "Initiating fruit ripening",
+            "Enhancing fruit size and shape",
+            "Speeding up malt production",
+          ],
+          ans: 1,
+          exp: "Gibberellins do not directly initiate ripening (that is ethylene's role). GAs promote elongation and delay senescence instead.",
+        },
+        {
+          q: 'The "bakanae" (foolish seedling) disease of rice is caused by excessive levels of which plant growth regulator?',
+          opts: [
+            "Abscisic acid",
+            "Gibberellins (GA₃)",
+            "Cytokinins",
+            "Auxin",
+          ],
+          ans: 1,
+          exp: "The fungus Gibberella fujikuroi causes bakanae by producing gibberellic acid (GA₃).",
+        },
+        {
+          q: "The first cytokinin (kinetin) was discovered in experiments using:",
+          opts: [
+            "Coconut milk",
+            "Autoclaved herring sperm DNA",
+            "Soil bacteria extracts",
+            "Yeast extract",
+          ],
+          ans: 1,
+          exp: "Kinetin (first cytokinin) was discovered from autoclaved herring sperm DNA.",
+        },
+        {
+          q: "Cytokinins primarily promote which of the following?",
+          opts: [
+            "Leaf senescence",
+            "Cell division and shoot initiation",
+            "Formation of abscission layers",
+            "Root hair development",
+          ],
+          ans: 1,
+          exp: "Cytokinins promote cell division and shoot formation; they delay leaf senescence and overcome apical dominance.",
+        },
+        {
+          q: "Which of the following is NOT a role of ethylene in plants?",
+          opts: [
+            "Promoting fruit ripening",
+            "Causing flower and leaf abscission",
+            "Inducing deepwater rice stem elongation",
+            "Increasing stomatal opening",
+          ],
+          ans: 3,
+          exp: "Increasing stomatal opening is not a role of ethylene. Ethylene instead promotes abscission, senescence, fruit ripening, etc.",
+        },
+        {
+          q: 'Abscisic acid (ABA) is often called the "stress hormone" because it:',
+          opts: [
+            "Stimulates seed germination",
+            "Closes stomata and enhances stress tolerance",
+            "Induces flowering",
+            "Promotes rapid cell expansion",
+          ],
+          ans: 1,
+          exp: 'ABA induces stomatal closure under stress and helps plants tolerate drought, hence its name "stress hormone".',
+        },
+        {
+          q: "Naphthalene acetic acid (NAA) used in horticulture is classified as:",
+          opts: [
+            "A natural cytokinin",
+            "A synthetic auxin",
+            "A gibberellin compound",
+            "Abscisic acid analog",
+          ],
+          ans: 1,
+          exp: "NAA is a synthetic auxin (an analog of IAA) used in agriculture.",
+        },
+        {
+          q: "Gibberellins delay senescence and are used to extend the shelf life of some fruits. Which of the following is TRUE?",
+          opts: [
+            "Gibberellins promote early ripening and dropping of fruits",
+            "Gibberellins inhibit malting in brewing",
+            "Gibberellins delay ageing of fruits and can extend the market period",
+            "Gibberellins prevent stem elongation",
+          ],
+          ans: 2,
+          exp: "Gibberellins delay fruit and leaf senescence (aging), extending the harvest period.",
+        },
+        {
+          q: "Which plant growth regulator is gaseous in its naturally occurring form?",
+          opts: ["Auxin", "Gibberellin", "Cytokinin", "Ethylene"],
+          ans: 3,
+          exp: "Ethylene is a gaseous hormone synthesized as gas in plants.",
+        },
+        {
+          q: "Natural cytokinins are mainly produced in which plant tissues?",
+          opts: [
+            "Mature senescing leaves",
+            "Regions of rapid cell division (e.g., root apices, developing fruits)",
+            "Xylem vessels",
+            "Stomatal guard cells",
+          ],
+          ans: 1,
+          exp: "Natural cytokinins are made in tissues with rapid cell division (e.g. shoot/root apices, young fruits).",
+        },
+        {
+          q: "Abscisic acid (ABA) is derived from which class of compounds?",
+          opts: [
+            "Indole derivatives",
+            "Purine nucleotides",
+            "Carotenoid (terpenoid) precursors",
+            "Amino acids",
+          ],
+          ans: 2,
+          exp: "ABA (abscisic acid) is derived from carotenoid (terpenoid) precursors.",
+        },
+        {
+          q: "Which of the following is an <b>extrinsic</b> factor affecting plant development?",
+          opts: [
+            "Plant growth regulators (hormones)",
+            "Genetic factors (DNA)",
+            "Environmental temperature",
+            "Cell cycle proteins",
+          ],
+          ans: 2,
+          exp: "Temperature is an extrinsic (environmental) factor affecting development; hormones and genetics are intrinsic factors.",
+        },
+        {
+          q: "Development in plants is broadly defined as:",
+          opts: [
+            "Only the differentiation of cells",
+            "Only the irreversible increase in size",
+            "The sum of growth and differentiation",
+            "Aging and senescence of tissues",
+          ],
+          ans: 2,
+          exp: "Development includes both growth and differentiation (all life-cycle changes).",
+        },
+        {
+          q: "Different leaf shapes at juvenile and adult stages (as in larkspur vs buttercup) exemplify the phenomenon of:",
+          opts: [
+            "Senescence",
+            "Heterophylly (developmental plasticity)",
+            "Photoperiodism",
+            "Alternation of generations",
+          ],
+          ans: 1,
+          exp: "Different leaf shapes at juvenile vs adult stages is called heterophylly (a form of developmental plasticity).",
+        },
+        {
+          q: "In human blood plasma, water constitutes roughly ____% of the volume, and proteins about ____%.",
+          opts: [
+            "90–92% water, 6–8% proteins",
+            "75–80% water, 15–20% proteins",
+            "50% water, 40% proteins",
+            "100% water, 0% proteins",
+          ],
+          ans: 0,
+          exp: "Plasma is ~90–92% water and 6–8% proteins.",
+        },
+        {
+          q: "The typical red blood cell (RBC) count in a healthy adult human is about:",
+          opts: [
+            "5–5.5 million cells per mm³",
+            "1–2 million cells per mm³",
+            "10–12 million cells per mm³",
+            "100,000 cells per mm³",
+          ],
+          ans: 0,
+          exp: "Normal RBC count is about 5–5.5 million per mm³.",
+        },
+        {
+          q: "A healthy adult male typically has hemoglobin concentration of about:",
+          opts: [
+            "5–8 g/100 mL",
+            "12–16 g/100 mL",
+            "18–22 g/100 mL",
+            "20–24 g/100 mL",
+          ],
+          ans: 1,
+          exp: "Hemoglobin in a healthy adult is ~12–16 g per 100 mL blood.",
+        },
+        {
+          q: "The normal total white blood cell (WBC) count is approximately:",
+          opts: [
+            "1,000–2,000 WBCs/mm³",
+            "6,000–8,000 WBCs/mm³",
+            "15,000–20,000 WBCs/mm³",
+            "100,000 WBCs/mm³",
+          ],
+          ans: 1,
+          exp: "Normal WBC count is roughly 6,000–8,000 per mm³.",
+        },
+        {
+          q: "The normal platelet count in human blood is about:",
+          opts: [
+            "1,500–3,500 platelets/mm³",
+            "150,000–350,000 platelets/mm³",
+            "1–2 million platelets/mm³",
+            "5,000–10,000 platelets/mm³",
+          ],
+          ans: 1,
+          exp: "Normal platelet count is 150,000–350,000 per mm³.",
+        },
+        {
+          q: "Serum differs from plasma mainly because serum lacks:",
+          opts: [
+            "Clotting factors (e.g., fibrinogen)",
+            "Albumin proteins",
+            "Electrolytes (Na⁺, K⁺)",
+            "Water",
+          ],
+          ans: 0,
+          exp: "Serum is plasma without clotting factors (fibrinogen is removed during clotting).",
+        },
+        {
+          q: "In a blood transfusion, donor blood group O (with no A or B antigens) can be safely transfused into:",
+          opts: [
+            "Only O recipients",
+            "Recipients of any ABO blood group",
+            "Only A or B recipients",
+            "Only AB recipients",
+          ],
+          ans: 1,
+          exp: "O-group blood (no A/B antigens) can be given to recipients of any ABO group.",
+        },
+        {
+          q: 'Individuals with blood group O are called "universal donors" because:',
+          opts: [
+            "Their RBCs lack both A and B antigens and can be given to any recipient",
+            "They have both anti-A and anti-B antibodies",
+            "They have both A and B antigens on their RBCs",
+            "They have no antibodies in plasma",
+          ],
+          ans: 0,
+          exp: "Group O has no A or B antigens, so its RBCs can be donated to any group.",
+        },
+        {
+          q: "About 80–85% of humans are Rh positive. The Rh antigen is similar to one found in which animal?",
+          opts: ["Dogs", "Rhesus monkeys", "Birds", "Cattle"],
+          ans: 1,
+          exp: "The Rh antigen is named for Rhesus monkeys (about 80% of humans are Rh-positive).",
+        },
+        {
+          q: "Erythroblastosis fetalis (hemolytic disease of the newborn) occurs when:",
+          opts: [
+            "An Rh-positive fetus develops antibodies against an Rh-negative mother",
+            "An Rh-negative mother carries an Rh-positive fetus and becomes sensitized",
+            "A fetus inherits blood group O",
+            "A baby is born with Rh-positive blood",
+          ],
+          ans: 1,
+          exp: "Rh-negative mothers carrying Rh-positive fetuses can develop antibodies affecting subsequent Rh-positive babies (erythroblastosis fetalis).",
+        },
+        {
+          q: "The fluid that bathes tissue cells (interstitial fluid) is collected into the lymphatic system and is called ____.",
+          opts: ["Plasma", "Transcellular fluid", "Blood", "Lymph"],
+          ans: 3,
+          exp: 'The lymphatic fluid is called "lymph" once in the lymphatics.',
+        },
+        {
+          q: "Lymph is similar to plasma except that lymph ________.",
+          opts: [
+            "contains more red blood cells",
+            "is more colorless and has virtually no red blood cells",
+            "has a higher protein concentration than plasma",
+            "has more platelets than plasma",
+          ],
+          ans: 1,
+          exp: "Lymph is essentially tissue fluid (plasma without proteins) and is nearly colorless (contains lymphocytes, no RBCs).",
+        },
+        {
+          q: "Fats absorbed from the intestine enter the lymphatic system via lymph capillaries called:",
+          opts: [
+            "Chylomicrons",
+            "Lacteals",
+            "Cisterna chyli",
+            "Splanchnic veins",
+          ],
+          ans: 1,
+          exp: "Lacteals are the lymphatic capillaries in intestinal villi that absorb dietary fats.",
+        },
+        {
+          q: "In which group of animals is an open circulatory system found?",
+          opts: [
+            "Arthropods (e.g., insects, crustaceans)",
+            "Birds",
+            "Mammals",
+            "Fishes",
+          ],
+          ans: 0,
+          exp: "Many arthropods (insects, crustaceans) have open circulatory systems.",
+        },
+        {
+          q: "A four-chambered heart (two atria and two ventricles) is characteristic of:",
+          opts: [
+            "Fishes",
+            "Amphibians",
+            "Birds and mammals",
+            "Reptiles (except crocodiles)",
+          ],
+          ans: 2,
+          exp: "Birds and mammals have a true four-chambered heart.",
+        },
+        {
+          q: "The tricuspid valve separates the:",
+          opts: [
+            "Right atrium and right ventricle",
+            "Left atrium and left ventricle",
+            "Right ventricle and pulmonary artery",
+            "Left ventricle and aorta",
+          ],
+          ans: 0,
+          exp: "The tricuspid valve is between the right atrium and right ventricle.",
+        },
+        {
+          q: 'The first heart sound "lub" is due to the closure of:',
+          opts: [
+            "Semilunar valves",
+            "Atrioventricular (tricuspid and bicuspid) valves",
+            "Both semilunar and atrioventricular simultaneously",
+            "Aortic valve only",
+          ],
+          ans: 1,
+          exp: '"Lub" is due to the closing of the atrioventricular (tricuspid & bicuspid) valves.',
+        },
+        {
+          q: "On an ECG (electrocardiogram), the P-wave corresponds to:",
+          opts: [
+            "Depolarization of the atria",
+            "Depolarization of the ventricles",
+            "Repolarization of the ventricles",
+            "Repolarization of the atria",
+          ],
+          ans: 0,
+          exp: "The P-wave represents atrial depolarization (excitation).",
+        },
+        {
+          q: "The average stroke volume of the human heart (volume pumped per beat) is approximately:",
+          opts: [
+            "70 mL per beat",
+            "200 mL per beat",
+            "150 mL per beat",
+            "5 L per beat",
+          ],
+          ans: 0,
+          exp: "Stroke volume is roughly 70 mL (the volume pumped by one ventricle per beat).",
+        },
+        {
+          q: "The normal resting heart rate in an adult human is closest to:",
+          opts: [
+            "72 beats per minute",
+            "40 beats per minute",
+            "100 beats per minute",
+            "150 beats per minute",
+          ],
+          ans: 0,
+          exp: "Normal resting heart rate is about 72 beats per minute (the sinoatrial node's pace).",
+        },
+        {
+          q: "Parasympathetic nervous stimulation affects the heart by:",
+          opts: [
+            "Increasing heart rate and cardiac output",
+            "Decreasing heart rate and cardiac output",
+            "Constricting blood vessels to raise blood pressure",
+            "Releasing adrenaline from the adrenal gland",
+          ],
+          ans: 1,
+          exp: "Parasympathetic (via vagus nerve) decreases heart rate and output.",
+        },
+        {
+          q: "The sinoatrial (SA) node is often called the pacemaker of the heart because it:",
+          opts: [
+            "Has the slowest rate of spontaneous depolarization",
+            "Can generate the most frequent action potentials (~70–75 per min)",
+            "Releases hormones to stimulate contraction",
+            "Relaxes the ventricles",
+          ],
+          ans: 1,
+          exp: "The SA node naturally fires ~70-75 times/min, initiating each heartbeat.",
+        },
+        {
+          q: "Adrenaline (epinephrine) affects cardiac activity by:",
+          opts: [
+            "Increasing heart rate and strength of contraction",
+            "Decreasing stroke volume",
+            "Stimulating the production of blood cells",
+            "Inhibiting the AV node",
+          ],
+          ans: 0,
+          exp: "Adrenaline increases heart rate and contraction strength (via sympathetic stimulation).",
+        },
+        {
+          q: "Compared to arteries, veins have:",
+          opts: [
+            "A thinner tunica media (smooth muscle layer)",
+            "No valves to prevent backflow",
+            "A much larger amount of elastic fibers",
+            "Endothelium that is multilayered",
+          ],
+          ans: 0,
+          exp: "Veins have a thinner tunica media than arteries.",
+        },
+        {
+          q: "Which component is normally <b>absent</b> in lymph?",
+          opts: [
+            "Specialized lymphocytes",
+            "Water and minerals",
+            "Red blood cells (erythrocytes)",
+            "Proteins (small amounts)",
+          ],
+          ans: 2,
+          exp: "Red blood cells are normally absent in lymph (lymph is a clear fluid with lymphocytes).",
+        },
+      ];
+
+      const TOTAL = DATA.length;
+      const LETTERS = ["A", "B", "C", "D"];
+
+      let current = 0;
+      let userAnswers = new Array(TOTAL).fill(-1);
+      let reviewFlags = new Array(TOTAL).fill(false);
+      let quizStarted = false;
+      let submitted = false;
+      let timerSec = 0;
+      let timerInterval = null;
+      let paletteOpen = false;
+
+      function getChapter(i) {
+        return i < 25 ? "plant" : "blood";
+      }
+      function getChapterLabel(i) {
+        return i < 25
+          ? "🌱 Plant Growth"
+          : "🩸 Body Fluids";
+      }
+
+      function beginTest() {
+        quizStarted = true;
+        document.getElementById("hero").style.display = "none";
+        document.getElementById("progressWrap").style.display = "block";
+        document.getElementById("quizArea").classList.remove("hidden");
+        document.getElementById("paletteToggle").style.display = "flex";
+        startTimer();
+        renderQuestion();
+      }
+
+      function startTimer() {
+        timerInterval = setInterval(() => {
+          timerSec++;
+          const m = String(Math.floor(timerSec / 60)).padStart(2, "0");
+          const s = String(timerSec % 60).padStart(2, "0");
+          document.getElementById("timerDisplay").textContent = `${m}:${s}`;
+        }, 1000);
+      }
+
+      function renderQuestion() {
+        const d = DATA[current];
+        const ch = getChapter(current);
+        const chLabel = getChapterLabel(current);
+        const numClass = ch === "blood" ? "blood" : "";
+        const tagClass = ch;
+        const isLast = current === TOTAL - 1;
+
+        let html = `<div class="q-card">`;
+        html += `<div class="q-meta">`;
+        html += `<span class="q-tag ${tagClass}">${chLabel}</span>`;
+        html += `<span class="q-tag type">MCQ</span>`;
+        html += `</div>`;
+        html += `<div class="q-header">`;
+        html += `<span class="q-num ${numClass}">Q${current + 1}</span>`;
+        html += `<div class="q-text">${d.q}</div>`;
+        html += `</div>`;
+        html += `<div class="options">`;
+        d.opts.forEach((o, j) => {
+          const sel = userAnswers[current] === j ? " selected" : "";
+          html += `<button class="opt-btn${sel}" onclick="selectOpt(${j})">`;
+          html += `<span class="opt-letter">${LETTERS[j]}</span>`;
+          html += `<span>${o}</span>`;
+          html += `</button>`;
+        });
+        html += `</div>`;
+
+        html += `<div class="q-nav">`;
+        html += `<button class="nav-btn prev" onclick="navigate(-1)" ${current === 0 ? "disabled" : ""}>← Prev</button>`;
+        html += `<button class="nav-btn review-mark${reviewFlags[current] ? " marked" : ""}" onclick="toggleReview()">`;
+        html += reviewFlags[current] ? "★ Marked" : "☆ Mark for Review";
+        html += `</button>`;
+        if (isLast) {
+          html += `<button class="nav-btn next" onclick="finishQuiz()">Finish →</button>`;
+        } else {
+          html += `<button class="nav-btn next" onclick="navigate(1)">Next →</button>`;
+        }
+        html += `</div>`;
+        html += `</div>`;
+
+        document.getElementById("quizArea").innerHTML = html;
+
+        document.getElementById("qCounter").textContent = current + 1;
+        const answered = userAnswers.filter((a) => a !== -1).length;
+        document.getElementById("progressFill").style.width =
+          (answered / TOTAL) * 100 + "%";
+
+        renderPalette();
+      }
+
+      function selectOpt(j) {
+        if (submitted) return;
+        userAnswers[current] = j;
+        renderQuestion();
+      }
+
+      function navigate(dir) {
+        current = Math.max(0, Math.min(TOTAL - 1, current + dir));
+        renderQuestion();
+      }
+
+      function jumpTo(i) {
+        current = i;
+        renderQuestion();
+        if (paletteOpen && window.innerWidth < 600) togglePalette();
+      }
+
+      function toggleReview() {
+        reviewFlags[current] = !reviewFlags[current];
+        renderQuestion();
+      }
+
+      function togglePalette() {
+        paletteOpen = !paletteOpen;
+        document.getElementById("palettePanel").style.display = paletteOpen
+          ? "block"
+          : "none";
+      }
+
+      function renderPalette() {
+        let html = "";
+        for (let i = 0; i < TOTAL; i++) {
+          let cls = "palette-dot";
+          if (userAnswers[i] !== -1) cls += " answered";
+          if (reviewFlags[i]) cls += " review";
+          if (i === current) cls += " current";
+          html += `<div class="${cls}" onclick="jumpTo(${i})">${i + 1}</div>`;
+        }
+        document.getElementById("paletteGrid").innerHTML = html;
+      }
+
+      function finishQuiz() {
+        if (!window._isReplay) {
+          const unanswered = userAnswers.filter((a) => a === -1).length;
+          if (unanswered > 0) {
+            if (
+              !confirm(
+                `You have ${unanswered} unanswered question${unanswered > 1 ? "s" : ""}. Submit anyway?`
+              )
+            )
+              return;
+          }
+        }
+        submitQuiz();
+      }
+
+      function saveAttempt(data) {
+        try {
+          const results = JSON.parse(localStorage.getItem('papResults') || '[]');
+          results.unshift(data);
+          localStorage.setItem('papResults', JSON.stringify(results));
+        } catch(e) {}
+      }
+
+      function submitQuiz() {
+        submitted = true;
+        clearInterval(timerInterval);
+
+        document.getElementById("quizArea").classList.add("hidden");
+        document.getElementById("paletteToggle").style.display = "none";
+        document.getElementById("palettePanel").style.display = "none";
+        document.getElementById("progressWrap").style.display = "none";
+
+        let correct = 0,
+          wrong = 0,
+          skipped = 0;
+        let plantCorrect = 0,
+          plantTotal = 25;
+        let bloodCorrect = 0,
+          bloodTotal = 25;
+
+        for (let i = 0; i < TOTAL; i++) {
+          if (userAnswers[i] === -1) {
+            skipped++;
+          } else if (userAnswers[i] === DATA[i].ans) {
+            correct++;
+            if (i < 25) plantCorrect++;
+            else bloodCorrect++;
+          } else {
+            wrong++;
+          }
+        }
+
+        const neetScore = correct * 4 - wrong * 1;
+        const pct = Math.round((correct / TOTAL) * 100);
+        const circumference = 2 * Math.PI * 65;
+        const offset = circumference - (pct / 100) * circumference;
+        const ringColor =
+          pct >= 80
+            ? "var(--green)"
+            : pct >= 50
+              ? "var(--amber)"
+              : "var(--red)";
+        const grade =
+          pct >= 90
+            ? "Outstanding!"
+            : pct >= 75
+              ? "Great Work!"
+              : pct >= 50
+                ? "Keep Practicing!"
+                : "Needs Revision";
+
+        const timeStr = document.getElementById("timerDisplay").textContent;
+        const plantPct = Math.round((plantCorrect / plantTotal) * 100);
+        const bloodPct = Math.round((bloodCorrect / bloodTotal) * 100);
+
+        if (!window._isReplay) {
+          saveAttempt({
+            id: Date.now(),
+            paperFile: 'PAP1.html',
+            paperName: 'Plant Growth & Body Fluids',
+            paperTag: 'Standard',
+            correct, wrong, skipped,
+            totalQuestions: TOTAL,
+            neetScore,
+            maxScore: TOTAL * 4,
+            percentage: pct,
+            timeTaken: timeStr,
+            timerSeconds: timerSec,
+            userAnswers: [...userAnswers]
+          });
+        }
+
+        const res = document.getElementById("resultsSection");
+        res.style.display = "block";
+
+        let rhtml = `
+<div class="results-card">
+  <h2>${grade}</h2>
+  <div class="score-ring">
+    <svg width="160" height="160" viewBox="0 0 160 160">
+      <circle class="ring-bg" cx="80" cy="80" r="65"/>
+      <circle class="ring-fill" cx="80" cy="80" r="65"
+        stroke="${ringColor}"
+        stroke-dasharray="${circumference}"
+        stroke-dashoffset="${circumference}"
+        id="scoreRing"/>
+    </svg>
+    <div class="score-center">
+      <div class="pct">${pct}%</div>
+      <div class="of">${correct}/${TOTAL}</div>
+    </div>
+  </div>
+  <div class="stats-grid">
+    <div class="stat-item neet"><div class="stat-num">${neetScore}</div><div class="stat-lbl">NEET Score</div></div>
+    <div class="stat-item correct"><div class="stat-num">${correct}</div><div class="stat-lbl">Correct</div></div>
+    <div class="stat-item wrong"><div class="stat-num">${wrong}</div><div class="stat-lbl">Wrong</div></div>
+    <div class="stat-item skip"><div class="stat-num">${skipped}</div><div class="stat-lbl">Skipped</div></div>
+  </div>
+  <div style="margin-top:16px;font-size:13px;color:var(--text3)">Time: ${timeStr}</div>
+</div>
+
+<div class="chapter-breakdown">
+  <h3>Chapter Breakdown</h3>
+  <div class="chapter-bar-wrap">
+    <div class="chapter-bar-header">
+      <span style="color:var(--accent)">🌱 Plant Growth</span>
+      <span style="color:var(--text2)">${plantCorrect}/${plantTotal} (${plantPct}%)</span>
+    </div>
+    <div class="chapter-bar-track">
+      <div class="chapter-bar-fill" id="plantBar" style="width:0%;background:var(--accent)"></div>
+    </div>
+  </div>
+  <div class="chapter-bar-wrap">
+    <div class="chapter-bar-header">
+      <span style="color:var(--pink)">🩸 Body Fluids</span>
+      <span style="color:var(--text2)">${bloodCorrect}/${bloodTotal} (${bloodPct}%)</span>
+    </div>
+    <div class="chapter-bar-track">
+      <div class="chapter-bar-fill" id="bloodBar" style="width:0%;background:var(--pink)"></div>
+    </div>
+  </div>
+</div>
+
+<div class="review-section">
+  <div class="review-title">Complete Walkthrough</div>
+  <div class="review-filter">
+    <button class="filter-btn active" onclick="filterReview('all',this)">All (${TOTAL})</button>
+    <button class="filter-btn" onclick="filterReview('wrong',this)">❌ Wrong (${wrong})</button>
+    <button class="filter-btn" onclick="filterReview('skipped',this)">⏭️ Skipped (${skipped})</button>
+    <button class="filter-btn" onclick="filterReview('correct',this)">✅ Correct (${correct})</button>
+  </div>
+  <div id="reviewCards"></div>
+</div>`;
+
+        res.innerHTML = rhtml;
+        renderReviewCards("all");
+
+        setTimeout(() => {
+          document.getElementById("scoreRing").style.strokeDashoffset = offset;
+          document.getElementById("plantBar").style.width = plantPct + "%";
+          document.getElementById("bloodBar").style.width = bloodPct + "%";
+        }, 100);
+
+        res.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function renderReviewCards(filter) {
+        const container = document.getElementById("reviewCards");
+        let html = "";
+
+        for (let i = 0; i < TOTAL; i++) {
+          const d = DATA[i];
+          const ua = userAnswers[i];
+          const isCorrect = ua === d.ans;
+          const isSkipped = ua === -1;
+          const isWrong = !isCorrect && !isSkipped;
+
+          if (filter === "wrong" && !isWrong) continue;
+          if (filter === "skipped" && !isSkipped) continue;
+          if (filter === "correct" && !isCorrect) continue;
+
+          const ch = getChapter(i);
+          const chLabel = getChapterLabel(i);
+
+          let badgeClass, badgeText;
+          if (isCorrect) {
+            badgeClass = "rc-correct";
+            badgeText = "✅ Correct";
+          } else if (isSkipped) {
+            badgeClass = "rc-skipped";
+            badgeText = "⏭️ Skipped";
+          } else {
+            badgeClass = "rc-wrong";
+            badgeText = "❌ Wrong";
+          }
+
+          html += `<div class="review-card">`;
+          html += `<div class="rc-header">`;
+          html += `<span class="q-num ${ch === "blood" ? "blood" : ""}">Q${i + 1}</span>`;
+          html += `<span class="q-tag ${ch}">${chLabel}</span>`;
+          html += `<span class="rc-badge ${badgeClass}">${badgeText}</span>`;
+          html += `</div>`;
+          html += `<div class="rc-q">${d.q}</div>`;
+          html += `<div class="rc-opts">`;
+
+          d.opts.forEach((o, j) => {
+            let optClass = "rc-opt";
+            if (j === d.ans) optClass += " rc-opt-correct";
+            else if (j === ua && isWrong) optClass += " rc-opt-wrong";
+            html += `<div class="${optClass}">`;
+            html += `<span class="rc-letter">${LETTERS[j]}</span>`;
+            html += `<span>${o}</span>`;
+            html += `</div>`;
+          });
+
+          html += `</div>`;
+          html += `<div class="rc-exp">${d.exp}</div>`;
+          html += `</div>`;
+        }
+
+        if (!html)
+          html = `<p style="text-align:center;color:var(--text3);padding:30px 0">No questions match this filter.</p>`;
+        container.innerHTML = html;
+      }
+
+      function filterReview(type, btn) {
+        document
+          .querySelectorAll(".filter-btn")
+          .forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderReviewCards(type);
+      }
+
+      window.addEventListener("scroll", () => {
+        const pw = document.getElementById("progressWrap");
+        if (window.scrollY > 200) {
+          pw.classList.add("scrolled");
+        } else {
+          pw.classList.remove("scrolled");
+        }
+      });
+
+      (function loadSavedAttempt() {
+        const params = new URLSearchParams(window.location.search);
+        const attemptId = params.get('attempt');
+        if (!attemptId) return;
+        const saved = JSON.parse(localStorage.getItem('papResults') || '[]');
+        const attempt = saved.find(r => r.id === Number(attemptId));
+        if (!attempt) return;
+        window._isReplay = true;
+        userAnswers = attempt.userAnswers;
+        timerSec = attempt.timerSeconds || 0;
+        const m = String(Math.floor(timerSec / 60)).padStart(2, "0");
+        const s = String(timerSec % 60).padStart(2, "0");
+        document.getElementById("timerDisplay").textContent = `${m}:${s}`;
+        document.getElementById("hero").style.display = "none";
+        submitQuiz();
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEET 2026 — Ultra Practice: Plant Growth & Body Fluids</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+:root {
+  --bg: #0a0e17;
+  --surface: #111827;
+  --surface2: #1a2236;
+  --surface3: #222d44;
+  --border: #2a3654;
+  --text: #e2e8f0;
+  --text2: #94a3b8;
+  --text3: #64748b;
+  --accent: #06d6a0;
+  --accent2: #118ab2;
+  --red: #ef4444;
+  --green: #22c55e;
+  --amber: #f59e0b;
+  --purple: #a78bfa;
+  --pink: #f472b6;
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+html { scroll-behavior:smooth; }
+body {
+  font-family:'IBM Plex Sans',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  min-height:100vh;
+}
+body::before {
+  content:'';
+  position:fixed;
+  top:0;left:0;width:100%;height:100%;
+  background:
+    radial-gradient(ellipse at 20% 0%,rgba(6,214,160,0.06) 0%,transparent 50%),
+    radial-gradient(ellipse at 80% 100%,rgba(17,138,178,0.06) 0%,transparent 50%);
+  pointer-events:none;
+  z-index:0;
+}
+.container {
+  max-width:860px;
+  margin:0 auto;
+  padding:20px;
+  position:relative;
+  z-index:1;
+}
+
+/* ── HERO ── */
+.hero {
+  text-align:center;
+  padding:50px 20px 40px;
+  position:relative;
+}
+.hero-badge {
+  display:inline-block;
+  padding:6px 18px;
+  border-radius:50px;
+  background:rgba(6,214,160,0.12);
+  color:var(--accent);
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  margin-bottom:18px;
+  border:1px solid rgba(6,214,160,0.2);
+}
+.hero h1 {
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(28px,5vw,44px);
+  color:#fff;
+  margin-bottom:12px;
+  line-height:1.2;
+}
+.hero h1 span {
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero p {
+  color:var(--text2);
+  font-size:16px;
+  max-width:560px;
+  margin:0 auto 24px;
+}
+.hero-tags {
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:8px;
+}
+.hero-tags span {
+  padding:5px 14px;
+  border-radius:6px;
+  font-size:12px;
+  font-weight:600;
+}
+.tag-plant { background:rgba(34,197,94,0.1); color:var(--green); border:1px solid rgba(34,197,94,0.2); }
+.tag-blood { background:rgba(244,114,182,0.1); color:var(--pink); border:1px solid rgba(244,114,182,0.2); }
+.start-btn {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:28px;
+  padding:16px 48px;
+  font-size:17px;
+  font-weight:700;
+  color:var(--bg);
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  border:none;
+  border-radius:50px;
+  cursor:pointer;
+  transition:all 0.3s;
+  letter-spacing:0.5px;
+  box-shadow:0 4px 25px rgba(6,214,160,0.3);
+}
+.start-btn:hover {
+  transform:translateY(-2px);
+  box-shadow:0 8px 35px rgba(6,214,160,0.4);
+}
+
+/* ── PROGRESS BAR ── */
+.progress-wrap {
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(10,14,23,0.92);
+  backdrop-filter:blur(12px);
+  padding:14px 20px;
+  border-bottom:1px solid var(--border);
+  display:none;
+  transition:box-shadow 0.3s;
+}
+.progress-wrap.active { display:block; }
+.progress-wrap.scrolled { box-shadow:0 4px 30px rgba(0,0,0,0.4); }
+.progress-inner {
+  max-width:860px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+.progress-text {
+  font-size:13px;
+  font-weight:600;
+  color:var(--text2);
+  white-space:nowrap;
+  min-width:90px;
+}
+.progress-text b { color:var(--accent); }
+.progress-bar {
+  flex:1;
+  height:6px;
+  background:var(--surface3);
+  border-radius:10px;
+  overflow:hidden;
+}
+.progress-fill {
+  height:100%;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  border-radius:10px;
+  transition:width 0.4s cubic-bezier(0.4,0,0.2,1);
+  width:0%;
+}
+.progress-timer {
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px;
+  color:var(--text3);
+  min-width:60px;
+  text-align:right;
+}
+
+/* ── QUESTION CARD ── */
+.q-card {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:28px;
+  margin-bottom:24px;
+  display:none;
+  animation:fadeIn 0.35s ease;
+}
+.q-card.active { display:block; }
+@keyframes fadeIn {
+  from { opacity:0; transform:translateY(12px); }
+  to { opacity:1; transform:translateY(0); }
+}
+.q-meta {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:14px;
+}
+.q-tag {
+  font-size:11px;
+  padding:3px 10px;
+  border-radius:50px;
+  font-weight:600;
+  letter-spacing:0.5px;
+  text-transform:uppercase;
+}
+.q-tag.plant { background:rgba(34,197,94,0.12); color:var(--green); }
+.q-tag.blood { background:rgba(244,114,182,0.12); color:var(--pink); }
+.q-tag.type { background:rgba(167,139,250,0.12); color:var(--purple); }
+.q-header {
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+  margin-bottom:18px;
+}
+.q-num {
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px;
+  font-weight:700;
+  color:var(--bg);
+  background:var(--accent);
+  padding:4px 10px;
+  border-radius:6px;
+  white-space:nowrap;
+  margin-top:2px;
+  flex-shrink:0;
+}
+.q-num.blood-num { background:var(--pink); }
+.q-text {
+  font-size:15.5px;
+  color:#fff;
+  line-height:1.7;
+  margin-bottom:20px;
+}
+.q-text strong { color:var(--accent); font-weight:600; }
+.q-text em { color:var(--accent); font-style:normal; font-weight:600; }
+.q-text table {
+  width:100%;
+  border-collapse:collapse;
+  margin:12px 0;
+  font-size:14px;
+}
+.q-text table th,.q-text table td {
+  padding:8px 12px;
+  border:1px solid var(--border);
+  text-align:left;
+}
+.q-text table th {
+  background:var(--surface2);
+  color:var(--accent);
+  font-weight:600;
+}
+
+/* ── OPTIONS ── */
+.options { display:flex; flex-direction:column; gap:10px; }
+.opt-btn {
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  padding:14px 18px;
+  background:var(--surface2);
+  border:1.5px solid var(--border);
+  border-radius:var(--radius-sm);
+  cursor:pointer;
+  transition:all 0.2s;
+  text-align:left;
+  width:100%;
+  font-size:14.5px;
+  color:var(--text);
+  line-height:1.5;
+}
+.opt-btn:hover:not(.disabled) {
+  border-color:var(--accent);
+  background:rgba(6,214,160,0.05);
+}
+.opt-btn .opt-letter {
+  font-family:'JetBrains Mono',monospace;
+  font-weight:700;
+  color:var(--text3);
+  font-size:13px;
+  min-width:24px;
+  height:24px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:6px;
+  background:var(--surface3);
+  flex-shrink:0;
+  margin-top:1px;
+}
+.opt-btn.selected {
+  border-color:var(--accent);
+  background:rgba(6,214,160,0.08);
+}
+.opt-btn.selected .opt-letter {
+  background:var(--accent);
+  color:var(--bg);
+}
+
+/* ── NAVIGATION ── */
+.nav-btns {
+  display:flex;
+  gap:12px;
+  margin-top:24px;
+  flex-wrap:wrap;
+}
+.nav-btn {
+  padding:10px 24px;
+  border-radius:var(--radius-sm);
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:14px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all 0.2s;
+  border:1.5px solid var(--border);
+  background:var(--surface2);
+  color:var(--text);
+}
+.nav-btn:hover { border-color:var(--accent); }
+.nav-btn.primary {
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  border:none;
+  color:var(--bg);
+  font-weight:700;
+  box-shadow:0 2px 12px rgba(6,214,160,0.2);
+}
+.nav-btn.primary:hover { box-shadow:0 4px 20px rgba(6,214,160,0.3); }
+.nav-btn:disabled { opacity:0.4; cursor:not-allowed; }
+.mark-review {
+  margin-left:auto;
+  font-size:13px;
+  color:var(--amber);
+  background:rgba(245,158,11,0.08);
+  border-color:rgba(245,158,11,0.25);
+}
+.mark-review.marked {
+  background:rgba(245,158,11,0.2);
+  border-color:var(--amber);
+}
+
+/* ── PALETTE ── */
+.palette-toggle {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:var(--bg);
+  border:none;
+  font-size:20px;
+  font-weight:700;
+  cursor:pointer;
+  z-index:200;
+  box-shadow:0 4px 20px rgba(6,214,160,0.4);
+  display:none;
+  align-items:center;
+  justify-content:center;
+}
+.palette-toggle.active { display:flex; }
+.palette-panel {
+  position:fixed;
+  bottom:80px;
+  right:20px;
+  width:300px;
+  max-height:400px;
+  overflow-y:auto;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  z-index:200;
+  display:none;
+  box-shadow:0 10px 40px rgba(0,0,0,0.5);
+}
+.palette-panel.open { display:block; }
+.palette-title {
+  font-weight:700;
+  font-size:14px;
+  margin-bottom:14px;
+  color:var(--text2);
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+.palette-grid {
+  display:grid;
+  grid-template-columns:repeat(8,1fr);
+  gap:6px;
+}
+.palette-dot {
+  width:32px;
+  height:32px;
+  border-radius:7px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:11px;
+  font-weight:700;
+  cursor:pointer;
+  border:1.5px solid var(--border);
+  background:var(--surface2);
+  color:var(--text3);
+  transition:all 0.15s;
+}
+.palette-dot:hover { border-color:var(--accent); }
+.palette-dot.answered { background:rgba(6,214,160,0.15); border-color:var(--accent); color:var(--accent); }
+.palette-dot.review { background:rgba(245,158,11,0.15); border-color:var(--amber); color:var(--amber); }
+.palette-dot.current { box-shadow:0 0 0 2px var(--accent); }
+.palette-legend {
+  display:flex;
+  gap:16px;
+  margin-top:14px;
+  font-size:11px;
+  color:var(--text3);
+}
+.palette-legend span { display:flex; align-items:center; gap:5px; }
+.legend-dot { width:10px; height:10px; border-radius:3px; }
+
+/* ── RESULTS ── */
+#results-section { display:none; }
+.results-hero {
+  text-align:center;
+  padding:48px 0 40px;
+  border-bottom:1px solid var(--border);
+  margin-bottom:40px;
+}
+.score-ring {
+  width:180px;
+  height:180px;
+  margin:0 auto 24px;
+  position:relative;
+}
+.score-ring svg { transform:rotate(-90deg); }
+.score-ring .ring-bg { fill:none; stroke:var(--surface3); stroke-width:10; }
+.score-ring .ring-fill {
+  fill:none;
+  stroke-width:10;
+  stroke-linecap:round;
+  transition:stroke-dashoffset 1.5s cubic-bezier(0.4,0,0.2,1);
+}
+.score-center {
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  text-align:center;
+}
+.score-pct {
+  font-family:'JetBrains Mono',monospace;
+  font-size:38px;
+  font-weight:700;
+  color:#fff;
+}
+.score-sub { font-size:13px; color:var(--text3); }
+
+.stats-row {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:12px;
+  margin-bottom:36px;
+}
+.stat-card {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:18px 16px;
+  text-align:center;
+}
+.stat-val {
+  font-family:'JetBrains Mono',monospace;
+  font-size:26px;
+  font-weight:700;
+  margin-bottom:4px;
+}
+.stat-val.green { color:var(--green); }
+.stat-val.red { color:var(--red); }
+.stat-val.yellow { color:var(--amber); }
+.stat-val.blue { color:var(--accent); }
+.stat-label {
+  font-size:12px;
+  color:var(--text3);
+  text-transform:uppercase;
+  letter-spacing:0.6px;
+}
+
+.chapter-breakdown {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  margin-bottom:40px;
+}
+.chapter-card {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:22px;
+}
+.chapter-card h3 {
+  font-size:14px;
+  font-weight:700;
+  margin-bottom:12px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.ch-dot {
+  width:8px;height:8px;border-radius:50%;
+}
+.ch-dot.plant { background:var(--green); }
+.ch-dot.blood { background:var(--pink); }
+.chapter-bar-wrap {
+  height:8px;
+  background:var(--surface3);
+  border-radius:4px;
+  overflow:hidden;
+  margin-bottom:8px;
+}
+.chapter-bar-fill {
+  height:100%;
+  border-radius:4px;
+  transition:width 1s ease;
+}
+.chapter-bar-fill.plant { background:var(--green); }
+.chapter-bar-fill.blood { background:var(--pink); }
+.chapter-score { font-size:13px; color:var(--text2); }
+
+/* ── FILTER TABS ── */
+.filter-tabs {
+  display:flex;
+  gap:8px;
+  margin-bottom:24px;
+  flex-wrap:wrap;
+}
+.filter-tab {
+  padding:8px 20px;
+  border-radius:50px;
+  border:1px solid var(--border);
+  background:transparent;
+  color:var(--text2);
+  font-size:13px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all 0.2s;
+}
+.filter-tab:hover,.filter-tab.active {
+  background:var(--accent);
+  color:var(--bg);
+  border-color:var(--accent);
+}
+
+/* ── REVIEW CARDS ── */
+.review-card {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:28px;
+  margin-bottom:20px;
+}
+.review-card.status-correct { border-left:4px solid var(--green); }
+.review-card.status-wrong { border-left:4px solid var(--red); }
+.review-card.status-skipped { border-left:4px solid var(--amber); }
+.review-header {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:16px;
+  flex-wrap:wrap;
+}
+.review-badge {
+  font-size:11px;
+  font-weight:700;
+  padding:3px 10px;
+  border-radius:5px;
+  text-transform:uppercase;
+  letter-spacing:0.6px;
+}
+.review-badge.correct { background:rgba(34,197,94,0.1); color:var(--green); border:1px solid rgba(34,197,94,0.3); }
+.review-badge.wrong { background:rgba(239,68,68,0.1); color:var(--red); border:1px solid rgba(239,68,68,0.3); }
+.review-badge.skipped { background:rgba(245,158,11,0.1); color:var(--amber); border:1px solid rgba(245,158,11,0.3); }
+.review-q-text {
+  font-size:14.5px;
+  line-height:1.75;
+  margin-bottom:16px;
+  color:var(--text);
+}
+.review-q-text strong { color:var(--accent); }
+.review-options { margin-bottom:18px; }
+.review-opt {
+  padding:10px 14px;
+  margin-bottom:6px;
+  border-radius:var(--radius-sm);
+  font-size:13.5px;
+  line-height:1.6;
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  border:1.5px solid transparent;
+}
+.review-opt.is-correct {
+  background:rgba(34,197,94,0.08);
+  border-color:rgba(34,197,94,0.3);
+}
+.review-opt.is-wrong {
+  background:rgba(239,68,68,0.08);
+  border-color:rgba(239,68,68,0.3);
+}
+.review-opt .opt-marker {
+  flex-shrink:0;
+  width:22px;height:22px;
+  border-radius:5px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:11px;
+  font-weight:700;
+}
+.review-opt.is-correct .opt-marker { background:var(--green); color:#fff; }
+.review-opt.is-wrong .opt-marker { background:var(--red); color:#fff; }
+.review-opt:not(.is-correct):not(.is-wrong) .opt-marker {
+  background:var(--surface3);
+  color:var(--text3);
+}
+.explanation-box {
+  background:rgba(6,214,160,0.05);
+  border:1px solid rgba(6,214,160,0.15);
+  border-radius:var(--radius-sm);
+  padding:18px 20px;
+}
+.explanation-box h4 {
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.8px;
+  color:var(--accent);
+  margin-bottom:8px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.explanation-box p {
+  font-size:13.5px;
+  line-height:1.75;
+  color:var(--text2);
+}
+.explanation-box p strong { color:var(--text); }
+.explanation-box .ncert-ref {
+  display:inline-block;
+  margin-top:8px;
+  font-size:11px;
+  padding:3px 8px;
+  background:rgba(6,214,160,0.1);
+  border-radius:4px;
+  color:var(--accent);
+  font-weight:600;
+}
+
+.back-to-top {
+  display:flex;
+  justify-content:center;
+  margin:40px 0;
+}
+
+@media (max-width:600px) {
+  .container { padding:12px; }
+  .q-card { padding:20px 16px; }
+  .review-card { padding:20px 16px; }
+  .hero h1 { font-size:26px; }
+  .stats-row { grid-template-columns:1fr 1fr; }
+  .chapter-breakdown { grid-template-columns:1fr; }
+  .progress-inner { gap:10px; }
+  .palette-panel { width:calc(100vw - 40px); right:20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero" id="hero-section">
+  <div class="hero-badge">NEET 2026 · NCERT Aligned</div>
+  <h1>Ultra Practice Test</h1>
+  <p>Plant Growth Regulators & Body Fluids — 50 concept-driven, NCERT-strict questions with detailed explanations.</p>
+  <div class="hero-tags">
+    <span class="tag-plant">🌱 25 — Plant Growth & Development</span>
+    <span class="tag-blood">🩸 25 — Body Fluids & Circulation</span>
+  </div>
+  <button class="start-btn" onclick="startQuiz()">Begin Test →</button>
+</div>
+
+<!-- ═══ PROGRESS BAR ═══ -->
+<div class="progress-wrap" id="progress-wrap">
+  <div class="progress-inner">
+    <div class="progress-text"><b id="q-counter">Q 1</b> / 50</div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    <div class="progress-timer" id="timer">00:00</div>
+  </div>
+</div>
+
+<div class="container">
+  <!-- ═══ QUIZ AREA ═══ -->
+  <div id="quiz-area"></div>
+  <!-- ═══ RESULTS ═══ -->
+  <div id="results-section"></div>
+</div>
+
+<!-- Palette toggle -->
+<button class="palette-toggle" id="palette-toggle" onclick="togglePalette()">☰</button>
+<div class="palette-panel" id="palette-panel">
+  <div class="palette-title">Question Palette</div>
+  <div class="palette-grid" id="palette-grid"></div>
+  <div class="palette-legend">
+    <span><div class="legend-dot" style="background:var(--surface2);border:1px solid var(--border)"></div> Unseen</span>
+    <span><div class="legend-dot" style="background:rgba(6,214,160,0.2)"></div> Answered</span>
+    <span><div class="legend-dot" style="background:rgba(245,158,11,0.2)"></div> Review</span>
+  </div>
+</div>
+
+<script>
+const questions = [
+// ─── PLANT GROWTH & DEVELOPMENT (Q1-Q25) ───
+{
+  id:1, chapter:"plant", type:"Factual MCQ",
+  text:"Auxin was first isolated from:",
+  options:["Oat coleoptile tips","Rhizopus fungus","Human urine","Corn kernels"],
+  answer:2,
+  explanation:"According to NCERT, auxin was first isolated from human urine by Kogl and Haugen Smith (1931). Students often confuse this with Went's experiment which used oat coleoptiles to demonstrate auxin activity, not to isolate it. This is one of the most commonly tested hidden NCERT facts."
+},
+{
+  id:2, chapter:"plant", type:"Assertion-Reason",
+  text:"<strong>Assertion (A):</strong> IBA (Indole-3-butyric acid) is classified as both a natural and a synthetic auxin.<br><strong>Reason (R):</strong> IBA was first synthesized in the laboratory and later found to occur naturally in plants.<br><br>Choose the correct option:",
+  options:[
+    "Both A and R are true, and R is the correct explanation of A",
+    "Both A and R are true, but R is NOT the correct explanation of A",
+    "A is true but R is false",
+    "A is false but R is true"
+  ],
+  answer:0,
+  explanation:"NCERT lists IBA under both natural auxins (alongside IAA) and synthetic auxins. This is a classic NEET trap — most students assume IBA is only natural. It was indeed first synthesized and later discovered in plants, making R the correct explanation of A."
+},
+{
+  id:3, chapter:"plant", type:"Conceptual MCQ",
+  text:"In Went's experiment, when an agar block containing diffused auxin from oat coleoptile tips was placed <strong>centrally</strong> on top of a decapitated coleoptile, the coleoptile:",
+  options:["Bent towards the light source","Bent away from the agar block","Grew straight up without bending","Did not grow at all"],
+  answer:2,
+  explanation:"When auxin-containing agar is placed centrally, auxin distributes equally on both sides of the coleoptile, causing uniform elongation and straight upward growth. Curvature only occurs when the agar block is placed asymmetrically (on one side), causing unequal auxin distribution. This is a key detail from NCERT's description of the Avena Curvature Test."
+},
+{
+  id:4, chapter:"plant", type:"Application MCQ",
+  text:"A farmer wants to obtain weed-free lawns of grass (a monocot). Which synthetic auxin can he spray that will selectively kill dicot weeds without damaging the grass?",
+  options:["IAA","GA₃","2,4-D","Ethephon"],
+  answer:2,
+  explanation:"2,4-D (2,4-dichlorophenoxyacetic acid) is a synthetic auxin that acts as a selective herbicide — it kills dicot (broad-leaved) weeds but does not affect mature monocot plants like grasses. This is a direct NCERT application and was tested in NEET 2024."
+},
+{
+  id:5, chapter:"plant", type:"Multi-Statement",
+  text:"Consider the following statements about Gibberellins:<br>(i) They were first discovered in the fungus <em>Gibberella fujikuroi</em><br>(ii) More than 100 gibberellins have been reported<br>(iii) GA₃ is the most intensively studied gibberellin<br>(iv) All gibberellins are basic in nature<br><br>Which statements are <strong>correct</strong>?",
+  options:["(i), (ii) and (iii) only","(i), (ii) and (iv) only","(ii), (iii) and (iv) only","All — (i), (ii), (iii) and (iv)"],
+  answer:0,
+  explanation:"Statements (i), (ii) and (iii) are directly stated in NCERT. Statement (iv) is WRONG — NCERT explicitly states 'all GAs are acidic in nature', not basic. This is a high-frequency trap. The name 'Gibberellic Acid' itself should be a clue that GAs are acidic."
+},
+{
+  id:6, chapter:"plant", type:"Conceptual MCQ",
+  text:"Bolting — the sudden internode elongation just prior to flowering observed in rosette plants like beet and cabbage — is primarily induced by:",
+  options:["Auxin","Cytokinin","Gibberellin","Ethylene"],
+  answer:2,
+  explanation:"NCERT defines bolting as the rapid elongation of internodes in rosette plants (beet, cabbage) triggered by gibberellins. Students commonly confuse bolting with vernalisation (which is deleted from NEET 2026). Bolting is a gibberellin-specific effect and remains in the syllabus."
+},
+{
+  id:7, chapter:"plant", type:"Numerical/Application",
+  text:"According to NCERT, spraying sugarcane crop with gibberellins increases the yield of sugarcane by approximately:",
+  options:["5 tonnes per acre","10 tonnes per acre","20 tonnes per acre","50 tonnes per acre"],
+  answer:2,
+  explanation:"NCERT states that spraying sugarcane with gibberellins increases yield by as much as 20 tonnes per acre. This exact numerical value is one of the most frequently tested NCERT lines, appearing in NEET 2020 and 2024. Students must memorize such specific figures."
+},
+{
+  id:8, chapter:"plant", type:"Factual MCQ",
+  text:"The first natural cytokinin, zeatin, was isolated from:",
+  options:["Coconut milk","Autoclaved herring sperm DNA","Corn kernels (Zea mays)","Tobacco callus"],
+  answer:2,
+  explanation:"NCERT states that zeatin was discovered from corn kernels (Zea mays) by Letham (1963). The name 'zeatin' derives from Zea mays. Kinetin was discovered from autoclaved herring sperm DNA, not zeatin. Coconut milk shows cytokinin-like activity but is not the source of zeatin. This distinction was tested in the NEET 2024 Re-exam."
+},
+{
+  id:9, chapter:"plant", type:"Assertion-Reason",
+  text:"<strong>Assertion (A):</strong> Kinetin is not a natural cytokinin.<br><strong>Reason (R):</strong> Kinetin was isolated from autoclaved herring sperm DNA by Miller et al.<br><br>Choose the correct option:",
+  options:[
+    "Both A and R are true, and R is the correct explanation of A",
+    "Both A and R are true, but R is NOT the correct explanation of A",
+    "A is true but R is false",
+    "A is false but R is true"
+  ],
+  answer:0,
+  explanation:"NCERT clearly states that kinetin does NOT occur naturally in plants. It was discovered by Miller et al. (1955) from autoclaved (degraded) herring sperm DNA — making it a modified base product, not a natural plant hormone. The source being non-plant DNA makes R the correct explanation for why A is true."
+},
+{
+  id:10, chapter:"plant", type:"Conceptual MCQ",
+  text:"In tissue culture experiments, if the concentration of <strong>auxin is higher than cytokinin</strong> in the growth medium, it will predominantly promote:",
+  options:["Shoot differentiation","Root differentiation","Callus formation without differentiation","Embryo development"],
+  answer:1,
+  explanation:"According to NCERT, a high auxin-to-cytokinin ratio promotes root formation, while a high cytokinin-to-auxin ratio promotes shoot formation in tissue culture. This is a frequently tested concept (NEET 2016-II). Students commonly reverse this relationship."
+},
+{
+  id:11, chapter:"plant", type:"Multi-Statement",
+  text:"Which of the following are physiological effects of ethylene as mentioned in NCERT?<br>(i) Promotes fruit ripening<br>(ii) Promotes internode elongation in deep water rice<br>(iii) Promotes female flowers in cucumber<br>(iv) Induces flowering in mango<br><br>Choose the correct combination:",
+  options:["(i) and (iii) only","(i), (ii) and (iii) only","(i), (iii) and (iv) only","All — (i), (ii), (iii) and (iv)"],
+  answer:3,
+  explanation:"ALL four are correct NCERT facts. Ethylene promotes fruit ripening, internode/petiole elongation in deep water rice (a buried NCERT line tested in NEET 2023), female flowers in cucumbers (increasing yield), and flowering in mango. Statement (iv) about mango is a hidden NCERT fact that catches many students."
+},
+{
+  id:12, chapter:"plant", type:"Conceptual MCQ",
+  text:"Abscisic acid (ABA) is called the 'stress hormone' because it:",
+  options:[
+    "Promotes stem elongation under drought",
+    "Stimulates stomatal closure during water stress, increasing stress tolerance",
+    "Accelerates cell division in root tips during flooding",
+    "Induces flowering in plants under photoperiodic stress"
+  ],
+  answer:1,
+  explanation:"NCERT explicitly calls ABA the 'stress hormone'. Its primary stress-related role is stimulating stomatal closure during water deficit, which reduces transpiration and increases the plant's tolerance to drought. ABA actually inhibits growth rather than promoting it."
+},
+{
+  id:13, chapter:"plant", type:"Match the Following",
+  text:"Match the PGR with its <strong>bioassay/specific test</strong>:<br><br>Column I: (P) Auxin (Q) Gibberellin (R) Cytokinin<br>Column II: (i) α-amylase induction in barley endosperm (ii) Avena Curvature Test (iii) Tobacco callus differentiation assay<br><br>The correct match is:",
+  options:["P-ii, Q-i, R-iii","P-i, Q-ii, R-iii","P-iii, Q-i, R-ii","P-ii, Q-iii, R-i"],
+  answer:0,
+  explanation:"Auxin → Avena Curvature Test (Went's experiment measuring coleoptile bending). Gibberellin → α-amylase induction in barley aleurone layer/endosperm. Cytokinin → stimulation of cell division and differentiation in tobacco callus (Skoog's experiments). These are standard NCERT bioassays."
+},
+{
+  id:14, chapter:"plant", type:"Conceptual MCQ",
+  text:"The phenomenon by which permanent cells that have lost the capacity to divide regain the ability to divide under certain conditions is called:",
+  options:["Differentiation","Redifferentiation","Dedifferentiation","Totipotency"],
+  answer:2,
+  explanation:"Dedifferentiation is the process by which differentiated (permanent) cells regain meristematic activity. Examples include parenchyma cells forming interfascicular cambium or cork cambium. Redifferentiation occurs when these dedifferentiated cells again become permanent/specialized. This concept was tested in NEET 2022, 2023, and 2024."
+},
+{
+  id:15, chapter:"plant", type:"Application MCQ",
+  text:"Removal of the apical bud of a tea plant promotes the growth of lateral branches. This is because removal eliminates the source of:",
+  options:["Gibberellin, which inhibits lateral growth","Auxin, which maintained apical dominance","Cytokinin, which suppressed branching","ABA, which kept lateral buds dormant"],
+  answer:1,
+  explanation:"Apical dominance is maintained by auxin produced at the apical bud, which suppresses the growth of lateral/axillary buds. Removing the tip removes the auxin source, allowing lateral buds to grow freely. This is why tea bushes are regularly pruned. Cytokinins actually promote lateral bud growth and overcome apical dominance."
+},
+{
+  id:16, chapter:"plant", type:"Factual MCQ",
+  text:"Ethylene, the only gaseous plant growth regulator, is synthesized from the amino acid:",
+  options:["Tryptophan","Methionine","Phenylalanine","Glycine"],
+  answer:1,
+  explanation:"NCERT states that ethylene is synthesized from the amino acid methionine. Students often confuse this with auxin (IAA), whose precursor is tryptophan. This is a direct factual question frequently asked in NEET."
+},
+{
+  id:17, chapter:"plant", type:"Conceptual MCQ",
+  text:"ABA is described as a derivative of which class of pigments?",
+  options:["Anthocyanins","Phytochrome","Carotenoids","Chlorophylls"],
+  answer:2,
+  explanation:"NCERT states that ABA is a derivative of carotenoids. It is present in all cells that contain plastids (especially chloroplasts), which is consistent with its carotenoid origin. This fact is occasionally tested and often overlooked during revision."
+},
+{
+  id:18, chapter:"plant", type:"Assertion-Reason",
+  text:"<strong>Assertion (A):</strong> Auxin prevents abscission of leaves and fruits at early stages but may promote abscission of older mature organs.<br><strong>Reason (R):</strong> The effect of auxin on abscission depends on the developmental stage of the plant organ.<br><br>Choose the correct option:",
+  options:[
+    "Both A and R are true, and R is the correct explanation of A",
+    "Both A and R are true, but R is NOT the correct explanation of A",
+    "A is true but R is false",
+    "A is false but R is true"
+  ],
+  answer:0,
+  explanation:"NCERT describes auxin's dual role in abscission — it prevents fruit/leaf drop at early stages but can promote abscission of older organs. This stage-dependent behavior is accurately explained by R. This dual role is a classic NEET trap, as students typically only remember auxin's anti-abscission role."
+},
+{
+  id:19, chapter:"plant", type:"Factual MCQ",
+  text:"The most widely used commercial source of ethylene, which can hasten fruit ripening in tomatoes and accelerate abscission in cotton/cherry/walnut, is:",
+  options:["Methionine","Ethanol","Ethephon","Acetylene"],
+  answer:2,
+  explanation:"NCERT specifically names Ethephon as the most widely used source of ethylene commercially. It releases ethylene slowly and is used to hasten fruit ripening in tomatoes and apples, accelerate abscission in flowers of cotton, cherry, and walnut, and promote female flowers in cucumbers."
+},
+{
+  id:20, chapter:"plant", type:"Case-Based",
+  text:"<strong>Case Study:</strong> A botanist observed that a rosette plant (cabbage) suddenly showed rapid stem elongation followed by flowering when treated with a plant hormone.<br><br>Which hormone most likely caused this, and what is this phenomenon called?",
+  options:[
+    "Auxin; Phototropism",
+    "Gibberellin; Bolting",
+    "Ethylene; Triple response",
+    "Cytokinin; Richmond-Lang effect"
+  ],
+  answer:1,
+  explanation:"Rapid internode elongation in rosette plants (like cabbage) followed by flowering is the phenomenon of bolting, caused exclusively by gibberellins. NCERT defines bolting specifically in the context of GA effects on rosette plants like beet and cabbage."
+},
+{
+  id:21, chapter:"plant", type:"Conceptual MCQ",
+  text:"The Richmond-Lang effect refers to the ability of a specific PGR to delay leaf senescence by promoting nutrient mobilization. The PGR involved is:",
+  options:["Auxin","Gibberellin","Cytokinin","Ethylene"],
+  answer:2,
+  explanation:"The Richmond-Lang effect is the delay of senescence by cytokinins. Cytokinins promote nutrient mobilization to the area of application, delaying chlorophyll degradation and keeping leaves green longer. Both ethylene and ABA promote senescence, while cytokinins antagonize it."
+},
+{
+  id:22, chapter:"plant", type:"Multi-Statement",
+  text:"Which plant hormone(s) can induce parthenocarpy (seedless fruit development)?<br>(i) Auxin<br>(ii) Gibberellin<br>(iii) Cytokinin<br>(iv) Ethylene",
+  options:["(i) only","(i) and (ii) only","(i), (ii) and (iii)","(i), (ii), (iii) and (iv)"],
+  answer:1,
+  explanation:"According to NCERT, both auxins and gibberellins can induce parthenocarpy (seedless fruit formation). Auxin induces parthenocarpy in tomatoes, while GA induces it in tomato, apple, and cucumber. Cytokinins and ethylene are NOT listed by NCERT for parthenocarpy."
+},
+{
+  id:23, chapter:"plant", type:"Conceptual MCQ",
+  text:"In the geometric growth model of plant growth, the equation Wₜ = W₀ × e^(rt) produces what type of growth curve?",
+  options:["J-shaped curve","Linear curve","Sigmoid (S-shaped) curve","Bell-shaped curve"],
+  answer:2,
+  explanation:"NCERT states that geometric growth (Wₜ = W₀ × eʳᵗ) initially appears exponential but when plotted over the complete life span of a plant produces a sigmoid (S-shaped) curve with lag phase, log/exponential phase, and stationary phase. Maximum growth rate occurs in the log phase."
+},
+{
+  id:24, chapter:"plant", type:"Application MCQ",
+  text:"Heterophylly in buttercup (<em>Ranunculus</em>) — where aquatic and aerial leaves differ in shape — is an example of:",
+  options:["Genetic variation","Plasticity in development","Dedifferentiation","Apical dominance"],
+  answer:1,
+  explanation:"NCERT uses buttercup (Ranunculus) as a key example of developmental plasticity — the ability of plants to follow different developmental pathways in response to environment. The leaves submerged in water are finely dissected while aerial leaves are broad, despite having identical genetics."
+},
+{
+  id:25, chapter:"plant", type:"Match the Following",
+  text:"Match the scientist with their contribution:<br><br>(P) F.W. Went (Q) E. Kurosawa (R) Skoog & Miller (S) H.H. Cousins<br>(i) Identified bakanae disease caused by <em>Gibberella fujikuroi</em><br>(ii) Demonstrated volatile substance from oranges hastening banana ripening<br>(iii) Isolated auxin using Avena coleoptile agar block technique<br>(iv) Discovered kinetin from autoclaved herring sperm DNA",
+  options:["P-iii, Q-i, R-iv, S-ii","P-i, Q-iii, R-iv, S-ii","P-iii, Q-ii, R-iv, S-i","P-iv, Q-i, R-iii, S-ii"],
+  answer:0,
+  explanation:"Went (1928) → Avena coleoptile agar experiment for auxin. Kurosawa (1926) → bakanae disease/Gibberella fujikuroi. Miller et al. (1955) → kinetin from herring sperm DNA (Skoog was the group leader). Cousins (1910) → volatile substance from oranges causing banana ripening (ethylene). All are direct NCERT attributions."
+},
+
+// ─── BODY FLUIDS & CIRCULATION (Q26-Q50) ───
+{
+  id:26, chapter:"blood", type:"Factual MCQ",
+  text:"The total blood volume in a healthy adult human is approximately:",
+  options:["2–3 litres","5–5.5 litres","8–10 litres","12–15 litres"],
+  answer:1,
+  explanation:"NCERT states that the average blood volume in a healthy adult is 5 to 5.5 litres. This is a direct factual value that appears frequently in NEET. Plasma constitutes nearly 55% of this volume."
+},
+{
+  id:27, chapter:"blood", type:"Conceptual MCQ",
+  text:"Serum differs from plasma in that serum lacks:",
+  options:["Albumin and globulins","All plasma proteins","Clotting factors, especially fibrinogen","Red blood cells and platelets"],
+  answer:2,
+  explanation:"Serum = Plasma minus clotting factors (especially fibrinogen). When blood clots, the fibrinogen is converted to fibrin and removed with the clot, leaving behind serum. Serum still contains albumin, globulins, and other dissolved substances. This distinction was tested in NEET 2016-II."
+},
+{
+  id:28, chapter:"blood", type:"Factual MCQ",
+  text:"Which is the most abundant type of white blood cell, constituting 60–65% of total WBCs?",
+  options:["Lymphocytes","Monocytes","Eosinophils","Neutrophils"],
+  answer:3,
+  explanation:"NCERT gives the WBC abundance order as: Neutrophils (60-65%) > Lymphocytes (20-25%) > Monocytes (6-8%) > Eosinophils (2-3%) > Basophils (0.5-1%). Neutrophils are phagocytic with multi-lobed nuclei. This order is tested nearly every year."
+},
+{
+  id:29, chapter:"blood", type:"Multi-Statement",
+  text:"Consider the following statements about formed elements of blood:<br>(i) Mature mammalian RBCs are enucleated<br>(ii) Platelets are also called thrombocytes and are enucleated cell fragments<br>(iii) Monocytes are the largest WBCs<br>(iv) Basophils are the most abundant granulocytes<br><br>Which statements are correct?",
+  options:["(i) and (iii) only","(i), (ii) and (iii) only","(i), (ii), (iii) and (iv)","(ii) and (iv) only"],
+  answer:1,
+  explanation:"Statements (i), (ii) and (iii) are correct per NCERT. Mature mammalian RBCs lack nuclei. Platelets (thrombocytes) are cell fragments from megakaryocytes and are enucleated. Monocytes are the largest WBC type. Statement (iv) is WRONG — neutrophils (not basophils) are the most abundant granulocytes. Basophils are the LEAST abundant WBC."
+},
+{
+  id:30, chapter:"blood", type:"Assertion-Reason",
+  text:"<strong>Assertion (A):</strong> A person with blood group O is called a universal donor.<br><strong>Reason (R):</strong> Blood group O has neither antigen A nor antigen B on the RBC surface, and has no antibodies in the plasma.<br><br>Choose the correct option:",
+  options:[
+    "Both A and R are true, and R is the correct explanation of A",
+    "Both A and R are true, but R is NOT the correct explanation of A",
+    "A is true but R is false",
+    "A is false but R is true"
+  ],
+  answer:2,
+  explanation:"Assertion is TRUE — O is the universal donor. But Reason is FALSE. While O has no antigens on RBCs (correct), it does have BOTH anti-A and anti-B antibodies in the plasma (the statement says 'no antibodies', which is wrong). O can donate to all because its RBCs lack antigens, not because it lacks antibodies."
+},
+{
+  id:31, chapter:"blood", type:"Application MCQ",
+  text:"An Rh⁻ mother delivers her first Rh⁺ baby without complications. During which pregnancy is the foetus at risk of erythroblastosis foetalis?",
+  options:[
+    "The first pregnancy itself",
+    "The second Rh⁺ pregnancy",
+    "Only the third or later pregnancies",
+    "No pregnancy is at risk if the father is Rh⁺"
+  ],
+  answer:1,
+  explanation:"During the first delivery of an Rh⁺ baby, foetal RBCs may enter the Rh⁻ mother's blood, causing her to produce anti-Rh antibodies. In subsequent Rh⁺ pregnancies, these antibodies cross the placenta and destroy foetal RBCs — this is erythroblastosis foetalis. The first pregnancy is typically safe; the danger begins from the second Rh⁺ pregnancy."
+},
+{
+  id:32, chapter:"blood", type:"Conceptual MCQ",
+  text:"In blood coagulation, the enzyme thrombin converts:",
+  options:[
+    "Prothrombin to thromboplastin",
+    "Fibrinogen (soluble) to fibrin (insoluble)",
+    "Fibrin to fibrinogen",
+    "Calcium ions to thromboplastin"
+  ],
+  answer:1,
+  explanation:"The coagulation cascade: injury → thromboplastin released → prothrombin converted to thrombin (requires Ca²⁺) → thrombin converts fibrinogen (soluble protein) to fibrin (insoluble threads) → fibrin mesh traps blood cells = clot. Students often confuse which enzyme converts what in this cascade."
+},
+{
+  id:33, chapter:"blood", type:"Factual MCQ",
+  text:"The normal RBC count in an adult male is:",
+  options:["3–3.5 million/mm³","4.5–5 million/mm³","5–5.5 million/mm³","7–8 million/mm³"],
+  answer:2,
+  explanation:"NCERT gives male RBC count as 5–5.5 million/mm³ and female as approximately 4.5 million/mm³. The platelet count is 1.5–3.5 lakh/mm³ and WBC count is 6,000–8,000/mm³. These numerical values appear with near-certainty in NEET papers."
+},
+{
+  id:34, chapter:"blood", type:"Conceptual MCQ",
+  text:"Which valve of the human heart has three cusps and is located between the right atrium and the right ventricle?",
+  options:["Bicuspid valve","Mitral valve","Tricuspid valve","Aortic semilunar valve"],
+  answer:2,
+  explanation:"The tricuspid valve (3 cusps) guards the opening between the right atrium and right ventricle. The bicuspid (mitral) valve (2 cusps) is between the left atrium and left ventricle. Note: 'bicuspid' and 'mitral' are names for the SAME valve — a common source of confusion."
+},
+{
+  id:35, chapter:"blood", type:"Numerical/Application",
+  text:"If the stroke volume of a healthy person is 70 mL and the heart rate is 72 beats/minute, the cardiac output is approximately:",
+  options:["3,500 mL/min","5,040 mL/min","7,200 mL/min","10,000 mL/min"],
+  answer:1,
+  explanation:"Cardiac Output = Stroke Volume × Heart Rate = 70 mL × 72 = 5,040 mL/min ≈ 5 litres/min. NCERT states the cardiac output is approximately 5000 mL or 5 litres per minute. This calculation is a near-certain NEET question."
+},
+{
+  id:36, chapter:"blood", type:"Conceptual MCQ",
+  text:"The first heart sound 'LUB' is produced by the closure of:",
+  options:[
+    "Semilunar valves at the beginning of ventricular diastole",
+    "AV valves (tricuspid and bicuspid) at the beginning of ventricular systole",
+    "AV valves at the beginning of atrial systole",
+    "Semilunar valves at the beginning of atrial systole"
+  ],
+  answer:1,
+  explanation:"The first heart sound 'LUB' is produced by closure of the atrioventricular valves (tricuspid + bicuspid/mitral) at the START of ventricular systole. The second sound 'DUB' is from semilunar valve closure at the start of ventricular diastole. Key trap: sounds come from valve CLOSURE, not opening."
+},
+{
+  id:37, chapter:"blood", type:"Assertion-Reason",
+  text:"<strong>Assertion (A):</strong> The P wave in an ECG represents atrial depolarization (contraction).<br><strong>Reason (R):</strong> Atrial repolarization is clearly visible as a separate wave between P and QRS in a normal ECG.<br><br>Choose the correct option:",
+  options:[
+    "Both A and R are true, and R is the correct explanation of A",
+    "Both A and R are true, but R is NOT the correct explanation of A",
+    "A is true but R is false",
+    "A is false but R is true"
+  ],
+  answer:2,
+  explanation:"A is TRUE — the P wave represents atrial depolarization. But R is FALSE — atrial repolarization is NOT separately visible in a normal ECG. It is hidden/masked by the much larger QRS complex (ventricular depolarization). This is a frequently tested hidden NCERT fact."
+},
+{
+  id:38, chapter:"blood", type:"Case-Based",
+  text:"<strong>Case Study:</strong> A patient's ECG shows a normal P wave but an irregular and widened QRS complex. The cardiologist suspects a conduction problem.<br><br>The QRS complex in a normal ECG represents:",
+  options:[
+    "Atrial depolarization",
+    "Ventricular depolarization (contraction)",
+    "Ventricular repolarization (relaxation)",
+    "Atrial repolarization"
+  ],
+  answer:1,
+  explanation:"The QRS complex represents ventricular depolarization — the electrical impulse spreading through the ventricles causing them to contract. An irregular QRS suggests problems in the Bundle of His or Purkinje fibre conduction. The T wave represents ventricular repolarization (relaxation)."
+},
+{
+  id:39, chapter:"blood", type:"Conceptual MCQ",
+  text:"The SA node is called the 'pacemaker' of the heart because it:",
+  options:[
+    "Is the only structure that can conduct impulses",
+    "Generates the maximum number of action potentials per minute (70–75), setting the heart's rhythm",
+    "Is located in the left ventricle, the strongest chamber",
+    "Receives signals exclusively from the brain via the vagus nerve"
+  ],
+  answer:1,
+  explanation:"The SA node, located in the upper right corner of the right atrium, generates 70–75 action potentials per minute — the highest rate of any cardiac tissue — and therefore sets the pace for the entire heart. The heart is myogenic (self-exciting), not dependent on the brain for basic rhythm, though neural regulation can modify the rate."
+},
+{
+  id:40, chapter:"blood", type:"Multi-Statement",
+  text:"Regarding the cardiac conduction system, arrange the following in the <strong>correct sequence</strong> of impulse propagation:<br>(i) Bundle of His<br>(ii) SA node<br>(iii) Purkinje fibres<br>(iv) AV node<br>(v) Ventricular musculature",
+  options:[
+    "ii → iv → i → iii → v",
+    "iv → ii → i → iii → v",
+    "ii → i → iv → iii → v",
+    "ii → iv → iii → i → v"
+  ],
+  answer:0,
+  explanation:"The correct sequence per NCERT is: SA node → (atrial musculature) → AV node → Bundle of His → (bundle branches →) Purkinje fibres → Ventricular musculature. So among the given options: ii → iv → i → iii → v. This sequence is tested repeatedly."
+},
+{
+  id:41, chapter:"blood", type:"Conceptual MCQ",
+  text:"In double circulation, the pulmonary artery carries:",
+  options:[
+    "Oxygenated blood from the left ventricle to the lungs",
+    "Deoxygenated blood from the right ventricle to the lungs",
+    "Oxygenated blood from the lungs to the left atrium",
+    "Deoxygenated blood from the lungs to the right atrium"
+  ],
+  answer:1,
+  explanation:"The pulmonary artery carries DEOXYGENATED blood from the right ventricle to the lungs. Conversely, pulmonary veins carry OXYGENATED blood from lungs to the left atrium. This is the only artery-vein pair where the typical oxygen status is reversed. This reversal is tested repeatedly in NEET."
+},
+{
+  id:42, chapter:"blood", type:"Conceptual MCQ",
+  text:"Among the following blood vessels, which carries the <strong>highest concentration of urea</strong>?",
+  options:["Renal artery","Renal vein","Hepatic vein","Pulmonary vein"],
+  answer:2,
+  explanation:"Urea is synthesized in the liver via the ornithine/urea cycle. Therefore, blood leaving the liver through the hepatic vein has the HIGHEST urea concentration. Students commonly choose the renal vein or renal artery, but urea is added to blood in the liver and removed by the kidneys. This was tested in NEET 2016-I."
+},
+{
+  id:43, chapter:"blood", type:"Factual MCQ",
+  text:"During the cardiac cycle at 72 beats/minute, the duration of ventricular systole is:",
+  options:["0.1 seconds","0.3 seconds","0.4 seconds","0.7 seconds"],
+  answer:1,
+  explanation:"NCERT gives the cardiac cycle phases: atrial systole = 0.1 sec, ventricular systole = 0.3 sec, and joint diastole (complete relaxation) = 0.4 sec, totaling 0.8 seconds per cycle (at 72 beats/min). These exact timings are high-frequency NEET questions."
+},
+{
+  id:44, chapter:"blood", type:"Application MCQ",
+  text:"A patient's blood pressure reads 150/95 mmHg. According to NCERT, this patient is classified as having:",
+  options:["Normal blood pressure","Pre-hypertension","Hypertension","Hypotension"],
+  answer:2,
+  explanation:"NCERT defines normal blood pressure as 120/80 mmHg and hypertension as blood pressure consistently at or above 140/90 mmHg. Since 150/95 exceeds both systolic (≥140) and diastolic (≥90) thresholds, this patient has hypertension."
+},
+{
+  id:45, chapter:"blood", type:"Conceptual MCQ",
+  text:"The deposition of calcium, fat, cholesterol, and fibrous tissue that narrows the lumen of coronary arteries is called:",
+  options:["Arteriosclerosis","Atherosclerosis","Angina pectoris","Heart failure"],
+  answer:1,
+  explanation:"NCERT refers to this as atherosclerosis — the specific deposition of plaques (fat, cholesterol, calcium, fibrous tissue) in artery walls, particularly coronary arteries. Arteriosclerosis is the broader term for general hardening of arteries. Atherosclerosis is a type of arteriosclerosis, and this distinction is a NEET trap."
+},
+{
+  id:46, chapter:"blood", type:"Match the Following",
+  text:"Match the blood component with its <strong>correct lifespan</strong>:<br><br>(P) RBC (Q) Platelets (R) WBC (Neutrophils)<br>(i) 7–10 days (ii) About 120 days (iii) About 1–2 days (in blood)<br><br>Choose the correct match:",
+  options:["P-ii, Q-i, R-iii","P-i, Q-ii, R-iii","P-ii, Q-iii, R-i","P-iii, Q-i, R-ii"],
+  answer:0,
+  explanation:"Per NCERT: RBCs live approximately 120 days (destroyed in the spleen). Platelets survive 7–10 days. Neutrophils (the most common WBC) survive only about 1–2 days in circulation before migrating to tissues. These lifespans are commonly tested."
+},
+{
+  id:47, chapter:"blood", type:"Conceptual MCQ",
+  text:"Lymph (tissue fluid that enters lymphatic capillaries) is particularly important for the absorption of:",
+  options:["Glucose and amino acids from the intestine","Fats/lipids absorbed through lacteals in intestinal villi","Oxygen from the alveoli","Urea from the liver"],
+  answer:1,
+  explanation:"NCERT specifically states that lymph is important for carrying fats absorbed through lacteals in intestinal villi. Fats, being large molecules, cannot directly enter blood capillaries — they enter the lymphatic system via lacteals and eventually reach the bloodstream via the thoracic duct."
+},
+{
+  id:48, chapter:"blood", type:"Multi-Statement",
+  text:"Which of the following statements about the human heart are correct?<br>(i) The left ventricle has the thickest wall among all chambers<br>(ii) The heart is enclosed in a double-walled pericardium<br>(iii) The SA node is located in the left atrium<br>(iv) The heart is mesodermally derived",
+  options:["(i), (ii) and (iv) only","(i), (ii) and (iii) only","(i) and (iv) only","All four are correct"],
+  answer:0,
+  explanation:"Statements (i), (ii) and (iv) are correct per NCERT. The left ventricle wall is the thickest (pumps blood to the entire body). The pericardium is double-walled with pericardial fluid. The heart is mesodermally derived. Statement (iii) is WRONG — the SA node is in the RIGHT atrium, not the left."
+},
+{
+  id:49, chapter:"blood", type:"Conceptual MCQ",
+  text:"During joint diastole of the cardiac cycle, approximately what percentage of ventricular filling occurs passively (before atrial systole)?",
+  options:["30%","50%","70%","100%"],
+  answer:2,
+  explanation:"NCERT states that about 70% of ventricular filling happens passively during joint diastole as blood flows from the atria to ventricles by gravity/pressure difference. The remaining 30% is added by atrial systole (atrial contraction). This 70:30 ratio is a hidden NCERT fact tested in NEET."
+},
+{
+  id:50, chapter:"blood", type:"Case-Based",
+  text:"<strong>Case Study:</strong> A patient complains of acute chest pain, especially during physical exertion. Investigations reveal that the coronary arteries show partial blockage but no permanent muscle damage has occurred.<br><br>The most likely diagnosis is:",
+  options:["Myocardial infarction (heart attack)","Angina pectoris","Heart failure","Cardiac arrest"],
+  answer:1,
+  explanation:"Angina pectoris is acute chest pain caused by insufficient oxygen supply to the heart muscle due to partial coronary blockage. It occurs during exertion and is relieved by rest. A heart attack (myocardial infarction) involves actual permanent muscle damage/death. Heart failure means the heart can't pump adequately (congestion of lungs). NCERT distinguishes all three."
+}
+];
+
+// ══════════════════════════════════════════
+// QUIZ ENGINE
+// ══════════════════════════════════════════
+let currentQ = 0;
+let answers = new Array(questions.length).fill(-1);
+let markedForReview = new Array(questions.length).fill(false);
+let timerInterval = null;
+let seconds = 0;
+let quizStarted = false;
+
+function startQuiz() {
+  document.getElementById('hero-section').style.display = 'none';
+  document.getElementById('progress-wrap').classList.add('active');
+  document.getElementById('palette-toggle').classList.add('active');
+  quizStarted = true;
+  buildAllCards();
+  buildPalette();
+  showQuestion(0);
+  startTimer();
+}
+
+function buildAllCards() {
+  const area = document.getElementById('quiz-area');
+  const letters = ['A','B','C','D'];
+  let html = '';
+  questions.forEach((q, i) => {
+    const chClass = q.chapter === 'plant' ? 'plant' : 'blood';
+    const chLabel = q.chapter === 'plant' ? '🌱 Plant Growth' : '🩸 Body Fluids';
+    const numClass = q.chapter === 'blood' ? 'blood-num' : '';
+    html += `<div class="q-card" id="qcard-${i}">
+      <div class="q-meta">
+        <span class="q-tag ${chClass}">${chLabel}</span>
+        <span class="q-tag type">${q.type}</span>
+      </div>
+      <div class="q-header">
+        <span class="q-num ${numClass}">Q${i+1}</span>
+        <div class="q-text">${q.text}</div>
+      </div>
+      <div class="options">
+        ${q.options.map((opt, oi) => `
+          <button class="opt-btn" id="opt-${i}-${oi}" onclick="selectOption(${i},${oi})">
+            <span class="opt-letter">${letters[oi]}</span>
+            <span>${opt}</span>
+          </button>
+        `).join('')}
+      </div>
+      <div class="nav-btns">
+        <button class="nav-btn" onclick="prevQuestion()" ${i===0?'disabled':''}>← Prev</button>
+        <button class="nav-btn primary" onclick="nextQuestion()">
+          ${i === questions.length-1 ? 'Finish →' : 'Next →'}
+        </button>
+        <button class="nav-btn mark-review" id="mark-${i}" onclick="toggleReview(${i})">⚑ Mark for Review</button>
+      </div>
+    </div>`;
+  });
+  area.innerHTML = html;
+}
+
+function showQuestion(idx) {
+  document.querySelectorAll('.q-card').forEach(c => c.classList.remove('active'));
+  document.getElementById(`qcard-${idx}`).classList.add('active');
+  currentQ = idx;
+  updateProgress();
+  updatePalette();
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function selectOption(qIdx, optIdx) {
+  for (let i = 0; i < 4; i++) {
+    const el = document.getElementById(`opt-${qIdx}-${i}`);
+    if (el) el.classList.remove('selected');
+  }
+  document.getElementById(`opt-${qIdx}-${optIdx}`).classList.add('selected');
+  answers[qIdx] = optIdx;
+  updateProgress();
+  updatePalette();
+}
+
+function nextQuestion() {
+  if (currentQ < questions.length - 1) {
+    showQuestion(currentQ + 1);
+  } else {
+    submitQuiz();
+  }
+}
+
+function prevQuestion() {
+  if (currentQ > 0) showQuestion(currentQ - 1);
+}
+
+function toggleReview(idx) {
+  markedForReview[idx] = !markedForReview[idx];
+  const btn = document.getElementById(`mark-${idx}`);
+  btn.classList.toggle('marked', markedForReview[idx]);
+  btn.textContent = markedForReview[idx] ? '⚑ Marked' : '⚑ Mark for Review';
+  updatePalette();
+}
+
+function updateProgress() {
+  const answered = answers.filter(a => a !== -1).length;
+  document.getElementById('q-counter').textContent = `Q ${currentQ+1}`;
+  document.getElementById('progress-fill').style.width = `${(answered/questions.length)*100}%`;
+}
+
+function buildPalette() {
+  const grid = document.getElementById('palette-grid');
+  let html = '';
+  for (let i = 0; i < questions.length; i++) {
+    html += `<div class="palette-dot" id="pdot-${i}" onclick="showQuestion(${i})">${i+1}</div>`;
+  }
+  grid.innerHTML = html;
+}
+
+function updatePalette() {
+  for (let i = 0; i < questions.length; i++) {
+    const dot = document.getElementById(`pdot-${i}`);
+    if (!dot) continue;
+    dot.className = 'palette-dot';
+    if (i === currentQ) dot.classList.add('current');
+    if (answers[i] !== -1) dot.classList.add('answered');
+    if (markedForReview[i]) dot.classList.add('review');
+  }
+}
+
+function togglePalette() {
+  document.getElementById('palette-panel').classList.toggle('open');
+}
+
+function startTimer() {
+  timerInterval = setInterval(() => {
+    seconds++;
+    const m = Math.floor(seconds / 60).toString().padStart(2, '0');
+    const s = (seconds % 60).toString().padStart(2, '0');
+    document.getElementById('timer').textContent = `${m}:${s}`;
+  }, 1000);
+}
+
+// ══════════════════════════════════════════
+// SUBMIT & RESULTS
+// ══════════════════════════════════════════
+function saveAttempt(data) {
+  try {
+    const results = JSON.parse(localStorage.getItem('papResults') || '[]');
+    results.unshift(data);
+    localStorage.setItem('papResults', JSON.stringify(results));
+  } catch(e) {}
+}
+
+function submitQuiz() {
+  const unanswered = answers.filter(a => a === -1).length;
+  if (!window._isReplay && unanswered > 0) {
+    if (!confirm(`You have ${unanswered} unanswered question(s). Submit anyway?`)) return;
+  }
+
+  clearInterval(timerInterval);
+  document.getElementById('quiz-area').innerHTML = '';
+  document.getElementById('progress-wrap').classList.remove('active');
+  document.getElementById('palette-toggle').classList.remove('active');
+  document.getElementById('palette-panel').classList.remove('open');
+
+  let correct = 0, wrong = 0, skipped = 0;
+  let plantCorrect = 0, plantTotal = 0, bloodCorrect = 0, bloodTotal = 0;
+  const results = [];
+
+  questions.forEach((q, i) => {
+    const userAns = answers[i];
+    let status;
+    if (userAns === -1) { status = 'skipped'; skipped++; }
+    else if (userAns === q.answer) { status = 'correct'; correct++; }
+    else { status = 'wrong'; wrong++; }
+
+    if (q.chapter === 'plant') {
+      plantTotal++;
+      if (status === 'correct') plantCorrect++;
+    } else {
+      bloodTotal++;
+      if (status === 'correct') bloodCorrect++;
+    }
+    results.push({...q, userAns, status, idx: i});
+  });
+
+  const neetScore = (correct * 4) - (wrong * 1);
+  const maxScore = questions.length * 4;
+  const percentage = Math.round((correct / questions.length) * 100);
+  const timeTaken = `${Math.floor(seconds/60)}m ${seconds%60}s`;
+
+  if (!window._isReplay) {
+    saveAttempt({
+      id: Date.now(),
+      paperFile: 'PAP2.html',
+      paperName: 'Plant Growth & Body Fluids',
+      paperTag: 'Ultra',
+      correct, wrong, skipped,
+      totalQuestions: questions.length,
+      neetScore, maxScore, percentage,
+      timeTaken,
+      timerSeconds: seconds,
+      userAnswers: [...answers]
+    });
+  }
+
+  renderResults(results, correct, wrong, skipped, neetScore, maxScore, percentage, timeTaken, plantCorrect, plantTotal, bloodCorrect, bloodTotal);
+}
+
+function renderResults(results, correct, wrong, skipped, neetScore, maxScore, percentage, timeTaken, pc, pt, bc, bt) {
+  const section = document.getElementById('results-section');
+  section.style.display = 'block';
+
+  const circumference = 2 * Math.PI * 80;
+  const offset = circumference - (percentage / 100) * circumference;
+  let ringColor = percentage >= 80 ? 'var(--green)' : percentage >= 50 ? 'var(--amber)' : 'var(--red)';
+
+  let gradeEmoji = '🔥', gradeText = 'Outstanding!';
+  if (percentage < 40) { gradeEmoji = '📚'; gradeText = 'Keep Studying!'; }
+  else if (percentage < 60) { gradeEmoji = '💪'; gradeText = 'Good Effort!'; }
+  else if (percentage < 80) { gradeEmoji = '⭐'; gradeText = 'Well Done!'; }
+
+  const letters = ['A','B','C','D'];
+
+  let html = `
+    <div class="results-hero">
+      <div style="font-size:48px;margin-bottom:12px">${gradeEmoji}</div>
+      <h2 style="font-family:'DM Serif Display',serif;font-size:32px;color:#fff;margin-bottom:6px">${gradeText}</h2>
+      <p style="color:var(--text2);font-size:14px;margin-bottom:28px">Time taken: ${timeTaken}</p>
+      <div class="score-ring">
+        <svg width="180" height="180" viewBox="0 0 180 180">
+          <circle class="ring-bg" cx="90" cy="90" r="80"/>
+          <circle class="ring-fill" id="score-ring-fill" cx="90" cy="90" r="80"
+            stroke="${ringColor}"
+            stroke-dasharray="${circumference}"
+            stroke-dashoffset="${circumference}"/>
+        </svg>
+        <div class="score-center">
+          <div class="score-pct">${percentage}%</div>
+          <div class="score-sub">${correct}/${questions.length}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-val blue">${neetScore}/${maxScore}</div>
+        <div class="stat-label">NEET Score (+4/−1)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val green">${correct}</div>
+        <div class="stat-label">Correct</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val red">${wrong}</div>
+        <div class="stat-label">Wrong</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val yellow">${skipped}</div>
+        <div class="stat-label">Skipped</div>
+      </div>
+    </div>
+
+    <div class="chapter-breakdown">
+      <div class="chapter-card">
+        <h3><span class="ch-dot plant"></span> Plant Growth & Dev.</h3>
+        <div class="chapter-bar-wrap">
+          <div class="chapter-bar-fill plant" id="plant-bar" style="width:0%"></div>
+        </div>
+        <div class="chapter-score">${pc} / ${pt} correct (${Math.round(pc/pt*100)}%)</div>
+      </div>
+      <div class="chapter-card">
+        <h3><span class="ch-dot blood"></span> Body Fluids & Circulation</h3>
+        <div class="chapter-bar-wrap">
+          <div class="chapter-bar-fill blood" id="blood-bar" style="width:0%"></div>
+        </div>
+        <div class="chapter-score">${bc} / ${bt} correct (${Math.round(bc/bt*100)}%)</div>
+      </div>
+    </div>
+
+    <h2 style="font-family:'DM Serif Display',serif;font-size:28px;color:#fff;margin-bottom:8px;text-align:center">Complete Walkthrough</h2>
+    <p style="color:var(--text2);font-size:14px;margin-bottom:24px;text-align:center">Every question reviewed with NCERT-based explanations.</p>
+
+    <div class="filter-tabs">
+      <button class="filter-tab active" onclick="filterReview('all',this)">All (${questions.length})</button>
+      <button class="filter-tab" onclick="filterReview('wrong',this)">❌ Wrong (${wrong})</button>
+      <button class="filter-tab" onclick="filterReview('skipped',this)">⏭ Skipped (${skipped})</button>
+      <button class="filter-tab" onclick="filterReview('correct',this)">✅ Correct (${correct})</button>
+    </div>
+
+    <div id="review-cards">`;
+
+  results.forEach((r) => {
+    const chClass = r.chapter === 'plant' ? 'plant' : 'blood';
+    const chLabel = r.chapter === 'plant' ? '🌱 Plant' : '🩸 Blood';
+    const numClass = r.chapter === 'blood' ? 'blood-num' : '';
+    html += `
+      <div class="review-card status-${r.status}" data-status="${r.status}">
+        <div class="review-header">
+          <span class="q-num ${numClass}">Q${r.idx+1}</span>
+          <span class="q-tag ${chClass}">${chLabel}</span>
+          <span class="review-badge ${r.status}">${r.status === 'correct' ? '✓ Correct' : r.status === 'wrong' ? '✗ Wrong' : '— Skipped'}</span>
+          <span class="q-tag type">${r.type}</span>
+        </div>
+        <div class="review-q-text">${r.text}</div>
+        <div class="review-options">
+          ${r.options.map((opt, oi) => {
+            let cls = '';
+            if (oi === r.answer) cls = 'is-correct';
+            else if (oi === r.userAns && r.userAns !== r.answer) cls = 'is-wrong';
+            let marker = letters[oi];
+            if (oi === r.answer) marker = '✓';
+            else if (oi === r.userAns && r.userAns !== r.answer) marker = '✗';
+            return `<div class="review-opt ${cls}">
+              <span class="opt-marker">${marker}</span>
+              <span>${opt}</span>
+            </div>`;
+          }).join('')}
+        </div>
+        <div class="explanation-box">
+          <h4>💡 Explanation</h4>
+          <p>${r.explanation}</p>
+          <span class="ncert-ref">📖 NCERT ${r.chapter==='plant'?'Class 11 — Plant Growth & Dev.':'Class 11 — Body Fluids & Circulation'}</span>
+        </div>
+      </div>`;
+  });
+
+  html += `</div>
+    <div class="back-to-top">
+      <button class="nav-btn primary" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Back to Top</button>
+    </div>`;
+
+  section.innerHTML = html;
+
+  setTimeout(() => {
+    document.getElementById('score-ring-fill').style.strokeDashoffset = offset;
+    document.getElementById('plant-bar').style.width = `${Math.round(pc/pt*100)}%`;
+    document.getElementById('blood-bar').style.width = `${Math.round(bc/bt*100)}%`;
+  }, 100);
+
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function filterReview(status, btn) {
+  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.review-card').forEach(card => {
+    if (status === 'all') card.style.display = 'block';
+    else card.style.display = card.dataset.status === status ? 'block' : 'none';
+  });
+}
+
+// Scroll effects
+window.addEventListener('scroll', () => {
+  const pw = document.getElementById('progress-wrap');
+  if (window.scrollY > 100) pw.classList.add('scrolled');
+  else pw.classList.remove('scrolled');
+});
+
+(function loadSavedAttempt() {
+  const params = new URLSearchParams(window.location.search);
+  const attemptId = params.get('attempt');
+  if (!attemptId) return;
+  const saved = JSON.parse(localStorage.getItem('papResults') || '[]');
+  const attempt = saved.find(r => r.id === Number(attemptId));
+  if (!attempt) return;
+  window._isReplay = true;
+  answers = attempt.userAnswers;
+  seconds = attempt.timerSeconds || 0;
+  document.getElementById('hero-section').style.display = 'none';
+  submitQuiz();
+})();
+</script>
+</body>
+</html>
