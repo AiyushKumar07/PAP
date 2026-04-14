@@ -901,11 +901,7 @@
 
     <div class="container" id="resultsSection"></div>
 
-    <button
-      class="palette-toggle"
-      id="paletteToggle"
-      onclick="togglePalette()"
-    >
+    <button class="palette-toggle" id="paletteToggle" onclick="togglePalette()">
       ☰
     </button>
     <div class="palette-panel" id="palettePanel">
@@ -915,10 +911,7 @@
         <span
           ><div
             class="legend-dot"
-            style="
-              background: var(--surface2);
-              border: 1px solid var(--border);
-            "
+            style="background: var(--surface2); border: 1px solid var(--border)"
           ></div>
           Unseen</span
         >
@@ -975,69 +968,700 @@
           ref: "NCERT Class 11 — Exchange of Gases, Partial Pressure Table",
         },
         {
-          id: 3, ch: "bio", type: "Multi-statement", diff: "Hard",
+          id: 3,
+          ch: "bio",
+          type: "Multi-statement",
+          diff: "Hard",
           q: `Consider the following statements about pulmonary volumes:<br>(i) Vital Capacity = IRV + TV + ERV + RV<br>(ii) Functional Residual Capacity = ERV + RV<br>(iii) Total Lung Capacity = VC + RV<br>(iv) Inspiratory Capacity = TV + IRV<br><br>Which statements are <em>correct</em>?`,
-          opts: ["(i), (ii) and (iii) only", "(ii), (iii) and (iv) only", "(i), (ii), (iii) and (iv)", "(i) and (iii) only"],
+          opts: [
+            "(i), (ii) and (iii) only",
+            "(ii), (iii) and (iv) only",
+            "(i), (ii), (iii) and (iv)",
+            "(i) and (iii) only",
+          ],
           ans: 1,
           exp: `Statement (i) is <strong>wrong</strong> — Vital Capacity = IRV + TV + ERV. It does <strong>NOT include Residual Volume</strong>. TLC = VC + RV. The other three statements are correct per NCERT. This VC vs TLC confusion is the most exploited trap in this chapter.`,
           ref: "NCERT Class 11 — Respiratory Volumes and Capacities Table",
         },
         {
-          id: 4, ch: "bio", type: "Numerical", diff: "Medium",
+          id: 4,
+          ch: "bio",
+          type: "Numerical",
+          diff: "Medium",
           q: `A person has the following lung volumes: TV = 500 mL, IRV = 2800 mL, ERV = 1100 mL, RV = 1200 mL. What is the person's <em>Vital Capacity</em> and <em>Total Lung Capacity</em>?`,
-          opts: ["VC = 4400 mL, TLC = 5600 mL", "VC = 5600 mL, TLC = 5600 mL", "VC = 4400 mL, TLC = 4400 mL", "VC = 3300 mL, TLC = 5600 mL"],
+          opts: [
+            "VC = 4400 mL, TLC = 5600 mL",
+            "VC = 5600 mL, TLC = 5600 mL",
+            "VC = 4400 mL, TLC = 4400 mL",
+            "VC = 3300 mL, TLC = 5600 mL",
+          ],
           ans: 0,
           exp: `VC = IRV + TV + ERV = 2800 + 500 + 1100 = <strong>4400 mL</strong>. TLC = VC + RV = 4400 + 1200 = <strong>5600 mL</strong>. Remember, RV is NOT part of VC.`,
           ref: "NCERT Class 11 — Respiratory Volumes Table",
         },
-        { id: 5, ch: "bio", type: "MCQ", diff: "Medium", q: `The role of oxygen in the regulation of respiratory rhythm is:`, opts: ["Primary and dominant over CO₂", "Equal to that of CO₂ and H⁺ ions", "Significant only at high altitudes", "Quite insignificant"], ans: 3, exp: `This is an exact NCERT line: <strong>"The role of oxygen in the regulation of respiratory rhythm is quite insignificant."</strong> CO₂ and H⁺ ions are the primary regulators, detected by the chemosensitive area in the medulla. This line has been tested multiple times in NEET.`, ref: "NCERT Class 11 — Regulation of Respiration" },
-        { id: 6, ch: "bio", type: "Match", diff: "Hard", q: `Match the following respiratory centres with their locations:<br><table><tr><th>Centre</th><th>Location</th></tr><tr><td>A. Respiratory Rhythm Centre</td><td>1. Pons (Varolii)</td></tr><tr><td>B. Pneumotaxic Centre</td><td>2. Carotid artery & Aorta</td></tr><tr><td>C. Chemosensitive Area</td><td>3. Medulla oblongata</td></tr><tr><td>D. Peripheral Chemoreceptors</td><td>4. Adjacent to rhythm centre in medulla</td></tr></table>`, opts: ["A-3, B-1, C-4, D-2", "A-1, B-3, C-4, D-2", "A-3, B-1, C-2, D-4", "A-4, B-1, C-3, D-2"], ans: 0, exp: `Respiratory Rhythm Centre → <strong>medulla oblongata (3)</strong>. Pneumotaxic Centre → <strong>pons (1)</strong>. Chemosensitive Area → <strong>adjacent to rhythm centre in medulla (4)</strong>. Peripheral chemoreceptors → <strong>carotid body and aortic arch (2)</strong>. Students often confuse the chemosensitive area location with the pneumotaxic centre.`, ref: "NCERT Class 11 — Regulation of Respiration" },
-        { id: 7, ch: "bio", type: "MCQ", diff: "Medium", q: `Which of the following prevents the entry of food into the larynx during swallowing?`, opts: ["Pharynx", "Epiglottis covering the glottis", "Tracheal cartilaginous rings", "Soft palate"], ans: 1, exp: `The <strong>epiglottis</strong> is a thin elastic cartilaginous flap that covers the <strong>glottis</strong> (the opening of the larynx) during swallowing. A common NEET trap is to say "epiglottis covers the pharynx" — this is wrong; it covers the glottis.`, ref: "NCERT Class 11 — Respiratory System overview" },
-        { id: 8, ch: "bio", type: "Case-based", diff: "Hard", q: `<strong>Case:</strong> A long-term cigarette smoker develops a chronic condition where the walls of the alveoli are damaged, drastically reducing the surface area for gas exchange. He experiences breathlessness even at rest.<br><br>Which condition is described, and what is the primary pathological change?`, opts: ["Asthma — bronchospasm and inflammation of bronchioles", "Emphysema — destruction of alveolar walls reducing respiratory surface", "Pneumonia — fluid accumulation in alveoli", "Occupational lung disease — fibrosis from industrial dust"], ans: 1, exp: `<strong>Emphysema</strong> is a chronic disorder where alveolar walls are damaged, reducing the total respiratory surface area. It is primarily caused by <strong>cigarette smoking</strong>. Asthma involves bronchial inflammation, not alveolar wall destruction. NCERT specifically links emphysema to smoking.`, ref: "NCERT Class 11 — Disorders of Respiratory System" },
-        { id: 9, ch: "bio", type: "MCQ", diff: "Medium", q: `In 100 mL of oxygenated blood, the amount of O₂ that can be delivered to the tissues under normal physiological conditions is approximately:`, opts: ["20 mL", "5 mL", "10 mL", "15 mL"], ans: 1, exp: `Per NCERT, every <strong>100 mL of oxygenated blood can deliver approximately 5 mL of O₂</strong> to the tissues. This is because Hb is ~97% saturated in the lungs and ~75% saturated in tissues, releasing about 25% of its O₂. The total O₂ carrying capacity is ~20 mL/100 mL, but only ~5 mL is unloaded per pass.`, ref: "NCERT Class 11 — Transport of Oxygen" },
-        { id: 10, ch: "bio", type: "Assertion-Reason", diff: "Hard", q: `<strong>Assertion (A):</strong> The oxygen-haemoglobin dissociation curve is sigmoid (S-shaped).<br><strong>Reason (R):</strong> Binding of the first O₂ molecule to haemoglobin increases its affinity for subsequent O₂ molecules (cooperative binding).<br><br>Choose the correct option:`, opts: ["Both A and R are true, and R is the correct explanation of A", "Both A and R are true, but R is not the correct explanation of A", "A is true but R is false", "A is false but R is true"], ans: 0, exp: `The sigmoid shape arises due to <strong>cooperative binding</strong> — once the first O₂ binds to one subunit of Hb, conformational changes make subsequent O₂ binding easier. This creates the characteristic S-shape rather than a simple hyperbolic curve. Both statements are true and R correctly explains A.`, ref: "NCERT Class 11 — Oxygen Dissociation Curve" },
-        { id: 11, ch: "bio", type: "MCQ", diff: "Medium", q: `Approximately what percentage of CO₂ is transported as bicarbonate ions (HCO₃⁻)?`, opts: ["20–25%", "7%", "70%", "97%"], ans: 2, exp: `CO₂ is transported in three forms: <strong>~70% as bicarbonate (HCO₃⁻)</strong>, 20–25% as carbaminohaemoglobin, and ~7% dissolved in plasma. Students often confuse the 20–25% carbamino form with the dominant bicarbonate pathway.`, ref: "NCERT Class 11 — Transport of Carbon Dioxide" },
-        { id: 12, ch: "bio", type: "MCQ", diff: "Hard", q: `The enzyme carbonic anhydrase, which catalyzes the formation of carbonic acid from CO₂ and water, is found in high concentration in:`, opts: ["Blood plasma", "Alveolar epithelium", "RBCs (erythrocytes)", "Pulmonary capillary endothelium"], ans: 2, exp: `<strong>Carbonic anhydrase</strong> is present in <strong>high concentrations in RBCs</strong>. It catalyzes CO₂ + H₂O ⇌ H₂CO₃, which then dissociates to HCO₃⁻ + H⁺. The reaction occurs inside RBCs, and HCO₃⁻ then moves out into plasma (chloride shift). It is a zinc-containing metalloenzyme.`, ref: "NCERT Class 11 — Transport of CO₂" },
-        { id: 13, ch: "bio", type: "Multi-statement", diff: "Hard", q: `Which of the following conditions favor the formation of oxyhaemoglobin?<br>(i) High pO₂<br>(ii) High pCO₂<br>(iii) High H⁺ concentration<br>(iv) Low temperature<br>(v) Low pCO₂`, opts: ["(i), (iv) and (v) only", "(i), (ii) and (iii) only", "(i), (iii) and (iv) only", "(ii), (iv) and (v) only"], ans: 0, exp: `Oxyhaemoglobin formation is favored in the lungs where conditions include: <strong>high pO₂, low pCO₂, low H⁺ concentration, and lower temperature</strong>. High pCO₂ and high H⁺ promote O₂ release (Bohr effect) — these are tissue conditions. So (i), (iv), and (v) are correct.`, ref: "NCERT Class 11 — Bohr Effect & O₂ Dissociation Curve" },
-        { id: 14, ch: "bio", type: "MCQ", diff: "Medium", q: `The trachea divides into two primary bronchi at the level of the:`, opts: ["2nd thoracic vertebra", "5th thoracic vertebra", "7th cervical vertebra", "1st lumbar vertebra"], ans: 1, exp: `The trachea divides at the level of the <strong>5th thoracic vertebra</strong> into the right and left primary bronchi. This was directly tested in NEET 2019.`, ref: "NCERT Class 11 — Respiratory Pathway" },
-        { id: 15, ch: "bio", type: "MCQ", diff: "Hard", q: `The chloride shift (Hamburger phenomenon) involves:`, opts: ["Movement of Cl⁻ ions out of RBCs and HCO₃⁻ into RBCs at the lungs", "Movement of Cl⁻ ions into RBCs as HCO₃⁻ moves out of RBCs at the tissues", "Movement of CO₂ into RBCs in exchange for O₂ at the tissues", "Movement of H⁺ ions out of RBCs in exchange for K⁺ ions"], ans: 1, exp: `At the <strong>tissues</strong>, CO₂ enters RBCs, is converted to HCO₃⁻ (via carbonic anhydrase), and HCO₃⁻ diffuses out into plasma. To maintain <strong>electrical neutrality</strong>, Cl⁻ ions move into RBCs — this is the chloride shift. At the lungs, the reverse occurs (option A describes the lung event). The question asks about the phenomenon itself, which is classically described at tissues.`, ref: "NCERT Class 11 — CO₂ Transport / Chloride Shift" },
-        { id: 16, ch: "bio", type: "MCQ", diff: "Medium", q: `The partial pressure of O₂ in deoxygenated blood returning to the lungs is approximately:`, opts: ["95 mmHg", "104 mmHg", "40 mmHg", "159 mmHg"], ans: 2, exp: `Per the NCERT partial pressure table: pO₂ in deoxygenated blood = <strong>40 mmHg</strong>. In alveoli it is 104, in oxygenated blood 95, in atmosphere 159, and in tissues 40 mmHg.`, ref: "NCERT Class 11 — Partial Pressure Table" },
-        { id: 17, ch: "bio", type: "Assertion-Reason", diff: "Medium", q: `<strong>Assertion (A):</strong> The pneumotaxic centre can alter the respiratory rate.<br><strong>Reason (R):</strong> It sends signals to reduce the duration of inspiration, thereby affecting the rate of respiration.<br><br>Choose the correct option:`, opts: ["Both A and R are true, and R is the correct explanation of A", "Both A and R are true, but R is not the correct explanation of A", "A is true but R is false", "A is false"], ans: 0, exp: `The pneumotaxic centre (in pons) <strong>moderates the rhythm centre</strong> by signaling it to <strong>reduce the duration of inspiration</strong>. This in turn alters respiratory rate — shorter inspiration means a faster breathing rate. Both A and R are true, and R correctly explains A.`, ref: "NCERT Class 11 — Regulation of Respiration" },
-        { id: 18, ch: "bio", type: "MCQ", diff: "Medium", q: `Which of the following correctly represents the conducting part of the respiratory system?`, opts: ["Nostrils to terminal bronchioles", "Nostrils to alveolar ducts", "Larynx to alveoli", "Trachea to respiratory bronchioles"], ans: 0, exp: `The <strong>conducting part</strong> extends from the external nostrils to the terminal bronchioles. It transports, filters, humidifies, and warms air. The <strong>exchange part</strong> (respiratory zone) starts from the alveolar ducts and alveoli where actual gas exchange occurs.`, ref: "NCERT Class 11 — Human Respiratory System" },
-        { id: 19, ch: "bio", type: "MCQ", diff: "Hard", q: `During transport, CO₂ binds to haemoglobin at:`, opts: ["The iron (Fe²⁺) part of the haem group", "The amino groups of the globin polypeptide chains", "The porphyrin ring of haem", "The β-chains exclusively"], ans: 1, exp: `CO₂ binds to the <strong>amino groups (–NH₂) of the globin protein</strong> part of haemoglobin (not the haem/iron). O₂ binds to Fe²⁺ in the haem group. This is a critical distinction. The resulting compound is <strong>carbaminohaemoglobin</strong>.`, ref: "NCERT Class 11 — Transport of CO₂" },
-        { id: 20, ch: "bio", type: "Case-based", diff: "Hard", q: `<strong>Case:</strong> A mountaineer ascends rapidly to 5000m altitude. He experiences nausea, fatigue, and breathlessness. His arterial blood gas analysis shows reduced pO₂.<br><br>The primary reason for his symptoms is:`, opts: ["Increased atmospheric pressure at high altitude", "Low atmospheric pressure leading to decreased partial pressure of O₂", "Increased CO₂ in atmospheric air at high altitude", "Absence of nitrogen at high altitude"], ans: 1, exp: `At high altitudes, the <strong>atmospheric pressure is low</strong>, which means the partial pressure of O₂ is also reduced significantly. This leads to inadequate O₂ delivery to tissues, causing symptoms of altitude sickness (nausea, fatigue, breathlessness). The composition of air remains the same, but total pressure drops.`, ref: "NCERT Class 11 — Exchange of Gases / Partial Pressures" },
-        { id: 21, ch: "bio", type: "MCQ", diff: "Medium", q: `The diffusion membrane between alveolar air and pulmonary blood consists of:`, opts: ["Only the alveolar squamous epithelium", "Squamous epithelium of alveolus + basement membrane + endothelium of capillary", "Cuboidal epithelium + thick connective tissue + capillary endothelium", "Ciliated columnar epithelium + basement membrane"], ans: 1, exp: `The diffusion membrane has three layers: (1) thin squamous epithelium of alveoli, (2) the basement membrane, and (3) the endothelium of blood capillaries. Its total thickness is much less than a millimetre, facilitating rapid diffusion.`, ref: "NCERT Class 11 — Exchange of Gases" },
-        { id: 22, ch: "bio", type: "MCQ", diff: "Medium", q: `Residual Volume is clinically important because:`, opts: ["It represents the air used in gas exchange", "It prevents the lungs from collapsing completely even after forceful expiration", "It equals Tidal Volume during exercise", "It increases with age and decreases lung compliance"], ans: 1, exp: `<strong>Residual Volume</strong> (~1100–1200 mL) is the air that remains in the lungs even after the most forceful expiration. This ensures that <strong>alveoli do not collapse</strong> and gas exchange can continue. NEET 2017 directly tested this concept.`, ref: "NCERT Class 11 — Lung Volumes / NEET 2017" },
-        { id: 23, ch: "bio", type: "Multi-statement", diff: "Hard", q: `Which of the following statements about the Bohr effect is/are correct?<br>(i) Increase in CO₂ tension shifts the O₂ dissociation curve to the right<br>(ii) It promotes O₂ loading at the tissue level<br>(iii) Increase in H⁺ concentration favours dissociation of oxyhaemoglobin<br>(iv) It is significant because it helps release O₂ where it is most needed`, opts: ["(i), (iii) and (iv) only", "(i), (ii), (iii) and (iv)", "(i) and (iii) only", "(ii) and (iv) only"], ans: 0, exp: `Statement (ii) is wrong — the Bohr effect promotes O₂ <strong>unloading (release)</strong> at tissues, not loading. Loading occurs at the lungs. Statements (i), (iii), and (iv) are all correct: high CO₂ and H⁺ shift the curve right, promoting O₂ release exactly where it's needed.`, ref: "NCERT Class 11 — Bohr Effect" },
-        { id: 24, ch: "bio", type: "MCQ", diff: "Medium", q: `A worker in a stone quarry develops fibrosis of the lungs after years of exposure. This occupational disorder is called:`, opts: ["Asbestosis", "Silicosis", "Emphysema", "Asthma"], ans: 1, exp: `Prolonged exposure to <strong>silica dust</strong> (common in stone quarries, mining) causes <strong>silicosis</strong> — fibrosis and inflammation of lung tissue. Asbestosis is caused by asbestos fibers. NCERT specifically mentions silicosis and asbestosis as occupational respiratory disorders.`, ref: "NCERT Class 11 — Disorders of Respiratory System" },
-        { id: 25, ch: "bio", type: "Assertion-Reason", diff: "Hard", q: `<strong>Assertion (A):</strong> Binding of O₂ with haemoglobin is reversible.<br><strong>Reason (R):</strong> Haemoglobin is a red, iron-containing pigment present in all vertebrate RBCs and acts as a permanent O₂ store.<br><br>Choose the correct option:`, opts: ["Both A and R are true, and R is the correct explanation of A", "Both A and R are true, but R is not the correct explanation of A", "A is true but R is false", "A is false but R is true"], ans: 2, exp: `A is true — O₂ binding to Hb is <strong>reversible</strong> (loads at lungs, unloads at tissues). R is <strong>false</strong> — while Hb is indeed an iron-containing pigment in RBCs, it does NOT act as a "permanent O₂ store." It is a transient carrier. The claim of being permanent is wrong. NEET 2019 tested this reversal concept.`, ref: "NCERT Class 11 — Transport of O₂ / NEET 2019" },
+        {
+          id: 5,
+          ch: "bio",
+          type: "MCQ",
+          diff: "Medium",
+          q: `The role of oxygen in the regulation of respiratory rhythm is:`,
+          opts: [
+            "Primary and dominant over CO₂",
+            "Equal to that of CO₂ and H⁺ ions",
+            "Significant only at high altitudes",
+            "Quite insignificant",
+          ],
+          ans: 3,
+          exp: `This is an exact NCERT line: <strong>"The role of oxygen in the regulation of respiratory rhythm is quite insignificant."</strong> CO₂ and H⁺ ions are the primary regulators, detected by the chemosensitive area in the medulla. This line has been tested multiple times in NEET.`,
+          ref: "NCERT Class 11 — Regulation of Respiration",
+        },
+        {
+          id: 6,
+          ch: "bio",
+          type: "Match",
+          diff: "Hard",
+          q: `Match the following respiratory centres with their locations:<br><table><tr><th>Centre</th><th>Location</th></tr><tr><td>A. Respiratory Rhythm Centre</td><td>1. Pons (Varolii)</td></tr><tr><td>B. Pneumotaxic Centre</td><td>2. Carotid artery & Aorta</td></tr><tr><td>C. Chemosensitive Area</td><td>3. Medulla oblongata</td></tr><tr><td>D. Peripheral Chemoreceptors</td><td>4. Adjacent to rhythm centre in medulla</td></tr></table>`,
+          opts: [
+            "A-3, B-1, C-4, D-2",
+            "A-1, B-3, C-4, D-2",
+            "A-3, B-1, C-2, D-4",
+            "A-4, B-1, C-3, D-2",
+          ],
+          ans: 0,
+          exp: `Respiratory Rhythm Centre → <strong>medulla oblongata (3)</strong>. Pneumotaxic Centre → <strong>pons (1)</strong>. Chemosensitive Area → <strong>adjacent to rhythm centre in medulla (4)</strong>. Peripheral chemoreceptors → <strong>carotid body and aortic arch (2)</strong>. Students often confuse the chemosensitive area location with the pneumotaxic centre.`,
+          ref: "NCERT Class 11 — Regulation of Respiration",
+        },
+        {
+          id: 7,
+          ch: "bio",
+          type: "MCQ",
+          diff: "Medium",
+          q: `Which of the following prevents the entry of food into the larynx during swallowing?`,
+          opts: [
+            "Pharynx",
+            "Epiglottis covering the glottis",
+            "Tracheal cartilaginous rings",
+            "Soft palate",
+          ],
+          ans: 1,
+          exp: `The <strong>epiglottis</strong> is a thin elastic cartilaginous flap that covers the <strong>glottis</strong> (the opening of the larynx) during swallowing. A common NEET trap is to say "epiglottis covers the pharynx" — this is wrong; it covers the glottis.`,
+          ref: "NCERT Class 11 — Respiratory System overview",
+        },
+        {
+          id: 8,
+          ch: "bio",
+          type: "Case-based",
+          diff: "Hard",
+          q: `<strong>Case:</strong> A long-term cigarette smoker develops a chronic condition where the walls of the alveoli are damaged, drastically reducing the surface area for gas exchange. He experiences breathlessness even at rest.<br><br>Which condition is described, and what is the primary pathological change?`,
+          opts: [
+            "Asthma — bronchospasm and inflammation of bronchioles",
+            "Emphysema — destruction of alveolar walls reducing respiratory surface",
+            "Pneumonia — fluid accumulation in alveoli",
+            "Occupational lung disease — fibrosis from industrial dust",
+          ],
+          ans: 1,
+          exp: `<strong>Emphysema</strong> is a chronic disorder where alveolar walls are damaged, reducing the total respiratory surface area. It is primarily caused by <strong>cigarette smoking</strong>. Asthma involves bronchial inflammation, not alveolar wall destruction. NCERT specifically links emphysema to smoking.`,
+          ref: "NCERT Class 11 — Disorders of Respiratory System",
+        },
+        {
+          id: 9,
+          ch: "bio",
+          type: "MCQ",
+          diff: "Medium",
+          q: `In 100 mL of oxygenated blood, the amount of O₂ that can be delivered to the tissues under normal physiological conditions is approximately:`,
+          opts: ["20 mL", "5 mL", "10 mL", "15 mL"],
+          ans: 1,
+          exp: `Per NCERT, every <strong>100 mL of oxygenated blood can deliver approximately 5 mL of O₂</strong> to the tissues. This is because Hb is ~97% saturated in the lungs and ~75% saturated in tissues, releasing about 25% of its O₂. The total O₂ carrying capacity is ~20 mL/100 mL, but only ~5 mL is unloaded per pass.`,
+          ref: "NCERT Class 11 — Transport of Oxygen",
+        },
+        {
+          id: 10,
+          ch: "bio",
+          type: "Assertion-Reason",
+          diff: "Hard",
+          q: `<strong>Assertion (A):</strong> The oxygen-haemoglobin dissociation curve is sigmoid (S-shaped).<br><strong>Reason (R):</strong> Binding of the first O₂ molecule to haemoglobin increases its affinity for subsequent O₂ molecules (cooperative binding).<br><br>Choose the correct option:`,
+          opts: [
+            "Both A and R are true, and R is the correct explanation of A",
+            "Both A and R are true, but R is not the correct explanation of A",
+            "A is true but R is false",
+            "A is false but R is true",
+          ],
+          ans: 0,
+          exp: `The sigmoid shape arises due to <strong>cooperative binding</strong> — once the first O₂ binds to one subunit of Hb, conformational changes make subsequent O₂ binding easier. This creates the characteristic S-shape rather than a simple hyperbolic curve. Both statements are true and R correctly explains A.`,
+          ref: "NCERT Class 11 — Oxygen Dissociation Curve",
+        },
+        {
+          id: 11,
+          ch: "bio",
+          type: "MCQ",
+          diff: "Medium",
+          q: `Approximately what percentage of CO₂ is transported as bicarbonate ions (HCO₃⁻)?`,
+          opts: ["20–25%", "7%", "70%", "97%"],
+          ans: 2,
+          exp: `CO₂ is transported in three forms: <strong>~70% as bicarbonate (HCO₃⁻)</strong>, 20–25% as carbaminohaemoglobin, and ~7% dissolved in plasma. Students often confuse the 20–25% carbamino form with the dominant bicarbonate pathway.`,
+          ref: "NCERT Class 11 — Transport of Carbon Dioxide",
+        },
+        {
+          id: 12,
+          ch: "bio",
+          type: "MCQ",
+          diff: "Hard",
+          q: `The enzyme carbonic anhydrase, which catalyzes the formation of carbonic acid from CO₂ and water, is found in high concentration in:`,
+          opts: [
+            "Blood plasma",
+            "Alveolar epithelium",
+            "RBCs (erythrocytes)",
+            "Pulmonary capillary endothelium",
+          ],
+          ans: 2,
+          exp: `<strong>Carbonic anhydrase</strong> is present in <strong>high concentrations in RBCs</strong>. It catalyzes CO₂ + H₂O ⇌ H₂CO₃, which then dissociates to HCO₃⁻ + H⁺. The reaction occurs inside RBCs, and HCO₃⁻ then moves out into plasma (chloride shift). It is a zinc-containing metalloenzyme.`,
+          ref: "NCERT Class 11 — Transport of CO₂",
+        },
+        {
+          id: 13,
+          ch: "bio",
+          type: "Multi-statement",
+          diff: "Hard",
+          q: `Which of the following conditions favor the formation of oxyhaemoglobin?<br>(i) High pO₂<br>(ii) High pCO₂<br>(iii) High H⁺ concentration<br>(iv) Low temperature<br>(v) Low pCO₂`,
+          opts: [
+            "(i), (iv) and (v) only",
+            "(i), (ii) and (iii) only",
+            "(i), (iii) and (iv) only",
+            "(ii), (iv) and (v) only",
+          ],
+          ans: 0,
+          exp: `Oxyhaemoglobin formation is favored in the lungs where conditions include: <strong>high pO₂, low pCO₂, low H⁺ concentration, and lower temperature</strong>. High pCO₂ and high H⁺ promote O₂ release (Bohr effect) — these are tissue conditions. So (i), (iv), and (v) are correct.`,
+          ref: "NCERT Class 11 — Bohr Effect & O₂ Dissociation Curve",
+        },
+        {
+          id: 14,
+          ch: "bio",
+          type: "MCQ",
+          diff: "Medium",
+          q: `The trachea divides into two primary bronchi at the level of the:`,
+          opts: [
+            "2nd thoracic vertebra",
+            "5th thoracic vertebra",
+            "7th cervical vertebra",
+            "1st lumbar vertebra",
+          ],
+          ans: 1,
+          exp: `The trachea divides at the level of the <strong>5th thoracic vertebra</strong> into the right and left primary bronchi. This was directly tested in NEET 2019.`,
+          ref: "NCERT Class 11 — Respiratory Pathway",
+        },
+        {
+          id: 15,
+          ch: "bio",
+          type: "MCQ",
+          diff: "Hard",
+          q: `The chloride shift (Hamburger phenomenon) involves:`,
+          opts: [
+            "Movement of Cl⁻ ions out of RBCs and HCO₃⁻ into RBCs at the lungs",
+            "Movement of Cl⁻ ions into RBCs as HCO₃⁻ moves out of RBCs at the tissues",
+            "Movement of CO₂ into RBCs in exchange for O₂ at the tissues",
+            "Movement of H⁺ ions out of RBCs in exchange for K⁺ ions",
+          ],
+          ans: 1,
+          exp: `At the <strong>tissues</strong>, CO₂ enters RBCs, is converted to HCO₃⁻ (via carbonic anhydrase), and HCO₃⁻ diffuses out into plasma. To maintain <strong>electrical neutrality</strong>, Cl⁻ ions move into RBCs — this is the chloride shift. At the lungs, the reverse occurs (option A describes the lung event). The question asks about the phenomenon itself, which is classically described at tissues.`,
+          ref: "NCERT Class 11 — CO₂ Transport / Chloride Shift",
+        },
+        {
+          id: 16,
+          ch: "bio",
+          type: "MCQ",
+          diff: "Medium",
+          q: `The partial pressure of O₂ in deoxygenated blood returning to the lungs is approximately:`,
+          opts: ["95 mmHg", "104 mmHg", "40 mmHg", "159 mmHg"],
+          ans: 2,
+          exp: `Per the NCERT partial pressure table: pO₂ in deoxygenated blood = <strong>40 mmHg</strong>. In alveoli it is 104, in oxygenated blood 95, in atmosphere 159, and in tissues 40 mmHg.`,
+          ref: "NCERT Class 11 — Partial Pressure Table",
+        },
+        {
+          id: 17,
+          ch: "bio",
+          type: "Assertion-Reason",
+          diff: "Medium",
+          q: `<strong>Assertion (A):</strong> The pneumotaxic centre can alter the respiratory rate.<br><strong>Reason (R):</strong> It sends signals to reduce the duration of inspiration, thereby affecting the rate of respiration.<br><br>Choose the correct option:`,
+          opts: [
+            "Both A and R are true, and R is the correct explanation of A",
+            "Both A and R are true, but R is not the correct explanation of A",
+            "A is true but R is false",
+            "A is false",
+          ],
+          ans: 0,
+          exp: `The pneumotaxic centre (in pons) <strong>moderates the rhythm centre</strong> by signaling it to <strong>reduce the duration of inspiration</strong>. This in turn alters respiratory rate — shorter inspiration means a faster breathing rate. Both A and R are true, and R correctly explains A.`,
+          ref: "NCERT Class 11 — Regulation of Respiration",
+        },
+        {
+          id: 18,
+          ch: "bio",
+          type: "MCQ",
+          diff: "Medium",
+          q: `Which of the following correctly represents the conducting part of the respiratory system?`,
+          opts: [
+            "Nostrils to terminal bronchioles",
+            "Nostrils to alveolar ducts",
+            "Larynx to alveoli",
+            "Trachea to respiratory bronchioles",
+          ],
+          ans: 0,
+          exp: `The <strong>conducting part</strong> extends from the external nostrils to the terminal bronchioles. It transports, filters, humidifies, and warms air. The <strong>exchange part</strong> (respiratory zone) starts from the alveolar ducts and alveoli where actual gas exchange occurs.`,
+          ref: "NCERT Class 11 — Human Respiratory System",
+        },
+        {
+          id: 19,
+          ch: "bio",
+          type: "MCQ",
+          diff: "Hard",
+          q: `During transport, CO₂ binds to haemoglobin at:`,
+          opts: [
+            "The iron (Fe²⁺) part of the haem group",
+            "The amino groups of the globin polypeptide chains",
+            "The porphyrin ring of haem",
+            "The β-chains exclusively",
+          ],
+          ans: 1,
+          exp: `CO₂ binds to the <strong>amino groups (–NH₂) of the globin protein</strong> part of haemoglobin (not the haem/iron). O₂ binds to Fe²⁺ in the haem group. This is a critical distinction. The resulting compound is <strong>carbaminohaemoglobin</strong>.`,
+          ref: "NCERT Class 11 — Transport of CO₂",
+        },
+        {
+          id: 20,
+          ch: "bio",
+          type: "Case-based",
+          diff: "Hard",
+          q: `<strong>Case:</strong> A mountaineer ascends rapidly to 5000m altitude. He experiences nausea, fatigue, and breathlessness. His arterial blood gas analysis shows reduced pO₂.<br><br>The primary reason for his symptoms is:`,
+          opts: [
+            "Increased atmospheric pressure at high altitude",
+            "Low atmospheric pressure leading to decreased partial pressure of O₂",
+            "Increased CO₂ in atmospheric air at high altitude",
+            "Absence of nitrogen at high altitude",
+          ],
+          ans: 1,
+          exp: `At high altitudes, the <strong>atmospheric pressure is low</strong>, which means the partial pressure of O₂ is also reduced significantly. This leads to inadequate O₂ delivery to tissues, causing symptoms of altitude sickness (nausea, fatigue, breathlessness). The composition of air remains the same, but total pressure drops.`,
+          ref: "NCERT Class 11 — Exchange of Gases / Partial Pressures",
+        },
+        {
+          id: 21,
+          ch: "bio",
+          type: "MCQ",
+          diff: "Medium",
+          q: `The diffusion membrane between alveolar air and pulmonary blood consists of:`,
+          opts: [
+            "Only the alveolar squamous epithelium",
+            "Squamous epithelium of alveolus + basement membrane + endothelium of capillary",
+            "Cuboidal epithelium + thick connective tissue + capillary endothelium",
+            "Ciliated columnar epithelium + basement membrane",
+          ],
+          ans: 1,
+          exp: `The diffusion membrane has three layers: (1) thin squamous epithelium of alveoli, (2) the basement membrane, and (3) the endothelium of blood capillaries. Its total thickness is much less than a millimetre, facilitating rapid diffusion.`,
+          ref: "NCERT Class 11 — Exchange of Gases",
+        },
+        {
+          id: 22,
+          ch: "bio",
+          type: "MCQ",
+          diff: "Medium",
+          q: `Residual Volume is clinically important because:`,
+          opts: [
+            "It represents the air used in gas exchange",
+            "It prevents the lungs from collapsing completely even after forceful expiration",
+            "It equals Tidal Volume during exercise",
+            "It increases with age and decreases lung compliance",
+          ],
+          ans: 1,
+          exp: `<strong>Residual Volume</strong> (~1100–1200 mL) is the air that remains in the lungs even after the most forceful expiration. This ensures that <strong>alveoli do not collapse</strong> and gas exchange can continue. NEET 2017 directly tested this concept.`,
+          ref: "NCERT Class 11 — Lung Volumes / NEET 2017",
+        },
+        {
+          id: 23,
+          ch: "bio",
+          type: "Multi-statement",
+          diff: "Hard",
+          q: `Which of the following statements about the Bohr effect is/are correct?<br>(i) Increase in CO₂ tension shifts the O₂ dissociation curve to the right<br>(ii) It promotes O₂ loading at the tissue level<br>(iii) Increase in H⁺ concentration favours dissociation of oxyhaemoglobin<br>(iv) It is significant because it helps release O₂ where it is most needed`,
+          opts: [
+            "(i), (iii) and (iv) only",
+            "(i), (ii), (iii) and (iv)",
+            "(i) and (iii) only",
+            "(ii) and (iv) only",
+          ],
+          ans: 0,
+          exp: `Statement (ii) is wrong — the Bohr effect promotes O₂ <strong>unloading (release)</strong> at tissues, not loading. Loading occurs at the lungs. Statements (i), (iii), and (iv) are all correct: high CO₂ and H⁺ shift the curve right, promoting O₂ release exactly where it's needed.`,
+          ref: "NCERT Class 11 — Bohr Effect",
+        },
+        {
+          id: 24,
+          ch: "bio",
+          type: "MCQ",
+          diff: "Medium",
+          q: `A worker in a stone quarry develops fibrosis of the lungs after years of exposure. This occupational disorder is called:`,
+          opts: ["Asbestosis", "Silicosis", "Emphysema", "Asthma"],
+          ans: 1,
+          exp: `Prolonged exposure to <strong>silica dust</strong> (common in stone quarries, mining) causes <strong>silicosis</strong> — fibrosis and inflammation of lung tissue. Asbestosis is caused by asbestos fibers. NCERT specifically mentions silicosis and asbestosis as occupational respiratory disorders.`,
+          ref: "NCERT Class 11 — Disorders of Respiratory System",
+        },
+        {
+          id: 25,
+          ch: "bio",
+          type: "Assertion-Reason",
+          diff: "Hard",
+          q: `<strong>Assertion (A):</strong> Binding of O₂ with haemoglobin is reversible.<br><strong>Reason (R):</strong> Haemoglobin is a red, iron-containing pigment present in all vertebrate RBCs and acts as a permanent O₂ store.<br><br>Choose the correct option:`,
+          opts: [
+            "Both A and R are true, and R is the correct explanation of A",
+            "Both A and R are true, but R is not the correct explanation of A",
+            "A is true but R is false",
+            "A is false but R is true",
+          ],
+          ans: 2,
+          exp: `A is true — O₂ binding to Hb is <strong>reversible</strong> (loads at lungs, unloads at tissues). R is <strong>false</strong> — while Hb is indeed an iron-containing pigment in RBCs, it does NOT act as a "permanent O₂ store." It is a transient carrier. The claim of being permanent is wrong. NEET 2019 tested this reversal concept.`,
+          ref: "NCERT Class 11 — Transport of O₂ / NEET 2019",
+        },
 
         // ===== CHEMICAL KINETICS (Q26-Q50) =====
-        { id: 26, ch: "chem", type: "MCQ", diff: "Medium", q: `For a reaction 2A → Products, the rate of the reaction is expressed as:`, opts: ["Rate = +d[A]/dt", "Rate = −d[A]/dt", "Rate = −½ d[A]/dt", "Rate = +2 d[A]/dt"], ans: 2, exp: `For 2A → Products, Rate = <strong>−(1/2) d[A]/dt</strong>. The negative sign accounts for decreasing concentration, and division by the stoichiometric coefficient (2) gives the general rate. Students commonly forget to divide by the coefficient.`, ref: "NCERT Class 12 — Rate of a Chemical Reaction" },
-        { id: 27, ch: "chem", type: "Multi-statement", diff: "Hard", q: `Consider the following statements:<br>(i) Order of a reaction can be zero, fractional or negative<br>(ii) Molecularity of a reaction can be zero<br>(iii) Order is determined experimentally<br>(iv) Molecularity is always a positive integer<br>(v) For a complex reaction, order equals molecularity<br><br>Which statements are correct?`, opts: ["(i), (iii) and (iv) only", "(i), (ii), (iii) and (iv)", "(i), (iii), (iv) and (v)", "All of the above"], ans: 0, exp: `(ii) is wrong — molecularity can <strong>never be zero</strong> (it represents the number of species in an elementary step, minimum 1). (v) is wrong — for <strong>complex (multi-step) reactions</strong>, order ≠ molecularity (they may coincide only for elementary reactions). Statements (i), (iii), and (iv) are correct per NCERT.`, ref: "NCERT Class 12 — Order vs Molecularity" },
-        { id: 28, ch: "chem", type: "Numerical", diff: "Hard", q: `The rate constant of a first-order reaction is 0.0693 min⁻¹. How much time (in minutes) will it take for the initial concentration to reduce to <em>25%</em> of its original value?`, opts: ["10 min", "20 min", "30 min", "40 min"], ans: 1, exp: `When concentration reduces to 25%, it means 75% has reacted = <strong>2 half-lives</strong> (50% → 25%). t₁/₂ = 0.693/k = 0.693/0.0693 = <strong>10 min</strong>. So time for 75% = 2 × 10 = <strong>20 min</strong>.`, ref: "NCERT Class 12 — Half-life of First Order Reaction" },
-        { id: 29, ch: "chem", type: "MCQ", diff: "Medium", q: `The unit of rate constant for a <em>zero-order</em> reaction is:`, opts: ["s⁻¹", "mol L⁻¹ s⁻¹", "L mol⁻¹ s⁻¹", "L² mol⁻² s⁻¹"], ans: 1, exp: `Using the formula: unit of k = (mol L⁻¹)^(1−n) × s⁻¹. For zero order (n=0): k = <strong>mol L⁻¹ s⁻¹</strong>. For first order: s⁻¹. For second order: L mol⁻¹ s⁻¹. NEET often gives units and asks to identify the order.`, ref: "NCERT Class 12 — Rate Law & Rate Constant" },
-        { id: 30, ch: "chem", type: "Assertion-Reason", diff: "Hard", q: `<strong>Assertion (A):</strong> The hydrolysis of ethyl acetate in the presence of excess water follows pseudo first-order kinetics.<br><strong>Reason (R):</strong> In the presence of a large excess of water, the concentration of water does not change appreciably during the reaction.<br><br>Choose the correct option:`, opts: ["Both A and R are true, and R is the correct explanation of A", "Both A and R are true, but R is not the correct explanation of A", "A is true but R is false", "A is false"], ans: 0, exp: `The hydrolysis CH₃COOC₂H₅ + H₂O → CH₃COOH + C₂H₅OH is bimolecular but behaves as first-order because <strong>water is in large excess</strong> and its concentration remains effectively constant. The effective rate = k'[ester] where k' = k[H₂O]. Both A and R are true, and R correctly explains A.`, ref: "NCERT Class 12 — Pseudo First Order Reactions" },
-        { id: 31, ch: "chem", type: "MCQ", diff: "Medium", q: `For a first-order reaction, which plot gives a straight line?`, opts: ["[R] vs t", "log [R] vs t", "1/[R] vs t", "[R]² vs t"], ans: 1, exp: `The integrated first-order equation: log[R] = log[R]₀ − (k/2.303)t. So <strong>log[R] vs t</strong> gives a straight line with slope = −k/2.303. A plot of [R] vs t gives an exponential decay curve (NOT a straight line — a common trap). 1/[R] vs t is linear for second-order reactions.`, ref: "NCERT Class 12 — Integrated Rate Equations" },
-        { id: 32, ch: "chem", type: "MCQ", diff: "Hard", q: `The half-life of a zero-order reaction with initial concentration [R]₀ and rate constant k is:`, opts: ["0.693/k", "[R]₀ / 2k", "1/(k[R]₀)", "2k/[R]₀"], ans: 1, exp: `For zero-order: [R] = [R]₀ − kt. At half-life, [R] = [R]₀/2. So [R]₀/2 = [R]₀ − kt₁/₂ → <strong>t₁/₂ = [R]₀/2k</strong>. This means zero-order half-life is <strong>directly proportional to initial concentration</strong>. Contrast this with first-order (0.693/k, independent of [R]₀) and second-order (1/k[R]₀, inversely proportional).`, ref: "NCERT Class 12 — Zero Order Half-life" },
-        { id: 33, ch: "chem", type: "Numerical", diff: "Hard", q: `For a first-order reaction, if 99.9% of the reactant is to be decomposed, the time required is approximately (given: t₁/₂ = 0.693/k):`, opts: ["5 half-lives", "7 half-lives", "10 half-lives", "15 half-lives"], ans: 2, exp: `Time for 99.9% completion: t = (2.303/k) × log(1000/1) = 2.303 × 3/k = <strong>6.909/k</strong>. Since t₁/₂ = 0.693/k, t = 6.909/0.693 × t₁/₂ ≈ <strong>10 × t₁/₂</strong>. This was tested in NEET 2025.`, ref: "NCERT Class 12 — First Order Kinetics / NEET 2025" },
-        { id: 34, ch: "chem", type: "MCQ", diff: "Medium", q: `A catalyst increases the rate of a reaction by:`, opts: ["Increasing the activation energy", "Decreasing the activation energy by providing an alternative pathway", "Changing the enthalpy of the reaction", "Shifting the equilibrium toward products"], ans: 1, exp: `A catalyst <strong>lowers the activation energy</strong> by providing an alternative reaction pathway. It does NOT change ΔH (enthalpy), does NOT shift equilibrium, and accelerates both forward and reverse reactions equally. A very common misconception is that catalysts shift equilibrium — they don't.`, ref: "NCERT Class 12 — Arrhenius Equation / Catalyst" },
-        { id: 35, ch: "chem", type: "MCQ", diff: "Medium", q: `The temperature coefficient of a reaction is generally:`, opts: ["1", "2 to 3", "5 to 10", "0.5 to 1"], ans: 1, exp: `The temperature coefficient (ratio of rate constants at T+10°C and T°C) is typically <strong>2 to 3</strong>, meaning the rate roughly doubles or triples for every 10°C rise in temperature. This is a direct NCERT statement.`, ref: "NCERT Class 12 — Temperature Dependence of Rate" },
-        { id: 36, ch: "chem", type: "Numerical", diff: "Hard", q: `The Arrhenius equation is given as: log(k₂/k₁) = (Eₐ/2.303R)(1/T₁ − 1/T₂). If the rate of a reaction quadruples when temperature is raised from 300 K to 330 K, calculate Eₐ. <br>(R = 8.314 J K⁻¹ mol⁻¹, log 4 = 0.602)`, opts: ["38.04 kJ/mol", "55.3 kJ/mol", "76.08 kJ/mol", "19.02 kJ/mol"], ans: 0, exp: `k₂/k₁ = 4 (rate quadruples). log 4 = 0.602.<br>1/T₁ − 1/T₂ = 1/300 − 1/330 = (330−300)/(300×330) = 30/99000 = 1/3300.<br>0.602 = Eₐ/(2.303 × 8.314) × (1/3300)<br>Eₐ = 0.602 × 2.303 × 8.314 × 3300 = <strong>38,038 J/mol ≈ 38.04 kJ/mol</strong>. This exact problem appeared in NEET 2024.`, ref: "NCERT Class 12 — Arrhenius Equation / NEET 2024" },
-        { id: 37, ch: "chem", type: "MCQ", diff: "Medium", q: `In the Arrhenius equation k = Ae<sup>−Eₐ/RT</sup>, the factor 'A' is called:`, opts: ["Activation energy", "Boltzmann constant", "Frequency factor (pre-exponential factor)", "Rate constant"], ans: 2, exp: `'A' is the <strong>frequency factor</strong> (also called pre-exponential factor or Arrhenius factor). It is related to the frequency of collisions and the probability that molecules are oriented correctly. In the plot of log k vs 1/T, log A is the y-intercept.`, ref: "NCERT Class 12 — Arrhenius Equation" },
-        { id: 38, ch: "chem", type: "MCQ", diff: "Hard", q: `Which of the following is an example of a zero-order reaction?`, opts: ["Decomposition of N₂O₅ in CCl₄", "Decomposition of NH₃ on a hot platinum surface", "Inversion of cane sugar in the presence of acid", "Radioactive decay of ²³⁸U"], ans: 1, exp: `<strong>Decomposition of NH₃ on a hot platinum surface</strong> is a classic NCERT example of a zero-order reaction (the surface acts as the catalyst and is saturated). N₂O₅ decomposition and radioactive decay are first-order; inversion of cane sugar is pseudo first-order.`, ref: "NCERT Class 12 — Zero Order Reactions" },
-        { id: 39, ch: "chem", type: "Assertion-Reason", diff: "Hard", q: `<strong>Assertion (A):</strong> For an elementary reaction, the order of the reaction is the same as its molecularity.<br><strong>Reason (R):</strong> The rate law for an elementary reaction is derived directly from the stoichiometry of that step.<br><br>Choose the correct option:`, opts: ["Both A and R are true, and R is the correct explanation of A", "Both A and R are true, but R is not the correct explanation of A", "A is true but R is false", "A is false"], ans: 0, exp: `For <strong>elementary (single-step) reactions</strong>, the rate law can be written directly from the balanced equation — exponents equal stoichiometric coefficients. Hence order = molecularity. This is true ONLY for elementary reactions, not for complex reactions. Both A and R are true, R explains A.`, ref: "NCERT Class 12 — Elementary vs Complex Reactions" },
-        { id: 40, ch: "chem", type: "MCQ", diff: "Medium", q: `The rate constant of a first-order reaction has units of:`, opts: ["mol L⁻¹ s⁻¹", "s⁻¹", "L mol⁻¹ s⁻¹", "mol⁻¹ L s⁻²"], ans: 1, exp: `For first-order (n=1): units = (mol L⁻¹)^(1−1) × s⁻¹ = <strong>s⁻¹</strong> (or min⁻¹). The rate constant for first-order reactions is independent of concentration units, which is unique to this order.`, ref: "NCERT Class 12 — Rate Constant Units" },
-        { id: 41, ch: "chem", type: "Numerical", diff: "Medium", q: `A first-order reaction has a rate constant of 1.386 × 10⁻² min⁻¹. What is its half-life?`, opts: ["100 min", "50 min", "25 min", "75 min"], ans: 1, exp: `t₁/₂ = 0.693/k = 0.693/(1.386 × 10⁻²) = 0.693/0.01386 = <strong>50 min</strong>. For first-order, half-life is independent of the initial concentration.`, ref: "NCERT Class 12 — First Order Half-life" },
-        { id: 42, ch: "chem", type: "MCQ", diff: "Hard", q: `In the plot of log k versus 1/T (Arrhenius plot), the slope of the straight line is equal to:`, opts: ["−Eₐ/R", "−Eₐ/(2.303R)", "+Eₐ/(2.303R)", "−2.303R/Eₐ"], ans: 1, exp: `From log k = log A − Eₐ/(2.303RT), comparing with y = c + mx: slope = <strong>−Eₐ/(2.303R)</strong> and intercept = log A. This is the standard Arrhenius plot. NEET 2024 directly tested this graph interpretation.`, ref: "NCERT Class 12 — Arrhenius Equation Graph" },
-        { id: 43, ch: "chem", type: "Case-based", diff: "Hard", q: `<strong>Case:</strong> In an experiment, the following data was collected for a reaction A → Products:<br><table><tr><th>Exp</th><th>[A] (mol/L)</th><th>Rate (mol L⁻¹ s⁻¹)</th></tr><tr><td>1</td><td>0.1</td><td>2.0 × 10⁻³</td></tr><tr><td>2</td><td>0.2</td><td>2.0 × 10⁻³</td></tr><tr><td>3</td><td>0.4</td><td>2.0 × 10⁻³</td></tr></table><br>What is the order of this reaction?`, opts: ["First order", "Second order", "Zero order", "Third order"], ans: 2, exp: `The rate remains constant at 2.0 × 10⁻³ regardless of changes in [A] (doubled, quadrupled). This means rate is <strong>independent of concentration</strong> → <strong>zero-order</strong> reaction. Rate = k (a constant). This is the classic way NEET tests order determination from data.`, ref: "NCERT Class 12 — Determination of Order from Data" },
-        { id: 44, ch: "chem", type: "MCQ", diff: "Medium", q: `Inversion of cane sugar is an example of:`, opts: ["Zero-order reaction", "First-order reaction", "Pseudo first-order reaction", "Second-order reaction"], ans: 2, exp: `C₁₂H₂₂O₁₁ + H₂O → C₆H₁₂O₆ (glucose) + C₆H₁₂O₆ (fructose). This is actually bimolecular, but since <strong>water is in huge excess</strong>, its concentration remains virtually constant, making it a <strong>pseudo first-order reaction</strong>. Both this and ester hydrolysis are NCERT examples of pseudo first-order.`, ref: "NCERT Class 12 — Pseudo First Order Reactions" },
-        { id: 45, ch: "chem", type: "MCQ", diff: "Hard", q: `According to collision theory, the rate constant is given by k = PZ<sub>AB</sub>e<sup>−Eₐ/RT</sup>. The factor 'P' represents:`, opts: ["Probability of collision", "Partial pressure of reactants", "Steric factor (orientation probability)", "Total kinetic energy"], ans: 2, exp: `'P' is the <strong>steric factor (orientation factor)</strong> — it accounts for the fact that not all collisions with sufficient energy lead to reaction; molecules must also have the correct orientation. Z<sub>AB</sub> is the collision frequency. P is always ≤ 1.`, ref: "NCERT Class 12 — Collision Theory" },
-        { id: 46, ch: "chem", type: "MCQ", diff: "Medium", q: `The threshold energy for a reaction equals:`, opts: ["Activation energy alone", "Average kinetic energy of reactant molecules", "Activation energy + average energy of reactant molecules", "Activation energy − average energy of reactant molecules"], ans: 2, exp: `Threshold energy = <strong>Eₐ + average energy of reactants</strong>. Only those molecules whose kinetic energy ≥ threshold energy can undergo effective collisions. The activation energy itself is the extra energy needed above the average.`, ref: "NCERT Class 12 — Collision Theory & Activation Energy" },
-        { id: 47, ch: "chem", type: "Numerical", diff: "Hard", q: `For a zero-order reaction with k = 0.025 mol L⁻¹ min⁻¹ and initial concentration = 0.5 mol L⁻¹, the time at which the reaction will be complete is:`, opts: ["10 min", "20 min", "25 min", "50 min"], ans: 1, exp: `For zero order: [R] = [R]₀ − kt. Reaction complete when [R] = 0:<br>0 = 0.5 − 0.025 × t<br>t = 0.5/0.025 = <strong>20 min</strong>. Note: zero-order reactions go to completion in finite time = [R]₀/k, unlike first-order which theoretically never reach 100%.`, ref: "NCERT Class 12 — Zero Order Integrated Equation" },
-        { id: 48, ch: "chem", type: "Match", diff: "Hard", q: `Match the following reaction orders with their half-life dependence on initial concentration [R]₀:<br><table><tr><th>Order</th><th>Half-life ∝</th></tr><tr><td>A. Zero order</td><td>1. Independent of [R]₀</td></tr><tr><td>B. First order</td><td>2. [R]₀</td></tr><tr><td>C. Second order</td><td>3. 1/[R]₀</td></tr></table>`, opts: ["A-2, B-1, C-3", "A-1, B-2, C-3", "A-3, B-1, C-2", "A-2, B-3, C-1"], ans: 0, exp: `Zero order: t₁/₂ = [R]₀/2k → <strong>∝ [R]₀ (A-2)</strong>. First order: t₁/₂ = 0.693/k → <strong>independent (B-1)</strong>. Second order: t₁/₂ = 1/k[R]₀ → <strong>∝ 1/[R]₀ (C-3)</strong>. The general formula: t₁/₂ ∝ [R]₀^(1−n).`, ref: "NCERT Class 12 — Half-life Relationships" },
-        { id: 49, ch: "chem", type: "Case-based", diff: "Hard", q: `<strong>Case:</strong> Two first-order reactions A→P and B→Q have rate constants k₁ = 0.02 s⁻¹ and k₂ = 0.06 s⁻¹ at 300 K. Both have the same frequency factor A.<br><br>Which reaction has the higher activation energy?`, opts: ["Reaction A (A→P) has higher Eₐ", "Reaction B (B→Q) has higher Eₐ", "Both have equal Eₐ", "Cannot be determined"], ans: 0, exp: `Since k = Ae<sup>−Eₐ/RT</sup> and A is the same for both, a <strong>smaller k means a larger Eₐ</strong> (more negative exponent). k₁ (0.02) < k₂ (0.06), so <strong>Reaction A has higher activation energy</strong>. Higher Eₐ → slower reaction → smaller rate constant at the same temperature.`, ref: "NCERT Class 12 — Arrhenius Equation Application" },
-        { id: 50, ch: "chem", type: "Assertion-Reason", diff: "Hard", q: `<strong>Assertion (A):</strong> A catalyst does not alter the equilibrium constant of a reaction.<br><strong>Reason (R):</strong> A catalyst increases the rate of both the forward and the reverse reactions equally by lowering the activation energy for both.<br><br>Choose the correct option:`, opts: ["Both A and R are true, and R is the correct explanation of A", "Both A and R are true, but R is not the correct explanation of A", "A is true but R is false", "A is false"], ans: 0, exp: `A catalyst lowers Eₐ for <strong>both forward and reverse reactions equally</strong>, so the rates of both increase by the same factor. Since Keq = kforward/kreverse, and both increase equally, Keq remains unchanged. Both A and R are true, and R explains A correctly. A very common NEET misconception is that catalysts shift equilibrium.`, ref: "NCERT Class 12 — Catalyst & Equilibrium" },
+        {
+          id: 26,
+          ch: "chem",
+          type: "MCQ",
+          diff: "Medium",
+          q: `For a reaction 2A → Products, the rate of the reaction is expressed as:`,
+          opts: [
+            "Rate = +d[A]/dt",
+            "Rate = −d[A]/dt",
+            "Rate = −½ d[A]/dt",
+            "Rate = +2 d[A]/dt",
+          ],
+          ans: 2,
+          exp: `For 2A → Products, Rate = <strong>−(1/2) d[A]/dt</strong>. The negative sign accounts for decreasing concentration, and division by the stoichiometric coefficient (2) gives the general rate. Students commonly forget to divide by the coefficient.`,
+          ref: "NCERT Class 12 — Rate of a Chemical Reaction",
+        },
+        {
+          id: 27,
+          ch: "chem",
+          type: "Multi-statement",
+          diff: "Hard",
+          q: `Consider the following statements:<br>(i) Order of a reaction can be zero, fractional or negative<br>(ii) Molecularity of a reaction can be zero<br>(iii) Order is determined experimentally<br>(iv) Molecularity is always a positive integer<br>(v) For a complex reaction, order equals molecularity<br><br>Which statements are correct?`,
+          opts: [
+            "(i), (iii) and (iv) only",
+            "(i), (ii), (iii) and (iv)",
+            "(i), (iii), (iv) and (v)",
+            "All of the above",
+          ],
+          ans: 0,
+          exp: `(ii) is wrong — molecularity can <strong>never be zero</strong> (it represents the number of species in an elementary step, minimum 1). (v) is wrong — for <strong>complex (multi-step) reactions</strong>, order ≠ molecularity (they may coincide only for elementary reactions). Statements (i), (iii), and (iv) are correct per NCERT.`,
+          ref: "NCERT Class 12 — Order vs Molecularity",
+        },
+        {
+          id: 28,
+          ch: "chem",
+          type: "Numerical",
+          diff: "Hard",
+          q: `The rate constant of a first-order reaction is 0.0693 min⁻¹. How much time (in minutes) will it take for the initial concentration to reduce to <em>25%</em> of its original value?`,
+          opts: ["10 min", "20 min", "30 min", "40 min"],
+          ans: 1,
+          exp: `When concentration reduces to 25%, it means 75% has reacted = <strong>2 half-lives</strong> (50% → 25%). t₁/₂ = 0.693/k = 0.693/0.0693 = <strong>10 min</strong>. So time for 75% = 2 × 10 = <strong>20 min</strong>.`,
+          ref: "NCERT Class 12 — Half-life of First Order Reaction",
+        },
+        {
+          id: 29,
+          ch: "chem",
+          type: "MCQ",
+          diff: "Medium",
+          q: `The unit of rate constant for a <em>zero-order</em> reaction is:`,
+          opts: ["s⁻¹", "mol L⁻¹ s⁻¹", "L mol⁻¹ s⁻¹", "L² mol⁻² s⁻¹"],
+          ans: 1,
+          exp: `Using the formula: unit of k = (mol L⁻¹)^(1−n) × s⁻¹. For zero order (n=0): k = <strong>mol L⁻¹ s⁻¹</strong>. For first order: s⁻¹. For second order: L mol⁻¹ s⁻¹. NEET often gives units and asks to identify the order.`,
+          ref: "NCERT Class 12 — Rate Law & Rate Constant",
+        },
+        {
+          id: 30,
+          ch: "chem",
+          type: "Assertion-Reason",
+          diff: "Hard",
+          q: `<strong>Assertion (A):</strong> The hydrolysis of ethyl acetate in the presence of excess water follows pseudo first-order kinetics.<br><strong>Reason (R):</strong> In the presence of a large excess of water, the concentration of water does not change appreciably during the reaction.<br><br>Choose the correct option:`,
+          opts: [
+            "Both A and R are true, and R is the correct explanation of A",
+            "Both A and R are true, but R is not the correct explanation of A",
+            "A is true but R is false",
+            "A is false",
+          ],
+          ans: 0,
+          exp: `The hydrolysis CH₃COOC₂H₅ + H₂O → CH₃COOH + C₂H₅OH is bimolecular but behaves as first-order because <strong>water is in large excess</strong> and its concentration remains effectively constant. The effective rate = k'[ester] where k' = k[H₂O]. Both A and R are true, and R correctly explains A.`,
+          ref: "NCERT Class 12 — Pseudo First Order Reactions",
+        },
+        {
+          id: 31,
+          ch: "chem",
+          type: "MCQ",
+          diff: "Medium",
+          q: `For a first-order reaction, which plot gives a straight line?`,
+          opts: ["[R] vs t", "log [R] vs t", "1/[R] vs t", "[R]² vs t"],
+          ans: 1,
+          exp: `The integrated first-order equation: log[R] = log[R]₀ − (k/2.303)t. So <strong>log[R] vs t</strong> gives a straight line with slope = −k/2.303. A plot of [R] vs t gives an exponential decay curve (NOT a straight line — a common trap). 1/[R] vs t is linear for second-order reactions.`,
+          ref: "NCERT Class 12 — Integrated Rate Equations",
+        },
+        {
+          id: 32,
+          ch: "chem",
+          type: "MCQ",
+          diff: "Hard",
+          q: `The half-life of a zero-order reaction with initial concentration [R]₀ and rate constant k is:`,
+          opts: ["0.693/k", "[R]₀ / 2k", "1/(k[R]₀)", "2k/[R]₀"],
+          ans: 1,
+          exp: `For zero-order: [R] = [R]₀ − kt. At half-life, [R] = [R]₀/2. So [R]₀/2 = [R]₀ − kt₁/₂ → <strong>t₁/₂ = [R]₀/2k</strong>. This means zero-order half-life is <strong>directly proportional to initial concentration</strong>. Contrast this with first-order (0.693/k, independent of [R]₀) and second-order (1/k[R]₀, inversely proportional).`,
+          ref: "NCERT Class 12 — Zero Order Half-life",
+        },
+        {
+          id: 33,
+          ch: "chem",
+          type: "Numerical",
+          diff: "Hard",
+          q: `For a first-order reaction, if 99.9% of the reactant is to be decomposed, the time required is approximately (given: t₁/₂ = 0.693/k):`,
+          opts: [
+            "5 half-lives",
+            "7 half-lives",
+            "10 half-lives",
+            "15 half-lives",
+          ],
+          ans: 2,
+          exp: `Time for 99.9% completion: t = (2.303/k) × log(1000/1) = 2.303 × 3/k = <strong>6.909/k</strong>. Since t₁/₂ = 0.693/k, t = 6.909/0.693 × t₁/₂ ≈ <strong>10 × t₁/₂</strong>. This was tested in NEET 2025.`,
+          ref: "NCERT Class 12 — First Order Kinetics / NEET 2025",
+        },
+        {
+          id: 34,
+          ch: "chem",
+          type: "MCQ",
+          diff: "Medium",
+          q: `A catalyst increases the rate of a reaction by:`,
+          opts: [
+            "Increasing the activation energy",
+            "Decreasing the activation energy by providing an alternative pathway",
+            "Changing the enthalpy of the reaction",
+            "Shifting the equilibrium toward products",
+          ],
+          ans: 1,
+          exp: `A catalyst <strong>lowers the activation energy</strong> by providing an alternative reaction pathway. It does NOT change ΔH (enthalpy), does NOT shift equilibrium, and accelerates both forward and reverse reactions equally. A very common misconception is that catalysts shift equilibrium — they don't.`,
+          ref: "NCERT Class 12 — Arrhenius Equation / Catalyst",
+        },
+        {
+          id: 35,
+          ch: "chem",
+          type: "MCQ",
+          diff: "Medium",
+          q: `The temperature coefficient of a reaction is generally:`,
+          opts: ["1", "2 to 3", "5 to 10", "0.5 to 1"],
+          ans: 1,
+          exp: `The temperature coefficient (ratio of rate constants at T+10°C and T°C) is typically <strong>2 to 3</strong>, meaning the rate roughly doubles or triples for every 10°C rise in temperature. This is a direct NCERT statement.`,
+          ref: "NCERT Class 12 — Temperature Dependence of Rate",
+        },
+        {
+          id: 36,
+          ch: "chem",
+          type: "Numerical",
+          diff: "Hard",
+          q: `The Arrhenius equation is given as: log(k₂/k₁) = (Eₐ/2.303R)(1/T₁ − 1/T₂). If the rate of a reaction quadruples when temperature is raised from 300 K to 330 K, calculate Eₐ. <br>(R = 8.314 J K⁻¹ mol⁻¹, log 4 = 0.602)`,
+          opts: ["38.04 kJ/mol", "55.3 kJ/mol", "76.08 kJ/mol", "19.02 kJ/mol"],
+          ans: 0,
+          exp: `k₂/k₁ = 4 (rate quadruples). log 4 = 0.602.<br>1/T₁ − 1/T₂ = 1/300 − 1/330 = (330−300)/(300×330) = 30/99000 = 1/3300.<br>0.602 = Eₐ/(2.303 × 8.314) × (1/3300)<br>Eₐ = 0.602 × 2.303 × 8.314 × 3300 = <strong>38,038 J/mol ≈ 38.04 kJ/mol</strong>. This exact problem appeared in NEET 2024.`,
+          ref: "NCERT Class 12 — Arrhenius Equation / NEET 2024",
+        },
+        {
+          id: 37,
+          ch: "chem",
+          type: "MCQ",
+          diff: "Medium",
+          q: `In the Arrhenius equation k = Ae<sup>−Eₐ/RT</sup>, the factor 'A' is called:`,
+          opts: [
+            "Activation energy",
+            "Boltzmann constant",
+            "Frequency factor (pre-exponential factor)",
+            "Rate constant",
+          ],
+          ans: 2,
+          exp: `'A' is the <strong>frequency factor</strong> (also called pre-exponential factor or Arrhenius factor). It is related to the frequency of collisions and the probability that molecules are oriented correctly. In the plot of log k vs 1/T, log A is the y-intercept.`,
+          ref: "NCERT Class 12 — Arrhenius Equation",
+        },
+        {
+          id: 38,
+          ch: "chem",
+          type: "MCQ",
+          diff: "Hard",
+          q: `Which of the following is an example of a zero-order reaction?`,
+          opts: [
+            "Decomposition of N₂O₅ in CCl₄",
+            "Decomposition of NH₃ on a hot platinum surface",
+            "Inversion of cane sugar in the presence of acid",
+            "Radioactive decay of ²³⁸U",
+          ],
+          ans: 1,
+          exp: `<strong>Decomposition of NH₃ on a hot platinum surface</strong> is a classic NCERT example of a zero-order reaction (the surface acts as the catalyst and is saturated). N₂O₅ decomposition and radioactive decay are first-order; inversion of cane sugar is pseudo first-order.`,
+          ref: "NCERT Class 12 — Zero Order Reactions",
+        },
+        {
+          id: 39,
+          ch: "chem",
+          type: "Assertion-Reason",
+          diff: "Hard",
+          q: `<strong>Assertion (A):</strong> For an elementary reaction, the order of the reaction is the same as its molecularity.<br><strong>Reason (R):</strong> The rate law for an elementary reaction is derived directly from the stoichiometry of that step.<br><br>Choose the correct option:`,
+          opts: [
+            "Both A and R are true, and R is the correct explanation of A",
+            "Both A and R are true, but R is not the correct explanation of A",
+            "A is true but R is false",
+            "A is false",
+          ],
+          ans: 0,
+          exp: `For <strong>elementary (single-step) reactions</strong>, the rate law can be written directly from the balanced equation — exponents equal stoichiometric coefficients. Hence order = molecularity. This is true ONLY for elementary reactions, not for complex reactions. Both A and R are true, R explains A.`,
+          ref: "NCERT Class 12 — Elementary vs Complex Reactions",
+        },
+        {
+          id: 40,
+          ch: "chem",
+          type: "MCQ",
+          diff: "Medium",
+          q: `The rate constant of a first-order reaction has units of:`,
+          opts: ["mol L⁻¹ s⁻¹", "s⁻¹", "L mol⁻¹ s⁻¹", "mol⁻¹ L s⁻²"],
+          ans: 1,
+          exp: `For first-order (n=1): units = (mol L⁻¹)^(1−1) × s⁻¹ = <strong>s⁻¹</strong> (or min⁻¹). The rate constant for first-order reactions is independent of concentration units, which is unique to this order.`,
+          ref: "NCERT Class 12 — Rate Constant Units",
+        },
+        {
+          id: 41,
+          ch: "chem",
+          type: "Numerical",
+          diff: "Medium",
+          q: `A first-order reaction has a rate constant of 1.386 × 10⁻² min⁻¹. What is its half-life?`,
+          opts: ["100 min", "50 min", "25 min", "75 min"],
+          ans: 1,
+          exp: `t₁/₂ = 0.693/k = 0.693/(1.386 × 10⁻²) = 0.693/0.01386 = <strong>50 min</strong>. For first-order, half-life is independent of the initial concentration.`,
+          ref: "NCERT Class 12 — First Order Half-life",
+        },
+        {
+          id: 42,
+          ch: "chem",
+          type: "MCQ",
+          diff: "Hard",
+          q: `In the plot of log k versus 1/T (Arrhenius plot), the slope of the straight line is equal to:`,
+          opts: ["−Eₐ/R", "−Eₐ/(2.303R)", "+Eₐ/(2.303R)", "−2.303R/Eₐ"],
+          ans: 1,
+          exp: `From log k = log A − Eₐ/(2.303RT), comparing with y = c + mx: slope = <strong>−Eₐ/(2.303R)</strong> and intercept = log A. This is the standard Arrhenius plot. NEET 2024 directly tested this graph interpretation.`,
+          ref: "NCERT Class 12 — Arrhenius Equation Graph",
+        },
+        {
+          id: 43,
+          ch: "chem",
+          type: "Case-based",
+          diff: "Hard",
+          q: `<strong>Case:</strong> In an experiment, the following data was collected for a reaction A → Products:<br><table><tr><th>Exp</th><th>[A] (mol/L)</th><th>Rate (mol L⁻¹ s⁻¹)</th></tr><tr><td>1</td><td>0.1</td><td>2.0 × 10⁻³</td></tr><tr><td>2</td><td>0.2</td><td>2.0 × 10⁻³</td></tr><tr><td>3</td><td>0.4</td><td>2.0 × 10⁻³</td></tr></table><br>What is the order of this reaction?`,
+          opts: ["First order", "Second order", "Zero order", "Third order"],
+          ans: 2,
+          exp: `The rate remains constant at 2.0 × 10⁻³ regardless of changes in [A] (doubled, quadrupled). This means rate is <strong>independent of concentration</strong> → <strong>zero-order</strong> reaction. Rate = k (a constant). This is the classic way NEET tests order determination from data.`,
+          ref: "NCERT Class 12 — Determination of Order from Data",
+        },
+        {
+          id: 44,
+          ch: "chem",
+          type: "MCQ",
+          diff: "Medium",
+          q: `Inversion of cane sugar is an example of:`,
+          opts: [
+            "Zero-order reaction",
+            "First-order reaction",
+            "Pseudo first-order reaction",
+            "Second-order reaction",
+          ],
+          ans: 2,
+          exp: `C₁₂H₂₂O₁₁ + H₂O → C₆H₁₂O₆ (glucose) + C₆H₁₂O₆ (fructose). This is actually bimolecular, but since <strong>water is in huge excess</strong>, its concentration remains virtually constant, making it a <strong>pseudo first-order reaction</strong>. Both this and ester hydrolysis are NCERT examples of pseudo first-order.`,
+          ref: "NCERT Class 12 — Pseudo First Order Reactions",
+        },
+        {
+          id: 45,
+          ch: "chem",
+          type: "MCQ",
+          diff: "Hard",
+          q: `According to collision theory, the rate constant is given by k = PZ<sub>AB</sub>e<sup>−Eₐ/RT</sup>. The factor 'P' represents:`,
+          opts: [
+            "Probability of collision",
+            "Partial pressure of reactants",
+            "Steric factor (orientation probability)",
+            "Total kinetic energy",
+          ],
+          ans: 2,
+          exp: `'P' is the <strong>steric factor (orientation factor)</strong> — it accounts for the fact that not all collisions with sufficient energy lead to reaction; molecules must also have the correct orientation. Z<sub>AB</sub> is the collision frequency. P is always ≤ 1.`,
+          ref: "NCERT Class 12 — Collision Theory",
+        },
+        {
+          id: 46,
+          ch: "chem",
+          type: "MCQ",
+          diff: "Medium",
+          q: `The threshold energy for a reaction equals:`,
+          opts: [
+            "Activation energy alone",
+            "Average kinetic energy of reactant molecules",
+            "Activation energy + average energy of reactant molecules",
+            "Activation energy − average energy of reactant molecules",
+          ],
+          ans: 2,
+          exp: `Threshold energy = <strong>Eₐ + average energy of reactants</strong>. Only those molecules whose kinetic energy ≥ threshold energy can undergo effective collisions. The activation energy itself is the extra energy needed above the average.`,
+          ref: "NCERT Class 12 — Collision Theory & Activation Energy",
+        },
+        {
+          id: 47,
+          ch: "chem",
+          type: "Numerical",
+          diff: "Hard",
+          q: `For a zero-order reaction with k = 0.025 mol L⁻¹ min⁻¹ and initial concentration = 0.5 mol L⁻¹, the time at which the reaction will be complete is:`,
+          opts: ["10 min", "20 min", "25 min", "50 min"],
+          ans: 1,
+          exp: `For zero order: [R] = [R]₀ − kt. Reaction complete when [R] = 0:<br>0 = 0.5 − 0.025 × t<br>t = 0.5/0.025 = <strong>20 min</strong>. Note: zero-order reactions go to completion in finite time = [R]₀/k, unlike first-order which theoretically never reach 100%.`,
+          ref: "NCERT Class 12 — Zero Order Integrated Equation",
+        },
+        {
+          id: 48,
+          ch: "chem",
+          type: "Match",
+          diff: "Hard",
+          q: `Match the following reaction orders with their half-life dependence on initial concentration [R]₀:<br><table><tr><th>Order</th><th>Half-life ∝</th></tr><tr><td>A. Zero order</td><td>1. Independent of [R]₀</td></tr><tr><td>B. First order</td><td>2. [R]₀</td></tr><tr><td>C. Second order</td><td>3. 1/[R]₀</td></tr></table>`,
+          opts: [
+            "A-2, B-1, C-3",
+            "A-1, B-2, C-3",
+            "A-3, B-1, C-2",
+            "A-2, B-3, C-1",
+          ],
+          ans: 0,
+          exp: `Zero order: t₁/₂ = [R]₀/2k → <strong>∝ [R]₀ (A-2)</strong>. First order: t₁/₂ = 0.693/k → <strong>independent (B-1)</strong>. Second order: t₁/₂ = 1/k[R]₀ → <strong>∝ 1/[R]₀ (C-3)</strong>. The general formula: t₁/₂ ∝ [R]₀^(1−n).`,
+          ref: "NCERT Class 12 — Half-life Relationships",
+        },
+        {
+          id: 49,
+          ch: "chem",
+          type: "Case-based",
+          diff: "Hard",
+          q: `<strong>Case:</strong> Two first-order reactions A→P and B→Q have rate constants k₁ = 0.02 s⁻¹ and k₂ = 0.06 s⁻¹ at 300 K. Both have the same frequency factor A.<br><br>Which reaction has the higher activation energy?`,
+          opts: [
+            "Reaction A (A→P) has higher Eₐ",
+            "Reaction B (B→Q) has higher Eₐ",
+            "Both have equal Eₐ",
+            "Cannot be determined",
+          ],
+          ans: 0,
+          exp: `Since k = Ae<sup>−Eₐ/RT</sup> and A is the same for both, a <strong>smaller k means a larger Eₐ</strong> (more negative exponent). k₁ (0.02) < k₂ (0.06), so <strong>Reaction A has higher activation energy</strong>. Higher Eₐ → slower reaction → smaller rate constant at the same temperature.`,
+          ref: "NCERT Class 12 — Arrhenius Equation Application",
+        },
+        {
+          id: 50,
+          ch: "chem",
+          type: "Assertion-Reason",
+          diff: "Hard",
+          q: `<strong>Assertion (A):</strong> A catalyst does not alter the equilibrium constant of a reaction.<br><strong>Reason (R):</strong> A catalyst increases the rate of both the forward and the reverse reactions equally by lowering the activation energy for both.<br><br>Choose the correct option:`,
+          opts: [
+            "Both A and R are true, and R is the correct explanation of A",
+            "Both A and R are true, but R is not the correct explanation of A",
+            "A is true but R is false",
+            "A is false",
+          ],
+          ans: 0,
+          exp: `A catalyst lowers Eₐ for <strong>both forward and reverse reactions equally</strong>, so the rates of both increase by the same factor. Since Keq = kforward/kreverse, and both increase equally, Keq remains unchanged. Both A and R are true, and R explains A correctly. A very common NEET misconception is that catalysts shift equilibrium.`,
+          ref: "NCERT Class 12 — Catalyst & Equilibrium",
+        },
       ];
 
       const TOTAL = Q.length;
@@ -1066,9 +1690,7 @@
           const numClass = q.ch === "chem" ? "chem" : "";
           const tagClass = q.ch === "bio" ? "bio" : "chem";
           const chLabel =
-            q.ch === "bio"
-              ? "🫁 Breathing & Gases"
-              : "⚗️ Chemical Kinetics";
+            q.ch === "bio" ? "🫁 Breathing & Gases" : "⚗️ Chemical Kinetics";
           const diffClass = q.diff === "Hard" ? "hard" : "med";
           html += `<div class="q-card" id="qcard-${i}">
             <div class="q-header">
@@ -1147,17 +1769,14 @@
         reviewFlags[idx] = !reviewFlags[idx];
         const btn = document.getElementById(`mark-${idx}`);
         btn.classList.toggle("marked", reviewFlags[idx]);
-        btn.textContent = reviewFlags[idx]
-          ? "★ Marked"
-          : "☆ Mark for Review";
+        btn.textContent = reviewFlags[idx] ? "★ Marked" : "☆ Mark for Review";
         updatePalette();
       }
 
       function updateProgress() {
         const answered = userAnswers.filter((a) => a !== -1).length;
-        document.getElementById(
-          "qCounter",
-        ).textContent = `Q ${currentQ + 1} / ${TOTAL}`;
+        document.getElementById("qCounter").textContent =
+          `Q ${currentQ + 1} / ${TOTAL}`;
         document.getElementById("progressFill").style.width =
           (answered / TOTAL) * 100 + "%";
       }
@@ -1182,9 +1801,7 @@
       }
 
       function togglePalette() {
-        document
-          .getElementById("palettePanel")
-          .classList.toggle("open");
+        document.getElementById("palettePanel").classList.toggle("open");
       }
 
       function startTimer() {
@@ -1192,9 +1809,7 @@
           timerSec++;
           const m = String(Math.floor(timerSec / 60)).padStart(2, "0");
           const s = String(timerSec % 60).padStart(2, "0");
-          document.getElementById(
-            "progressTimer",
-          ).textContent = `${m}:${s}`;
+          document.getElementById("progressTimer").textContent = `${m}:${s}`;
         }, 1000);
       }
 
@@ -1215,10 +1830,12 @@
 
       function saveAttempt(data) {
         try {
-          const results = JSON.parse(localStorage.getItem('papResults') || '[]');
+          const results = JSON.parse(
+            localStorage.getItem("papResults") || "[]",
+          );
           results.unshift(data);
-          localStorage.setItem('papResults', JSON.stringify(results));
-        } catch(e) {}
+          localStorage.setItem("papResults", JSON.stringify(results));
+        } catch (e) {}
       }
 
       function submitQuiz() {
@@ -1273,9 +1890,7 @@
                 : "Needs Revision";
 
         const timeStr = document.getElementById("progressTimer").textContent;
-        const bioPct = bioTotal
-          ? Math.round((bioCorrect / bioTotal) * 100)
-          : 0;
+        const bioPct = bioTotal ? Math.round((bioCorrect / bioTotal) * 100) : 0;
         const chemPct = chemTotal
           ? Math.round((chemCorrect / chemTotal) * 100)
           : 0;
@@ -1283,17 +1898,19 @@
         if (!window._isReplay) {
           saveAttempt({
             id: Date.now(),
-            paperFile: '15AP2.html',
-            paperName: 'Breathing & Gases + Chemical Kinetics',
-            paperTag: 'Standard',
-            correct, wrong, skipped,
+            paperFile: "15AP2.html",
+            paperName: "Breathing & Gases + Chemical Kinetics",
+            paperTag: "Standard",
+            correct,
+            wrong,
+            skipped,
             totalQuestions: TOTAL,
             neetScore,
             maxScore: TOTAL * 4,
             percentage: pct,
             timeTaken: timeStr,
             timerSeconds: timerSec,
-            userAnswers: [...userAnswers]
+            userAnswers: [...userAnswers],
           });
         }
 
@@ -1362,8 +1979,7 @@
         renderReviewCards("all");
 
         setTimeout(() => {
-          document.getElementById("scoreRing").style.strokeDashoffset =
-            offset;
+          document.getElementById("scoreRing").style.strokeDashoffset = offset;
           document.getElementById("bioBar").style.width = bioPct + "%";
           document.getElementById("chemBar").style.width = chemPct + "%";
         }, 100);
@@ -1401,8 +2017,7 @@
           }
 
           const tagClass = q.ch === "bio" ? "bio" : "chem";
-          const chLabel =
-            q.ch === "bio" ? "🫁 Biology" : "⚗️ Chemistry";
+          const chLabel = q.ch === "bio" ? "🫁 Biology" : "⚗️ Chemistry";
           const numClass = q.ch === "chem" ? "chem" : "";
 
           html += `<div class="review-card ${cardClass}">
@@ -1464,10 +2079,10 @@
 
       (function loadSavedAttempt() {
         const params = new URLSearchParams(window.location.search);
-        const attemptId = params.get('attempt');
+        const attemptId = params.get("attempt");
         if (!attemptId) return;
-        const saved = JSON.parse(localStorage.getItem('papResults') || '[]');
-        const attempt = saved.find(r => r.id === Number(attemptId));
+        const saved = JSON.parse(localStorage.getItem("papResults") || "[]");
+        const attempt = saved.find((r) => r.id === Number(attemptId));
         if (!attempt) return;
         window._isReplay = true;
         userAnswers = attempt.userAnswers;

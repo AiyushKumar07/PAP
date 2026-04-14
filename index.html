@@ -365,7 +365,7 @@
         <span class="month">Apr</span>
       </div>
       <div class="date-title">15 April 2026</div>
-      <div class="date-count">2 papers</div>
+      <div class="date-count">3 papers</div>
     </div>
     <div class="date-line"></div>
     <div class="paper-grid">
@@ -385,6 +385,15 @@
           <div class="paper-sub">Standard Practice</div>
         </div>
         <span class="paper-tag tag-standard">Standard</span>
+        <span class="paper-arrow">&#8250;</span>
+      </a>
+      <a href="15AP3.html" class="paper-card">
+        <div class="paper-icon">P3</div>
+        <div class="paper-info">
+          <div class="paper-label">Breathing &amp; Gases + Chemical Kinetics</div>
+          <div class="paper-sub">Ultra Hard — Confidence Crusher</div>
+        </div>
+        <span class="paper-tag tag-ultra">Ultra Hard</span>
         <span class="paper-arrow">&#8250;</span>
       </a>
     </div>
@@ -469,7 +478,8 @@ function renderAttempts() {
     const tagColors = {
       'Standard': 'background:rgba(108,92,231,.15);color:#6c5ce7;',
       'Advanced': 'background:rgba(245,158,11,.15);color:#f59e0b;',
-      'Ultra': 'background:rgba(244,114,182,.15);color:#f472b6;'
+      'Ultra': 'background:rgba(244,114,182,.15);color:#f472b6;',
+      'Ultra Hard': 'background:rgba(239,68,68,.15);color:#ef4444;'
     };
     const tagStyle = tagColors[r.paperTag] || tagColors['Standard'];
 
