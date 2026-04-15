@@ -437,6 +437,16 @@
         background: rgba(245, 158, 11, 0.2);
         border-color: var(--amber);
       }
+      .clear-response {
+        font-size: 13px;
+        color: var(--red);
+        background: rgba(239, 68, 68, 0.08);
+        border-color: rgba(239, 68, 68, 0.25);
+      }
+      .clear-response:hover {
+        background: rgba(239, 68, 68, 0.15);
+        border-color: var(--red);
+      }
 
       /* PALETTE */
       .palette-toggle {
@@ -1719,6 +1729,7 @@
               <button class="nav-btn primary" onclick="nextQuestion()" id="next-btn-${i}">
                 ${i === TOTAL - 1 ? "Finish →" : "Next →"}
               </button>
+              <button class="nav-btn clear-response" onclick="clearResponse(${i})">✕ Clear</button>
               <button class="nav-btn mark-review${reviewFlags[i] ? " marked" : ""}" id="mark-${i}" onclick="toggleReview(${i})">
                 ${reviewFlags[i] ? "★ Marked" : "☆ Mark for Review"}
               </button>
@@ -1749,6 +1760,17 @@
           .getElementById(`opt-${qIdx}-${optIdx}`)
           .classList.add("selected");
         userAnswers[qIdx] = optIdx;
+        updatePalette();
+        updateProgress();
+      }
+
+      function clearResponse(qIdx) {
+        if (submitted) return;
+        userAnswers[qIdx] = -1;
+        for (let i = 0; i < 4; i++) {
+          const el = document.getElementById(`opt-${qIdx}-${i}`);
+          if (el) el.classList.remove("selected");
+        }
         updatePalette();
         updateProgress();
       }

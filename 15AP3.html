@@ -437,6 +437,16 @@
         background: rgba(245, 158, 11, 0.2);
         border-color: var(--amber);
       }
+      .clear-response {
+        font-size: 13px;
+        color: var(--red);
+        background: rgba(239, 68, 68, 0.08);
+        border-color: rgba(239, 68, 68, 0.25);
+      }
+      .clear-response:hover {
+        background: rgba(239, 68, 68, 0.15);
+        border-color: var(--red);
+      }
 
       /* PALETTE */
       .palette-toggle {
@@ -875,8 +885,9 @@
       <div class="hero-badge">ULTRA HARD · NEET 2026</div>
       <h1>Breathing & Gases + <span>Chemical Kinetics</span></h1>
       <p>
-        50 killer questions designed to break your confidence and rebuild it stronger.
-        Line-by-line NCERT traps, brutal numericals, and concept-twisting problems.
+        50 killer questions designed to break your confidence and rebuild it
+        stronger. Line-by-line NCERT traps, brutal numericals, and
+        concept-twisting problems.
       </p>
       <div class="hero-tags">
         <span class="tag-bio">25 &mdash; Breathing & Gas Exchange</span>
@@ -989,12 +1000,7 @@
           type: "MCQ",
           diff: "Hard",
           q: `NCERT states about oxygen transport: "Every 100 ml of <em>deoxygenated</em> blood delivers approximately 5 ml of CO₂ to the alveoli." Simultaneously, the amount of O₂ that can be delivered to tissues from 100 mL of oxygenated blood is approximately:`,
-          opts: [
-            "20 mL",
-            "14.4 mL",
-            "5 mL",
-            "4 mL",
-          ],
+          opts: ["20 mL", "14.4 mL", "5 mL", "4 mL"],
           ans: 2,
           exp: `NCERT clearly states: <strong>"Every 100 mL of oxygenated blood can deliver around 5 mL of O₂ to the tissues."</strong> This is NOT the total carrying capacity (which is ~20 mL per 100 mL blood). The 5 mL represents the actual O₂ <em>unloaded</em> per pass (difference between ~97% saturation at lungs and ~75% at tissues = ~25% of 20 mL = 5 mL). The trap is confusing carrying capacity with actual delivery.`,
           ref: "NCERT Class 11 — Transport of Oxygen",
@@ -1101,12 +1107,7 @@
           type: "MCQ",
           diff: "Hard",
           q: `According to NCERT, the volume of air remaining in the lungs even after a forcible expiration is called Residual Volume. Its approximate value is:`,
-          opts: [
-            "500 mL",
-            "1000-1100 mL",
-            "1100-1200 mL",
-            "2500 mL",
-          ],
+          opts: ["500 mL", "1000-1100 mL", "1100-1200 mL", "2500 mL"],
           ans: 2,
           exp: `NCERT states RV ≈ <strong>1100-1200 mL</strong>. This is one of the most commonly confused values. TV = 500 mL, ERV = 1000-1100 mL, IRV = 2500-3000 mL. Students often swap ERV and RV values. Remember: RV > ERV slightly (1100-1200 vs 1000-1100).`,
           ref: "NCERT Class 11 — Respiratory Volumes Table",
@@ -1343,12 +1344,7 @@
           type: "Numerical",
           diff: "Hard",
           q: `For a first-order reaction, the rate constant is 6.93 × 10⁻³ min⁻¹. The time required for 75% completion of the reaction is: <br><span class="formula">t = (2.303/k) × log(a/(a−x))</span>`,
-          opts: [
-            "100 min",
-            "200 min",
-            "300 min",
-            "400 min",
-          ],
+          opts: ["100 min", "200 min", "300 min", "400 min"],
           ans: 1,
           exp: `For 75% completion: a−x = 25% of a, so a/(a−x) = 100/25 = 4.<br>t = (2.303 / 6.93 × 10⁻³) × log 4 = (2.303 / 6.93 × 10⁻³) × 0.6021<br>= 332.37 × 0.6021 = <strong>200.1 min ≈ 200 min</strong>.<br>Shortcut: t₇₅% = 2 × t₅₀% = 2 × (0.693/k) = 2 × (0.693/6.93×10⁻³) = 2 × 100 = 200 min.`,
           ref: "NCERT Class 12 — First-Order Kinetics / Integrated Rate Law",
@@ -1359,12 +1355,7 @@
           type: "Numerical",
           diff: "Hard",
           q: `The half-life of a first-order reaction is 30 minutes. What fraction of the reactant will remain after 90 minutes?`,
-          opts: [
-            "1/4",
-            "1/8",
-            "1/16",
-            "1/6",
-          ],
+          opts: ["1/4", "1/8", "1/16", "1/6"],
           ans: 1,
           exp: `90 min = 3 half-lives (90/30 = 3). After n half-lives, fraction remaining = (1/2)ⁿ = <strong>(1/2)³ = 1/8</strong>. So 1/8 of the original reactant remains. Fraction decomposed = 1 − 1/8 = 7/8. This is a fundamental first-order half-life concept.`,
           ref: "NCERT Class 12 — Half-life of First-Order Reactions",
@@ -1375,12 +1366,7 @@
           type: "Numerical",
           diff: "Hard",
           q: `A first-order reaction has a rate constant of 1.15 × 10⁻³ s⁻¹. How long will it take for 5 g of this reactant to reduce to 3 g?<br><span class="formula">t = (2.303/k) × log(a/(a−x))</span>`,
-          opts: [
-            "444 s",
-            "222 s",
-            "888 s",
-            "600 s",
-          ],
+          opts: ["444 s", "222 s", "888 s", "600 s"],
           ans: 0,
           exp: `a = 5 g, a−x = 3 g, so a/(a−x) = 5/3.<br>t = (2.303 / 1.15 × 10⁻³) × log(5/3)<br>= 2002.6 × log(1.667)<br>= 2002.6 × 0.2218<br>= <strong>444.2 s ≈ 444 s</strong>.<br>The trap is using ln instead of log₁₀, or forgetting the 2.303 factor.`,
           ref: "NCERT Class 12 — Integrated Rate Equation, First Order",
@@ -1439,12 +1425,7 @@
           type: "MCQ",
           diff: "Hard",
           q: `The unit of rate constant for a zero-order reaction is:`,
-          opts: [
-            "s⁻¹",
-            "mol L⁻¹ s⁻¹",
-            "L mol⁻¹ s⁻¹",
-            "L² mol⁻² s⁻¹",
-          ],
+          opts: ["s⁻¹", "mol L⁻¹ s⁻¹", "L mol⁻¹ s⁻¹", "L² mol⁻² s⁻¹"],
           ans: 1,
           exp: `For zero-order: Rate = k[A]⁰ = k. Since Rate has units of <strong>mol L⁻¹ s⁻¹</strong>, k must also have units of <strong>mol L⁻¹ s⁻¹</strong>. General formula for units of k: mol^(1-n) L^(n-1) s⁻¹ where n = order. For n=0: mol¹ L⁻¹ s⁻¹. For n=1: s⁻¹. For n=2: L mol⁻¹ s⁻¹. The trap is picking s⁻¹ (first-order units).`,
           ref: "NCERT Class 12 — Units of Rate Constant",
@@ -1519,12 +1500,7 @@
           type: "Numerical",
           diff: "Hard",
           q: `For a reaction A + B → Products, the following data was obtained:<br><table><tr><th>Exp</th><th>[A] (M)</th><th>[B] (M)</th><th>Rate (M s⁻¹)</th></tr><tr><td>1</td><td>0.1</td><td>0.1</td><td>2 × 10⁻³</td></tr><tr><td>2</td><td>0.2</td><td>0.1</td><td>4 × 10⁻³</td></tr><tr><td>3</td><td>0.1</td><td>0.2</td><td>8 × 10⁻³</td></tr></table>The order with respect to A, B, and the overall order are:`,
-          opts: [
-            "1, 2, 3",
-            "2, 1, 3",
-            "1, 1, 2",
-            "2, 2, 4",
-          ],
+          opts: ["1, 2, 3", "2, 1, 3", "1, 1, 2", "2, 2, 4"],
           ans: 0,
           exp: `Comparing Exp 1 & 2: [A] doubled, [B] constant → rate doubled → <strong>order w.r.t. A = 1</strong>.<br>Comparing Exp 1 & 3: [B] doubled, [A] constant → rate quadrupled (×4) → <strong>order w.r.t. B = 2</strong> (since 2² = 4).<br>Overall order = 1 + 2 = <strong>3</strong>.<br>Rate = k[A]¹[B]². k = 2×10⁻³/(0.1×0.01) = 2 M⁻² s⁻¹.`,
           ref: "NCERT Class 12 — Determination of Order from Experimental Data",
@@ -1551,12 +1527,7 @@
           type: "Numerical",
           diff: "Hard",
           q: `For a first-order reaction, the time required for 99.9% completion is approximately how many times the half-life?`,
-          opts: [
-            "5 times",
-            "10 times",
-            "7 times",
-            "15 times",
-          ],
+          opts: ["5 times", "10 times", "7 times", "15 times"],
           ans: 1,
           exp: `For 99.9% completion: a/(a−x) = 1000.<br>t = (2.303/k) × log(1000) = (2.303/k) × 3 = 6.909/k.<br>t₁/₂ = 0.693/k.<br>Ratio = 6.909/0.693 ≈ <strong>≈ 10 times</strong>.<br>This is a classic NCERT-type numerical. Remember the shortcuts: 50% = 1 t₁/₂, 75% = 2 t₁/₂, 87.5% = 3 t₁/₂, 99% ≈ 6.64 t₁/₂, 99.9% ≈ 10 t₁/₂.`,
           ref: "NCERT Class 12 — First-Order Kinetics / Integrated Rate Law",
@@ -1583,12 +1554,7 @@
           type: "Numerical",
           diff: "Hard",
           q: `A reaction that is first order with respect to reactant A has a rate constant of 6 min⁻¹. If we start with [A] = 5 mol L⁻¹, when would [A] reach the value 0.5 mol L⁻¹?<br><span class="formula">t = (2.303/k) × log([A]₀/[A])</span>`,
-          opts: [
-            "0.384 min",
-            "0.15 min",
-            "3.84 min",
-            "0.768 min",
-          ],
+          opts: ["0.384 min", "0.15 min", "3.84 min", "0.768 min"],
           ans: 0,
           exp: `t = (2.303/6) × log(5/0.5) = 0.3838 × log(10) = 0.3838 × 1 = <strong>0.384 min</strong>.<br>Here, [A]₀/[A] = 10, and log(10) = 1, making the calculation clean. The trap is students who use ln(10) = 2.303 instead of log₁₀(10) = 1. With the 2.303/k form, you MUST use log₁₀.`,
           ref: "NCERT Class 12 — First-Order Integrated Rate Law",
@@ -1615,12 +1581,7 @@
           type: "Numerical",
           diff: "Hard",
           q: `The rate of a particular reaction doubles for every 10°C rise in temperature. If the rate constant at 295 K is k, the rate constant at 335 K will be:`,
-          opts: [
-            "4k",
-            "8k",
-            "16k",
-            "32k",
-          ],
+          opts: ["4k", "8k", "16k", "32k"],
           ans: 2,
           exp: `Temperature rise = 335 − 295 = 40°C = four 10°C increments.<br>Rate doubles for each 10°C rise: k × 2⁴ = <strong>16k</strong>.<br>This uses the temperature coefficient concept: if rate doubles per 10°C, then after n increments of 10°C, rate = k × 2ⁿ. For 40°C: 2⁴ = 16.`,
           ref: "NCERT Class 12 — Temperature Dependence of Rate / Temperature Coefficient",
@@ -1793,6 +1754,7 @@
           <div class="nav-btns">
             <button class="nav-btn" onclick="prevQuestion()" ${idx === 0 ? "disabled" : ""}>&#8592; Prev</button>
             <button class="nav-btn primary" onclick="nextQuestion()">${idx === TOTAL - 1 ? "Submit" : "Next &#8594;"}</button>
+            <button class="nav-btn clear-response" onclick="clearResponse(${idx})">✕ Clear</button>
             <button class="nav-btn mark-review ${reviewFlags[idx] ? "marked" : ""}" id="mark-${idx}" onclick="toggleReview(${idx})">
               ${reviewFlags[idx] ? "&#9733; Marked" : "&#9734; Mark for Review"}
             </button>
@@ -1816,6 +1778,16 @@
         updateProgress();
       }
 
+      function clearResponse(qIdx) {
+        if (submitted) return;
+        userAnswers[qIdx] = -1;
+        document
+          .querySelectorAll(`#quizArea .opt-btn`)
+          .forEach((b) => b.classList.remove("selected"));
+        updatePalette();
+        updateProgress();
+      }
+
       function nextQuestion() {
         if (currentQ < TOTAL - 1) {
           showQuestion(currentQ + 1);
@@ -1832,7 +1804,9 @@
         reviewFlags[idx] = !reviewFlags[idx];
         const btn = document.getElementById(`mark-${idx}`);
         btn.classList.toggle("marked", reviewFlags[idx]);
-        btn.textContent = reviewFlags[idx] ? "\u2605 Marked" : "\u2606 Mark for Review";
+        btn.textContent = reviewFlags[idx]
+          ? "\u2605 Marked"
+          : "\u2606 Mark for Review";
         updatePalette();
       }
 

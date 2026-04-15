@@ -437,6 +437,16 @@
         background: rgba(245, 158, 11, 0.2);
         border-color: var(--amber);
       }
+      .clear-response {
+        font-size: 13px;
+        color: var(--red);
+        background: rgba(239, 68, 68, 0.08);
+        border-color: rgba(239, 68, 68, 0.25);
+      }
+      .clear-response:hover {
+        background: rgba(239, 68, 68, 0.15);
+        border-color: var(--red);
+      }
 
       /* PALETTE */
       .palette-toggle {
@@ -875,8 +885,8 @@
       <div class="hero-badge">NEET 2026 · NCERT Aligned</div>
       <h1>17-Chapter Biology <span>Advanced Practice</span></h1>
       <p>
-        50 questions from Reproduction to Ecology — NCERT-aligned traps, PYQ patterns,
-        and high-yield misconception checks across 17 units.
+        50 questions from Reproduction to Ecology — NCERT-aligned traps, PYQ
+        patterns, and high-yield misconception checks across 17 units.
       </p>
       <div class="hero-tags">
         <span class="tag-bio">🧬 50 Questions · All Biology</span>
@@ -1829,6 +1839,7 @@
               <button class="nav-btn primary" onclick="nextQuestion()" id="next-btn-${i}">
                 ${i === TOTAL - 1 ? "Finish →" : "Next →"}
               </button>
+              <button class="nav-btn clear-response" onclick="clearResponse(${i})">✕ Clear</button>
               <button class="nav-btn mark-review${reviewFlags[i] ? " marked" : ""}" id="mark-${i}" onclick="toggleReview(${i})">
                 ${reviewFlags[i] ? "★ Marked" : "☆ Mark for Review"}
               </button>
@@ -1859,6 +1870,17 @@
           .getElementById(`opt-${qIdx}-${optIdx}`)
           .classList.add("selected");
         userAnswers[qIdx] = optIdx;
+        updatePalette();
+        updateProgress();
+      }
+
+      function clearResponse(qIdx) {
+        if (submitted) return;
+        userAnswers[qIdx] = -1;
+        for (let i = 0; i < 4; i++) {
+          const el = document.getElementById(`opt-${qIdx}-${i}`);
+          if (el) el.classList.remove("selected");
+        }
         updatePalette();
         updateProgress();
       }

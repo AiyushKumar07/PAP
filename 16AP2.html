@@ -425,6 +425,16 @@
         background: rgba(245, 158, 11, 0.2);
         border-color: var(--amber);
       }
+      .clear-response {
+        font-size: 13px;
+        color: var(--red);
+        background: rgba(239, 68, 68, 0.08);
+        border-color: rgba(239, 68, 68, 0.25);
+      }
+      .clear-response:hover {
+        background: rgba(239, 68, 68, 0.15);
+        border-color: var(--red);
+      }
 
       .palette-toggle {
         position: fixed;
@@ -861,7 +871,9 @@
       <div class="hero-badge">NEET 2026 · NCERT Aligned</div>
       <h1>Biology <span>Master Assessment</span></h1>
       <p>
-        50 questions across Reproduction, Genetics, Biotechnology, Ecology, Plant & Human Physiology — deep conceptual clarity, empirical recall, and analytical traps.
+        50 questions across Reproduction, Genetics, Biotechnology, Ecology,
+        Plant & Human Physiology — deep conceptual clarity, empirical recall,
+        and analytical traps.
       </p>
       <div class="hero-tags">
         <span class="tag-bio">🧬 50 Questions · All Biology</span>
@@ -943,12 +955,7 @@
           type: "Multi-statement",
           diff: "Hard",
           q: `Read the following statements regarding pollen-pistil interaction and identify the <em>incorrect</em> statement according to NCERT:<br><br>(A) The pistil has the ability to recognize the pollen, whether it is of the right type (compatible) or of the wrong type (incompatible).<br>(B) The rejection of incompatible pollen always occurs exclusively at the stigma surface before pollen germination.<br>(C) It is a dynamic process involving pollen recognition followed by promotion or inhibition of the pollen.<br>(D) In plants shedding pollen at the two-celled stage, the generative cell divides to form two male gametes during the growth of the pollen tube in the stigma.`,
-          opts: [
-            "Statement A",
-            "Statement B",
-            "Statement C",
-            "Statement D",
-          ],
+          opts: ["Statement A", "Statement B", "Statement C", "Statement D"],
           ans: 1,
           exp: `Statement B is incorrect because NCERT clearly states that pollen rejection can occur either at the stigma (preventing germination) <strong>OR in the style</strong> (inhibiting pollen tube growth). It is NOT exclusively at the stigma surface.`,
           ref: "NCERT Ch.2 — Pollen-Pistil Interaction",
@@ -1011,12 +1018,7 @@
           type: "Multi-statement",
           diff: "Hard",
           q: `Consider the menstrual cycle hormones:<br>(I) Both LH and FSH attain a peak level in the middle of the cycle (about the 14th day).<br>(II) The rapid secretion of LH leading to its maximum level induces rupture of the Graafian follicle.<br>(III) In the absence of fertilization, the corpus luteum is maintained by high levels of progesterone secreted by the adrenal cortex.<br><br>How many of the above statements are strictly correct?`,
-          opts: [
-            "None",
-            "One",
-            "Two",
-            "Three",
-          ],
+          opts: ["None", "One", "Two", "Three"],
           ans: 2,
           exp: `Statements I and II are strictly correct. Statement III is <strong>incorrect</strong> because the corpus luteum is maintained by LH initially, and it secretes progesterone itself (not the adrenal cortex). Without fertilization, the corpus luteum degenerates.`,
           ref: "NCERT Ch.3 — Menstrual Cycle",
@@ -1114,12 +1116,7 @@
           type: "MCQ",
           diff: "Hard",
           q: `A male suffering from Haemophilia (an X-linked recessive disorder) marries a phenotypically normal woman whose father was haemophilic. What is the probability that their first child will be a haemophilic son?`,
-          opts: [
-            "0%",
-            "25%",
-            "50%",
-            "100%",
-          ],
+          opts: ["0%", "25%", "50%", "100%"],
           ans: 1,
           exp: `The father is affected (X<sup>h</sup>Y). The mother is normal but her father was haemophilic, making her an obligate carrier (X<sup>H</sup>X<sup>h</sup>). A son inherits the Y chromosome from the father and an X from the mother. The mother has a 50% chance of passing X<sup>h</sup>. Probability of a haemophilic son = <strong>0.5 (son) × 0.5 (affected) = 0.25 or 25%</strong>.`,
           ref: "NCERT Ch.5 — X-Linked Recessive Inheritance",
@@ -1182,12 +1179,7 @@
           type: "MCQ",
           diff: "Medium",
           q: `According to the geological time scale presented in NCERT, approximately how many million years ago (mya) did the dinosaurs (such as <em>Tyrannosaurus rex</em>) suddenly disappear from the earth?`,
-          opts: [
-            "200 mya",
-            "65 mya",
-            "350 mya",
-            "15 mya",
-          ],
+          opts: ["200 mya", "65 mya", "350 mya", "15 mya"],
           ans: 1,
           exp: `The mass extinction event that wiped out the dinosaurs occurred suddenly approximately <strong>65 million years ago</strong> at the end of the Cretaceous period (K-Pg boundary).`,
           ref: "NCERT Ch.7 — Geological Time Scale",
@@ -1440,12 +1432,7 @@
           type: "MCQ",
           diff: "Hard",
           q: `The Mediterranean orchid <em>Ophrys</em> employs "sexual deceit" to attract its specific pollinator bee. One petal bears an uncanny resemblance to the female bee in size, color, and markings. This highly specific co-evolutionary interaction is best categorized as:`,
-          opts: [
-            "Commensalism",
-            "Mutualism",
-            "Parasitism",
-            "Amensalism",
-          ],
+          opts: ["Commensalism", "Mutualism", "Parasitism", "Amensalism"],
           ans: 1,
           exp: `The relationship between the Mediterranean orchid <em>Ophrys</em> and its pollinator bee is an advanced form of <strong>mutualistic co-evolution</strong>. The plant achieves pollination, while the bee acts on evolved mating cues.`,
           ref: "NCERT Ch.13 — Co-evolution & Population Interactions",
@@ -1525,12 +1512,7 @@
           type: "MCQ",
           diff: "Medium",
           q: `Which specific step of the decomposition process involves water-soluble inorganic nutrients seeping down into the lower soil horizons, where they eventually get precipitated as unavailable salts?`,
-          opts: [
-            "Fragmentation",
-            "Leaching",
-            "Catabolism",
-            "Humification",
-          ],
+          opts: ["Fragmentation", "Leaching", "Catabolism", "Humification"],
           ans: 1,
           exp: `<strong>Leaching</strong> is the specific decomposition step where water-soluble inorganic nutrients seep down into the soil horizons and precipitate as unavailable salts.`,
           ref: "NCERT Ch.14 — Decomposition Steps (Leaching)",
@@ -1559,12 +1541,7 @@
           type: "MCQ",
           diff: "Hard",
           q: `According to the species-area relationship equations proposed by Alexander von Humboldt, the Z value (slope of the regression line) for very large areas, such as entire continents, typically lies in the range of:`,
-          opts: [
-            "0.1 to 0.2",
-            "0.6 to 1.2",
-            "0.01 to 0.1",
-            "1.5 to 2.5",
-          ],
+          opts: ["0.1 to 0.2", "0.6 to 1.2", "0.01 to 0.1", "1.5 to 2.5"],
           ans: 1,
           exp: `For very large taxonomic regions like entire continents, the slope (Z value) is much steeper, typically ranging from <strong>0.6 to 1.2</strong>. For smaller/local areas, Z ranges from 0.1 to 0.2. Students frequently swap these ranges.`,
           ref: "NCERT Ch.15 — Species-Area Relationship",
@@ -1594,12 +1571,7 @@
           type: "MCQ",
           diff: "Medium",
           q: `When analyzing photosynthetic pigments through paper chromatography, which specific color band corresponds exclusively to Chlorophyll <em>a</em>?`,
-          opts: [
-            "Yellowish-green",
-            "Yellow",
-            "Orange",
-            "Bright or Dark green",
-          ],
+          opts: ["Yellowish-green", "Yellow", "Orange", "Bright or Dark green"],
           ans: 3,
           exp: `Chlorophyll <em>a</em> consistently manifests as a <strong>bright or dark green</strong> band on the chromatogram. Chlorophyll <em>b</em> is yellowish-green, xanthophylls are yellow, and carotenoids are orange-yellow.`,
           ref: "NCERT Ch.13 — Pigment Chromatography",
@@ -1829,6 +1801,7 @@
               <button class="nav-btn primary" onclick="nextQuestion()" id="next-btn-${i}">
                 ${i === TOTAL - 1 ? "Finish →" : "Next →"}
               </button>
+              <button class="nav-btn clear-response" onclick="clearResponse(${i})">✕ Clear</button>
               <button class="nav-btn mark-review${reviewFlags[i] ? " marked" : ""}" id="mark-${i}" onclick="toggleReview(${i})">
                 ${reviewFlags[i] ? "★ Marked" : "☆ Mark for Review"}
               </button>
@@ -1859,6 +1832,17 @@
           .getElementById(`opt-${qIdx}-${optIdx}`)
           .classList.add("selected");
         userAnswers[qIdx] = optIdx;
+        updatePalette();
+        updateProgress();
+      }
+
+      function clearResponse(qIdx) {
+        if (submitted) return;
+        userAnswers[qIdx] = -1;
+        for (let i = 0; i < 4; i++) {
+          const el = document.getElementById(`opt-${qIdx}-${i}`);
+          if (el) el.classList.remove("selected");
+        }
         updatePalette();
         updateProgress();
       }
