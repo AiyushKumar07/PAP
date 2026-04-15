@@ -407,6 +407,16 @@
       .nav-btn.review-mark:hover {
         background: rgba(245, 158, 11, 0.1);
       }
+      .nav-btn.clear-response {
+        font-size: 13px;
+        color: var(--red);
+        background: rgba(239, 68, 68, 0.08);
+        border-color: rgba(239, 68, 68, 0.25);
+      }
+      .nav-btn.clear-response:hover {
+        background: rgba(239, 68, 68, 0.15);
+        border-color: var(--red);
+      }
 
       /* QUESTION PALETTE */
       .palette-toggle {
@@ -848,9 +858,7 @@
     <!-- PROGRESS BAR -->
     <div class="progress-wrap" id="progressWrap">
       <div class="progress-inner">
-        <div class="progress-text">
-          <b id="qCounter">1</b> / 50
-        </div>
+        <div class="progress-text"><b id="qCounter">1</b> / 50</div>
         <div class="progress-bar">
           <div class="progress-fill" id="progressFill"></div>
         </div>
@@ -871,10 +879,7 @@
       <div class="palette-grid" id="paletteGrid"></div>
       <div class="palette-legend">
         <span
-          ><span
-            class="dot-sample"
-            style="background: var(--surface2)"
-          ></span>
+          ><span class="dot-sample" style="background: var(--surface2)"></span>
           Unanswered</span
         >
         <span
@@ -884,7 +889,10 @@
         <span
           ><span
             class="dot-sample"
-            style="background: rgba(245,158,11,0.2); border: 1px solid var(--amber)"
+            style="
+              background: rgba(245, 158, 11, 0.2);
+              border: 1px solid var(--amber);
+            "
           ></span>
           Review</span
         >
@@ -1025,12 +1033,7 @@
         },
         {
           q: 'The "bakanae" (foolish seedling) disease of rice is caused by excessive levels of which plant growth regulator?',
-          opts: [
-            "Abscisic acid",
-            "Gibberellins (GA₃)",
-            "Cytokinins",
-            "Auxin",
-          ],
+          opts: ["Abscisic acid", "Gibberellins (GA₃)", "Cytokinins", "Auxin"],
           ans: 1,
           exp: "The fungus Gibberella fujikuroi causes bakanae by producing gibberellic acid (GA₃).",
         },
@@ -1444,9 +1447,7 @@
         return i < 25 ? "plant" : "blood";
       }
       function getChapterLabel(i) {
-        return i < 25
-          ? "🌱 Plant Growth"
-          : "🩸 Body Fluids";
+        return i < 25 ? "🌱 Plant Growth" : "🩸 Body Fluids";
       }
 
       function beginTest() {
@@ -1497,6 +1498,7 @@
 
         html += `<div class="q-nav">`;
         html += `<button class="nav-btn prev" onclick="navigate(-1)" ${current === 0 ? "disabled" : ""}>← Prev</button>`;
+        html += `<button class="nav-btn clear-response" onclick="clearCurrentResponse()">✕ Clear</button>`;
         html += `<button class="nav-btn review-mark${reviewFlags[current] ? " marked" : ""}" onclick="toggleReview()">`;
         html += reviewFlags[current] ? "★ Marked" : "☆ Mark for Review";
         html += `</button>`;
@@ -1521,6 +1523,12 @@
       function selectOpt(j) {
         if (submitted) return;
         userAnswers[current] = j;
+        renderQuestion();
+      }
+
+      function clearCurrentResponse() {
+        if (submitted) return;
+        userAnswers[current] = -1;
         renderQuestion();
       }
 
@@ -1565,7 +1573,7 @@
           if (unanswered > 0) {
             if (
               !confirm(
-                `You have ${unanswered} unanswered question${unanswered > 1 ? "s" : ""}. Submit anyway?`
+                `You have ${unanswered} unanswered question${unanswered > 1 ? "s" : ""}. Submit anyway?`,
               )
             )
               return;
@@ -1576,10 +1584,12 @@
 
       function saveAttempt(data) {
         try {
-          const results = JSON.parse(localStorage.getItem('papResults') || '[]');
+          const results = JSON.parse(
+            localStorage.getItem("papResults") || "[]",
+          );
           results.unshift(data);
-          localStorage.setItem('papResults', JSON.stringify(results));
-        } catch(e) {}
+          localStorage.setItem("papResults", JSON.stringify(results));
+        } catch (e) {}
       }
 
       function submitQuiz() {
@@ -1637,17 +1647,19 @@
         if (!window._isReplay) {
           saveAttempt({
             id: Date.now(),
-            paperFile: 'PAP1.html',
-            paperName: 'Plant Growth & Body Fluids',
-            paperTag: 'Standard',
-            correct, wrong, skipped,
+            paperFile: "PAP1.html",
+            paperName: "Plant Growth & Body Fluids",
+            paperTag: "Standard",
+            correct,
+            wrong,
+            skipped,
             totalQuestions: TOTAL,
             neetScore,
             maxScore: TOTAL * 4,
             percentage: pct,
             timeTaken: timeStr,
             timerSeconds: timerSec,
-            userAnswers: [...userAnswers]
+            userAnswers: [...userAnswers],
           });
         }
 
@@ -1803,10 +1815,10 @@
 
       (function loadSavedAttempt() {
         const params = new URLSearchParams(window.location.search);
-        const attemptId = params.get('attempt');
+        const attemptId = params.get("attempt");
         if (!attemptId) return;
-        const saved = JSON.parse(localStorage.getItem('papResults') || '[]');
-        const attempt = saved.find(r => r.id === Number(attemptId));
+        const saved = JSON.parse(localStorage.getItem("papResults") || "[]");
+        const attempt = saved.find((r) => r.id === Number(attemptId));
         if (!attempt) return;
         window._isReplay = true;
         userAnswers = attempt.userAnswers;

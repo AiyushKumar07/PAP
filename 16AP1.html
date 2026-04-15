@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NEET 2026 — Breathing & Gases + Chemical Kinetics</title>
+    <title>NEET 2026 — 17-Chapter Biology (50Q)</title>
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
@@ -883,14 +883,14 @@
   <body>
     <div class="hero" id="heroSection">
       <div class="hero-badge">NEET 2026 · NCERT Aligned</div>
-      <h1>Breathing & Gases + <span>Chemical Kinetics</span></h1>
+      <h1>17-Chapter Biology <span>Advanced Practice</span></h1>
       <p>
-        50 ultra-detailed, concept-driven questions. Assertion-Reason,
-        Case-based, Match-the-following, Numericals & more.
+        50 questions from Reproduction to Ecology — NCERT-aligned traps, PYQ
+        patterns, and high-yield misconception checks across 17 units.
       </p>
       <div class="hero-tags">
-        <span class="tag-bio">🫁 25 — Breathing & Gas Exchange</span>
-        <span class="tag-chem">⚗️ 25 — Chemical Kinetics</span>
+        <span class="tag-bio">🧬 50 Questions · All Biology</span>
+        <span class="tag-chem">📚 17 Chapters · Class 11–12</span>
       </div>
       <button class="start-btn" onclick="startQuiz()">Begin Test →</button>
     </div>
@@ -907,7 +907,7 @@
       </div>
     </div>
 
-    <div class="container" id="quizArea" class="hidden"></div>
+    <div class="container" id="quizArea"></div>
 
     <div class="container" id="resultsSection"></div>
 
@@ -944,733 +944,846 @@
 
     <script>
       const Q = [
-        // ===== BREATHING AND EXCHANGE OF GASES (Q1-Q25) =====
+        // ====== CH1: Sexual Reproduction in Flowering Plants ======
         {
           id: 1,
-          ch: "bio",
-          type: "MCQ",
-          diff: "Medium",
-          q: `During normal quiet breathing, which of the following statements is <em>incorrect</em>?`,
-          opts: [
-            "Diaphragm contracts and flattens during inspiration",
-            "External intercostal muscles contract during inspiration",
-            "Internal intercostal muscles contract during expiration",
-            "Intra-pulmonary pressure falls below atmospheric pressure during inspiration",
-          ],
-          ans: 2,
-          exp: `Normal (quiet) expiration is a <strong>passive process</strong> — the diaphragm and external intercostal muscles simply relax. <strong>Internal intercostal muscles contract only during forced expiration</strong>, not during normal quiet breathing. This is one of the most common NCERT traps.`,
-          ref: "NCERT Class 11 — Mechanism of Breathing",
-        },
-        {
-          id: 2,
-          ch: "bio",
+          ch: "Sexual Repro. in Plants",
           type: "Assertion-Reason",
           diff: "Hard",
-          q: `<strong>Assertion (A):</strong> CO₂ is transported more efficiently than O₂ despite having a much smaller partial pressure gradient across the diffusion membrane.<br><strong>Reason (R):</strong> CO₂ is 20–25 times more soluble in body fluids than O₂.<br><br>Choose the correct option:`,
+          q: `<strong>Assertion (A):</strong> The embryo sac of a typical angiosperm is 7-celled and 8-nucleate at maturity.<br><strong>Reason (R):</strong> The egg apparatus consists of two synergids and one egg cell, each containing one nucleus, while the two polar nuclei are present in the egg apparatus.`,
           opts: [
-            "Both A and R are true, and R is the correct explanation of A",
-            "Both A and R are true, but R is not the correct explanation of A",
-            "A is true but R is false",
-            "A is false but R is true",
-          ],
-          ans: 0,
-          exp: `The pO₂ gradient (alveoli → blood) is <strong>64 mmHg</strong> (104−40), while the pCO₂ gradient (blood → alveoli) is only <strong>5 mmHg</strong> (45−40). Despite this, CO₂ diffuses efficiently because its <strong>solubility is 20–25× higher than O₂</strong>. The high solubility directly explains the efficient transport despite the small gradient.`,
-          ref: "NCERT Class 11 — Exchange of Gases, Partial Pressure Table",
-        },
-        {
-          id: 3,
-          ch: "bio",
-          type: "Multi-statement",
-          diff: "Hard",
-          q: `Consider the following statements about pulmonary volumes:<br>(i) Vital Capacity = IRV + TV + ERV + RV<br>(ii) Functional Residual Capacity = ERV + RV<br>(iii) Total Lung Capacity = VC + RV<br>(iv) Inspiratory Capacity = TV + IRV<br><br>Which statements are <em>correct</em>?`,
-          opts: [
-            "(i), (ii) and (iii) only",
-            "(ii), (iii) and (iv) only",
-            "(i), (ii), (iii) and (iv)",
-            "(i) and (iii) only",
-          ],
-          ans: 1,
-          exp: `Statement (i) is <strong>wrong</strong> — Vital Capacity = IRV + TV + ERV. It does <strong>NOT include Residual Volume</strong>. TLC = VC + RV. The other three statements are correct per NCERT. This VC vs TLC confusion is the most exploited trap in this chapter.`,
-          ref: "NCERT Class 11 — Respiratory Volumes and Capacities Table",
-        },
-        {
-          id: 4,
-          ch: "bio",
-          type: "Numerical",
-          diff: "Medium",
-          q: `A person has the following lung volumes: TV = 500 mL, IRV = 2800 mL, ERV = 1100 mL, RV = 1200 mL. What is the person's <em>Vital Capacity</em> and <em>Total Lung Capacity</em>?`,
-          opts: [
-            "VC = 4400 mL, TLC = 5600 mL",
-            "VC = 5600 mL, TLC = 5600 mL",
-            "VC = 4400 mL, TLC = 4400 mL",
-            "VC = 3300 mL, TLC = 5600 mL",
-          ],
-          ans: 0,
-          exp: `VC = IRV + TV + ERV = 2800 + 500 + 1100 = <strong>4400 mL</strong>. TLC = VC + RV = 4400 + 1200 = <strong>5600 mL</strong>. Remember, RV is NOT part of VC.`,
-          ref: "NCERT Class 11 — Respiratory Volumes Table",
-        },
-        {
-          id: 5,
-          ch: "bio",
-          type: "MCQ",
-          diff: "Medium",
-          q: `The role of oxygen in the regulation of respiratory rhythm is:`,
-          opts: [
-            "Primary and dominant over CO₂",
-            "Equal to that of CO₂ and H⁺ ions",
-            "Significant only at high altitudes",
-            "Quite insignificant",
-          ],
-          ans: 3,
-          exp: `This is an exact NCERT line: <strong>"The role of oxygen in the regulation of respiratory rhythm is quite insignificant."</strong> CO₂ and H⁺ ions are the primary regulators, detected by the chemosensitive area in the medulla. This line has been tested multiple times in NEET.`,
-          ref: "NCERT Class 11 — Regulation of Respiration",
-        },
-        {
-          id: 6,
-          ch: "bio",
-          type: "Match",
-          diff: "Hard",
-          q: `Match the following respiratory centres with their locations:<br><table><tr><th>Centre</th><th>Location</th></tr><tr><td>A. Respiratory Rhythm Centre</td><td>1. Pons (Varolii)</td></tr><tr><td>B. Pneumotaxic Centre</td><td>2. Carotid artery & Aorta</td></tr><tr><td>C. Chemosensitive Area</td><td>3. Medulla oblongata</td></tr><tr><td>D. Peripheral Chemoreceptors</td><td>4. Adjacent to rhythm centre in medulla</td></tr></table>`,
-          opts: [
-            "A-3, B-1, C-4, D-2",
-            "A-1, B-3, C-4, D-2",
-            "A-3, B-1, C-2, D-4",
-            "A-4, B-1, C-3, D-2",
-          ],
-          ans: 0,
-          exp: `Respiratory Rhythm Centre → <strong>medulla oblongata (3)</strong>. Pneumotaxic Centre → <strong>pons (1)</strong>. Chemosensitive Area → <strong>adjacent to rhythm centre in medulla (4)</strong>. Peripheral chemoreceptors → <strong>carotid body and aortic arch (2)</strong>. Students often confuse the chemosensitive area location with the pneumotaxic centre.`,
-          ref: "NCERT Class 11 — Regulation of Respiration",
-        },
-        {
-          id: 7,
-          ch: "bio",
-          type: "MCQ",
-          diff: "Medium",
-          q: `Which of the following prevents the entry of food into the larynx during swallowing?`,
-          opts: [
-            "Pharynx",
-            "Epiglottis covering the glottis",
-            "Tracheal cartilaginous rings",
-            "Soft palate",
-          ],
-          ans: 1,
-          exp: `The <strong>epiglottis</strong> is a thin elastic cartilaginous flap that covers the <strong>glottis</strong> (the opening of the larynx) during swallowing. A common NEET trap is to say "epiglottis covers the pharynx" — this is wrong; it covers the glottis.`,
-          ref: "NCERT Class 11 — Respiratory System overview",
-        },
-        {
-          id: 8,
-          ch: "bio",
-          type: "Case-based",
-          diff: "Hard",
-          q: `<strong>Case:</strong> A long-term cigarette smoker develops a chronic condition where the walls of the alveoli are damaged, drastically reducing the surface area for gas exchange. He experiences breathlessness even at rest.<br><br>Which condition is described, and what is the primary pathological change?`,
-          opts: [
-            "Asthma — bronchospasm and inflammation of bronchioles",
-            "Emphysema — destruction of alveolar walls reducing respiratory surface",
-            "Pneumonia — fluid accumulation in alveoli",
-            "Occupational lung disease — fibrosis from industrial dust",
-          ],
-          ans: 1,
-          exp: `<strong>Emphysema</strong> is a chronic disorder where alveolar walls are damaged, reducing the total respiratory surface area. It is primarily caused by <strong>cigarette smoking</strong>. Asthma involves bronchial inflammation, not alveolar wall destruction. NCERT specifically links emphysema to smoking.`,
-          ref: "NCERT Class 11 — Disorders of Respiratory System",
-        },
-        {
-          id: 9,
-          ch: "bio",
-          type: "MCQ",
-          diff: "Medium",
-          q: `In 100 mL of oxygenated blood, the amount of O₂ that can be delivered to the tissues under normal physiological conditions is approximately:`,
-          opts: ["20 mL", "5 mL", "10 mL", "15 mL"],
-          ans: 1,
-          exp: `Per NCERT, every <strong>100 mL of oxygenated blood can deliver approximately 5 mL of O₂</strong> to the tissues. This is because Hb is ~97% saturated in the lungs and ~75% saturated in tissues, releasing about 25% of its O₂. The total O₂ carrying capacity is ~20 mL/100 mL, but only ~5 mL is unloaded per pass.`,
-          ref: "NCERT Class 11 — Transport of Oxygen",
-        },
-        {
-          id: 10,
-          ch: "bio",
-          type: "Assertion-Reason",
-          diff: "Hard",
-          q: `<strong>Assertion (A):</strong> The oxygen-haemoglobin dissociation curve is sigmoid (S-shaped).<br><strong>Reason (R):</strong> Binding of the first O₂ molecule to haemoglobin increases its affinity for subsequent O₂ molecules (cooperative binding).<br><br>Choose the correct option:`,
-          opts: [
-            "Both A and R are true, and R is the correct explanation of A",
-            "Both A and R are true, but R is not the correct explanation of A",
-            "A is true but R is false",
-            "A is false but R is true",
-          ],
-          ans: 0,
-          exp: `The sigmoid shape arises due to <strong>cooperative binding</strong> — once the first O₂ binds to one subunit of Hb, conformational changes make subsequent O₂ binding easier. This creates the characteristic S-shape rather than a simple hyperbolic curve. Both statements are true and R correctly explains A.`,
-          ref: "NCERT Class 11 — Oxygen Dissociation Curve",
-        },
-        {
-          id: 11,
-          ch: "bio",
-          type: "MCQ",
-          diff: "Medium",
-          q: `Approximately what percentage of CO₂ is transported as bicarbonate ions (HCO₃⁻)?`,
-          opts: ["20–25%", "7%", "70%", "97%"],
-          ans: 2,
-          exp: `CO₂ is transported in three forms: <strong>~70% as bicarbonate (HCO₃⁻)</strong>, 20–25% as carbaminohaemoglobin, and ~7% dissolved in plasma. Students often confuse the 20–25% carbamino form with the dominant bicarbonate pathway.`,
-          ref: "NCERT Class 11 — Transport of Carbon Dioxide",
-        },
-        {
-          id: 12,
-          ch: "bio",
-          type: "MCQ",
-          diff: "Hard",
-          q: `The enzyme carbonic anhydrase, which catalyzes the formation of carbonic acid from CO₂ and water, is found in high concentration in:`,
-          opts: [
-            "Blood plasma",
-            "Alveolar epithelium",
-            "RBCs (erythrocytes)",
-            "Pulmonary capillary endothelium",
-          ],
-          ans: 2,
-          exp: `<strong>Carbonic anhydrase</strong> is present in <strong>high concentrations in RBCs</strong>. It catalyzes CO₂ + H₂O ⇌ H₂CO₃, which then dissociates to HCO₃⁻ + H⁺. The reaction occurs inside RBCs, and HCO₃⁻ then moves out into plasma (chloride shift). It is a zinc-containing metalloenzyme.`,
-          ref: "NCERT Class 11 — Transport of CO₂",
-        },
-        {
-          id: 13,
-          ch: "bio",
-          type: "Multi-statement",
-          diff: "Hard",
-          q: `Which of the following conditions favor the formation of oxyhaemoglobin?<br>(i) High pO₂<br>(ii) High pCO₂<br>(iii) High H⁺ concentration<br>(iv) Low temperature<br>(v) Low pCO₂`,
-          opts: [
-            "(i), (iv) and (v) only",
-            "(i), (ii) and (iii) only",
-            "(i), (iii) and (iv) only",
-            "(ii), (iv) and (v) only",
-          ],
-          ans: 0,
-          exp: `Oxyhaemoglobin formation is favored in the lungs where conditions include: <strong>high pO₂, low pCO₂, low H⁺ concentration, and lower temperature</strong>. High pCO₂ and high H⁺ promote O₂ release (Bohr effect) — these are tissue conditions. So (i), (iv), and (v) are correct.`,
-          ref: "NCERT Class 11 — Bohr Effect & O₂ Dissociation Curve",
-        },
-        {
-          id: 14,
-          ch: "bio",
-          type: "MCQ",
-          diff: "Medium",
-          q: `The trachea divides into two primary bronchi at the level of the:`,
-          opts: [
-            "2nd thoracic vertebra",
-            "5th thoracic vertebra",
-            "7th cervical vertebra",
-            "1st lumbar vertebra",
-          ],
-          ans: 1,
-          exp: `The trachea divides at the level of the <strong>5th thoracic vertebra</strong> into the right and left primary bronchi. This was directly tested in NEET 2019.`,
-          ref: "NCERT Class 11 — Respiratory Pathway",
-        },
-        {
-          id: 15,
-          ch: "bio",
-          type: "MCQ",
-          diff: "Hard",
-          q: `The chloride shift (Hamburger phenomenon) involves:`,
-          opts: [
-            "Movement of Cl⁻ ions out of RBCs and HCO₃⁻ into RBCs at the lungs",
-            "Movement of Cl⁻ ions into RBCs as HCO₃⁻ moves out of RBCs at the tissues",
-            "Movement of CO₂ into RBCs in exchange for O₂ at the tissues",
-            "Movement of H⁺ ions out of RBCs in exchange for K⁺ ions",
-          ],
-          ans: 1,
-          exp: `At the <strong>tissues</strong>, CO₂ enters RBCs, is converted to HCO₃⁻ (via carbonic anhydrase), and HCO₃⁻ diffuses out into plasma. To maintain <strong>electrical neutrality</strong>, Cl⁻ ions move into RBCs — this is the chloride shift. At the lungs, the reverse occurs (option A describes the lung event). The question asks about the phenomenon itself, which is classically described at tissues.`,
-          ref: "NCERT Class 11 — CO₂ Transport / Chloride Shift",
-        },
-        {
-          id: 16,
-          ch: "bio",
-          type: "MCQ",
-          diff: "Medium",
-          q: `The partial pressure of O₂ in deoxygenated blood returning to the lungs is approximately:`,
-          opts: ["95 mmHg", "104 mmHg", "40 mmHg", "159 mmHg"],
-          ans: 2,
-          exp: `Per the NCERT partial pressure table: pO₂ in deoxygenated blood = <strong>40 mmHg</strong>. In alveoli it is 104, in oxygenated blood 95, in atmosphere 159, and in tissues 40 mmHg.`,
-          ref: "NCERT Class 11 — Partial Pressure Table",
-        },
-        {
-          id: 17,
-          ch: "bio",
-          type: "Assertion-Reason",
-          diff: "Medium",
-          q: `<strong>Assertion (A):</strong> The pneumotaxic centre can alter the respiratory rate.<br><strong>Reason (R):</strong> It sends signals to reduce the duration of inspiration, thereby affecting the rate of respiration.<br><br>Choose the correct option:`,
-          opts: [
-            "Both A and R are true, and R is the correct explanation of A",
-            "Both A and R are true, but R is not the correct explanation of A",
-            "A is true but R is false",
-            "A is false",
-          ],
-          ans: 0,
-          exp: `The pneumotaxic centre (in pons) <strong>moderates the rhythm centre</strong> by signaling it to <strong>reduce the duration of inspiration</strong>. This in turn alters respiratory rate — shorter inspiration means a faster breathing rate. Both A and R are true, and R correctly explains A.`,
-          ref: "NCERT Class 11 — Regulation of Respiration",
-        },
-        {
-          id: 18,
-          ch: "bio",
-          type: "MCQ",
-          diff: "Medium",
-          q: `Which of the following correctly represents the conducting part of the respiratory system?`,
-          opts: [
-            "Nostrils to terminal bronchioles",
-            "Nostrils to alveolar ducts",
-            "Larynx to alveoli",
-            "Trachea to respiratory bronchioles",
-          ],
-          ans: 0,
-          exp: `The <strong>conducting part</strong> extends from the external nostrils to the terminal bronchioles. It transports, filters, humidifies, and warms air. The <strong>exchange part</strong> (respiratory zone) starts from the alveolar ducts and alveoli where actual gas exchange occurs.`,
-          ref: "NCERT Class 11 — Human Respiratory System",
-        },
-        {
-          id: 19,
-          ch: "bio",
-          type: "MCQ",
-          diff: "Hard",
-          q: `During transport, CO₂ binds to haemoglobin at:`,
-          opts: [
-            "The iron (Fe²⁺) part of the haem group",
-            "The amino groups of the globin polypeptide chains",
-            "The porphyrin ring of haem",
-            "The β-chains exclusively",
-          ],
-          ans: 1,
-          exp: `CO₂ binds to the <strong>amino groups (–NH₂) of the globin protein</strong> part of haemoglobin (not the haem/iron). O₂ binds to Fe²⁺ in the haem group. This is a critical distinction. The resulting compound is <strong>carbaminohaemoglobin</strong>.`,
-          ref: "NCERT Class 11 — Transport of CO₂",
-        },
-        {
-          id: 20,
-          ch: "bio",
-          type: "Case-based",
-          diff: "Hard",
-          q: `<strong>Case:</strong> A mountaineer ascends rapidly to 5000m altitude. He experiences nausea, fatigue, and breathlessness. His arterial blood gas analysis shows reduced pO₂.<br><br>The primary reason for his symptoms is:`,
-          opts: [
-            "Increased atmospheric pressure at high altitude",
-            "Low atmospheric pressure leading to decreased partial pressure of O₂",
-            "Increased CO₂ in atmospheric air at high altitude",
-            "Absence of nitrogen at high altitude",
-          ],
-          ans: 1,
-          exp: `At high altitudes, the <strong>atmospheric pressure is low</strong>, which means the partial pressure of O₂ is also reduced significantly. This leads to inadequate O₂ delivery to tissues, causing symptoms of altitude sickness (nausea, fatigue, breathlessness). The composition of air remains the same, but total pressure drops.`,
-          ref: "NCERT Class 11 — Exchange of Gases / Partial Pressures",
-        },
-        {
-          id: 21,
-          ch: "bio",
-          type: "MCQ",
-          diff: "Medium",
-          q: `The diffusion membrane between alveolar air and pulmonary blood consists of:`,
-          opts: [
-            "Only the alveolar squamous epithelium",
-            "Squamous epithelium of alveolus + basement membrane + endothelium of capillary",
-            "Cuboidal epithelium + thick connective tissue + capillary endothelium",
-            "Ciliated columnar epithelium + basement membrane",
-          ],
-          ans: 1,
-          exp: `The diffusion membrane has three layers: (1) thin squamous epithelium of alveoli, (2) the basement membrane, and (3) the endothelium of blood capillaries. Its total thickness is much less than a millimetre, facilitating rapid diffusion.`,
-          ref: "NCERT Class 11 — Exchange of Gases",
-        },
-        {
-          id: 22,
-          ch: "bio",
-          type: "MCQ",
-          diff: "Medium",
-          q: `Residual Volume is clinically important because:`,
-          opts: [
-            "It represents the air used in gas exchange",
-            "It prevents the lungs from collapsing completely even after forceful expiration",
-            "It equals Tidal Volume during exercise",
-            "It increases with age and decreases lung compliance",
-          ],
-          ans: 1,
-          exp: `<strong>Residual Volume</strong> (~1100–1200 mL) is the air that remains in the lungs even after the most forceful expiration. This ensures that <strong>alveoli do not collapse</strong> and gas exchange can continue. NEET 2017 directly tested this concept.`,
-          ref: "NCERT Class 11 — Lung Volumes / NEET 2017",
-        },
-        {
-          id: 23,
-          ch: "bio",
-          type: "Multi-statement",
-          diff: "Hard",
-          q: `Which of the following statements about the Bohr effect is/are correct?<br>(i) Increase in CO₂ tension shifts the O₂ dissociation curve to the right<br>(ii) It promotes O₂ loading at the tissue level<br>(iii) Increase in H⁺ concentration favours dissociation of oxyhaemoglobin<br>(iv) It is significant because it helps release O₂ where it is most needed`,
-          opts: [
-            "(i), (iii) and (iv) only",
-            "(i), (ii), (iii) and (iv)",
-            "(i) and (iii) only",
-            "(ii) and (iv) only",
-          ],
-          ans: 0,
-          exp: `Statement (ii) is wrong — the Bohr effect promotes O₂ <strong>unloading (release)</strong> at tissues, not loading. Loading occurs at the lungs. Statements (i), (iii), and (iv) are all correct: high CO₂ and H⁺ shift the curve right, promoting O₂ release exactly where it's needed.`,
-          ref: "NCERT Class 11 — Bohr Effect",
-        },
-        {
-          id: 24,
-          ch: "bio",
-          type: "MCQ",
-          diff: "Medium",
-          q: `A worker in a stone quarry develops fibrosis of the lungs after years of exposure. This occupational disorder is called:`,
-          opts: ["Asbestosis", "Silicosis", "Emphysema", "Asthma"],
-          ans: 1,
-          exp: `Prolonged exposure to <strong>silica dust</strong> (common in stone quarries, mining) causes <strong>silicosis</strong> — fibrosis and inflammation of lung tissue. Asbestosis is caused by asbestos fibers. NCERT specifically mentions silicosis and asbestosis as occupational respiratory disorders.`,
-          ref: "NCERT Class 11 — Disorders of Respiratory System",
-        },
-        {
-          id: 25,
-          ch: "bio",
-          type: "Assertion-Reason",
-          diff: "Hard",
-          q: `<strong>Assertion (A):</strong> Binding of O₂ with haemoglobin is reversible.<br><strong>Reason (R):</strong> Haemoglobin is a red, iron-containing pigment present in all vertebrate RBCs and acts as a permanent O₂ store.<br><br>Choose the correct option:`,
-          opts: [
-            "Both A and R are true, and R is the correct explanation of A",
-            "Both A and R are true, but R is not the correct explanation of A",
+            "Both A and R are true, R correctly explains A",
+            "Both A and R are true, R does not correctly explain A",
             "A is true but R is false",
             "A is false but R is true",
           ],
           ans: 2,
-          exp: `A is true — O₂ binding to Hb is <strong>reversible</strong> (loads at lungs, unloads at tissues). R is <strong>false</strong> — while Hb is indeed an iron-containing pigment in RBCs, it does NOT act as a "permanent O₂ store." It is a transient carrier. The claim of being permanent is wrong. NEET 2019 tested this reversal concept.`,
-          ref: "NCERT Class 11 — Transport of O₂ / NEET 2019",
+          exp: `A is true — the embryo sac is 7-celled, 8-nucleate. R is <strong>false</strong> — the two polar nuclei are in the <strong>central cell</strong>, NOT the egg apparatus. The egg apparatus contains only the 2 synergids + 1 egg cell. NEET 2025 used this exact trap — attributing polar nuclei to the egg apparatus.`,
+          ref: "NCERT Ch.2 — Embryo Sac Structure",
         },
 
-        // ===== CHEMICAL KINETICS (Q26-Q50) =====
         {
-          id: 26,
-          ch: "chem",
+          id: 2,
+          ch: "Sexual Repro. in Plants",
           type: "MCQ",
-          diff: "Medium",
-          q: `For a reaction 2A → Products, the rate of the reaction is expressed as:`,
+          diff: "Hard",
+          q: `Water lily (<em>Nymphaea</em>) is pollinated by:`,
           opts: [
-            "Rate = +d[A]/dt",
-            "Rate = −d[A]/dt",
-            "Rate = −½ d[A]/dt",
-            "Rate = +2 d[A]/dt",
+            "Water (hydrophily)",
+            "Wind (anemophily)",
+            "Insects (entomophily)",
+            "Birds (ornithophily)",
           ],
           ans: 2,
-          exp: `For 2A → Products, Rate = <strong>−(1/2) d[A]/dt</strong>. The negative sign accounts for decreasing concentration, and division by the stoichiometric coefficient (2) gives the general rate. Students commonly forget to divide by the coefficient.`,
-          ref: "NCERT Class 12 — Rate of a Chemical Reaction",
+          exp: `This is NEET's most-exploited death trap — students assume aquatic plant = water pollination. <strong>Water lily is insect-pollinated</strong>. Its flowers rise above water and attract beetles/flies. True hydrophilous plants include Vallisneria and Zostera. NEET 2024 tested this directly.`,
+          ref: "NCERT Ch.2 — Pollination Types",
         },
+
         {
-          id: 27,
-          ch: "chem",
-          type: "Multi-statement",
-          diff: "Hard",
-          q: `Consider the following statements:<br>(i) Order of a reaction can be zero, fractional or negative<br>(ii) Molecularity of a reaction can be zero<br>(iii) Order is determined experimentally<br>(iv) Molecularity is always a positive integer<br>(v) For a complex reaction, order equals molecularity<br><br>Which statements are correct?`,
-          opts: [
-            "(i), (iii) and (iv) only",
-            "(i), (ii), (iii) and (iv)",
-            "(i), (iii), (iv) and (v)",
-            "All of the above",
-          ],
-          ans: 0,
-          exp: `(ii) is wrong — molecularity can <strong>never be zero</strong> (it represents the number of species in an elementary step, minimum 1). (v) is wrong — for <strong>complex (multi-step) reactions</strong>, order ≠ molecularity (they may coincide only for elementary reactions). Statements (i), (iii), and (iv) are correct per NCERT.`,
-          ref: "NCERT Class 12 — Order vs Molecularity",
-        },
-        {
-          id: 28,
-          ch: "chem",
-          type: "Numerical",
-          diff: "Hard",
-          q: `The rate constant of a first-order reaction is 0.0693 min⁻¹. How much time (in minutes) will it take for the initial concentration to reduce to <em>25%</em> of its original value?`,
-          opts: ["10 min", "20 min", "30 min", "40 min"],
-          ans: 1,
-          exp: `When concentration reduces to 25%, it means 75% has reacted = <strong>2 half-lives</strong> (50% → 25%). t₁/₂ = 0.693/k = 0.693/0.0693 = <strong>10 min</strong>. So time for 75% = 2 × 10 = <strong>20 min</strong>.`,
-          ref: "NCERT Class 12 — Half-life of First Order Reaction",
-        },
-        {
-          id: 29,
-          ch: "chem",
+          id: 3,
+          ch: "Sexual Repro. in Plants",
           type: "MCQ",
           diff: "Medium",
-          q: `The unit of rate constant for a <em>zero-order</em> reaction is:`,
-          opts: ["s⁻¹", "mol L⁻¹ s⁻¹", "L mol⁻¹ s⁻¹", "L² mol⁻² s⁻¹"],
-          ans: 1,
-          exp: `Using the formula: unit of k = (mol L⁻¹)^(1−n) × s⁻¹. For zero order (n=0): k = <strong>mol L⁻¹ s⁻¹</strong>. For first order: s⁻¹. For second order: L mol⁻¹ s⁻¹. NEET often gives units and asks to identify the order.`,
-          ref: "NCERT Class 12 — Rate Law & Rate Constant",
+          q: `Sporopollenin, the most resistant biological material known, is a component of:`,
+          opts: [
+            "Stigma surface",
+            "Intine of pollen grain",
+            "Exine of pollen grain",
+            "Tapetum cells",
+          ],
+          ans: 2,
+          exp: `Sporopollenin is present in the <strong>exine</strong> (outer wall) of pollen grains. It can withstand high temperatures, strong acids and alkalis, and is not degraded by any known enzyme. This is why pollen grains are well-preserved as fossils. The intine is made of cellulose and pectin.`,
+          ref: "NCERT Ch.2 — Pollen Grain Structure",
         },
+
+        // ====== CH2: Human Reproduction ======
         {
-          id: 30,
-          ch: "chem",
+          id: 4,
+          ch: "Human Reproduction",
+          type: "MCQ",
+          diff: "Hard",
+          q: `Which of the following is <em>incorrect</em> about spermatogenesis and oogenesis?`,
+          opts: [
+            "Spermatogenesis begins at puberty",
+            "Oogenesis begins during embryonic development",
+            "Spermiogenesis is transformation of spermatids to spermatozoa",
+            "Oogenesis is completed before birth",
+          ],
+          ans: 3,
+          exp: `Oogenesis is <strong>NOT completed before birth</strong>. It begins during embryonic development but arrests at the primary oocyte stage (prophase I). It resumes at puberty, and the secondary oocyte completes meiosis II only upon fertilization. This is a classic NEET trap.`,
+          ref: "NCERT Ch.3 — Oogenesis vs Spermatogenesis",
+        },
+
+        {
+          id: 5,
+          ch: "Human Reproduction",
           type: "Assertion-Reason",
           diff: "Hard",
-          q: `<strong>Assertion (A):</strong> The hydrolysis of ethyl acetate in the presence of excess water follows pseudo first-order kinetics.<br><strong>Reason (R):</strong> In the presence of a large excess of water, the concentration of water does not change appreciably during the reaction.<br><br>Choose the correct option:`,
+          q: `<strong>Assertion (A):</strong> FSH acts on Sertoli cells and Leydig cells in males.<br><strong>Reason (R):</strong> Sertoli cells provide nutrition to developing sperms while Leydig cells secrete androgens.`,
           opts: [
-            "Both A and R are true, and R is the correct explanation of A",
-            "Both A and R are true, but R is not the correct explanation of A",
+            "Both A and R true, R explains A",
+            "Both A and R true, R doesn't explain A",
             "A is true but R is false",
-            "A is false",
+            "A is false but R is true",
           ],
-          ans: 0,
-          exp: `The hydrolysis CH₃COOC₂H₅ + H₂O → CH₃COOH + C₂H₅OH is bimolecular but behaves as first-order because <strong>water is in large excess</strong> and its concentration remains effectively constant. The effective rate = k'[ester] where k' = k[H₂O]. Both A and R are true, and R correctly explains A.`,
-          ref: "NCERT Class 12 — Pseudo First Order Reactions",
+          ans: 3,
+          exp: `A is <strong>false</strong> — FSH acts on <strong>Sertoli cells only</strong>. LH acts on Leydig (interstitial) cells to secrete androgens. Swapping FSH/LH targets is the #1 trap in this chapter. R is true — the descriptions of Sertoli and Leydig cell functions are correct. NEET 2024 tested this.`,
+          ref: "NCERT Ch.3 — Hormonal Control of Male Reproduction",
         },
+
         {
-          id: 31,
-          ch: "chem",
+          id: 6,
+          ch: "Human Reproduction",
           type: "MCQ",
           diff: "Medium",
-          q: `For a first-order reaction, which plot gives a straight line?`,
-          opts: ["[R] vs t", "log [R] vs t", "1/[R] vs t", "[R]² vs t"],
-          ans: 1,
-          exp: `The integrated first-order equation: log[R] = log[R]₀ − (k/2.303)t. So <strong>log[R] vs t</strong> gives a straight line with slope = −k/2.303. A plot of [R] vs t gives an exponential decay curve (NOT a straight line — a common trap). 1/[R] vs t is linear for second-order reactions.`,
-          ref: "NCERT Class 12 — Integrated Rate Equations",
-        },
-        {
-          id: 32,
-          ch: "chem",
-          type: "MCQ",
-          diff: "Hard",
-          q: `The half-life of a zero-order reaction with initial concentration [R]₀ and rate constant k is:`,
-          opts: ["0.693/k", "[R]₀ / 2k", "1/(k[R]₀)", "2k/[R]₀"],
-          ans: 1,
-          exp: `For zero-order: [R] = [R]₀ − kt. At half-life, [R] = [R]₀/2. So [R]₀/2 = [R]₀ − kt₁/₂ → <strong>t₁/₂ = [R]₀/2k</strong>. This means zero-order half-life is <strong>directly proportional to initial concentration</strong>. Contrast this with first-order (0.693/k, independent of [R]₀) and second-order (1/k[R]₀, inversely proportional).`,
-          ref: "NCERT Class 12 — Zero Order Half-life",
-        },
-        {
-          id: 33,
-          ch: "chem",
-          type: "Numerical",
-          diff: "Hard",
-          q: `For a first-order reaction, if 99.9% of the reactant is to be decomposed, the time required is approximately (given: t₁/₂ = 0.693/k):`,
+          q: `Fertilization in humans normally occurs at the:`,
           opts: [
-            "5 half-lives",
-            "7 half-lives",
-            "10 half-lives",
-            "15 half-lives",
+            "Uterus",
+            "Cervix",
+            "Ampullary-isthmic junction of fallopian tube",
+            "Fimbria of fallopian tube",
           ],
           ans: 2,
-          exp: `Time for 99.9% completion: t = (2.303/k) × log(1000/1) = 2.303 × 3/k = <strong>6.909/k</strong>. Since t₁/₂ = 0.693/k, t = 6.909/0.693 × t₁/₂ ≈ <strong>10 × t₁/₂</strong>. This was tested in NEET 2025.`,
-          ref: "NCERT Class 12 — First Order Kinetics / NEET 2025",
+          exp: `Fertilization occurs at the <strong>ampullary-isthmic junction</strong> of the fallopian tube (oviduct). The ampulla is the widest part where the ovum waits. Students often confuse this with the uterus (implantation site) or the fimbria (ovum capture site).`,
+          ref: "NCERT Ch.3 — Fertilization",
         },
+
+        // ====== CH3: Reproductive Health ======
         {
-          id: 34,
-          ch: "chem",
-          type: "MCQ",
-          diff: "Medium",
-          q: `A catalyst increases the rate of a reaction by:`,
-          opts: [
-            "Increasing the activation energy",
-            "Decreasing the activation energy by providing an alternative pathway",
-            "Changing the enthalpy of the reaction",
-            "Shifting the equilibrium toward products",
-          ],
-          ans: 1,
-          exp: `A catalyst <strong>lowers the activation energy</strong> by providing an alternative reaction pathway. It does NOT change ΔH (enthalpy), does NOT shift equilibrium, and accelerates both forward and reverse reactions equally. A very common misconception is that catalysts shift equilibrium — they don't.`,
-          ref: "NCERT Class 12 — Arrhenius Equation / Catalyst",
-        },
-        {
-          id: 35,
-          ch: "chem",
-          type: "MCQ",
-          diff: "Medium",
-          q: `The temperature coefficient of a reaction is generally:`,
-          opts: ["1", "2 to 3", "5 to 10", "0.5 to 1"],
-          ans: 1,
-          exp: `The temperature coefficient (ratio of rate constants at T+10°C and T°C) is typically <strong>2 to 3</strong>, meaning the rate roughly doubles or triples for every 10°C rise in temperature. This is a direct NCERT statement.`,
-          ref: "NCERT Class 12 — Temperature Dependence of Rate",
-        },
-        {
-          id: 36,
-          ch: "chem",
-          type: "Numerical",
-          diff: "Hard",
-          q: `The Arrhenius equation is given as: log(k₂/k₁) = (Eₐ/2.303R)(1/T₁ − 1/T₂). If the rate of a reaction quadruples when temperature is raised from 300 K to 330 K, calculate Eₐ. <br>(R = 8.314 J K⁻¹ mol⁻¹, log 4 = 0.602)`,
-          opts: ["38.04 kJ/mol", "55.3 kJ/mol", "76.08 kJ/mol", "19.02 kJ/mol"],
-          ans: 0,
-          exp: `k₂/k₁ = 4 (rate quadruples). log 4 = 0.602.<br>1/T₁ − 1/T₂ = 1/300 − 1/330 = (330−300)/(300×330) = 30/99000 = 1/3300.<br>0.602 = Eₐ/(2.303 × 8.314) × (1/3300)<br>Eₐ = 0.602 × 2.303 × 8.314 × 3300 = <strong>38,038 J/mol ≈ 38.04 kJ/mol</strong>. This exact problem appeared in NEET 2024.`,
-          ref: "NCERT Class 12 — Arrhenius Equation / NEET 2024",
-        },
-        {
-          id: 37,
-          ch: "chem",
-          type: "MCQ",
-          diff: "Medium",
-          q: `In the Arrhenius equation k = Ae<sup>−Eₐ/RT</sup>, the factor 'A' is called:`,
-          opts: [
-            "Activation energy",
-            "Boltzmann constant",
-            "Frequency factor (pre-exponential factor)",
-            "Rate constant",
-          ],
-          ans: 2,
-          exp: `'A' is the <strong>frequency factor</strong> (also called pre-exponential factor or Arrhenius factor). It is related to the frequency of collisions and the probability that molecules are oriented correctly. In the plot of log k vs 1/T, log A is the y-intercept.`,
-          ref: "NCERT Class 12 — Arrhenius Equation",
-        },
-        {
-          id: 38,
-          ch: "chem",
-          type: "MCQ",
-          diff: "Hard",
-          q: `Which of the following is an example of a zero-order reaction?`,
-          opts: [
-            "Decomposition of N₂O₅ in CCl₄",
-            "Decomposition of NH₃ on a hot platinum surface",
-            "Inversion of cane sugar in the presence of acid",
-            "Radioactive decay of ²³⁸U",
-          ],
-          ans: 1,
-          exp: `<strong>Decomposition of NH₃ on a hot platinum surface</strong> is a classic NCERT example of a zero-order reaction (the surface acts as the catalyst and is saturated). N₂O₅ decomposition and radioactive decay are first-order; inversion of cane sugar is pseudo first-order.`,
-          ref: "NCERT Class 12 — Zero Order Reactions",
-        },
-        {
-          id: 39,
-          ch: "chem",
-          type: "Assertion-Reason",
-          diff: "Hard",
-          q: `<strong>Assertion (A):</strong> For an elementary reaction, the order of the reaction is the same as its molecularity.<br><strong>Reason (R):</strong> The rate law for an elementary reaction is derived directly from the stoichiometry of that step.<br><br>Choose the correct option:`,
-          opts: [
-            "Both A and R are true, and R is the correct explanation of A",
-            "Both A and R are true, but R is not the correct explanation of A",
-            "A is true but R is false",
-            "A is false",
-          ],
-          ans: 0,
-          exp: `For <strong>elementary (single-step) reactions</strong>, the rate law can be written directly from the balanced equation — exponents equal stoichiometric coefficients. Hence order = molecularity. This is true ONLY for elementary reactions, not for complex reactions. Both A and R are true, R explains A.`,
-          ref: "NCERT Class 12 — Elementary vs Complex Reactions",
-        },
-        {
-          id: 40,
-          ch: "chem",
-          type: "MCQ",
-          diff: "Medium",
-          q: `The rate constant of a first-order reaction has units of:`,
-          opts: ["mol L⁻¹ s⁻¹", "s⁻¹", "L mol⁻¹ s⁻¹", "mol⁻¹ L s⁻²"],
-          ans: 1,
-          exp: `For first-order (n=1): units = (mol L⁻¹)^(1−1) × s⁻¹ = <strong>s⁻¹</strong> (or min⁻¹). The rate constant for first-order reactions is independent of concentration units, which is unique to this order.`,
-          ref: "NCERT Class 12 — Rate Constant Units",
-        },
-        {
-          id: 41,
-          ch: "chem",
-          type: "Numerical",
-          diff: "Medium",
-          q: `A first-order reaction has a rate constant of 1.386 × 10⁻² min⁻¹. What is its half-life?`,
-          opts: ["100 min", "50 min", "25 min", "75 min"],
-          ans: 1,
-          exp: `t₁/₂ = 0.693/k = 0.693/(1.386 × 10⁻²) = 0.693/0.01386 = <strong>50 min</strong>. For first-order, half-life is independent of the initial concentration.`,
-          ref: "NCERT Class 12 — First Order Half-life",
-        },
-        {
-          id: 42,
-          ch: "chem",
-          type: "MCQ",
-          diff: "Hard",
-          q: `In the plot of log k versus 1/T (Arrhenius plot), the slope of the straight line is equal to:`,
-          opts: ["−Eₐ/R", "−Eₐ/(2.303R)", "+Eₐ/(2.303R)", "−2.303R/Eₐ"],
-          ans: 1,
-          exp: `From log k = log A − Eₐ/(2.303RT), comparing with y = c + mx: slope = <strong>−Eₐ/(2.303R)</strong> and intercept = log A. This is the standard Arrhenius plot. NEET 2024 directly tested this graph interpretation.`,
-          ref: "NCERT Class 12 — Arrhenius Equation Graph",
-        },
-        {
-          id: 43,
-          ch: "chem",
-          type: "Case-based",
-          diff: "Hard",
-          q: `<strong>Case:</strong> In an experiment, the following data was collected for a reaction A → Products:<br><table><tr><th>Exp</th><th>[A] (mol/L)</th><th>Rate (mol L⁻¹ s⁻¹)</th></tr><tr><td>1</td><td>0.1</td><td>2.0 × 10⁻³</td></tr><tr><td>2</td><td>0.2</td><td>2.0 × 10⁻³</td></tr><tr><td>3</td><td>0.4</td><td>2.0 × 10⁻³</td></tr></table><br>What is the order of this reaction?`,
-          opts: ["First order", "Second order", "Zero order", "Third order"],
-          ans: 2,
-          exp: `The rate remains constant at 2.0 × 10⁻³ regardless of changes in [A] (doubled, quadrupled). This means rate is <strong>independent of concentration</strong> → <strong>zero-order</strong> reaction. Rate = k (a constant). This is the classic way NEET tests order determination from data.`,
-          ref: "NCERT Class 12 — Determination of Order from Data",
-        },
-        {
-          id: 44,
-          ch: "chem",
-          type: "MCQ",
-          diff: "Medium",
-          q: `Inversion of cane sugar is an example of:`,
-          opts: [
-            "Zero-order reaction",
-            "First-order reaction",
-            "Pseudo first-order reaction",
-            "Second-order reaction",
-          ],
-          ans: 2,
-          exp: `C₁₂H₂₂O₁₁ + H₂O → C₆H₁₂O₆ (glucose) + C₆H₁₂O₆ (fructose). This is actually bimolecular, but since <strong>water is in huge excess</strong>, its concentration remains virtually constant, making it a <strong>pseudo first-order reaction</strong>. Both this and ester hydrolysis are NCERT examples of pseudo first-order.`,
-          ref: "NCERT Class 12 — Pseudo First Order Reactions",
-        },
-        {
-          id: 45,
-          ch: "chem",
-          type: "MCQ",
-          diff: "Hard",
-          q: `According to collision theory, the rate constant is given by k = PZ<sub>AB</sub>e<sup>−Eₐ/RT</sup>. The factor 'P' represents:`,
-          opts: [
-            "Probability of collision",
-            "Partial pressure of reactants",
-            "Steric factor (orientation probability)",
-            "Total kinetic energy",
-          ],
-          ans: 2,
-          exp: `'P' is the <strong>steric factor (orientation factor)</strong> — it accounts for the fact that not all collisions with sufficient energy lead to reaction; molecules must also have the correct orientation. Z<sub>AB</sub> is the collision frequency. P is always ≤ 1.`,
-          ref: "NCERT Class 12 — Collision Theory",
-        },
-        {
-          id: 46,
-          ch: "chem",
-          type: "MCQ",
-          diff: "Medium",
-          q: `The threshold energy for a reaction equals:`,
-          opts: [
-            "Activation energy alone",
-            "Average kinetic energy of reactant molecules",
-            "Activation energy + average energy of reactant molecules",
-            "Activation energy − average energy of reactant molecules",
-          ],
-          ans: 2,
-          exp: `Threshold energy = <strong>Eₐ + average energy of reactants</strong>. Only those molecules whose kinetic energy ≥ threshold energy can undergo effective collisions. The activation energy itself is the extra energy needed above the average.`,
-          ref: "NCERT Class 12 — Collision Theory & Activation Energy",
-        },
-        {
-          id: 47,
-          ch: "chem",
-          type: "Numerical",
-          diff: "Hard",
-          q: `For a zero-order reaction with k = 0.025 mol L⁻¹ min⁻¹ and initial concentration = 0.5 mol L⁻¹, the time at which the reaction will be complete is:`,
-          opts: ["10 min", "20 min", "25 min", "50 min"],
-          ans: 1,
-          exp: `For zero order: [R] = [R]₀ − kt. Reaction complete when [R] = 0:<br>0 = 0.5 − 0.025 × t<br>t = 0.5/0.025 = <strong>20 min</strong>. Note: zero-order reactions go to completion in finite time = [R]₀/k, unlike first-order which theoretically never reach 100%.`,
-          ref: "NCERT Class 12 — Zero Order Integrated Equation",
-        },
-        {
-          id: 48,
-          ch: "chem",
+          id: 7,
+          ch: "Reproductive Health",
           type: "Match",
           diff: "Hard",
-          q: `Match the following reaction orders with their half-life dependence on initial concentration [R]₀:<br><table><tr><th>Order</th><th>Half-life ∝</th></tr><tr><td>A. Zero order</td><td>1. Independent of [R]₀</td></tr><tr><td>B. First order</td><td>2. [R]₀</td></tr><tr><td>C. Second order</td><td>3. 1/[R]₀</td></tr></table>`,
+          q: `Match the ART techniques:<br><table><tr><th>Technique</th><th>Description</th></tr><tr><td>A. ZIFT</td><td>1. Gametes transferred to fallopian tube</td></tr><tr><td>B. IUT</td><td>2. Embryo >8 cells transferred to uterus</td></tr><tr><td>C. GIFT</td><td>3. Zygote/early embryo (≤8 cells) to fallopian tube</td></tr><tr><td>D. ICSI</td><td>4. Sperm injected directly into ovum in vitro</td></tr></table>`,
           opts: [
-            "A-2, B-1, C-3",
-            "A-1, B-2, C-3",
-            "A-3, B-1, C-2",
-            "A-2, B-3, C-1",
+            "A-3, B-2, C-1, D-4",
+            "A-1, B-2, C-3, D-4",
+            "A-3, B-1, C-2, D-4",
+            "A-4, B-2, C-1, D-3",
           ],
           ans: 0,
-          exp: `Zero order: t₁/₂ = [R]₀/2k → <strong>∝ [R]₀ (A-2)</strong>. First order: t₁/₂ = 0.693/k → <strong>independent (B-1)</strong>. Second order: t₁/₂ = 1/k[R]₀ → <strong>∝ 1/[R]₀ (C-3)</strong>. The general formula: t₁/₂ ∝ [R]₀^(1−n).`,
-          ref: "NCERT Class 12 — Half-life Relationships",
+          exp: `ZIFT = Zygote Intra Fallopian Transfer (≤8 blastomeres → fallopian tube). IUT = Intra Uterine Transfer (>8 blastomeres → uterus). GIFT = Gamete Intra Fallopian Transfer (gametes → tube for in-vivo fertilization). ICSI = Intra Cytoplasmic Sperm Injection (sperm → ovum in vitro).`,
+          ref: "NCERT Ch.4 — Assisted Reproductive Technologies",
         },
+
         {
-          id: 49,
-          ch: "chem",
-          type: "Case-based",
+          id: 8,
+          ch: "Reproductive Health",
+          type: "MCQ",
+          diff: "Medium",
+          q: `Saheli, the oral contraceptive developed at CDRI Lucknow, is a:`,
+          opts: [
+            "Steroidal pill taken daily",
+            "Non-steroidal pill taken once a week",
+            "Progesterone-only emergency pill",
+            "Copper-releasing IUD",
+          ],
+          ans: 1,
+          exp: `Saheli contains <strong>centchroman</strong>, which is a <strong>non-steroidal</strong> compound. It is taken <strong>once weekly</strong> (not daily). It has very few side effects and high efficacy. Students often confuse it with hormonal pills or think it was developed by ICMR — it was developed at CDRI Lucknow.`,
+          ref: "NCERT Ch.4 — Contraceptive Methods",
+        },
+
+        // ====== CH4: Principles of Inheritance ======
+        {
+          id: 9,
+          ch: "Principles of Inheritance",
+          type: "Multi-statement",
           diff: "Hard",
-          q: `<strong>Case:</strong> Two first-order reactions A→P and B→Q have rate constants k₁ = 0.02 s⁻¹ and k₂ = 0.06 s⁻¹ at 300 K. Both have the same frequency factor A.<br><br>Which reaction has the higher activation energy?`,
+          q: `ABO blood groups in humans demonstrate:<br>(i) Multiple allelism<br>(ii) Codominance<br>(iii) Complete dominance<br>(iv) Polygenic inheritance<br><br>Select the <em>correct</em> combination:`,
           opts: [
-            "Reaction A (A→P) has higher Eₐ",
-            "Reaction B (B→Q) has higher Eₐ",
-            "Both have equal Eₐ",
-            "Cannot be determined",
+            "(i) and (ii) only",
+            "(i), (ii) and (iii)",
+            "(i) and (iv) only",
+            "(ii) and (iii) only",
+          ],
+          ans: 1,
+          exp: `ABO blood groups demonstrate <strong>three phenomena simultaneously</strong>: (i) multiple allelism (Iᴬ, Iᴮ, i — three alleles), (ii) codominance (Iᴬ and Iᴮ are codominant → AB phenotype), and (iii) complete dominance (both Iᴬ and Iᴮ are dominant over i). NOT polygenic inheritance. Students who say "only codominance" miss the full picture.`,
+          ref: "NCERT Ch.5 — ABO Blood Groups",
+        },
+
+        {
+          id: 10,
+          ch: "Principles of Inheritance",
+          type: "Match",
+          diff: "Hard",
+          q: `Match the chromosomal disorders:<br><table><tr><th>Disorder</th><th>Karyotype</th></tr><tr><td>A. Down syndrome</td><td>1. 45, X</td></tr><tr><td>B. Turner syndrome</td><td>2. 47, XXY</td></tr><tr><td>C. Klinefelter syndrome</td><td>3. 47, +21</td></tr></table>`,
+          opts: [
+            "A-3, B-1, C-2",
+            "A-1, B-3, C-2",
+            "A-2, B-1, C-3",
+            "A-3, B-2, C-1",
           ],
           ans: 0,
-          exp: `Since k = Ae<sup>−Eₐ/RT</sup> and A is the same for both, a <strong>smaller k means a larger Eₐ</strong> (more negative exponent). k₁ (0.02) < k₂ (0.06), so <strong>Reaction A has higher activation energy</strong>. Higher Eₐ → slower reaction → smaller rate constant at the same temperature.`,
-          ref: "NCERT Class 12 — Arrhenius Equation Application",
+          exp: `Down syndrome = <strong>trisomy 21 (47 chromosomes)</strong>. Turner syndrome = <strong>45, X</strong> (monosomy, sterile females). Klinefelter syndrome = <strong>47, XXY</strong> (sterile males with some feminine characteristics). NEET tests these every year in match-the-following format.`,
+          ref: "NCERT Ch.5 — Chromosomal Disorders",
         },
+
         {
-          id: 50,
-          ch: "chem",
+          id: 11,
+          ch: "Principles of Inheritance",
+          type: "MCQ",
+          diff: "Medium",
+          q: `Sickle cell anemia differs from thalassemia in that sickle cell anemia is a:`,
+          opts: [
+            "Quantitative defect in globin synthesis",
+            "Qualitative defect producing abnormal haemoglobin",
+            "Chromosomal disorder with aneuploidy",
+            "Sex-linked recessive disorder on Y chromosome",
+          ],
+          ans: 1,
+          exp: `Sickle cell anemia is a <strong>qualitative</strong> defect — a point mutation (GAG → GUG) causes valine to replace glutamic acid in the β-globin chain, producing abnormal HbS. Thalassemia is a <strong>quantitative</strong> defect — reduced/absent synthesis of normal globin chains. This NCERT distinction is directly tested.`,
+          ref: "NCERT Ch.5 — Mendelian Disorders",
+        },
+
+        // ====== CH5: Molecular Basis of Inheritance ======
+        {
+          id: 12,
+          ch: "Molecular Basis",
+          type: "MCQ",
+          diff: "Hard",
+          q: `In the lac operon, the gene responsible for transporting lactose into the cell is:`,
+          opts: [
+            "Gene z (β-galactosidase)",
+            "Gene y (permease)",
+            "Gene a (transacetylase)",
+            "Gene i (repressor)",
+          ],
+          ans: 1,
+          exp: `Gene y codes for <strong>permease</strong>, which transports lactose into the cell. Gene z codes for β-galactosidase (cleaves lactose into galactose and glucose). Gene a codes for transacetylase. Students commonly confuse the transport function (permease) with the hydrolysis function (β-galactosidase). NEET 2024 tested this.`,
+          ref: "NCERT Ch.6 — Lac Operon",
+        },
+
+        {
+          id: 13,
+          ch: "Molecular Basis",
+          type: "MCQ",
+          diff: "Hard",
+          q: `Which scientist provided <em>unequivocal proof</em> that DNA is the genetic material?`,
+          opts: [
+            "Frederick Griffith",
+            "Avery, MacLeod and McCarty",
+            "Hershey and Chase",
+            "Watson and Crick",
+          ],
+          ans: 2,
+          exp: `<strong>Hershey and Chase</strong> (1952) used ³²P (labels DNA) and ³⁵S (labels protein) with bacteriophages to provide unequivocal proof. Griffith only discovered the transforming principle. Avery et al. identified it biochemically but were not universally accepted. This is a deadly NCERT distinction.`,
+          ref: "NCERT Ch.6 — Hershey-Chase Experiment",
+        },
+
+        {
+          id: 14,
+          ch: "Molecular Basis",
+          type: "Multi-statement",
+          diff: "Hard",
+          q: `Regarding the Human Genome Project, which statements are correct?<br>(i) Total ~3164.7 million base pairs<br>(ii) ~30,000 genes estimated<br>(iii) Y chromosome has the most genes<br>(iv) Less than 2% of genome codes for proteins`,
+          opts: [
+            "(i), (ii) and (iv) only",
+            "(i), (ii), (iii) and (iv)",
+            "(i) and (ii) only",
+            "(i), (iii) and (iv) only",
+          ],
+          ans: 0,
+          exp: `Statement (iii) is <strong>wrong</strong> — <strong>Chromosome 1</strong> has the most genes (2968), while the <strong>Y chromosome</strong> has the fewest (231). All other statements are correct per NCERT. NEET frequently swaps chromosome 1 and Y in options.`,
+          ref: "NCERT Ch.6 — Human Genome Project",
+        },
+
+        {
+          id: 15,
+          ch: "Molecular Basis",
+          type: "MCQ",
+          diff: "Medium",
+          q: `The sigma (σ) factor in prokaryotic transcription is involved in:`,
+          opts: [
+            "Termination of transcription",
+            "Initiation — helps RNA polymerase recognize promoter",
+            "Translation initiation at ribosome",
+            "DNA replication priming",
+          ],
+          ans: 1,
+          exp: `The <strong>σ factor assists in initiation</strong> — it helps RNA polymerase holoenzyme recognize and bind to the promoter. After initiation, σ dissociates. The <strong>ρ (rho) factor</strong> is involved in termination. Confusing σ and ρ is a major NEET trap — tested in 2024.`,
+          ref: "NCERT Ch.6 — Transcription in Prokaryotes",
+        },
+
+        // ====== CH6: Evolution ======
+        {
+          id: 16,
+          ch: "Evolution",
+          type: "MCQ",
+          diff: "Hard",
+          q: `Flippers of penguins and flippers of dolphins are examples of:`,
+          opts: [
+            "Homologous organs (divergent evolution)",
+            "Analogous organs (convergent evolution)",
+            "Vestigial organs",
+            "Atavism",
+          ],
+          ans: 1,
+          exp: `Despite both being called "flippers," penguin flippers (modified bird forelimb) and dolphin flippers (modified mammalian forelimb) evolved independently in response to similar aquatic environments. They are <strong>analogous organs</strong> showing convergent evolution. Students assume "same name = homologous" — this is wrong.`,
+          ref: "NCERT Ch.7 — Homology vs Analogy",
+        },
+
+        {
+          id: 17,
+          ch: "Evolution",
+          type: "MCQ",
+          diff: "Medium",
+          q: `In the Miller-Urey experiment (1953), the gases used to simulate the primitive atmosphere were:`,
+          opts: [
+            "O₂, N₂, CO₂, and H₂O vapour",
+            "CH₄, H₂, NH₃, and H₂O vapour at 800°C",
+            "CH₄, O₂, NH₃, and H₂O vapour at 600°C",
+            "CO₂, H₂, N₂, and H₂O vapour",
+          ],
+          ans: 1,
+          exp: `Miller and Urey used <strong>CH₄, H₂, NH₃, and water vapour</strong> in a closed flask at <strong>800°C</strong> with electric discharge for 18 days. NEET 2020 used 600°C as a trap option. The presence of O₂ was specifically excluded as the primitive atmosphere was reducing.`,
+          ref: "NCERT Ch.7 — Origin of Life",
+        },
+
+        {
+          id: 18,
+          ch: "Evolution",
+          type: "MCQ",
+          diff: "Hard",
+          q: `Which of the following does NOT disturb Hardy-Weinberg equilibrium?`,
+          opts: [
+            "Gene migration",
+            "Genetic drift",
+            "Constant and large gene pool",
+            "Natural selection",
+          ],
+          ans: 2,
+          exp: `Hardy-Weinberg equilibrium is maintained when the gene pool is <strong>constant (no evolution)</strong> in a large, random-mating population. Five factors that disturb it: gene migration, genetic drift, mutation, genetic recombination, and natural selection. A "constant gene pool" maintains equilibrium, not disrupts it. NEET 2024 tested this.`,
+          ref: "NCERT Ch.7 — Hardy-Weinberg Principle",
+        },
+
+        // ====== CH7: Human Health and Disease ======
+        {
+          id: 19,
+          ch: "Human Health & Disease",
+          type: "Match",
+          diff: "Hard",
+          q: `Match the disease with its causative organism:<br><table><tr><th>Disease</th><th>Organism</th></tr><tr><td>A. Typhoid</td><td>1. Wuchereria bancrofti</td></tr><tr><td>B. Filariasis</td><td>2. Plasmodium</td></tr><tr><td>C. Malaria</td><td>3. Salmonella typhi</td></tr><tr><td>D. Ringworm</td><td>4. Microsporum</td></tr></table>`,
+          opts: [
+            "A-3, B-1, C-2, D-4",
+            "A-2, B-1, C-3, D-4",
+            "A-3, B-4, C-2, D-1",
+            "A-1, B-3, C-4, D-2",
+          ],
+          ans: 0,
+          exp: `Typhoid → <strong>Salmonella typhi</strong> (diagnosed by Widal test). Filariasis → <strong>Wuchereria bancrofti/malayi</strong> (transmitted by Culex mosquito, NOT Anopheles). Malaria → <strong>Plasmodium</strong> (female Anopheles). Ringworm → <strong>Microsporum/Trichophyton/Epidermophyton</strong>. NEET tests this every year.`,
+          ref: "NCERT Ch.8 — Common Human Diseases",
+        },
+
+        {
+          id: 20,
+          ch: "Human Health & Disease",
+          type: "MCQ",
+          diff: "Hard",
+          q: `An anti-tetanus injection provides which type of immunity?`,
+          opts: [
+            "Active immunity",
+            "Passive immunity",
+            "Cell-mediated immunity",
+            "Natural innate immunity",
+          ],
+          ans: 1,
+          exp: `Anti-tetanus injection contains <strong>preformed antibodies</strong> (antitoxin) given from an external source → <strong>passive immunity</strong>. In contrast, a tetanus vaccine (toxoid) provides active immunity because the body produces its own antibodies. Key question: who makes the antibodies? If external → passive. If host → active.`,
+          ref: "NCERT Ch.8 — Types of Immunity",
+        },
+
+        {
+          id: 21,
+          ch: "Human Health & Disease",
+          type: "MCQ",
+          diff: "Medium",
+          q: `In the life cycle of <em>Plasmodium</em>, the infectious form that enters the human body through a mosquito bite is:`,
+          opts: ["Merozoites", "Sporozoites", "Gametocytes", "Trophozoites"],
+          ans: 1,
+          exp: `<strong>Sporozoites</strong> are the infectious form injected by the female Anopheles mosquito. They first multiply in liver cells (hepatocytes), then attack RBCs. Merozoites are released from RBCs. Gametocytes are the sexual forms picked up by mosquitoes.`,
+          ref: "NCERT Ch.8 — Life Cycle of Plasmodium",
+        },
+
+        // ====== CH8: Microbes in Human Welfare ======
+        {
+          id: 22,
+          ch: "Microbes in Welfare",
+          type: "Match",
+          diff: "Hard",
+          q: `Match the microbe with its product:<br><table><tr><th>Microbe</th><th>Product</th></tr><tr><td>A. Aspergillus niger</td><td>1. Ethanol</td></tr><tr><td>B. Saccharomyces cerevisiae</td><td>2. Cyclosporin A</td></tr><tr><td>C. Trichoderma polysporum</td><td>3. Citric acid</td></tr><tr><td>D. Monascus purpureus</td><td>4. Statins</td></tr></table>`,
+          opts: [
+            "A-3, B-1, C-2, D-4",
+            "A-1, B-3, C-4, D-2",
+            "A-3, B-2, C-1, D-4",
+            "A-4, B-1, C-2, D-3",
+          ],
+          ans: 0,
+          exp: `Aspergillus niger → <strong>citric acid</strong>. Saccharomyces cerevisiae → <strong>ethanol</strong> (also bread, beer). Trichoderma polysporum → <strong>cyclosporin A</strong> (immunosuppressant). Monascus purpureus → <strong>statins</strong> (cholesterol-lowering). This is the single most repeated match-the-following in NEET Biology.`,
+          ref: "NCERT Ch.10 — Microbes in Industrial Products",
+        },
+
+        {
+          id: 23,
+          ch: "Microbes in Welfare",
+          type: "MCQ",
+          diff: "Hard",
+          q: `Mycorrhiza is classified as a biofertilizer because it helps in absorption of:`,
+          opts: [
+            "Nitrogen from atmosphere",
+            "Phosphorus from soil",
+            "Potassium from soil",
+            "Iron from soil",
+          ],
+          ans: 1,
+          exp: `Mycorrhiza (e.g., <strong>Glomus</strong>) is a fungal association with plant roots that aids in <strong>phosphorus absorption</strong>, NOT nitrogen fixation. Students confuse mycorrhiza with nitrogen-fixing biofertilizers like Rhizobium or Azotobacter. NEET repeatedly tests this distinction.`,
+          ref: "NCERT Ch.10 — Biofertilizers",
+        },
+
+        {
+          id: 24,
+          ch: "Microbes in Welfare",
+          type: "MCQ",
+          diff: "Medium",
+          q: `In sewage treatment, the biological treatment using aerobic microbes that form flocs occurs during:`,
+          opts: [
+            "Primary treatment",
+            "Secondary treatment",
+            "Tertiary treatment",
+            "Sludge digestion",
+          ],
+          ans: 1,
+          exp: `<strong>Secondary treatment</strong> is the biological stage where effluent is passed into aeration tanks with aerobic microbes that form flocs (masses of bacteria + fungal filaments), reducing BOD. Primary treatment is purely physical (filtration, sedimentation). Students wrongly think microbes act in primary treatment.`,
+          ref: "NCERT Ch.10 — Sewage Treatment",
+        },
+
+        // ====== CH9: Biotechnology Principles ======
+        {
+          id: 25,
+          ch: "Biotech Principles",
+          type: "MCQ",
+          diff: "Hard",
+          q: `In blue-white screening using the lacZ gene, recombinant colonies appear as:`,
+          opts: [
+            "Blue colonies on X-gal medium",
+            "White colonies on X-gal medium",
+            "Colonies that grow on ampicillin",
+            "Colonies that glow under UV",
+          ],
+          ans: 1,
+          exp: `<strong>White colonies = recombinants</strong>. Foreign DNA inserted into lacZ disrupts β-galactosidase production → no cleavage of X-gal → no blue color → white. Blue colonies = non-recombinants (intact lacZ). NEET 2025 tested this twice. Students often reverse the colors.`,
+          ref: "NCERT Ch.11 — Insertional Inactivation",
+        },
+
+        {
+          id: 26,
+          ch: "Biotech Principles",
+          type: "MCQ",
+          diff: "Medium",
+          q: `The recognition sequence of EcoRI is:`,
+          opts: [
+            "5'-GAATTC-3'",
+            "5'-GGATCC-3'",
+            "5'-AAGCTT-3'",
+            "5'-CTTAAG-3'",
+          ],
+          ans: 0,
+          exp: `EcoRI recognizes the palindromic sequence <strong>5'-GAATTC-3'</strong> on both strands and cuts between G and A, producing sticky ends with 4-base overhangs. 5'-GGATCC-3' is BamHI; 5'-AAGCTT-3' is HindIII. The complementary strand 3'-CTTAAG-5' reads the same in reverse.`,
+          ref: "NCERT Ch.11 — Restriction Enzymes",
+        },
+
+        {
+          id: 27,
+          ch: "Biotech Principles",
+          type: "MCQ",
+          diff: "Medium",
+          q: `DNA fragments stained with ethidium bromide appear as _____ bands under UV light:`,
+          opts: [
+            "Blue fluorescent",
+            "Red fluorescent",
+            "Bright orange",
+            "Green fluorescent",
+          ],
+          ans: 2,
+          exp: `DNA stained with ethidium bromide appears as <strong>bright orange</strong> bands under UV light. This is a direct NCERT fact tested in NEET 2022 and 2023. Students commonly guess blue or red. Without staining, separated DNA fragments cannot be visualized at all.`,
+          ref: "NCERT Ch.11 — Gel Electrophoresis",
+        },
+
+        // ====== CH10: Biotechnology Applications ======
+        {
+          id: 28,
+          ch: "Biotech Applications",
+          type: "MCQ",
+          diff: "Hard",
+          q: `The Bt toxin protein exists as an inactive protoxin in <em>Bacillus thuringiensis</em>. In the insect gut, it is activated by:`,
+          opts: [
+            "Acidic pH of insect gut",
+            "Alkaline pH of insect gut",
+            "Specific insect enzymes called chitinases",
+            "Neutral pH and high temperature",
+          ],
+          ans: 1,
+          exp: `Bt toxin (Cry protein) is activated in the <strong>alkaline pH</strong> of the insect gut, where it gets solubilized and processed into the active toxic form that creates pores in the midgut epithelium. Students confuse insect gut (alkaline) with human stomach (acidic). NEET 2024 tested this TWICE — the most exploited biotech trap.`,
+          ref: "NCERT Ch.12 — Bt Cotton / Pest-Resistant Plants",
+        },
+
+        {
+          id: 29,
+          ch: "Biotech Applications",
+          type: "MCQ",
+          diff: "Medium",
+          q: `In Eli Lilly's production of human insulin, the A-chain and B-chain contain, respectively:`,
+          opts: [
+            "30 and 21 amino acids",
+            "21 and 30 amino acids",
+            "51 and 30 amino acids",
+            "21 and 51 amino acids",
+          ],
+          ans: 1,
+          exp: `Insulin A-chain has <strong>21 amino acids</strong> and B-chain has <strong>30 amino acids</strong>. They were produced separately in E. coli and combined by disulfide bridges. The C-peptide present in proinsulin is absent in mature insulin. NEET frequently swaps the chain lengths in options.`,
+          ref: "NCERT Ch.12 — Insulin Production",
+        },
+
+        {
+          id: 30,
+          ch: "Biotech Applications",
           type: "Assertion-Reason",
           diff: "Hard",
-          q: `<strong>Assertion (A):</strong> A catalyst does not alter the equilibrium constant of a reaction.<br><strong>Reason (R):</strong> A catalyst increases the rate of both the forward and the reverse reactions equally by lowering the activation energy for both.<br><br>Choose the correct option:`,
+          q: `<strong>Assertion (A):</strong> RNA interference (RNAi) involves silencing of mRNA using complementary single-stranded RNA.<br><strong>Reason (R):</strong> RNAi was used to create nematode-resistant tobacco plants against <em>Meloidogyne incognita</em>.`,
           opts: [
-            "Both A and R are true, and R is the correct explanation of A",
-            "Both A and R are true, but R is not the correct explanation of A",
-            "A is true but R is false",
-            "A is false",
+            "Both A and R true, R explains A",
+            "Both A and R true, R doesn't explain A",
+            "A is false but R is true",
+            "Both A and R are false",
+          ],
+          ans: 2,
+          exp: `A is <strong>false</strong> — RNAi uses <strong>double-stranded RNA (dsRNA)</strong>, not single-stranded RNA. The dsRNA is complementary to the target mRNA and triggers its degradation. R is true — RNAi was indeed used against Meloidogyne incognita in tobacco. NEET 2024 used this ssRNA vs dsRNA trap.`,
+          ref: "NCERT Ch.12 — RNAi / Pest-Resistant Plants",
+        },
+
+        // ====== CH11: Organisms and Populations ======
+        {
+          id: 31,
+          ch: "Organisms & Populations",
+          type: "MCQ",
+          diff: "Hard",
+          q: `An orchid growing on a mango tree is an example of:`,
+          opts: ["Mutualism", "Parasitism", "Commensalism", "Amensalism"],
+          ans: 2,
+          exp: `Orchids (epiphytes) on mango trees = <strong>commensalism (+/0)</strong>. The orchid benefits from structural support and light access, while the mango tree is neither harmed nor helped. Students often call this mutualism. NEET tested this in both 2024 and 2025. Contrast with lichen = mutualism (alga + fungus, both benefit).`,
+          ref: "NCERT Ch.13 — Population Interactions",
+        },
+
+        {
+          id: 32,
+          ch: "Organisms & Populations",
+          type: "MCQ",
+          diff: "Medium",
+          q: `In the logistic growth equation dN/dt = rN[(K−N)/K], when N equals K:`,
+          opts: [
+            "Growth rate is maximum",
+            "Growth rate equals rN",
+            "Growth rate is zero",
+            "Population crashes",
+          ],
+          ans: 2,
+          exp: `When N = K (carrying capacity), (K−N)/K = 0, so dN/dt = rN × 0 = <strong>0</strong>. Population growth stops. Maximum growth rate occurs at N = K/2 (inflection point of the S-curve). This is the Verhulst-Pearl equation tested virtually every year in NEET.`,
+          ref: "NCERT Ch.13 — Population Growth Models",
+        },
+
+        // ====== CH12: Ecosystem ======
+        {
+          id: 33,
+          ch: "Ecosystem",
+          type: "MCQ",
+          diff: "Hard",
+          q: `The rate of biomass production during photosynthesis is termed:`,
+          opts: [
+            "Net Primary Productivity (NPP)",
+            "Gross Primary Productivity (GPP)",
+            "Secondary Productivity",
+            "Standing Crop",
+          ],
+          ans: 1,
+          exp: `<strong>GPP = total rate of organic matter production</strong> during photosynthesis. NPP = GPP minus respiration losses. NEET 2025 tested: "rate of production during photosynthesis = NPP" is <strong>false</strong> — it equals GPP. This GPP vs NPP confusion is the #1 ecology killer.`,
+          ref: "NCERT Ch.14 — Ecosystem Productivity",
+        },
+
+        {
+          id: 34,
+          ch: "Ecosystem",
+          type: "MCQ",
+          diff: "Medium",
+          q: `The pyramid of energy in any ecosystem is:`,
+          opts: [
+            "Always upright",
+            "Always inverted",
+            "Upright in terrestrial, inverted in aquatic",
+            "Variable depending on season",
           ],
           ans: 0,
-          exp: `A catalyst lowers Eₐ for <strong>both forward and reverse reactions equally</strong>, so the rates of both increase by the same factor. Since Keq = kforward/kreverse, and both increase equally, Keq remains unchanged. Both A and R are true, and R explains A correctly. A very common NEET misconception is that catalysts shift equilibrium.`,
-          ref: "NCERT Class 12 — Catalyst & Equilibrium",
+          exp: `The pyramid of energy is <strong>always upright</strong> — energy decreases at each trophic level (10% law by Lindeman). Only ~10% of energy passes to the next level. Contrast: pyramid of biomass can be inverted in aquatic ecosystems; pyramid of numbers can be inverted in tree ecosystems.`,
+          ref: "NCERT Ch.14 — Ecological Pyramids",
+        },
+
+        {
+          id: 35,
+          ch: "Ecosystem",
+          type: "MCQ",
+          diff: "Medium",
+          q: `The correct sequence of decomposition is:`,
+          opts: [
+            "Fragmentation → Catabolism → Leaching → Humification → Mineralization",
+            "Fragmentation → Leaching → Catabolism → Humification → Mineralization",
+            "Leaching → Fragmentation → Catabolism → Mineralization → Humification",
+            "Catabolism → Fragmentation → Leaching → Humification → Mineralization",
+          ],
+          ans: 1,
+          exp: `The correct NCERT sequence: <strong>Fragmentation → Leaching → Catabolism → Humification → Mineralization</strong>. Fragmentation is physical breakdown by detritivores. Leaching is washing of water-soluble substances. Catabolism is enzymatic degradation. Humification forms humus (amorphous, colloidal — NOT crystalline). Mineralization releases inorganic nutrients.`,
+          ref: "NCERT Ch.14 — Decomposition Process",
+        },
+
+        // ====== CH13: Biodiversity and Conservation ======
+        {
+          id: 36,
+          ch: "Biodiversity & Conservation",
+          type: "MCQ",
+          diff: "Hard",
+          q: `In the species-area relationship log S = log C + Z·log A, the value of Z (regression coefficient) for small areas typically ranges from:`,
+          opts: ["0.6 to 1.2", "0.1 to 0.2", "1.5 to 2.0", "0.01 to 0.05"],
+          ans: 1,
+          exp: `Z values range from <strong>0.1 to 0.2</strong> for small/local areas (studies by Alexander von Humboldt). For continental/very large areas, Z rises to <strong>0.6 to 1.2</strong>. Students frequently swap these ranges. Z = slope of the line, C = Y-intercept (not the reverse — another NEET trap).`,
+          ref: "NCERT Ch.15 — Species-Area Relationship",
+        },
+
+        {
+          id: 37,
+          ch: "Biodiversity & Conservation",
+          type: "MCQ",
+          diff: "Medium",
+          q: `How many biodiversity hotspots are recognized in India?`,
+          opts: ["2", "3", "4", "6"],
+          ans: 2,
+          exp: `India has <strong>4 biodiversity hotspots</strong>: Western Ghats & Sri Lanka, Himalayas, Indo-Burma, and Sundaland. Globally there are 34 hotspots. India has 2.4% of world's land area but 8.1% of global species diversity — making it one of 12 mega diversity countries.`,
+          ref: "NCERT Ch.15 — Biodiversity Hotspots",
+        },
+
+        {
+          id: 38,
+          ch: "Biodiversity & Conservation",
+          type: "MCQ",
+          diff: "Medium",
+          q: `The 'Rivet Popper Hypothesis' was proposed by:`,
+          opts: [
+            "Robert May",
+            "Alexander von Humboldt",
+            "Paul Ehrlich",
+            "Edward Wilson",
+          ],
+          ans: 2,
+          exp: `<strong>Paul Ehrlich</strong> proposed the Rivet Popper Hypothesis using the analogy of rivets in an airplane — losing a few rivets (species) may not crash the plane (ecosystem), but losing many especially from critical areas will. It explains why every species matters for ecosystem stability.`,
+          ref: "NCERT Ch.15 — Importance of Biodiversity",
+        },
+
+        // ====== CH14: Photosynthesis in Higher Plants ======
+        {
+          id: 39,
+          ch: "Photosynthesis",
+          type: "MCQ",
+          diff: "Hard",
+          q: `The total ATP and NADPH required to fix 6 molecules of CO₂ in the Calvin cycle to produce one molecule of glucose is:`,
+          opts: [
+            "12 ATP and 12 NADPH",
+            "18 ATP and 12 NADPH",
+            "30 ATP and 12 NADPH",
+            "6 ATP and 6 NADPH",
+          ],
+          ans: 1,
+          exp: `Per CO₂ fixed: 3 ATP + 2 NADPH. For 6 CO₂ (one glucose): <strong>18 ATP + 12 NADPH</strong>. C4 plants need 30 ATP + 12 NADPH per glucose (extra 12 ATP for PEP regeneration via pyruvate phosphate dikinase). This is the most frequently tested numerical fact in photosynthesis.`,
+          ref: "NCERT Ch.13 — Calvin Cycle",
+        },
+
+        {
+          id: 40,
+          ch: "Photosynthesis",
+          type: "Assertion-Reason",
+          diff: "Hard",
+          q: `<strong>Assertion (A):</strong> Bundle sheath cells in C4 plants do not evolve oxygen.<br><strong>Reason (R):</strong> Bundle sheath chloroplasts are agranal, lacking Photosystem II.`,
+          opts: [
+            "Both A and R true, R explains A",
+            "Both A and R true, R doesn't explain A",
+            "A is true but R is false",
+            "A is false but R is true",
+          ],
+          ans: 0,
+          exp: `Both true, R explains A. Bundle sheath chloroplasts are <strong>agranal</strong> (lack grana) → <strong>no PS II</strong> → no water splitting → no O₂ evolution → no photorespiration in bundle sheath. This is why C4 plants are more efficient — RuBisCO operates in the O₂-free environment of bundle sheath cells.`,
+          ref: "NCERT Ch.13 — C4 Pathway",
+        },
+
+        {
+          id: 41,
+          ch: "Photosynthesis",
+          type: "MCQ",
+          diff: "Medium",
+          q: `Cyclic photophosphorylation involves:`,
+          opts: [
+            "Both PS I and PS II, produces ATP and NADPH",
+            "Only PS I, produces only ATP",
+            "Only PS II, produces only NADPH",
+            "Both PS I and PS II, produces only ATP",
+          ],
+          ans: 1,
+          exp: `Cyclic photophosphorylation involves <strong>only PS I (P700)</strong> and produces <strong>only ATP</strong> (no NADPH, no O₂). Electrons cycle back to PS I. It occurs in stroma lamellae. Non-cyclic involves both PS I + PS II and produces ATP + NADPH + O₂.`,
+          ref: "NCERT Ch.13 — Light Reactions",
+        },
+
+        // ====== CH15: Plant Growth and Development ======
+        {
+          id: 42,
+          ch: "Plant Growth & Development",
+          type: "MCQ",
+          diff: "Hard",
+          q: `In tissue culture, a higher ratio of auxin to cytokinin promotes:`,
+          opts: [
+            "Shoot formation",
+            "Root formation",
+            "Callus formation only",
+            "No differentiation",
+          ],
+          ans: 1,
+          exp: `More auxin relative to cytokinin promotes <strong>root formation</strong>. More cytokinin relative to auxin promotes <strong>shoot formation</strong>. Equal amounts promote callus growth. Students frequently reverse this. It's called Skoog and Miller's experiment.`,
+          ref: "NCERT Ch.15 — Plant Hormones / Auxin-Cytokinin Ratio",
+        },
+
+        {
+          id: 43,
+          ch: "Plant Growth & Development",
+          type: "MCQ",
+          diff: "Hard",
+          q: `Zeatin, the first naturally occurring cytokinin, was isolated from:`,
+          opts: [
+            "Autoclaved herring sperm DNA",
+            "Corn (Zea mays) kernels",
+            "Coconut milk",
+            "Agrobacterium tumefaciens",
+          ],
+          ans: 1,
+          exp: `<strong>Zeatin</strong> was isolated from <strong>corn (Zea mays) kernels</strong> — hence the name. <strong>Kinetin</strong> (from autoclaved herring sperm DNA) is synthetic and does NOT occur naturally in plants. This distinction is a perennial NEET trap.`,
+          ref: "NCERT Ch.15 — Cytokinins",
+        },
+
+        {
+          id: 44,
+          ch: "Plant Growth & Development",
+          type: "MCQ",
+          diff: "Medium",
+          q: `Which plant hormone is known as the 'stress hormone' and causes stomatal closure?`,
+          opts: ["Auxin", "Gibberellin", "Abscisic acid (ABA)", "Ethylene"],
+          ans: 2,
+          exp: `<strong>ABA (Abscisic acid)</strong> is called the stress hormone. It promotes stomatal closure during water stress, induces seed dormancy, and inhibits growth. It acts antagonistically to gibberellins. ABA is derived from carotenoids (mevalonic acid pathway).`,
+          ref: "NCERT Ch.15 — Abscisic Acid",
+        },
+
+        // ====== CH16: Breathing and Exchange of Gases ======
+        {
+          id: 45,
+          ch: "Breathing & Gases",
+          type: "MCQ",
+          diff: "Hard",
+          q: `Which of the following conditions does NOT favor oxyhaemoglobin formation?`,
+          opts: [
+            "High pO₂",
+            "Low pCO₂",
+            "High H⁺ concentration",
+            "Low temperature",
+          ],
+          ans: 2,
+          exp: `<strong>High H⁺ (acidic conditions)</strong> favors O₂ release (Bohr effect), NOT oxyhaemoglobin formation. Formation is favored at alveoli: high pO₂, low pCO₂, <strong>low H⁺</strong>, and lower temperature. At tissues: opposite conditions promote O₂ dissociation. NEET 2024 tested this directly.`,
+          ref: "NCERT Ch.17 — Bohr Effect & O₂ Dissociation Curve",
+        },
+
+        {
+          id: 46,
+          ch: "Breathing & Gases",
+          type: "MCQ",
+          diff: "Medium",
+          q: `Vital Capacity is equal to:`,
+          opts: [
+            "TV + IRV + ERV + RV",
+            "TV + IRV + ERV",
+            "IRV + ERV only",
+            "TLC − TV",
+          ],
+          ans: 1,
+          exp: `VC = <strong>TV + IRV + ERV</strong>. It does NOT include Residual Volume. TLC = VC + RV. This is arguably the most tested formula in this chapter. Students who include RV in VC confuse it with TLC.`,
+          ref: "NCERT Ch.17 — Respiratory Volumes",
+        },
+
+        // ====== CH17: Body Fluids and Circulation ======
+        {
+          id: 47,
+          ch: "Body Fluids & Circulation",
+          type: "MCQ",
+          diff: "Hard",
+          q: `The blood clot (coagulum) is essentially a network of:`,
+          opts: [
+            "Thrombin threads trapping blood cells",
+            "Fibrin threads trapping blood cells",
+            "Fibrinogen threads trapping platelets only",
+            "Prothrombin fibers and calcium ions",
+          ],
+          ans: 1,
+          exp: `The coagulum is a network of <strong>fibrin threads</strong> trapping dead/damaged blood cells, platelets, etc. Thrombin is the enzyme that converts fibrinogen → fibrin, but the clot itself is made of fibrin, NOT thrombin. NEET 2022 tested this exact misconception.`,
+          ref: "NCERT Ch.18 — Blood Coagulation",
+        },
+
+        {
+          id: 48,
+          ch: "Body Fluids & Circulation",
+          type: "Match",
+          diff: "Hard",
+          q: `Match the ECG waves:<br><table><tr><th>Wave</th><th>Event</th></tr><tr><td>A. P wave</td><td>1. Ventricular repolarization</td></tr><tr><td>B. QRS complex</td><td>2. Atrial depolarization</td></tr><tr><td>C. T wave</td><td>3. Ventricular depolarization</td></tr></table>`,
+          opts: [
+            "A-2, B-3, C-1",
+            "A-3, B-2, C-1",
+            "A-1, B-3, C-2",
+            "A-2, B-1, C-3",
+          ],
+          ans: 0,
+          exp: `P wave = <strong>atrial depolarization</strong> (contraction). QRS complex = <strong>ventricular depolarization</strong>. T wave = <strong>ventricular repolarization</strong> (relaxation). Atrial repolarization is masked by the QRS complex. NEET 2024 asked three ECG questions — it's guaranteed marks if you know this.`,
+          ref: "NCERT Ch.18 — Electrocardiogram",
+        },
+
+        {
+          id: 49,
+          ch: "Body Fluids & Circulation",
+          type: "MCQ",
+          diff: "Medium",
+          q: `The correct sequence of cardiac conduction is:`,
+          opts: [
+            "AV node → SA node → Bundle of His → Purkinje fibres",
+            "SA node → AV node → AV bundle → Bundle branches → Purkinje fibres",
+            "SA node → Purkinje fibres → AV node → Bundle of His",
+            "AV node → SA node → Purkinje fibres → Bundle branches",
+          ],
+          ans: 1,
+          exp: `<strong>SA node → AV node → AV bundle (Bundle of His) → bundle branches → Purkinje fibres</strong>. The SA node is the pacemaker (generates impulse). AV node receives and relays with a slight delay. The impulse then travels through the ventricular conduction system.`,
+          ref: "NCERT Ch.18 — Cardiac Conduction",
+        },
+
+        {
+          id: 50,
+          ch: "Body Fluids & Circulation",
+          type: "Assertion-Reason",
+          diff: "Hard",
+          q: `<strong>Assertion (A):</strong> Rh⁻ mother carrying her second Rh⁺ child may face complications due to erythroblastosis fetalis.<br><strong>Reason (R):</strong> During first pregnancy with an Rh⁺ fetus, the mother produces anti-Rh antibodies that can attack the RBCs of subsequent Rh⁺ fetuses.`,
+          opts: [
+            "Both A and R true, R explains A",
+            "Both A and R true, R doesn't explain A",
+            "A is true but R is false",
+            "A is false but R is true",
+          ],
+          ans: 0,
+          exp: `Both true, R explains A. During the first Rh⁺ pregnancy, fetal RBCs leak into maternal blood → mother's immune system produces anti-Rh antibodies (IgG). These cross the placenta in subsequent pregnancies and attack Rh⁺ fetal RBCs → <strong>erythroblastosis fetalis</strong>. Prevention: anti-Rh antibodies given to mother after first delivery.`,
+          ref: "NCERT Ch.18 — Rh Incompatibility",
         },
       ];
 
@@ -1697,16 +1810,13 @@
         const area = document.getElementById("quizArea");
         let html = "";
         Q.forEach((q, i) => {
-          const numClass = q.ch === "chem" ? "chem" : "";
-          const tagClass = q.ch === "bio" ? "bio" : "chem";
-          const chLabel =
-            q.ch === "bio" ? "🫁 Breathing & Gases" : "⚗️ Chemical Kinetics";
+          const topic = q.ch;
           const diffClass = q.diff === "Hard" ? "hard" : "med";
           html += `<div class="q-card" id="qcard-${i}">
             <div class="q-header">
-              <span class="q-num ${numClass}">Q${q.id}</span>
+              <span class="q-num">Q${q.id}</span>
               <div class="q-meta">
-                <span class="q-tag ${tagClass}">${q.ch === "bio" ? "Biology" : "Chemistry"}</span>
+                <span class="q-tag bio">${topic}</span>
                 <span class="q-tag type">${q.type}</span>
                 <span class="q-tag ${diffClass}">${q.diff}</span>
               </div>
@@ -1873,20 +1983,15 @@
           wrong = 0,
           skipped = 0;
         let bioCorrect = 0,
-          bioTotal = 0,
-          chemCorrect = 0,
-          chemTotal = 0;
+          bioTotal = 0;
 
         Q.forEach((q, i) => {
-          if (q.ch === "bio") bioTotal++;
-          else chemTotal++;
-
+          bioTotal++;
           if (userAnswers[i] === -1) {
             skipped++;
           } else if (userAnswers[i] === q.ans) {
             correct++;
-            if (q.ch === "bio") bioCorrect++;
-            else chemCorrect++;
+            bioCorrect++;
           } else {
             wrong++;
           }
@@ -1913,16 +2018,13 @@
 
         const timeStr = document.getElementById("progressTimer").textContent;
         const bioPct = bioTotal ? Math.round((bioCorrect / bioTotal) * 100) : 0;
-        const chemPct = chemTotal
-          ? Math.round((chemCorrect / chemTotal) * 100)
-          : 0;
 
         if (!window._isReplay) {
           saveAttempt({
             id: Date.now(),
-            paperFile: "15AP2.html",
-            paperName: "Breathing & Gases + Chemical Kinetics",
-            paperTag: "Standard",
+            paperFile: "16AP1.html",
+            paperName: "17-Chapter Biology Advanced Practice",
+            paperTag: "Advanced",
             correct,
             wrong,
             skipped,
@@ -1969,20 +2071,11 @@
   <h3>Chapter Breakdown</h3>
   <div class="chapter-bar-wrap">
     <div class="chapter-bar-header">
-      <span style="color:var(--accent)">🫁 Breathing & Gases</span>
+      <span style="color:var(--accent)">🧬 Biology · 17 NCERT units</span>
       <span style="color:var(--text2)">${bioCorrect}/${bioTotal} (${bioPct}%)</span>
     </div>
     <div class="chapter-bar-track">
       <div class="chapter-bar-fill" id="bioBar" style="width:0%;background:var(--accent)"></div>
-    </div>
-  </div>
-  <div class="chapter-bar-wrap">
-    <div class="chapter-bar-header">
-      <span style="color:var(--amber)">⚗️ Chemical Kinetics</span>
-      <span style="color:var(--text2)">${chemCorrect}/${chemTotal} (${chemPct}%)</span>
-    </div>
-    <div class="chapter-bar-track">
-      <div class="chapter-bar-fill" id="chemBar" style="width:0%;background:var(--amber)"></div>
     </div>
   </div>
 </div>
@@ -2003,7 +2096,6 @@
         setTimeout(() => {
           document.getElementById("scoreRing").style.strokeDashoffset = offset;
           document.getElementById("bioBar").style.width = bioPct + "%";
-          document.getElementById("chemBar").style.width = chemPct + "%";
         }, 100);
 
         res.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -2038,14 +2130,12 @@
             badgeText = "❌ Wrong";
           }
 
-          const tagClass = q.ch === "bio" ? "bio" : "chem";
-          const chLabel = q.ch === "bio" ? "🫁 Biology" : "⚗️ Chemistry";
-          const numClass = q.ch === "chem" ? "chem" : "";
+          const topic = q.ch;
 
           html += `<div class="review-card ${cardClass}">
             <div class="rc-header">
-              <span class="q-num ${numClass}">Q${q.id}</span>
-              <span class="q-tag ${tagClass}">${chLabel}</span>
+              <span class="q-num">Q${q.id}</span>
+              <span class="q-tag bio">${topic}</span>
               <span class="rc-badge ${badgeClass}">${badgeText}</span>
               <span class="q-type">${q.type}</span>
             </div>
