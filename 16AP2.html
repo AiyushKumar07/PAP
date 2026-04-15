@@ -1,0 +1,2188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEET 2026 — Biology Master Assessment (50Q)</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --bg: #0a0e17;
+        --surface: #111827;
+        --surface2: #1a2236;
+        --surface3: #222d44;
+        --border: #2a3654;
+        --text: #e2e8f0;
+        --text2: #94a3b8;
+        --text3: #64748b;
+        --accent: #06d6a0;
+        --accent2: #118ab2;
+        --red: #ef4444;
+        --green: #22c55e;
+        --amber: #f59e0b;
+        --purple: #a78bfa;
+        --pink: #f472b6;
+        --radius: 12px;
+        --radius-sm: 8px;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "IBM Plex Sans", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background:
+          radial-gradient(
+            ellipse at 20% 0%,
+            rgba(6, 214, 160, 0.06) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse at 80% 100%,
+            rgba(17, 138, 178, 0.06) 0%,
+            transparent 50%
+          );
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .container {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 20px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero {
+        text-align: center;
+        padding: 50px 20px 40px;
+        position: relative;
+      }
+      .hero-badge {
+        display: inline-block;
+        padding: 6px 18px;
+        border-radius: 50px;
+        background: rgba(6, 214, 160, 0.12);
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 18px;
+        border: 1px solid rgba(6, 214, 160, 0.2);
+      }
+      .hero h1 {
+        font-family: "DM Serif Display", serif;
+        font-size: clamp(28px, 5vw, 44px);
+        color: #fff;
+        margin-bottom: 12px;
+        line-height: 1.2;
+      }
+      .hero h1 span {
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .hero p {
+        color: var(--text2);
+        font-size: 16px;
+        max-width: 560px;
+        margin: 0 auto 28px;
+      }
+      .hero-tags {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 32px;
+      }
+      .hero-tags span {
+        padding: 6px 16px;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .tag-bio {
+        background: rgba(6, 214, 160, 0.1);
+        color: var(--accent);
+        border: 1px solid rgba(6, 214, 160, 0.22);
+      }
+      .tag-chem {
+        background: rgba(245, 158, 11, 0.1);
+        color: var(--amber);
+        border: 1px solid rgba(245, 158, 11, 0.22);
+      }
+      .start-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 16px 48px;
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--bg);
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 25px rgba(6, 214, 160, 0.3);
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+      .start-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 35px rgba(6, 214, 160, 0.4);
+      }
+
+      .progress-wrap {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(10, 14, 23, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 14px 20px;
+        border-bottom: 1px solid var(--border);
+        display: none;
+        transition: box-shadow 0.3s;
+      }
+      .progress-wrap.active {
+        display: block;
+      }
+      .progress-wrap.scrolled {
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+      }
+      .progress-inner {
+        max-width: 860px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .progress-text {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text2);
+        white-space: nowrap;
+        min-width: 90px;
+      }
+      .progress-text b {
+        color: var(--accent);
+      }
+      .progress-bar {
+        flex: 1;
+        height: 6px;
+        background: var(--surface3);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent), var(--accent2));
+        border-radius: 10px;
+        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        width: 0%;
+      }
+      .progress-timer {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+        color: var(--accent);
+        min-width: 60px;
+        text-align: right;
+      }
+
+      .q-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 32px;
+        margin-bottom: 24px;
+        display: none;
+        animation: fadeIn 0.4s ease both;
+      }
+      .q-card.active {
+        display: block;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .q-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+        flex-wrap: wrap;
+      }
+      .q-num {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--bg);
+        background: var(--accent);
+        padding: 4px 10px;
+        border-radius: 6px;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .q-meta {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .q-tag {
+        font-size: 11px;
+        padding: 3px 10px;
+        border-radius: 50px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+      .q-tag.bio {
+        background: rgba(6, 214, 160, 0.12);
+        color: var(--accent);
+      }
+      .q-tag.type {
+        background: rgba(167, 139, 250, 0.12);
+        color: var(--purple);
+      }
+      .q-tag.hard {
+        background: rgba(239, 68, 68, 0.12);
+        color: var(--red);
+      }
+      .q-tag.med {
+        background: rgba(245, 158, 11, 0.12);
+        color: var(--amber);
+      }
+      .q-type {
+        font-size: 11px;
+        color: var(--text3);
+        font-weight: 500;
+        margin-left: auto;
+      }
+      .q-text {
+        font-size: 15.5px;
+        color: #fff;
+        line-height: 1.7;
+        margin-bottom: 20px;
+      }
+      .q-text em {
+        color: var(--accent);
+        font-style: normal;
+        font-weight: 600;
+      }
+      .q-text .formula {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 14px;
+        background: var(--surface2);
+        padding: 2px 8px;
+        border-radius: 4px;
+        color: var(--amber);
+      }
+      .q-text table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 12px 0;
+        font-size: 14px;
+      }
+      .q-text table th,
+      .q-text table td {
+        padding: 8px 12px;
+        border: 1px solid var(--border);
+        text-align: left;
+      }
+      .q-text table th {
+        background: var(--surface2);
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      .options {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .opt-btn {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 14px 18px;
+        background: var(--surface2);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        transition: all 0.2s;
+        text-align: left;
+        width: 100%;
+        font-size: 14.5px;
+        color: var(--text);
+        line-height: 1.5;
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+      .opt-btn:hover {
+        border-color: var(--accent);
+        background: rgba(6, 214, 160, 0.05);
+        transform: translateX(4px);
+      }
+      .opt-btn .opt-letter {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        color: var(--text3);
+        font-size: 13px;
+        min-width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        background: var(--surface3);
+        flex-shrink: 0;
+        margin-top: 1px;
+        transition: all 0.2s;
+      }
+      .opt-btn.selected {
+        border-color: var(--accent);
+        background: rgba(6, 214, 160, 0.08);
+      }
+      .opt-btn.selected .opt-letter {
+        background: var(--accent);
+        color: var(--bg);
+      }
+
+      .nav-btns {
+        display: flex;
+        gap: 12px;
+        margin-top: 24px;
+        flex-wrap: wrap;
+      }
+      .nav-btn {
+        padding: 10px 24px;
+        border-radius: 8px;
+        font-family: "IBM Plex Sans", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        border: 1.5px solid var(--border);
+        background: var(--surface2);
+        color: var(--text);
+      }
+      .nav-btn:hover {
+        border-color: var(--accent);
+      }
+      .nav-btn.primary {
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        border: none;
+        color: var(--bg);
+        font-weight: 700;
+        box-shadow: 0 2px 12px rgba(6, 214, 160, 0.2);
+      }
+      .nav-btn.primary:hover {
+        box-shadow: 0 4px 20px rgba(6, 214, 160, 0.32);
+        transform: translateY(-1px);
+      }
+      .nav-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+      .mark-review {
+        margin-left: auto;
+        font-size: 13px;
+        color: var(--amber);
+        background: rgba(245, 158, 11, 0.08);
+        border-color: rgba(245, 158, 11, 0.25);
+      }
+      .mark-review.marked {
+        background: rgba(245, 158, 11, 0.2);
+        border-color: var(--amber);
+      }
+
+      .palette-toggle {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: var(--bg);
+        border: none;
+        font-size: 20px;
+        font-weight: 700;
+        cursor: pointer;
+        z-index: 200;
+        box-shadow: 0 4px 20px rgba(6, 214, 160, 0.4);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s;
+      }
+      .palette-toggle:hover {
+        transform: scale(1.06);
+      }
+      .palette-toggle.active {
+        display: flex;
+      }
+      .palette-panel {
+        position: fixed;
+        bottom: 84px;
+        right: 24px;
+        width: 300px;
+        max-height: 400px;
+        overflow-y: auto;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 20px;
+        z-index: 200;
+        display: none;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      }
+      .palette-panel.open {
+        display: block;
+      }
+      .palette-title {
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 14px;
+        color: var(--text2);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .palette-grid {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        gap: 6px;
+      }
+      .palette-dot {
+        width: 32px;
+        height: 32px;
+        border-radius: 7px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 700;
+        cursor: pointer;
+        border: 1.5px solid var(--border);
+        background: var(--surface2);
+        color: var(--text3);
+        transition: all 0.15s;
+      }
+      .palette-dot:hover {
+        border-color: var(--accent);
+      }
+      .palette-dot.answered {
+        background: rgba(6, 214, 160, 0.15);
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .palette-dot.review {
+        background: rgba(245, 158, 11, 0.15);
+        border-color: var(--amber);
+        color: var(--amber);
+      }
+      .palette-dot.current {
+        box-shadow: 0 0 0 2px var(--accent);
+      }
+      .palette-legend {
+        display: flex;
+        gap: 16px;
+        margin-top: 14px;
+        font-size: 11px;
+        color: var(--text3);
+        flex-wrap: wrap;
+      }
+      .palette-legend span {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .legend-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 3px;
+      }
+
+      #resultsSection {
+        display: none;
+      }
+      .results-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 40px 30px;
+        max-width: 500px;
+        margin: 0 auto 40px;
+        text-align: center;
+      }
+      .results-card h2 {
+        font-family: "DM Serif Display", serif;
+        font-size: 32px;
+        color: #fff;
+        margin-bottom: 8px;
+      }
+      .score-ring {
+        width: 160px;
+        height: 160px;
+        margin: 24px auto;
+        position: relative;
+      }
+      .score-ring svg {
+        transform: rotate(-90deg);
+      }
+      .score-ring .ring-bg {
+        fill: none;
+        stroke: var(--surface3);
+        stroke-width: 10;
+      }
+      .score-ring .ring-fill {
+        fill: none;
+        stroke-width: 10;
+        stroke-linecap: round;
+        transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .score-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+      .score-center .pct {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 36px;
+        font-weight: 700;
+        color: #fff;
+      }
+      .score-center .of {
+        font-size: 13px;
+        color: var(--text3);
+      }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-top: 24px;
+      }
+      .stat-item {
+        padding: 14px 8px;
+        background: var(--surface2);
+        border-radius: var(--radius-sm);
+        text-align: center;
+      }
+      .stat-num {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 22px;
+        font-weight: 700;
+      }
+      .stat-lbl {
+        font-size: 11px;
+        color: var(--text3);
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        margin-top: 4px;
+      }
+      .stat-item.neet .stat-num {
+        color: var(--accent2);
+      }
+      .stat-item.correct .stat-num {
+        color: var(--green);
+      }
+      .stat-item.wrong .stat-num {
+        color: var(--red);
+      }
+      .stat-item.skip .stat-num {
+        color: var(--amber);
+      }
+
+      .chapter-breakdown {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 24px;
+        margin-bottom: 40px;
+      }
+      .chapter-breakdown h3 {
+        font-family: "DM Serif Display", serif;
+        font-size: 18px;
+        color: #fff;
+        margin-bottom: 20px;
+      }
+      .chapter-bar-wrap {
+        margin-bottom: 16px;
+      }
+      .chapter-bar-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .chapter-bar-track {
+        height: 8px;
+        background: var(--surface3);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .chapter-bar-fill {
+        height: 100%;
+        border-radius: 4px;
+        transition: width 1s ease;
+      }
+
+      .review-title {
+        font-family: "DM Serif Display", serif;
+        font-size: 28px;
+        color: #fff;
+        margin: 40px 0 12px;
+        text-align: center;
+      }
+      .review-sub {
+        text-align: center;
+        color: var(--text2);
+        font-size: 14px;
+        margin-bottom: 24px;
+      }
+      .review-filter {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+      }
+      .filter-btn {
+        padding: 8px 20px;
+        border-radius: 50px;
+        border: 1px solid var(--border);
+        background: transparent;
+        color: var(--text2);
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .filter-btn:hover,
+      .filter-btn.active {
+        background: var(--accent);
+        color: var(--bg);
+        border-color: var(--accent);
+      }
+
+      .review-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 28px;
+        margin-bottom: 20px;
+      }
+      .review-card.rc-correct {
+        border-left: 4px solid var(--green);
+      }
+      .review-card.rc-wrong {
+        border-left: 4px solid var(--red);
+      }
+      .review-card.rc-skipped {
+        border-left: 4px solid var(--amber);
+      }
+      .rc-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 14px;
+        flex-wrap: wrap;
+      }
+      .rc-badge {
+        font-size: 11px;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 5px;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+      }
+      .rc-badge.badge-correct {
+        background: rgba(34, 197, 94, 0.1);
+        color: var(--green);
+        border: 1px solid rgba(34, 197, 94, 0.3);
+      }
+      .rc-badge.badge-wrong {
+        background: rgba(239, 68, 68, 0.1);
+        color: var(--red);
+        border: 1px solid rgba(239, 68, 68, 0.3);
+      }
+      .rc-badge.badge-skipped {
+        background: rgba(245, 158, 11, 0.1);
+        color: var(--amber);
+        border: 1px solid rgba(245, 158, 11, 0.3);
+      }
+      .rc-q {
+        font-size: 14.5px;
+        line-height: 1.7;
+        margin-bottom: 16px;
+        color: var(--text);
+      }
+      .rc-opts {
+        margin-bottom: 16px;
+      }
+      .rc-opt {
+        padding: 10px 14px;
+        margin-bottom: 6px;
+        border-radius: 8px;
+        font-size: 13.5px;
+        line-height: 1.6;
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        border: 1.5px solid transparent;
+      }
+      .rc-opt.rc-opt-correct {
+        background: rgba(34, 197, 94, 0.08);
+        border-color: rgba(34, 197, 94, 0.3);
+      }
+      .rc-opt.rc-opt-wrong {
+        background: rgba(239, 68, 68, 0.08);
+        border-color: rgba(239, 68, 68, 0.3);
+      }
+      .rc-letter {
+        flex-shrink: 0;
+        width: 22px;
+        height: 22px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 700;
+        background: var(--border);
+        color: var(--text3);
+      }
+      .rc-opt.rc-opt-correct .rc-letter {
+        background: var(--green);
+        color: #fff;
+      }
+      .rc-opt.rc-opt-wrong .rc-letter {
+        background: var(--red);
+        color: #fff;
+      }
+      .rc-exp {
+        background: rgba(6, 214, 160, 0.05);
+        border: 1px solid rgba(6, 214, 160, 0.15);
+        border-radius: 10px;
+        padding: 18px 20px;
+      }
+      .rc-exp h4 {
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: var(--accent);
+        margin-bottom: 8px;
+      }
+      .rc-exp p {
+        font-size: 13.5px;
+        line-height: 1.75;
+        color: var(--text2);
+      }
+      .rc-exp p strong {
+        color: var(--text);
+      }
+      .rc-exp .ncert-ref {
+        display: inline-block;
+        margin-top: 8px;
+        font-size: 11px;
+        padding: 3px 8px;
+        background: rgba(6, 214, 160, 0.1);
+        border-radius: 4px;
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          padding: 12px;
+        }
+        .q-card {
+          padding: 20px 16px;
+        }
+        .hero h1 {
+          font-size: 26px;
+        }
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .progress-inner {
+          gap: 10px;
+        }
+        .palette-panel {
+          width: calc(100vw - 40px);
+          right: 20px;
+        }
+        .review-card {
+          padding: 20px 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero" id="heroSection">
+      <div class="hero-badge">NEET 2026 · NCERT Aligned</div>
+      <h1>Biology <span>Master Assessment</span></h1>
+      <p>
+        50 questions across Reproduction, Genetics, Biotechnology, Ecology, Plant & Human Physiology — deep conceptual clarity, empirical recall, and analytical traps.
+      </p>
+      <div class="hero-tags">
+        <span class="tag-bio">🧬 50 Questions · All Biology</span>
+        <span class="tag-chem">📚 17 Chapters · Class 11–12</span>
+      </div>
+      <button class="start-btn" onclick="startQuiz()">Begin Test →</button>
+    </div>
+
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-inner">
+        <div class="progress-text">
+          <b id="qCounter">Q 1 / 50</b>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-timer" id="progressTimer">00:00</div>
+      </div>
+    </div>
+
+    <div class="container" id="quizArea"></div>
+
+    <div class="container" id="resultsSection"></div>
+
+    <button class="palette-toggle" id="paletteToggle" onclick="togglePalette()">
+      ☰
+    </button>
+    <div class="palette-panel" id="palettePanel">
+      <div class="palette-title">Question Palette</div>
+      <div class="palette-grid" id="paletteGrid"></div>
+      <div class="palette-legend">
+        <span
+          ><div
+            class="legend-dot"
+            style="background: var(--surface2); border: 1px solid var(--border)"
+          ></div>
+          Unseen</span
+        >
+        <span
+          ><div
+            class="legend-dot"
+            style="background: rgba(6, 214, 160, 0.2)"
+          ></div>
+          Answered</span
+        >
+        <span
+          ><div
+            class="legend-dot"
+            style="background: rgba(245, 158, 11, 0.2)"
+          ></div>
+          Review</span
+        >
+      </div>
+    </div>
+
+    <script>
+      const Q = [
+        // ====== Reproduction ======
+        {
+          id: 1,
+          ch: "Sexual Repro. in Plants",
+          type: "Assertion-Reason",
+          diff: "Hard",
+          q: `<strong>Assertion (A):</strong> Apomixis is essentially a form of asexual reproduction that mimics sexual reproduction.<br><strong>Reason (R):</strong> In apomictic species, a diploid egg cell is formed without reduction division and develops into the embryo without fertilization.`,
+          opts: [
+            "Both A and R are true, and R is the correct explanation of A",
+            "Both A and R are true, but R is not the correct explanation of A",
+            "A is true, but R is false",
+            "Both A and R are false",
+          ],
+          ans: 0,
+          exp: `NCERT explicitly defines apomixis as a form of asexual reproduction that mimics sexual reproduction. The reason correctly outlines one of the main pathways of apomictic development (agamospermy), where the diploid egg cell forms without meiosis and develops directly.`,
+          ref: "NCERT Ch.2 — Apomixis",
+        },
+
+        {
+          id: 2,
+          ch: "Sexual Repro. in Plants",
+          type: "Multi-statement",
+          diff: "Hard",
+          q: `Read the following statements regarding pollen-pistil interaction and identify the <em>incorrect</em> statement according to NCERT:<br><br>(A) The pistil has the ability to recognize the pollen, whether it is of the right type (compatible) or of the wrong type (incompatible).<br>(B) The rejection of incompatible pollen always occurs exclusively at the stigma surface before pollen germination.<br>(C) It is a dynamic process involving pollen recognition followed by promotion or inhibition of the pollen.<br>(D) In plants shedding pollen at the two-celled stage, the generative cell divides to form two male gametes during the growth of the pollen tube in the stigma.`,
+          opts: [
+            "Statement A",
+            "Statement B",
+            "Statement C",
+            "Statement D",
+          ],
+          ans: 1,
+          exp: `Statement B is incorrect because NCERT clearly states that pollen rejection can occur either at the stigma (preventing germination) <strong>OR in the style</strong> (inhibiting pollen tube growth). It is NOT exclusively at the stigma surface.`,
+          ref: "NCERT Ch.2 — Pollen-Pistil Interaction",
+        },
+
+        {
+          id: 3,
+          ch: "Sexual Repro. in Plants",
+          type: "MCQ",
+          diff: "Hard",
+          q: `In an angiosperm, to produce exactly 100 viable seeds, what is the minimum number of meiotic divisions required in the microsporangium and megasporangium combined, assuming standard development with no apomixis?`,
+          opts: [
+            "125 meiotic divisions",
+            "100 meiotic divisions",
+            "400 meiotic divisions",
+            "50 meiotic divisions",
+          ],
+          ans: 0,
+          exp: `1 Microspore Mother Cell (MMC) undergoes meiosis to form 4 microspores (pollen). Therefore, <strong>25 MMCs = 100 pollen grains</strong>. 1 Megaspore Mother Cell undergoes meiosis to form 4 megaspores, but 3 degenerate, leaving only 1 functional embryo sac per division. Thus, <strong>100 MegMCs are required</strong>. Total: 25 + 100 = <strong>125 divisions</strong>.`,
+          ref: "NCERT Ch.2 — Reproductive Mathematics",
+        },
+
+        {
+          id: 4,
+          ch: "Human Reproduction",
+          type: "MCQ",
+          diff: "Hard",
+          q: `According to NCERT data, at the time of puberty, what is the exact quantitative status of the follicular pool in a human female?`,
+          opts: [
+            "60,000 to 80,000 secondary oocytes remain in each ovary",
+            "60,000 to 80,000 primary follicles remain in each ovary",
+            "60,000 to 80,000 Graafian follicles remain distributed across both ovaries",
+            "120,000 to 160,000 oogonia remain arrested in Metaphase-II in each ovary",
+          ],
+          ans: 1,
+          exp: `NCERT clearly states that due to massive follicular atresia from birth to puberty, exactly <strong>60,000 to 80,000 primary follicles</strong> remain in each ovary. They contain primary oocytes arrested at Prophase-I of meiosis.`,
+          ref: "NCERT Ch.3 — Oogenesis",
+        },
+
+        {
+          id: 5,
+          ch: "Human Reproduction",
+          type: "MCQ",
+          diff: "Medium",
+          q: `Which of the following represents the correct anatomical sequence for the transport of spermatozoa in the male reproductive system?`,
+          opts: [
+            "Seminiferous tubules → Vasa efferentia → Rete testis → Epididymis → Vas deferens",
+            "Seminiferous tubules → Rete testis → Vasa efferentia → Epididymis → Vas deferens",
+            "Rete testis → Seminiferous tubules → Epididymis → Vasa efferentia → Urethra",
+            "Seminiferous tubules → Epididymis → Rete testis → Vas deferens → Vasa efferentia",
+          ],
+          ans: 1,
+          exp: `The anatomically correct sequence provided by NCERT is: <strong>Seminiferous tubules → Rete testis → Vasa efferentia → Epididymis → Vas deferens</strong>. Students commonly confuse the order of rete testis and vasa efferentia.`,
+          ref: "NCERT Ch.3 — Male Accessory Ducts",
+        },
+
+        {
+          id: 6,
+          ch: "Human Reproduction",
+          type: "Multi-statement",
+          diff: "Hard",
+          q: `Consider the menstrual cycle hormones:<br>(I) Both LH and FSH attain a peak level in the middle of the cycle (about the 14th day).<br>(II) The rapid secretion of LH leading to its maximum level induces rupture of the Graafian follicle.<br>(III) In the absence of fertilization, the corpus luteum is maintained by high levels of progesterone secreted by the adrenal cortex.<br><br>How many of the above statements are strictly correct?`,
+          opts: [
+            "None",
+            "One",
+            "Two",
+            "Three",
+          ],
+          ans: 2,
+          exp: `Statements I and II are strictly correct. Statement III is <strong>incorrect</strong> because the corpus luteum is maintained by LH initially, and it secretes progesterone itself (not the adrenal cortex). Without fertilization, the corpus luteum degenerates.`,
+          ref: "NCERT Ch.3 — Menstrual Cycle",
+        },
+
+        {
+          id: 7,
+          ch: "Reproductive Health",
+          type: "MCQ",
+          diff: "Hard",
+          q: `What is the distinct pharmacological mechanism and administration protocol for the oral contraceptive pill 'Saheli'?`,
+          opts: [
+            "It contains a high dose of steroidal progestogen, administered daily for 21 days",
+            "It contains levonorgestrel, acts as an emergency contraceptive, and must be taken within 72 hours of coitus",
+            "It contains a non-steroidal preparation (centchroman), acts as an anti-implantation agent, and is taken once a week",
+            "It is a steroidal pill that suppresses the release of GnRH entirely, taken continuously without a break",
+          ],
+          ans: 2,
+          exp: `NCERT highlights 'Saheli' (developed by CDRI) as the first <strong>non-steroidal oral contraceptive</strong> (containing centchroman), which has high efficacy, very few side effects, and is taken <strong>once a week</strong>.`,
+          ref: "NCERT Ch.4 — Contraceptive Methods (Saheli)",
+        },
+
+        {
+          id: 8,
+          ch: "Reproductive Health",
+          type: "Match",
+          diff: "Hard",
+          q: `Match the Assisted Reproductive Technologies (ART) with their exact procedural definitions:<br><table><tr><th>ART</th><th>Procedure</th></tr><tr><td>1. ZIFT</td><td>P. Transfer of an embryo with more than 8 blastomeres into the uterus</td></tr><tr><td>2. IUT</td><td>Q. Transfer of a zygote or early embryo (up to 8 blastomeres) into the fallopian tube</td></tr><tr><td>3. ICSI</td><td>R. Transfer of an ovum collected from a donor into the fallopian tube of another female</td></tr><tr><td>4. GIFT</td><td>S. A sperm is directly injected into the ovum in the laboratory</td></tr></table>`,
+          opts: [
+            "1-Q, 2-P, 3-S, 4-R",
+            "1-P, 2-Q, 3-R, 4-S",
+            "1-Q, 2-P, 3-R, 4-S",
+            "1-S, 2-R, 3-P, 4-Q",
+          ],
+          ans: 0,
+          exp: `ZIFT (1) involves transferring a zygote/early embryo (up to 8 blastomeres) to the fallopian tube (Q). IUT (2) transfers embryos with >8 blastomeres into the uterus (P). ICSI (3) involves direct sperm injection (S). GIFT (4) transfers a donor ovum to the fallopian tube (R).`,
+          ref: "NCERT Ch.4 — ART Methodologies",
+        },
+
+        {
+          id: 9,
+          ch: "Reproductive Health",
+          type: "MCQ",
+          diff: "Medium",
+          q: `According to NCERT, all sexually transmitted infections are completely curable if detected early and treated properly, EXCEPT for which of the following combinations?`,
+          opts: [
+            "Syphilis, Gonorrhoea, and Chlamydiosis",
+            "Hepatitis-B, Genital herpes, and HIV infections",
+            "Genital warts, Trichomoniasis, and Syphilis",
+            "HIV infections, Syphilis, and Gonorrhoea",
+          ],
+          ans: 1,
+          exp: `NCERT specifically identifies <strong>Hepatitis-B, Genital herpes, and HIV infections</strong> as the three viral STIs that are NOT completely curable, even if detected early.`,
+          ref: "NCERT Ch.4 — Sexually Transmitted Infections",
+        },
+
+        // ====== Genetics and Evolution ======
+        {
+          id: 10,
+          ch: "Principles of Inheritance",
+          type: "MCQ",
+          diff: "Hard",
+          q: `In T.H. Morgan's classic dihybrid cross experiment with <em>Drosophila melanogaster</em> mapping yellow body and white eyes, what was the exact percentage of parental types and recombinant types observed in the F2 generation?`,
+          opts: [
+            "62.8% parental and 37.2% recombinant",
+            "50.0% parental and 50.0% recombinant",
+            "98.7% parental and 1.3% recombinant",
+            "1.3% parental and 98.7% recombinant",
+          ],
+          ans: 2,
+          exp: `In Morgan's Cross A mapping yellow body and white eyes, he found <strong>98.7% parental phenotypes</strong> and only <strong>1.3% recombinants</strong>, proving tight physical linkage between these two genes on the same chromosome.`,
+          ref: "NCERT Ch.5 — Morgan's Dihybrid Cross & Linkage",
+        },
+
+        {
+          id: 11,
+          ch: "Principles of Inheritance",
+          type: "Assertion-Reason",
+          diff: "Hard",
+          q: `<strong>Assertion (A):</strong> Phenylketonuria is a classic example of pleiotropy.<br><strong>Reason (R):</strong> The disease is caused by a mutation in a single gene that codes for the enzyme phenylalanine hydroxylase, which subsequently manifests in multiple phenotypic traits such as mental retardation and a reduction in hair and skin pigmentation.`,
+          opts: [
+            "Both A and R are true, and R is the correct explanation of A",
+            "Both A and R are true, but R is not the correct explanation of A",
+            "A is true, but R is false",
+            "Both A and R are false",
+          ],
+          ans: 0,
+          exp: `Both the assertion and the reason are correct. Phenylketonuria is the classic NCERT example of <strong>pleiotropy</strong>, where a single defective gene (phenylalanine hydroxylase) causes widespread systemic phenotypic effects including mental retardation and reduced pigmentation.`,
+          ref: "NCERT Ch.5 — Pleiotropy (PKU)",
+        },
+
+        {
+          id: 12,
+          ch: "Principles of Inheritance",
+          type: "MCQ",
+          diff: "Hard",
+          q: `A male suffering from Haemophilia (an X-linked recessive disorder) marries a phenotypically normal woman whose father was haemophilic. What is the probability that their first child will be a haemophilic son?`,
+          opts: [
+            "0%",
+            "25%",
+            "50%",
+            "100%",
+          ],
+          ans: 1,
+          exp: `The father is affected (X<sup>h</sup>Y). The mother is normal but her father was haemophilic, making her an obligate carrier (X<sup>H</sup>X<sup>h</sup>). A son inherits the Y chromosome from the father and an X from the mother. The mother has a 50% chance of passing X<sup>h</sup>. Probability of a haemophilic son = <strong>0.5 (son) × 0.5 (affected) = 0.25 or 25%</strong>.`,
+          ref: "NCERT Ch.5 — X-Linked Recessive Inheritance",
+        },
+
+        {
+          id: 13,
+          ch: "Molecular Basis",
+          type: "MCQ",
+          diff: "Hard",
+          q: `Based on the salient features derived from the Human Genome Project (HGP), identify the strictly correct statement regarding the human genome:`,
+          opts: [
+            "The human genome contains approximately 80,000 genes, with Chromosome Y having the most genes",
+            "The largest known human gene is dystrophin, consisting of 2.4 million bases, and Chromosome 1 was the last to be sequenced in May 2006",
+            "The genome comprises 3164.7 million base pairs, and the functions are known for over 90% of the discovered genes",
+            "Almost all nucleotide bases (90.9%) are exactly the same in all people",
+          ],
+          ans: 1,
+          exp: `Statement B is correct. <strong>Dystrophin is the largest gene (2.4 million bases)</strong>, and <strong>Chromosome 1 was sequenced last in May 2006</strong>. The total genome size is 3164.7 million bp, but functions are unknown for over 50% of the genes. The estimated gene count is ~30,000 (not 80,000).`,
+          ref: "NCERT Ch.6 — Human Genome Project",
+        },
+
+        {
+          id: 14,
+          ch: "Molecular Basis",
+          type: "MCQ",
+          diff: "Medium",
+          q: `While the genetic code is nearly universal (e.g., from bacteria to humans, UUU codes for Phenylalanine), NCERT explicitly mentions exceptions to this rule. Where are these exceptions primarily found?`,
+          opts: [
+            "In chloroplast genomes of higher plants",
+            "In retroviral RNA sequences",
+            "In mitochondrial codons and in some protozoans",
+            "In the nuclear DNA of archaebacteria",
+          ],
+          ans: 2,
+          exp: `While the code is nearly universal, NCERT explicitly notes that deviations are found primarily in <strong>mitochondrial codons</strong> and in certain <strong>ciliate protozoans</strong>.`,
+          ref: "NCERT Ch.6 — Genetic Code Exceptions",
+        },
+
+        {
+          id: 15,
+          ch: "Molecular Basis",
+          type: "MCQ",
+          diff: "Hard",
+          q: `In the <em>lac</em> operon model of gene regulation, what does the regulatory gene <em>'i'</em> explicitly stand for?`,
+          opts: [
+            "Inducer, as it induces the transcription of structural genes",
+            "Initiator, as it acts as the starting point for RNA polymerase",
+            "Inhibitor, as it codes for the repressor protein",
+            "Isomerase, an enzyme needed for lactose breakdown",
+          ],
+          ans: 2,
+          exp: `A frequent pedagogical trap. In the <em>lac</em> operon, the <strong>'i' gene stands for inhibitor</strong>, not inducer. It constitutively expresses the repressor protein that binds to the operator and blocks transcription.`,
+          ref: "NCERT Ch.6 — Lac Operon Regulation",
+        },
+
+        {
+          id: 16,
+          ch: "Evolution",
+          type: "MCQ",
+          diff: "Medium",
+          q: `According to the geological time scale presented in NCERT, approximately how many million years ago (mya) did the dinosaurs (such as <em>Tyrannosaurus rex</em>) suddenly disappear from the earth?`,
+          opts: [
+            "200 mya",
+            "65 mya",
+            "350 mya",
+            "15 mya",
+          ],
+          ans: 1,
+          exp: `The mass extinction event that wiped out the dinosaurs occurred suddenly approximately <strong>65 million years ago</strong> at the end of the Cretaceous period (K-Pg boundary).`,
+          ref: "NCERT Ch.7 — Geological Time Scale",
+        },
+
+        {
+          id: 17,
+          ch: "Evolution",
+          type: "Match",
+          diff: "Hard",
+          q: `Match the hominid ancestors with their empirically measured cranial capacities based on NCERT:<br><table><tr><th>Hominid</th><th>Cranial Capacity</th></tr><tr><td>1. Homo habilis</td><td>P. 900 cc</td></tr><tr><td>2. Homo erectus</td><td>Q. 650–800 cc</td></tr><tr><td>3. Neanderthal man</td><td>R. 1400 cc</td></tr></table>`,
+          opts: [
+            "1-Q, 2-P, 3-R",
+            "1-P, 2-Q, 3-R",
+            "1-R, 2-P, 3-Q",
+            "1-Q, 2-R, 3-P",
+          ],
+          ans: 0,
+          exp: `Based on NCERT records: <strong>Homo habilis</strong> had a capacity of 650–800 cc (Q). <strong>Homo erectus</strong> had a capacity of 900 cc (P). <strong>Neanderthal man</strong> had a capacity of 1400 cc (R).`,
+          ref: "NCERT Ch.7 — Hominid Evolution",
+        },
+
+        {
+          id: 18,
+          ch: "Evolution",
+          type: "MCQ",
+          diff: "Medium",
+          q: `Which of the following biological pairs serves as a classic textbook example of convergent evolution (analogous structures)?`,
+          opts: [
+            "Forelimbs of whales, bats, cheetahs, and humans",
+            "Vertebrate hearts and vertebrate brains",
+            "Sweet potato (root modification) and potato (stem modification)",
+            "Thorns of Bougainvillea and tendrils of Cucurbita",
+          ],
+          ans: 2,
+          exp: `Sweet potato (a root modification) and potato (a stem modification) do not share anatomical homology but perform the exact same function (starch storage), making them <strong>analogous structures resulting from convergent evolution</strong>. Forelimbs of vertebrates are homologous (divergent evolution).`,
+          ref: "NCERT Ch.7 — Convergent vs Divergent Evolution",
+        },
+
+        // ====== Biology and Human Welfare ======
+        {
+          id: 19,
+          ch: "Human Health & Disease",
+          type: "MCQ",
+          diff: "Hard",
+          q: `Interferons are specialized proteins that protect non-infected cells from further viral infections. Under which strict category of innate immunity do they fall?`,
+          opts: [
+            "Physical barriers",
+            "Physiological barriers",
+            "Cellular barriers",
+            "Cytokine barriers",
+          ],
+          ans: 3,
+          exp: `Interferons are distinct signaling proteins secreted by virus-infected cells. They constitute the <strong>cytokine barrier</strong> of innate immunity, alerting neighboring uninfected cells and triggering their antiviral defenses.`,
+          ref: "NCERT Ch.8 — Innate Immunity",
+        },
+
+        {
+          id: 20,
+          ch: "Human Health & Disease",
+          type: "MCQ",
+          diff: "Hard",
+          q: `During the complex life cycle of the malarial parasite <em>Plasmodium</em>, where exactly does the fertilization and subsequent development of the parasite take place?`,
+          opts: [
+            "Inside the human liver cells (hepatocytes)",
+            "Inside the human red blood cells (erythrocytes)",
+            "Inside the salivary glands of the female Anopheles mosquito",
+            "Inside the intestine (gut) of the female Anopheles mosquito",
+          ],
+          ans: 3,
+          exp: `While asexual multiplication occurs in the human liver and RBCs, <strong>fertilization (syngamy)</strong> and further development occur exclusively within the <strong>gut (intestine) of the female Anopheles mosquito</strong>.`,
+          ref: "NCERT Ch.8 — Plasmodium Life Cycle",
+        },
+
+        {
+          id: 21,
+          ch: "Human Health & Disease",
+          type: "MCQ",
+          diff: "Medium",
+          q: `Identify the primary lymphoid organ that is relatively large in size at the time of birth but progressively undergoes atrophy, reducing in size with age until it becomes very small by puberty.`,
+          opts: [
+            "Spleen",
+            "Thymus",
+            "Peyer's patches of the small intestine",
+            "Lymph nodes",
+          ],
+          ans: 1,
+          exp: `The <strong>thymus gland</strong> is large at birth but gradually degenerates (atrophies) with age, severely reducing its size and compromising T-cell maturation in older individuals. Spleen and lymph nodes are secondary lymphoid organs.`,
+          ref: "NCERT Ch.8 — Lymphoid Organs",
+        },
+
+        {
+          id: 22,
+          ch: "Microbes in Welfare",
+          type: "MCQ",
+          diff: "Hard",
+          q: `In the context of secondary (biological) sewage treatment plants, the term 'flocs' specifically refers to:`,
+          opts: [
+            "Masses of anaerobic bacteria generating biogas in the sludge digester",
+            "Floating physical debris and grit removed during primary sedimentation",
+            "Masses of aerobic bacteria associated with fungal filaments to form mesh-like structures",
+            "The sedimented active sludge pumped back into the aeration tank",
+          ],
+          ans: 2,
+          exp: `During secondary biological treatment in aeration tanks, 'flocs' are precisely defined as <strong>masses of aerobic bacteria associated with fungal filaments to form mesh-like structures</strong>. They reduce BOD significantly.`,
+          ref: "NCERT Ch.10 — Sewage Treatment (Flocs)",
+        },
+
+        {
+          id: 23,
+          ch: "Microbes in Welfare",
+          type: "Match",
+          diff: "Hard",
+          q: `Match the commercially important bioactive molecules with their respective microbial sources:<br><table><tr><th>Bioactive Molecule</th><th>Microbial Source</th></tr><tr><td>1. Statins (blood-cholesterol lowering)</td><td>P. Streptococcus (bacterium)</td></tr><tr><td>2. Cyclosporin A (immunosuppressive)</td><td>Q. Trichoderma polysporum (fungus)</td></tr><tr><td>3. Streptokinase (clot buster)</td><td>R. Monascus purpureus (yeast)</td></tr></table>`,
+          opts: [
+            "1-R, 2-Q, 3-P",
+            "1-Q, 2-R, 3-P",
+            "1-P, 2-Q, 3-R",
+            "1-R, 2-P, 3-Q",
+          ],
+          ans: 0,
+          exp: `Statins are derived from the yeast <strong>Monascus purpureus</strong> (1-R). Cyclosporin A is derived from the fungus <strong>Trichoderma polysporum</strong> (2-Q). Streptokinase is derived from the bacterium <strong>Streptococcus</strong> (3-P).`,
+          ref: "NCERT Ch.10 — Bioactive Molecules",
+        },
+
+        {
+          id: 24,
+          ch: "Microbes in Welfare",
+          type: "Multi-statement",
+          diff: "Medium",
+          q: `<strong>Statement I:</strong> The greater the Biochemical Oxygen Demand (BOD) of wastewater, the less is its polluting potential.<br><strong>Statement II:</strong> BOD is an indirect measure of the organic matter present in the water sample.<br><br>Evaluate the statements.`,
+          opts: [
+            "Both Statement I and II are correct",
+            "Both Statement I and II are incorrect",
+            "Statement I is correct, but Statement II is incorrect",
+            "Statement I is incorrect, but Statement II is correct",
+          ],
+          ans: 3,
+          exp: `Statement I is <strong>incorrect</strong> — the greater the BOD, the <strong>GREATER</strong> its polluting potential, as it indicates a high volume of oxygen-consuming organic matter. Statement II is <strong>correct</strong> — BOD is indeed an indirect measure of organic matter.`,
+          ref: "NCERT Ch.10 — BOD Concept",
+        },
+
+        // ====== Biotechnology ======
+        {
+          id: 25,
+          ch: "Biotech Principles",
+          type: "MCQ",
+          diff: "Hard",
+          q: `In the standard <em>E. coli</em> cloning vector pBR322, the restriction endonuclease recognition sites for <em>BamHI</em> and <em>SalI</em> are structurally located within which specific region?`,
+          opts: [
+            "The origin of replication (ori)",
+            "The ampicillin resistance gene (ampR)",
+            "The tetracycline resistance gene (tetR)",
+            "The rop gene",
+          ],
+          ans: 2,
+          exp: `The restriction sites for <strong>BamHI and SalI</strong> are strategically located within the <strong>tetR (tetracycline resistance) gene</strong>, allowing for insertional inactivation of tetracycline resistance when foreign DNA is inserted.`,
+          ref: "NCERT Ch.11 — pBR322 Vector",
+        },
+
+        {
+          id: 26,
+          ch: "Biotech Principles",
+          type: "MCQ",
+          diff: "Medium",
+          q: `What is the exact biological function of the <em>rop</em> gene in the pBR322 vector?`,
+          opts: [
+            "It codes for resistance against multiple heavy metals",
+            "It codes for proteins involved in the replication of the plasmid, regulating copy number",
+            "It serves as a selectable marker for distinguishing recombinants from non-recombinants via insertional inactivation",
+            "It provides the initiation site for RNA polymerase binding",
+          ],
+          ans: 1,
+          exp: `The <strong>rop gene</strong> in pBR322 codes for repressor of primer proteins, which are directly involved in the <strong>regulation and replication of the plasmid</strong>, controlling copy number.`,
+          ref: "NCERT Ch.11 — Role of rop Gene",
+        },
+
+        {
+          id: 27,
+          ch: "Biotech Principles",
+          type: "Assertion-Reason",
+          diff: "Hard",
+          q: `<strong>Assertion (A):</strong> Restriction endonucleases are known as "molecular scissors."<br><strong>Reason (R):</strong> They inspect the length of a DNA sequence, bind to specific palindromic nucleotide sequences, and cut both strands of the double helix at specific points in their sugar-phosphate backbones.`,
+          opts: [
+            "Both A and R are true, and R is the correct explanation of A",
+            "Both A and R are true, but R is not the correct explanation of A",
+            "A is true, but R is false",
+            "Both A and R are false",
+          ],
+          ans: 0,
+          exp: `Both the assertion and the reason are factually correct, and the reason accurately describes the mechanism — inspecting DNA length, recognizing palindromic sequences, and cutting sugar-phosphate backbones — that earns them the title <strong>"molecular scissors."</strong>`,
+          ref: "NCERT Ch.11 — Restriction Endonucleases",
+        },
+
+        {
+          id: 28,
+          ch: "Biotech Applications",
+          type: "MCQ",
+          diff: "Hard",
+          q: `In the generation of transgenic Bt cotton, which specific set of <em>cry</em> genes is incorporated to control the cotton bollworm?`,
+          opts: [
+            "cryIAc and cryIIAb",
+            "cryIAb only",
+            "cryIAb and cryIIAc",
+            "cryIAc only",
+          ],
+          ans: 0,
+          exp: `The specific <em>cry</em> genes utilized to control the cotton bollworm are <strong>cryIAc and cryIIAb</strong>. In contrast, <em>cryIAb</em> controls the corn borer. NEET frequently swaps these gene names.`,
+          ref: "NCERT Ch.12 — Bt Cotton",
+        },
+
+        {
+          id: 29,
+          ch: "Biotech Applications",
+          type: "MCQ",
+          diff: "Medium",
+          q: `The mechanism of RNA interference (RNAi), used to engineer nematode-resistant tobacco plants, achieves cellular defense by silencing a specific mRNA. This silencing is directly mediated by a complementary:`,
+          opts: [
+            "Single-stranded DNA molecule",
+            "Double-stranded DNA molecule",
+            "Double-stranded RNA molecule (dsRNA)",
+            "Transfer RNA molecule (tRNA)",
+          ],
+          ans: 2,
+          exp: `The mechanism of RNAi is triggered by the presence of a <strong>double-stranded RNA (dsRNA)</strong> molecule that is perfectly complementary to the target mRNA, initiating its degradation and silencing.`,
+          ref: "NCERT Ch.12 — RNA Interference",
+        },
+
+        {
+          id: 30,
+          ch: "Biotech Applications",
+          type: "MCQ",
+          diff: "Medium",
+          q: `In 1990, the first historical clinical gene therapy trial was administered to a 4-year-old girl. This therapy was designed to treat a severe combined immunodeficiency (SCID) caused by the deletion of the gene coding for which enzyme?`,
+          opts: [
+            "Tyrosine kinase",
+            "Adenosine deaminase (ADA)",
+            "Phenylalanine hydroxylase",
+            "Monoamine oxidase",
+          ],
+          ans: 1,
+          exp: `The historic 1990 clinical trial treated a 4-year-old girl suffering from SCID caused by the absence of the <strong>Adenosine deaminase (ADA)</strong> enzyme. Functional ADA cDNA was introduced into her lymphocytes.`,
+          ref: "NCERT Ch.12 — Gene Therapy (ADA-SCID)",
+        },
+
+        // ====== Ecology and Environment ======
+        {
+          id: 31,
+          ch: "Organisms & Populations",
+          type: "MCQ",
+          diff: "Hard",
+          q: `The Mediterranean orchid <em>Ophrys</em> employs "sexual deceit" to attract its specific pollinator bee. One petal bears an uncanny resemblance to the female bee in size, color, and markings. This highly specific co-evolutionary interaction is best categorized as:`,
+          opts: [
+            "Commensalism",
+            "Mutualism",
+            "Parasitism",
+            "Amensalism",
+          ],
+          ans: 1,
+          exp: `The relationship between the Mediterranean orchid <em>Ophrys</em> and its pollinator bee is an advanced form of <strong>mutualistic co-evolution</strong>. The plant achieves pollination, while the bee acts on evolved mating cues.`,
+          ref: "NCERT Ch.13 — Co-evolution & Population Interactions",
+        },
+
+        {
+          id: 32,
+          ch: "Organisms & Populations",
+          type: "MCQ",
+          diff: "Medium",
+          q: `In the mathematical expression of logistic population growth, dN/dt = rN[(K−N)/K], what does the parameter K specifically represent?`,
+          opts: [
+            "Intrinsic rate of natural increase",
+            "Environmental resistance",
+            "Carrying capacity",
+            "Population density at time t",
+          ],
+          ans: 2,
+          exp: `In the equation dN/dt = rN[(K−N)/K], the parameter <strong>K</strong> specifically represents the <strong>Carrying Capacity</strong> of the environment — the maximum population size the habitat can sustain indefinitely.`,
+          ref: "NCERT Ch.13 — Logistic Growth",
+        },
+
+        {
+          id: 33,
+          ch: "Organisms & Populations",
+          type: "MCQ",
+          diff: "Medium",
+          q: `According to Gause's 'Competitive Exclusion Principle', two closely related species competing for the exact same resources cannot co-exist indefinitely. According to NCERT, this principle holds true primarily when:`,
+          opts: [
+            "Resources are unlimited",
+            "Resources are limiting",
+            "Predation pressure is very high",
+            "Both species exhibit resource partitioning",
+          ],
+          ans: 1,
+          exp: `NCERT explicitly notes that the Competitive Exclusion Principle holds true primarily when <strong>resources are strictly limiting</strong>, preventing long-term coexistence of two species competing for the same niche.`,
+          ref: "NCERT Ch.13 — Gause's Principle",
+        },
+
+        {
+          id: 34,
+          ch: "Ecosystem",
+          type: "MCQ",
+          diff: "Hard",
+          q: `Which of the following statements accurately dictates the kinetic rate of decomposition based on the biochemical composition of the detritus?`,
+          opts: [
+            "Decomposition is quicker if detritus is rich in lignin and chitin",
+            "Decomposition is slower if detritus is rich in nitrogen and water-soluble sugars",
+            "Decomposition is slower if detritus is rich in lignin and chitin, and quicker if rich in nitrogen and sugars",
+            "Detritus composition has no measurable effect on decomposition; only soil pH matters",
+          ],
+          ans: 2,
+          exp: `Decomposition kinetics are <strong>slower</strong> if the detritus is rich in complex polymers like <strong>lignin and chitin</strong>, and <strong>quicker</strong> if rich in readily available <strong>nitrogen and water-soluble sugars</strong>.`,
+          ref: "NCERT Ch.14 — Decomposition Rates",
+        },
+
+        {
+          id: 35,
+          ch: "Ecosystem",
+          type: "MCQ",
+          diff: "Medium",
+          q: `Of the total incident solar radiation hitting the earth's ecosystem, approximately what percentage represents Photosynthetically Active Radiation (PAR), and exactly how much of this PAR is successfully captured by autotrophic plants?`,
+          opts: [
+            "100% is PAR; 10–20% is captured",
+            "Less than 50% is PAR; 2–10% is captured",
+            "More than 50% is PAR; 1–5% is captured",
+            "Less than 10% is PAR; 100% is captured",
+          ],
+          ans: 1,
+          exp: `Of the total incident solar radiation, <strong>less than 50%</strong> constitutes PAR. Autotrophic plants capture merely <strong>2–10%</strong> of this PAR to sustain the entire biosphere.`,
+          ref: "NCERT Ch.14 — Energy Flow & PAR",
+        },
+
+        {
+          id: 36,
+          ch: "Ecosystem",
+          type: "MCQ",
+          diff: "Medium",
+          q: `Which specific step of the decomposition process involves water-soluble inorganic nutrients seeping down into the lower soil horizons, where they eventually get precipitated as unavailable salts?`,
+          opts: [
+            "Fragmentation",
+            "Leaching",
+            "Catabolism",
+            "Humification",
+          ],
+          ans: 1,
+          exp: `<strong>Leaching</strong> is the specific decomposition step where water-soluble inorganic nutrients seep down into the soil horizons and precipitate as unavailable salts.`,
+          ref: "NCERT Ch.14 — Decomposition Steps (Leaching)",
+        },
+
+        {
+          id: 37,
+          ch: "Biodiversity & Conservation",
+          type: "MCQ",
+          diff: "Medium",
+          q: `Highlighting its status as a mega-diversity country, India occupies approximately what percentage of the world's total land area, and what is its quantitative contribution to global species diversity?`,
+          opts: [
+            "8.1% land area; 2.4% global diversity",
+            "2.4% land area; 8.1% global diversity",
+            "12% land area; 34% global diversity",
+            "5.5% land area; 15% global diversity",
+          ],
+          ans: 1,
+          exp: `India possesses only <strong>2.4% of the world's land area</strong> but remarkably contributes <strong>8.1% to global species diversity</strong>, making it one of the 12 mega-diversity countries.`,
+          ref: "NCERT Ch.15 — Biodiversity Distribution (India)",
+        },
+
+        {
+          id: 38,
+          ch: "Biodiversity & Conservation",
+          type: "MCQ",
+          diff: "Hard",
+          q: `According to the species-area relationship equations proposed by Alexander von Humboldt, the Z value (slope of the regression line) for very large areas, such as entire continents, typically lies in the range of:`,
+          opts: [
+            "0.1 to 0.2",
+            "0.6 to 1.2",
+            "0.01 to 0.1",
+            "1.5 to 2.5",
+          ],
+          ans: 1,
+          exp: `For very large taxonomic regions like entire continents, the slope (Z value) is much steeper, typically ranging from <strong>0.6 to 1.2</strong>. For smaller/local areas, Z ranges from 0.1 to 0.2. Students frequently swap these ranges.`,
+          ref: "NCERT Ch.15 — Species-Area Relationship",
+        },
+
+        {
+          id: 39,
+          ch: "Biodiversity & Conservation",
+          type: "MCQ",
+          diff: "Medium",
+          q: `The phrase 'The Evil Quartet' is the sobriquet used by ecologists to describe the four major anthropogenic causes of biodiversity loss. Which of the following is NOT one of the four components?`,
+          opts: [
+            "Habitat loss and fragmentation",
+            "Over-exploitation",
+            "Bio-magnification of toxic xenobiotics",
+            "Alien species invasions",
+          ],
+          ans: 2,
+          exp: `The four major causes (The Evil Quartet) are: (1) Habitat loss and fragmentation, (2) Over-exploitation, (3) Alien species invasions, and (4) Co-extinctions. <strong>Bio-magnification</strong> is an environmental pollutant issue, not part of the quartet.`,
+          ref: "NCERT Ch.15 — The Evil Quartet",
+        },
+
+        // ====== Plant Physiology ======
+        {
+          id: 40,
+          ch: "Photosynthesis",
+          type: "MCQ",
+          diff: "Medium",
+          q: `When analyzing photosynthetic pigments through paper chromatography, which specific color band corresponds exclusively to Chlorophyll <em>a</em>?`,
+          opts: [
+            "Yellowish-green",
+            "Yellow",
+            "Orange",
+            "Bright or Dark green",
+          ],
+          ans: 3,
+          exp: `Chlorophyll <em>a</em> consistently manifests as a <strong>bright or dark green</strong> band on the chromatogram. Chlorophyll <em>b</em> is yellowish-green, xanthophylls are yellow, and carotenoids are orange-yellow.`,
+          ref: "NCERT Ch.13 — Pigment Chromatography",
+        },
+
+        {
+          id: 41,
+          ch: "Photosynthesis",
+          type: "MCQ",
+          diff: "Hard",
+          q: `According to the chemiosmotic hypothesis of ATP synthesis in chloroplasts, what is the precise trans-membrane orientation of the ATP synthase complex?`,
+          opts: [
+            "The CF₀ portion protrudes into the stroma, while CF₁ is embedded in the membrane",
+            "The CF₀ portion is embedded in the thylakoid membrane, while CF₁ protrudes outward into the stroma",
+            "Both CF₀ and CF₁ are deeply embedded within the lipid bilayer",
+            "The CF₀ portion is in the lumen, while CF₁ spans the entire membrane",
+          ],
+          ans: 1,
+          exp: `The ATP synthase enzyme is oriented such that the <strong>CF₀ trans-membrane channel is embedded</strong> in the thylakoid membrane, while the catalytic <strong>CF₁ head protrudes outward into the stroma</strong>.`,
+          ref: "NCERT Ch.13 — Chemiosmotic Hypothesis",
+        },
+
+        {
+          id: 42,
+          ch: "Photosynthesis",
+          type: "MCQ",
+          diff: "Medium",
+          q: `In C4 plants, the primary CO₂ acceptor is a 3-carbon molecule called Phosphoenolpyruvate (PEP). In which specific cellular compartment is this molecule present and active?`,
+          opts: [
+            "Bundle sheath cells",
+            "Mesophyll cells",
+            "Epidermal cells",
+            "Guard cells",
+          ],
+          ans: 1,
+          exp: `In C4 plants (like maize and sorghum), the primary CO₂ acceptor PEP is present and enzymatically active within the <strong>mesophyll cells</strong>. The Calvin cycle operates in the bundle sheath cells.`,
+          ref: "NCERT Ch.13 — C4 Pathway",
+        },
+
+        {
+          id: 43,
+          ch: "Plant Growth & Development",
+          type: "MCQ",
+          diff: "Medium",
+          q: `Which gaseous plant growth regulator (PGR) is fundamentally associated with inducing epinasty, promoting leaf and flower abscission, and breaking seed/bud dormancy?`,
+          opts: [
+            "Auxin",
+            "Gibberellic Acid",
+            "Ethylene",
+            "Abscisic Acid (ABA)",
+          ],
+          ans: 2,
+          exp: `<strong>Ethylene</strong> is the only strictly gaseous plant growth regulator. It is heavily involved in senescence, fruit ripening, leaf abscission, and inducing epinasty in plant tissues.`,
+          ref: "NCERT Ch.15 — Ethylene",
+        },
+
+        {
+          id: 44,
+          ch: "Plant Growth & Development",
+          type: "MCQ",
+          diff: "Medium",
+          q: `The discovery of Gibberellins is historically credited to E. Kurosawa, who investigated the "bakanae" (foolish seedling) disease in rice plants. The causative agent of this disease was a:`,
+          opts: [
+            "Virus",
+            "Bacterium",
+            "Nematode",
+            "Fungus (Gibberella fujikuroi)",
+          ],
+          ans: 3,
+          exp: `E. Kurosawa discovered gibberellins while investigating the "bakanae" (foolish seedling) disease in rice, caused by the fungal pathogen <strong>Gibberella fujikuroi</strong>.`,
+          ref: "NCERT Ch.15 — Gibberellins Discovery",
+        },
+
+        {
+          id: 45,
+          ch: "Plant Growth & Development",
+          type: "MCQ",
+          diff: "Hard",
+          q: `The formation of secondary meristems, specifically the interfascicular cambium and cork cambium, from fully differentiated permanent parenchyma cells is an excellent botanical example of:`,
+          opts: [
+            "Differentiation",
+            "Dedifferentiation",
+            "Redifferentiation",
+            "Heterophylly",
+          ],
+          ans: 1,
+          exp: `The process whereby fully differentiated living permanent cells (like parenchyma) <strong>regain the capacity to divide</strong> and form secondary meristems is termed <strong>dedifferentiation</strong>.`,
+          ref: "NCERT Ch.15 — Dedifferentiation",
+        },
+
+        // ====== Human Physiology ======
+        {
+          id: 46,
+          ch: "Breathing & Gases",
+          type: "Match",
+          diff: "Hard",
+          q: `Match the standard pulmonary volumes with their physiological values in a healthy human adult:<br><table><tr><th>Volume</th><th>Value</th></tr><tr><td>1. Tidal Volume (TV)</td><td>P. 1100–1200 mL</td></tr><tr><td>2. Inspiratory Reserve Volume (IRV)</td><td>Q. 1000–1100 mL</td></tr><tr><td>3. Expiratory Reserve Volume (ERV)</td><td>R. 2500–3000 mL</td></tr><tr><td>4. Residual Volume (RV)</td><td>S. 500 mL</td></tr></table>`,
+          opts: [
+            "1-S, 2-R, 3-Q, 4-P",
+            "1-P, 2-Q, 3-R, 4-S",
+            "1-S, 2-Q, 3-R, 4-P",
+            "1-R, 2-S, 3-P, 4-Q",
+          ],
+          ans: 0,
+          exp: `<strong>TV = 500 mL</strong> (S). <strong>IRV = 2500–3000 mL</strong> (R). <strong>ERV = 1000–1100 mL</strong> (Q). <strong>RV = 1100–1200 mL</strong> (P). This is the most repeated numerical match in NEET Physiology.`,
+          ref: "NCERT Ch.17 — Respiratory Volumes",
+        },
+
+        {
+          id: 47,
+          ch: "Breathing & Gases",
+          type: "MCQ",
+          diff: "Hard",
+          q: `To facilitate systemic gas exchange, the partial pressure of oxygen (pO₂) must follow a strict gradient. What is the pO₂ in oxygenated systemic arterial blood and in the cellular tissues, respectively?`,
+          opts: [
+            "104 mm Hg and 40 mm Hg",
+            "95 mm Hg and 40 mm Hg",
+            "40 mm Hg and 45 mm Hg",
+            "159 mm Hg and 104 mm Hg",
+          ],
+          ans: 1,
+          exp: `Oxygenated blood leaving the pulmonary circuit and traveling in systemic arteries has a pO₂ of <strong>95 mm Hg</strong>. In the cellular tissues, due to continuous consumption, the pO₂ drops to <strong>40 mm Hg</strong>.`,
+          ref: "NCERT Ch.17 — Partial Pressures",
+        },
+
+        {
+          id: 48,
+          ch: "Breathing & Gases",
+          type: "MCQ",
+          diff: "Hard",
+          q: `Which combination of physiological factors heavily favors the shifting of the Oxygen Dissociation Curve to the right, indicating active dissociation of oxygen from hemoglobin at the tissue level?`,
+          opts: [
+            "Low pCO₂, High pH, Low Temperature",
+            "High pCO₂, Low H⁺ concentration, Low Temperature",
+            "High pCO₂, High H⁺ concentration (low pH), High Temperature",
+            "Low pCO₂, Low H⁺ concentration, High Temperature",
+          ],
+          ans: 2,
+          exp: `At the tissue level, dissociation of oxygen from hemoglobin (shifting the curve to the right) is favored by <strong>high pCO₂</strong>, <strong>high H⁺ concentration (low pH)</strong>, and <strong>high temperatures</strong>. This is the Bohr Effect.`,
+          ref: "NCERT Ch.17 — Oxygen Dissociation Curve",
+        },
+
+        {
+          id: 49,
+          ch: "Body Fluids & Circulation",
+          type: "Assertion-Reason",
+          diff: "Hard",
+          q: `<strong>Assertion (A):</strong> The Sino-Atrial Node (SAN) is universally designated as the natural pacemaker of the heart.<br><strong>Reason (R):</strong> The SAN is a specialized auto-excitable nodal tissue that generates the maximum number of action potentials (70–75 per minute), thereby initiating and maintaining the rhythmic contractile activity of the heart.`,
+          opts: [
+            "Both A and R are true, and R is the correct explanation of A",
+            "Both A and R are true, but R is not the correct explanation of A",
+            "A is true, but R is false",
+            "Both A and R are false",
+          ],
+          ans: 0,
+          exp: `Both the assertion and the reason are true. The SAN is correctly designated as the pacemaker specifically because its <strong>auto-excitable nature generates the highest frequency of action potentials (70–75/min)</strong>, dictating the heart rate.`,
+          ref: "NCERT Ch.18 — Cardiac Pacemaker (SAN)",
+        },
+
+        {
+          id: 50,
+          ch: "Body Fluids & Circulation",
+          type: "MCQ",
+          diff: "Hard",
+          q: `In a standard clinical Electrocardiogram (ECG), the T-wave specifically represents the electrical manifestation of:`,
+          opts: [
+            "Depolarisation of the atria leading to atrial systole",
+            "Depolarisation of the ventricles initiating ventricular systole",
+            "Repolarisation of the ventricles, marking the return from excited to a normal resting state",
+            "The closing of the semilunar valves producing the second heart sound (dub)",
+          ],
+          ans: 2,
+          exp: `The T-wave represents the <strong>repolarization of the ventricles</strong>, signifying the electrical return from an excited state to normal resting potential, which coincides with the end of ventricular systole.`,
+          ref: "NCERT Ch.18 — Electrocardiogram (ECG)",
+        },
+      ];
+
+      const TOTAL = Q.length;
+      const LETTERS = ["A", "B", "C", "D"];
+      let currentQ = 0;
+      let userAnswers = new Array(TOTAL).fill(-1);
+      let reviewFlags = new Array(TOTAL).fill(false);
+      let submitted = false;
+      let timerSec = 0;
+      let timerInterval;
+
+      function startQuiz() {
+        document.getElementById("heroSection").style.display = "none";
+        document.getElementById("progressWrap").classList.add("active");
+        document.getElementById("paletteToggle").classList.add("active");
+        buildAllCards();
+        buildPalette();
+        showQuestion(0);
+        startTimer();
+      }
+
+      function buildAllCards() {
+        const area = document.getElementById("quizArea");
+        let html = "";
+        Q.forEach((q, i) => {
+          const topic = q.ch;
+          const diffClass = q.diff === "Hard" ? "hard" : "med";
+          html += `<div class="q-card" id="qcard-${i}">
+            <div class="q-header">
+              <span class="q-num">Q${q.id}</span>
+              <div class="q-meta">
+                <span class="q-tag bio">${topic}</span>
+                <span class="q-tag type">${q.type}</span>
+                <span class="q-tag ${diffClass}">${q.diff}</span>
+              </div>
+            </div>
+            <div class="q-text">${q.q}</div>
+            <div class="options">
+              ${q.opts
+                .map(
+                  (o, j) => `
+                <button class="opt-btn" id="opt-${i}-${j}" onclick="selectOpt(${i},${j})">
+                  <span class="opt-letter">${LETTERS[j]}</span>
+                  <span>${o}</span>
+                </button>
+              `,
+                )
+                .join("")}
+            </div>
+            <div class="nav-btns">
+              <button class="nav-btn" onclick="prevQuestion()" ${i === 0 ? "disabled" : ""}>← Prev</button>
+              <button class="nav-btn primary" onclick="nextQuestion()" id="next-btn-${i}">
+                ${i === TOTAL - 1 ? "Finish →" : "Next →"}
+              </button>
+              <button class="nav-btn mark-review${reviewFlags[i] ? " marked" : ""}" id="mark-${i}" onclick="toggleReview(${i})">
+                ${reviewFlags[i] ? "★ Marked" : "☆ Mark for Review"}
+              </button>
+            </div>
+          </div>`;
+        });
+        area.innerHTML = html;
+      }
+
+      function showQuestion(idx) {
+        document
+          .querySelectorAll(".q-card")
+          .forEach((c) => c.classList.remove("active"));
+        document.getElementById(`qcard-${idx}`).classList.add("active");
+        currentQ = idx;
+        updateProgress();
+        updatePalette();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function selectOpt(qIdx, optIdx) {
+        if (submitted) return;
+        for (let i = 0; i < 4; i++) {
+          const el = document.getElementById(`opt-${qIdx}-${i}`);
+          if (el) el.classList.remove("selected");
+        }
+        document
+          .getElementById(`opt-${qIdx}-${optIdx}`)
+          .classList.add("selected");
+        userAnswers[qIdx] = optIdx;
+        updatePalette();
+        updateProgress();
+      }
+
+      function nextQuestion() {
+        if (currentQ < TOTAL - 1) {
+          showQuestion(currentQ + 1);
+        } else {
+          finishQuiz();
+        }
+      }
+
+      function prevQuestion() {
+        if (currentQ > 0) showQuestion(currentQ - 1);
+      }
+
+      function toggleReview(idx) {
+        reviewFlags[idx] = !reviewFlags[idx];
+        const btn = document.getElementById(`mark-${idx}`);
+        btn.classList.toggle("marked", reviewFlags[idx]);
+        btn.textContent = reviewFlags[idx] ? "★ Marked" : "☆ Mark for Review";
+        updatePalette();
+      }
+
+      function updateProgress() {
+        const answered = userAnswers.filter((a) => a !== -1).length;
+        document.getElementById("qCounter").textContent =
+          `Q ${currentQ + 1} / ${TOTAL}`;
+        document.getElementById("progressFill").style.width =
+          (answered / TOTAL) * 100 + "%";
+      }
+
+      function buildPalette() {
+        const grid = document.getElementById("paletteGrid");
+        let html = "";
+        for (let i = 0; i < TOTAL; i++) {
+          html += `<div class="palette-dot" id="pdot-${i}" onclick="showQuestion(${i})">${i + 1}</div>`;
+        }
+        grid.innerHTML = html;
+      }
+
+      function updatePalette() {
+        for (let i = 0; i < TOTAL; i++) {
+          const dot = document.getElementById(`pdot-${i}`);
+          dot.className = "palette-dot";
+          if (i === currentQ) dot.classList.add("current");
+          if (userAnswers[i] !== -1) dot.classList.add("answered");
+          if (reviewFlags[i]) dot.classList.add("review");
+        }
+      }
+
+      function togglePalette() {
+        document.getElementById("palettePanel").classList.toggle("open");
+      }
+
+      function startTimer() {
+        timerInterval = setInterval(() => {
+          timerSec++;
+          const m = String(Math.floor(timerSec / 60)).padStart(2, "0");
+          const s = String(timerSec % 60).padStart(2, "0");
+          document.getElementById("progressTimer").textContent = `${m}:${s}`;
+        }, 1000);
+      }
+
+      function finishQuiz() {
+        if (!window._isReplay) {
+          const unanswered = userAnswers.filter((a) => a === -1).length;
+          if (unanswered > 0) {
+            if (
+              !confirm(
+                `You have ${unanswered} unanswered question${unanswered > 1 ? "s" : ""}. Submit anyway?`,
+              )
+            )
+              return;
+          }
+        }
+        submitQuiz();
+      }
+
+      function saveAttempt(data) {
+        try {
+          const results = JSON.parse(
+            localStorage.getItem("papResults") || "[]",
+          );
+          results.unshift(data);
+          localStorage.setItem("papResults", JSON.stringify(results));
+        } catch (e) {}
+      }
+
+      function submitQuiz() {
+        submitted = true;
+        clearInterval(timerInterval);
+
+        document.getElementById("quizArea").classList.add("hidden");
+        document.getElementById("paletteToggle").style.display = "none";
+        document.getElementById("palettePanel").style.display = "none";
+        document.getElementById("progressWrap").style.display = "none";
+
+        let correct = 0,
+          wrong = 0,
+          skipped = 0;
+        let bioCorrect = 0,
+          bioTotal = 0;
+
+        Q.forEach((q, i) => {
+          bioTotal++;
+          if (userAnswers[i] === -1) {
+            skipped++;
+          } else if (userAnswers[i] === q.ans) {
+            correct++;
+            bioCorrect++;
+          } else {
+            wrong++;
+          }
+        });
+
+        const neetScore = correct * 4 - wrong * 1;
+        const pct = Math.round((correct / TOTAL) * 100);
+        const circumference = 2 * Math.PI * 65;
+        const offset = circumference - (pct / 100) * circumference;
+        const ringColor =
+          pct >= 80
+            ? "var(--green)"
+            : pct >= 50
+              ? "var(--amber)"
+              : "var(--red)";
+        const grade =
+          pct >= 90
+            ? "Outstanding!"
+            : pct >= 75
+              ? "Great Work!"
+              : pct >= 50
+                ? "Keep Practicing!"
+                : "Needs Revision";
+
+        const timeStr = document.getElementById("progressTimer").textContent;
+        const bioPct = bioTotal ? Math.round((bioCorrect / bioTotal) * 100) : 0;
+
+        if (!window._isReplay) {
+          saveAttempt({
+            id: Date.now(),
+            paperFile: "16AP2.html",
+            paperName: "Biology Master Assessment",
+            paperTag: "Advanced",
+            correct,
+            wrong,
+            skipped,
+            totalQuestions: TOTAL,
+            neetScore,
+            maxScore: TOTAL * 4,
+            percentage: pct,
+            timeTaken: timeStr,
+            timerSeconds: timerSec,
+            userAnswers: [...userAnswers],
+          });
+        }
+
+        const res = document.getElementById("resultsSection");
+        res.style.display = "block";
+
+        let rhtml = `
+<div class="results-card">
+  <h2>${grade}</h2>
+  <div class="score-ring">
+    <svg width="160" height="160" viewBox="0 0 160 160">
+      <circle class="ring-bg" cx="80" cy="80" r="65"/>
+      <circle class="ring-fill" cx="80" cy="80" r="65"
+        stroke="${ringColor}"
+        stroke-dasharray="${circumference}"
+        stroke-dashoffset="${circumference}"
+        id="scoreRing"/>
+    </svg>
+    <div class="score-center">
+      <div class="pct">${pct}%</div>
+      <div class="of">${correct}/${TOTAL}</div>
+    </div>
+  </div>
+  <div class="stats-grid">
+    <div class="stat-item neet"><div class="stat-num">${neetScore}</div><div class="stat-lbl">NEET Score</div></div>
+    <div class="stat-item correct"><div class="stat-num">${correct}</div><div class="stat-lbl">Correct</div></div>
+    <div class="stat-item wrong"><div class="stat-num">${wrong}</div><div class="stat-lbl">Wrong</div></div>
+    <div class="stat-item skip"><div class="stat-num">${skipped}</div><div class="stat-lbl">Skipped</div></div>
+  </div>
+  <div style="margin-top:16px;font-size:13px;color:var(--text3)">Time: ${timeStr} · Max: ${TOTAL * 4}</div>
+</div>
+
+<div class="chapter-breakdown">
+  <h3>Chapter Breakdown</h3>
+  <div class="chapter-bar-wrap">
+    <div class="chapter-bar-header">
+      <span style="color:var(--accent)">🧬 Biology · Complete Syllabus</span>
+      <span style="color:var(--text2)">${bioCorrect}/${bioTotal} (${bioPct}%)</span>
+    </div>
+    <div class="chapter-bar-track">
+      <div class="chapter-bar-fill" id="bioBar" style="width:0%;background:var(--accent)"></div>
+    </div>
+  </div>
+</div>
+
+<div class="review-title">Complete Walkthrough</div>
+<div class="review-sub">Every question reviewed with NCERT-based explanations.</div>
+<div class="review-filter">
+  <button class="filter-btn active" onclick="filterReview('all',this)">All (${TOTAL})</button>
+  <button class="filter-btn" onclick="filterReview('wrong',this)">❌ Wrong (${wrong})</button>
+  <button class="filter-btn" onclick="filterReview('skipped',this)">⏭️ Skipped (${skipped})</button>
+  <button class="filter-btn" onclick="filterReview('correct',this)">✅ Correct (${correct})</button>
+</div>
+<div id="reviewCards"></div>`;
+
+        res.innerHTML = rhtml;
+        renderReviewCards("all");
+
+        setTimeout(() => {
+          document.getElementById("scoreRing").style.strokeDashoffset = offset;
+          document.getElementById("bioBar").style.width = bioPct + "%";
+        }, 100);
+
+        res.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function renderReviewCards(filter) {
+        const container = document.getElementById("reviewCards");
+        let html = "";
+
+        Q.forEach((q, i) => {
+          const ua = userAnswers[i];
+          const isCorrect = ua === q.ans;
+          const isSkipped = ua === -1;
+          const isWrong = !isCorrect && !isSkipped;
+
+          if (filter === "wrong" && !isWrong) return;
+          if (filter === "skipped" && !isSkipped) return;
+          if (filter === "correct" && !isCorrect) return;
+
+          let cardClass, badgeClass, badgeText;
+          if (isCorrect) {
+            cardClass = "rc-correct";
+            badgeClass = "badge-correct";
+            badgeText = "✅ Correct";
+          } else if (isSkipped) {
+            cardClass = "rc-skipped";
+            badgeClass = "badge-skipped";
+            badgeText = "⏭️ Skipped";
+          } else {
+            cardClass = "rc-wrong";
+            badgeClass = "badge-wrong";
+            badgeText = "❌ Wrong";
+          }
+
+          const topic = q.ch;
+
+          html += `<div class="review-card ${cardClass}">
+            <div class="rc-header">
+              <span class="q-num">Q${q.id}</span>
+              <span class="q-tag bio">${topic}</span>
+              <span class="rc-badge ${badgeClass}">${badgeText}</span>
+              <span class="q-type">${q.type}</span>
+            </div>
+            <div class="rc-q">${q.q}</div>
+            <div class="rc-opts">`;
+
+          q.opts.forEach((o, j) => {
+            let optClass = "rc-opt";
+            let marker = LETTERS[j];
+            if (j === q.ans) {
+              optClass += " rc-opt-correct";
+              marker = "✓";
+            } else if (j === ua && isWrong) {
+              optClass += " rc-opt-wrong";
+              marker = "✗";
+            }
+            html += `<div class="${optClass}">
+              <span class="rc-letter">${marker}</span>
+              <span>${o}</span>
+            </div>`;
+          });
+
+          html += `</div>
+            <div class="rc-exp">
+              <h4>💡 Explanation</h4>
+              <p>${q.exp}</p>
+              <span class="ncert-ref">📖 ${q.ref}</span>
+            </div>
+          </div>`;
+        });
+
+        if (!html)
+          html = `<p style="text-align:center;color:var(--text3);padding:30px 0">No questions match this filter.</p>`;
+        container.innerHTML = html;
+      }
+
+      function filterReview(type, btn) {
+        document
+          .querySelectorAll(".filter-btn")
+          .forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderReviewCards(type);
+      }
+
+      window.addEventListener("scroll", () => {
+        const pw = document.getElementById("progressWrap");
+        if (window.scrollY > 200) {
+          pw.classList.add("scrolled");
+        } else {
+          pw.classList.remove("scrolled");
+        }
+      });
+
+      (function loadSavedAttempt() {
+        const params = new URLSearchParams(window.location.search);
+        const attemptId = params.get("attempt");
+        if (!attemptId) return;
+        const saved = JSON.parse(localStorage.getItem("papResults") || "[]");
+        const attempt = saved.find((r) => r.id === Number(attemptId));
+        if (!attempt) return;
+        window._isReplay = true;
+        userAnswers = attempt.userAnswers;
+        timerSec = attempt.timerSeconds || 0;
+        const m = String(Math.floor(timerSec / 60)).padStart(2, "0");
+        const s = String(timerSec % 60).padStart(2, "0");
+        document.getElementById("progressTimer").textContent = `${m}:${s}`;
+        document.getElementById("heroSection").style.display = "none";
+        submitQuiz();
+      })();
+    </script>
+  </body>
+</html>
