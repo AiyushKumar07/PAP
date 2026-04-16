@@ -1,0 +1,1862 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEET 2026 — Respiration Ultra In-Depth (30Q)</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --bg: #0a0e17;
+        --surface: #111827;
+        --surface2: #1a2236;
+        --surface3: #222d44;
+        --border: #2a3654;
+        --text: #e2e8f0;
+        --text2: #94a3b8;
+        --text3: #64748b;
+        --accent: #06d6a0;
+        --accent2: #118ab2;
+        --red: #ef4444;
+        --green: #22c55e;
+        --amber: #f59e0b;
+        --purple: #a78bfa;
+        --pink: #f472b6;
+        --radius: 12px;
+        --radius-sm: 8px;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "IBM Plex Sans", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background:
+          radial-gradient(
+            ellipse at 20% 0%,
+            rgba(6, 214, 160, 0.06) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse at 80% 100%,
+            rgba(244, 114, 182, 0.06) 0%,
+            transparent 50%
+          );
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .container {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 20px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero {
+        text-align: center;
+        padding: 50px 20px 40px;
+        position: relative;
+      }
+      .hero-badge {
+        display: inline-block;
+        padding: 6px 18px;
+        border-radius: 50px;
+        background: rgba(244, 114, 182, 0.12);
+        color: var(--pink);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 18px;
+        border: 1px solid rgba(244, 114, 182, 0.2);
+      }
+      .hero h1 {
+        font-family: "DM Serif Display", serif;
+        font-size: clamp(28px, 5vw, 44px);
+        color: #fff;
+        margin-bottom: 12px;
+        line-height: 1.2;
+      }
+      .hero h1 span {
+        background: linear-gradient(135deg, var(--accent), var(--pink));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .hero p {
+        color: var(--text2);
+        font-size: 16px;
+        max-width: 560px;
+        margin: 0 auto 28px;
+      }
+      .hero-tags {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 32px;
+      }
+      .hero-tags span {
+        padding: 6px 16px;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .tag-bio {
+        background: rgba(6, 214, 160, 0.1);
+        color: var(--accent);
+        border: 1px solid rgba(6, 214, 160, 0.22);
+      }
+      .tag-human {
+        background: rgba(244, 114, 182, 0.1);
+        color: var(--pink);
+        border: 1px solid rgba(244, 114, 182, 0.22);
+      }
+      .start-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 16px 48px;
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--bg);
+        background: linear-gradient(135deg, var(--accent), var(--pink));
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 25px rgba(6, 214, 160, 0.3);
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+      .start-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 35px rgba(244, 114, 182, 0.4);
+      }
+
+      .progress-wrap {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(10, 14, 23, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 14px 20px;
+        border-bottom: 1px solid var(--border);
+        display: none;
+        transition: box-shadow 0.3s;
+      }
+      .progress-wrap.active {
+        display: block;
+      }
+      .progress-wrap.scrolled {
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+      }
+      .progress-inner {
+        max-width: 860px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .progress-text {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text2);
+        white-space: nowrap;
+        min-width: 90px;
+      }
+      .progress-text b {
+        color: var(--accent);
+      }
+      .progress-bar {
+        flex: 1;
+        height: 6px;
+        background: var(--surface3);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent), var(--pink));
+        border-radius: 10px;
+        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        width: 0%;
+      }
+      .progress-timer {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+        color: var(--accent);
+        min-width: 60px;
+        text-align: right;
+      }
+
+      .q-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 32px;
+        margin-bottom: 24px;
+        display: none;
+        animation: fadeIn 0.4s ease both;
+      }
+      .q-card.active {
+        display: block;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .q-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+        flex-wrap: wrap;
+      }
+      .q-num {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--bg);
+        background: var(--accent);
+        padding: 4px 10px;
+        border-radius: 6px;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .q-num.human {
+        background: var(--pink);
+      }
+      .q-meta {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .q-tag {
+        font-size: 11px;
+        padding: 3px 10px;
+        border-radius: 50px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+      .q-tag.bio {
+        background: rgba(6, 214, 160, 0.12);
+        color: var(--accent);
+      }
+      .q-tag.human {
+        background: rgba(244, 114, 182, 0.15);
+        color: var(--pink);
+      }
+      .q-tag.type {
+        background: rgba(167, 139, 250, 0.12);
+        color: var(--purple);
+      }
+      .q-tag.hard {
+        background: rgba(239, 68, 68, 0.12);
+        color: var(--red);
+      }
+      .q-tag.med {
+        background: rgba(245, 158, 11, 0.12);
+        color: var(--amber);
+      }
+      .q-type {
+        font-size: 11px;
+        color: var(--text3);
+        font-weight: 500;
+        margin-left: auto;
+      }
+      .q-text {
+        font-size: 15.5px;
+        color: #fff;
+        line-height: 1.7;
+        margin-bottom: 20px;
+      }
+      .q-text em {
+        color: var(--accent);
+        font-style: normal;
+        font-weight: 600;
+      }
+      .q-text .formula {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 14px;
+        background: var(--surface2);
+        padding: 2px 8px;
+        border-radius: 4px;
+        color: var(--amber);
+      }
+      .q-text table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 12px 0;
+        font-size: 14px;
+      }
+      .q-text table th,
+      .q-text table td {
+        padding: 8px 12px;
+        border: 1px solid var(--border);
+        text-align: left;
+      }
+      .q-text table th {
+        background: var(--surface2);
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      .options {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .opt-btn {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 14px 18px;
+        background: var(--surface2);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        transition: all 0.2s;
+        text-align: left;
+        width: 100%;
+        font-size: 14.5px;
+        color: var(--text);
+        line-height: 1.5;
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+      .opt-btn:hover {
+        border-color: var(--accent);
+        background: rgba(6, 214, 160, 0.05);
+        transform: translateX(4px);
+      }
+      .opt-btn .opt-letter {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        color: var(--text3);
+        font-size: 13px;
+        min-width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        background: var(--surface3);
+        flex-shrink: 0;
+        margin-top: 1px;
+        transition: all 0.2s;
+      }
+      .opt-btn.selected {
+        border-color: var(--accent);
+        background: rgba(6, 214, 160, 0.08);
+      }
+      .opt-btn.selected .opt-letter {
+        background: var(--accent);
+        color: var(--bg);
+      }
+
+      .nav-btns {
+        display: flex;
+        gap: 12px;
+        margin-top: 24px;
+        flex-wrap: wrap;
+      }
+      .nav-btn {
+        padding: 10px 24px;
+        border-radius: 8px;
+        font-family: "IBM Plex Sans", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        border: 1.5px solid var(--border);
+        background: var(--surface2);
+        color: var(--text);
+      }
+      .nav-btn:hover {
+        border-color: var(--accent);
+      }
+      .nav-btn.primary {
+        background: linear-gradient(135deg, var(--accent), var(--pink));
+        border: none;
+        color: var(--bg);
+        font-weight: 700;
+        box-shadow: 0 2px 12px rgba(6, 214, 160, 0.2);
+      }
+      .nav-btn.primary:hover {
+        box-shadow: 0 4px 20px rgba(244, 114, 182, 0.32);
+        transform: translateY(-1px);
+      }
+      .nav-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+      .mark-review {
+        margin-left: auto;
+        font-size: 13px;
+        color: var(--amber);
+        background: rgba(245, 158, 11, 0.08);
+        border-color: rgba(245, 158, 11, 0.25);
+      }
+      .mark-review.marked {
+        background: rgba(245, 158, 11, 0.2);
+        border-color: var(--amber);
+      }
+      .clear-response {
+        font-size: 13px;
+        color: var(--red);
+        background: rgba(239, 68, 68, 0.08);
+        border-color: rgba(239, 68, 68, 0.25);
+      }
+      .clear-response:hover {
+        background: rgba(239, 68, 68, 0.15);
+        border-color: var(--red);
+      }
+
+      .palette-toggle {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: var(--bg);
+        border: none;
+        font-size: 20px;
+        font-weight: 700;
+        cursor: pointer;
+        z-index: 200;
+        box-shadow: 0 4px 20px rgba(6, 214, 160, 0.4);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s;
+      }
+      .palette-toggle:hover {
+        transform: scale(1.06);
+      }
+      .palette-toggle.active {
+        display: flex;
+      }
+      .palette-panel {
+        position: fixed;
+        bottom: 84px;
+        right: 24px;
+        width: 300px;
+        max-height: 400px;
+        overflow-y: auto;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 20px;
+        z-index: 200;
+        display: none;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      }
+      .palette-panel.open {
+        display: block;
+      }
+      .palette-title {
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 14px;
+        color: var(--text2);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .palette-grid {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        gap: 6px;
+      }
+      .palette-dot {
+        width: 32px;
+        height: 32px;
+        border-radius: 7px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 700;
+        cursor: pointer;
+        border: 1.5px solid var(--border);
+        background: var(--surface2);
+        color: var(--text3);
+        transition: all 0.15s;
+      }
+      .palette-dot:hover {
+        border-color: var(--accent);
+      }
+      .palette-dot.answered {
+        background: rgba(6, 214, 160, 0.15);
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .palette-dot.review {
+        background: rgba(245, 158, 11, 0.15);
+        border-color: var(--amber);
+        color: var(--amber);
+      }
+      .palette-dot.current {
+        box-shadow: 0 0 0 2px var(--accent);
+      }
+      .palette-legend {
+        display: flex;
+        gap: 16px;
+        margin-top: 14px;
+        font-size: 11px;
+        color: var(--text3);
+        flex-wrap: wrap;
+      }
+      .palette-legend span {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .legend-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 3px;
+      }
+
+      #resultsSection {
+        display: none;
+      }
+      .results-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 40px 30px;
+        max-width: 500px;
+        margin: 0 auto 40px;
+        text-align: center;
+      }
+      .results-card h2 {
+        font-family: "DM Serif Display", serif;
+        font-size: 32px;
+        color: #fff;
+        margin-bottom: 8px;
+      }
+      .score-ring {
+        width: 160px;
+        height: 160px;
+        margin: 24px auto;
+        position: relative;
+      }
+      .score-ring svg {
+        transform: rotate(-90deg);
+      }
+      .score-ring .ring-bg {
+        fill: none;
+        stroke: var(--surface3);
+        stroke-width: 10;
+      }
+      .score-ring .ring-fill {
+        fill: none;
+        stroke-width: 10;
+        stroke-linecap: round;
+        transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .score-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+      .score-center .pct {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 36px;
+        font-weight: 700;
+        color: #fff;
+      }
+      .score-center .of {
+        font-size: 13px;
+        color: var(--text3);
+      }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-top: 24px;
+      }
+      .stat-item {
+        padding: 14px 8px;
+        background: var(--surface2);
+        border-radius: var(--radius-sm);
+        text-align: center;
+      }
+      .stat-num {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 22px;
+        font-weight: 700;
+      }
+      .stat-lbl {
+        font-size: 11px;
+        color: var(--text3);
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        margin-top: 4px;
+      }
+      .stat-item.neet .stat-num {
+        color: var(--accent2);
+      }
+      .stat-item.correct .stat-num {
+        color: var(--green);
+      }
+      .stat-item.wrong .stat-num {
+        color: var(--red);
+      }
+      .stat-item.skip .stat-num {
+        color: var(--amber);
+      }
+
+      .chapter-breakdown {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 24px;
+        margin-bottom: 40px;
+      }
+      .chapter-breakdown h3 {
+        font-family: "DM Serif Display", serif;
+        font-size: 18px;
+        color: #fff;
+        margin-bottom: 20px;
+      }
+      .chapter-bar-wrap {
+        margin-bottom: 16px;
+      }
+      .chapter-bar-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .chapter-bar-track {
+        height: 8px;
+        background: var(--surface3);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .chapter-bar-fill {
+        height: 100%;
+        border-radius: 4px;
+        transition: width 1s ease;
+      }
+
+      .review-title {
+        font-family: "DM Serif Display", serif;
+        font-size: 28px;
+        color: #fff;
+        margin: 40px 0 12px;
+        text-align: center;
+      }
+      .review-sub {
+        text-align: center;
+        color: var(--text2);
+        font-size: 14px;
+        margin-bottom: 24px;
+      }
+      .review-filter {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+      }
+      .filter-btn {
+        padding: 8px 20px;
+        border-radius: 50px;
+        border: 1px solid var(--border);
+        background: transparent;
+        color: var(--text2);
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .filter-btn:hover,
+      .filter-btn.active {
+        background: var(--accent);
+        color: var(--bg);
+        border-color: var(--accent);
+      }
+
+      .review-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 28px;
+        margin-bottom: 20px;
+      }
+      .review-card.rc-correct {
+        border-left: 4px solid var(--green);
+      }
+      .review-card.rc-wrong {
+        border-left: 4px solid var(--red);
+      }
+      .review-card.rc-skipped {
+        border-left: 4px solid var(--amber);
+      }
+      .rc-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 14px;
+        flex-wrap: wrap;
+      }
+      .rc-badge {
+        font-size: 11px;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 5px;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+      }
+      .rc-badge.badge-correct {
+        background: rgba(34, 197, 94, 0.1);
+        color: var(--green);
+        border: 1px solid rgba(34, 197, 94, 0.3);
+      }
+      .rc-badge.badge-wrong {
+        background: rgba(239, 68, 68, 0.1);
+        color: var(--red);
+        border: 1px solid rgba(239, 68, 68, 0.3);
+      }
+      .rc-badge.badge-skipped {
+        background: rgba(245, 158, 11, 0.1);
+        color: var(--amber);
+        border: 1px solid rgba(245, 158, 11, 0.3);
+      }
+      .rc-q {
+        font-size: 14.5px;
+        line-height: 1.7;
+        margin-bottom: 16px;
+        color: var(--text);
+      }
+      .rc-q table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 12px 0;
+        font-size: 13.5px;
+      }
+      .rc-q table th,
+      .rc-q table td {
+        padding: 8px 12px;
+        border: 1px solid var(--border);
+        text-align: left;
+      }
+      .rc-q table th {
+        background: var(--surface2);
+        color: var(--accent);
+        font-weight: 600;
+      }
+      .rc-opts {
+        margin-bottom: 16px;
+      }
+      .rc-opt {
+        padding: 10px 14px;
+        margin-bottom: 6px;
+        border-radius: 8px;
+        font-size: 13.5px;
+        line-height: 1.6;
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        border: 1.5px solid transparent;
+      }
+      .rc-opt.rc-opt-correct {
+        background: rgba(34, 197, 94, 0.08);
+        border-color: rgba(34, 197, 94, 0.3);
+      }
+      .rc-opt.rc-opt-wrong {
+        background: rgba(239, 68, 68, 0.08);
+        border-color: rgba(239, 68, 68, 0.3);
+      }
+      .rc-letter {
+        flex-shrink: 0;
+        width: 22px;
+        height: 22px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 700;
+        background: var(--border);
+        color: var(--text3);
+      }
+      .rc-opt.rc-opt-correct .rc-letter {
+        background: var(--green);
+        color: #fff;
+      }
+      .rc-opt.rc-opt-wrong .rc-letter {
+        background: var(--red);
+        color: #fff;
+      }
+      .rc-exp {
+        background: rgba(6, 214, 160, 0.05);
+        border: 1px solid rgba(6, 214, 160, 0.15);
+        border-radius: 10px;
+        padding: 18px 20px;
+      }
+      .rc-exp h4 {
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: var(--accent);
+        margin-bottom: 8px;
+      }
+      .rc-exp p {
+        font-size: 13.5px;
+        line-height: 1.75;
+        color: var(--text2);
+      }
+      .rc-exp p strong {
+        color: var(--text);
+      }
+      .rc-exp .ncert-ref {
+        display: inline-block;
+        margin-top: 8px;
+        font-size: 11px;
+        padding: 3px 8px;
+        background: rgba(6, 214, 160, 0.1);
+        border-radius: 4px;
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          padding: 12px;
+        }
+        .q-card {
+          padding: 20px 16px;
+        }
+        .hero h1 {
+          font-size: 26px;
+        }
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .progress-inner {
+          gap: 10px;
+        }
+        .palette-panel {
+          width: calc(100vw - 40px);
+          right: 20px;
+        }
+        .review-card {
+          padding: 20px 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero" id="heroSection">
+      <div class="hero-badge">NEET 2026 · Ultra In-Depth</div>
+      <h1>Respiration <span>Physiology</span></h1>
+      <p>
+        30 high-yield questions across <em>Respiration in Plants</em> and
+        <em>Breathing &amp; Exchange of Gases</em> — Assertion-Reason,
+        Multi-statement, Match, Numerical, and Clinical Case-Based traps rooted
+        in NCERT.
+      </p>
+      <div class="hero-tags">
+        <span class="tag-bio">🌱 15 — Respiration in Plants</span>
+        <span class="tag-human">🫁 15 — Breathing &amp; Gases</span>
+      </div>
+      <button class="start-btn" onclick="startQuiz()">Begin Test →</button>
+    </div>
+
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-inner">
+        <div class="progress-text">
+          <b id="qCounter">Q 1 / 30</b>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-timer" id="progressTimer">00:00</div>
+      </div>
+    </div>
+
+    <div class="container" id="quizArea"></div>
+
+    <div class="container" id="resultsSection"></div>
+
+    <button class="palette-toggle" id="paletteToggle" onclick="togglePalette()">
+      ☰
+    </button>
+    <div class="palette-panel" id="palettePanel">
+      <div class="palette-title">Question Palette</div>
+      <div class="palette-grid" id="paletteGrid"></div>
+      <div class="palette-legend">
+        <span
+          ><div
+            class="legend-dot"
+            style="background: var(--surface2); border: 1px solid var(--border)"
+          ></div>
+          Unseen</span
+        >
+        <span
+          ><div
+            class="legend-dot"
+            style="background: rgba(6, 214, 160, 0.2)"
+          ></div>
+          Answered</span
+        >
+        <span
+          ><div
+            class="legend-dot"
+            style="background: rgba(245, 158, 11, 0.2)"
+          ></div>
+          Review</span
+        >
+      </div>
+    </div>
+
+    <script>
+      const Q = [
+        {
+          id: 1,
+          ch: "Respiration in Plants",
+          type: "Multi-statement",
+          diff: "Hard",
+          q: `Evaluate the following statements regarding the EMP pathway (Glycolysis):<br><br>(I) It is the only process in respiration that operates in both aerobic and anaerobic organisms.<br>(II) ATP is utilized during the conversion of Glucose to Glucose-6-phosphate, and from Fructose-6-phosphate to Fructose 1,6-bisphosphate.<br>(III) The conversion of BPGA to 3-phosphoglyceric acid is an energy-yielding process at the substrate level.<br>(IV) It represents the complete oxidation of a glucose molecule into pyruvic acid.<br><br>How many of the above statements are strictly correct according to NCERT?`,
+          opts: ["One", "Two", "Three", "Four"],
+          ans: 2,
+          exp: `Statements I, II, and III are explicitly correct. Statement IV is a classic conceptual trap — glycolysis represents the <strong>partial</strong> oxidation of glucose, not complete oxidation. Complete oxidation occurs only during aerobic respiration inside mitochondria.`,
+          ref: "NCERT Ch.12 — Glycolysis (EMP)",
+        },
+        {
+          id: 2,
+          ch: "Respiration in Plants",
+          type: "Assertion-Reason",
+          diff: "Hard",
+          q: `<strong>Assertion (A):</strong> Plants lack specialized respiratory organs but can get along well without them.<br><strong>Reason (R):</strong> Each living cell in a plant is located quite close to the surface of the plant, and parenchymatous cells possess an interconnected network of air spaces.`,
+          opts: [
+            "Both A and R are true and R is the correct explanation of A",
+            "Both A and R are true but R is not the correct explanation of A",
+            "A is true but R is false",
+            "A is false but R is true",
+          ],
+          ans: 0,
+          exp: `Plants do not present great demands for gas exchange. The distance gases must diffuse is minimal because living cells are organized close to the surface (leaves, stems, lenticels), and parenchyma cells have interconnected air spaces to facilitate rapid diffusion. R correctly explains A.`,
+          ref: "NCERT Ch.12 — Why Plants Lack Respiratory Organs",
+        },
+        {
+          id: 3,
+          ch: "Breathing & Gases",
+          type: "Match",
+          diff: "Hard",
+          q: `Match the respiratory volumes (Column I) with their correct clinical values in humans (Column II):<br><table><tr><th>Column I</th><th>Column II</th></tr><tr><td>a. Residual Volume (RV)</td><td>(i) 2500 – 3000 mL</td></tr><tr><td>b. Inspiratory Reserve Volume (IRV)</td><td>(ii) 1100 – 1200 mL</td></tr><tr><td>c. Expiratory Reserve Volume (ERV)</td><td>(iii) 500 mL</td></tr><tr><td>d. Tidal Volume (TV)</td><td>(iv) 1000 – 1100 mL</td></tr></table>`,
+          opts: [
+            "a-(ii), b-(i), c-(iv), d-(iii)",
+            "a-(iv), b-(i), c-(ii), d-(iii)",
+            "a-(ii), b-(iv), c-(i), d-(iii)",
+            "a-(i), b-(ii), c-(iii), d-(iv)",
+          ],
+          ans: 0,
+          exp: `RV is 1100–1200 mL. IRV is 2500–3000 mL. ERV is 1000–1100 mL. TV is 500 mL. Memorization of these exact ranges is essential for numerical derivations.`,
+          ref: "NCERT Ch.14 — Respiratory Volumes",
+        },
+        {
+          id: 4,
+          ch: "Respiration in Plants",
+          type: "Numerical",
+          diff: "Hard",
+          q: `The chemical equation for the aerobic respiration of Tripalmitin is:<br><br>2(C<sub>51</sub>H<sub>98</sub>O<sub>6</sub>) + 145 O<sub>2</sub> → 102 CO<sub>2</sub> + 98 H<sub>2</sub>O + Energy<br><br>Based on this, what is the Respiratory Quotient (RQ), and what does this value signify regarding the substrate's oxygen content compared to carbohydrates?`,
+          opts: [
+            "0.7; the substrate has intrinsically less oxygen within its molecular structure, thus requiring a massive influx of atmospheric oxygen for complete oxidation",
+            "1.0; the substrate requires an exactly equal volume of oxygen relative to the carbon dioxide produced",
+            "0.9; the substrate has intrinsically more oxygen than carbohydrates",
+            "0.7; the substrate has inherently more oxygen, requiring less atmospheric oxygen to break its bonds",
+          ],
+          ans: 0,
+          exp: `RQ = volume of CO₂ evolved / volume of O₂ consumed = 102/145 ≈ <strong>0.7</strong>. Fats (like Tripalmitin) contain very few oxygen atoms within their complex structure compared to carbohydrates. Consequently, they require immense amounts of external atmospheric oxygen for complete metabolic oxidation, resulting in an RQ less than 1.`,
+          ref: "NCERT Ch.12 — Respiratory Quotient",
+        },
+        {
+          id: 5,
+          ch: "Breathing & Gases",
+          type: "Case-Based",
+          diff: "Hard",
+          q: `A 55-year-old chronic chain-smoker presents with severe, progressive breathlessness. Spirometry reveals a normal Tidal Volume but a massively reduced Vital Capacity. Histological examination indicates extensive, irreversible destruction of alveolar walls and a critical loss of surface area for gas exchange. Which respiratory disorder is he suffering from?`,
+          opts: [
+            "Bronchial Asthma — reversible inflammation of bronchioles",
+            "Emphysema — decreased respiratory surface area due to alveolar damage",
+            "Occupational Respiratory Disorder — proliferation of fibrous tissue",
+            "Acute Hypoxia — right shift of the oxygen dissociation curve",
+          ],
+          ans: 1,
+          exp: `<strong>Emphysema</strong> is a chronic, progressive disorder where alveolar walls are damaged, drastically decreasing the total respiratory surface area available for diffusion. Cigarette smoking is explicitly cited as the major cause.`,
+          ref: "NCERT Ch.14 — Disorders of Respiratory System",
+        },
+        {
+          id: 6,
+          ch: "Respiration in Plants",
+          type: "MCQ",
+          diff: "Hard",
+          q: `In the mitochondrial Electron Transport System (ETS), which specific complex is correctly matched with its constituent electron carrier name and its structural composition?`,
+          opts: [
+            "Complex I — Cytochrome c oxidase containing cytochromes a and a₃",
+            "Complex III — Cytochrome bc₁ complex",
+            "Complex IV — Succinate dehydrogenase containing FAD",
+            "Complex II — NADH dehydrogenase",
+          ],
+          ans: 1,
+          exp: `Complex I is NADH dehydrogenase. Complex II is Succinate dehydrogenase. <strong>Complex III is the Cytochrome bc₁ complex</strong>. Complex IV is Cytochrome c oxidase (which contains cytochromes a and a₃, alongside two copper centres).`,
+          ref: "NCERT Ch.12 — Electron Transport System",
+        },
+        {
+          id: 7,
+          ch: "Breathing & Gases",
+          type: "MCQ",
+          diff: "Hard",
+          q: `Under standard resting physiological conditions: <em>"Every 100 mL of deoxygenated blood delivers exactly X mL of CO₂ to the alveoli, whereas every 100 mL of oxygenated blood can deliver exactly Y mL of O₂ to the tissues."</em> What are the precise physiological values of X and Y?`,
+          opts: [
+            "X = 5, Y = 4",
+            "X = 4, Y = 5",
+            "X = 20, Y = 5",
+            "X = 4, Y = 104",
+          ],
+          ans: 1,
+          exp: `Every 100 mL of oxygenated blood delivers ~<strong>5 mL of O₂</strong> to the peripheral tissues. Every 100 mL of deoxygenated blood delivers ~<strong>4 mL of CO₂</strong> to the alveoli. Reversing these numbers is a frequently tested trap.`,
+          ref: "NCERT Ch.14 — Transport of Gases",
+        },
+        {
+          id: 8,
+          ch: "Respiration in Plants",
+          type: "MCQ",
+          diff: "Hard",
+          q: `Identify the <strong>INCORRECT</strong> statement regarding Respiratory Substrates as defined by NCERT:`,
+          opts: [
+            "Under certain specific conditions, proteins and even organic acids can be utilized as respiratory substrates",
+            "Pure proteins or pure fats are frequently used as exclusive respiratory substrates during prolonged starvation",
+            "The RQ of proteins is approximately 0.9",
+            "Carbohydrates represent the most favored and primary respiratory substrates",
+          ],
+          ans: 1,
+          exp: `NCERT strictly states: <em>"in living organisms respiratory substrates are often more than one; pure proteins or fats are <strong>never</strong> used as respiratory substrates."</em> Statement B directly contradicts this.`,
+          ref: "NCERT Ch.12 — Respiratory Substrates",
+        },
+        {
+          id: 9,
+          ch: "Breathing & Gases",
+          type: "MCQ",
+          diff: "Medium",
+          q: `At which highly specific anatomical landmark does the human trachea bifurcate into the right and left primary bronchi?`,
+          opts: [
+            "Level of the 5th Cervical vertebra",
+            "Level of the 5th Thoracic vertebra",
+            "Level of the 10th Thoracic vertebra",
+            "Level of the 1st Lumbar vertebra",
+          ],
+          ans: 1,
+          exp: `NCERT: <em>"Trachea is a straight tube extending up to the mid-thoracic cavity, which divides at the level of <strong>5th thoracic vertebra</strong> into a right and left primary bronchi."</em>`,
+          ref: "NCERT Ch.14 — Human Respiratory System",
+        },
+        {
+          id: 10,
+          ch: "Respiration in Plants",
+          type: "Assertion-Reason",
+          diff: "Hard",
+          q: `<strong>Assertion (A):</strong> The oxidative decarboxylation of pyruvate to Acetyl CoA acts as a vital link reaction bridging glycolysis and the Krebs cycle.<br><strong>Reason (R):</strong> This specific enzymatic reaction occurs in the cytoplasm and strictly requires the enzyme pyruvate dehydrogenase.`,
+          opts: [
+            "Both A and R are true and R is the correct explanation of A",
+            "Both A and R are true but R is not the correct explanation of A",
+            "A is true but R is false",
+            "A is false but R is true",
+          ],
+          ans: 2,
+          exp: `The Assertion is true. However, the Reason is false — the oxidative decarboxylation of pyruvate occurs deep within the <strong>mitochondrial matrix</strong>, not the cytoplasm. Pyruvate must first be actively transported from the cytoplasm into the mitochondria.`,
+          ref: "NCERT Ch.12 — Link Reaction",
+        },
+        {
+          id: 11,
+          ch: "Breathing & Gases",
+          type: "MCQ",
+          diff: "Hard",
+          q: `The diffusion membrane is highly optimized for rapid gas exchange, possessing a total thickness of less than a millimeter. Which of the following is <strong>NOT</strong> one of the three major histological layers forming this critical membrane?`,
+          opts: [
+            "The thin squamous epithelium of alveoli",
+            "The endothelium of the alveolar capillaries",
+            "The interstitial basement substance situated in between",
+            "The smooth muscle layer of the terminal bronchiole",
+          ],
+          ans: 3,
+          exp: `The diffusion membrane consists exclusively of three layers: squamous epithelium of alveoli, endothelium of alveolar capillaries, and the basement substance in between. <strong>Smooth muscle</strong> is a structural component of the conducting airways and plays no direct role in the diffusion membrane.`,
+          ref: "NCERT Ch.14 — Exchange of Gases",
+        },
+        {
+          id: 12,
+          ch: "Respiration in Plants",
+          type: "MCQ",
+          diff: "Hard",
+          q: `During the cyclic operation of the TCA cycle, the continuous supply of NAD⁺ and FAD is essential to capture high-energy electrons. Which highly specific oxidative step in the cycle uniquely yields FADH₂?`,
+          opts: [
+            "Conversion of Citrate to Isocitrate",
+            "Oxidation of Succinate to Fumarate",
+            "Oxidation of Malate to Oxaloacetate",
+            "Decarboxylation of α-Ketoglutarate to Succinyl-CoA",
+          ],
+          ans: 1,
+          exp: `FADH₂ is produced uniquely during the specific oxidation of <strong>succinate to fumarate</strong>. The enzyme responsible is succinate dehydrogenase, which notably also functions simultaneously as Complex II of the ETS.`,
+          ref: "NCERT Ch.12 — TCA Cycle",
+        },
+        {
+          id: 13,
+          ch: "Breathing & Gases",
+          type: "MCQ",
+          diff: "Hard",
+          q: `Regarding the neural regulation of respiration in humans, which of the following statements is highly accurate as per the NCERT text?`,
+          opts: [
+            "The pneumotaxic centre in the medulla exclusively regulates the depth of breathing",
+            "A chemosensitive area adjacent to the rhythm centre is exquisitely sensitive to Oxygen and Hydrogen ions",
+            "The specific role of oxygen in the regulation of the respiratory rhythm is quite insignificant",
+            "Neural signals from the pneumotaxic centre function primarily to increase the duration of inspiration",
+          ],
+          ans: 2,
+          exp: `NCERT explicitly notes this paradox: <em>"The role of oxygen in the regulation of respiratory rhythm is quite insignificant."</em> The chemosensitive area is sensitive to CO₂ and H⁺ (not O₂). The pneumotaxic centre is located in the <strong>pons</strong> (not medulla) and its primary function is to <strong>reduce</strong> the duration of inspiration.`,
+          ref: "NCERT Ch.14 — Regulation of Respiration",
+        },
+        {
+          id: 14,
+          ch: "Respiration in Plants",
+          type: "MCQ",
+          diff: "Medium",
+          q: `In alcoholic fermentation by yeast, the process ultimately becomes hazardous to the organism itself due to product accumulation. At what specific concentration of alcohol does the yeast critically poison itself to death?`,
+          opts: ["7%", "10%", "13%", "21%"],
+          ans: 2,
+          exp: `Yeasts actively poison themselves to death when the concentration of alcohol reaches about <strong>13 percent</strong>. This physiological limit explains why naturally fermented beverages cannot exceed this alcohol concentration without subsequent artificial distillation.`,
+          ref: "NCERT Ch.12 — Fermentation",
+        },
+        {
+          id: 15,
+          ch: "Breathing & Gases",
+          type: "MCQ",
+          diff: "Hard",
+          q: `Based on the standard NCERT gas-exchange table, select the option that correctly represents the partial pressure of carbon dioxide (pCO₂) in <strong>Atmospheric Air, Alveoli, Oxygenated Blood, and Systemic Tissues</strong> respectively (in mm Hg):`,
+          opts: [
+            "0.3, 40, 45, 45",
+            "0.3, 40, 40, 45",
+            "159, 104, 95, 40",
+            "0.3, 45, 40, 45",
+          ],
+          ans: 1,
+          exp: `Standard pCO₂ values: Atmospheric Air (0.3), Alveoli (40), Oxygenated Blood (40), Systemic Tissues (45). Option C incorrectly lists the corresponding pO₂ values.`,
+          ref: "NCERT Ch.14 — Table 14.1",
+        },
+        {
+          id: 16,
+          ch: "Respiration in Plants",
+          type: "Assertion-Reason",
+          diff: "Hard",
+          q: `<strong>Assertion (A):</strong> Complex IV of the mitochondrial ETS is formally referred to as the cytochrome c oxidase complex.<br><strong>Reason (R):</strong> It contains cytochromes a and a₃, and possesses two distinct copper centres within its structure.`,
+          opts: [
+            "Both A and R are true and R is the correct explanation of A",
+            "Both A and R are true but R is not the correct explanation of A",
+            "A is true but R is false",
+            "A is false but R is true",
+          ],
+          ans: 1,
+          exp: `Both statements are factually correct. However, the fundamental reason the complex is <em>"referred to as cytochrome c oxidase"</em> is its <strong>functional role</strong>: it actively oxidizes cytochrome c by transferring its electrons to molecular oxygen. The Reason merely provides structural details and doesn't explain the nomenclature.`,
+          ref: "NCERT Ch.12 — Complex IV",
+        },
+        {
+          id: 17,
+          ch: "Breathing & Gases",
+          type: "MCQ",
+          diff: "Medium",
+          q: `Regarding the efficient transport of CO₂, the enzyme Carbonic Anhydrase plays an absolutely crucial catalytic role. Where exactly is this enzyme distributed within human blood?`,
+          opts: [
+            "Exclusively packed within the RBCs",
+            "Exclusively dissolved within the Plasma",
+            "Present in very high concentrations in RBCs and in minute quantities in the plasma",
+            "Present in high concentrations in plasma and in minute quantities in the RBCs",
+          ],
+          ans: 2,
+          exp: `RBCs contain a very high concentration of carbonic anhydrase, and <em>minute quantities</em> of the same are present in the plasma too. This distribution allows the massive, rapid conversion of CO₂ into bicarbonate.`,
+          ref: "NCERT Ch.14 — Transport of CO₂",
+        },
+        {
+          id: 18,
+          ch: "Respiration in Plants",
+          type: "MCQ",
+          diff: "Hard",
+          q: `Considering the Amphibolic nature of the respiratory pathway, if a cell actively needs to synthesize fatty acids due to metabolic demands, which specific intermediate is withdrawn from the pathway?`,
+          opts: [
+            "Pyruvic Acid",
+            "Acetyl CoA",
+            "α-Ketoglutaric Acid",
+            "Succinyl CoA",
+          ],
+          ans: 1,
+          exp: `<strong>Acetyl CoA</strong> is fundamentally withdrawn from the respiratory pathway for the anabolic synthesis of fatty acids, proving the pathway is not solely catabolic.`,
+          ref: "NCERT Ch.12 — Amphibolic Pathway",
+        },
+        {
+          id: 19,
+          ch: "Breathing & Gases",
+          type: "Numerical",
+          diff: "Hard",
+          q: `Calculate the Functional Residual Capacity (FRC) of an endurance athlete whose spirometry data shows:<br><br>• Total Lung Capacity (TLC) = 6000 mL<br>• Vital Capacity (VC) = 4800 mL<br>• Expiratory Reserve Volume (ERV) = 1100 mL<br>• Tidal Volume (TV) = 500 mL`,
+          opts: ["2300 mL", "1200 mL", "1600 mL", "3400 mL"],
+          ans: 0,
+          exp: `FRC = ERV + RV. We know TLC = VC + RV, so RV = TLC − VC = 6000 − 4800 = <strong>1200 mL</strong>. Therefore FRC = 1100 (ERV) + 1200 (RV) = <strong>2300 mL</strong>.`,
+          ref: "NCERT Ch.14 — Respiratory Capacities",
+        },
+        {
+          id: 20,
+          ch: "Respiration in Plants",
+          type: "MCQ",
+          diff: "Hard",
+          q: `During ATP synthesis via the chemiosmotic hypothesis mechanism in mitochondria, the F<sub>1</sub> headpiece of Complex V functionally acts as:`,
+          opts: [
+            "A transmembrane integral protein forming a proton channel",
+            "The catalytic site for the actual synthesis of ATP from ADP and inorganic phosphate",
+            "A mobile electron carrier shuttling electrons from Complex III to IV",
+            "An oxygen-binding active site neutralizing the electron cascade",
+          ],
+          ans: 1,
+          exp: `The F<sub>1</sub> headpiece is a peripheral membrane protein complex containing the <strong>catalytic site for ATP synthesis</strong> from ADP and P<sub>i</sub>. The F<sub>0</sub> particle, conversely, acts as the integral membrane channel facilitating proton transit.`,
+          ref: "NCERT Ch.12 — Oxidative Phosphorylation",
+        },
+        {
+          id: 21,
+          ch: "Breathing & Gases",
+          type: "MCQ",
+          diff: "Hard",
+          q: `The Oxygen Dissociation Curve is highly responsive to metabolic conditions. Which set of physiological conditions at the systemic tissue level actively promotes the dissociation of oxygen from oxyhaemoglobin?`,
+          opts: [
+            "High pO₂, Low pCO₂, Low H⁺ concentration (higher pH)",
+            "Low pO₂, High pCO₂, High H⁺ concentration (lower pH), higher temperature",
+            "Low pO₂, Low pCO₂, High H⁺ concentration",
+            "High pO₂, High pCO₂, Low temperature",
+          ],
+          ans: 1,
+          exp: `In the tissues, metabolically active conditions (low pO₂, high pCO₂, high H⁺, higher temperature) favour the dissociation of oxygen from oxyhaemoglobin. This forces a rightward shift in the dissociation curve — the <strong>Bohr Effect</strong>.`,
+          ref: "NCERT Ch.14 — Transport of Oxygen",
+        },
+        {
+          id: 22,
+          ch: "Respiration in Plants",
+          type: "MCQ",
+          diff: "Medium",
+          q: `What is the precise structural and functional role of Cytochrome c in the Electron Transport System?`,
+          opts: [
+            "It acts as the final terminal electron acceptor forming water",
+            "It is a small peripheral protein attached to the outer surface of the inner membrane, acting as a mobile carrier between Complex III and IV",
+            "It acts as a massive integral pump forcing protons from the matrix to the intermembrane space",
+            "It is a primary structural constituent of NADH dehydrogenase (Complex I)",
+          ],
+          ans: 1,
+          exp: `Cytochrome c is a small protein attached specifically to the outer surface of the inner mitochondrial membrane and functions as a <strong>highly mobile carrier</strong> for the transfer of electrons between Complex III and IV.`,
+          ref: "NCERT Ch.12 — Electron Transport System",
+        },
+        {
+          id: 23,
+          ch: "Breathing & Gases",
+          type: "Multi-statement",
+          diff: "Hard",
+          q: `Evaluate the following statements regarding the mechanics of inspiration:<br><br>(I) It is initiated by the contraction of the diaphragm.<br>(II) Diaphragm contraction heavily increases the volume of the thoracic chamber in the antero-posterior axis.<br>(III) Contraction of the external inter-costal muscles increases the thoracic volume in the dorso-ventral axis.<br>(IV) Pulmonary volume rapidly decreases causing a severe negative intra-pulmonary pressure.<br><br>Select the correct combination:`,
+          opts: ["I, II, III", "I, III, IV", "II, III, IV", "All of the above"],
+          ans: 0,
+          exp: `Statements I, II, and III are exact representations of NCERT lines regarding Boyle's law application in the thorax. Statement IV is incorrect — pulmonary volume <strong>increases</strong> (not decreases), which causes the internal pressure to drop below atmospheric pressure, thereby sucking air into the lungs.`,
+          ref: "NCERT Ch.14 — Mechanism of Breathing",
+        },
+        {
+          id: 24,
+          ch: "Respiration in Plants",
+          type: "MCQ",
+          diff: "Medium",
+          q: `In the anaerobic process of fermentation, what is the precise net gain of ATP molecules for each single molecule of glucose degraded to pyruvic acid?`,
+          opts: [
+            "36 ATP",
+            "4 ATP",
+            "2 ATP",
+            "Zero ATP, as fermentation yields no energy",
+          ],
+          ans: 2,
+          exp: `In both lactic acid and alcoholic fermentation, less than seven per cent of the energy in glucose is utilized. The overall net gain is exactly <strong>2 ATP molecules</strong>, synthesized via substrate-level phosphorylation during the initial glycolysis phase.`,
+          ref: "NCERT Ch.12 — Fermentation Energetics",
+        },
+        {
+          id: 25,
+          ch: "Breathing & Gases",
+          type: "Match",
+          diff: "Hard",
+          q: `Match the following organisms with their primary anatomical Respiratory Organs utilized for gas exchange:<br><table><tr><th>Organism</th><th>Respiratory Organ</th></tr><tr><td>a. Earthworms</td><td>(i) Tracheal tubes</td></tr><tr><td>b. Insects</td><td>(ii) Gills</td></tr><tr><td>c. Flatworms</td><td>(iii) Moist cuticle</td></tr><tr><td>d. Aquatic arthropods</td><td>(iv) Entire body surface</td></tr></table>`,
+          opts: [
+            "a-(iii), b-(i), c-(iv), d-(ii)",
+            "a-(iii), b-(iv), c-(i), d-(ii)",
+            "a-(i), b-(iii), c-(ii), d-(iv)",
+            "a-(iv), b-(i), c-(iii), d-(ii)",
+          ],
+          ans: 0,
+          exp: `Flatworms utilize their entire body surface for simple diffusion; earthworms utilize a highly vascularized moist cuticle; insects utilize complex tracheal tubes; and aquatic arthropods rely on branchial respiration (gills).`,
+          ref: "NCERT Ch.14 — Respiratory Organs",
+        },
+        {
+          id: 26,
+          ch: "Respiration in Plants",
+          type: "Assertion-Reason",
+          diff: "Hard",
+          q: `<strong>Assertion (A):</strong> The ratio of the volume of CO₂ evolved to the volume of O₂ consumed in cellular respiration is termed the Respiratory Quotient (RQ).<br><strong>Reason (R):</strong> For carbohydrates, the RQ is exactly 1 because equal amounts of CO₂ and O₂ are evolved and consumed respectively during oxidation.`,
+          opts: [
+            "Both A and R are true and R is the correct explanation of A",
+            "Both A and R are true but R is not the correct explanation of A",
+            "A is true but R is false",
+            "A is false but R is true",
+          ],
+          ans: 1,
+          exp: `Both statements are factually correct. However, the Reason merely provides a specific mathematical example of RQ for a particular substrate (carbohydrate); it does not explain the foundational biological <strong>definition</strong> or rationale of the RQ concept established in the Assertion.`,
+          ref: "NCERT Ch.12 — Respiratory Quotient",
+        },
+        {
+          id: 27,
+          ch: "Breathing & Gases",
+          type: "MCQ",
+          diff: "Medium",
+          q: `Identify the correct combination depicting how the vast majority of Carbon Dioxide is systematically transported within human blood:`,
+          opts: [
+            "In a dissolved physical state in the blood plasma (70%)",
+            "Bound tightly as carbamino-haemoglobin within the erythrocytes (70%)",
+            "Circulating as bicarbonate ions (HCO₃⁻) following enzymatic conversion (70%)",
+            "Bound non-specifically to large plasma proteins like albumin (25%)",
+          ],
+          ans: 2,
+          exp: `Nearly <strong>70% of CO₂</strong> is rapidly converted and transported as highly soluble <strong>bicarbonate ions (HCO₃⁻)</strong>. Only 20–25% is transported as carbamino-haemoglobin, and approximately 7% travels in a simple dissolved physical state through the plasma.`,
+          ref: "NCERT Ch.14 — Transport of Gases",
+        },
+        {
+          id: 28,
+          ch: "Respiration in Plants",
+          type: "MCQ",
+          diff: "Medium",
+          q: `In a single turn of the Krebs cycle operating deep within the mitochondrial matrix, how many distinct oxidative decarboxylation steps occur that result in the removal of a carbon atom?`,
+          opts: ["One", "Two", "Three", "Four"],
+          ans: 1,
+          exp: `There are exactly <strong>two oxidative decarboxylation steps</strong> within the cycle itself: isocitrate → α-ketoglutarate (6C → 5C), and α-ketoglutarate → succinyl-CoA (5C → 4C). <em>(The conversion of pyruvate to acetyl-CoA is a link reaction, not part of the cycle itself.)</em>`,
+          ref: "NCERT Ch.12 — TCA Cycle",
+        },
+        {
+          id: 29,
+          ch: "Breathing & Gases",
+          type: "MCQ",
+          diff: "Medium",
+          q: `What is the primary, overarching physiological function of the pleural fluid present between the double-layered pleural membranes encasing the lungs?`,
+          opts: [
+            "It actively facilitates the diffusion of gases directly across the outer lung surface",
+            "It massively reduces friction on the lung surface during continuous breathing movements",
+            "It maintains a strong positive pressure to violently prevent spontaneous lung collapse",
+            "It contains massive concentrations of macrophages designed solely to fight pulmonary infections",
+          ],
+          ans: 1,
+          exp: `The lungs are covered by a double-layered pleura, with pleural fluid trapped between them. Its designated physiological role is strictly to <strong>reduce friction</strong> on the lung surface as the lungs continuously expand and contract against the thoracic wall.`,
+          ref: "NCERT Ch.14 — Human Respiratory System",
+        },
+        {
+          id: 30,
+          ch: "Respiration in Plants",
+          type: "MCQ",
+          diff: "Hard",
+          q: `Though aerobic respiration strictly requires molecular oxygen, its direct chemical role is heavily restricted to the final terminal stage of the entire process. Why is oxygen considered so absolutely vital despite this very late involvement?`,
+          opts: [
+            "It directly synthesizes ATP by physically bonding with ADP molecules within the matrix",
+            "It acts as the final hydrogen acceptor, driving the entire upstream process by continuously removing hydrogen and electrons from the system",
+            "It is required to chemically initiate the decarboxylation of pyruvate prior to the Krebs cycle",
+            "It oxidizes NADH back to NAD⁺ directly in the cytoplasm to keep glycolysis running",
+          ],
+          ans: 1,
+          exp: `Oxygen's chemical role is limited to the terminal stage, but it is vital because it drives the entire biological process upstream by actively removing hydrogen and electrons from the system. Oxygen acts strictly as the <strong>final hydrogen acceptor</strong>, preventing metabolic traffic jams.`,
+          ref: "NCERT Ch.12 — Oxidative Phosphorylation",
+        },
+      ];
+
+      const TOTAL = Q.length;
+      const LETTERS = ["A", "B", "C", "D"];
+      let currentQ = 0;
+      let userAnswers = new Array(TOTAL).fill(-1);
+      let reviewFlags = new Array(TOTAL).fill(false);
+      let submitted = false;
+      let timerSec = 0;
+      let timerInterval;
+
+      function chClass(ch) {
+        return ch === "Respiration in Plants" ? "bio" : "human";
+      }
+
+      function startQuiz() {
+        document.getElementById("heroSection").style.display = "none";
+        document.getElementById("progressWrap").classList.add("active");
+        document.getElementById("paletteToggle").classList.add("active");
+        buildAllCards();
+        buildPalette();
+        showQuestion(0);
+        startTimer();
+      }
+
+      function buildAllCards() {
+        const area = document.getElementById("quizArea");
+        let html = "";
+        Q.forEach((q, i) => {
+          const tagCls = chClass(q.ch);
+          const diffClass = q.diff === "Hard" ? "hard" : "med";
+          html += `<div class="q-card" id="qcard-${i}">
+            <div class="q-header">
+              <span class="q-num ${tagCls === "human" ? "human" : ""}">Q${q.id}</span>
+              <div class="q-meta">
+                <span class="q-tag ${tagCls}">${q.ch}</span>
+                <span class="q-tag type">${q.type}</span>
+                <span class="q-tag ${diffClass}">${q.diff}</span>
+              </div>
+            </div>
+            <div class="q-text">${q.q}</div>
+            <div class="options">
+              ${q.opts
+                .map(
+                  (o, j) => `
+                <button class="opt-btn" id="opt-${i}-${j}" onclick="selectOpt(${i},${j})">
+                  <span class="opt-letter">${LETTERS[j]}</span>
+                  <span>${o}</span>
+                </button>
+              `,
+                )
+                .join("")}
+            </div>
+            <div class="nav-btns">
+              <button class="nav-btn" onclick="prevQuestion()" ${i === 0 ? "disabled" : ""}>← Prev</button>
+              <button class="nav-btn primary" onclick="nextQuestion()" id="next-btn-${i}">
+                ${i === TOTAL - 1 ? "Finish →" : "Next →"}
+              </button>
+              <button class="nav-btn clear-response" onclick="clearResponse(${i})">✕ Clear</button>
+              <button class="nav-btn mark-review${reviewFlags[i] ? " marked" : ""}" id="mark-${i}" onclick="toggleReview(${i})">
+                ${reviewFlags[i] ? "★ Marked" : "☆ Mark for Review"}
+              </button>
+            </div>
+          </div>`;
+        });
+        area.innerHTML = html;
+      }
+
+      function showQuestion(idx) {
+        document
+          .querySelectorAll(".q-card")
+          .forEach((c) => c.classList.remove("active"));
+        document.getElementById(`qcard-${idx}`).classList.add("active");
+        currentQ = idx;
+        updateProgress();
+        updatePalette();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function selectOpt(qIdx, optIdx) {
+        if (submitted) return;
+        for (let i = 0; i < 4; i++) {
+          const el = document.getElementById(`opt-${qIdx}-${i}`);
+          if (el) el.classList.remove("selected");
+        }
+        document
+          .getElementById(`opt-${qIdx}-${optIdx}`)
+          .classList.add("selected");
+        userAnswers[qIdx] = optIdx;
+        updatePalette();
+        updateProgress();
+      }
+
+      function clearResponse(qIdx) {
+        if (submitted) return;
+        userAnswers[qIdx] = -1;
+        for (let i = 0; i < 4; i++) {
+          const el = document.getElementById(`opt-${qIdx}-${i}`);
+          if (el) el.classList.remove("selected");
+        }
+        updatePalette();
+        updateProgress();
+      }
+
+      function nextQuestion() {
+        if (currentQ < TOTAL - 1) {
+          showQuestion(currentQ + 1);
+        } else {
+          finishQuiz();
+        }
+      }
+
+      function prevQuestion() {
+        if (currentQ > 0) showQuestion(currentQ - 1);
+      }
+
+      function toggleReview(idx) {
+        reviewFlags[idx] = !reviewFlags[idx];
+        const btn = document.getElementById(`mark-${idx}`);
+        btn.classList.toggle("marked", reviewFlags[idx]);
+        btn.textContent = reviewFlags[idx] ? "★ Marked" : "☆ Mark for Review";
+        updatePalette();
+      }
+
+      function updateProgress() {
+        const answered = userAnswers.filter((a) => a !== -1).length;
+        document.getElementById("qCounter").textContent =
+          `Q ${currentQ + 1} / ${TOTAL}`;
+        document.getElementById("progressFill").style.width =
+          (answered / TOTAL) * 100 + "%";
+      }
+
+      function buildPalette() {
+        const grid = document.getElementById("paletteGrid");
+        let html = "";
+        for (let i = 0; i < TOTAL; i++) {
+          html += `<div class="palette-dot" id="pdot-${i}" onclick="showQuestion(${i})">${i + 1}</div>`;
+        }
+        grid.innerHTML = html;
+      }
+
+      function updatePalette() {
+        for (let i = 0; i < TOTAL; i++) {
+          const dot = document.getElementById(`pdot-${i}`);
+          dot.className = "palette-dot";
+          if (i === currentQ) dot.classList.add("current");
+          if (userAnswers[i] !== -1) dot.classList.add("answered");
+          if (reviewFlags[i]) dot.classList.add("review");
+        }
+      }
+
+      function togglePalette() {
+        document.getElementById("palettePanel").classList.toggle("open");
+      }
+
+      function startTimer() {
+        timerInterval = setInterval(() => {
+          timerSec++;
+          const m = String(Math.floor(timerSec / 60)).padStart(2, "0");
+          const s = String(timerSec % 60).padStart(2, "0");
+          document.getElementById("progressTimer").textContent = `${m}:${s}`;
+        }, 1000);
+      }
+
+      function finishQuiz() {
+        if (!window._isReplay) {
+          const unanswered = userAnswers.filter((a) => a === -1).length;
+          if (unanswered > 0) {
+            if (
+              !confirm(
+                `You have ${unanswered} unanswered question${unanswered > 1 ? "s" : ""}. Submit anyway?`,
+              )
+            )
+              return;
+          }
+        }
+        submitQuiz();
+      }
+
+      function saveAttempt(data) {
+        try {
+          const results = JSON.parse(
+            localStorage.getItem("papResults") || "[]",
+          );
+          results.unshift(data);
+          localStorage.setItem("papResults", JSON.stringify(results));
+        } catch (e) {}
+      }
+
+      function submitQuiz() {
+        submitted = true;
+        clearInterval(timerInterval);
+
+        document.getElementById("quizArea").classList.add("hidden");
+        document.getElementById("paletteToggle").style.display = "none";
+        document.getElementById("palettePanel").style.display = "none";
+        document.getElementById("progressWrap").style.display = "none";
+
+        let correct = 0,
+          wrong = 0,
+          skipped = 0;
+        let plantCorrect = 0,
+          plantTotal = 0,
+          humanCorrect = 0,
+          humanTotal = 0;
+
+        Q.forEach((q, i) => {
+          const isPlant = q.ch === "Respiration in Plants";
+          if (isPlant) plantTotal++;
+          else humanTotal++;
+
+          if (userAnswers[i] === -1) {
+            skipped++;
+          } else if (userAnswers[i] === q.ans) {
+            correct++;
+            if (isPlant) plantCorrect++;
+            else humanCorrect++;
+          } else {
+            wrong++;
+          }
+        });
+
+        const neetScore = correct * 4 - wrong * 1;
+        const pct = Math.round((correct / TOTAL) * 100);
+        const circumference = 2 * Math.PI * 65;
+        const offset = circumference - (pct / 100) * circumference;
+        const ringColor =
+          pct >= 80
+            ? "var(--green)"
+            : pct >= 50
+              ? "var(--amber)"
+              : "var(--red)";
+        const grade =
+          pct >= 90
+            ? "Outstanding!"
+            : pct >= 75
+              ? "Great Work!"
+              : pct >= 50
+                ? "Keep Practicing!"
+                : "Needs Revision";
+
+        const timeStr = document.getElementById("progressTimer").textContent;
+        const plantPct = plantTotal
+          ? Math.round((plantCorrect / plantTotal) * 100)
+          : 0;
+        const humanPct = humanTotal
+          ? Math.round((humanCorrect / humanTotal) * 100)
+          : 0;
+
+        if (!window._isReplay) {
+          saveAttempt({
+            id: Date.now(),
+            paperFile: "16AP3.html",
+            paperName: "Respiration Physiology [ULTRA]",
+            paperTag: "Ultra Hard",
+            correct,
+            wrong,
+            skipped,
+            totalQuestions: TOTAL,
+            neetScore,
+            maxScore: TOTAL * 4,
+            percentage: pct,
+            timeTaken: timeStr,
+            timerSeconds: timerSec,
+            userAnswers: [...userAnswers],
+          });
+        }
+
+        const res = document.getElementById("resultsSection");
+        res.style.display = "block";
+
+        let rhtml = `
+<div class="results-card">
+  <h2>${grade}</h2>
+  <div class="score-ring">
+    <svg width="160" height="160" viewBox="0 0 160 160">
+      <circle class="ring-bg" cx="80" cy="80" r="65"/>
+      <circle class="ring-fill" cx="80" cy="80" r="65"
+        stroke="${ringColor}"
+        stroke-dasharray="${circumference}"
+        stroke-dashoffset="${circumference}"
+        id="scoreRing"/>
+    </svg>
+    <div class="score-center">
+      <div class="pct">${pct}%</div>
+      <div class="of">${correct}/${TOTAL}</div>
+    </div>
+  </div>
+  <div class="stats-grid">
+    <div class="stat-item neet"><div class="stat-num">${neetScore}</div><div class="stat-lbl">NEET Score</div></div>
+    <div class="stat-item correct"><div class="stat-num">${correct}</div><div class="stat-lbl">Correct</div></div>
+    <div class="stat-item wrong"><div class="stat-num">${wrong}</div><div class="stat-lbl">Wrong</div></div>
+    <div class="stat-item skip"><div class="stat-num">${skipped}</div><div class="stat-lbl">Skipped</div></div>
+  </div>
+  <div style="margin-top:16px;font-size:13px;color:var(--text3)">Time: ${timeStr} · Max: ${TOTAL * 4}</div>
+</div>
+
+<div class="chapter-breakdown">
+  <h3>Chapter Breakdown</h3>
+  <div class="chapter-bar-wrap">
+    <div class="chapter-bar-header">
+      <span style="color:var(--accent)">🌱 Respiration in Plants</span>
+      <span style="color:var(--text2)">${plantCorrect}/${plantTotal} (${plantPct}%)</span>
+    </div>
+    <div class="chapter-bar-track">
+      <div class="chapter-bar-fill" id="plantBar" style="width:0%;background:var(--accent)"></div>
+    </div>
+  </div>
+  <div class="chapter-bar-wrap">
+    <div class="chapter-bar-header">
+      <span style="color:var(--pink)">🫁 Breathing &amp; Gases</span>
+      <span style="color:var(--text2)">${humanCorrect}/${humanTotal} (${humanPct}%)</span>
+    </div>
+    <div class="chapter-bar-track">
+      <div class="chapter-bar-fill" id="humanBar" style="width:0%;background:var(--pink)"></div>
+    </div>
+  </div>
+</div>
+
+<div class="review-title">Complete Walkthrough</div>
+<div class="review-sub">Every question reviewed with NCERT-based explanations.</div>
+<div class="review-filter">
+  <button class="filter-btn active" onclick="filterReview('all',this)">All (${TOTAL})</button>
+  <button class="filter-btn" onclick="filterReview('wrong',this)">❌ Wrong (${wrong})</button>
+  <button class="filter-btn" onclick="filterReview('skipped',this)">⏭️ Skipped (${skipped})</button>
+  <button class="filter-btn" onclick="filterReview('correct',this)">✅ Correct (${correct})</button>
+</div>
+<div id="reviewCards"></div>`;
+
+        res.innerHTML = rhtml;
+        renderReviewCards("all");
+
+        setTimeout(() => {
+          document.getElementById("scoreRing").style.strokeDashoffset = offset;
+          document.getElementById("plantBar").style.width = plantPct + "%";
+          document.getElementById("humanBar").style.width = humanPct + "%";
+        }, 100);
+
+        res.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function renderReviewCards(filter) {
+        const container = document.getElementById("reviewCards");
+        let html = "";
+
+        Q.forEach((q, i) => {
+          const ua = userAnswers[i];
+          const isCorrect = ua === q.ans;
+          const isSkipped = ua === -1;
+          const isWrong = !isCorrect && !isSkipped;
+
+          if (filter === "wrong" && !isWrong) return;
+          if (filter === "skipped" && !isSkipped) return;
+          if (filter === "correct" && !isCorrect) return;
+
+          let cardClass, badgeClass, badgeText;
+          if (isCorrect) {
+            cardClass = "rc-correct";
+            badgeClass = "badge-correct";
+            badgeText = "✅ Correct";
+          } else if (isSkipped) {
+            cardClass = "rc-skipped";
+            badgeClass = "badge-skipped";
+            badgeText = "⏭️ Skipped";
+          } else {
+            cardClass = "rc-wrong";
+            badgeClass = "badge-wrong";
+            badgeText = "❌ Wrong";
+          }
+
+          const tagCls = chClass(q.ch);
+          const numHumanCls = tagCls === "human" ? "human" : "";
+
+          html += `<div class="review-card ${cardClass}">
+            <div class="rc-header">
+              <span class="q-num ${numHumanCls}">Q${q.id}</span>
+              <span class="q-tag ${tagCls}">${q.ch}</span>
+              <span class="rc-badge ${badgeClass}">${badgeText}</span>
+              <span class="q-type">${q.type}</span>
+            </div>
+            <div class="rc-q">${q.q}</div>
+            <div class="rc-opts">`;
+
+          q.opts.forEach((o, j) => {
+            let optClass = "rc-opt";
+            let marker = LETTERS[j];
+            if (j === q.ans) {
+              optClass += " rc-opt-correct";
+              marker = "✓";
+            } else if (j === ua && isWrong) {
+              optClass += " rc-opt-wrong";
+              marker = "✗";
+            }
+            html += `<div class="${optClass}">
+              <span class="rc-letter">${marker}</span>
+              <span>${o}</span>
+            </div>`;
+          });
+
+          html += `</div>
+            <div class="rc-exp">
+              <h4>💡 Explanation</h4>
+              <p>${q.exp}</p>
+              <span class="ncert-ref">📖 ${q.ref}</span>
+            </div>
+          </div>`;
+        });
+
+        if (!html)
+          html = `<p style="text-align:center;color:var(--text3);padding:30px 0">No questions match this filter.</p>`;
+        container.innerHTML = html;
+      }
+
+      function filterReview(type, btn) {
+        document
+          .querySelectorAll(".filter-btn")
+          .forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderReviewCards(type);
+      }
+
+      window.addEventListener("scroll", () => {
+        const pw = document.getElementById("progressWrap");
+        if (window.scrollY > 200) {
+          pw.classList.add("scrolled");
+        } else {
+          pw.classList.remove("scrolled");
+        }
+      });
+
+      (function loadSavedAttempt() {
+        const params = new URLSearchParams(window.location.search);
+        const attemptId = params.get("attempt");
+        if (!attemptId) return;
+        const saved = JSON.parse(localStorage.getItem("papResults") || "[]");
+        const attempt = saved.find((r) => r.id === Number(attemptId));
+        if (!attempt) return;
+        window._isReplay = true;
+        userAnswers = attempt.userAnswers;
+        timerSec = attempt.timerSeconds || 0;
+        const m = String(Math.floor(timerSec / 60)).padStart(2, "0");
+        const s = String(timerSec % 60).padStart(2, "0");
+        document.getElementById("progressTimer").textContent = `${m}:${s}`;
+        document.getElementById("heroSection").style.display = "none";
+        submitQuiz();
+      })();
+    </script>
+  </body>
+</html>
