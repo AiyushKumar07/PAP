@@ -1,0 +1,2154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEET 2026 Mastery Bank — The Living World & Cell: The Unit of Life</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --bg: #0a0e17;
+        --surface: #111827;
+        --surface2: #1a2236;
+        --surface3: #222d44;
+        --border: #2a3654;
+        --text: #e2e8f0;
+        --text2: #94a3b8;
+        --text3: #64748b;
+        --accent: #06d6a0;
+        --accent2: #118ab2;
+        --red: #ef4444;
+        --green: #22c55e;
+        --amber: #f59e0b;
+        --purple: #a78bfa;
+        --pink: #f472b6;
+        --radius: 12px;
+        --radius-sm: 8px;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "IBM Plex Sans", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background:
+          radial-gradient(
+            ellipse at 20% 0%,
+            rgba(6, 214, 160, 0.06) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse at 80% 100%,
+            rgba(17, 138, 178, 0.06) 0%,
+            transparent 50%
+          );
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .container {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 20px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero {
+        text-align: center;
+        padding: 50px 20px 40px;
+        position: relative;
+      }
+      .hero-badge {
+        display: inline-block;
+        padding: 6px 18px;
+        border-radius: 50px;
+        background: rgba(6, 214, 160, 0.12);
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 18px;
+        border: 1px solid rgba(6, 214, 160, 0.2);
+      }
+      .hero h1 {
+        font-family: "DM Serif Display", serif;
+        font-size: clamp(28px, 5vw, 44px);
+        color: #fff;
+        margin-bottom: 12px;
+        line-height: 1.2;
+      }
+      .hero h1 span {
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .hero p {
+        color: var(--text2);
+        font-size: 16px;
+        max-width: 560px;
+        margin: 0 auto 28px;
+      }
+      .hero-tags {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 32px;
+      }
+      .hero-tags span {
+        padding: 6px 16px;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .tag-bio {
+        background: rgba(6, 214, 160, 0.1);
+        color: var(--accent);
+        border: 1px solid rgba(6, 214, 160, 0.22);
+      }
+      .tag-chem {
+        background: rgba(245, 158, 11, 0.1);
+        color: var(--amber);
+        border: 1px solid rgba(245, 158, 11, 0.22);
+      }
+      .start-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 16px 48px;
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--bg);
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 25px rgba(6, 214, 160, 0.3);
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+      .start-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 35px rgba(6, 214, 160, 0.4);
+      }
+
+      .progress-wrap {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(10, 14, 23, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 14px 20px;
+        border-bottom: 1px solid var(--border);
+        display: none;
+        transition: box-shadow 0.3s;
+      }
+      .progress-wrap.active {
+        display: block;
+      }
+      .progress-wrap.scrolled {
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+      }
+      .progress-inner {
+        max-width: 860px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .progress-text {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text2);
+        white-space: nowrap;
+        min-width: 90px;
+      }
+      .progress-text b {
+        color: var(--accent);
+      }
+      .progress-bar {
+        flex: 1;
+        height: 6px;
+        background: var(--surface3);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent), var(--accent2));
+        border-radius: 10px;
+        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        width: 0%;
+      }
+      .progress-timer {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+        color: var(--accent);
+        min-width: 60px;
+        text-align: right;
+      }
+
+      .q-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 32px;
+        margin-bottom: 24px;
+        display: none;
+        animation: fadeIn 0.4s ease both;
+      }
+      .q-card.active {
+        display: block;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .q-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+        flex-wrap: wrap;
+      }
+      .q-num {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--bg);
+        background: var(--accent);
+        padding: 4px 10px;
+        border-radius: 6px;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .q-meta {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .q-tag {
+        font-size: 11px;
+        padding: 3px 10px;
+        border-radius: 50px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+      .q-tag.bio {
+        background: rgba(6, 214, 160, 0.12);
+        color: var(--accent);
+      }
+      .q-tag.type {
+        background: rgba(167, 139, 250, 0.12);
+        color: var(--purple);
+      }
+      .q-tag.hard {
+        background: rgba(239, 68, 68, 0.12);
+        color: var(--red);
+      }
+      .q-tag.med {
+        background: rgba(245, 158, 11, 0.12);
+        color: var(--amber);
+      }
+      .q-type {
+        font-size: 11px;
+        color: var(--text3);
+        font-weight: 500;
+        margin-left: auto;
+      }
+      .q-text {
+        font-size: 15.5px;
+        color: #fff;
+        line-height: 1.7;
+        margin-bottom: 20px;
+      }
+      .q-text em {
+        color: var(--accent);
+        font-style: normal;
+        font-weight: 600;
+      }
+      .q-text .formula {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 14px;
+        background: var(--surface2);
+        padding: 2px 8px;
+        border-radius: 4px;
+        color: var(--amber);
+      }
+      .q-text table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 12px 0;
+        font-size: 14px;
+      }
+      .q-text table th,
+      .q-text table td {
+        padding: 8px 12px;
+        border: 1px solid var(--border);
+        text-align: left;
+      }
+      .q-text table th {
+        background: var(--surface2);
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      .options {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .opt-btn {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 14px 18px;
+        background: var(--surface2);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        transition: all 0.2s;
+        text-align: left;
+        width: 100%;
+        font-size: 14.5px;
+        color: var(--text);
+        line-height: 1.5;
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+      .opt-btn:hover {
+        border-color: var(--accent);
+        background: rgba(6, 214, 160, 0.05);
+        transform: translateX(4px);
+      }
+      .opt-btn .opt-letter {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        color: var(--text3);
+        font-size: 13px;
+        min-width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        background: var(--surface3);
+        flex-shrink: 0;
+        margin-top: 1px;
+        transition: all 0.2s;
+      }
+      .opt-btn.selected {
+        border-color: var(--accent);
+        background: rgba(6, 214, 160, 0.08);
+      }
+      .opt-btn.selected .opt-letter {
+        background: var(--accent);
+        color: var(--bg);
+      }
+
+      .nav-btns {
+        display: flex;
+        gap: 12px;
+        margin-top: 24px;
+        flex-wrap: wrap;
+      }
+      .nav-btn {
+        padding: 10px 24px;
+        border-radius: 8px;
+        font-family: "IBM Plex Sans", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        border: 1.5px solid var(--border);
+        background: var(--surface2);
+        color: var(--text);
+      }
+      .nav-btn:hover {
+        border-color: var(--accent);
+      }
+      .nav-btn.primary {
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        border: none;
+        color: var(--bg);
+        font-weight: 700;
+        box-shadow: 0 2px 12px rgba(6, 214, 160, 0.2);
+      }
+      .nav-btn.primary:hover {
+        box-shadow: 0 4px 20px rgba(6, 214, 160, 0.32);
+        transform: translateY(-1px);
+      }
+      .nav-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+      .mark-review {
+        margin-left: auto;
+        font-size: 13px;
+        color: var(--amber);
+        background: rgba(245, 158, 11, 0.08);
+        border-color: rgba(245, 158, 11, 0.25);
+      }
+      .mark-review.marked {
+        background: rgba(245, 158, 11, 0.2);
+        border-color: var(--amber);
+      }
+      .clear-response {
+        font-size: 13px;
+        color: var(--red);
+        background: rgba(239, 68, 68, 0.08);
+        border-color: rgba(239, 68, 68, 0.25);
+      }
+      .clear-response:hover {
+        background: rgba(239, 68, 68, 0.15);
+        border-color: var(--red);
+      }
+
+      .palette-toggle {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: var(--bg);
+        border: none;
+        font-size: 20px;
+        font-weight: 700;
+        cursor: pointer;
+        z-index: 200;
+        box-shadow: 0 4px 20px rgba(6, 214, 160, 0.4);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s;
+      }
+      .palette-toggle:hover {
+        transform: scale(1.06);
+      }
+      .palette-toggle.active {
+        display: flex;
+      }
+      .palette-panel {
+        position: fixed;
+        bottom: 84px;
+        right: 24px;
+        width: 300px;
+        max-height: 400px;
+        overflow-y: auto;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 20px;
+        z-index: 200;
+        display: none;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      }
+      .palette-panel.open {
+        display: block;
+      }
+      .palette-title {
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 14px;
+        color: var(--text2);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .palette-grid {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        gap: 6px;
+      }
+      .palette-dot {
+        width: 32px;
+        height: 32px;
+        border-radius: 7px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 700;
+        cursor: pointer;
+        border: 1.5px solid var(--border);
+        background: var(--surface2);
+        color: var(--text3);
+        transition: all 0.15s;
+      }
+      .palette-dot:hover {
+        border-color: var(--accent);
+      }
+      .palette-dot.answered {
+        background: rgba(6, 214, 160, 0.15);
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .palette-dot.review {
+        background: rgba(245, 158, 11, 0.15);
+        border-color: var(--amber);
+        color: var(--amber);
+      }
+      .palette-dot.current {
+        box-shadow: 0 0 0 2px var(--accent);
+      }
+      .palette-legend {
+        display: flex;
+        gap: 16px;
+        margin-top: 14px;
+        font-size: 11px;
+        color: var(--text3);
+        flex-wrap: wrap;
+      }
+      .palette-legend span {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .legend-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 3px;
+      }
+
+      #resultsSection {
+        display: none;
+      }
+      .results-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 40px 30px;
+        max-width: 500px;
+        margin: 0 auto 40px;
+        text-align: center;
+      }
+      .results-card h2 {
+        font-family: "DM Serif Display", serif;
+        font-size: 32px;
+        color: #fff;
+        margin-bottom: 8px;
+      }
+      .score-ring {
+        width: 160px;
+        height: 160px;
+        margin: 24px auto;
+        position: relative;
+      }
+      .score-ring svg {
+        transform: rotate(-90deg);
+      }
+      .score-ring .ring-bg {
+        fill: none;
+        stroke: var(--surface3);
+        stroke-width: 10;
+      }
+      .score-ring .ring-fill {
+        fill: none;
+        stroke-width: 10;
+        stroke-linecap: round;
+        transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .score-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+      .score-center .pct {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 36px;
+        font-weight: 700;
+        color: #fff;
+      }
+      .score-center .of {
+        font-size: 13px;
+        color: var(--text3);
+      }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-top: 24px;
+      }
+      .stat-item {
+        padding: 14px 8px;
+        background: var(--surface2);
+        border-radius: var(--radius-sm);
+        text-align: center;
+      }
+      .stat-num {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 22px;
+        font-weight: 700;
+      }
+      .stat-lbl {
+        font-size: 11px;
+        color: var(--text3);
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        margin-top: 4px;
+      }
+      .stat-item.neet .stat-num {
+        color: var(--accent2);
+      }
+      .stat-item.correct .stat-num {
+        color: var(--green);
+      }
+      .stat-item.wrong .stat-num {
+        color: var(--red);
+      }
+      .stat-item.skip .stat-num {
+        color: var(--amber);
+      }
+
+      .chapter-breakdown {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 24px;
+        margin-bottom: 40px;
+      }
+      .chapter-breakdown h3 {
+        font-family: "DM Serif Display", serif;
+        font-size: 18px;
+        color: #fff;
+        margin-bottom: 20px;
+      }
+      .chapter-bar-wrap {
+        margin-bottom: 16px;
+      }
+      .chapter-bar-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .chapter-bar-track {
+        height: 8px;
+        background: var(--surface3);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .chapter-bar-fill {
+        height: 100%;
+        border-radius: 4px;
+        transition: width 1s ease;
+      }
+
+      .review-title {
+        font-family: "DM Serif Display", serif;
+        font-size: 28px;
+        color: #fff;
+        margin: 40px 0 12px;
+        text-align: center;
+      }
+      .review-sub {
+        text-align: center;
+        color: var(--text2);
+        font-size: 14px;
+        margin-bottom: 24px;
+      }
+      .review-filter {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+      }
+      .filter-btn {
+        padding: 8px 20px;
+        border-radius: 50px;
+        border: 1px solid var(--border);
+        background: transparent;
+        color: var(--text2);
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .filter-btn:hover,
+      .filter-btn.active {
+        background: var(--accent);
+        color: var(--bg);
+        border-color: var(--accent);
+      }
+
+      .review-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 28px;
+        margin-bottom: 20px;
+      }
+      .review-card.rc-correct {
+        border-left: 4px solid var(--green);
+      }
+      .review-card.rc-wrong {
+        border-left: 4px solid var(--red);
+      }
+      .review-card.rc-skipped {
+        border-left: 4px solid var(--amber);
+      }
+      .rc-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 14px;
+        flex-wrap: wrap;
+      }
+      .rc-badge {
+        font-size: 11px;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 5px;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+      }
+      .rc-badge.badge-correct {
+        background: rgba(34, 197, 94, 0.1);
+        color: var(--green);
+        border: 1px solid rgba(34, 197, 94, 0.3);
+      }
+      .rc-badge.badge-wrong {
+        background: rgba(239, 68, 68, 0.1);
+        color: var(--red);
+        border: 1px solid rgba(239, 68, 68, 0.3);
+      }
+      .rc-badge.badge-skipped {
+        background: rgba(245, 158, 11, 0.1);
+        color: var(--amber);
+        border: 1px solid rgba(245, 158, 11, 0.3);
+      }
+      .rc-q {
+        font-size: 14.5px;
+        line-height: 1.7;
+        margin-bottom: 16px;
+        color: var(--text);
+      }
+      .rc-opts {
+        margin-bottom: 16px;
+      }
+      .rc-opt {
+        padding: 10px 14px;
+        margin-bottom: 6px;
+        border-radius: 8px;
+        font-size: 13.5px;
+        line-height: 1.6;
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        border: 1.5px solid transparent;
+      }
+      .rc-opt.rc-opt-correct {
+        background: rgba(34, 197, 94, 0.08);
+        border-color: rgba(34, 197, 94, 0.3);
+      }
+      .rc-opt.rc-opt-wrong {
+        background: rgba(239, 68, 68, 0.08);
+        border-color: rgba(239, 68, 68, 0.3);
+      }
+      .rc-letter {
+        flex-shrink: 0;
+        width: 22px;
+        height: 22px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 700;
+        background: var(--border);
+        color: var(--text3);
+      }
+      .rc-opt.rc-opt-correct .rc-letter {
+        background: var(--green);
+        color: #fff;
+      }
+      .rc-opt.rc-opt-wrong .rc-letter {
+        background: var(--red);
+        color: #fff;
+      }
+      .rc-exp {
+        background: rgba(6, 214, 160, 0.05);
+        border: 1px solid rgba(6, 214, 160, 0.15);
+        border-radius: 10px;
+        padding: 18px 20px;
+      }
+      .rc-exp h4 {
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: var(--accent);
+        margin-bottom: 8px;
+      }
+      .rc-exp p {
+        font-size: 13.5px;
+        line-height: 1.75;
+        color: var(--text2);
+      }
+      .rc-exp p strong {
+        color: var(--text);
+      }
+      .rc-exp .ncert-ref {
+        display: inline-block;
+        margin-top: 8px;
+        font-size: 11px;
+        padding: 3px 8px;
+        background: rgba(6, 214, 160, 0.1);
+        border-radius: 4px;
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          padding: 12px;
+        }
+        .q-card {
+          padding: 20px 16px;
+        }
+        .hero h1 {
+          font-size: 26px;
+        }
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .progress-inner {
+          gap: 10px;
+        }
+        .palette-panel {
+          width: calc(100vw - 40px);
+          right: 20px;
+        }
+        .review-card {
+          padding: 20px 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero" id="heroSection">
+      <div class="hero-badge">NEET 2026 · NCERT Aligned</div>
+      <h1>Mastery Bank <span>Living World & Cell</span></h1>
+      <p>
+        50 questions covering The Living World & Cell: The Unit of Life. Focuses on deep conceptual clarity, empirical recall, and analytical traps.
+      </p>
+      <div class="hero-tags">
+        <span class="tag-bio">🧬 50 Questions · All Biology</span>
+        <span class="tag-chem">📚 2 Chapters · Class 11</span>
+      </div>
+      <button class="start-btn" onclick="startQuiz()">Begin Test →</button>
+    </div>
+
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-inner">
+        <div class="progress-text">
+          <b id="qCounter">Q 1 / 50</b>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-timer" id="progressTimer">00:00</div>
+      </div>
+    </div>
+
+    <div class="container" id="quizArea"></div>
+
+    <div class="container" id="resultsSection"></div>
+
+    <button class="palette-toggle" id="paletteToggle" onclick="togglePalette()">
+      ☰
+    </button>
+    <div class="palette-panel" id="palettePanel">
+      <div class="palette-title">Question Palette</div>
+      <div class="palette-grid" id="paletteGrid"></div>
+      <div class="palette-legend">
+        <span
+          ><div
+            class="legend-dot"
+            style="background: var(--surface2); border: 1px solid var(--border)"
+          ></div>
+          Unseen</span
+        >
+        <span
+          ><div
+            class="legend-dot"
+            style="background: rgba(6, 214, 160, 0.2)"
+          ></div>
+          Answered</span
+        >
+        <span
+          ><div
+            class="legend-dot"
+            style="background: rgba(245, 158, 11, 0.2)"
+          ></div>
+          Review</span
+        >
+      </div>
+    </div>
+
+    <script>
+      const Q = [
+  {
+    "id": 1,
+    "ch": "The Living World",
+    "type": "MCQ",
+    "diff": "Standard",
+    "q": "Which one of the following is considered by NCERT as the defining property of living organisms, distinguishing man from all other organisms?",
+    "opts": [
+      "Metabolism",
+      "Reproduction",
+      "Growth",
+      "Consciousness (self-awareness)"
+    ],
+    "ans": 3,
+    "exp": "NCERT (Sec 1.1.5): 'Human being is the only organism who is aware of himself, i.e., has self-consciousness. Consciousness therefore, becomes the defining property of living organisms.'",
+    "ref": "Hierarchy of defining features: metabolism/cellular organisation/consciousness. | Trap: Students conflate 'defining feature' (metabolism) with 'defining property' (consciousness)."
+  },
+  {
+    "id": 2,
+    "ch": "The Living World",
+    "type": "Multi-statement",
+    "diff": "Standard",
+    "q": "Which statements are correct? I. Twin characteristics of growth are increase in mass and increase in number of individuals. II. Plants show cell-division growth throughout life. III. Unicellular organisms also grow by cell division. IV. Growth is a defining property of all living organisms.",
+    "opts": [
+      "I, II and III only",
+      "I and II only",
+      "I, II, III and IV",
+      "II and IV only"
+    ],
+    "ans": 0,
+    "exp": "IV is wrong: NCERT explicitly states growth is NOT a defining property — non-living objects grow by accumulation.",
+    "ref": "Growth is NOT a defining property. | Trap: 'Growth is defining' is a sticky misconception."
+  },
+  {
+    "id": 3,
+    "ch": "The Living World",
+    "type": "Assertion-Reason",
+    "diff": "Standard",
+    "q": "A: Reproduction is not an all-inclusive defining feature. R: In unicellular organisms, reproduction is synonymous with growth.",
+    "opts": [
+      "Both A and R true, R explains A",
+      "Both A and R true, R does NOT explain A",
+      "A true, R false",
+      "A false, R true"
+    ],
+    "ans": 1,
+    "exp": "A is true because of sterile organisms (mules, worker bees). R is independently true but not the causal reason.",
+    "ref": "Reproduction exceptions (mules, sterile workers). | Trap: Rushing to mark 'A' since both are true."
+  },
+  {
+    "id": 4,
+    "ch": "The Living World",
+    "type": "Match",
+    "diff": "Standard",
+    "q": "Match organism with mode of reproduction: P. Planaria; Q. Yeast & Hydra; R. Protonema of mosses; S. Fungi. 1-Budding, 2-True regeneration, 3-Asexual spores, 4-Fragmentation.",
+    "opts": [
+      "P-2, Q-1, R-4, S-3",
+      "P-1, Q-2, R-3, S-4",
+      "P-4, Q-1, R-2, S-3",
+      "P-2, Q-4, R-1, S-3"
+    ],
+    "ans": 0,
+    "exp": "NCERT: Planaria-regeneration, yeast/Hydra-budding, protonema/fungi-fragmentation, fungi also produce millions of spores.",
+    "ref": "Examples under Sec 1.1.2. | Trap: Fungi appears under both spores and fragmentation."
+  },
+  {
+    "id": 5,
+    "ch": "The Living World",
+    "type": "Conceptual application",
+    "diff": "Hard",
+    "q": "An in-vitro cell-free extract produces ATP via glycolysis. As per NCERT, this preparation is:",
+    "opts": [
+      "Living, because metabolism occurs",
+      "Non-living, lacks cellular organisation",
+      "Neither living nor non-living; a living reaction but not a living thing",
+      "Living until ATP production ceases"
+    ],
+    "ans": 2,
+    "exp": "NCERT: 'Isolated metabolic reactions... are neither living nor non-living... surely living reactions.'",
+    "ref": "Metabolism as reaction vs organism. | Trap: Metabolism ≠ life when isolated."
+  },
+  {
+    "id": 6,
+    "ch": "The Living World",
+    "type": "Numerical",
+    "diff": "Standard",
+    "q": "Number of described species per NCERT:",
+    "opts": [
+      "1.2–1.5 million",
+      "1.7–1.8 million",
+      "7.5–8.5 million",
+      "2.5–3.0 million"
+    ],
+    "ans": 1,
+    "exp": "NCERT Sec 1.2: 1.7–1.8 million described species.",
+    "ref": "Biodiversity number. | Trap: Confusion with 8.7 million estimated total."
+  },
+  {
+    "id": 7,
+    "ch": "The Living World",
+    "type": "MCQ",
+    "diff": "Standard",
+    "q": "Which is AGAINST ICBN rules?",
+    "opts": [
+      "Names written in Latin, italicised when printed",
+      "Genus capital, species small",
+      "When handwritten, both words underlined together as a single unit",
+      "Author's name appears after specific epithet in abbreviated form"
+    ],
+    "ans": 2,
+    "exp": "NCERT: words are 'separately underlined' when handwritten.",
+    "ref": "ICBN nomenclature rules. | Trap: 'Together as one unit' sounds natural but violates the rule."
+  },
+  {
+    "id": 8,
+    "ch": "The Living World",
+    "type": "Case-based",
+    "diff": "Standard",
+    "q": "In 'Mangifera indica Linn.', 'Linn.' represents:",
+    "opts": [
+      "Linnaean family",
+      "Linnaeus — the person who first described the species",
+      "Latin diminutive meaning 'small'",
+      "Kingdom of Linnaean species"
+    ],
+    "ans": 1,
+    "exp": "NCERT: abbreviated author citation; 'Linn.' = Linnaeus.",
+    "ref": "Author citation rule. | Trap: Confusing with kingdom/family names."
+  },
+  {
+    "id": 9,
+    "ch": "The Living World",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "NCERT refers to the code for naming algae, fungi and plants as:",
+    "opts": [
+      "ICZN",
+      "ICBN",
+      "ICN (post-2011 Melbourne Code)",
+      "IUCN"
+    ],
+    "ans": 1,
+    "exp": "NCERT retains the term ICBN even though international usage changed to ICN.",
+    "ref": "Naming code terminology. | Trap: C is internationally correct but wrong per NCERT."
+  },
+  {
+    "id": 10,
+    "ch": "The Living World",
+    "type": "MCQ",
+    "diff": "Standard",
+    "q": "Correct ascending order of taxonomic hierarchy:",
+    "opts": [
+      "Species→Genus→Order→Family→Class→Phylum→Kingdom",
+      "Species→Genus→Family→Order→Class→Phylum→Kingdom",
+      "Kingdom→Phylum→Class→Order→Family→Genus→Species",
+      "Genus→Species→Family→Order→Class→Phylum→Kingdom"
+    ],
+    "ans": 1,
+    "exp": "Canonical NCERT hierarchy with Family below Order.",
+    "ref": "Taxonomic hierarchy. | Trap: A swaps Family-Order; C is descending."
+  },
+  {
+    "id": 11,
+    "ch": "The Living World",
+    "type": "Table-based",
+    "diff": "Standard",
+    "q": "Per NCERT Table 1.1, the housefly (Musca domestica) belongs to class:",
+    "opts": [
+      "Mammalia",
+      "Arthropoda",
+      "Insecta",
+      "Diptera"
+    ],
+    "ans": 2,
+    "exp": "Class Insecta; Order Diptera; Family Muscidae; Phylum Arthropoda.",
+    "ref": "Table 1.1 data. | Trap: Level confusion (class vs order vs phylum)."
+  },
+  {
+    "id": 12,
+    "ch": "The Living World",
+    "type": "Comparative",
+    "diff": "Hard",
+    "q": "Wheat and Mango first share a common taxonomic category at the level of:",
+    "opts": [
+      "Family",
+      "Order",
+      "Class",
+      "Division"
+    ],
+    "ans": 3,
+    "exp": "Both are Division Angiospermae despite differing at Class (Monocot/Dicot).",
+    "ref": "Cross-row NCERT Table 1.1 logic. | Trap: Students jump to Kingdom."
+  },
+  {
+    "id": 13,
+    "ch": "The Living World",
+    "type": "MCQ",
+    "diff": "Standard",
+    "q": "The term 'systematics' derives from the Latin 'systema', popularised by:",
+    "opts": [
+      "Species Plantarum by Linnaeus",
+      "Systema Naturae by Linnaeus",
+      "Origin of Species by Darwin",
+      "Historia Plantarum by Theophrastus"
+    ],
+    "ans": 1,
+    "exp": "NCERT: Linnaeus used Systema Naturae as publication title.",
+    "ref": "Etymology of systematics. | Trap: Species Plantarum is also Linnaeus' work."
+  },
+  {
+    "id": 14,
+    "ch": "The Living World",
+    "type": "Multi-statement",
+    "diff": "Standard",
+    "q": "Which processes are basic to taxonomy per NCERT? I-Characterisation, II-Identification, III-Classification, IV-Nomenclature, V-Evolution",
+    "opts": [
+      "I, II, III, IV only",
+      "I–V all",
+      "II, III, IV only",
+      "I, III, IV, V only"
+    ],
+    "ans": 0,
+    "exp": "Evolution pertains to systematics, not taxonomy basics.",
+    "ref": "Definition of taxonomy. | Trap: Taxonomy vs systematics conflation."
+  },
+  {
+    "id": 15,
+    "ch": "The Living World",
+    "type": "Case-based",
+    "diff": "Standard",
+    "q": "Which would NOT be on a herbarium sheet label per NCERT?",
+    "opts": [
+      "Date and place of collection",
+      "Name of the collector",
+      "Height of the plant",
+      "English, local, botanical names and family"
+    ],
+    "ans": 2,
+    "exp": "NCERT omits 'height' in label list; asked directly in NEET 2016.",
+    "ref": "Herbarium label. | Trap: 'Height' feels obvious but isn't listed."
+  },
+  {
+    "id": 16,
+    "ch": "The Living World",
+    "type": "Match",
+    "diff": "Standard",
+    "q": "Match taxonomic aids: P-Flora, Q-Manual, R-Monograph, S-Key → 1-Single taxon, 2-Habitat & distribution, 3-Identification of names in an area, 4-Couplets & leads.",
+    "opts": [
+      "P-2, Q-3, R-1, S-4",
+      "P-3, Q-2, R-4, S-1",
+      "P-2, Q-1, R-3, S-4",
+      "P-1, Q-3, R-2, S-4"
+    ],
+    "ans": 0,
+    "exp": "NCERT definitions; monograph = single taxon, flora = area account.",
+    "ref": "Taxonomical aids. | Trap: Flora and Manual often swapped."
+  },
+  {
+    "id": 17,
+    "ch": "The Living World",
+    "type": "MCQ",
+    "diff": "Standard",
+    "q": "Which is NOT a botanical garden named in NCERT?",
+    "opts": [
+      "Kew (England)",
+      "Indian Botanical Garden, Howrah",
+      "NBRI, Lucknow",
+      "Singapore Botanic Gardens"
+    ],
+    "ans": 3,
+    "exp": "Only Kew, Howrah, NBRI Lucknow appear in NCERT.",
+    "ref": "Famous botanical gardens in NCERT. | Trap: Famous real gardens that are NOT in NCERT."
+  },
+  {
+    "id": 18,
+    "ch": "The Living World",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Which organism challenges 'ability to reproduce' as a universal criterion of life per NCERT?",
+    "opts": [
+      "Planaria",
+      "Yeast",
+      "Mule",
+      "Amoeba"
+    ],
+    "ans": 2,
+    "exp": "NCERT: mules, sterile worker bees, infertile humans do not reproduce.",
+    "ref": "Reproduction exceptions. | Trap: All options are organisms; only the mule is sterile."
+  },
+  {
+    "id": 19,
+    "ch": "The Living World",
+    "type": "Diagram-based",
+    "diff": "Standard",
+    "q": "In a pyramid of decreasing shared characters, which sits at the apex?",
+    "opts": [
+      "Species",
+      "Genus",
+      "Kingdom",
+      "Phylum"
+    ],
+    "ans": 2,
+    "exp": "NCERT: common characteristics decrease as we move from species to kingdom.",
+    "ref": "Hierarchy character-sharing logic. | Trap: Reversed reasoning."
+  },
+  {
+    "id": 20,
+    "ch": "The Living World",
+    "type": "MCQ",
+    "diff": "Standard",
+    "q": "Binomial nomenclature was given by:",
+    "opts": [
+      "R.H. Whittaker",
+      "Ernst Mayr",
+      "Carolus Linnaeus",
+      "Rudolf Virchow"
+    ],
+    "ans": 2,
+    "exp": "NCERT clearly attributes it to Linnaeus.",
+    "ref": "Nomenclature attribution. | Trap: Whittaker is NEET-favourite distractor (5-Kingdom)."
+  },
+  {
+    "id": 21,
+    "ch": "Cell: The Unit of Life",
+    "type": "Match",
+    "diff": "Standard",
+    "q": "Match scientists with discoveries: P-Hooke (1665), Q-Leeuwenhoek, R-Brown (1831), S-Virchow (1855). 1-Living cell first seen, 2-Dead cells in cork, 3-Omnis cellula-e cellula, 4-Nucleus.",
+    "opts": [
+      "P-2, Q-1, R-4, S-3",
+      "P-1, Q-2, R-3, S-4",
+      "P-2, Q-4, R-1, S-3",
+      "P-4, Q-1, R-2, S-3"
+    ],
+    "ans": 0,
+    "exp": "Hooke — dead cork; Leeuwenhoek — first living; Brown — nucleus; Virchow — cell origin.",
+    "ref": "Discovery timeline. | Trap: Swapping Hooke and Leeuwenhoek."
+  },
+  {
+    "id": 22,
+    "ch": "Cell: The Unit of Life",
+    "type": "MCQ",
+    "diff": "Standard",
+    "q": "What did Schleiden-Schwann's original cell theory fail to explain, later filled by Virchow?",
+    "opts": [
+      "Cells are the structural unit of life",
+      "How new cells arise",
+      "That plants are made of cells",
+      "That animals possess a plasma membrane"
+    ],
+    "ans": 1,
+    "exp": "Virchow added 'Omnis cellula-e cellula'.",
+    "ref": "Gap in original cell theory. | Trap: Statement A is correct but was stated by them."
+  },
+  {
+    "id": 23,
+    "ch": "Cell: The Unit of Life",
+    "type": "Numerical",
+    "diff": "Standard",
+    "q": "Ascending size order: (i) Ostrich egg, (ii) Bacterium (3–5 μm), (iii) Mycoplasma (0.3 μm), (iv) Human RBC (~7 μm):",
+    "opts": [
+      "iii→ii→iv→i",
+      "iii→iv→ii→i",
+      "ii→iii→iv→i",
+      "iii→ii→i→iv"
+    ],
+    "ans": 0,
+    "exp": "0.3 < 3–5 < 7 < ostrich egg.",
+    "ref": "Cell size comparisons. | Trap: Assuming bacteria > RBC."
+  },
+  {
+    "id": 24,
+    "ch": "Cell: The Unit of Life",
+    "type": "MCQ",
+    "diff": "Standard",
+    "q": "Which statement is CORRECT per NCERT?",
+    "opts": [
+      "Longest cell is the ostrich egg",
+      "Nerve cells are among the longest cells",
+      "Mycoplasma is the largest isolated single cell",
+      "Smallest cell is a bacterium"
+    ],
+    "ans": 1,
+    "exp": "NCERT: 'Nerve cells are some of the longest cells.' Ostrich egg = largest isolated; Mycoplasma = smallest.",
+    "ref": "Superlative cell facts. | Trap: Interchanging 'largest' and 'longest'."
+  },
+  {
+    "id": 25,
+    "ch": "Cell: The Unit of Life",
+    "type": "Diagram-based",
+    "diff": "Standard",
+    "q": "Comma-shaped bacterium corresponds to:",
+    "opts": [
+      "Bacillus",
+      "Coccus",
+      "Vibrio",
+      "Spirillum"
+    ],
+    "ans": 2,
+    "exp": "Vibrio = comma-shaped per NCERT.",
+    "ref": "Four bacterial shapes. | Trap: Vibrio vs Spirillum confusion."
+  },
+  {
+    "id": 26,
+    "ch": "Cell: The Unit of Life",
+    "type": "Multi-statement",
+    "diff": "Hard",
+    "q": "Regarding bacterial cell envelope: I-Glycocalyx, cell wall, plasma membrane layers; II-Mycoplasma lacks cell wall; III-Peptidoglycan main wall component; IV-Gram-positive bacteria do NOT take up Gram stain.",
+    "opts": [
+      "I, II, III only",
+      "I, II, IV only",
+      "II, III, IV only",
+      "All correct"
+    ],
+    "ans": 0,
+    "exp": "IV is reversed: Gram-positive DO take up the stain.",
+    "ref": "Gram staining. | Trap: Reversing Gram terminology."
+  },
+  {
+    "id": 27,
+    "ch": "Cell: The Unit of Life",
+    "type": "MCQ",
+    "diff": "Standard",
+    "q": "Which is NOT a mesosome function per NCERT?",
+    "opts": [
+      "Cell wall formation",
+      "DNA replication and distribution to daughter cells",
+      "Protein synthesis via attached ribosomes",
+      "Respiration and secretion"
+    ],
+    "ans": 2,
+    "exp": "NCERT lists 6 functions but NOT protein synthesis.",
+    "ref": "Mesosome role. | Trap: Mesosomes are on plasma membrane; students assume ribosomal link."
+  },
+  {
+    "id": 28,
+    "ch": "Cell: The Unit of Life",
+    "type": "MCQ",
+    "diff": "Standard",
+    "q": "Which statement on bacterial inclusion bodies is INCORRECT?",
+    "opts": [
+      "Reserve materials",
+      "Lie free in the cytoplasm",
+      "Not bound by any membrane",
+      "Involved in ingestion of food particles"
+    ],
+    "ans": 3,
+    "exp": "Inclusion bodies don't ingest food; they store reserves.",
+    "ref": "Inclusion bodies. | Trap: Word 'bodies' misleads to 'phagocytic'."
+  },
+  {
+    "id": 29,
+    "ch": "Cell: The Unit of Life",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Gas vacuoles are found in:",
+    "opts": [
+      "All bacteria",
+      "Only cyanobacteria",
+      "Blue-green, purple and green photosynthetic bacteria",
+      "Only archaebacteria"
+    ],
+    "ans": 2,
+    "exp": "Exact NCERT list: blue-green + purple + green photosynthetic.",
+    "ref": "Inclusion bodies specifics. | Trap: Generalising or restricting to cyanobacteria only."
+  },
+  {
+    "id": 30,
+    "ch": "Cell: The Unit of Life",
+    "type": "MCQ",
+    "diff": "Standard",
+    "q": "Bacterial flagellum consists of:",
+    "opts": [
+      "Axoneme, cell wall, filament",
+      "Filament, hook, basal body",
+      "Filament, cilium, peduncle",
+      "Axoneme, cristae, basal body"
+    ],
+    "ans": 1,
+    "exp": "NCERT: three parts — filament, hook, basal body.",
+    "ref": "Bacterial flagellum structure. | Trap: Axoneme is eukaryotic."
+  },
+  {
+    "id": 31,
+    "ch": "Cell: The Unit of Life",
+    "type": "MCQ",
+    "diff": "Standard",
+    "q": "Correct about pili and fimbriae?",
+    "opts": [
+      "Both are motility structures",
+      "Pili are cell-wall extensions for flagellar motion",
+      "Fimbriae attach to surfaces; pili used in conjugation",
+      "Fimbriae are cellulose-made"
+    ],
+    "ans": 2,
+    "exp": "Both are NOT motility structures; fimbriae anchor, pili for DNA transfer.",
+    "ref": "Pili vs fimbriae. | Trap: Motility association (NEET 2016 trap)."
+  },
+  {
+    "id": 32,
+    "ch": "Cell: The Unit of Life",
+    "type": "MCQ",
+    "diff": "Standard",
+    "q": "Fluid Mosaic Model (1972) was proposed by:",
+    "opts": [
+      "Robertson",
+      "Davson and Danielli",
+      "Singer and Nicolson",
+      "Gorter and Grendel"
+    ],
+    "ans": 2,
+    "exp": "NCERT attributes FMM to Singer & Nicolson (1972).",
+    "ref": "Membrane model history. | Trap: Predecessors (Davson-Danielli, Robertson) are distractors."
+  },
+  {
+    "id": 33,
+    "ch": "Cell: The Unit of Life",
+    "type": "Numerical",
+    "diff": "Hard",
+    "q": "Human RBC membrane composition per NCERT:",
+    "opts": [
+      "40% protein, 52% lipid",
+      "52% protein, 40% lipid",
+      "50% protein, 50% lipid",
+      "70% protein, 20% lipid"
+    ],
+    "ans": 1,
+    "exp": "NCERT specifies ~52% protein, ~40% lipid.",
+    "ref": "Membrane composition. | Trap: Values often inverted."
+  },
+  {
+    "id": 34,
+    "ch": "Cell: The Unit of Life",
+    "type": "MCQ",
+    "diff": "Standard",
+    "q": "Which process uses ATP and moves against concentration gradient?",
+    "opts": [
+      "Simple diffusion",
+      "Osmosis",
+      "Facilitated diffusion",
+      "Active transport"
+    ],
+    "ans": 3,
+    "exp": "Active transport uses ATP; others don't.",
+    "ref": "Transport across membrane. | Trap: Facilitated diffusion uses carriers but NOT ATP."
+  },
+  {
+    "id": 35,
+    "ch": "Cell: The Unit of Life",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Algal cell wall contains:",
+    "opts": [
+      "Cellulose, chitin, pectin",
+      "Cellulose, galactans, mannans, calcium carbonate",
+      "Peptidoglycan, cellulose, lignin",
+      "Cellulose, hemicellulose, pectin"
+    ],
+    "ans": 1,
+    "exp": "Algal wall = cellulose + galactans + mannans + CaCO₃.",
+    "ref": "Algal vs plant walls. | Trap: Option D describes higher plants."
+  },
+  {
+    "id": 36,
+    "ch": "Cell: The Unit of Life",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Middle lamella is composed primarily of:",
+    "opts": [
+      "Cellulose",
+      "Pectin",
+      "Calcium pectate",
+      "Lignin"
+    ],
+    "ans": 2,
+    "exp": "NCERT: 'a layer mainly of calcium pectate'.",
+    "ref": "Cell wall layers. | Trap: Pectin alone is wrong."
+  },
+  {
+    "id": 37,
+    "ch": "Cell: The Unit of Life",
+    "type": "Multi-statement",
+    "diff": "Standard",
+    "q": "Endomembrane system includes: I-ER, II-Golgi, III-Lysosomes, IV-Vacuoles, V-Mitochondria, VI-Chloroplast, VII-Peroxisomes",
+    "opts": [
+      "I, II, III, IV only",
+      "I through VII",
+      "I, II, III, IV, VII only",
+      "I, II, V, VI only"
+    ],
+    "ans": 0,
+    "exp": "Only ER, Golgi, lysosomes, vacuoles — coordinated functions.",
+    "ref": "Endomembrane definition. | Trap: Peroxisomes membrane-bound but EXCLUDED."
+  },
+  {
+    "id": 38,
+    "ch": "Cell: The Unit of Life",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Camillo Golgi (1898) first observed Golgi apparatus in:",
+    "opts": [
+      "Liver cells",
+      "Pancreatic cells",
+      "Nerve cells",
+      "Blood cells"
+    ],
+    "ans": 2,
+    "exp": "NCERT: first observed in nerve cells.",
+    "ref": "Golgi discovery. | Trap: Secretion-rich pancreatic cells is tempting."
+  },
+  {
+    "id": 39,
+    "ch": "Cell: The Unit of Life",
+    "type": "Statement I/II",
+    "diff": "Hard",
+    "q": "I: Golgi cisternae concentrically arranged, cis convex (forming), trans concave (maturing). II: cis and trans faces are identical.",
+    "opts": [
+      "Both correct",
+      "I correct; II incorrect",
+      "I incorrect; II correct",
+      "Both incorrect"
+    ],
+    "ans": 1,
+    "exp": "NCERT: cis and trans are entirely different but interconnected.",
+    "ref": "Golgi polarity. | Trap: Stacked cisternae look identical."
+  },
+  {
+    "id": 40,
+    "ch": "Cell: The Unit of Life",
+    "type": "MCQ",
+    "diff": "Standard",
+    "q": "Lysosomes originate from:",
+    "opts": [
+      "Smooth ER",
+      "Rough ER",
+      "Golgi apparatus",
+      "Nuclear envelope"
+    ],
+    "ans": 2,
+    "exp": "NCERT: formed by packaging in Golgi.",
+    "ref": "Lysosome biogenesis. | Trap: ER is a common wrong choice."
+  },
+  {
+    "id": 41,
+    "ch": "Cell: The Unit of Life",
+    "type": "MCQ",
+    "diff": "Standard",
+    "q": "Tonoplast and maximum plant cell volume occupied by vacuole:",
+    "opts": [
+      "Vacuole membrane; up to 90%",
+      "Lysosome membrane; up to 50%",
+      "Golgi vesicle; up to 30%",
+      "Vacuole; up to 50%"
+    ],
+    "ans": 0,
+    "exp": "NCERT: single membrane = tonoplast; 90% volume.",
+    "ref": "Plant vacuole. | Trap: 50% feels safer but is wrong."
+  },
+  {
+    "id": 42,
+    "ch": "Cell: The Unit of Life",
+    "type": "Numerical",
+    "diff": "Hard",
+    "q": "Mitochondrial size per NCERT:",
+    "opts": [
+      "Diameter 0.2–1.0 μm, length 1.0–4.1 μm",
+      "Diameter 5–10 μm, length 2–4 μm",
+      "Diameter 1.0–4.1 μm, length 0.2–1.0 μm",
+      "Diameter 10 nm, length 50 nm"
+    ],
+    "ans": 0,
+    "exp": "NCERT standard dimensions.",
+    "ref": "Mitochondrial size. | Trap: B describes chloroplast dimensions."
+  },
+  {
+    "id": 43,
+    "ch": "Cell: The Unit of Life",
+    "type": "MCQ",
+    "diff": "Standard",
+    "q": "INCORRECT about mitochondria:",
+    "opts": [
+      "Double membrane",
+      "Inner membrane folded into cristae",
+      "Electron transport enzymes embedded in outer membrane",
+      "Matrix has circular DNA and 70S ribosomes"
+    ],
+    "ans": 2,
+    "exp": "ETC enzymes lie on inner membrane.",
+    "ref": "Mitochondrial architecture. | Trap: NEET 2019 direct question."
+  },
+  {
+    "id": 44,
+    "ch": "Cell: The Unit of Life",
+    "type": "Match",
+    "diff": "Standard",
+    "q": "Match leucoplasts with storage: P-Amyloplast, Q-Elaioplast, R-Aleuroplast. 1-Proteins, 2-Oils/fats, 3-Starch.",
+    "opts": [
+      "P-3, Q-2, R-1",
+      "P-1, Q-2, R-3",
+      "P-2, Q-3, R-1",
+      "P-3, Q-1, R-2"
+    ],
+    "ans": 0,
+    "exp": "Amyloplast-starch, Elaioplast-oils, Aleuroplast-proteins.",
+    "ref": "Leucoplast types. | Trap: Similar-sounding names cause swaps."
+  },
+  {
+    "id": 45,
+    "ch": "Cell: The Unit of Life",
+    "type": "Numerical",
+    "diff": "Hard",
+    "q": "Chloroplast composition per NCERT:",
+    "opts": [
+      "5–10 grana; 40–60 thylakoids per granum",
+      "40–60 grana per chloroplast; 10–100 thylakoids per granum",
+      "100 grana; 10 thylakoids",
+      "Grana and thylakoids are synonyms"
+    ],
+    "ans": 1,
+    "exp": "NCERT: 40–60 grana per chloroplast; 10–100 thylakoids per granum.",
+    "ref": "Chloroplast ultrastructure. | Trap: Numbers interchanged."
+  },
+  {
+    "id": 46,
+    "ch": "Cell: The Unit of Life",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Ribosome type in prokaryotes AND in mitochondria/chloroplasts:",
+    "opts": [
+      "80S (60S+40S)",
+      "70S (50S+30S)",
+      "60S (40S+20S)",
+      "55S (35S+20S)"
+    ],
+    "ans": 1,
+    "exp": "70S ribosomes — evidence of endosymbiotic origin.",
+    "ref": "Ribosome types. | Trap: Assuming eukaryotes only have 80S."
+  },
+  {
+    "id": 47,
+    "ch": "Cell: The Unit of Life",
+    "type": "MCQ",
+    "diff": "Standard",
+    "q": "Axoneme of eukaryotic cilia/flagella shows:",
+    "opts": [
+      "9 triplets + 0 central — 9+0",
+      "9 doublets + 2 central singlets — 9+2",
+      "9 doublets + 0 central — 9+0",
+      "9 singlets + 1 central doublet — 9+1"
+    ],
+    "ans": 1,
+    "exp": "NCERT: 9+2 with 9 radial spokes.",
+    "ref": "Axoneme architecture. | Trap: 9+0 is centriole, not cilium."
+  },
+  {
+    "id": 48,
+    "ch": "Cell: The Unit of Life",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Centriole cartwheel consists of:",
+    "opts": [
+      "9 doublets + 2 central singlets",
+      "9 triplets + 0 central — 9+0",
+      "7 triplets + 1 central doublet",
+      "9 singlets + central hub only"
+    ],
+    "ans": 1,
+    "exp": "9 peripheral triplets (tubulin), proteinaceous hub.",
+    "ref": "Centriole structure. | Trap: A describes cilium axoneme."
+  },
+  {
+    "id": 49,
+    "ch": "Cell: The Unit of Life",
+    "type": "Case-based",
+    "diff": "Hard",
+    "q": "A cell biologist observes light/dark chromatin regions and a spherical body (not membrane-bound) that makes rRNA. Which observation is INCORRECT?",
+    "opts": [
+      "Light region = euchromatin, transcriptionally active",
+      "Dark region = heterochromatin, densely packed",
+      "Spherical body = nucleolus, bound by a single membrane, synthesises rRNA",
+      "Chromatin = DNA + histones + non-histone proteins + RNA"
+    ],
+    "ans": 2,
+    "exp": "Nucleolus is NOT membrane-bound.",
+    "ref": "Nucleolus and chromatin. | Trap: Nucleolus often assumed membrane-bound."
+  },
+  {
+    "id": 50,
+    "ch": "Cell: The Unit of Life",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Chromosome with centromere close to end (one short, one long arm) is:",
+    "opts": [
+      "Metacentric",
+      "Sub-metacentric",
+      "Acrocentric",
+      "Telocentric"
+    ],
+    "ans": 2,
+    "exp": "Acrocentric: near end; Telocentric: terminal; Metacentric: middle; Sub-metacentric: slightly off-middle.",
+    "ref": "Chromosome types by centromere position. | Trap: Acrocentric vs Telocentric confusion."
+  }
+];
+
+      const TOTAL = Q.length;
+      const LETTERS = ["A", "B", "C", "D"];
+      let currentQ = 0;
+      let userAnswers = new Array(TOTAL).fill(-1);
+      let reviewFlags = new Array(TOTAL).fill(false);
+      let submitted = false;
+      let timerSec = 0;
+      let timerInterval;
+
+      function startQuiz() {
+        document.getElementById("heroSection").style.display = "none";
+        document.getElementById("progressWrap").classList.add("active");
+        document.getElementById("paletteToggle").classList.add("active");
+        buildAllCards();
+        buildPalette();
+        showQuestion(0);
+        startTimer();
+      }
+
+      function buildAllCards() {
+        const area = document.getElementById("quizArea");
+        let html = "";
+        Q.forEach((q, i) => {
+          const topic = q.ch;
+          const diffClass = q.diff === "Hard" ? "hard" : "med";
+          html += `<div class="q-card" id="qcard-${i}">
+            <div class="q-header">
+              <span class="q-num">Q${q.id}</span>
+              <div class="q-meta">
+                <span class="q-tag bio">${topic}</span>
+                <span class="q-tag type">${q.type}</span>
+                <span class="q-tag ${diffClass}">${q.diff}</span>
+              </div>
+            </div>
+            <div class="q-text">${q.q}</div>
+            <div class="options">
+              ${q.opts
+                .map(
+                  (o, j) => `
+                <button class="opt-btn" id="opt-${i}-${j}" onclick="selectOpt(${i},${j})">
+                  <span class="opt-letter">${LETTERS[j]}</span>
+                  <span>${o}</span>
+                </button>
+              `,
+                )
+                .join("")}
+            </div>
+            <div class="nav-btns">
+              <button class="nav-btn" onclick="prevQuestion()" ${i === 0 ? "disabled" : ""}>← Prev</button>
+              <button class="nav-btn primary" onclick="nextQuestion()" id="next-btn-${i}">
+                ${i === TOTAL - 1 ? "Finish →" : "Next →"}
+              </button>
+              <button class="nav-btn clear-response" onclick="clearResponse(${i})">✕ Clear</button>
+              <button class="nav-btn mark-review${reviewFlags[i] ? " marked" : ""}" id="mark-${i}" onclick="toggleReview(${i})">
+                ${reviewFlags[i] ? "★ Marked" : "☆ Mark for Review"}
+              </button>
+            </div>
+          </div>`;
+        });
+        area.innerHTML = html;
+      }
+
+      function showQuestion(idx) {
+        document
+          .querySelectorAll(".q-card")
+          .forEach((c) => c.classList.remove("active"));
+        document.getElementById(`qcard-${idx}`).classList.add("active");
+        currentQ = idx;
+        updateProgress();
+        updatePalette();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function selectOpt(qIdx, optIdx) {
+        if (submitted) return;
+        for (let i = 0; i < 4; i++) {
+          const el = document.getElementById(`opt-${qIdx}-${i}`);
+          if (el) el.classList.remove("selected");
+        }
+        document
+          .getElementById(`opt-${qIdx}-${optIdx}`)
+          .classList.add("selected");
+        userAnswers[qIdx] = optIdx;
+        updatePalette();
+        updateProgress();
+      }
+
+      function clearResponse(qIdx) {
+        if (submitted) return;
+        userAnswers[qIdx] = -1;
+        for (let i = 0; i < 4; i++) {
+          const el = document.getElementById(`opt-${qIdx}-${i}`);
+          if (el) el.classList.remove("selected");
+        }
+        updatePalette();
+        updateProgress();
+      }
+
+      function nextQuestion() {
+        if (currentQ < TOTAL - 1) {
+          showQuestion(currentQ + 1);
+        } else {
+          finishQuiz();
+        }
+      }
+
+      function prevQuestion() {
+        if (currentQ > 0) showQuestion(currentQ - 1);
+      }
+
+      function toggleReview(idx) {
+        reviewFlags[idx] = !reviewFlags[idx];
+        const btn = document.getElementById(`mark-${idx}`);
+        btn.classList.toggle("marked", reviewFlags[idx]);
+        btn.textContent = reviewFlags[idx] ? "★ Marked" : "☆ Mark for Review";
+        updatePalette();
+      }
+
+      function updateProgress() {
+        const answered = userAnswers.filter((a) => a !== -1).length;
+        document.getElementById("qCounter").textContent =
+          `Q ${currentQ + 1} / ${TOTAL}`;
+        document.getElementById("progressFill").style.width =
+          (answered / TOTAL) * 100 + "%";
+      }
+
+      function buildPalette() {
+        const grid = document.getElementById("paletteGrid");
+        let html = "";
+        for (let i = 0; i < TOTAL; i++) {
+          html += `<div class="palette-dot" id="pdot-${i}" onclick="showQuestion(${i})">${i + 1}</div>`;
+        }
+        grid.innerHTML = html;
+      }
+
+      function updatePalette() {
+        for (let i = 0; i < TOTAL; i++) {
+          const dot = document.getElementById(`pdot-${i}`);
+          dot.className = "palette-dot";
+          if (i === currentQ) dot.classList.add("current");
+          if (userAnswers[i] !== -1) dot.classList.add("answered");
+          if (reviewFlags[i]) dot.classList.add("review");
+        }
+      }
+
+      function togglePalette() {
+        document.getElementById("palettePanel").classList.toggle("open");
+      }
+
+      function startTimer() {
+        timerInterval = setInterval(() => {
+          timerSec++;
+          const m = String(Math.floor(timerSec / 60)).padStart(2, "0");
+          const s = String(timerSec % 60).padStart(2, "0");
+          document.getElementById("progressTimer").textContent = `${m}:${s}`;
+        }, 1000);
+      }
+
+      function finishQuiz() {
+        if (!window._isReplay) {
+          const unanswered = userAnswers.filter((a) => a === -1).length;
+          if (unanswered > 0) {
+            if (
+              !confirm(
+                `You have ${unanswered} unanswered question${unanswered > 1 ? "s" : ""}. Submit anyway?`,
+              )
+            )
+              return;
+          }
+        }
+        submitQuiz();
+      }
+
+      function saveAttempt(data) {
+        try {
+          const results = JSON.parse(
+            localStorage.getItem("papResults") || "[]",
+          );
+          results.unshift(data);
+          localStorage.setItem("papResults", JSON.stringify(results));
+        } catch (e) {}
+      }
+
+      function submitQuiz() {
+        submitted = true;
+        clearInterval(timerInterval);
+
+        document.getElementById("quizArea").classList.add("hidden");
+        document.getElementById("paletteToggle").style.display = "none";
+        document.getElementById("palettePanel").style.display = "none";
+        document.getElementById("progressWrap").style.display = "none";
+
+        let correct = 0,
+          wrong = 0,
+          skipped = 0;
+        let bioCorrect = 0,
+          bioTotal = 0;
+
+        Q.forEach((q, i) => {
+          bioTotal++;
+          if (userAnswers[i] === -1) {
+            skipped++;
+          } else if (userAnswers[i] === q.ans) {
+            correct++;
+            bioCorrect++;
+          } else {
+            wrong++;
+          }
+        });
+
+        const neetScore = correct * 4 - wrong * 1;
+        const pct = Math.round((correct / TOTAL) * 100);
+        const circumference = 2 * Math.PI * 65;
+        const offset = circumference - (pct / 100) * circumference;
+        const ringColor =
+          pct >= 80
+            ? "var(--green)"
+            : pct >= 50
+              ? "var(--amber)"
+              : "var(--red)";
+        const grade =
+          pct >= 90
+            ? "Outstanding!"
+            : pct >= 75
+              ? "Great Work!"
+              : pct >= 50
+                ? "Keep Practicing!"
+                : "Needs Revision";
+
+        const timeStr = document.getElementById("progressTimer").textContent;
+        const bioPct = bioTotal ? Math.round((bioCorrect / bioTotal) * 100) : 0;
+
+        if (!window._isReplay) {
+          saveAttempt({
+            id: Date.now(),
+            paperFile: "17AP3.html",
+            paperName: "Mastery Bank — Living World & Cell",
+            paperTag: "Advanced",
+            correct,
+            wrong,
+            skipped,
+            totalQuestions: TOTAL,
+            neetScore,
+            maxScore: TOTAL * 4,
+            percentage: pct,
+            timeTaken: timeStr,
+            timerSeconds: timerSec,
+            userAnswers: [...userAnswers],
+          });
+        }
+
+        const res = document.getElementById("resultsSection");
+        res.style.display = "block";
+
+        let rhtml = `
+<div class="results-card">
+  <h2>${grade}</h2>
+  <div class="score-ring">
+    <svg width="160" height="160" viewBox="0 0 160 160">
+      <circle class="ring-bg" cx="80" cy="80" r="65"/>
+      <circle class="ring-fill" cx="80" cy="80" r="65"
+        stroke="${ringColor}"
+        stroke-dasharray="${circumference}"
+        stroke-dashoffset="${circumference}"
+        id="scoreRing"/>
+    </svg>
+    <div class="score-center">
+      <div class="pct">${pct}%</div>
+      <div class="of">${correct}/${TOTAL}</div>
+    </div>
+  </div>
+  <div class="stats-grid">
+    <div class="stat-item neet"><div class="stat-num">${neetScore}</div><div class="stat-lbl">NEET Score</div></div>
+    <div class="stat-item correct"><div class="stat-num">${correct}</div><div class="stat-lbl">Correct</div></div>
+    <div class="stat-item wrong"><div class="stat-num">${wrong}</div><div class="stat-lbl">Wrong</div></div>
+    <div class="stat-item skip"><div class="stat-num">${skipped}</div><div class="stat-lbl">Skipped</div></div>
+  </div>
+  <div style="margin-top:16px;font-size:13px;color:var(--text3)">Time: ${timeStr} · Max: ${TOTAL * 4}</div>
+</div>
+
+<div class="chapter-breakdown">
+  <h3>Chapter Breakdown</h3>
+  <div class="chapter-bar-wrap">
+    <div class="chapter-bar-header">
+      <span style="color:var(--accent)">🧬 Biology · Complete Syllabus</span>
+      <span style="color:var(--text2)">${bioCorrect}/${bioTotal} (${bioPct}%)</span>
+    </div>
+    <div class="chapter-bar-track">
+      <div class="chapter-bar-fill" id="bioBar" style="width:0%;background:var(--accent)"></div>
+    </div>
+  </div>
+</div>
+
+<div class="review-title">Complete Walkthrough</div>
+<div class="review-sub">Every question reviewed with NCERT-based explanations.</div>
+<div class="review-filter">
+  <button class="filter-btn active" onclick="filterReview('all',this)">All (${TOTAL})</button>
+  <button class="filter-btn" onclick="filterReview('wrong',this)">❌ Wrong (${wrong})</button>
+  <button class="filter-btn" onclick="filterReview('skipped',this)">⏭️ Skipped (${skipped})</button>
+  <button class="filter-btn" onclick="filterReview('correct',this)">✅ Correct (${correct})</button>
+</div>
+<div id="reviewCards"></div>`;
+
+        res.innerHTML = rhtml;
+        renderReviewCards("all");
+
+        setTimeout(() => {
+          document.getElementById("scoreRing").style.strokeDashoffset = offset;
+          document.getElementById("bioBar").style.width = bioPct + "%";
+        }, 100);
+
+        res.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function renderReviewCards(filter) {
+        const container = document.getElementById("reviewCards");
+        let html = "";
+
+        Q.forEach((q, i) => {
+          const ua = userAnswers[i];
+          const isCorrect = ua === q.ans;
+          const isSkipped = ua === -1;
+          const isWrong = !isCorrect && !isSkipped;
+
+          if (filter === "wrong" && !isWrong) return;
+          if (filter === "skipped" && !isSkipped) return;
+          if (filter === "correct" && !isCorrect) return;
+
+          let cardClass, badgeClass, badgeText;
+          if (isCorrect) {
+            cardClass = "rc-correct";
+            badgeClass = "badge-correct";
+            badgeText = "✅ Correct";
+          } else if (isSkipped) {
+            cardClass = "rc-skipped";
+            badgeClass = "badge-skipped";
+            badgeText = "⏭️ Skipped";
+          } else {
+            cardClass = "rc-wrong";
+            badgeClass = "badge-wrong";
+            badgeText = "❌ Wrong";
+          }
+
+          const topic = q.ch;
+
+          html += `<div class="review-card ${cardClass}">
+            <div class="rc-header">
+              <span class="q-num">Q${q.id}</span>
+              <span class="q-tag bio">${topic}</span>
+              <span class="rc-badge ${badgeClass}">${badgeText}</span>
+              <span class="q-type">${q.type}</span>
+            </div>
+            <div class="rc-q">${q.q}</div>
+            <div class="rc-opts">`;
+
+          q.opts.forEach((o, j) => {
+            let optClass = "rc-opt";
+            let marker = LETTERS[j];
+            if (j === q.ans) {
+              optClass += " rc-opt-correct";
+              marker = "✓";
+            } else if (j === ua && isWrong) {
+              optClass += " rc-opt-wrong";
+              marker = "✗";
+            }
+            html += `<div class="${optClass}">
+              <span class="rc-letter">${marker}</span>
+              <span>${o}</span>
+            </div>`;
+          });
+
+          html += `</div>
+            <div class="rc-exp">
+              <h4>💡 Explanation</h4>
+              <p>${q.exp}</p>
+              <span class="ncert-ref">📖 ${q.ref}</span>
+            </div>
+          </div>`;
+        });
+
+        if (!html)
+          html = `<p style="text-align:center;color:var(--text3);padding:30px 0">No questions match this filter.</p>`;
+        container.innerHTML = html;
+      }
+
+      function filterReview(type, btn) {
+        document
+          .querySelectorAll(".filter-btn")
+          .forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderReviewCards(type);
+      }
+
+      window.addEventListener("scroll", () => {
+        const pw = document.getElementById("progressWrap");
+        if (window.scrollY > 200) {
+          pw.classList.add("scrolled");
+        } else {
+          pw.classList.remove("scrolled");
+        }
+      });
+
+      (function loadSavedAttempt() {
+        const params = new URLSearchParams(window.location.search);
+        const attemptId = params.get("attempt");
+        if (!attemptId) return;
+        const saved = JSON.parse(localStorage.getItem("papResults") || "[]");
+        const attempt = saved.find((r) => r.id === Number(attemptId));
+        if (!attempt) return;
+        window._isReplay = true;
+        userAnswers = attempt.userAnswers;
+        timerSec = attempt.timerSeconds || 0;
+        const m = String(Math.floor(timerSec / 60)).padStart(2, "0");
+        const s = String(timerSec % 60).padStart(2, "0");
+        document.getElementById("progressTimer").textContent = `${m}:${s}`;
+        document.getElementById("heroSection").style.display = "none";
+        submitQuiz();
+      })();
+    </script>
+  </body>
+</html>
