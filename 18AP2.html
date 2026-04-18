@@ -1,0 +1,2154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ultra Concept Bank: Cell Cycle & Biomolecules</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --bg: #0a0e17;
+        --surface: #111827;
+        --surface2: #1a2236;
+        --surface3: #222d44;
+        --border: #2a3654;
+        --text: #e2e8f0;
+        --text2: #94a3b8;
+        --text3: #64748b;
+        --accent: #06d6a0;
+        --accent2: #118ab2;
+        --red: #ef4444;
+        --green: #22c55e;
+        --amber: #f59e0b;
+        --purple: #a78bfa;
+        --pink: #f472b6;
+        --radius: 12px;
+        --radius-sm: 8px;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "IBM Plex Sans", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background:
+          radial-gradient(
+            ellipse at 20% 0%,
+            rgba(6, 214, 160, 0.06) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse at 80% 100%,
+            rgba(17, 138, 178, 0.06) 0%,
+            transparent 50%
+          );
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .container {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 20px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero {
+        text-align: center;
+        padding: 50px 20px 40px;
+        position: relative;
+      }
+      .hero-badge {
+        display: inline-block;
+        padding: 6px 18px;
+        border-radius: 50px;
+        background: rgba(6, 214, 160, 0.12);
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 18px;
+        border: 1px solid rgba(6, 214, 160, 0.2);
+      }
+      .hero h1 {
+        font-family: "DM Serif Display", serif;
+        font-size: clamp(28px, 5vw, 44px);
+        color: #fff;
+        margin-bottom: 12px;
+        line-height: 1.2;
+      }
+      .hero h1 span {
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .hero p {
+        color: var(--text2);
+        font-size: 16px;
+        max-width: 560px;
+        margin: 0 auto 28px;
+      }
+      .hero-tags {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 32px;
+      }
+      .hero-tags span {
+        padding: 6px 16px;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .tag-bio {
+        background: rgba(6, 214, 160, 0.1);
+        color: var(--accent);
+        border: 1px solid rgba(6, 214, 160, 0.22);
+      }
+      .tag-chem {
+        background: rgba(245, 158, 11, 0.1);
+        color: var(--amber);
+        border: 1px solid rgba(245, 158, 11, 0.22);
+      }
+      .start-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 16px 48px;
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--bg);
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 25px rgba(6, 214, 160, 0.3);
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+      .start-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 35px rgba(6, 214, 160, 0.4);
+      }
+
+      .progress-wrap {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(10, 14, 23, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 14px 20px;
+        border-bottom: 1px solid var(--border);
+        display: none;
+        transition: box-shadow 0.3s;
+      }
+      .progress-wrap.active {
+        display: block;
+      }
+      .progress-wrap.scrolled {
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+      }
+      .progress-inner {
+        max-width: 860px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .progress-text {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text2);
+        white-space: nowrap;
+        min-width: 90px;
+      }
+      .progress-text b {
+        color: var(--accent);
+      }
+      .progress-bar {
+        flex: 1;
+        height: 6px;
+        background: var(--surface3);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent), var(--accent2));
+        border-radius: 10px;
+        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        width: 0%;
+      }
+      .progress-timer {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+        color: var(--accent);
+        min-width: 60px;
+        text-align: right;
+      }
+
+      .q-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 32px;
+        margin-bottom: 24px;
+        display: none;
+        animation: fadeIn 0.4s ease both;
+      }
+      .q-card.active {
+        display: block;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .q-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+        flex-wrap: wrap;
+      }
+      .q-num {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--bg);
+        background: var(--accent);
+        padding: 4px 10px;
+        border-radius: 6px;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .q-meta {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .q-tag {
+        font-size: 11px;
+        padding: 3px 10px;
+        border-radius: 50px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+      .q-tag.bio {
+        background: rgba(6, 214, 160, 0.12);
+        color: var(--accent);
+      }
+      .q-tag.type {
+        background: rgba(167, 139, 250, 0.12);
+        color: var(--purple);
+      }
+      .q-tag.hard {
+        background: rgba(239, 68, 68, 0.12);
+        color: var(--red);
+      }
+      .q-tag.med {
+        background: rgba(245, 158, 11, 0.12);
+        color: var(--amber);
+      }
+      .q-type {
+        font-size: 11px;
+        color: var(--text3);
+        font-weight: 500;
+        margin-left: auto;
+      }
+      .q-text {
+        font-size: 15.5px;
+        color: #fff;
+        line-height: 1.7;
+        margin-bottom: 20px;
+      }
+      .q-text em {
+        color: var(--accent);
+        font-style: normal;
+        font-weight: 600;
+      }
+      .q-text .formula {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 14px;
+        background: var(--surface2);
+        padding: 2px 8px;
+        border-radius: 4px;
+        color: var(--amber);
+      }
+      .q-text table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 12px 0;
+        font-size: 14px;
+      }
+      .q-text table th,
+      .q-text table td {
+        padding: 8px 12px;
+        border: 1px solid var(--border);
+        text-align: left;
+      }
+      .q-text table th {
+        background: var(--surface2);
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      .options {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .opt-btn {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 14px 18px;
+        background: var(--surface2);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        transition: all 0.2s;
+        text-align: left;
+        width: 100%;
+        font-size: 14.5px;
+        color: var(--text);
+        line-height: 1.5;
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+      .opt-btn:hover {
+        border-color: var(--accent);
+        background: rgba(6, 214, 160, 0.05);
+        transform: translateX(4px);
+      }
+      .opt-btn .opt-letter {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        color: var(--text3);
+        font-size: 13px;
+        min-width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        background: var(--surface3);
+        flex-shrink: 0;
+        margin-top: 1px;
+        transition: all 0.2s;
+      }
+      .opt-btn.selected {
+        border-color: var(--accent);
+        background: rgba(6, 214, 160, 0.08);
+      }
+      .opt-btn.selected .opt-letter {
+        background: var(--accent);
+        color: var(--bg);
+      }
+
+      .nav-btns {
+        display: flex;
+        gap: 12px;
+        margin-top: 24px;
+        flex-wrap: wrap;
+      }
+      .nav-btn {
+        padding: 10px 24px;
+        border-radius: 8px;
+        font-family: "IBM Plex Sans", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        border: 1.5px solid var(--border);
+        background: var(--surface2);
+        color: var(--text);
+      }
+      .nav-btn:hover {
+        border-color: var(--accent);
+      }
+      .nav-btn.primary {
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        border: none;
+        color: var(--bg);
+        font-weight: 700;
+        box-shadow: 0 2px 12px rgba(6, 214, 160, 0.2);
+      }
+      .nav-btn.primary:hover {
+        box-shadow: 0 4px 20px rgba(6, 214, 160, 0.32);
+        transform: translateY(-1px);
+      }
+      .nav-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+      .mark-review {
+        margin-left: auto;
+        font-size: 13px;
+        color: var(--amber);
+        background: rgba(245, 158, 11, 0.08);
+        border-color: rgba(245, 158, 11, 0.25);
+      }
+      .mark-review.marked {
+        background: rgba(245, 158, 11, 0.2);
+        border-color: var(--amber);
+      }
+      .clear-response {
+        font-size: 13px;
+        color: var(--red);
+        background: rgba(239, 68, 68, 0.08);
+        border-color: rgba(239, 68, 68, 0.25);
+      }
+      .clear-response:hover {
+        background: rgba(239, 68, 68, 0.15);
+        border-color: var(--red);
+      }
+
+      .palette-toggle {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: var(--bg);
+        border: none;
+        font-size: 20px;
+        font-weight: 700;
+        cursor: pointer;
+        z-index: 200;
+        box-shadow: 0 4px 20px rgba(6, 214, 160, 0.4);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s;
+      }
+      .palette-toggle:hover {
+        transform: scale(1.06);
+      }
+      .palette-toggle.active {
+        display: flex;
+      }
+      .palette-panel {
+        position: fixed;
+        bottom: 84px;
+        right: 24px;
+        width: 300px;
+        max-height: 400px;
+        overflow-y: auto;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 20px;
+        z-index: 200;
+        display: none;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      }
+      .palette-panel.open {
+        display: block;
+      }
+      .palette-title {
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 14px;
+        color: var(--text2);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .palette-grid {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        gap: 6px;
+      }
+      .palette-dot {
+        width: 32px;
+        height: 32px;
+        border-radius: 7px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 700;
+        cursor: pointer;
+        border: 1.5px solid var(--border);
+        background: var(--surface2);
+        color: var(--text3);
+        transition: all 0.15s;
+      }
+      .palette-dot:hover {
+        border-color: var(--accent);
+      }
+      .palette-dot.answered {
+        background: rgba(6, 214, 160, 0.15);
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .palette-dot.review {
+        background: rgba(245, 158, 11, 0.15);
+        border-color: var(--amber);
+        color: var(--amber);
+      }
+      .palette-dot.current {
+        box-shadow: 0 0 0 2px var(--accent);
+      }
+      .palette-legend {
+        display: flex;
+        gap: 16px;
+        margin-top: 14px;
+        font-size: 11px;
+        color: var(--text3);
+        flex-wrap: wrap;
+      }
+      .palette-legend span {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .legend-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 3px;
+      }
+
+      #resultsSection {
+        display: none;
+      }
+      .results-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 40px 30px;
+        max-width: 500px;
+        margin: 0 auto 40px;
+        text-align: center;
+      }
+      .results-card h2 {
+        font-family: "DM Serif Display", serif;
+        font-size: 32px;
+        color: #fff;
+        margin-bottom: 8px;
+      }
+      .score-ring {
+        width: 160px;
+        height: 160px;
+        margin: 24px auto;
+        position: relative;
+      }
+      .score-ring svg {
+        transform: rotate(-90deg);
+      }
+      .score-ring .ring-bg {
+        fill: none;
+        stroke: var(--surface3);
+        stroke-width: 10;
+      }
+      .score-ring .ring-fill {
+        fill: none;
+        stroke-width: 10;
+        stroke-linecap: round;
+        transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .score-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+      .score-center .pct {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 36px;
+        font-weight: 700;
+        color: #fff;
+      }
+      .score-center .of {
+        font-size: 13px;
+        color: var(--text3);
+      }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-top: 24px;
+      }
+      .stat-item {
+        padding: 14px 8px;
+        background: var(--surface2);
+        border-radius: var(--radius-sm);
+        text-align: center;
+      }
+      .stat-num {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 22px;
+        font-weight: 700;
+      }
+      .stat-lbl {
+        font-size: 11px;
+        color: var(--text3);
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        margin-top: 4px;
+      }
+      .stat-item.neet .stat-num {
+        color: var(--accent2);
+      }
+      .stat-item.correct .stat-num {
+        color: var(--green);
+      }
+      .stat-item.wrong .stat-num {
+        color: var(--red);
+      }
+      .stat-item.skip .stat-num {
+        color: var(--amber);
+      }
+
+      .chapter-breakdown {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 24px;
+        margin-bottom: 40px;
+      }
+      .chapter-breakdown h3 {
+        font-family: "DM Serif Display", serif;
+        font-size: 18px;
+        color: #fff;
+        margin-bottom: 20px;
+      }
+      .chapter-bar-wrap {
+        margin-bottom: 16px;
+      }
+      .chapter-bar-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .chapter-bar-track {
+        height: 8px;
+        background: var(--surface3);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .chapter-bar-fill {
+        height: 100%;
+        border-radius: 4px;
+        transition: width 1s ease;
+      }
+
+      .review-title {
+        font-family: "DM Serif Display", serif;
+        font-size: 28px;
+        color: #fff;
+        margin: 40px 0 12px;
+        text-align: center;
+      }
+      .review-sub {
+        text-align: center;
+        color: var(--text2);
+        font-size: 14px;
+        margin-bottom: 24px;
+      }
+      .review-filter {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+      }
+      .filter-btn {
+        padding: 8px 20px;
+        border-radius: 50px;
+        border: 1px solid var(--border);
+        background: transparent;
+        color: var(--text2);
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .filter-btn:hover,
+      .filter-btn.active {
+        background: var(--accent);
+        color: var(--bg);
+        border-color: var(--accent);
+      }
+
+      .review-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 28px;
+        margin-bottom: 20px;
+      }
+      .review-card.rc-correct {
+        border-left: 4px solid var(--green);
+      }
+      .review-card.rc-wrong {
+        border-left: 4px solid var(--red);
+      }
+      .review-card.rc-skipped {
+        border-left: 4px solid var(--amber);
+      }
+      .rc-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 14px;
+        flex-wrap: wrap;
+      }
+      .rc-badge {
+        font-size: 11px;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 5px;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+      }
+      .rc-badge.badge-correct {
+        background: rgba(34, 197, 94, 0.1);
+        color: var(--green);
+        border: 1px solid rgba(34, 197, 94, 0.3);
+      }
+      .rc-badge.badge-wrong {
+        background: rgba(239, 68, 68, 0.1);
+        color: var(--red);
+        border: 1px solid rgba(239, 68, 68, 0.3);
+      }
+      .rc-badge.badge-skipped {
+        background: rgba(245, 158, 11, 0.1);
+        color: var(--amber);
+        border: 1px solid rgba(245, 158, 11, 0.3);
+      }
+      .rc-q {
+        font-size: 14.5px;
+        line-height: 1.7;
+        margin-bottom: 16px;
+        color: var(--text);
+      }
+      .rc-opts {
+        margin-bottom: 16px;
+      }
+      .rc-opt {
+        padding: 10px 14px;
+        margin-bottom: 6px;
+        border-radius: 8px;
+        font-size: 13.5px;
+        line-height: 1.6;
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        border: 1.5px solid transparent;
+      }
+      .rc-opt.rc-opt-correct {
+        background: rgba(34, 197, 94, 0.08);
+        border-color: rgba(34, 197, 94, 0.3);
+      }
+      .rc-opt.rc-opt-wrong {
+        background: rgba(239, 68, 68, 0.08);
+        border-color: rgba(239, 68, 68, 0.3);
+      }
+      .rc-letter {
+        flex-shrink: 0;
+        width: 22px;
+        height: 22px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 700;
+        background: var(--border);
+        color: var(--text3);
+      }
+      .rc-opt.rc-opt-correct .rc-letter {
+        background: var(--green);
+        color: #fff;
+      }
+      .rc-opt.rc-opt-wrong .rc-letter {
+        background: var(--red);
+        color: #fff;
+      }
+      .rc-exp {
+        background: rgba(6, 214, 160, 0.05);
+        border: 1px solid rgba(6, 214, 160, 0.15);
+        border-radius: 10px;
+        padding: 18px 20px;
+      }
+      .rc-exp h4 {
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: var(--accent);
+        margin-bottom: 8px;
+      }
+      .rc-exp p {
+        font-size: 13.5px;
+        line-height: 1.75;
+        color: var(--text2);
+      }
+      .rc-exp p strong {
+        color: var(--text);
+      }
+      .rc-exp .ncert-ref {
+        display: inline-block;
+        margin-top: 8px;
+        font-size: 11px;
+        padding: 3px 8px;
+        background: rgba(6, 214, 160, 0.1);
+        border-radius: 4px;
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          padding: 12px;
+        }
+        .q-card {
+          padding: 20px 16px;
+        }
+        .hero h1 {
+          font-size: 26px;
+        }
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .progress-inner {
+          gap: 10px;
+        }
+        .palette-panel {
+          width: calc(100vw - 40px);
+          right: 20px;
+        }
+        .review-card {
+          padding: 20px 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero" id="heroSection">
+      <div class="hero-badge">NEET 2026 · NCERT Aligned</div>
+      <h1>Ultra Concept Bank <span>Cell Cycle & Biomolecules</span></h1>
+      <p>
+        50 Top-Rank-Separator Questions · Cell Cycle & Cell Division · Biomolecules. Strictly NCERT Class 11 (Rationalised).
+      </p>
+      <div class="hero-tags">
+        <span class="tag-bio">🧬 50 Questions · All Biology</span>
+        <span class="tag-chem">📚 2 Chapters · Class 11</span>
+      </div>
+      <button class="start-btn" onclick="startQuiz()">Begin Test →</button>
+    </div>
+
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-inner">
+        <div class="progress-text">
+          <b id="qCounter">Q 1 / 50</b>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-timer" id="progressTimer">00:00</div>
+      </div>
+    </div>
+
+    <div class="container" id="quizArea"></div>
+
+    <div class="container" id="resultsSection"></div>
+
+    <button class="palette-toggle" id="paletteToggle" onclick="togglePalette()">
+      ☰
+    </button>
+    <div class="palette-panel" id="palettePanel">
+      <div class="palette-title">Question Palette</div>
+      <div class="palette-grid" id="paletteGrid"></div>
+      <div class="palette-legend">
+        <span
+          ><div
+            class="legend-dot"
+            style="background: var(--surface2); border: 1px solid var(--border)"
+          ></div>
+          Unseen</span
+        >
+        <span
+          ><div
+            class="legend-dot"
+            style="background: rgba(6, 214, 160, 0.2)"
+          ></div>
+          Answered</span
+        >
+        <span
+          ><div
+            class="legend-dot"
+            style="background: rgba(245, 158, 11, 0.2)"
+          ></div>
+          Review</span
+        >
+      </div>
+    </div>
+
+    <script>
+      const Q = [
+  {
+    "id": 1,
+    "ch": "Cell Cycle & Cell Division",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "In a typical dividing human cell with a generation time of 24 hours, which of the following correctly represents the approximate duration and DNA content relationship during the cell cycle?",
+    "opts": [
+      "M phase ≈ 1 hour; DNA content at the end of S phase = 2C",
+      "M phase ≈ 1 hour; DNA content at the end of S phase = 4C but chromosome number is still 2n",
+      "M phase ≈ 5 hours; DNA content at the end of G2 = 4C and chromosome number becomes 4n",
+      "Interphase ≈ 1 hour; DNA content doubles during G1 phase itself"
+    ],
+    "ans": 1,
+    "exp": "NCERT states that in a typical 24-hr human cell cycle, cell division proper (M phase) lasts only ~1 hour (<5% of the cycle). DNA replicates during S phase (2C→4C), but chromosome number remains 2n because sister chromatids stay attached at the centromere.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 2,
+    "ch": "Cell Cycle & Cell Division",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "The cell cycle duration of yeast (Saccharomyces) as mentioned in NCERT is:",
+    "opts": [
+      "24 hours",
+      "8 hours",
+      "90 minutes",
+      "30 minutes"
+    ],
+    "ans": 2,
+    "exp": "NCERT explicitly contrasts cell-cycle durations: yeast completes one cycle in about 90 minutes, while a typical human cell takes ~24 hours.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 3,
+    "ch": "Cell Cycle & Cell Division",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Which of the following statements about the G0 (quiescent) phase is INCORRECT as per NCERT?",
+    "opts": [
+      "Cells in G0 remain metabolically active",
+      "G0 cells do not proliferate unless called upon to do so",
+      "Heart cells in adult animals are an example of G0 cells",
+      "G0 cells have halved DNA content (1C) because they have exited the cycle"
+    ],
+    "ans": 3,
+    "exp": "G0 cells are metabolically active but do not proliferate; heart cells are the classic example. Their DNA content remains that of a typical G1 cell (2C)—exiting the cycle does not alter DNA content.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 4,
+    "ch": "Cell Cycle & Cell Division",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Centriole duplication, an often-overlooked NCERT point, occurs in:",
+    "opts": [
+      "G1 phase, in the cytoplasm",
+      "S phase, in animal cells",
+      "G2 phase, in both plant and animal cells",
+      "Prophase of mitosis"
+    ],
+    "ans": 1,
+    "exp": "NCERT specifies that in animal cells, DNA replication begins in the nucleus while the centriole duplicates in the cytoplasm, both during S phase. Plant cells lack centrioles.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 5,
+    "ch": "Cell Cycle & Cell Division",
+    "type": "Assertion-Reason",
+    "diff": "Hard",
+    "q": "<strong>Assertion (A):</strong><br> In anaphase I of meiosis, the centromere of each chromosome does NOT split.<br><br><strong>Reason (R):</strong><br> Meiosis I is a reductional division in which homologous chromosomes separate while sister chromatids remain attached at their centromeres.",
+    "opts": [
+      "Both A and R are true and R is the correct explanation of A",
+      "Both A and R are true but R is not the correct explanation of A",
+      "A is true but R is false",
+      "A is false but R is true"
+    ],
+    "ans": 0,
+    "exp": "NCERT: at anaphase I, homologous chromosomes separate while chromatids of each chromosome remain associated at their centromeres—this is the basis of reductional division (2n→n). Hence R correctly explains A.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 6,
+    "ch": "Cell Cycle & Cell Division",
+    "type": "Assertion-Reason",
+    "diff": "Hard",
+    "q": "<strong>Assertion (A):</strong><br> Crossing over is completed during the pachytene stage of prophase I.<br><br><strong>Reason (R):</strong><br> Synapsis between homologous chromosomes first occurs in zygotene and the synaptonemal complex is fully formed in pachytene where recombination nodules appear.",
+    "opts": [
+      "Both A and R are true and R is the correct explanation of A",
+      "Both A and R are true but R is not the correct explanation of A",
+      "A is true but R is false",
+      "A is false but R is true"
+    ],
+    "ans": 0,
+    "exp": "Synapsis begins in zygotene; by pachytene the SC is fully formed and recombination nodules appear at which recombinase catalyses crossing over. Hence R correctly explains A.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 7,
+    "ch": "Cell Cycle & Cell Division",
+    "type": "Assertion-Reason",
+    "diff": "Hard",
+    "q": "<strong>Assertion (A):</strong><br> The cell plate during plant cytokinesis forms from the centre of the cell outwards towards the lateral walls.<br><br><strong>Reason (R):</strong><br> Plant cells have rigid cell walls, therefore a cleavage furrow cannot form and the spindle apparatus in plants is anastral.",
+    "opts": [
+      "Both A and R are true and R is the correct explanation of A",
+      "Both A and R are true but R is not the correct explanation of A",
+      "A is true but R is false",
+      "A is false but R is true"
+    ],
+    "ans": 1,
+    "exp": "Cell plate grows from centre outward (centrifugally) because of the cell wall; the plant spindle is anastral. Both facts are true, but anastral-spindle does not directly explain direction of cell-plate growth—cell wall rigidity does.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 8,
+    "ch": "Cell Cycle & Cell Division",
+    "type": "Assertion-Reason",
+    "diff": "Hard",
+    "q": "<strong>Assertion (A):</strong><br> The diplotene stage of prophase I can last for months or even years in human oocytes.<br><br><strong>Reason (R):</strong><br> In diplotene, the synaptonemal complex dissolves and recombination between homologous chromosomes is still in progress.",
+    "opts": [
+      "Both A and R are true and R is the correct explanation of A",
+      "Both A and R are true but R is not the correct explanation of A",
+      "A is true but R is false",
+      "A is false but R is true"
+    ],
+    "ans": 2,
+    "exp": "Diplotene in oocytes of some vertebrates can last for months/years (true). However, crossing over is completed in pachytene; only chiasmata become visible in diplotene after SC dissolution. Hence R is false.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 9,
+    "ch": "Cell Cycle & Cell Division",
+    "type": "Multi-statement",
+    "diff": "Hard",
+    "q": "Consider the following statements regarding the S phase of interphase:<br><br>I. DNA content doubles from 2C to 4C.<br>II. Chromosome number doubles from 2n to 4n.<br>III. In animal cells, the centriole duplicates in the cytoplasm.<br>IV. Histone synthesis and DNA replication occur in the nucleus during S phase.<br>V. S phase is followed directly by M phase without any intervening gap.<br><br>How many of the above statements are CORRECT?",
+    "opts": [
+      "Two",
+      "Three",
+      "Four",
+      "Five"
+    ],
+    "ans": 1,
+    "exp": "(i), (iii) and (iv) are correct. (ii) is wrong—chromosome number remains 2n after S phase. (v) is wrong—G2 intervenes between S and M.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 10,
+    "ch": "Cell Cycle & Cell Division",
+    "type": "Multi-statement",
+    "diff": "Hard",
+    "q": "How many of the following events occur during PROPHASE of mitosis (and not later)?<br><br>I. Chromosomal material condenses.<br>II. Centrosomes move to opposite poles.<br>III. Golgi, ER, nucleolus and nuclear envelope disappear.<br>IV. Chromosomes are aligned at the equator.<br>V. Initiation of assembly of the mitotic spindle.<br>VI. Centromere splits into two.",
+    "opts": [
+      "Two",
+      "Three",
+      "Four",
+      "Five"
+    ],
+    "ans": 2,
+    "exp": "In prophase: condensation (i), centrosome movement to poles (ii), disappearance of Golgi/ER/nucleolus/nuclear envelope (iii), and spindle assembly initiation (v)—four events. Alignment is metaphase; centromere splitting is anaphase.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 11,
+    "ch": "Cell Cycle & Cell Division",
+    "type": "Multi-statement",
+    "diff": "Hard",
+    "q": "Which of the following are characteristic features of meiosis I (and NOT meiosis II)?<br><br>I. Pairing of homologous chromosomes<br>II. Crossing over<br>III. Separation of sister chromatids<br>IV. Terminalisation of chiasmata<br>V. Reduction in chromosome number from 2n to n<br>VI. Centromere division<br><br>How many are correct?",
+    "opts": [
+      "Two",
+      "Three",
+      "Four",
+      "Five"
+    ],
+    "ans": 2,
+    "exp": "Pairing (i), crossing over (ii), terminalisation (iv) and reduction 2n→n (v) are exclusive to meiosis I. Sister chromatid separation (iii) and centromere division (vi) occur in anaphase II. Hence four.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 12,
+    "ch": "Cell Cycle & Cell Division",
+    "type": "Multi-statement",
+    "diff": "Hard",
+    "q": "Identify the number of CORRECT statements regarding cytokinesis:<br><br>I. In animal cells, a cleavage furrow forms by constriction of the plasma membrane from the periphery inward.<br>II. In plant cells, the cell plate grows from the periphery toward the centre.<br>III. Liquid endosperm of coconut represents free-nuclear endosperm formed by karyokinesis without cytokinesis (a syncytium).<br>IV. In some organisms, karyokinesis is not followed by cytokinesis, resulting in multinucleate cells called syncytia.<br>V. Cytokinesis always precedes karyokinesis.",
+    "opts": [
+      "One",
+      "Two",
+      "Three",
+      "Four"
+    ],
+    "ans": 2,
+    "exp": "(i), (iii), (iv) are correct. (ii) wrong—cell plate grows centre-outward. (v) wrong—karyokinesis precedes cytokinesis. Three correct.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 13,
+    "ch": "Cell Cycle & Cell Division",
+    "type": "Match",
+    "diff": "Hard",
+    "q": "Match List-I (Sub-stage of prophase I) with List-II (Key event):<br><table><tr><th>Column I</th><th>Column II</th></tr><tr><td>A. Leptotene</td><td>1. Terminalisation of chiasmata; nucleolus disappears</td></tr><tr><td>B. Zygotene</td><td>2. Dissolution of synaptonemal complex; chiasmata visible</td></tr><tr><td>C. Pachytene</td><td>3. Chromosomes become gradually visible under light microscope</td></tr><tr><td>D. Diplotene</td><td>4. Pairing (synapsis); synaptonemal complex begins to form</td></tr><tr><td>E. Diakinesis</td><td>5. Crossing over between non-sister chromatids by recombinase</td></tr></table>",
+    "opts": [
+      "A-3, B-4, C-5, D-2, E-1",
+      "A-4, B-3, C-5, D-2, E-1",
+      "A-3, B-4, C-2, D-5, E-1",
+      "A-3, B-5, C-4, D-2, E-1"
+    ],
+    "ans": 0,
+    "exp": "Leptotene—chromosomes visible; zygotene—synapsis/SC begins; pachytene—crossing over by recombinase; diplotene—SC dissolves, chiasmata visible; diakinesis—terminalisation, nucleolus disappears.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 14,
+    "ch": "Cell Cycle & Cell Division",
+    "type": "Match",
+    "diff": "Hard",
+    "q": "Match the stage of M phase with the correct event:<br><table><tr><th>Column I</th><th>Column II</th></tr><tr><td>A. Prophase</td><td>1. Centromeres split and sister chromatids move to opposite poles</td></tr><tr><td>B. Metaphase</td><td>2. Chromosomes decondense; nuclear envelope reforms</td></tr><tr><td>C. Anaphase</td><td>3. Condensation of chromosomes; disappearance of nuclear envelope</td></tr><tr><td>D. Telophase</td><td>4. Chromosomes aligned at metaphase plate; kinetochores attach to spindle fibres</td></tr></table>",
+    "opts": [
+      "A-3, B-4, C-1, D-2",
+      "A-4, B-3, C-2, D-1",
+      "A-3, B-1, C-4, D-2",
+      "A-2, B-4, C-1, D-3"
+    ],
+    "ans": 0,
+    "exp": "Prophase—condensation & envelope loss; metaphase—plate alignment & kinetochore attachment; anaphase—centromere split & chromatid migration; telophase—decondensation & envelope reformation.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 15,
+    "ch": "Cell Cycle & Cell Division",
+    "type": "Match",
+    "diff": "Hard",
+    "q": "Match the following organism/cell with its NCERT peculiarity:<br><table><tr><th>Column I</th><th>Column II</th></tr><tr><td>A. Typical human cell</td><td>1. ~90 min cell cycle</td></tr><tr><td>B. Yeast</td><td>2. ~24 h cell cycle</td></tr><tr><td>C. Oocytes of some vertebrates</td><td>3. Free-nuclear syncytium (no cytokinesis)</td></tr><tr><td>D. Liquid endosperm of coconut</td><td>4. Diplotene lasting months to years</td></tr></table>",
+    "opts": [
+      "A-2, B-1, C-4, D-3",
+      "A-1, B-2, C-3, D-4",
+      "A-2, B-1, C-3, D-4",
+      "A-2, B-4, C-1, D-3"
+    ],
+    "ans": 0,
+    "exp": "Human ≈ 24 h; yeast ≈ 90 min; oocytes of some vertebrates—prolonged diplotene; coconut liquid endosperm—free-nuclear syncytium (karyokinesis without cytokinesis).",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 16,
+    "ch": "Cell Cycle & Cell Division",
+    "type": "Case-based",
+    "diff": "Hard",
+    "q": "<strong>Passage:</strong><br>A student draws the cell cycle of an animal cell. She labels interphase as G1→S→G2 and notes centriole duplication in S phase. She mentions that a daughter cell exiting the cycle enters a metabolically active but non-dividing phase, citing heart cells.<br><br>The non-dividing but metabolically active phase she is referring to is:",
+    "opts": [
+      "G1 phase",
+      "G2 phase",
+      "G0 (quiescent) phase",
+      "S phase"
+    ],
+    "ans": 2,
+    "exp": "Cells that do not proceed further enter G0. They remain metabolically active (e.g., heart cells) but do not proliferate.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 17,
+    "ch": "Cell Cycle & Cell Division",
+    "type": "Case-based",
+    "diff": "Hard",
+    "q": "From the same passage, which of the following is INCORRECT in her account of S phase?",
+    "opts": [
+      "DNA replication occurs in the nucleus",
+      "Centriole duplication occurs in the cytoplasm",
+      "DNA content changes from 2C to 4C",
+      "Chromosome number doubles from 2n to 4n"
+    ],
+    "ans": 3,
+    "exp": "DNA content doubles (2C→4C) but chromosome number stays 2n because duplicated sister chromatids remain attached at a common centromere.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 18,
+    "ch": "Cell Cycle & Cell Division",
+    "type": "Case-based",
+    "diff": "Hard",
+    "q": "<strong>Passage:</strong><br>A cytologist observes bivalents on the equatorial plate with kinetochores of the two homologues facing opposite poles. Next, homologues separate while sister chromatids remain attached at centromeres. In the following division's anaphase, centromeres split and chromatids move to opposite poles.<br><br>The first stage described is:",
+    "opts": [
+      "Metaphase of mitosis",
+      "Metaphase I of meiosis",
+      "Metaphase II of meiosis",
+      "Diakinesis"
+    ],
+    "ans": 1,
+    "exp": "Bivalents on the equatorial plate with homologues' kinetochores facing opposite poles is characteristic only of metaphase I.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 19,
+    "ch": "Cell Cycle & Cell Division",
+    "type": "Case-based",
+    "diff": "Hard",
+    "q": "The second and third events (homologue separation without centromere split, then centromere splitting in the later anaphase) correspond respectively to:",
+    "opts": [
+      "Anaphase of mitosis and Anaphase I",
+      "Anaphase I and Anaphase II",
+      "Anaphase II and Anaphase I",
+      "Metaphase II and Anaphase II"
+    ],
+    "ans": 1,
+    "exp": "Homologue separation without centromere splitting = anaphase I (reductional). Centromere splitting with sister chromatid separation = anaphase II (equational).",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 20,
+    "ch": "Cell Cycle & Cell Division",
+    "type": "Diagram-based",
+    "diff": "Hard",
+    "q": "A student is shown a diagram in which homologous chromosomes are paired along their length, a tripartite ribbon-like protein structure lies between them, and small dense bodies at intervals on this structure are labelled \"X\". Structure X is most likely:",
+    "opts": [
+      "Kinetochores",
+      "Recombination nodules, and the stage is pachytene",
+      "Centromeres of bivalents in metaphase I",
+      "Chiasmata visible in diplotene"
+    ],
+    "ans": 1,
+    "exp": "During pachytene, the synaptonemal complex (tripartite) forms between paired homologues, and recombination nodules appear along it where recombinase mediates crossing over.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 21,
+    "ch": "Cell Cycle & Cell Division",
+    "type": "Diagram-based",
+    "diff": "Hard",
+    "q": "In a labelled NCERT diagram of mitotic metaphase, which of the following features should NOT be labelled?",
+    "opts": [
+      "Metaphase plate with aligned chromosomes",
+      "Kinetochores of sister chromatids attached to spindle fibres from opposite poles",
+      "Condensed chromosomes with two chromatids each",
+      "Chiasmata between non-sister chromatids"
+    ],
+    "ans": 3,
+    "exp": "Chiasmata are features of prophase I (visible in diplotene), not mitosis. Other features are standard NCERT metaphase descriptors.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 22,
+    "ch": "Cell Cycle & Cell Division",
+    "type": "Numerical",
+    "diff": "Hard",
+    "q": "A diploid human cell (2n = 46) undergoes meiosis. At the end of meiosis I, each daughter cell contains:",
+    "opts": [
+      "46 chromosomes, each with 1 chromatid; DNA = 2C",
+      "23 chromosomes, each with 2 chromatids; DNA = 2C",
+      "23 chromosomes, each with 1 chromatid; DNA = 1C",
+      "46 chromosomes, each with 2 chromatids; DNA = 4C"
+    ],
+    "ans": 1,
+    "exp": "After meiosis I, each daughter cell is haploid (23) with each chromosome still composed of two chromatids (centromeres intact). DNA content = 2C (from 4C, halved upon homologue separation).",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 23,
+    "ch": "Cell Cycle & Cell Division",
+    "type": "Numerical",
+    "diff": "Hard",
+    "q": "A single cell undergoes 7 successive mitotic divisions. Assuming synchronous division and no cell death, how many cells are produced and what is the DNA content per cell at the end (compared with starting G1 DNA content 2C)?",
+    "opts": [
+      "64 cells; 2C each",
+      "128 cells; 2C each",
+      "128 cells; 4C each",
+      "256 cells; 2C each"
+    ],
+    "ans": 1,
+    "exp": "Cells after n mitotic divisions = 2ⁿ = 2⁷ = 128. Mitosis is equational, so daughter-cell DNA content returns to 2C after each cycle.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 24,
+    "ch": "Cell Cycle & Cell Division",
+    "type": "Numerical",
+    "diff": "Hard",
+    "q": "If a diploid somatic cell in G1 has DNA content 2C, the DNA content at the end of (i) S phase, (ii) telophase of mitosis, (iii) metaphase I of meiosis, (iv) telophase II of meiosis is respectively:",
+    "opts": [
+      "4C, 2C, 4C, 1C",
+      "2C, 2C, 2C, 1C",
+      "4C, 4C, 4C, 2C",
+      "4C, 2C, 2C, 1C"
+    ],
+    "ans": 0,
+    "exp": "S phase doubles DNA (2C→4C); mitotic daughter at telophase = 2C; metaphase I still 4C (no division yet); after meiosis II each haploid cell has 1C.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 25,
+    "ch": "Cell Cycle & Cell Division",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Which of the following statements about meiosis and its significance is INCORRECT per NCERT?",
+    "opts": [
+      "Meiosis I is reductional and meiosis II is equational",
+      "Interkinesis is generally short-lived and no DNA replication occurs in it",
+      "Meiosis produces variations by crossing over and independent assortment, significant for evolution",
+      "Synapsis begins in pachytene and crossing over occurs in zygotene"
+    ],
+    "ans": 3,
+    "exp": "Classic trap: synapsis actually begins in zygotene, and crossing over is completed in pachytene (via recombinase at recombination nodules).",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 26,
+    "ch": "Biomolecules",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "In the laboratory procedure of grinding a living tissue in trichloroacetic acid (TCA) and filtering through cheesecloth, which one correctly describes the fate of various biomolecules?",
+    "opts": [
+      "Amino acids, nucleotides and sugars stay in the acid-insoluble (retentate) fraction while proteins pass into the filtrate.",
+      "The acid-soluble pool contains biomicromolecules (<1000 Da) while proteins, nucleic acids, polysaccharides and lipids form the acid-insoluble macromolecular fraction.",
+      "Lipids, because of their low molecular weight, always partition into the acid-soluble pool along with amino acids.",
+      "Water and inorganic compounds contribute to the acid-insoluble pellet because of their polar nature."
+    ],
+    "ans": 1,
+    "exp": "Per NCERT, the filtrate (acid-soluble) contains small molecules (<1000 Da)—amino acids, sugars, nucleotides—while the retentate (acid-insoluble) contains proteins, nucleic acids, polysaccharides and lipids, collectively biomacromolecules.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 27,
+    "ch": "Biomolecules",
+    "type": "Assertion-Reason",
+    "diff": "Hard",
+    "q": "<strong>Assertion (A):</strong><br> Lipids are classified in the acid-insoluble (macromolecular) fraction of a cellular extract even though their molecular weights are usually less than 800 Da.<br><br><strong>Reason (R):</strong><br> In a cell, lipids are organised as membranous vesicles, and these vesicles, being large structures, get retained with the acid-insoluble pellet during filtration.",
+    "opts": [
+      "Both A and R are true and R is the correct explanation of A",
+      "Both A and R are true but R is NOT the correct explanation of A",
+      "A is true but R is false",
+      "A is false but R is true"
+    ],
+    "ans": 0,
+    "exp": "NCERT groups lipids under macromolecules based on fractionation behaviour; their membrane-vesicle organisation causes retention despite low individual MW.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 28,
+    "ch": "Biomolecules",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Which of the following sets contains ONLY secondary metabolites as per NCERT?",
+    "opts": [
+      "Morphine, Ricin, Rubber, Concanavalin A",
+      "Glucose, Glycine, Cholesterol, GMP",
+      "Codeine, Lecithin, Carotenoid, Trypsin",
+      "Alkaloid, Nucleotide, Haemoglobin, Starch"
+    ],
+    "ans": 0,
+    "exp": "Secondary metabolites include alkaloids (morphine, codeine), toxins (ricin, abrin), lectins (concanavalin A), polymeric substances (rubber), pigments (carotenoids). Glucose, glycine, nucleotides, lecithin, haemoglobin, trypsin, starch are primary metabolites/biomacromolecules.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 29,
+    "ch": "Biomolecules",
+    "type": "Match",
+    "diff": "Hard",
+    "q": "Match Column-I (metabolite) with Column-II (category):<br><table><tr><th>Column I</th><th>Column II</th></tr><tr><td>P. Concanavalin A</td><td>1. Alkaloid</td></tr><tr><td>Q. Abrin</td><td>2. Toxin</td></tr><tr><td>R. Morphine</td><td>3. Lectin</td></tr><tr><td>S. Anthocyanin</td><td>4. Pigment</td></tr></table>",
+    "opts": [
+      "P-3, Q-2, R-1, S-4",
+      "P-2, Q-3, R-4, S-1",
+      "P-3, Q-1, R-2, S-4",
+      "P-4, Q-2, R-1, S-3"
+    ],
+    "ans": 0,
+    "exp": "Concanavalin A—lectin; abrin (and ricin)—toxins; morphine/codeine—alkaloids; anthocyanins/carotenoids—pigments.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 30,
+    "ch": "Biomolecules",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Regarding the 21 amino acids found in proteins, which statement is INCORRECT per NCERT?",
+    "opts": [
+      "Glutamic acid is acidic because its R-group contains a –COOH group.",
+      "Tyrosine, tryptophan and phenylalanine are aromatic amino acids.",
+      "Glycine has an asymmetric α-carbon and therefore shows optical activity.",
+      "At physiological pH amino acids exist predominantly as zwitterions."
+    ],
+    "ans": 2,
+    "exp": "In glycine the R-group is H, so the α-carbon is bonded to –NH2, –COOH, –H, –H—not asymmetric. Glycine is the only optically inactive amino acid.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 31,
+    "ch": "Biomolecules",
+    "type": "Assertion-Reason",
+    "diff": "Hard",
+    "q": "<strong>Assertion (A):</strong><br> Cellulose, when treated with iodine, does NOT give a blue colour whereas starch does.<br><br><strong>Reason (R):</strong><br> Cellulose is an unbranched homopolymer of glucose that does not form a helical secondary structure, so it cannot trap I₂ molecules in its interior.",
+    "opts": [
+      "Both A and R are true and R correctly explains A",
+      "Both A and R are true but R does NOT explain A",
+      "A is true, R is false",
+      "A is false, R is true"
+    ],
+    "ans": 0,
+    "exp": "Starch helices trap I₂ giving blue colour; cellulose, though a glucose homopolymer, lacks helices—so no blue colour. R correctly explains A.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 32,
+    "ch": "Biomolecules",
+    "type": "Multi-statement",
+    "diff": "Hard",
+    "q": "Consider the following:<br><br>I. RuBisCO is the most abundant protein in the whole biosphere.<br>II. Collagen is the most abundant protein in the animal kingdom.<br>III. Inulin is a polymer of fructose.<br>IV. Chitin is a nitrogen-containing polysaccharide present in arthropod exoskeleton.<br>V. Lecithin is a glycolipid present in cell membranes.<br><br>How many are correct?",
+    "opts": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "ans": 2,
+    "exp": "(i)–(iv) correct; (v) wrong—lecithin is a phospholipid, not a glycolipid.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 33,
+    "ch": "Biomolecules",
+    "type": "Match",
+    "diff": "Hard",
+    "q": "Match enzyme class (I) with feature (II):<br><table><tr><th>Column I</th><th>Column II</th></tr><tr><td>P. Oxidoreductase</td><td>1. Group transfer between two substrates</td></tr><tr><td>Q. Transferase</td><td>2. Joining of C–C/C–O/C–N bonds with ATP hydrolysis</td></tr><tr><td>R. Lyase</td><td>3. Removal of groups non-hydrolytically leaving double bonds</td></tr><tr><td>S. Ligase</td><td>4. Oxidation–reduction between two substrates</td></tr></table>",
+    "opts": [
+      "P-4, Q-1, R-3, S-2",
+      "P-1, Q-4, R-2, S-3",
+      "P-4, Q-1, R-2, S-3",
+      "P-3, Q-2, R-1, S-4"
+    ],
+    "ans": 0,
+    "exp": "Oxidoreductase—redox; Transferase—group transfer; Lyase—non-hydrolytic bond cleavage forming double bonds; Ligase—ATP-dependent joining.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 34,
+    "ch": "Biomolecules",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Malonate inhibits the enzyme succinate dehydrogenase because it:",
+    "opts": [
+      "Binds irreversibly to the cofactor (FAD) and destroys it",
+      "Is structurally similar to succinate and competes for the active site",
+      "Denatures the enzyme by altering optimum pH",
+      "Acts allosterically at a site distant from the active site"
+    ],
+    "ans": 1,
+    "exp": "NCERT: malonate resembles succinate and competes at the active site of succinate dehydrogenase (which converts succinate to fumarate)—classic competitive inhibition.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 35,
+    "ch": "Biomolecules",
+    "type": "Case-based",
+    "diff": "Hard",
+    "q": "<strong>Passage:</strong><br>A polypeptide chain folds up to expose its –COOH and –NH₂ groups on the surface; disulphide bridges crosslink different regions; multiple chains may come together forming a subunit architecture. Adult human haemoglobin is a classical example.<br><br>Which level of structure corresponds to the 'subunit assembly' described?",
+    "opts": [
+      "Primary structure",
+      "Secondary structure",
+      "Tertiary structure",
+      "Quaternary structure"
+    ],
+    "ans": 3,
+    "exp": "Quaternary structure = spatial arrangement of multiple polypeptide subunits. Haemoglobin (2α + 2β) is the classic NCERT example.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 36,
+    "ch": "Biomolecules",
+    "type": "Case-based",
+    "diff": "Hard",
+    "q": "In the same passage, the description of a chain folding to form a 'hollow woollen ball' with hydrophilic residues exposed best corresponds to:",
+    "opts": [
+      "Primary",
+      "Secondary (right-handed α-helix only)",
+      "Tertiary",
+      "Quaternary"
+    ],
+    "ans": 2,
+    "exp": "NCERT compares tertiary structure to a 'hollow woollen ball'—the 3D folded form critical for biological function.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 37,
+    "ch": "Biomolecules",
+    "type": "Numerical",
+    "diff": "Hard",
+    "q": "A linear, unbranched polypeptide is formed by condensation polymerisation of 150 amino acid residues. The number of peptide bonds formed and water molecules released are respectively:",
+    "opts": [
+      "150 and 150",
+      "149 and 149",
+      "151 and 149",
+      "149 and 150"
+    ],
+    "ans": 1,
+    "exp": "For n residues in a linear chain, (n−1) peptide bonds and (n−1) waters: 149 and 149.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 38,
+    "ch": "Biomolecules",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Regarding nucleotides and nucleosides, which statement is correct per NCERT?",
+    "opts": [
+      "A nucleoside contains base + sugar + phosphate",
+      "AMP is an example of a nucleoside",
+      "A nucleotide is a nucleoside linked to a phosphate via a phosphoester bond",
+      "Adenine and cytosine are purines; guanine and thymine are pyrimidines"
+    ],
+    "ans": 2,
+    "exp": "Nucleoside = base + sugar; nucleotide = base + sugar + phosphate. Purines: A, G; Pyrimidines: C, U, T.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 39,
+    "ch": "Biomolecules",
+    "type": "Multi-statement",
+    "diff": "Hard",
+    "q": "From the list, count how many are biomicromolecules (<1000 Da) per NCERT:<br>Glucose, Cellulose, Glycine, Haemoglobin, AMP, Cholesterol, RuBisCO, Chitin, Lecithin, Chlorophyll",
+    "opts": [
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "ans": 2,
+    "exp": "Biomicromolecules: glucose, glycine, AMP, cholesterol, lecithin, chlorophyll (6). Cellulose, haemoglobin, RuBisCO, chitin are biomacromolecules.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 40,
+    "ch": "Biomolecules",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Which statement about Watson–Crick B-form DNA is INCORRECT per NCERT?",
+    "opts": [
+      "The two strands are antiparallel (5'→3' and 3'→5')",
+      "The helix is right-handed with 10 base pairs per turn",
+      "The pitch is 3.4 nm and rise per base pair is 0.34 nm",
+      "Adenine forms three hydrogen bonds with thymine while guanine forms two with cytosine"
+    ],
+    "ans": 3,
+    "exp": "A=T has 2 H-bonds; G≡C has 3 H-bonds. Option (d) reverses this.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 41,
+    "ch": "Biomolecules",
+    "type": "Assertion-Reason",
+    "diff": "Hard",
+    "q": "<strong>Assertion (A):</strong><br> Coenzymes such as NAD and NADP associate with the apoenzyme only transiently during catalysis.<br><br><strong>Reason (R):</strong><br> Prosthetic groups like haem in peroxidase and catalase are tightly and permanently bound to the apoenzyme.",
+    "opts": [
+      "Both A and R are true and R is the correct explanation of A",
+      "Both A and R are true but R is NOT the correct explanation of A",
+      "A is true but R is false",
+      "A is false but R is true"
+    ],
+    "ans": 1,
+    "exp": "Both are true NCERT facts but describe two different cofactor types independently; R does not explain A.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 42,
+    "ch": "Biomolecules",
+    "type": "Diagram-based",
+    "diff": "Hard",
+    "q": "A structural diagram shows an α-carbon bonded to: (i) –NH₂ above, (ii) –COOH right, (iii) –H left, (iv) –CH₂–C₆H₄–OH below. The amino acid and its class are:",
+    "opts": [
+      "Phenylalanine; aromatic",
+      "Tyrosine; aromatic",
+      "Tryptophan; aromatic",
+      "Lysine; basic"
+    ],
+    "ans": 1,
+    "exp": "–CH₂–C₆H₄–OH (para-hydroxybenzyl) is the tyrosine side chain. Tyrosine is aromatic (with phenylalanine, tryptophan).",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 43,
+    "ch": "Biomolecules",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Which bond is formed with loss of a water molecule AND is the characteristic linkage between two monosaccharide units in a polysaccharide?",
+    "opts": [
+      "Peptide bond",
+      "Phosphodiester bond",
+      "Glycosidic bond",
+      "Disulphide bridge"
+    ],
+    "ans": 2,
+    "exp": "Two sugars are linked by a glycosidic bond via dehydration. Peptide—amino acids; phosphodiester—nucleotides; disulphide—cysteines.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 44,
+    "ch": "Biomolecules",
+    "type": "Match",
+    "diff": "Hard",
+    "q": "Match cofactor (I) with enzyme (II):<br><table><tr><th>Column I</th><th>Column II</th></tr><tr><td>P. Zn²⁺</td><td>1. Cytochrome oxidase</td></tr><tr><td>Q. Cu</td><td>2. Carboxypeptidase</td></tr><tr><td>R. Haem</td><td>3. NAD/NADP-linked dehydrogenases</td></tr><tr><td>S. Niacin-derived coenzyme</td><td>4. Peroxidase/Catalase</td></tr></table>",
+    "opts": [
+      "P-2, Q-1, R-4, S-3",
+      "P-1, Q-2, R-3, S-4",
+      "P-2, Q-4, R-1, S-3",
+      "P-4, Q-1, R-2, S-3"
+    ],
+    "ans": 0,
+    "exp": "Zn—carboxypeptidase; Cu—cytochrome oxidase; haem—peroxidase/catalase; NAD/NADP (from niacin)—dehydrogenases.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 45,
+    "ch": "Biomolecules",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Which statement about the living state per NCERT is correct?",
+    "opts": [
+      "Living systems are in thermodynamic equilibrium permitting work",
+      "Living state is a non-equilibrium steady state; every reaction is enzyme-catalysed with essentially no uncatalysed metabolic conversion",
+      "Metabolism continues in cells even without enzymes because biomolecules are inherently reactive",
+      "Anabolic pathways release energy while catabolic pathways consume energy"
+    ],
+    "ans": 1,
+    "exp": "NCERT: living state is a non-equilibrium steady state capable of performing work; all metabolic conversions are enzyme-catalysed.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 46,
+    "ch": "Biomolecules",
+    "type": "Numerical",
+    "diff": "Hard",
+    "q": "A cellular extract (10 g) after TCA grinding and filtration yields 2.5 g on cheesecloth (retentate) containing proteins, nucleic acids, polysaccharides and membranous lipid vesicles. What fraction of the tissue (by mass) constitutes the biomacromolecular/acid-insoluble pool?",
+    "opts": [
+      "25%",
+      "50%",
+      "75%",
+      "10%"
+    ],
+    "ans": 0,
+    "exp": "Retentate = 2.5/10 = 25% (acid-insoluble macromolecular fraction). The remaining 75% is the acid-soluble cytoplasmic pool (biomicromolecules).",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 47,
+    "ch": "Biomolecules",
+    "type": "Case-based",
+    "diff": "Hard",
+    "q": "<strong>Passage:</strong><br>When an enzyme reaction mixture is gradually heated, activity first rises, reaches a peak, and then falls sharply. At a certain pH, rates are maximum; further change in pH reduces activity.<br><br>The sharp fall in activity at very high temperatures is due to:",
+    "opts": [
+      "Decrease in activation energy",
+      "Denaturation of the enzyme (loss of tertiary structure)",
+      "Formation of more ES complex",
+      "Decrease in substrate concentration"
+    ],
+    "ans": 1,
+    "exp": "Beyond optimum temperature, enzymes denature (tertiary structure unfolds) and activity is lost.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 48,
+    "ch": "Biomolecules",
+    "type": "Case-based",
+    "diff": "Hard",
+    "q": "On increasing substrate concentration at fixed enzyme concentration, velocity rises and then reaches a plateau (Vmax). This saturation occurs because:",
+    "opts": [
+      "Substrate becomes inhibitory beyond the optimum concentration",
+      "All active sites get occupied by substrate and no free enzyme remains",
+      "Enzymes begin to denature at high substrate concentration",
+      "pH changes due to substrate"
+    ],
+    "ans": 1,
+    "exp": "Velocity plateaus when all active sites are saturated—the classic hyperbolic Vmax curve.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 49,
+    "ch": "Biomolecules",
+    "type": "Multi-statement",
+    "diff": "Hard",
+    "q": "Count the INCORRECT statements below:<br><br>I. Palmitic acid contains 16 carbons and is saturated.<br>II. Arachidonic acid contains 20 carbons with 4 double bonds.<br>III. Glycerol is trihydroxy propane.<br>IV. Triglycerides are esters of glycerol with three fatty acids.<br>V. Uracil is a purine present in RNA that replaces thymine of DNA.<br>VI. Ribozymes are RNA molecules that act as enzymes.",
+    "opts": [
+      "1",
+      "2",
+      "3",
+      "0"
+    ],
+    "ans": 0,
+    "exp": "Only (v) is incorrect—uracil is a pyrimidine, not a purine. The rest are directly from NCERT.",
+    "ref": "NCERT Class 11 Biology"
+  },
+  {
+    "id": 50,
+    "ch": "Biomolecules",
+    "type": "Diagram-based",
+    "diff": "Hard",
+    "q": "A schematic shows a polypeptide chain as a flat zig-zag ribbon with the left end labelled H₂N– and the right end labelled –COOH. The single-lettered sequence Met–Ala–Gly–…–Lys is written left to right. Which level of structure and which convention are shown?",
+    "opts": [
+      "Primary; written from C-terminal (left) to N-terminal (right)",
+      "Primary; written from N-terminal (left) to C-terminal (right)",
+      "Secondary (α-helix); N→C",
+      "Tertiary; C→N"
+    ],
+    "ans": 1,
+    "exp": "Primary structure = linear sequence. Convention: write N-terminal (free –NH₂) on the left, C-terminal (free –COOH) on the right.",
+    "ref": "NCERT Class 11 Biology"
+  }
+];
+
+      const TOTAL = Q.length;
+      const LETTERS = ["A", "B", "C", "D"];
+      let currentQ = 0;
+      let userAnswers = new Array(TOTAL).fill(-1);
+      let reviewFlags = new Array(TOTAL).fill(false);
+      let submitted = false;
+      let timerSec = 0;
+      let timerInterval;
+
+      function startQuiz() {
+        document.getElementById("heroSection").style.display = "none";
+        document.getElementById("progressWrap").classList.add("active");
+        document.getElementById("paletteToggle").classList.add("active");
+        buildAllCards();
+        buildPalette();
+        showQuestion(0);
+        startTimer();
+      }
+
+      function buildAllCards() {
+        const area = document.getElementById("quizArea");
+        let html = "";
+        Q.forEach((q, i) => {
+          const topic = q.ch;
+          const diffClass = q.diff === "Hard" ? "hard" : "med";
+          html += `<div class="q-card" id="qcard-${i}">
+            <div class="q-header">
+              <span class="q-num">Q${q.id}</span>
+              <div class="q-meta">
+                <span class="q-tag bio">${topic}</span>
+                <span class="q-tag type">${q.type}</span>
+                <span class="q-tag ${diffClass}">${q.diff}</span>
+              </div>
+            </div>
+            <div class="q-text">${q.q}</div>
+            <div class="options">
+              ${q.opts
+                .map(
+                  (o, j) => `
+                <button class="opt-btn" id="opt-${i}-${j}" onclick="selectOpt(${i},${j})">
+                  <span class="opt-letter">${LETTERS[j]}</span>
+                  <span>${o}</span>
+                </button>
+              `,
+                )
+                .join("")}
+            </div>
+            <div class="nav-btns">
+              <button class="nav-btn" onclick="prevQuestion()" ${i === 0 ? "disabled" : ""}>← Prev</button>
+              <button class="nav-btn primary" onclick="nextQuestion()" id="next-btn-${i}">
+                ${i === TOTAL - 1 ? "Finish →" : "Next →"}
+              </button>
+              <button class="nav-btn clear-response" onclick="clearResponse(${i})">✕ Clear</button>
+              <button class="nav-btn mark-review${reviewFlags[i] ? " marked" : ""}" id="mark-${i}" onclick="toggleReview(${i})">
+                ${reviewFlags[i] ? "★ Marked" : "☆ Mark for Review"}
+              </button>
+            </div>
+          </div>`;
+        });
+        area.innerHTML = html;
+      }
+
+      function showQuestion(idx) {
+        document
+          .querySelectorAll(".q-card")
+          .forEach((c) => c.classList.remove("active"));
+        document.getElementById(`qcard-${idx}`).classList.add("active");
+        currentQ = idx;
+        updateProgress();
+        updatePalette();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function selectOpt(qIdx, optIdx) {
+        if (submitted) return;
+        for (let i = 0; i < 4; i++) {
+          const el = document.getElementById(`opt-${qIdx}-${i}`);
+          if (el) el.classList.remove("selected");
+        }
+        document
+          .getElementById(`opt-${qIdx}-${optIdx}`)
+          .classList.add("selected");
+        userAnswers[qIdx] = optIdx;
+        updatePalette();
+        updateProgress();
+      }
+
+      function clearResponse(qIdx) {
+        if (submitted) return;
+        userAnswers[qIdx] = -1;
+        for (let i = 0; i < 4; i++) {
+          const el = document.getElementById(`opt-${qIdx}-${i}`);
+          if (el) el.classList.remove("selected");
+        }
+        updatePalette();
+        updateProgress();
+      }
+
+      function nextQuestion() {
+        if (currentQ < TOTAL - 1) {
+          showQuestion(currentQ + 1);
+        } else {
+          finishQuiz();
+        }
+      }
+
+      function prevQuestion() {
+        if (currentQ > 0) showQuestion(currentQ - 1);
+      }
+
+      function toggleReview(idx) {
+        reviewFlags[idx] = !reviewFlags[idx];
+        const btn = document.getElementById(`mark-${idx}`);
+        btn.classList.toggle("marked", reviewFlags[idx]);
+        btn.textContent = reviewFlags[idx] ? "★ Marked" : "☆ Mark for Review";
+        updatePalette();
+      }
+
+      function updateProgress() {
+        const answered = userAnswers.filter((a) => a !== -1).length;
+        document.getElementById("qCounter").textContent =
+          `Q ${currentQ + 1} / ${TOTAL}`;
+        document.getElementById("progressFill").style.width =
+          (answered / TOTAL) * 100 + "%";
+      }
+
+      function buildPalette() {
+        const grid = document.getElementById("paletteGrid");
+        let html = "";
+        for (let i = 0; i < TOTAL; i++) {
+          html += `<div class="palette-dot" id="pdot-${i}" onclick="showQuestion(${i})">${i + 1}</div>`;
+        }
+        grid.innerHTML = html;
+      }
+
+      function updatePalette() {
+        for (let i = 0; i < TOTAL; i++) {
+          const dot = document.getElementById(`pdot-${i}`);
+          dot.className = "palette-dot";
+          if (i === currentQ) dot.classList.add("current");
+          if (userAnswers[i] !== -1) dot.classList.add("answered");
+          if (reviewFlags[i]) dot.classList.add("review");
+        }
+      }
+
+      function togglePalette() {
+        document.getElementById("palettePanel").classList.toggle("open");
+      }
+
+      function startTimer() {
+        timerInterval = setInterval(() => {
+          timerSec++;
+          const m = String(Math.floor(timerSec / 60)).padStart(2, "0");
+          const s = String(timerSec % 60).padStart(2, "0");
+          document.getElementById("progressTimer").textContent = `${m}:${s}`;
+        }, 1000);
+      }
+
+      function finishQuiz() {
+        if (!window._isReplay) {
+          const unanswered = userAnswers.filter((a) => a === -1).length;
+          if (unanswered > 0) {
+            if (
+              !confirm(
+                `You have ${unanswered} unanswered question${unanswered > 1 ? "s" : ""}. Submit anyway?`,
+              )
+            )
+              return;
+          }
+        }
+        submitQuiz();
+      }
+
+      function saveAttempt(data) {
+        try {
+          const results = JSON.parse(
+            localStorage.getItem("papResults") || "[]",
+          );
+          results.unshift(data);
+          localStorage.setItem("papResults", JSON.stringify(results));
+        } catch (e) {}
+      }
+
+      function submitQuiz() {
+        submitted = true;
+        clearInterval(timerInterval);
+
+        document.getElementById("quizArea").classList.add("hidden");
+        document.getElementById("paletteToggle").style.display = "none";
+        document.getElementById("palettePanel").style.display = "none";
+        document.getElementById("progressWrap").style.display = "none";
+
+        let correct = 0,
+          wrong = 0,
+          skipped = 0;
+        let bioCorrect = 0,
+          bioTotal = 0;
+
+        Q.forEach((q, i) => {
+          bioTotal++;
+          if (userAnswers[i] === -1) {
+            skipped++;
+          } else if (userAnswers[i] === q.ans) {
+            correct++;
+            bioCorrect++;
+          } else {
+            wrong++;
+          }
+        });
+
+        const neetScore = correct * 4 - wrong * 1;
+        const pct = Math.round((correct / TOTAL) * 100);
+        const circumference = 2 * Math.PI * 65;
+        const offset = circumference - (pct / 100) * circumference;
+        const ringColor =
+          pct >= 80
+            ? "var(--green)"
+            : pct >= 50
+              ? "var(--amber)"
+              : "var(--red)";
+        const grade =
+          pct >= 90
+            ? "Outstanding!"
+            : pct >= 75
+              ? "Great Work!"
+              : pct >= 50
+                ? "Keep Practicing!"
+                : "Needs Revision";
+
+        const timeStr = document.getElementById("progressTimer").textContent;
+        const bioPct = bioTotal ? Math.round((bioCorrect / bioTotal) * 100) : 0;
+
+        if (!window._isReplay) {
+          saveAttempt({
+            id: Date.now(),
+            paperFile: "18AP2.html",
+            paperName: "Ultra Concept Bank: Cell Cycle & Biomolecules",
+            paperTag: "Advanced",
+            correct,
+            wrong,
+            skipped,
+            totalQuestions: TOTAL,
+            neetScore,
+            maxScore: TOTAL * 4,
+            percentage: pct,
+            timeTaken: timeStr,
+            timerSeconds: timerSec,
+            userAnswers: [...userAnswers],
+          });
+        }
+
+        const res = document.getElementById("resultsSection");
+        res.style.display = "block";
+
+        let rhtml = `
+<div class="results-card">
+  <h2>${grade}</h2>
+  <div class="score-ring">
+    <svg width="160" height="160" viewBox="0 0 160 160">
+      <circle class="ring-bg" cx="80" cy="80" r="65"/>
+      <circle class="ring-fill" cx="80" cy="80" r="65"
+        stroke="${ringColor}"
+        stroke-dasharray="${circumference}"
+        stroke-dashoffset="${circumference}"
+        id="scoreRing"/>
+    </svg>
+    <div class="score-center">
+      <div class="pct">${pct}%</div>
+      <div class="of">${correct}/${TOTAL}</div>
+    </div>
+  </div>
+  <div class="stats-grid">
+    <div class="stat-item neet"><div class="stat-num">${neetScore}</div><div class="stat-lbl">NEET Score</div></div>
+    <div class="stat-item correct"><div class="stat-num">${correct}</div><div class="stat-lbl">Correct</div></div>
+    <div class="stat-item wrong"><div class="stat-num">${wrong}</div><div class="stat-lbl">Wrong</div></div>
+    <div class="stat-item skip"><div class="stat-num">${skipped}</div><div class="stat-lbl">Skipped</div></div>
+  </div>
+  <div style="margin-top:16px;font-size:13px;color:var(--text3)">Time: ${timeStr} · Max: ${TOTAL * 4}</div>
+</div>
+
+<div class="chapter-breakdown">
+  <h3>Chapter Breakdown</h3>
+  <div class="chapter-bar-wrap">
+    <div class="chapter-bar-header">
+      <span style="color:var(--accent)">🧬 Biology · Complete Syllabus</span>
+      <span style="color:var(--text2)">${bioCorrect}/${bioTotal} (${bioPct}%)</span>
+    </div>
+    <div class="chapter-bar-track">
+      <div class="chapter-bar-fill" id="bioBar" style="width:0%;background:var(--accent)"></div>
+    </div>
+  </div>
+</div>
+
+<div class="review-title">Complete Walkthrough</div>
+<div class="review-sub">Every question reviewed with NCERT-based explanations.</div>
+<div class="review-filter">
+  <button class="filter-btn active" onclick="filterReview('all',this)">All (${TOTAL})</button>
+  <button class="filter-btn" onclick="filterReview('wrong',this)">❌ Wrong (${wrong})</button>
+  <button class="filter-btn" onclick="filterReview('skipped',this)">⏭️ Skipped (${skipped})</button>
+  <button class="filter-btn" onclick="filterReview('correct',this)">✅ Correct (${correct})</button>
+</div>
+<div id="reviewCards"></div>`;
+
+        res.innerHTML = rhtml;
+        renderReviewCards("all");
+
+        setTimeout(() => {
+          document.getElementById("scoreRing").style.strokeDashoffset = offset;
+          document.getElementById("bioBar").style.width = bioPct + "%";
+        }, 100);
+
+        res.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function renderReviewCards(filter) {
+        const container = document.getElementById("reviewCards");
+        let html = "";
+
+        Q.forEach((q, i) => {
+          const ua = userAnswers[i];
+          const isCorrect = ua === q.ans;
+          const isSkipped = ua === -1;
+          const isWrong = !isCorrect && !isSkipped;
+
+          if (filter === "wrong" && !isWrong) return;
+          if (filter === "skipped" && !isSkipped) return;
+          if (filter === "correct" && !isCorrect) return;
+
+          let cardClass, badgeClass, badgeText;
+          if (isCorrect) {
+            cardClass = "rc-correct";
+            badgeClass = "badge-correct";
+            badgeText = "✅ Correct";
+          } else if (isSkipped) {
+            cardClass = "rc-skipped";
+            badgeClass = "badge-skipped";
+            badgeText = "⏭️ Skipped";
+          } else {
+            cardClass = "rc-wrong";
+            badgeClass = "badge-wrong";
+            badgeText = "❌ Wrong";
+          }
+
+          const topic = q.ch;
+
+          html += `<div class="review-card ${cardClass}">
+            <div class="rc-header">
+              <span class="q-num">Q${q.id}</span>
+              <span class="q-tag bio">${topic}</span>
+              <span class="rc-badge ${badgeClass}">${badgeText}</span>
+              <span class="q-type">${q.type}</span>
+            </div>
+            <div class="rc-q">${q.q}</div>
+            <div class="rc-opts">`;
+
+          q.opts.forEach((o, j) => {
+            let optClass = "rc-opt";
+            let marker = LETTERS[j];
+            if (j === q.ans) {
+              optClass += " rc-opt-correct";
+              marker = "✓";
+            } else if (j === ua && isWrong) {
+              optClass += " rc-opt-wrong";
+              marker = "✗";
+            }
+            html += `<div class="${optClass}">
+              <span class="rc-letter">${marker}</span>
+              <span>${o}</span>
+            </div>`;
+          });
+
+          html += `</div>
+            <div class="rc-exp">
+              <h4>💡 Explanation</h4>
+              <p>${q.exp}</p>
+              <span class="ncert-ref">📖 ${q.ref}</span>
+            </div>
+          </div>`;
+        });
+
+        if (!html)
+          html = `<p style="text-align:center;color:var(--text3);padding:30px 0">No questions match this filter.</p>`;
+        container.innerHTML = html;
+      }
+
+      function filterReview(type, btn) {
+        document
+          .querySelectorAll(".filter-btn")
+          .forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderReviewCards(type);
+      }
+
+      window.addEventListener("scroll", () => {
+        const pw = document.getElementById("progressWrap");
+        if (window.scrollY > 200) {
+          pw.classList.add("scrolled");
+        } else {
+          pw.classList.remove("scrolled");
+        }
+      });
+
+      (function loadSavedAttempt() {
+        const params = new URLSearchParams(window.location.search);
+        const attemptId = params.get("attempt");
+        if (!attemptId) return;
+        const saved = JSON.parse(localStorage.getItem("papResults") || "[]");
+        const attempt = saved.find((r) => r.id === Number(attemptId));
+        if (!attempt) return;
+        window._isReplay = true;
+        userAnswers = attempt.userAnswers;
+        timerSec = attempt.timerSeconds || 0;
+        const m = String(Math.floor(timerSec / 60)).padStart(2, "0");
+        const s = String(timerSec % 60).padStart(2, "0");
+        document.getElementById("progressTimer").textContent = `${m}:${s}`;
+        document.getElementById("heroSection").style.display = "none";
+        submitQuiz();
+      })();
+    </script>
+  </body>
+</html>
