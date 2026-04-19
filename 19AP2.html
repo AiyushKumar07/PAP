@@ -1,0 +1,2174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEET 2026: Ultra In-Depth Chemistry Assessment — Analytical Paradigm</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --bg: #0a0e17;
+        --surface: #111827;
+        --surface2: #1a2236;
+        --surface3: #222d44;
+        --border: #2a3654;
+        --text: #e2e8f0;
+        --text2: #94a3b8;
+        --text3: #64748b;
+        --accent: #06d6a0;
+        --accent2: #118ab2;
+        --red: #ef4444;
+        --green: #22c55e;
+        --amber: #f59e0b;
+        --purple: #a78bfa;
+        --pink: #f472b6;
+        --radius: 12px;
+        --radius-sm: 8px;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "IBM Plex Sans", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background:
+          radial-gradient(
+            ellipse at 20% 0%,
+            rgba(6, 214, 160, 0.06) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse at 80% 100%,
+            rgba(17, 138, 178, 0.06) 0%,
+            transparent 50%
+          );
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .container {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 20px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero {
+        text-align: center;
+        padding: 50px 20px 40px;
+        position: relative;
+      }
+      .hero-badge {
+        display: inline-block;
+        padding: 6px 18px;
+        border-radius: 50px;
+        background: rgba(6, 214, 160, 0.12);
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 18px;
+        border: 1px solid rgba(6, 214, 160, 0.2);
+      }
+      .hero h1 {
+        font-family: "DM Serif Display", serif;
+        font-size: clamp(28px, 5vw, 44px);
+        color: #fff;
+        margin-bottom: 12px;
+        line-height: 1.2;
+      }
+      .hero h1 span {
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .hero p {
+        color: var(--text2);
+        font-size: 16px;
+        max-width: 560px;
+        margin: 0 auto 28px;
+      }
+      .hero-tags {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 32px;
+      }
+      .hero-tags span {
+        padding: 6px 16px;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .tag-bio {
+        background: rgba(6, 214, 160, 0.1);
+        color: var(--accent);
+        border: 1px solid rgba(6, 214, 160, 0.22);
+      }
+      .tag-chem {
+        background: rgba(245, 158, 11, 0.1);
+        color: var(--amber);
+        border: 1px solid rgba(245, 158, 11, 0.22);
+      }
+      .start-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 16px 48px;
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--bg);
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 25px rgba(6, 214, 160, 0.3);
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+      .start-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 35px rgba(6, 214, 160, 0.4);
+      }
+
+      .progress-wrap {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(10, 14, 23, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 14px 20px;
+        border-bottom: 1px solid var(--border);
+        display: none;
+        transition: box-shadow 0.3s;
+      }
+      .progress-wrap.active {
+        display: block;
+      }
+      .progress-wrap.scrolled {
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+      }
+      .progress-inner {
+        max-width: 860px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .progress-text {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text2);
+        white-space: nowrap;
+        min-width: 90px;
+      }
+      .progress-text b {
+        color: var(--accent);
+      }
+      .progress-bar {
+        flex: 1;
+        height: 6px;
+        background: var(--surface3);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent), var(--accent2));
+        border-radius: 10px;
+        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        width: 0%;
+      }
+      .progress-timer {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+        color: var(--accent);
+        min-width: 60px;
+        text-align: right;
+      }
+
+      .q-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 32px;
+        margin-bottom: 24px;
+        display: none;
+        animation: fadeIn 0.4s ease both;
+      }
+      .q-card.active {
+        display: block;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .q-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+        flex-wrap: wrap;
+      }
+      .q-num {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--bg);
+        background: var(--accent);
+        padding: 4px 10px;
+        border-radius: 6px;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .q-meta {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .q-tag {
+        font-size: 11px;
+        padding: 3px 10px;
+        border-radius: 50px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+      .q-tag.bio {
+        background: rgba(6, 214, 160, 0.12);
+        color: var(--accent);
+      }
+      .q-tag.type {
+        background: rgba(167, 139, 250, 0.12);
+        color: var(--purple);
+      }
+      .q-tag.hard {
+        background: rgba(239, 68, 68, 0.12);
+        color: var(--red);
+      }
+      .q-tag.med {
+        background: rgba(245, 158, 11, 0.12);
+        color: var(--amber);
+      }
+      .q-type {
+        font-size: 11px;
+        color: var(--text3);
+        font-weight: 500;
+        margin-left: auto;
+      }
+      .q-text {
+        font-size: 15.5px;
+        color: #fff;
+        line-height: 1.7;
+        margin-bottom: 20px;
+      }
+      .q-text em {
+        color: var(--accent);
+        font-style: normal;
+        font-weight: 600;
+      }
+      .q-text .formula {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 14px;
+        background: var(--surface2);
+        padding: 2px 8px;
+        border-radius: 4px;
+        color: var(--amber);
+      }
+      .q-text table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 12px 0;
+        font-size: 14px;
+      }
+      .q-text table th,
+      .q-text table td {
+        padding: 8px 12px;
+        border: 1px solid var(--border);
+        text-align: left;
+      }
+      .q-text table th {
+        background: var(--surface2);
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      .options {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .opt-btn {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 14px 18px;
+        background: var(--surface2);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        transition: all 0.2s;
+        text-align: left;
+        width: 100%;
+        font-size: 14.5px;
+        color: var(--text);
+        line-height: 1.5;
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+      .opt-btn:hover {
+        border-color: var(--accent);
+        background: rgba(6, 214, 160, 0.05);
+        transform: translateX(4px);
+      }
+      .opt-btn .opt-letter {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        color: var(--text3);
+        font-size: 13px;
+        min-width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        background: var(--surface3);
+        flex-shrink: 0;
+        margin-top: 1px;
+        transition: all 0.2s;
+      }
+      .opt-btn.selected {
+        border-color: var(--accent);
+        background: rgba(6, 214, 160, 0.08);
+      }
+      .opt-btn.selected .opt-letter {
+        background: var(--accent);
+        color: var(--bg);
+      }
+
+      .nav-btns {
+        display: flex;
+        gap: 12px;
+        margin-top: 24px;
+        flex-wrap: wrap;
+      }
+      .nav-btn {
+        padding: 10px 24px;
+        border-radius: 8px;
+        font-family: "IBM Plex Sans", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        border: 1.5px solid var(--border);
+        background: var(--surface2);
+        color: var(--text);
+      }
+      .nav-btn:hover {
+        border-color: var(--accent);
+      }
+      .nav-btn.primary {
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        border: none;
+        color: var(--bg);
+        font-weight: 700;
+        box-shadow: 0 2px 12px rgba(6, 214, 160, 0.2);
+      }
+      .nav-btn.primary:hover {
+        box-shadow: 0 4px 20px rgba(6, 214, 160, 0.32);
+        transform: translateY(-1px);
+      }
+      .nav-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+      .mark-review {
+        margin-left: auto;
+        font-size: 13px;
+        color: var(--amber);
+        background: rgba(245, 158, 11, 0.08);
+        border-color: rgba(245, 158, 11, 0.25);
+      }
+      .mark-review.marked {
+        background: rgba(245, 158, 11, 0.2);
+        border-color: var(--amber);
+      }
+      .clear-response {
+        font-size: 13px;
+        color: var(--red);
+        background: rgba(239, 68, 68, 0.08);
+        border-color: rgba(239, 68, 68, 0.25);
+      }
+      .clear-response:hover {
+        background: rgba(239, 68, 68, 0.15);
+        border-color: var(--red);
+      }
+
+      .palette-toggle {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: var(--bg);
+        border: none;
+        font-size: 20px;
+        font-weight: 700;
+        cursor: pointer;
+        z-index: 200;
+        box-shadow: 0 4px 20px rgba(6, 214, 160, 0.4);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s;
+      }
+      .palette-toggle:hover {
+        transform: scale(1.06);
+      }
+      .palette-toggle.active {
+        display: flex;
+      }
+      .palette-panel {
+        position: fixed;
+        bottom: 84px;
+        right: 24px;
+        width: 300px;
+        max-height: 400px;
+        overflow-y: auto;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 20px;
+        z-index: 200;
+        display: none;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      }
+      .palette-panel.open {
+        display: block;
+      }
+      .palette-title {
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 14px;
+        color: var(--text2);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .palette-grid {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        gap: 6px;
+      }
+      .palette-dot {
+        width: 32px;
+        height: 32px;
+        border-radius: 7px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 700;
+        cursor: pointer;
+        border: 1.5px solid var(--border);
+        background: var(--surface2);
+        color: var(--text3);
+        transition: all 0.15s;
+      }
+      .palette-dot:hover {
+        border-color: var(--accent);
+      }
+      .palette-dot.answered {
+        background: rgba(6, 214, 160, 0.15);
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .palette-dot.review {
+        background: rgba(245, 158, 11, 0.15);
+        border-color: var(--amber);
+        color: var(--amber);
+      }
+      .palette-dot.current {
+        box-shadow: 0 0 0 2px var(--accent);
+      }
+      .palette-legend {
+        display: flex;
+        gap: 16px;
+        margin-top: 14px;
+        font-size: 11px;
+        color: var(--text3);
+        flex-wrap: wrap;
+      }
+      .palette-legend span {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .legend-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 3px;
+      }
+
+      #resultsSection {
+        display: none;
+      }
+      .results-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 40px 30px;
+        max-width: 500px;
+        margin: 0 auto 40px;
+        text-align: center;
+      }
+      .results-card h2 {
+        font-family: "DM Serif Display", serif;
+        font-size: 32px;
+        color: #fff;
+        margin-bottom: 8px;
+      }
+      .score-ring {
+        width: 160px;
+        height: 160px;
+        margin: 24px auto;
+        position: relative;
+      }
+      .score-ring svg {
+        transform: rotate(-90deg);
+      }
+      .score-ring .ring-bg {
+        fill: none;
+        stroke: var(--surface3);
+        stroke-width: 10;
+      }
+      .score-ring .ring-fill {
+        fill: none;
+        stroke-width: 10;
+        stroke-linecap: round;
+        transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .score-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+      .score-center .pct {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 36px;
+        font-weight: 700;
+        color: #fff;
+      }
+      .score-center .of {
+        font-size: 13px;
+        color: var(--text3);
+      }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-top: 24px;
+      }
+      .stat-item {
+        padding: 14px 8px;
+        background: var(--surface2);
+        border-radius: var(--radius-sm);
+        text-align: center;
+      }
+      .stat-num {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 22px;
+        font-weight: 700;
+      }
+      .stat-lbl {
+        font-size: 11px;
+        color: var(--text3);
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        margin-top: 4px;
+      }
+      .stat-item.neet .stat-num {
+        color: var(--accent2);
+      }
+      .stat-item.correct .stat-num {
+        color: var(--green);
+      }
+      .stat-item.wrong .stat-num {
+        color: var(--red);
+      }
+      .stat-item.skip .stat-num {
+        color: var(--amber);
+      }
+
+      .chapter-breakdown {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 24px;
+        margin-bottom: 40px;
+      }
+      .chapter-breakdown h3 {
+        font-family: "DM Serif Display", serif;
+        font-size: 18px;
+        color: #fff;
+        margin-bottom: 20px;
+      }
+      .chapter-bar-wrap {
+        margin-bottom: 16px;
+      }
+      .chapter-bar-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .chapter-bar-track {
+        height: 8px;
+        background: var(--surface3);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .chapter-bar-fill {
+        height: 100%;
+        border-radius: 4px;
+        transition: width 1s ease;
+      }
+
+      .review-title {
+        font-family: "DM Serif Display", serif;
+        font-size: 28px;
+        color: #fff;
+        margin: 40px 0 12px;
+        text-align: center;
+      }
+      .review-sub {
+        text-align: center;
+        color: var(--text2);
+        font-size: 14px;
+        margin-bottom: 24px;
+      }
+      .review-filter {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+      }
+      .filter-btn {
+        padding: 8px 20px;
+        border-radius: 50px;
+        border: 1px solid var(--border);
+        background: transparent;
+        color: var(--text2);
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .filter-btn:hover,
+      .filter-btn.active {
+        background: var(--accent);
+        color: var(--bg);
+        border-color: var(--accent);
+      }
+
+      .review-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 28px;
+        margin-bottom: 20px;
+      }
+      .review-card.rc-correct {
+        border-left: 4px solid var(--green);
+      }
+      .review-card.rc-wrong {
+        border-left: 4px solid var(--red);
+      }
+      .review-card.rc-skipped {
+        border-left: 4px solid var(--amber);
+      }
+      .rc-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 14px;
+        flex-wrap: wrap;
+      }
+      .rc-badge {
+        font-size: 11px;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 5px;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+      }
+      .rc-badge.badge-correct {
+        background: rgba(34, 197, 94, 0.1);
+        color: var(--green);
+        border: 1px solid rgba(34, 197, 94, 0.3);
+      }
+      .rc-badge.badge-wrong {
+        background: rgba(239, 68, 68, 0.1);
+        color: var(--red);
+        border: 1px solid rgba(239, 68, 68, 0.3);
+      }
+      .rc-badge.badge-skipped {
+        background: rgba(245, 158, 11, 0.1);
+        color: var(--amber);
+        border: 1px solid rgba(245, 158, 11, 0.3);
+      }
+      .rc-q {
+        font-size: 14.5px;
+        line-height: 1.7;
+        margin-bottom: 16px;
+        color: var(--text);
+      }
+      .rc-opts {
+        margin-bottom: 16px;
+      }
+      .rc-opt {
+        padding: 10px 14px;
+        margin-bottom: 6px;
+        border-radius: 8px;
+        font-size: 13.5px;
+        line-height: 1.6;
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        border: 1.5px solid transparent;
+      }
+      .rc-opt.rc-opt-correct {
+        background: rgba(34, 197, 94, 0.08);
+        border-color: rgba(34, 197, 94, 0.3);
+      }
+      .rc-opt.rc-opt-wrong {
+        background: rgba(239, 68, 68, 0.08);
+        border-color: rgba(239, 68, 68, 0.3);
+      }
+      .rc-letter {
+        flex-shrink: 0;
+        width: 22px;
+        height: 22px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 700;
+        background: var(--border);
+        color: var(--text3);
+      }
+      .rc-opt.rc-opt-correct .rc-letter {
+        background: var(--green);
+        color: #fff;
+      }
+      .rc-opt.rc-opt-wrong .rc-letter {
+        background: var(--red);
+        color: #fff;
+      }
+      .rc-exp {
+        background: rgba(6, 214, 160, 0.05);
+        border: 1px solid rgba(6, 214, 160, 0.15);
+        border-radius: 10px;
+        padding: 18px 20px;
+      }
+      .rc-exp h4 {
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: var(--accent);
+        margin-bottom: 8px;
+      }
+      .rc-exp p {
+        font-size: 13.5px;
+        line-height: 1.75;
+        color: var(--text2);
+      }
+      .rc-exp p strong {
+        color: var(--text);
+      }
+      .rc-exp .ncert-ref {
+        display: inline-block;
+        margin-top: 8px;
+        font-size: 11px;
+        padding: 3px 8px;
+        background: rgba(6, 214, 160, 0.1);
+        border-radius: 4px;
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          padding: 12px;
+        }
+        .q-card {
+          padding: 20px 16px;
+        }
+        .hero h1 {
+          font-size: 26px;
+        }
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .progress-inner {
+          gap: 10px;
+        }
+        .palette-panel {
+          width: calc(100vw - 40px);
+          right: 20px;
+        }
+        .review-card {
+          padding: 20px 16px;
+        }
+      }
+    </style>
+  
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['\\(', '\\)'], ['$', '$']]
+        },
+        startup: {
+          pageReady: () => {
+            return MathJax.startup.defaultPageReady();
+          }
+        }
+      };
+    </script>
+</head>
+  <body>
+    <div class="hero" id="heroSection">
+      <div class="hero-badge">NEET 2026 · NCERT Aligned</div>
+      <h1>Analytical Paradigm <span>Class 11 Chemistry</span></h1>
+      <p>
+        50 questions covering core Class 11 Chemistry chapters. Focuses on in-depth NCERT concept mastery.
+      </p>
+      <div class="hero-tags">
+        <span class="tag-bio" style="background: rgba(245, 158, 11, 0.1); color: var(--amber); border-color: rgba(245, 158, 11, 0.22);">🧪 50 Questions · Chemistry</span>
+        <span class="tag-chem" style="background: rgba(6, 214, 160, 0.1); color: var(--accent); border-color: rgba(6, 214, 160, 0.22);">📚 5 Chapters · Class 11</span>
+      </div>
+      <button class="start-btn" onclick="startQuiz()">Begin Test →</button>
+    </div>
+
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-inner">
+        <div class="progress-text">
+          <b id="qCounter">Q 1 / 50</b>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-timer" id="progressTimer">00:00</div>
+      </div>
+    </div>
+
+    <div class="container" id="quizArea"></div>
+
+    <div class="container" id="resultsSection"></div>
+
+    <button class="palette-toggle" id="paletteToggle" onclick="togglePalette()">
+      ☰
+    </button>
+    <div class="palette-panel" id="palettePanel">
+      <div class="palette-title">Question Palette</div>
+      <div class="palette-grid" id="paletteGrid"></div>
+      <div class="palette-legend">
+        <span
+          ><div
+            class="legend-dot"
+            style="background: var(--surface2); border: 1px solid var(--border)"
+          ></div>
+          Unseen</span
+        >
+        <span
+          ><div
+            class="legend-dot"
+            style="background: rgba(6, 214, 160, 0.2)"
+          ></div>
+          Answered</span
+        >
+        <span
+          ><div
+            class="legend-dot"
+            style="background: rgba(245, 158, 11, 0.2)"
+          ></div>
+          Review</span
+        >
+      </div>
+    </div>
+
+    <script>
+      const Q = [
+  {
+    "id": 1,
+    "ch": "Structure of Atom",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "The radial probability distribution curve obtained for a specific orbital\n            exhibits 3 peaks and 2 radial nodes. Which of the following orbitals does this wave function correspond to?",
+    "opts": [
+      "\\( 2s \\)",
+      "\\( 3s \\)",
+      "\\( 3p \\)",
+      "\\( 4p \\)"
+    ],
+    "ans": 1,
+    "exp": "The number of radial nodes is given by the formula \\( n - l - 1 \\).\n                    For a 3s orbital, \\( n = 3 \\) and \\( l = 0 \\). Radial nodes = \\( 3 - 0 - 1 = 2 \\). An orbital with 2\n                    radial nodes will inherently display 3 peaks in its \\( 4\\pi r^2 \\psi^2 \\) vs \\( r \\) graph.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 2,
+    "ch": "Structure of Atom",
+    "type": "Assertion-Reason",
+    "diff": "Hard",
+    "q": "<strong>Assertion (A):</strong> The characteristics of cathode rays do not\n            depend upon the material of the electrodes and the nature of the gas present in the cathode ray tube.<br>\n            <strong>Reason (R):</strong> Cathode rays consist of negatively charged fundamental particles called\n            electrons, which are common to all atoms.",
+    "opts": [
+      "Both A and R are true, and R is the correct explanation of A.",
+      "Both A and R are true, but R is NOT the correct explanation of A.",
+      "A is true, but R is false.",
+      "A is false, but R is true."
+    ],
+    "ans": 0,
+    "exp": "NCERT clearly states that cathode rays consist of electrons. Because\n                    electrons are basic constituents of all matter, their charge-to-mass ratio and behavior remain\n                    completely independent of the gas ionized or the electrode material utilized.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 3,
+    "ch": "Structure of Atom",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "In Rutherford's scattering experiment, what was the approximate thickness\n            of the gold metal foil used to direct the stream of high-energy \\( \\alpha \\)-particles?",
+    "opts": [
+      "~ 10 nm",
+      "~ 100 nm",
+      "~ 1000 nm",
+      "~ 0.1 nm"
+    ],
+    "ans": 1,
+    "exp": "According to the NCERT text, a stream of high-energy alpha particles\n                    was directed at a thin foil of gold metal with a highly specific thickness of approximately 100 nm.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 4,
+    "ch": "Structure of Atom",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Which of the following transitions in the hydrogen atom corresponds to the\n            longest wavelength transition in the Balmer series?",
+    "opts": [
+      "\\( n = \\infty \\rightarrow n = 2 \\)",
+      "\\( n = 3 \\rightarrow n = 1 \\)",
+      "\\( n = 3 \\rightarrow n = 2 \\)",
+      "\\( n = 4 \\rightarrow n = 2 \\)"
+    ],
+    "ans": 2,
+    "exp": "Energy is inversely proportional to wavelength (\\( E = hc/\\lambda \\)).\n                    The longest wavelength corresponds to the minimum energy transition. In the Balmer series (where the\n                    ground state for the transition is \\( n_1 = 2 \\)), the lowest energy jump is from the immediately\n                    adjacent shell, \\( n_2 = 3 \\).",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 5,
+    "ch": "Structure of Atom",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Consider the photoelectric effect. Which of the following statements is\n            <strong>INCORRECT</strong> according to NCERT?",
+    "opts": [
+      "The electrons are ejected from the metal surface with zero time lag.",
+      "The number of electrons ejected is proportional to the intensity of the incident light.",
+      "For a specific metal, there is a characteristic minimum threshold frequency below which\n                    photoelectric emission does not occur.",
+      "The kinetic energy of the ejected electrons is directly dependent upon the intensity of the incident\n                    light."
+    ],
+    "ans": 3,
+    "exp": "The kinetic energy of the ejected electrons depends on the frequency\n                    (or wavelength) of the incident light, not its intensity. Intensity solely dictates the number of\n                    ejected electrons.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 6,
+    "ch": "Structure of Atom",
+    "type": "Match the Following",
+    "diff": "Hard",
+    "q": "Match the properties of quantum numbers (Column I) with their significance\n            (Column II):<br><br><table>\n                <tr>\n                    <th>Column I</th>\n                    <th>Column II</th>\n                </tr>\n                <tr>\n                    <td>(P) Principal quantum number (n)</td>\n                    <td>(i) Orientation of the orbital</td>\n                </tr>\n                <tr>\n                    <td>(Q) Azimuthal quantum number (l)</td>\n                    <td>(ii) Spin of the electron</td>\n                </tr>\n                <tr>\n                    <td>(R) Magnetic quantum number (m)</td>\n                    <td>(iii) Size and energy of the orbital</td>\n                </tr>\n                <tr>\n                    <td>(S) Spin quantum number (s)</td>\n                    <td>(iv) Shape of the orbital</td>\n                </tr>\n            </table>",
+    "opts": [
+      "P-(iii), Q-(iv), R-(i), S-(ii)",
+      "P-(iii), Q-(i), R-(iv), S-(ii)",
+      "P-(iv), Q-(iii), R-(i), S-(ii)",
+      "P-(i), Q-(iv), R-(iii), S-(ii)"
+    ],
+    "ans": 0,
+    "exp": "The Principal quantum number defines the main shell (determining\n                    size/energy). Azimuthal defines the subshell (determining shape). Magnetic defines orientation in\n                    space under a magnetic field. Spin defines the intrinsic electron spin state.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 7,
+    "ch": "Structure of Atom",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Which of the following sets of quantum numbers is NOT permissible for an\n            electron in an atom?",
+    "opts": [
+      "\\( n = 3, l = 2, m_l = -2, m_s = +1/2 \\)",
+      "\\( n = 4, l = 0, m_l = 0, m_s = -1/2 \\)",
+      "\\( n = 3, l = 3, m_l = -3, m_s = +1/2 \\)",
+      "\\( n = 5, l = 3, m_l = +1, m_s = -1/2 \\)"
+    ],
+    "ans": 2,
+    "exp": "The azimuthal quantum number \\( l \\) can only take integer values from\n                    \\( 0 \\) to \\( n - 1 \\). If \\( n = 3 \\), the maximum allowable value for \\( l \\) is 2 (representing a\n                    3d orbital). Therefore, \\( l = 3 \\) is physically impossible.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 8,
+    "ch": "Structure of Atom",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Read the following passage carefully: <em>\"It was replaced by modern\n                quantum mechanics in which orbits are regions where the electron may be found with large\n                probability.\"</em> Which scientific principle directly shattered the concept of definite circular orbits\n            in Bohr\u2019s model?",
+    "opts": [
+      "Planck's Quantum Theory",
+      "Heisenberg's Uncertainty Principle",
+      "Hund's Rule of Maximum Multiplicity",
+      "Pauli's Exclusion Principle"
+    ],
+    "ans": 1,
+    "exp": "Heisenberg's Uncertainty Principle states it is impossible to\n                    determine simultaneously both the exact position and momentum of a microscopic particle. This\n                    fundamentally ruled out the existence of definite paths or trajectories (orbits) proposed by Bohr.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 9,
+    "ch": "Structure of Atom",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "In the context of exchange energy, which of the following is responsible\n            for the anomalous electronic configuration of Chromium (Z = 24)?",
+    "opts": [
+      "Lower exchange energy of the \\( 3d^4 4s^2 \\) configuration",
+      "Maximum exchange energy resulting from half-filled \\( 3d^5 4s^1 \\) subshells",
+      "Extremely high shielding effect of 3d electrons",
+      "Increased electron-electron repulsion in the 4s orbital"
+    ],
+    "ans": 1,
+    "exp": "Half-filled and fully-filled degenerate subshells provide extra\n                    stability due to spatial symmetry and maximized exchange energy. Chromium adopts the \\( [Ar] 3d^5\n                    4s^1 \\) configuration to maximize this exchange energy.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 10,
+    "ch": "Structure of Atom",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "The number of angular nodes and radial nodes for a \\( 4d \\) orbital are\n            respectively:",
+    "opts": [
+      "2 and 1",
+      "1 and 2",
+      "2 and 2",
+      "3 and 0"
+    ],
+    "ans": 0,
+    "exp": "The number of angular nodes is strictly equal to \\( l \\). For any\n                    d-orbital, \\( l = 2 \\). Radial nodes are calculated as \\( n - l - 1 = 4 - 2 - 1 = 1 \\).",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 11,
+    "ch": "Classification of Elements & Periodicity in Properties",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Mendeleev left gaps under aluminium and silicon, calling them\n            Eka-aluminium and Eka-silicon. Which elements eventually took these places?",
+    "opts": [
+      "Gallium and Germanium",
+      "Germanium and Gallium",
+      "Indium and Tin",
+      "Scandium and Titanium"
+    ],
+    "ans": 0,
+    "exp": "According to historical periodic facts detailed in NCERT,\n                    Eka-aluminium was discovered and named Gallium (Ga), and Eka-silicon was discovered and named\n                    Germanium (Ge).",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 12,
+    "ch": "Classification of Elements & Periodicity in Properties",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "What is the precise IUPAC name and symbol for the element with atomic\n            number 119?",
+    "opts": [
+      "Ununennium (Uue)",
+      "Unnilennium (Une)",
+      "Ununoctium (Uuo)",
+      "Ununbium (Uub)"
+    ],
+    "ans": 0,
+    "exp": "IUPAC nomenclature uses numerical roots: 1 ('un'), 1 ('un'), and 9\n                    ('enn'). Adding the suffix '-ium' gives Ununennium. The three-letter symbol is derived from the\n                    initial letters: Uue.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 13,
+    "ch": "Classification of Elements & Periodicity in Properties",
+    "type": "Assertion-Reason",
+    "diff": "Hard",
+    "q": "<strong>Assertion (A):</strong> The electron gain enthalpy of oxygen is\n            less negative than that of sulphur.<br>\n            <strong>Reason (R):</strong> When an electron is added to oxygen, it enters the smaller n=2 quantum level\n            and suffers significant inter-electronic repulsion.",
+    "opts": [
+      "Both A and R are true, and R is the correct explanation of A.",
+      "Both A and R are true, but R is NOT the correct explanation of A.",
+      "A is true, but R is false.",
+      "A is false, but R is true."
+    ],
+    "ans": 0,
+    "exp": "This is a classic NCERT exception to periodic trends. Oxygen is\n                    exceptionally small, so adding an electron to the already crowded 2p subshell creates high\n                    electron-electron repulsion, making its electron gain enthalpy less negative (less exothermic) than\n                    sulphur's.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 14,
+    "ch": "Classification of Elements & Periodicity in Properties",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Which of the following is the correct order of ionic radii for the given\n            isoelectronic species?",
+    "opts": [
+      "\\( Al^{3+} < Mg^{2+} < Na^+ < F^- < O^{2-} < N^{3-} \\)",
+      "\\( N^{3-} < O^{2-} < F^- < Na^+ < Mg^{2+} < Al^{3+} \\)",
+      "\\( Al^{3+} < Mg^{2+} < F^- < Na^+ < O^{2-} < N^{3-} \\)",
+      "\\( Na^+ < Mg^{2+} < Al^{3+} < F^- < O^{2-} < N^{3-} \\)"
+    ],
+    "ans": 0,
+    "exp": "For isoelectronic species (all possessing 10 electrons here), the\n                    ionic radius decreases strictly as the nuclear charge (atomic number, Z) increases because electrons\n                    are pulled more strongly toward the nucleus. \\( Z \\) values: N(7), O(8), F(9), Na(11), Mg(12),\n                    Al(13).",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 15,
+    "ch": "Classification of Elements & Periodicity in Properties",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "The first ionization enthalpy of Nitrogen is greater than that of Oxygen,\n            but the second ionization enthalpy of Oxygen is greater than that of Nitrogen. This is because:",
+    "opts": [
+      "Nitrogen is more electronegative than Oxygen.",
+      "Oxygen acquires a half-filled 2p orbital after losing one electron, while Nitrogen loses its\n                    half-filled stability.",
+      "Oxygen has a smaller atomic radius than Nitrogen.",
+      "Nitrogen has a higher effective nuclear charge."
+    ],
+    "ans": 1,
+    "exp": "Neutral N is \\( 2s^2 2p^3 \\) (extra stable half-filled), so its 1st IE\n                    is high. After losing one electron, O becomes \\( O^+ \\) (\\( 2s^2 2p^3 \\)), achieving half-filled\n                    stability, making its 2nd IE exceptionally high compared to \\( N^+ \\) (\\( 2s^2 2p^2 \\)).",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 16,
+    "ch": "Classification of Elements & Periodicity in Properties",
+    "type": "Assertion-Reason",
+    "diff": "Hard",
+    "q": "<strong>Assertion (A):</strong> Gallium has a smaller atomic radius (135\n            pm) compared to Aluminium (143 pm).<br>\n            <strong>Reason (R):</strong> The presence of an extra 10 d-electrons in Gallium offers poor shielding effect\n            for the outer electrons, leading to increased effective nuclear charge.",
+    "opts": [
+      "Both A and R are true, and R is the correct explanation of A.",
+      "Both A and R are true, but R is NOT the correct explanation of A.",
+      "A is true, but R is false.",
+      "A is false, but R is true."
+    ],
+    "ans": 0,
+    "exp": "This is a direct NCERT fact from the Group 13 properties. The \"d-block\n                    contraction\" occurs because the inner 3d electrons in Ga poorly shield the valence electrons from\n                    the nucleus, pulling them closer and decreasing its radius below that of Al.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 17,
+    "ch": "Classification of Elements & Periodicity in Properties",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Which of the following statements regarding the diagonal relationship\n            between Lithium and Magnesium is mathematically/conceptually correct?",
+    "opts": [
+      "They belong to the exact same group in the modern periodic table.",
+      "They possess similar polarizing power due to comparable charge-to-size ratios.",
+      "Both exclusively form peroxides when burned in excess oxygen.",
+      "They possess identical first ionization enthalpies."
+    ],
+    "ans": 1,
+    "exp": "Lithium (Group 1, Period 2) shows a diagonal relationship with\n                    Magnesium (Group 2, Period 3) due to their similar polarizing power (ionic charge/size ratio), which\n                    gives their compounds predominantly similar covalent character.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 18,
+    "ch": "Classification of Elements & Periodicity in Properties",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Which sequence correctly represents the increasing acidic character of\n            oxides?",
+    "opts": [
+      "\\( Na_2O < MgO < Al_2O_3 < Cl_2O_7 \\)",
+      "\\( Cl_2O_7 < Al_2O_3 < MgO < Na_2O \\)",
+      "\\( MgO < Na_2O < Al_2O_3 < Cl_2O_7 \\)",
+      "\\( Al_2O_3 < MgO < Na_2O < Cl_2O_7 \\)"
+    ],
+    "ans": 0,
+    "exp": "Moving from left to right across a period, the non-metallic character\n                    of the elements increases, which causes their oxides to become progressively more acidic. \\( Na_2O\n                    \\) is strongly basic, \\( MgO \\) is basic, \\( Al_2O_3 \\) is amphoteric, and \\( Cl_2O_7 \\) is strongly\n                    acidic.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 19,
+    "ch": "Classification of Elements & Periodicity in Properties",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Noble gases exhibit exceptionally large positive electron gain\n            enthalpies. Why?",
+    "opts": [
+      "They have small atomic radii.",
+      "The added electron has to enter the next higher principal quantum level, leading to a very unstable\n                    electronic configuration.",
+      "They possess high electronegativity.",
+      "Their nuclear charge is heavily shielded."
+    ],
+    "ans": 1,
+    "exp": "Noble gases already have a highly stable, closed valence shell (\\(\n                    ns^2 np^6 \\)). An additional electron must be placed in a higher energy principal quantum shell,\n                    which requires substantial energy absorption (a positive enthalpy change).",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 20,
+    "ch": "Classification of Elements & Periodicity in Properties",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "According to NCERT, which of the following elements possesses the highest\n            electronegativity value?",
+    "opts": [
+      "Chlorine",
+      "Oxygen",
+      "Fluorine",
+      "Nitrogen"
+    ],
+    "ans": 2,
+    "exp": "Fluorine holds the highest electronegativity value (4.0 on the Pauling\n                    scale) of all elements in the periodic table due to its small size and high effective nuclear\n                    charge.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 21,
+    "ch": "Chemical Bonding & Molecular Structure",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "In the ozone (\\( O_3 \\)) molecule, what is the formal charge on the\n            central oxygen atom and the single-bonded terminal oxygen atom, respectively?",
+    "opts": [
+      "+1 and -1",
+      "-1 and +1",
+      "0 and -1",
+      "+1 and 0"
+    ],
+    "ans": 0,
+    "exp": "Formula: \\( FC = \\text{Valence} - \\text{Lone pairs} -\n                    \\frac{1}{2}(\\text{Bonding e-}) \\). For the central O atom: \\( 6 - 2 - \\frac{1}{2}(6) = +1 \\). For\n                    the single bonded terminal O atom: \\( 6 - 6 - \\frac{1}{2}(2) = -1 \\).",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 22,
+    "ch": "Chemical Bonding & Molecular Structure",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Why does \\( NH_3 \\) have a significantly higher dipole moment than \\(\n            NF_3 \\)?",
+    "opts": [
+      "Fluorine is more electronegative than Nitrogen.",
+      "In \\( NH_3 \\), the orbital dipole of the lone pair and the resultant bond dipole act in the same\n                    direction, whereas in \\( NF_3 \\), they oppose each other.",
+      "The N-H bond is more polar than the N-F bond.",
+      "\\( NF_3 \\) is a planar molecule, leading to dipole cancellation."
+    ],
+    "ans": 1,
+    "exp": "This is a standard NCERT explanation. In \\( NH_3 \\), both bond dipoles\n                    (H to N) and the lone pair dipole point upward. In \\( NF_3 \\), bond dipoles point downward (N to F)\n                    opposing the upward lone pair dipole, drastically reducing the net moment.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 23,
+    "ch": "Chemical Bonding & Molecular Structure",
+    "type": "Match the Following",
+    "diff": "Hard",
+    "q": "Match the molecules with their predicted shapes according to VSEPR\n            theory:<br><br><table>\n                <tr>\n                    <th>Column I</th>\n                    <th>Column II</th>\n                </tr>\n                <tr>\n                    <td>(P) SF4</td>\n                    <td>(i) Square planar</td>\n                </tr>\n                <tr>\n                    <td>(Q) ClF3</td>\n                    <td>(ii) See-saw</td>\n                </tr>\n                <tr>\n                    <td>(R) XeF4</td>\n                    <td>(iii) T-shaped</td>\n                </tr>\n                <tr>\n                    <td>(S) H2O</td>\n                    <td>(iv) Bent/V-shaped</td>\n                </tr>\n            </table>",
+    "opts": [
+      "P-(ii), Q-(iii), R-(i), S-(iv)",
+      "P-(iii), Q-(ii), R-(i), S-(iv)",
+      "P-(i), Q-(ii), R-(iii), S-(iv)",
+      "P-(ii), Q-(iv), R-(i), S-(iii)"
+    ],
+    "ans": 0,
+    "exp": "\\( SF_4 \\) has 4 bond pairs and 1 lone pair (See-saw). \\( ClF_3 \\) has\n                    3 bp and 2 lp (T-shape). \\( XeF_4 \\) has 4 bp and 2 lp (Square planar). \\( H_2O \\) has 2 bp and 2 lp\n                    (Bent).",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 24,
+    "ch": "Chemical Bonding & Molecular Structure",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "According to Molecular Orbital Theory (MOT), which of the following\n            species does NOT exist?",
+    "opts": [
+      "\\( O_2^- \\)",
+      "\\( He_2 \\)",
+      "\\( H_2^+ \\)",
+      "\\( C_2 \\)"
+    ],
+    "ans": 1,
+    "exp": "The calculated bond order for \\( He_2 \\) is zero, as the number of\n                    bonding electrons (2 in \\( \\sigma 1s \\)) equals the number of antibonding electrons (2 in \\(\n                    \\sigma^* 1s \\)). A bond order of zero implies the molecule cannot exist.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 25,
+    "ch": "Chemical Bonding & Molecular Structure",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Which of the following species exhibits paramagnetism due to unpaired\n            electrons present in \\( \\pi^* \\) antibonding molecular orbitals?",
+    "opts": [
+      "\\( N_2 \\)",
+      "\\( C_2 \\)",
+      "\\( O_2 \\)",
+      "\\( F_2 \\)"
+    ],
+    "ans": 2,
+    "exp": "According to MOT, the \\( O_2 \\) molecule has two unpaired electrons,\n                    one located in each of the two degenerate \\( \\pi^* 2p_x \\) and \\( \\pi^* 2p_y \\) antibonding\n                    orbitals, making the substance paramagnetic.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 26,
+    "ch": "Chemical Bonding & Molecular Structure",
+    "type": "Assertion-Reason",
+    "diff": "Hard",
+    "q": "<strong>Assertion (A):</strong> All the C\u2013O bonds in the carbonate ion\n            (\\( CO_3^{2-} \\)) are equal in length.<br>\n            <strong>Reason (R):</strong> The actual structure of the carbonate ion is a resonance hybrid of three\n            equivalent canonical structures.",
+    "opts": [
+      "Both A and R are true, and R is the correct explanation of A.",
+      "Both A and R are true, but R is NOT the correct explanation of A.",
+      "A is true, but R is false.",
+      "A is false, but R is true."
+    ],
+    "ans": 0,
+    "exp": "Resonance ensures that the \\( \\pi \\)-electrons are delocalized evenly\n                    across all three C-O bonds, resulting in fractional bond orders (approximately 1.33) and identical\n                    bond lengths for all three carbon-oxygen connections.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 27,
+    "ch": "Chemical Bonding & Molecular Structure",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Based on Fajan's rules, arrange the following halides in decreasing order\n            of their covalent character:",
+    "opts": [
+      "\\( LiCl > NaCl > KCl \\)",
+      "\\( KCl > NaCl > LiCl \\)",
+      "\\( NaCl > LiCl > KCl \\)",
+      "\\( LiCl > KCl > NaCl \\)"
+    ],
+    "ans": 0,
+    "exp": "Fajan's rule dictates that smaller cations possess higher polarizing\n                    power, thereby inducing greater covalent character in the bond. \\( Li^+ \\) is the smallest cation\n                    among the group, hence \\( LiCl \\) exhibits the most covalent character.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 28,
+    "ch": "Chemical Bonding & Molecular Structure",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "The bond angle sequence for \\( CH_4 \\), \\( NH_3 \\), and \\( H_2O \\) is\n            correctly represented by:",
+    "opts": [
+      "\\( CH_4 = NH_3 = H_2O \\)",
+      "\\( H_2O > NH_3 > CH_4 \\)",
+      "\\( CH_4 > NH_3 > H_2O \\)",
+      "\\( NH_3 > CH_4 > H_2O \\)"
+    ],
+    "ans": 2,
+    "exp": "Lone pairs cause significantly greater repulsion than bond pairs\n                    (VSEPR theory). \\( CH_4 \\) has 0 lone pairs (109.5\u00b0), \\( NH_3 \\) has 1 lone pair compressing the\n                    angle (~107\u00b0), and \\( H_2O \\) has 2 lone pairs compressing it further (~104.5\u00b0).",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 29,
+    "ch": "Chemical Bonding & Molecular Structure",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "What type of hydrogen bonding is primarily responsible for the relatively\n            lower boiling point of o-nitrophenol compared to p-nitrophenol?",
+    "opts": [
+      "Intermolecular hydrogen bonding",
+      "Intramolecular hydrogen bonding",
+      "Metallic bonding",
+      "Coordinate bonding"
+    ],
+    "ans": 1,
+    "exp": "o-nitrophenol exhibits intramolecular H-bonding (bonding occurring\n                    within the same molecule), preventing molecular association. p-nitrophenol undergoes intermolecular\n                    H-bonding, linking molecules together and thus significantly raising the boiling point.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 30,
+    "ch": "Chemical Bonding & Molecular Structure",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "The hybridization of the central phosphorus atom in \\( PCl_5 \\) and the\n            nature of its axial bonds compared to equatorial bonds are described as:",
+    "opts": [
+      "\\( sp^3d \\), axial bonds are shorter",
+      "\\( sp^3d^2 \\), axial bonds are longer",
+      "\\( sp^3d \\), axial bonds are longer",
+      "\\( sp^3d^2 \\), axial bonds are shorter"
+    ],
+    "ans": 2,
+    "exp": "\\( PCl_5 \\) features \\( sp^3d \\) hybridization resulting in a trigonal\n                    bipyramidal geometry. The axial bonds suffer greater repulsion from the three equatorial bond pairs\n                    (90\u00b0 angles), making them slightly longer and weaker than the equatorial bonds.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 31,
+    "ch": "Hydrogen",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Which isotope of hydrogen is radioactive and emits low-energy \\( \\beta^-\n            \\) particles?",
+    "opts": [
+      "Protium",
+      "Deuterium",
+      "Tritium",
+      "Hydronium"
+    ],
+    "ans": 2,
+    "exp": "Tritium (\\( ^3_1H \\)) is the only naturally radioactive isotope of\n                    hydrogen and emits low-energy beta particles with a half-life of roughly 12.33 years.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 32,
+    "ch": "Hydrogen",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "In the commercial production of dihydrogen via 'coal gasification', the\n            overall yield is increased by the water-gas shift reaction. Which catalyst is utilized in this reaction?",
+    "opts": [
+      "Finely divided Iron",
+      "Iron chromate",
+      "Vanadium pentoxide",
+      "Platinized asbestos"
+    ],
+    "ans": 1,
+    "exp": "The water-gas shift reaction reacts carbon monoxide (CO) with steam at\n                    673K in the presence of an iron chromate catalyst to produce extra \\( H_2 \\) and \\( CO_2 \\).",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 33,
+    "ch": "Hydrogen",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Permanent hardness of water can be chemically removed using Calgon's\n            method. What is the commercial name \"Calgon\" chemically?",
+    "opts": [
+      "Sodium carbonate",
+      "Hydrated sodium aluminium silicate",
+      "Sodium hexametaphosphate",
+      "Calcium hydroxide"
+    ],
+    "ans": 2,
+    "exp": "Sodium hexametaphosphate (\\( Na_6P_6O_{18} \\)) is commercially called\n                    'Calgon'. It removes permanent hardness by forming a highly soluble complex anion \\(\n                    [Na_2CaP_6O_{18}]^{2-} \\) with Ca or Mg ions, keeping them from precipitating.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 34,
+    "ch": "Hydrogen",
+    "type": "Assertion-Reason",
+    "diff": "Hard",
+    "q": "<strong>Assertion (A):</strong> Temporary hardness of water can be\n            removed by simple boiling.<br>\n            <strong>Reason (R):</strong> Boiling converts soluble calcium and magnesium bicarbonates into insoluble\n            carbonates and hydroxides, respectively.",
+    "opts": [
+      "Both A and R are true, and R is the correct explanation of A.",
+      "Both A and R are true, but R is NOT the correct explanation of A.",
+      "A is true, but R is false.",
+      "A is false, but R is true."
+    ],
+    "ans": 0,
+    "exp": "Temporary hardness is primarily due to \\( Ca(HCO_3)_2 \\) and \\(\n                    Mg(HCO_3)_2 \\). Boiling chemically decomposes them into \\( CaCO_3 \\) (a precipitate) and \\( Mg(OH)_2\n                    \\) (also a precipitate), which can be easily filtered out of the water.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 35,
+    "ch": "Hydrogen",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Which of the following statements correctly describes heavy water (\\(\n            D_2O \\)) compared to ordinary water (\\( H_2O \\))?",
+    "opts": [
+      "Heavy water has a lower boiling point.",
+      "Heavy water undergoes chemical reactions at a faster rate.",
+      "Heavy water has a higher dielectric constant.",
+      "Heavy water is used as a moderator in nuclear reactors."
+    ],
+    "ans": 3,
+    "exp": "Heavy water (\\( D_2O \\)) is extensively used as a neutron moderator in\n                    nuclear reactors. It has a slightly lower dielectric constant and undergoes chemical reactions\n                    slower than \\( H_2O \\) due to the significantly higher O-D bond dissociation energy.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 36,
+    "ch": "Hydrogen",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Which type of hydrides are formed by d-block and f-block elements, often\n            functioning as excellent hydrogen storage media due to their non-stoichiometric nature?",
+    "opts": [
+      "Saline (Ionic) hydrides",
+      "Molecular (Covalent) hydrides",
+      "Metallic (Interstitial) hydrides",
+      "Polymeric hydrides"
+    ],
+    "ans": 2,
+    "exp": "Metallic/Interstitial hydrides are formed by many d-block and f-block\n                    transition elements. They are typically non-stoichiometric (e.g., \\( TiH_{1.5-1.8} \\)) and absorb\n                    large volumes of hydrogen gas, making them extremely useful for the hydrogen economy.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 37,
+    "ch": "Hydrogen",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "The molecular structure of Hydrogen Peroxide (\\( H_2O_2 \\)) is described\n            as:",
+    "opts": [
+      "Planar in both gas and solid phases",
+      "Non-planar, with a dihedral angle of 111.5\u00b0 in the gas phase",
+      "Linear molecule",
+      "Tetrahedral"
+    ],
+    "ans": 1,
+    "exp": "\\( H_2O_2 \\) possesses an \"open-book\", non-planar structure. In the\n                    gas phase, the dihedral angle is 111.5\u00b0, while in the solid phase, it compresses to 90.2\u00b0 due to\n                    crystalline hydrogen bonding networks.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 38,
+    "ch": "Hydrogen",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "In the context of the \"Hydrogen Economy\", what is the primary underlying\n            principle?",
+    "opts": [
+      "Using hydrogen solely for nuclear fusion applications.",
+      "Transmission and storage of energy in the form of liquid or gaseous dihydrogen rather than\n                    electrical power.",
+      "Replacing all natural gas exclusively with methane.",
+      "Extracting hydrogen uniquely from biological algae."
+    ],
+    "ans": 1,
+    "exp": "The hydrogen economy focuses entirely on using hydrogen as an energy\n                    carrier, where energy is stored and transmitted as hydrogen gas or liquid, utilizing fuel cells to\n                    retrieve energy with water as the only environmental byproduct.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 39,
+    "ch": "Hydrogen",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Water is capable of acting as an acid as well as a base. This specific\n            chemical behaviour is known as:",
+    "opts": [
+      "Azeotropic nature",
+      "Amphoteric nature",
+      "Hygroscopic nature",
+      "Efflorescent nature"
+    ],
+    "ans": 1,
+    "exp": "Amphoteric substances can react with both acids and bases. In the\n                    Bronsted-Lowry sense, water can donate a proton (to ammonia, acting as an acid) or accept a proton\n                    (from \\( H_2S \\), acting as a base).",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 40,
+    "ch": "Hydrogen",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Permanent hardness caused by calcium and magnesium sulphates/chlorides\n            can be treated using synthetic ion-exchange resins. When hard water is passed through a cation exchange\n            resin (RNa), what is the primary exchanged product in the water?",
+    "opts": [
+      "\\( H^+ \\)",
+      "\\( OH^- \\)",
+      "\\( Na^+ \\)",
+      "\\( Cl^- \\)"
+    ],
+    "ans": 2,
+    "exp": "Zeolite/Permutit or synthetic cation exchange resins (like RNa)\n                    exchange their sodium ions (\\( Na^+ \\)) for the hardness-causing \\( Ca^{2+} \\) and \\( Mg^{2+} \\)\n                    ions in the water, leaving harmless soluble sodium salts in the softened water.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 41,
+    "ch": "The p-Block Elements (Groups 16 & 17)",
+    "type": "Assertion-Reason",
+    "diff": "Hard",
+    "q": "<strong>Assertion (A):</strong> The stability of the +6 oxidation state\n            decreases down Group 16, while the stability of the +4 state increases.<br>\n            <strong>Reason (R):</strong> The inert pair effect prevents the participation of \\( ns^2 \\) electrons in\n            bonding for the heavier elements.",
+    "opts": [
+      "Both A and R are true, and R is the correct explanation of A.",
+      "Both A and R are true, but R is NOT the correct explanation of A.",
+      "A is true, but R is false.",
+      "A is false, but R is true."
+    ],
+    "ans": 0,
+    "exp": "Due to poor shielding by d and f orbitals in heavier elements (like\n                    Po, Te), the effective nuclear charge tightly holds the \\( ns^2 \\) electrons, a phenomenon known as\n                    the inert pair effect. This prevents them from participating in bonding, thereby increasing the\n                    stability of the lower +4 state over the +6 state.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 42,
+    "ch": "The p-Block Elements (Groups 16 & 17)",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Which of the following oxoacids of sulphur contains an explicit O\u2013O\n            peroxy linkage?",
+    "opts": [
+      "Sulphuric acid (\\( H_2SO_4 \\))",
+      "Pyrosulphuric acid (\\( H_2S_2O_7 \\))",
+      "Peroxodisulphuric acid (\\( H_2S_2O_8 \\))",
+      "Dithionic acid (\\( H_2S_2O_6 \\))"
+    ],
+    "ans": 2,
+    "exp": "Marshall's acid, or peroxodisulphuric acid (\\( H_2S_2O_8 \\)),\n                    possesses a peroxy (-O-O-) bridge connecting the two central sulphur atoms. In contrast,\n                    Pyrosulphuric acid (oleum) features an S-O-S bridge.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 43,
+    "ch": "The p-Block Elements (Groups 16 & 17)",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "In the Contact Process for the industrial manufacture of Sulphuric acid,\n            what is the crucial catalytic step?",
+    "opts": [
+      "Direct oxidation of sulphur to \\( SO_3 \\)",
+      "Oxidation of \\( SO_2 \\) to \\( SO_3 \\) using \\( V_2O_5 \\) catalyst",
+      "Absorption of \\( SO_3 \\) in water directly",
+      "Reaction of \\( H_2S \\) with oxygen"
+    ],
+    "ans": 1,
+    "exp": "The key, rate-determining step in the Contact Process is the catalytic\n                    oxidation of \\( SO_2 \\) with \\( O_2 \\) to yield \\( SO_3 \\) in the presence of a Vanadium pentoxide\n                    (\\( V_2O_5 \\)) catalyst at specific temperature and pressure parameters.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 44,
+    "ch": "The p-Block Elements (Groups 16 & 17)",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Which of the following halogens has the highest negative electron gain\n            enthalpy in the periodic table?",
+    "opts": [
+      "Fluorine",
+      "Chlorine",
+      "Bromine",
+      "Iodine"
+    ],
+    "ans": 1,
+    "exp": "Although fluorine is the most electronegative element, chlorine has\n                    the highest negative electron gain enthalpy. Fluorine's extremely small size leads to strong\n                    electron-electron repulsion in the compact 2p orbital, making the addition of an electron slightly\n                    less exothermic.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 45,
+    "ch": "The p-Block Elements (Groups 16 & 17)",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Arrange the following halogens in the correct decreasing order of their\n            bond dissociation enthalpies:",
+    "opts": [
+      "\\( F_2 > Cl_2 > Br_2 > I_2 \\)",
+      "\\( Cl_2 > Br_2 > F_2 > I_2 \\)",
+      "\\( Cl_2 > F_2 > Br_2 > I_2 \\)",
+      "\\( I_2 > Br_2 > Cl_2 > F_2 \\)"
+    ],
+    "ans": 1,
+    "exp": "\\( F_2 \\) has an unexpectedly low bond dissociation enthalpy due to\n                    intense lone pair-lone pair repulsions between the extremely close, small fluorine atoms. The\n                    correct trend is \\( Cl_2 > Br_2 > F_2 > I_2 \\).",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 46,
+    "ch": "The p-Block Elements (Groups 16 & 17)",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Why are interhalogen compounds (e.g., \\( ICl \\), \\( BrF_3 \\)) generally\n            more reactive than pure halogens (except fluorine)?",
+    "opts": [
+      "Because they are highly polar.",
+      "Because the X-X' covalent bond is weaker than the X-X bond in pure halogens.",
+      "Because they possess available d-orbital electrons.",
+      "Because they exist predominantly as reactive gases."
+    ],
+    "ans": 1,
+    "exp": "In interhalogen compounds (\\( XX' \\)), the overlap between dissimilar\n                    atomic orbitals is less effective, making the X-X' bond intrinsically weaker and more susceptible to\n                    cleavage than the homonuclear X-X bond (except for the anomalously weak F-F bond).",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 47,
+    "ch": "The p-Block Elements (Groups 16 & 17)",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Which is the correct order of acidic strength for the following oxoacids\n            of chlorine?",
+    "opts": [
+      "\\( HClO < HClO_2 < HClO_3 < HClO_4 \\)",
+      "\\( HClO_4 < HClO_3 < HClO_2 < HClO \\)",
+      "\\( HClO_3 < HClO_4 < HClO_2 < HClO \\)",
+      "\\( HClO_4 < HClO_2 < HClO_3 < HClO \\)"
+    ],
+    "ans": 0,
+    "exp": "Acidic strength increases with the oxidation state of the central\n                    halogen atom. In \\( HClO_4 \\), Cl is +7, which draws maximum electron density away from the O-H\n                    bond, facilitating the easiest proton release and stabilizing the resultant perchlorate anion via\n                    extensive resonance.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 48,
+    "ch": "The p-Block Elements (Groups 16 & 17)",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Due to the complete absence of d-orbitals, Fluorine exhibits several\n            anomalous properties compared to heavier halogens. Which of the following is an INCORRECT statement\n            regarding Fluorine?",
+    "opts": [
+      "It shows only an oxidation state of -1.",
+      "It cannot expand its octet.",
+      "It forms a wide variety of oxoacids like \\( HOF, HFO_2, HFO_3 \\).",
+      "Most of its chemical reactions are highly exothermic."
+    ],
+    "ans": 2,
+    "exp": "Fluorine only forms ONE specific oxoacid: Hypofluorous acid (\\( HOF\n                    \\)). Due to its extreme electronegativity and the absence of vacant d-orbitals, it cannot achieve\n                    the higher oxidation states required to form higher oxoacids.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 49,
+    "ch": "The p-Block Elements (Groups 16 & 17)",
+    "type": "Assertion-Reason",
+    "diff": "Hard",
+    "q": "<strong>Assertion (A):</strong> Ozone acts as a powerful oxidizing\n            agent.<br>\n            <strong>Reason (R):</strong> Ozone is highly unstable thermodynamically and readily decomposes to yield\n            molecular oxygen and nascent oxygen (\\( O_3 \\rightarrow O_2 + [O] \\)).",
+    "opts": [
+      "Both A and R are true, and R is the correct explanation of A.",
+      "Both A and R are true, but R is NOT the correct explanation of A.",
+      "A is true, but R is false.",
+      "A is false, but R is true."
+    ],
+    "ans": 0,
+    "exp": "Ozone is thermodynamically unstable relative to molecular oxygen. Its\n                    powerful oxidizing action is precisely due to its facile cleavage, liberating highly reactive\n                    nascent oxygen (\\( [O] \\)) which readily oxidizes substrates.",
+    "ref": "NCERT Chemistry"
+  },
+  {
+    "id": 50,
+    "ch": "The p-Block Elements (Groups 16 & 17)",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Which specific catalyst is utilized to produce chlorine gas conveniently\n            in the laboratory via the oxidation of \\( HCl \\)?",
+    "opts": [
+      "\\( MnO_2 \\)",
+      "\\( V_2O_5 \\)",
+      "\\( Fe \\)/Mo",
+      "\\( CuCl_2 \\)"
+    ],
+    "ans": 0,
+    "exp": "In the laboratory setting, chlorine is conveniently prepared by\n                    heating manganese dioxide (\\( MnO_2 \\)) with concentrated hydrochloric acid. \\( MnO_2 + 4HCl\n                    \\rightarrow MnCl_2 + Cl_2 + 2H_2O \\). (Note: \\( CuCl_2 \\) is strictly used in Deacon's process for\n                    commercial manufacture, not typical laboratory prep).",
+    "ref": "NCERT Chemistry"
+  }
+];
+
+      const TOTAL = Q.length;
+      const LETTERS = ["A", "B", "C", "D"];
+      let currentQ = 0;
+      let userAnswers = new Array(TOTAL).fill(-1);
+      let reviewFlags = new Array(TOTAL).fill(false);
+      let submitted = false;
+      let timerSec = 0;
+      let timerInterval;
+
+      function startQuiz() {
+        document.getElementById("heroSection").style.display = "none";
+        document.getElementById("progressWrap").classList.add("active");
+        document.getElementById("paletteToggle").classList.add("active");
+        buildAllCards();
+        buildPalette();
+        showQuestion(0);
+        startTimer();
+      
+        if (window.MathJax) { MathJax.typesetPromise(); }
+      }
+
+      function buildAllCards() {
+        const area = document.getElementById("quizArea");
+        let html = "";
+        Q.forEach((q, i) => {
+          const topic = q.ch;
+          const diffClass = q.diff === "Hard" ? "hard" : "med";
+          html += `<div class="q-card" id="qcard-${i}">
+            <div class="q-header">
+              <span class="q-num">Q${q.id}</span>
+              <div class="q-meta">
+                <span class="q-tag bio">${topic}</span>
+                <span class="q-tag type">${q.type}</span>
+                <span class="q-tag ${diffClass}">${q.diff}</span>
+              </div>
+            </div>
+            <div class="q-text">${q.q}</div>
+            <div class="options">
+              ${q.opts
+                .map(
+                  (o, j) => `
+                <button class="opt-btn" id="opt-${i}-${j}" onclick="selectOpt(${i},${j})">
+                  <span class="opt-letter">${LETTERS[j]}</span>
+                  <span>${o}</span>
+                </button>
+              `,
+                )
+                .join("")}
+            </div>
+            <div class="nav-btns">
+              <button class="nav-btn" onclick="prevQuestion()" ${i === 0 ? "disabled" : ""}>← Prev</button>
+              <button class="nav-btn primary" onclick="nextQuestion()" id="next-btn-${i}">
+                ${i === TOTAL - 1 ? "Finish →" : "Next →"}
+              </button>
+              <button class="nav-btn clear-response" onclick="clearResponse(${i})">✕ Clear</button>
+              <button class="nav-btn mark-review${reviewFlags[i] ? " marked" : ""}" id="mark-${i}" onclick="toggleReview(${i})">
+                ${reviewFlags[i] ? "★ Marked" : "☆ Mark for Review"}
+              </button>
+            </div>
+          </div>`;
+        });
+        area.innerHTML = html;
+      
+        if (window.MathJax) { MathJax.typesetPromise(); }
+      }
+
+      function showQuestion(idx) {
+        document
+          .querySelectorAll(".q-card")
+          .forEach((c) => c.classList.remove("active"));
+        document.getElementById(`qcard-${idx}`).classList.add("active");
+        currentQ = idx;
+        updateProgress();
+        updatePalette();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function selectOpt(qIdx, optIdx) {
+        if (submitted) return;
+        for (let i = 0; i < 4; i++) {
+          const el = document.getElementById(`opt-${qIdx}-${i}`);
+          if (el) el.classList.remove("selected");
+        }
+        document
+          .getElementById(`opt-${qIdx}-${optIdx}`)
+          .classList.add("selected");
+        userAnswers[qIdx] = optIdx;
+        updatePalette();
+        updateProgress();
+      }
+
+      function clearResponse(qIdx) {
+        if (submitted) return;
+        userAnswers[qIdx] = -1;
+        for (let i = 0; i < 4; i++) {
+          const el = document.getElementById(`opt-${qIdx}-${i}`);
+          if (el) el.classList.remove("selected");
+        }
+        updatePalette();
+        updateProgress();
+      }
+
+      function nextQuestion() {
+        if (currentQ < TOTAL - 1) {
+          showQuestion(currentQ + 1);
+        } else {
+          finishQuiz();
+        }
+      }
+
+      function prevQuestion() {
+        if (currentQ > 0) showQuestion(currentQ - 1);
+      }
+
+      function toggleReview(idx) {
+        reviewFlags[idx] = !reviewFlags[idx];
+        const btn = document.getElementById(`mark-${idx}`);
+        btn.classList.toggle("marked", reviewFlags[idx]);
+        btn.textContent = reviewFlags[idx] ? "★ Marked" : "☆ Mark for Review";
+        updatePalette();
+      }
+
+      function updateProgress() {
+        const answered = userAnswers.filter((a) => a !== -1).length;
+        document.getElementById("qCounter").textContent =
+          `Q ${currentQ + 1} / ${TOTAL}`;
+        document.getElementById("progressFill").style.width =
+          (answered / TOTAL) * 100 + "%";
+      }
+
+      function buildPalette() {
+        const grid = document.getElementById("paletteGrid");
+        let html = "";
+        for (let i = 0; i < TOTAL; i++) {
+          html += `<div class="palette-dot" id="pdot-${i}" onclick="showQuestion(${i})">${i + 1}</div>`;
+        }
+        grid.innerHTML = html;
+      }
+
+      function updatePalette() {
+        for (let i = 0; i < TOTAL; i++) {
+          const dot = document.getElementById(`pdot-${i}`);
+          dot.className = "palette-dot";
+          if (i === currentQ) dot.classList.add("current");
+          if (userAnswers[i] !== -1) dot.classList.add("answered");
+          if (reviewFlags[i]) dot.classList.add("review");
+        }
+      }
+
+      function togglePalette() {
+        document.getElementById("palettePanel").classList.toggle("open");
+      }
+
+      function startTimer() {
+        timerInterval = setInterval(() => {
+          timerSec++;
+          const m = String(Math.floor(timerSec / 60)).padStart(2, "0");
+          const s = String(timerSec % 60).padStart(2, "0");
+          document.getElementById("progressTimer").textContent = `${m}:${s}`;
+        }, 1000);
+      }
+
+      function finishQuiz() {
+        if (!window._isReplay) {
+          const unanswered = userAnswers.filter((a) => a === -1).length;
+          if (unanswered > 0) {
+            if (
+              !confirm(
+                `You have ${unanswered} unanswered question${unanswered > 1 ? "s" : ""}. Submit anyway?`,
+              )
+            )
+              return;
+          }
+        }
+        submitQuiz();
+      }
+
+      function saveAttempt(data) {
+        try {
+          const results = JSON.parse(
+            localStorage.getItem("papResults") || "[]",
+          );
+          results.unshift(data);
+          localStorage.setItem("papResults", JSON.stringify(results));
+        } catch (e) {}
+      }
+
+      function submitQuiz() {
+        submitted = true;
+        clearInterval(timerInterval);
+
+        document.getElementById("quizArea").classList.add("hidden");
+        document.getElementById("paletteToggle").style.display = "none";
+        document.getElementById("palettePanel").style.display = "none";
+        document.getElementById("progressWrap").style.display = "none";
+
+        let correct = 0,
+          wrong = 0,
+          skipped = 0;
+        let bioCorrect = 0,
+          bioTotal = 0;
+
+        Q.forEach((q, i) => {
+          bioTotal++;
+          if (userAnswers[i] === -1) {
+            skipped++;
+          } else if (userAnswers[i] === q.ans) {
+            correct++;
+            bioCorrect++;
+          } else {
+            wrong++;
+          }
+        });
+
+        const neetScore = correct * 4 - wrong * 1;
+        const pct = Math.round((correct / TOTAL) * 100);
+        const circumference = 2 * Math.PI * 65;
+        const offset = circumference - (pct / 100) * circumference;
+        const ringColor =
+          pct >= 80
+            ? "var(--green)"
+            : pct >= 50
+              ? "var(--amber)"
+              : "var(--red)";
+        const grade =
+          pct >= 90
+            ? "Outstanding!"
+            : pct >= 75
+              ? "Great Work!"
+              : pct >= 50
+                ? "Keep Practicing!"
+                : "Needs Revision";
+
+        const timeStr = document.getElementById("progressTimer").textContent;
+        const bioPct = bioTotal ? Math.round((bioCorrect / bioTotal) * 100) : 0;
+
+        if (!window._isReplay) {
+          saveAttempt({
+            id: Date.now(),
+            paperFile: "18AP1.html",
+            paperName: "Analytical Paradigm — Biomolecules & Cell Cycle",
+            paperTag: "Advanced",
+            correct,
+            wrong,
+            skipped,
+            totalQuestions: TOTAL,
+            neetScore,
+            maxScore: TOTAL * 4,
+            percentage: pct,
+            timeTaken: timeStr,
+            timerSeconds: timerSec,
+            userAnswers: [...userAnswers],
+          });
+        }
+
+        const res = document.getElementById("resultsSection");
+        res.style.display = "block";
+
+        let rhtml = `
+<div class="results-card">
+  <h2>${grade}</h2>
+  <div class="score-ring">
+    <svg width="160" height="160" viewBox="0 0 160 160">
+      <circle class="ring-bg" cx="80" cy="80" r="65"/>
+      <circle class="ring-fill" cx="80" cy="80" r="65"
+        stroke="${ringColor}"
+        stroke-dasharray="${circumference}"
+        stroke-dashoffset="${circumference}"
+        id="scoreRing"/>
+    </svg>
+    <div class="score-center">
+      <div class="pct">${pct}%</div>
+      <div class="of">${correct}/${TOTAL}</div>
+    </div>
+  </div>
+  <div class="stats-grid">
+    <div class="stat-item neet"><div class="stat-num">${neetScore}</div><div class="stat-lbl">NEET Score</div></div>
+    <div class="stat-item correct"><div class="stat-num">${correct}</div><div class="stat-lbl">Correct</div></div>
+    <div class="stat-item wrong"><div class="stat-num">${wrong}</div><div class="stat-lbl">Wrong</div></div>
+    <div class="stat-item skip"><div class="stat-num">${skipped}</div><div class="stat-lbl">Skipped</div></div>
+  </div>
+  <div style="margin-top:16px;font-size:13px;color:var(--text3)">Time: ${timeStr} · Max: ${TOTAL * 4}</div>
+</div>
+
+<div class="chapter-breakdown">
+  <h3>Chapter Breakdown</h3>
+  <div class="chapter-bar-wrap">
+    <div class="chapter-bar-header">
+      <span style="color:var(--accent)">🧬 Biology · Complete Syllabus</span>
+      <span style="color:var(--text2)">${bioCorrect}/${bioTotal} (${bioPct}%)</span>
+    </div>
+    <div class="chapter-bar-track">
+      <div class="chapter-bar-fill" id="bioBar" style="width:0%;background:var(--accent)"></div>
+    </div>
+  </div>
+</div>
+
+<div class="review-title">Complete Walkthrough</div>
+<div class="review-sub">Every question reviewed with NCERT-based explanations.</div>
+<div class="review-filter">
+  <button class="filter-btn active" onclick="filterReview('all',this)">All (${TOTAL})</button>
+  <button class="filter-btn" onclick="filterReview('wrong',this)">❌ Wrong (${wrong})</button>
+  <button class="filter-btn" onclick="filterReview('skipped',this)">⏭️ Skipped (${skipped})</button>
+  <button class="filter-btn" onclick="filterReview('correct',this)">✅ Correct (${correct})</button>
+</div>
+<div id="reviewCards"></div>`;
+
+        res.innerHTML = rhtml;
+        renderReviewCards("all");
+
+        setTimeout(() => {
+          document.getElementById("scoreRing").style.strokeDashoffset = offset;
+          document.getElementById("bioBar").style.width = bioPct + "%";
+        }, 100);
+
+        res.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function renderReviewCards(filter) {
+        const container = document.getElementById("reviewCards");
+        let html = "";
+
+        Q.forEach((q, i) => {
+          const ua = userAnswers[i];
+          const isCorrect = ua === q.ans;
+          const isSkipped = ua === -1;
+          const isWrong = !isCorrect && !isSkipped;
+
+          if (filter === "wrong" && !isWrong) return;
+          if (filter === "skipped" && !isSkipped) return;
+          if (filter === "correct" && !isCorrect) return;
+
+          let cardClass, badgeClass, badgeText;
+          if (isCorrect) {
+            cardClass = "rc-correct";
+            badgeClass = "badge-correct";
+            badgeText = "✅ Correct";
+          } else if (isSkipped) {
+            cardClass = "rc-skipped";
+            badgeClass = "badge-skipped";
+            badgeText = "⏭️ Skipped";
+          } else {
+            cardClass = "rc-wrong";
+            badgeClass = "badge-wrong";
+            badgeText = "❌ Wrong";
+          }
+
+          const topic = q.ch;
+
+          html += `<div class="review-card ${cardClass}">
+            <div class="rc-header">
+              <span class="q-num">Q${q.id}</span>
+              <span class="q-tag bio">${topic}</span>
+              <span class="rc-badge ${badgeClass}">${badgeText}</span>
+              <span class="q-type">${q.type}</span>
+            </div>
+            <div class="rc-q">${q.q}</div>
+            <div class="rc-opts">`;
+
+          q.opts.forEach((o, j) => {
+            let optClass = "rc-opt";
+            let marker = LETTERS[j];
+            if (j === q.ans) {
+              optClass += " rc-opt-correct";
+              marker = "✓";
+            } else if (j === ua && isWrong) {
+              optClass += " rc-opt-wrong";
+              marker = "✗";
+            }
+            html += `<div class="${optClass}">
+              <span class="rc-letter">${marker}</span>
+              <span>${o}</span>
+            </div>`;
+          });
+
+          html += `</div>
+            <div class="rc-exp">
+              <h4>💡 Explanation</h4>
+              <p>${q.exp}</p>
+              <span class="ncert-ref">📖 ${q.ref}</span>
+            </div>
+          </div>`;
+        });
+
+        if (!html)
+          html = `<p style="text-align:center;color:var(--text3);padding:30px 0">No questions match this filter.</p>`;
+        container.innerHTML = html;
+        if (window.MathJax) { MathJax.typesetPromise(); }
+      }
+
+      function filterReview(type, btn) {
+        document
+          .querySelectorAll(".filter-btn")
+          .forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderReviewCards(type);
+      }
+
+      window.addEventListener("scroll", () => {
+        const pw = document.getElementById("progressWrap");
+        if (window.scrollY > 200) {
+          pw.classList.add("scrolled");
+        } else {
+          pw.classList.remove("scrolled");
+        }
+      });
+
+      (function loadSavedAttempt() {
+        const params = new URLSearchParams(window.location.search);
+        const attemptId = params.get("attempt");
+        if (!attemptId) return;
+        const saved = JSON.parse(localStorage.getItem("papResults") || "[]");
+        const attempt = saved.find((r) => r.id === Number(attemptId));
+        if (!attempt) return;
+        window._isReplay = true;
+        userAnswers = attempt.userAnswers;
+        timerSec = attempt.timerSeconds || 0;
+        const m = String(Math.floor(timerSec / 60)).padStart(2, "0");
+        const s = String(timerSec % 60).padStart(2, "0");
+        document.getElementById("progressTimer").textContent = `${m}:${s}`;
+        document.getElementById("heroSection").style.display = "none";
+        submitQuiz();
+      })();
+    </script>
+  </body>
+</html>
