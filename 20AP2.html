@@ -1,0 +1,1324 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEET 2026 — Master Assessment Bank: Chemistry &amp; Biology (50Q)</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --bg: #0a0e17;
+        --surface: #111827;
+        --surface2: #1a2236;
+        --surface3: #222d44;
+        --border: #2a3654;
+        --text: #e2e8f0;
+        --text2: #94a3b8;
+        --text3: #64748b;
+        --accent: #06d6a0;
+        --accent2: #118ab2;
+        --red: #ef4444;
+        --green: #22c55e;
+        --amber: #f59e0b;
+        --purple: #a78bfa;
+        --pink: #f472b6;
+        --radius: 12px;
+        --radius-sm: 8px;
+      }
+      html { scroll-behavior: smooth; }
+      body {
+        font-family: "IBM Plex Sans", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background:
+          radial-gradient(ellipse at 20% 0%, rgba(6,214,160,0.06) 0%, transparent 50%),
+          radial-gradient(ellipse at 80% 100%, rgba(244,114,182,0.06) 0%, transparent 50%);
+        pointer-events: none;
+        z-index: 0;
+      }
+      .container {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 20px;
+        position: relative;
+        z-index: 1;
+      }
+      .hero {
+        text-align: center;
+        padding: 50px 20px 40px;
+        position: relative;
+      }
+      .hero-badge {
+        display: inline-block;
+        padding: 6px 18px;
+        border-radius: 50px;
+        background: rgba(6,214,160,0.12);
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 18px;
+        border: 1px solid rgba(6,214,160,0.2);
+      }
+      .hero h1 {
+        font-family: "DM Serif Display", serif;
+        font-size: clamp(28px, 5vw, 44px);
+        color: #fff;
+        margin-bottom: 12px;
+        line-height: 1.2;
+      }
+      .hero h1 span {
+        background: linear-gradient(135deg, var(--accent), var(--pink));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .hero p { color: var(--text2); font-size: 16px; max-width: 580px; margin: 0 auto 28px; }
+      .hero-tags {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 32px;
+      }
+      .hero-tags span { padding: 6px 16px; border-radius: 8px; font-size: 12px; font-weight: 600; }
+      .tag-chem { background: rgba(6,214,160,0.1); color: var(--accent); border: 1px solid rgba(6,214,160,0.22); }
+      .tag-bio { background: rgba(244,114,182,0.1); color: var(--pink); border: 1px solid rgba(244,114,182,0.22); }
+      .start-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 16px 48px;
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--bg);
+        background: linear-gradient(135deg, var(--accent), var(--pink));
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 25px rgba(6,214,160,0.3);
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+      .start-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 35px rgba(244,114,182,0.4);
+      }
+      .progress-wrap {
+        position: sticky;
+        top: 0; z-index: 100;
+        background: rgba(10,14,23,0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 14px 20px;
+        border-bottom: 1px solid var(--border);
+        display: none;
+        transition: box-shadow 0.3s;
+      }
+      .progress-wrap.active { display: block; }
+      .progress-wrap.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.4); }
+      .progress-inner {
+        max-width: 860px; margin: 0 auto;
+        display: flex; align-items: center; gap: 16px;
+      }
+      .progress-text { font-size: 13px; font-weight: 600; color: var(--text2); white-space: nowrap; min-width: 90px; }
+      .progress-text b { color: var(--accent); }
+      .progress-bar { flex: 1; height: 6px; background: var(--surface3); border-radius: 10px; overflow: hidden; }
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent), var(--pink));
+        border-radius: 10px;
+        transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+        width: 0%;
+      }
+      .progress-timer {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px; color: var(--accent); min-width: 60px; text-align: right;
+      }
+      .q-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 32px;
+        margin-bottom: 24px;
+        display: none;
+        animation: fadeIn 0.4s ease both;
+      }
+      .q-card.active { display: block; }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(12px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .q-header { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
+      .q-num {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px; font-weight: 700; color: var(--bg);
+        background: var(--accent); padding: 4px 10px; border-radius: 6px;
+        white-space: nowrap; flex-shrink: 0;
+      }
+      .q-num.bio-num { background: var(--pink); }
+      .q-meta { display: flex; gap: 8px; flex-wrap: wrap; }
+      .q-tag {
+        font-size: 11px; padding: 3px 10px; border-radius: 50px;
+        font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;
+      }
+      .q-tag.chem { background: rgba(6,214,160,0.12); color: var(--accent); }
+      .q-tag.bio { background: rgba(244,114,182,0.15); color: var(--pink); }
+      .q-tag.type { background: rgba(167,139,250,0.12); color: var(--purple); }
+      .q-tag.hard { background: rgba(239,68,68,0.12); color: var(--red); }
+      .q-tag.med { background: rgba(245,158,11,0.12); color: var(--amber); }
+      .q-tag.easy { background: rgba(34,197,94,0.12); color: var(--green); }
+      .q-text { font-size: 15.5px; color: #fff; line-height: 1.7; margin-bottom: 20px; white-space: pre-wrap; }
+      .q-chapter-badge {
+        display: inline-block;
+        font-size: 11px; padding: 3px 10px; border-radius: 50px;
+        font-weight: 600; letter-spacing: 0.5px;
+        background: rgba(17,138,178,0.12); color: var(--accent2);
+        border: 1px solid rgba(17,138,178,0.2);
+        margin-bottom: 10px;
+      }
+      .options { display: flex; flex-direction: column; gap: 10px; }
+      .opt-btn {
+        display: flex; align-items: flex-start; gap: 12px;
+        padding: 14px 18px;
+        background: var(--surface2);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius-sm);
+        cursor: pointer; transition: all 0.2s;
+        text-align: left; width: 100%;
+        font-size: 14.5px; color: var(--text); line-height: 1.5;
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+      .opt-btn:hover { border-color: var(--accent); background: rgba(6,214,160,0.05); transform: translateX(4px); }
+      .opt-btn .opt-letter {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700; color: var(--text3); font-size: 13px;
+        min-width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;
+        border-radius: 6px; background: var(--surface3); flex-shrink: 0; margin-top: 1px; transition: all 0.2s;
+      }
+      .opt-btn.selected { border-color: var(--accent); background: rgba(6,214,160,0.08); }
+      .opt-btn.selected .opt-letter { background: var(--accent); color: var(--bg); }
+      .nav-btns { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+      .nav-btn {
+        padding: 10px 24px; border-radius: 8px;
+        font-family: "IBM Plex Sans", sans-serif;
+        font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+        border: 1.5px solid var(--border); background: var(--surface2); color: var(--text);
+      }
+      .nav-btn:hover { border-color: var(--accent); }
+      .nav-btn.primary {
+        background: linear-gradient(135deg, var(--accent), var(--pink));
+        border: none; color: var(--bg); font-weight: 700;
+        box-shadow: 0 2px 12px rgba(6,214,160,0.2);
+      }
+      .nav-btn.primary:hover { box-shadow: 0 4px 20px rgba(244,114,182,0.32); transform: translateY(-1px); }
+      .nav-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+      .mark-review { margin-left: auto; font-size: 13px; color: var(--amber); background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.25); }
+      .mark-review.marked { background: rgba(245,158,11,0.2); border-color: var(--amber); }
+      .clear-response { font-size: 13px; color: var(--red); background: rgba(239,68,68,0.08); border-color: rgba(239,68,68,0.25); }
+      .clear-response:hover { background: rgba(239,68,68,0.15); border-color: var(--red); }
+      .palette-toggle {
+        position: fixed; bottom: 24px; right: 24px;
+        width: 48px; height: 48px; border-radius: 50%;
+        background: var(--accent); color: var(--bg);
+        border: none; font-size: 20px; font-weight: 700;
+        cursor: pointer; z-index: 200;
+        box-shadow: 0 4px 20px rgba(6,214,160,0.4);
+        display: none; align-items: center; justify-content: center; transition: transform 0.2s;
+      }
+      .palette-toggle:hover { transform: scale(1.06); }
+      .palette-toggle.active { display: flex; }
+      .palette-panel {
+        position: fixed; bottom: 84px; right: 24px;
+        width: 320px; max-height: 420px; overflow-y: auto;
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: 14px; padding: 20px; z-index: 200; display: none;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      }
+      .palette-panel.open { display: block; }
+      .palette-title { font-weight: 700; font-size: 14px; margin-bottom: 14px; color: var(--text2); text-transform: uppercase; letter-spacing: 1px; }
+      .palette-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 6px; }
+      .palette-dot {
+        width: 32px; height: 32px; border-radius: 7px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 11px; font-weight: 700; cursor: pointer;
+        border: 1.5px solid var(--border); background: var(--surface2); color: var(--text3); transition: all 0.15s;
+      }
+      .palette-dot:hover { border-color: var(--accent); }
+      .palette-dot.answered { background: rgba(6,214,160,0.15); border-color: var(--accent); color: var(--accent); }
+      .palette-dot.review { background: rgba(245,158,11,0.15); border-color: var(--amber); color: var(--amber); }
+      .palette-dot.current { box-shadow: 0 0 0 2px var(--accent); }
+      .palette-legend { display: flex; gap: 16px; margin-top: 14px; font-size: 11px; color: var(--text3); flex-wrap: wrap; }
+      .palette-legend span { display: flex; align-items: center; gap: 5px; }
+      .legend-dot { width: 10px; height: 10px; border-radius: 3px; }
+      #resultsSection { display: none; }
+      .results-card {
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: 16px; padding: 40px 30px;
+        max-width: 500px; margin: 0 auto 40px; text-align: center;
+      }
+      .results-card h2 { font-family: "DM Serif Display", serif; font-size: 32px; color: #fff; margin-bottom: 8px; }
+      .score-ring { width: 160px; height: 160px; margin: 24px auto; position: relative; }
+      .score-ring svg { transform: rotate(-90deg); }
+      .score-ring .ring-bg { fill: none; stroke: var(--surface3); stroke-width: 10; }
+      .score-ring .ring-fill { fill: none; stroke-width: 10; stroke-linecap: round; transition: stroke-dashoffset 1.5s cubic-bezier(0.4,0,0.2,1); }
+      .score-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); text-align: center; }
+      .score-center .pct { font-family: "JetBrains Mono", monospace; font-size: 36px; font-weight: 700; color: #fff; }
+      .score-center .of { font-size: 13px; color: var(--text3); }
+      .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 24px; }
+      .stat-item { padding: 14px 8px; background: var(--surface2); border-radius: var(--radius-sm); text-align: center; }
+      .stat-num { font-family: "JetBrains Mono", monospace; font-size: 22px; font-weight: 700; }
+      .stat-lbl { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+      .stat-item.neet .stat-num { color: var(--accent2); }
+      .stat-item.correct .stat-num { color: var(--green); }
+      .stat-item.wrong .stat-num { color: var(--red); }
+      .stat-item.skip .stat-num { color: var(--amber); }
+      .chapter-breakdown { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 40px; }
+      .chapter-breakdown h3 { font-family: "DM Serif Display", serif; font-size: 18px; color: #fff; margin-bottom: 20px; }
+      .chapter-bar-wrap { margin-bottom: 16px; }
+      .chapter-bar-header { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px; font-weight: 600; }
+      .chapter-bar-track { height: 8px; background: var(--surface3); border-radius: 4px; overflow: hidden; }
+      .chapter-bar-fill { height: 100%; border-radius: 4px; transition: width 1s ease; }
+      .review-title { font-family: "DM Serif Display", serif; font-size: 28px; color: #fff; margin: 40px 0 12px; text-align: center; }
+      .review-sub { text-align: center; color: var(--text2); font-size: 14px; margin-bottom: 24px; }
+      .review-filter { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
+      .filter-btn {
+        padding: 8px 20px; border-radius: 50px; border: 1px solid var(--border);
+        background: transparent; color: var(--text2); font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+      }
+      .filter-btn:hover, .filter-btn.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+      .review-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; margin-bottom: 20px; }
+      .review-card.rc-correct { border-left: 4px solid var(--green); }
+      .review-card.rc-wrong { border-left: 4px solid var(--red); }
+      .review-card.rc-skipped { border-left: 4px solid var(--amber); }
+      .rc-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+      .rc-badge { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 5px; text-transform: uppercase; letter-spacing: 0.6px; }
+      .rc-badge.badge-correct { background: rgba(34,197,94,0.1); color: var(--green); border: 1px solid rgba(34,197,94,0.3); }
+      .rc-badge.badge-wrong { background: rgba(239,68,68,0.1); color: var(--red); border: 1px solid rgba(239,68,68,0.3); }
+      .rc-badge.badge-skipped { background: rgba(245,158,11,0.1); color: var(--amber); border: 1px solid rgba(245,158,11,0.3); }
+      .rc-q { font-size: 14.5px; line-height: 1.7; margin-bottom: 16px; color: var(--text); white-space: pre-wrap; }
+      .rc-opts { margin-bottom: 16px; }
+      .rc-opt { padding: 10px 14px; margin-bottom: 6px; border-radius: 8px; font-size: 13.5px; line-height: 1.6; display: flex; align-items: flex-start; gap: 10px; border: 1.5px solid transparent; }
+      .rc-opt.rc-opt-correct { background: rgba(34,197,94,0.08); border-color: rgba(34,197,94,0.3); }
+      .rc-opt.rc-opt-wrong { background: rgba(239,68,68,0.08); border-color: rgba(239,68,68,0.3); }
+      .rc-letter { flex-shrink: 0; width: 22px; height: 22px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; background: var(--border); color: var(--text3); }
+      .rc-opt.rc-opt-correct .rc-letter { background: var(--green); color: #fff; }
+      .rc-opt.rc-opt-wrong .rc-letter { background: var(--red); color: #fff; }
+      .rc-exp { background: rgba(6,214,160,0.05); border: 1px solid rgba(6,214,160,0.15); border-radius: 10px; padding: 18px 20px; }
+      .rc-exp h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--accent); margin-bottom: 8px; }
+      .rc-exp p { font-size: 13.5px; line-height: 1.75; color: var(--text2); }
+      .rc-exp p strong { color: var(--text); }
+      .rc-exp .ncert-ref { display: inline-block; margin-top: 8px; font-size: 11px; padding: 3px 8px; background: rgba(6,214,160,0.1); border-radius: 4px; color: var(--accent); font-weight: 600; }
+      .hidden { display: none !important; }
+      @media (max-width: 600px) {
+        .container { padding: 12px; }
+        .q-card { padding: 20px 16px; }
+        .hero h1 { font-size: 26px; }
+        .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        .progress-inner { gap: 10px; }
+        .palette-panel { width: calc(100vw - 40px); right: 20px; }
+        .review-card { padding: 20px 16px; }
+        .palette-grid { grid-template-columns: repeat(6, 1fr); }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero" id="heroSection">
+      <div class="hero-badge">NEET 2026 · Master Assessment Bank</div>
+      <h1>Chemistry &amp; <span>Biology</span> — 50Q</h1>
+      <p>
+        50 strictly NCERT-aligned expert questions spanning <em>Structure of Atom, Equilibrium,
+        Periodic Trends, Chemical Bonding, Group 16 &amp; 17</em> and the <em>Frog (Structural Organisation)</em>
+        — featuring conceptual traps, assertion-reason, multi-statement, and match questions.
+      </p>
+      <div class="hero-tags">
+        <span class="tag-chem">⚗️ 25 — Chemistry</span>
+        <span class="tag-bio">🐸 25 — Biology (Frog)</span>
+      </div>
+      <button class="start-btn" onclick="startQuiz()">Begin Test →</button>
+    </div>
+
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-inner">
+        <div class="progress-text"><b id="qCounter">Q 1 / 50</b></div>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="progress-timer" id="progressTimer">00:00</div>
+      </div>
+    </div>
+
+    <div class="container" id="quizArea"></div>
+    <div class="container" id="resultsSection"></div>
+
+    <button class="palette-toggle" id="paletteToggle" onclick="togglePalette()">☰</button>
+    <div class="palette-panel" id="palettePanel">
+      <div class="palette-title">Question Palette</div>
+      <div class="palette-grid" id="paletteGrid"></div>
+      <div class="palette-legend">
+        <span><div class="legend-dot" style="background:var(--surface2);border:1px solid var(--border)"></div>Unseen</span>
+        <span><div class="legend-dot" style="background:rgba(6,214,160,0.2)"></div>Answered</span>
+        <span><div class="legend-dot" style="background:rgba(245,158,11,0.2)"></div>Review</span>
+      </div>
+    </div>
+
+    <script>
+      const AR_OPTS = [
+        "Both A and R are true, and R is the correct explanation of A",
+        "Both A and R are true, but R is NOT the correct explanation of A",
+        "A is true but R is false",
+        "A is false but R is true",
+      ];
+
+      const Q = [
+        /* ===== CHEMISTRY: STRUCTURE OF ATOM (Q1–Q5) ===== */
+        {
+          id: 1, ch: "Chemistry", chapter: "Structure of Atom", type: "MCQ", diff: "Medium",
+          q: "In J.J. Thomson's cathode ray tube experiment, the charge-to-mass ratio (e/mₑ) of the electron was determined. Which of the following statements is correct per NCERT?",
+          opts: [
+            "It depends heavily on the nature of the gas enclosed in the cathode ray tube",
+            "It depends on the material of the electrodes used in the tube",
+            "Its value was 1.758820 × 10¹¹ C kg⁻¹ and is independent of the gas and electrode material",
+            "Its value was calculated by combining results of Rutherford's scattering experiment",
+          ],
+          ans: 2,
+          exp: "NCERT states cathode rays consist of negatively charged particles whose properties are independent of the electrode material and the nature of the gas present. Thomson determined e/mₑ = 1.758820 × 10¹¹ C kg⁻¹.",
+          ref: "NCERT Ch.2 — Discovery of Electron",
+        },
+        {
+          id: 2, ch: "Chemistry", chapter: "Structure of Atom", type: "MCQ", diff: "Medium",
+          q: "Calculate the total number of angular nodes and radial nodes present in a 4d orbital, respectively.",
+          opts: ["2 angular nodes, 1 radial node", "2 angular nodes, 2 radial nodes", "3 angular nodes, 1 radial node", "1 angular node, 2 radial nodes"],
+          ans: 0,
+          exp: "For a 4d orbital, n = 4, l = 2. Angular nodes = l = 2. Radial nodes = n − l − 1 = 4 − 2 − 1 = 1. Hence 2 angular nodes and 1 radial node.",
+          ref: "NCERT Ch.2 — Atomic Orbitals",
+        },
+        {
+          id: 3, ch: "Chemistry", chapter: "Structure of Atom", type: "Assertion-Reason", diff: "Hard",
+          q: "Assertion (A): An atomic orbital cannot accommodate more than two electrons, and these two electrons must have opposite spins.\nReason (R): No two electrons in an atom can have the same set of four quantum numbers according to Hund's Rule of Maximum Multiplicity.",
+          opts: AR_OPTS,
+          ans: 2,
+          exp: "The assertion correctly states the Pauli Exclusion Principle. However, the reason incorrectly attributes this to Hund's Rule — making R false. Hund's Rule deals with single occupancy of degenerate orbitals before pairing, not the two-electron limit per orbital.",
+          ref: "NCERT Ch.2 — Pauli Exclusion Principle",
+        },
+        {
+          id: 4, ch: "Chemistry", chapter: "Structure of Atom", type: "MCQ", diff: "Medium",
+          q: "Which among the following phenomena could NOT be explained by Rutherford's Nuclear Model of Atom?",
+          opts: [
+            "The presence of a dense, positively charged nucleus at the center",
+            "Most of the space inside the atom is empty",
+            "The stability of the atom and the continuous distribution of electrons around the nucleus",
+            "The deflection of alpha particles at extremely large angles",
+          ],
+          ans: 2,
+          exp: "Rutherford's model failed to explain atomic stability. According to classical electromagnetic theory, a revolving charged electron should continuously emit radiation, lose energy, and spiral into the nucleus.",
+          ref: "NCERT Ch.2 — Rutherford's Model",
+        },
+        {
+          id: 5, ch: "Chemistry", chapter: "Structure of Atom", type: "Match", diff: "Easy",
+          q: "Match List-I (Isotope of Hydrogen) with List-II (Composition):\n\nList-I\n(i) Protium\n(ii) Deuterium\n(iii) Tritium\n\nList-II\n(p) 1 proton, 2 neutrons\n(q) 1 proton, 0 neutrons\n(r) 1 proton, 1 neutron",
+          opts: [
+            "(i)-q, (ii)-r, (iii)-p",
+            "(i)-q, (ii)-p, (iii)-r",
+            "(i)-r, (ii)-q, (iii)-p",
+            "(i)-p, (ii)-r, (iii)-q",
+          ],
+          ans: 0,
+          exp: "Protium (¹₁H) has 0 neutrons → (q). Deuterium (²₁D) has 1 proton and 1 neutron → (r). Tritium (³₁T) has 1 proton and 2 neutrons → (p).",
+          ref: "NCERT Ch.2 — Isotopes of Hydrogen",
+        },
+
+        /* ===== CHEMISTRY: CHEMICAL & IONIC EQUILIBRIUM (Q6–Q12) ===== */
+        {
+          id: 6, ch: "Chemistry", chapter: "Chemical & Ionic Equilibrium", type: "MCQ", diff: "Easy",
+          q: "In the context of physical equilibrium, which of the following defines a saturated solution of a solid in a liquid?",
+          opts: [
+            "Rate of dissolution is strictly greater than the rate of crystallization",
+            "Rate of dissolution is strictly less than the rate of crystallization",
+            "Rate of dissolution is equal to the rate of crystallization, and macroscopic properties remain constant",
+            "The process of dissolution stops completely",
+          ],
+          ans: 2,
+          exp: "Dynamic physical equilibrium implies that opposing processes (dissolution and crystallization) occur at the exact same rate, leading to no net macroscopic change in concentration.",
+          ref: "NCERT Ch.7 — Physical Equilibrium",
+        },
+        {
+          id: 7, ch: "Chemistry", chapter: "Chemical & Ionic Equilibrium", type: "Match", diff: "Medium",
+          q: "Match the following fluids with their approximate pH values (from the NCERT table):\n\n(I) Gastric juice\n(II) Human saliva\n(III) Human blood\n(IV) Black coffee\n\n(a) 5.0    (b) 7.4    (c) 1.2    (d) 6.4",
+          opts: [
+            "I-c, II-d, III-b, IV-a",
+            "I-c, II-b, III-d, IV-a",
+            "I-a, II-d, III-b, IV-c",
+            "I-c, II-a, III-d, IV-b",
+          ],
+          ans: 0,
+          exp: "NCERT tabular data: Gastric juice (~1.2) → c; Human saliva (~6.4) → d; Human blood (~7.4) → b; Black coffee (~5.0) → a.",
+          ref: "NCERT Ch.7 — pH Scale Table",
+        },
+        {
+          id: 8, ch: "Chemistry", chapter: "Chemical & Ionic Equilibrium", type: "MCQ", diff: "Medium",
+          q: "A gaseous reaction mixture containing H₂, I₂, and HI is at equilibrium in a closed vessel. If an inert gas is added to this mixture at constant volume, what will be the effect according to Le Chatelier's Principle?",
+          opts: [
+            "The equilibrium shifts in the forward direction",
+            "The equilibrium shifts in the backward direction",
+            "The equilibrium remains entirely unaffected",
+            "The equilibrium constant Kc will increase",
+          ],
+          ans: 2,
+          exp: "Addition of an inert gas at constant volume does not change the partial pressures or molar concentrations of the reacting gases. Therefore, the equilibrium state remains unaffected.",
+          ref: "NCERT Ch.7 — Le Chatelier's Principle",
+        },
+        {
+          id: 9, ch: "Chemistry", chapter: "Chemical & Ionic Equilibrium", type: "Assertion-Reason", diff: "Medium",
+          q: "Assertion (A): Adding CH₃COONa to an aqueous solution of CH₃COOH decreases the concentration of H⁺ ions.\nReason (R): The addition of acetate ions drives the dissociation equilibrium of acetic acid to the left due to the common ion effect.",
+          opts: AR_OPTS,
+          ans: 0,
+          exp: "CH₃COONa dissociates completely to yield CH₃COO⁻. This high concentration of the common ion shifts the CH₃COOH ⇌ CH₃COO⁻ + H⁺ equilibrium backward (to the left), consuming H⁺ and lowering its concentration. Both A and R are true, and R correctly explains A.",
+          ref: "NCERT Ch.7 — Common Ion Effect",
+        },
+        {
+          id: 10, ch: "Chemistry", chapter: "Chemical & Ionic Equilibrium", type: "MCQ", diff: "Medium",
+          q: "For the gaseous reaction N₂(g) + 3H₂(g) ⇌ 2NH₃(g), the relationship between Kₚ and Kc is given by:",
+          opts: [
+            "Kₚ = Kc(RT)²",
+            "Kₚ = Kc(RT)⁻²",
+            "Kₚ = Kc",
+            "Kₚ = Kc(RT)⁻¹",
+          ],
+          ans: 1,
+          exp: "Kₚ = Kc(RT)^Δn. Here, Δn = moles of gaseous products − moles of gaseous reactants = 2 − (1+3) = −2. Therefore, Kₚ = Kc(RT)⁻².",
+          ref: "NCERT Ch.7 — Relationship between Kₚ and Kc",
+        },
+        {
+          id: 11, ch: "Chemistry", chapter: "Chemical & Ionic Equilibrium", type: "MCQ", diff: "Easy",
+          q: "Identify the CORRECT statement regarding the application of the reaction quotient (Qc):",
+          opts: [
+            "If Qc > Kc, the reaction proceeds in the forward direction",
+            "If Qc < Kc, the reaction proceeds in the backward direction",
+            "If Qc = Kc, the reaction mixture is at equilibrium",
+            "Qc can only be calculated at equilibrium",
+          ],
+          ans: 2,
+          exp: "If Qc < Kc → forward direction. If Qc > Kc → backward direction. Qc = Kc means the system is at equilibrium. Qc can be evaluated at any arbitrary instant, not just at equilibrium.",
+          ref: "NCERT Ch.7 — Reaction Quotient",
+        },
+        {
+          id: 12, ch: "Chemistry", chapter: "Chemical & Ionic Equilibrium", type: "MCQ", diff: "Hard",
+          q: "Which of the following sparingly soluble salts produces the mathematical expression Ksp = 108s⁵ (where s is the molar solubility)?",
+          opts: ["Ag₂S", "Ca₃(PO₄)₂", "Al(OH)₃", "BaSO₄"],
+          ans: 1,
+          exp: "Ca₃(PO₄)₂ ⇌ 3Ca²⁺ + 2PO₄³⁻. Equilibrium concentrations: [Ca²⁺] = 3s, [PO₄³⁻] = 2s. Ksp = (3s)³ × (2s)² = 27s³ × 4s² = 108s⁵.",
+          ref: "NCERT Ch.7 — Solubility Product",
+        },
+
+        /* ===== CHEMISTRY: PERIODIC TRENDS & BONDING (Q13–Q18) ===== */
+        {
+          id: 13, ch: "Chemistry", chapter: "Periodic Trends & Bonding", type: "MCQ", diff: "Hard",
+          q: "Considering Period 2 elements, arrange Boron (B), Beryllium (Be), Nitrogen (N), and Oxygen (O) in the correct increasing order of their first ionisation enthalpies (IE₁).",
+          opts: [
+            "B < Be < O < N",
+            "Be < B < N < O",
+            "B < Be < N < O",
+            "Be < B < O < N",
+          ],
+          ans: 0,
+          exp: "IE₁ generally increases across a period, but Be (2s²) has a higher IE₁ than B (2s²2p¹) due to full subshell stability. N (2p³) has a higher IE₁ than O (2p⁴) due to extra stability of the half-filled p-orbital. Overall order: B < Be < O < N.",
+          ref: "NCERT Ch.3 — Ionisation Enthalpy",
+        },
+        {
+          id: 14, ch: "Chemistry", chapter: "Periodic Trends & Bonding", type: "MCQ", diff: "Medium",
+          q: "Which of the following halogens possesses the most negative electron gain enthalpy?",
+          opts: ["Fluorine (F)", "Chlorine (Cl)", "Bromine (Br)", "Iodine (I)"],
+          ans: 1,
+          exp: "Chlorine has the most negative electron gain enthalpy. Fluorine's extremely small atomic size causes significant inter-electronic repulsions in the compact 2p subshell, making addition of an incoming electron less energetically favorable than in Cl's larger 3p subshell.",
+          ref: "NCERT Ch.3 — Electron Gain Enthalpy",
+        },
+        {
+          id: 15, ch: "Chemistry", chapter: "Periodic Trends & Bonding", type: "Assertion-Reason", diff: "Medium",
+          q: "Assertion (A): The atomic radius of Gallium (Ga) is smaller than that of Aluminium (Al) despite being located below Al in Group 13.\nReason (R): The presence of fully filled 3d orbitals in Ga provides a poor shielding effect, leading to an increased effective nuclear charge pulling the valence electrons closer.",
+          opts: AR_OPTS,
+          ans: 0,
+          exp: "In Gallium, the 10 d-electrons offer poor shielding for the outer electrons against the growing nuclear charge (d-block contraction), pulling the valence shell inward. Ga (135 pm) is smaller than Al (143 pm). Both A and R are true, and R correctly explains A.",
+          ref: "NCERT Ch.3 — Atomic Radius (d-block contraction)",
+        },
+        {
+          id: 16, ch: "Chemistry", chapter: "Periodic Trends & Bonding", type: "MCQ", diff: "Medium",
+          q: "The second-period elements show anomalous behaviour compared to heavier members of their groups. Which of the following is NOT a reason for this anomaly?",
+          opts: [
+            "Exceptionally small atomic radius",
+            "Unusually high electronegativity",
+            "Presence of vacant d-orbitals in their valence shell",
+            "Large charge-to-radius ratio",
+          ],
+          ans: 2,
+          exp: "The anomalous behaviour of second-period elements is tied to their small size, high electronegativity, and the ABSENCE of d-orbitals in their valence shell (which restricts max covalency to 4). The presence of d-orbitals is characteristic of third-period elements, not second-period.",
+          ref: "NCERT Ch.3 — Diagonal Relationship",
+        },
+        {
+          id: 17, ch: "Chemistry", chapter: "Periodic Trends & Bonding", type: "MCQ", diff: "Hard",
+          q: "Arrange the following boron trihalides in the increasing order of their Lewis acidic strength:",
+          opts: [
+            "BF₃ < BCl₃ < BBr₃ < BI₃",
+            "BI₃ < BBr₃ < BCl₃ < BF₃",
+            "BF₃ < BI₃ < BCl₃ < BBr₃",
+            "BCl₃ < BF₃ < BBr₃ < BI₃",
+          ],
+          ans: 0,
+          exp: "Boron acts as a Lewis acid via its vacant 2p orbital. The pπ–pπ back-bonding from the halogen's filled p-orbital partially quenches electron deficiency. Back bonding is strongest in BF₃ (effective 2p–2p overlap) and weakest in BI₃, so BF₃ is the weakest Lewis acid.",
+          ref: "NCERT Ch.4 — Lewis Acid Strength of BX₃",
+        },
+        {
+          id: 18, ch: "Chemistry", chapter: "Periodic Trends & Bonding", type: "MCQ", diff: "Medium",
+          q: "Which of the following correctly describes the structural effect of pπ–pπ back bonding on the B–F bond in BF₃?",
+          opts: [
+            "It increases the bond length to accommodate the extra electrons",
+            "It imparts partial double bond character, thereby decreasing the bond length",
+            "It disrupts the trigonal planar geometry, forcing the molecule into a pyramidal shape",
+            "It changes the hybridisation of Boron from sp² to sp³",
+          ],
+          ans: 1,
+          exp: "Back bonding involves electron density transfer into Boron's empty p-orbital, creating resonance structures with partial double bond character. This shortens the B–F bond length without altering its sp² planar geometry.",
+          ref: "NCERT Ch.4 — Back Bonding in BF₃",
+        },
+
+        /* ===== CHEMISTRY: GROUP 16 & 17 (Q19–Q25) ===== */
+        {
+          id: 19, ch: "Chemistry", chapter: "Group 16 & Group 17", type: "MCQ", diff: "Medium",
+          q: "Arrange the hydrides of Group 16 (H₂O, H₂S, H₂Se, H₂Te) in increasing order of their boiling points based on NCERT data.",
+          opts: [
+            "H₂O < H₂S < H₂Se < H₂Te",
+            "H₂S < H₂Se < H₂Te < H₂O",
+            "H₂Te < H₂Se < H₂S < H₂O",
+            "H₂O < H₂Te < H₂Se < H₂S",
+          ],
+          ans: 1,
+          exp: "Normally boiling point increases down a group due to increasing molecular mass and stronger van der Waals forces. However, H₂O exhibits anomalously high boiling point due to extensive intermolecular hydrogen bonding. Thus H₂S possesses the lowest boiling point.",
+          ref: "NCERT Ch.9 — Group 16 Hydrides",
+        },
+        {
+          id: 20, ch: "Chemistry", chapter: "Group 16 & Group 17", type: "MCQ", diff: "Hard",
+          q: "As you progress down Group 16, the H–E–H bond angle of the hydrides decreases from 104.5° in H₂O to ~90° in H₂Te. What is the primary chemical reason for this trend?",
+          opts: [
+            "Increase in the electronegativity of the central atom",
+            "Decrease in the electronegativity of the central atom, which reduces bond pair–bond pair repulsion",
+            "Decrease in the atomic radius of the central atom",
+            "The formation of extensive hydrogen bonds in heavier elements",
+          ],
+          ans: 1,
+          exp: "As electronegativity of the central atom decreases down the group, the shared bond electron pairs move further away from the central atom, reducing bond pair–bond pair repulsion and allowing lone pairs to compress the bond angle closer to 90°.",
+          ref: "NCERT Ch.9 — Group 16 Bond Angles",
+        },
+        {
+          id: 21, ch: "Chemistry", chapter: "Group 16 & Group 17", type: "MCQ", diff: "Hard",
+          q: "In the laboratory preparation of ozone using a Siemen's ozoniser, a 'silent' (sparkless) electric discharge is employed. Why is this specific type of discharge critical?",
+          opts: [
+            "To increase the kinetic energy of the oxygen molecules rapidly",
+            "Ozone formation is highly exothermic; sparks would cause an uncontrolled explosion",
+            "Ozone formation is endothermic; a spark generates localised heat that would decompose the thermodynamically unstable ozone back to oxygen",
+            "To prevent atmospheric nitrogen from forming nitrogen oxides",
+          ],
+          ans: 2,
+          exp: "The conversion of O₂ to O₃ is endothermic (ΔH = +142 kJ/mol) and ozone is thermodynamically unstable relative to oxygen. Localised high temperatures (like a spark) would immediately cause decomposition. A silent discharge prevents this thermal decomposition.",
+          ref: "NCERT Ch.9 — Preparation of Ozone",
+        },
+        {
+          id: 22, ch: "Chemistry", chapter: "Group 16 & Group 17", type: "MCQ", diff: "Medium",
+          q: "Among the oxoacids of sulphur, which of the following represents Peroxodisulphuric acid (Marshall's acid) and clearly indicates its central sulphur oxidation state?",
+          opts: [
+            "H₂S₂O₇, S = +6",
+            "H₂S₂O₈, S = +6",
+            "H₂SO₅, S = +6",
+            "H₂S₂O₄, S = +3",
+          ],
+          ans: 1,
+          exp: "Peroxodisulphuric acid is H₂S₂O₈. It contains a distinct peroxy linkage (–O–O–). Because of this linkage, the oxidation state of S does not exceed its group maximum (+6), despite the presence of 8 oxygen atoms.",
+          ref: "NCERT Ch.9 — Oxoacids of Sulphur",
+        },
+        {
+          id: 23, ch: "Chemistry", chapter: "Group 16 & Group 17", type: "MCQ", diff: "Medium",
+          q: "The Deacon's process is widely utilised for the commercial manufacture of which chemical substance, and what specific catalyst is employed?",
+          opts: [
+            "Sulphuric acid using V₂O₅",
+            "Nitric acid using Pt/Rh gauge",
+            "Chlorine gas using CuCl₂",
+            "Ammonia using iron oxide",
+          ],
+          ans: 2,
+          exp: "In Deacon's process, HCl gas is oxidised by atmospheric oxygen in the presence of copper(II) chloride (CuCl₂) as catalyst at 723 K to produce chlorine (Cl₂) gas.",
+          ref: "NCERT Ch.9 — Industrial Preparation of Cl₂",
+        },
+        {
+          id: 24, ch: "Chemistry", chapter: "Group 16 & Group 17", type: "MCQ", diff: "Easy",
+          q: "Arrange the Group 17 hydrides (HF, HCl, HBr, HI) in the increasing order of their acidic strength in aqueous solution.",
+          opts: [
+            "HF < HCl < HBr < HI",
+            "HI < HBr < HCl < HF",
+            "HCl < HF < HBr < HI",
+            "HF < HBr < HCl < HI",
+          ],
+          ans: 0,
+          exp: "Acidic strength depends on the ease of releasing H⁺. Down the halogen group, atomic size increases, bond length increases, and H–X bond dissociation enthalpy decreases. HI has the weakest bond and releases H⁺ most easily.",
+          ref: "NCERT Ch.9 — Acidic Strength of HX",
+        },
+        {
+          id: 25, ch: "Chemistry", chapter: "Group 16 & Group 17", type: "MCQ", diff: "Easy",
+          q: "Which of the following halogens exhibits ONLY a –1 oxidation state and is completely incapable of exhibiting positive oxidation states?",
+          opts: ["Chlorine", "Bromine", "Iodine", "Fluorine"],
+          ans: 3,
+          exp: "Fluorine is the most electronegative element and completely lacks d-orbitals in its valence shell. Therefore, it cannot expand its octet and only exhibits a –1 oxidation state.",
+          ref: "NCERT Ch.9 — Oxidation States of Halogens",
+        },
+
+        /* ===== BIOLOGY: FROG — STRUCTURAL ORGANISATION (Q26–Q50) ===== */
+        {
+          id: 26, ch: "Biology", chapter: "Structural Organisation in Animals", type: "MCQ", diff: "Easy",
+          q: "In the Indian bullfrog (Rana tigrina), which of the following features represents clear sexual dimorphism that is exclusively found in males?",
+          opts: [
+            "Membranous tympanum and nictitating membrane",
+            "Presence of sound-producing vocal sacs and a copulatory pad on the first digit of the forelimbs",
+            "A highly muscular tongue split in two at the tip",
+            "A cloaca serving as a common pathway for digestive and excretory wastes",
+          ],
+          ans: 1,
+          exp: "NCERT: male frogs exhibit marked sexual dimorphism via possession of sound-producing vocal sacs and a copulatory pad on the first digit of their forelimbs. Both features are entirely absent in females.",
+          ref: "NCERT Ch.7 — Frog Morphology",
+        },
+        {
+          id: 27, ch: "Biology", chapter: "Structural Organisation in Animals", type: "Assertion-Reason", diff: "Medium",
+          q: "Assertion (A): The alimentary canal of an adult frog is relatively short in length compared to herbivores.\nReason (R): Adult frogs are obligate carnivores, and carnivorous diets require less extensive digestion and absorption surface area compared to plant cellulose.",
+          opts: AR_OPTS,
+          ans: 0,
+          exp: "NCERT: 'The alimentary canal is short because frogs are carnivores and hence the length of the intestine is reduced.' Animal matter digests much more readily than complex plant cellulose. Both A and R are true, and R correctly explains A.",
+          ref: "NCERT Ch.7 — Frog Digestive System",
+        },
+        {
+          id: 28, ch: "Biology", chapter: "Structural Organisation in Animals", type: "MCQ", diff: "Medium",
+          q: "The vascular system of the frog includes specialised venous bypass connections. Which of the following defines the hepatic portal system?",
+          opts: [
+            "A venous connection between the kidneys and the lower parts of the body",
+            "A venous connection exclusively between the liver and the intestine",
+            "The arterial network supplying oxygen to the heart muscle itself",
+            "The network of lymph nodes filtering interstitial fluid",
+          ],
+          ans: 1,
+          exp: "NCERT specifies that frogs possess a special venous connection between the liver and intestine, termed the hepatic portal system. The connection between kidneys and lower body parts is the renal portal system.",
+          ref: "NCERT Ch.7 — Frog Circulatory System",
+        },
+        {
+          id: 29, ch: "Biology", chapter: "Structural Organisation in Animals", type: "MCQ", diff: "Medium",
+          q: "The heart of a frog consists of three chambers. Which of the following accurately describes the anatomical position of the sinus venosus?",
+          opts: [
+            "A sac-like structure attached to the ventricle on the ventral side",
+            "A triangular structure that joins the right atrium on the dorsal side",
+            "A double-layered protective membrane covering the entire heart",
+            "A vascular connection bypassing the pulmonary circuit",
+          ],
+          ans: 1,
+          exp: "NCERT: the sinus venosus is a triangular structure that joins the right atrium to receive deoxygenated blood from the major veins. The conus arteriosus is the sac-like structure arising from the ventricle on the ventral side.",
+          ref: "NCERT Ch.7 — Frog Heart",
+        },
+        {
+          id: 30, ch: "Biology", chapter: "Structural Organisation in Animals", type: "MCQ", diff: "Easy",
+          q: "Which of the following accurately describes the structure of erythrocytes (Red Blood Cells) in a frog?",
+          opts: [
+            "Biconcave, enucleated, lacking haemoglobin",
+            "Oval, nucleated, and containing haemoglobin",
+            "Circular, enucleated, containing haemocyanin",
+            "Amoeboid, nucleated, aiding strictly in cellular immunity",
+          ],
+          ans: 1,
+          exp: "Frog RBCs are nucleated, oval in shape, and contain haemoglobin. This contrasts with mammalian erythrocytes, which are enucleated to maximise O₂ transport capacity.",
+          ref: "NCERT Ch.7 — Frog Blood",
+        },
+        {
+          id: 31, ch: "Biology", chapter: "Structural Organisation in Animals", type: "MCQ", diff: "Hard",
+          q: "In male frogs, the testes are adhered to the upper part of the kidneys by a delicate double fold of peritoneum. What is the precise NCERT terminology for this structure?",
+          opts: ["Vasa efferentia", "Mesovarium", "Mesorchium", "Bidder's canal"],
+          ans: 2,
+          exp: "NCERT specifically identifies the double fold of the peritoneum adhering the testes to the upper pole of the kidneys as the mesorchium.",
+          ref: "NCERT Ch.7 — Frog Male Reproductive System",
+        },
+        {
+          id: 32, ch: "Biology", chapter: "Structural Organisation in Animals", type: "MCQ", diff: "Medium",
+          q: "During the breeding season, what is the typical range of ova that a mature female frog lays concurrently?",
+          opts: ["500 to 1000", "1500 to 2000", "2500 to 3000", "5000 to 6000"],
+          ans: 2,
+          exp: "NCERT states clearly: 'At a time, 2500 to 3000 eggs are laid which are fertilised externally.'",
+          ref: "NCERT Ch.7 — Frog Female Reproductive System",
+        },
+        {
+          id: 33, ch: "Biology", chapter: "Structural Organisation in Animals", type: "MCQ", diff: "Easy",
+          q: "How does a frog acquire the majority of the water necessary for its physiological processes?",
+          opts: [
+            "By drinking water orally like terrestrial mammals",
+            "By absorbing it cutaneously (directly through the skin)",
+            "Exclusively through metabolic water generated during respiration",
+            "Exclusively through the moisture contained in its insect prey",
+          ],
+          ans: 1,
+          exp: "NCERT: 'The frog never drinks water but absorbs it through the skin.' — Cutaneous absorption is the primary route for water intake.",
+          ref: "NCERT Ch.7 — Frog Water Absorption",
+        },
+        {
+          id: 34, ch: "Biology", chapter: "Structural Organisation in Animals", type: "MCQ", diff: "Easy",
+          q: "What is the primary excretory product of a mature frog, and what physiological classification does this confer upon the animal?",
+          opts: [
+            "Ammonia; Ammonotelic",
+            "Uric Acid; Uricotelic",
+            "Urea; Ureotelic",
+            "Guanine; Guanotelic",
+          ],
+          ans: 2,
+          exp: "The frog is ureotelic because its major nitrogenous excretory product is urea, which is filtered from the blood by the functional nephrons in the kidney.",
+          ref: "NCERT Ch.7 — Frog Excretion",
+        },
+        {
+          id: 35, ch: "Biology", chapter: "Structural Organisation in Animals", type: "Multi-statement", diff: "Medium",
+          q: "Consider the following statements regarding the sensory organs of a frog:\nI. Eyes are simple and possess only one unit.\nII. Frogs lack an external ear flap; the tympanum is exposed directly on the surface.\nIII. They possess a nictitating membrane to protect their eyes while submerged in water.\nWhich of the statements are correct according to NCERT?",
+          opts: [
+            "I and II only",
+            "II and III only",
+            "I and III only",
+            "I, II, and III",
+          ],
+          ans: 3,
+          exp: "All statements are correct. Frogs have simple eyes (not compound), they lack an external ear (pinna) leaving the tympanum exposed to receive sound, and they utilise a transparent nictitating membrane for underwater eye protection.",
+          ref: "NCERT Ch.7 — Frog Sense Organs",
+        },
+        {
+          id: 36, ch: "Biology", chapter: "Structural Organisation in Animals", type: "MCQ", diff: "Easy",
+          q: "Which specific anatomical structure protects the eyes of a frog while it is submerged in an aquatic environment?",
+          opts: ["Conjunctiva", "Nictitating membrane", "Tympanum", "Sclerotic coat"],
+          ans: 1,
+          exp: "The nictitating membrane acts as a transparent, protective tertiary eyelid that shields the frog's eye from debris while allowing unobstructed vision underwater.",
+          ref: "NCERT Ch.7 — Frog Sense Organs",
+        },
+        {
+          id: 37, ch: "Biology", chapter: "Structural Organisation in Animals", type: "MCQ", diff: "Easy",
+          q: "The common anatomical pathway utilised for the passage of faecal matter, urine, and sperms to the exterior in a male frog is termed:",
+          opts: ["Urethra", "Ureter", "Cloaca", "Vasa efferentia"],
+          ans: 2,
+          exp: "The cloaca is a small, median terminal chamber that serves as a single, common exit for the digestive, excretory, and reproductive tracts in frogs.",
+          ref: "NCERT Ch.7 — Frog Anatomy",
+        },
+        {
+          id: 38, ch: "Biology", chapter: "Structural Organisation in Animals", type: "MCQ", diff: "Medium",
+          q: "In frogs, the ureters act as urinogenital ducts in:",
+          opts: ["Females only", "Males only", "Both males and females", "Neither males nor females"],
+          ans: 1,
+          exp: "In male frogs, the ureters carry both urine and spermatozoa into the cloaca, functioning as combined urinogenital ducts. In females, the ureters and oviducts open separately into the cloaca.",
+          ref: "NCERT Ch.7 — Frog Reproductive System",
+        },
+        {
+          id: 39, ch: "Biology", chapter: "Structural Organisation in Animals", type: "MCQ", diff: "Easy",
+          q: "Which distinct organ within a frog's digestive system is responsible for secreting gastric juices?",
+          opts: [
+            "Liver",
+            "Pancreas",
+            "Gastric glands located in the stomach wall",
+            "Intestinal villi",
+          ],
+          ans: 2,
+          exp: "NCERT: the stomach wall contains small gastric glands that secrete gastric juices necessary for the initial digestion of proteins.",
+          ref: "NCERT Ch.7 — Frog Digestive System",
+        },
+        {
+          id: 40, ch: "Biology", chapter: "Structural Organisation in Animals", type: "MCQ", diff: "Easy",
+          q: "A frog's tongue is uniquely adapted for capturing fast-moving insect prey. What is its defining structural characteristic?",
+          opts: [
+            "It is attached at the back of the mouth and free at the front",
+            "It is attached at the front of the mouth (anteriorly), free at the back, and split into two lobes at the tip",
+            "It is completely immobile and heavily coated in sticky mucus",
+            "It possesses microscopic teeth for gripping prey securely",
+          ],
+          ans: 1,
+          exp: "The muscular tongue is bilobed (split in two) at the tip, attached to the front of the lower jaw (anteriorly), and free at the back — allowing it to be flipped out rapidly to catch insects.",
+          ref: "NCERT Ch.7 — Frog Mouth and Tongue",
+        },
+        {
+          id: 41, ch: "Biology", chapter: "Structural Organisation in Animals", type: "MCQ", diff: "Hard",
+          q: "Which of the following is strictly NOT considered a component of a frog's lymphatic system as per NCERT?",
+          opts: ["Lymph nodes", "Lymph channels", "Lymph", "Spleen"],
+          ans: 3,
+          exp: "While the spleen is biologically a lymphoid organ, NCERT strictly defines the lymphatic system of the frog as consisting exclusively of lymph, lymph channels, and lymph nodes.",
+          ref: "NCERT Ch.7 — Frog Lymphatic System",
+        },
+        {
+          id: 42, ch: "Biology", chapter: "Structural Organisation in Animals", type: "MCQ", diff: "Easy",
+          q: "During periods of extreme environmental stress such as hibernation (winter sleep) and aestivation (summer sleep), how does the frog respire?",
+          opts: [
+            "Buccal respiration",
+            "Pulmonary respiration",
+            "Cutaneous respiration",
+            "Branchial respiration",
+          ],
+          ans: 2,
+          exp: "During hibernation and aestivation, the frog is buried in mud or soil and relies solely on its highly vascularised, moist skin (cutaneous respiration) for gas exchange.",
+          ref: "NCERT Ch.7 — Frog Respiration",
+        },
+        {
+          id: 43, ch: "Biology", chapter: "Structural Organisation in Animals", type: "MCQ", diff: "Easy",
+          q: "The liver of a frog secretes bile to aid in digestion. Where is this bile temporarily stored before being released into the duodenum?",
+          opts: ["Pancreas", "Stomach", "Gall bladder", "Cloaca"],
+          ans: 2,
+          exp: "Bile secreted by the liver is stored in the gall bladder until it is needed in the duodenum for the emulsification of dietary fats.",
+          ref: "NCERT Ch.7 — Frog Digestive System",
+        },
+        {
+          id: 44, ch: "Biology", chapter: "Structural Organisation in Animals", type: "MCQ", diff: "Hard",
+          q: "Through which specific anatomical structure does the common bile duct open into the duodenum of the frog?",
+          opts: ["Hepatopancreatic duct", "Pyloric sphincter", "Common hepatic duct", "Cystic duct"],
+          ans: 0,
+          exp: "Bile and pancreatic juice enter the duodenum through a combined, common duct known as the hepatopancreatic duct.",
+          ref: "NCERT Ch.7 — Frog Digestive System",
+        },
+        {
+          id: 45, ch: "Biology", chapter: "Structural Organisation in Animals", type: "MCQ", diff: "Easy",
+          q: "The basic structural and functional unit of the frog's kidney is called:",
+          opts: ["Neuron", "Nephron (Uriniferous tubule)", "Alveolus", "Malpighian tubule"],
+          ans: 1,
+          exp: "The kidneys are composed of several structural and functional filtration units called uriniferous tubules or nephrons, which are responsible for extracting urea from the blood.",
+          ref: "NCERT Ch.7 — Frog Excretory System",
+        },
+        {
+          id: 46, ch: "Biology", chapter: "Structural Organisation in Animals", type: "Assertion-Reason", diff: "Medium",
+          q: "Assertion (A): In female frogs, the ureters and the oviducts open separately into the cloaca.\nReason (R): Female frogs lack a shared urinogenital duct because their reproductive tracts and excretory tracts do not physically merge prior to the cloaca.",
+          opts: AR_OPTS,
+          ans: 0,
+          exp: "Males use the ureter as a combined urinogenital duct for both urine and sperm, whereas females possess distinct ureters for urine and distinct oviducts for ova, which open separately into the cloaca. Both A and R are true, R correctly explains A.",
+          ref: "NCERT Ch.7 — Frog Reproductive Anatomy",
+        },
+        {
+          id: 47, ch: "Biology", chapter: "Structural Organisation in Animals", type: "MCQ", diff: "Medium",
+          q: "The nervous system of the frog is highly organised. The brain is enclosed in a bony structure called the brain box. What is the alternative term for this structure?",
+          opts: ["Vertebral column", "Cranium", "Foramen magnum", "Meninges"],
+          ans: 1,
+          exp: "NCERT describes the brain as being enclosed in a bony structure called the brain box or cranium, which protects the central nervous system.",
+          ref: "NCERT Ch.7 — Frog Nervous System",
+        },
+        {
+          id: 48, ch: "Biology", chapter: "Structural Organisation in Animals", type: "MCQ", diff: "Medium",
+          q: "Which part of the frog's brain continues backward into the spinal cord, passing through the foramen magnum?",
+          opts: ["Cerebellum", "Medulla oblongata", "Olfactory lobes", "Diencephalon"],
+          ans: 1,
+          exp: "The hind-brain consists of the cerebellum and the medulla oblongata. The medulla oblongata passes out through the foramen magnum and continues down as the spinal cord.",
+          ref: "NCERT Ch.7 — Frog Brain",
+        },
+        {
+          id: 49, ch: "Biology", chapter: "Structural Organisation in Animals", type: "Match", diff: "Hard",
+          q: "Match the components of the frog's nervous system (List-I) with their corresponding parts (List-II):\n\nList-I\n(i) Fore-brain\n(ii) Mid-brain\n(iii) Hind-brain\n\nList-II\n(p) Optic lobes\n(q) Cerebellum & Medulla oblongata\n(r) Olfactory lobes, paired cerebral hemispheres, diencephalon",
+          opts: [
+            "(i)-p, (ii)-q, (iii)-r",
+            "(i)-r, (ii)-p, (iii)-q",
+            "(i)-q, (ii)-r, (iii)-p",
+            "(i)-r, (ii)-q, (iii)-p",
+          ],
+          ans: 1,
+          exp: "Fore-brain: olfactory lobes, paired cerebral hemispheres, and diencephalon → (r). Mid-brain: pair of optic lobes → (p). Hind-brain: cerebellum and medulla oblongata → (q).",
+          ref: "NCERT Ch.7 — Frog Brain Divisions",
+        },
+        {
+          id: 50, ch: "Biology", chapter: "Structural Organisation in Animals", type: "MCQ", diff: "Easy",
+          q: "In terms of fertilisation and development, which of the following accurately describes the life cycle of a frog?",
+          opts: [
+            "Internal fertilisation with direct development (no larval stage)",
+            "Internal fertilisation with indirect development via a tadpole",
+            "External fertilisation in water with direct development",
+            "External fertilisation in water with indirect development via a tadpole",
+          ],
+          ans: 3,
+          exp: "Frogs reproduce via external fertilisation occurring in water. Development is indirect — eggs hatch into a free-swimming larval stage called a tadpole, which subsequently undergoes metamorphosis into an adult frog.",
+          ref: "NCERT Ch.7 — Frog Reproduction & Development",
+        },
+      ];
+
+      const TOTAL = Q.length;
+      const LETTERS = ["A", "B", "C", "D"];
+      let currentQ = 0;
+      let userAnswers = new Array(TOTAL).fill(-1);
+      let reviewFlags = new Array(TOTAL).fill(false);
+      let submitted = false;
+      let timerSec = 0;
+      let timerInterval;
+
+      function chClass(ch) {
+        return ch === "Chemistry" ? "chem" : "bio";
+      }
+
+      function startQuiz() {
+        document.getElementById("heroSection").style.display = "none";
+        document.getElementById("progressWrap").classList.add("active");
+        document.getElementById("paletteToggle").classList.add("active");
+        buildAllCards();
+        buildPalette();
+        showQuestion(0);
+        startTimer();
+      }
+
+      function buildAllCards() {
+        const area = document.getElementById("quizArea");
+        let html = "";
+        Q.forEach((q, i) => {
+          const tagCls = chClass(q.ch);
+          const numBioCls = tagCls === "bio" ? "bio-num" : "";
+          const diffCls = q.diff === "Hard" ? "hard" : q.diff === "Easy" ? "easy" : "med";
+
+          const optsHtml = q.opts.map((o, j) => `
+            <button class="opt-btn" id="opt-${i}-${j}" onclick="selectOpt(${i},${j})">
+              <span class="opt-letter">${LETTERS[j]}</span>
+              <span>${o}</span>
+            </button>`).join("");
+
+          html += `<div class="q-card" id="qcard-${i}">
+            <div class="q-header">
+              <span class="q-num ${numBioCls}">Q${q.id}</span>
+              <div class="q-meta">
+                <span class="q-tag ${tagCls}">${q.ch}</span>
+                <span class="q-tag type">${q.type}</span>
+                <span class="q-tag ${diffCls}">${q.diff}</span>
+              </div>
+            </div>
+            <div class="q-chapter-badge">📌 ${q.chapter}</div>
+            <div class="q-text">${q.q}</div>
+            <div class="options">${optsHtml}</div>
+            <div class="nav-btns">
+              <button class="nav-btn" onclick="prevQuestion()" ${i === 0 ? "disabled" : ""}>← Prev</button>
+              <button class="nav-btn primary" onclick="nextQuestion()">${i === TOTAL - 1 ? "Finish →" : "Next →"}</button>
+              <button class="nav-btn clear-response" onclick="clearResponse(${i})">✕ Clear</button>
+              <button class="nav-btn mark-review${reviewFlags[i] ? " marked" : ""}" id="mark-${i}" onclick="toggleReview(${i})">
+                ${reviewFlags[i] ? "★ Marked" : "☆ Mark for Review"}
+              </button>
+            </div>
+          </div>`;
+        });
+        area.innerHTML = html;
+      }
+
+      function showQuestion(idx) {
+        document.querySelectorAll(".q-card").forEach(c => c.classList.remove("active"));
+        document.getElementById(`qcard-${idx}`).classList.add("active");
+        currentQ = idx;
+        updateProgress();
+        updatePalette();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function selectOpt(qIdx, optIdx) {
+        if (submitted) return;
+        for (let i = 0; i < 4; i++) {
+          const el = document.getElementById(`opt-${qIdx}-${i}`);
+          if (el) el.classList.remove("selected");
+        }
+        document.getElementById(`opt-${qIdx}-${optIdx}`).classList.add("selected");
+        userAnswers[qIdx] = optIdx;
+        updatePalette();
+        updateProgress();
+      }
+
+      function clearResponse(qIdx) {
+        if (submitted) return;
+        userAnswers[qIdx] = -1;
+        for (let i = 0; i < 4; i++) {
+          const el = document.getElementById(`opt-${qIdx}-${i}`);
+          if (el) el.classList.remove("selected");
+        }
+        updatePalette();
+        updateProgress();
+      }
+
+      function nextQuestion() {
+        if (currentQ < TOTAL - 1) showQuestion(currentQ + 1);
+        else finishQuiz();
+      }
+
+      function prevQuestion() {
+        if (currentQ > 0) showQuestion(currentQ - 1);
+      }
+
+      function toggleReview(idx) {
+        reviewFlags[idx] = !reviewFlags[idx];
+        const btn = document.getElementById(`mark-${idx}`);
+        btn.classList.toggle("marked", reviewFlags[idx]);
+        btn.textContent = reviewFlags[idx] ? "★ Marked" : "☆ Mark for Review";
+        updatePalette();
+      }
+
+      function updateProgress() {
+        const answered = userAnswers.filter(a => a !== -1).length;
+        document.getElementById("qCounter").textContent = `Q ${currentQ + 1} / ${TOTAL}`;
+        document.getElementById("progressFill").style.width = (answered / TOTAL) * 100 + "%";
+      }
+
+      function buildPalette() {
+        const grid = document.getElementById("paletteGrid");
+        let html = "";
+        for (let i = 0; i < TOTAL; i++) {
+          html += `<div class="palette-dot" id="pdot-${i}" onclick="showQuestion(${i})">${i + 1}</div>`;
+        }
+        grid.innerHTML = html;
+      }
+
+      function updatePalette() {
+        for (let i = 0; i < TOTAL; i++) {
+          const dot = document.getElementById(`pdot-${i}`);
+          if (!dot) continue;
+          dot.className = "palette-dot";
+          if (i === currentQ) dot.classList.add("current");
+          if (userAnswers[i] !== -1) dot.classList.add("answered");
+          if (reviewFlags[i]) dot.classList.add("review");
+        }
+      }
+
+      function togglePalette() {
+        document.getElementById("palettePanel").classList.toggle("open");
+      }
+
+      function startTimer() {
+        timerInterval = setInterval(() => {
+          timerSec++;
+          const m = String(Math.floor(timerSec / 60)).padStart(2, "0");
+          const s = String(timerSec % 60).padStart(2, "0");
+          document.getElementById("progressTimer").textContent = `${m}:${s}`;
+        }, 1000);
+      }
+
+      function finishQuiz() {
+        if (!window._isReplay) {
+          const unanswered = userAnswers.filter(a => a === -1).length;
+          if (unanswered > 0) {
+            if (!confirm(`You have ${unanswered} unanswered question${unanswered > 1 ? "s" : ""}. Submit anyway?`)) return;
+          }
+        }
+        submitQuiz();
+      }
+
+      function saveAttempt(data) {
+        try {
+          const results = JSON.parse(localStorage.getItem("papResults") || "[]");
+          results.unshift(data);
+          localStorage.setItem("papResults", JSON.stringify(results));
+        } catch (e) {}
+      }
+
+      function submitQuiz() {
+        submitted = true;
+        clearInterval(timerInterval);
+        document.getElementById("quizArea").classList.add("hidden");
+        document.getElementById("paletteToggle").style.display = "none";
+        document.getElementById("palettePanel").style.display = "none";
+        document.getElementById("progressWrap").style.display = "none";
+
+        let correct = 0, wrong = 0, skipped = 0;
+        let chemCorrect = 0, chemTotal = 0, bioCorrect = 0, bioTotal = 0;
+
+        Q.forEach((q, i) => {
+          const isChem = q.ch === "Chemistry";
+          if (isChem) chemTotal++; else bioTotal++;
+          if (userAnswers[i] === -1) { skipped++; }
+          else if (userAnswers[i] === q.ans) { correct++; if (isChem) chemCorrect++; else bioCorrect++; }
+          else { wrong++; }
+        });
+
+        const neetScore = correct * 4 - wrong * 1;
+        const pct = Math.round((correct / TOTAL) * 100);
+        const circumference = 2 * Math.PI * 65;
+        const offset = circumference - (pct / 100) * circumference;
+        const ringColor = pct >= 80 ? "var(--green)" : pct >= 50 ? "var(--amber)" : "var(--red)";
+        const grade = pct >= 90 ? "Outstanding!" : pct >= 75 ? "Great Work!" : pct >= 50 ? "Keep Practicing!" : "Needs Revision";
+
+        const timeStr = document.getElementById("progressTimer").textContent;
+        const chemPct = chemTotal ? Math.round((chemCorrect / chemTotal) * 100) : 0;
+        const bioPct = bioTotal ? Math.round((bioCorrect / bioTotal) * 100) : 0;
+
+        if (!window._isReplay) {
+          saveAttempt({
+            id: Date.now(),
+            paperFile: "20AP2.html",
+            paperName: "Chemistry & Biology Master Bank [50Q]",
+            paperTag: "Master 50Q",
+            correct, wrong, skipped,
+            totalQuestions: TOTAL, neetScore, maxScore: TOTAL * 4,
+            percentage: pct, timeTaken: timeStr, timerSeconds: timerSec,
+            userAnswers: [...userAnswers],
+          });
+        }
+
+        const res = document.getElementById("resultsSection");
+        res.style.display = "block";
+
+        let rhtml = `
+<div class="results-card">
+  <h2>${grade}</h2>
+  <div class="score-ring">
+    <svg width="160" height="160" viewBox="0 0 160 160">
+      <circle class="ring-bg" cx="80" cy="80" r="65"/>
+      <circle class="ring-fill" cx="80" cy="80" r="65"
+        stroke="${ringColor}"
+        stroke-dasharray="${circumference}"
+        stroke-dashoffset="${circumference}"
+        id="scoreRing"/>
+    </svg>
+    <div class="score-center">
+      <div class="pct">${pct}%</div>
+      <div class="of">${correct}/${TOTAL}</div>
+    </div>
+  </div>
+  <div class="stats-grid">
+    <div class="stat-item neet"><div class="stat-num">${neetScore}</div><div class="stat-lbl">NEET Score</div></div>
+    <div class="stat-item correct"><div class="stat-num">${correct}</div><div class="stat-lbl">Correct</div></div>
+    <div class="stat-item wrong"><div class="stat-num">${wrong}</div><div class="stat-lbl">Wrong</div></div>
+    <div class="stat-item skip"><div class="stat-num">${skipped}</div><div class="stat-lbl">Skipped</div></div>
+  </div>
+  <div style="margin-top:16px;font-size:13px;color:var(--text3)">Time: ${timeStr} · Max: ${TOTAL * 4}</div>
+</div>
+
+<div class="chapter-breakdown">
+  <h3>Subject Breakdown</h3>
+  <div class="chapter-bar-wrap">
+    <div class="chapter-bar-header">
+      <span style="color:var(--accent)">⚗️ Chemistry (Q1–Q25)</span>
+      <span style="color:var(--text2)">${chemCorrect}/${chemTotal} (${chemPct}%)</span>
+    </div>
+    <div class="chapter-bar-track">
+      <div class="chapter-bar-fill" id="chemBar" style="width:0%;background:var(--accent)"></div>
+    </div>
+  </div>
+  <div class="chapter-bar-wrap">
+    <div class="chapter-bar-header">
+      <span style="color:var(--pink)">🐸 Biology — Frog (Q26–Q50)</span>
+      <span style="color:var(--text2)">${bioCorrect}/${bioTotal} (${bioPct}%)</span>
+    </div>
+    <div class="chapter-bar-track">
+      <div class="chapter-bar-fill" id="bioBar" style="width:0%;background:var(--pink)"></div>
+    </div>
+  </div>
+</div>
+
+<div class="review-title">Complete Walkthrough</div>
+<div class="review-sub">Every question reviewed with NCERT-based explanations.</div>
+<div class="review-filter">
+  <button class="filter-btn active" onclick="filterReview('all',this)">All (${TOTAL})</button>
+  <button class="filter-btn" onclick="filterReview('wrong',this)">❌ Wrong (${wrong})</button>
+  <button class="filter-btn" onclick="filterReview('skipped',this)">⏭️ Skipped (${skipped})</button>
+  <button class="filter-btn" onclick="filterReview('correct',this)">✅ Correct (${correct})</button>
+</div>
+<div id="reviewCards"></div>`;
+
+        res.innerHTML = rhtml;
+        renderReviewCards("all");
+
+        setTimeout(() => {
+          document.getElementById("scoreRing").style.strokeDashoffset = offset;
+          document.getElementById("chemBar").style.width = chemPct + "%";
+          document.getElementById("bioBar").style.width = bioPct + "%";
+        }, 100);
+
+        res.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function renderReviewCards(filter) {
+        const container = document.getElementById("reviewCards");
+        let html = "";
+        Q.forEach((q, i) => {
+          const ua = userAnswers[i];
+          const isCorrect = ua === q.ans;
+          const isSkipped = ua === -1;
+          const isWrong = !isCorrect && !isSkipped;
+
+          if (filter === "wrong" && !isWrong) return;
+          if (filter === "skipped" && !isSkipped) return;
+          if (filter === "correct" && !isCorrect) return;
+
+          let cardClass, badgeClass, badgeText;
+          if (isCorrect) { cardClass = "rc-correct"; badgeClass = "badge-correct"; badgeText = "✅ Correct"; }
+          else if (isSkipped) { cardClass = "rc-skipped"; badgeClass = "badge-skipped"; badgeText = "⏭️ Skipped"; }
+          else { cardClass = "rc-wrong"; badgeClass = "badge-wrong"; badgeText = "❌ Wrong"; }
+
+          const tagCls = chClass(q.ch);
+          const numBioCls = tagCls === "bio" ? "bio-num" : "";
+
+          html += `<div class="review-card ${cardClass}">
+            <div class="rc-header">
+              <span class="q-num ${numBioCls}">Q${q.id}</span>
+              <span class="q-tag ${tagCls}">${q.ch}</span>
+              <span class="rc-badge ${badgeClass}">${badgeText}</span>
+              <span style="font-size:11px;color:var(--text3);margin-left:auto">${q.type}</span>
+            </div>
+            <div style="font-size:11px;color:var(--accent2);margin-bottom:10px;font-weight:600">📌 ${q.chapter}</div>
+            <div class="rc-q">${q.q}</div>
+            <div class="rc-opts">`;
+
+          q.opts.forEach((o, j) => {
+            let optClass = "rc-opt";
+            let marker = LETTERS[j];
+            if (j === q.ans) { optClass += " rc-opt-correct"; marker = "✓"; }
+            else if (j === ua && isWrong) { optClass += " rc-opt-wrong"; marker = "✗"; }
+            html += `<div class="${optClass}">
+              <span class="rc-letter">${marker}</span>
+              <span>${o}</span>
+            </div>`;
+          });
+
+          html += `</div>
+            <div class="rc-exp">
+              <h4>💡 Explanation</h4>
+              <p>${q.exp}</p>
+              <span class="ncert-ref">📖 ${q.ref}</span>
+            </div>
+          </div>`;
+        });
+
+        if (!html)
+          html = `<p style="text-align:center;color:var(--text3);padding:30px 0">No questions match this filter.</p>`;
+        container.innerHTML = html;
+      }
+
+      function filterReview(type, btn) {
+        document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderReviewCards(type);
+      }
+
+      window.addEventListener("scroll", () => {
+        const pw = document.getElementById("progressWrap");
+        if (window.scrollY > 200) pw.classList.add("scrolled");
+        else pw.classList.remove("scrolled");
+      });
+
+      (function loadSavedAttempt() {
+        const params = new URLSearchParams(window.location.search);
+        const attemptId = params.get("attempt");
+        if (!attemptId) return;
+        const saved = JSON.parse(localStorage.getItem("papResults") || "[]");
+        const attempt = saved.find(r => r.id === Number(attemptId));
+        if (!attempt) return;
+        window._isReplay = true;
+        userAnswers = attempt.userAnswers;
+        timerSec = attempt.timerSeconds || 0;
+        const m = String(Math.floor(timerSec / 60)).padStart(2, "0");
+        const s = String(timerSec % 60).padStart(2, "0");
+        document.getElementById("progressTimer").textContent = `${m}:${s}`;
+        document.getElementById("heroSection").style.display = "none";
+        submitQuiz();
+      })();
+    </script>
+  </body>
+</html>
