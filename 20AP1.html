@@ -1,0 +1,1992 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEET 2026 — Chemistry &amp; Biology Practice Paper (60Q)</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --bg: #0a0e17;
+        --surface: #111827;
+        --surface2: #1a2236;
+        --surface3: #222d44;
+        --border: #2a3654;
+        --text: #e2e8f0;
+        --text2: #94a3b8;
+        --text3: #64748b;
+        --accent: #06d6a0;
+        --accent2: #118ab2;
+        --red: #ef4444;
+        --green: #22c55e;
+        --amber: #f59e0b;
+        --purple: #a78bfa;
+        --pink: #f472b6;
+        --radius: 12px;
+        --radius-sm: 8px;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "IBM Plex Sans", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background:
+          radial-gradient(
+            ellipse at 20% 0%,
+            rgba(6, 214, 160, 0.06) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse at 80% 100%,
+            rgba(244, 114, 182, 0.06) 0%,
+            transparent 50%
+          );
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .container {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 20px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero {
+        text-align: center;
+        padding: 50px 20px 40px;
+        position: relative;
+      }
+      .hero-badge {
+        display: inline-block;
+        padding: 6px 18px;
+        border-radius: 50px;
+        background: rgba(6, 214, 160, 0.12);
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 18px;
+        border: 1px solid rgba(6, 214, 160, 0.2);
+      }
+      .hero h1 {
+        font-family: "DM Serif Display", serif;
+        font-size: clamp(28px, 5vw, 44px);
+        color: #fff;
+        margin-bottom: 12px;
+        line-height: 1.2;
+      }
+      .hero h1 span {
+        background: linear-gradient(135deg, var(--accent), var(--pink));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .hero p {
+        color: var(--text2);
+        font-size: 16px;
+        max-width: 560px;
+        margin: 0 auto 28px;
+      }
+      .hero-tags {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 32px;
+      }
+      .hero-tags span {
+        padding: 6px 16px;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .tag-chem {
+        background: rgba(6, 214, 160, 0.1);
+        color: var(--accent);
+        border: 1px solid rgba(6, 214, 160, 0.22);
+      }
+      .tag-bio {
+        background: rgba(244, 114, 182, 0.1);
+        color: var(--pink);
+        border: 1px solid rgba(244, 114, 182, 0.22);
+      }
+      .start-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 16px 48px;
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--bg);
+        background: linear-gradient(135deg, var(--accent), var(--pink));
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 25px rgba(6, 214, 160, 0.3);
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+      .start-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 35px rgba(244, 114, 182, 0.4);
+      }
+
+      .progress-wrap {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(10, 14, 23, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 14px 20px;
+        border-bottom: 1px solid var(--border);
+        display: none;
+        transition: box-shadow 0.3s;
+      }
+      .progress-wrap.active {
+        display: block;
+      }
+      .progress-wrap.scrolled {
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+      }
+      .progress-inner {
+        max-width: 860px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .progress-text {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text2);
+        white-space: nowrap;
+        min-width: 90px;
+      }
+      .progress-text b {
+        color: var(--accent);
+      }
+      .progress-bar {
+        flex: 1;
+        height: 6px;
+        background: var(--surface3);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent), var(--pink));
+        border-radius: 10px;
+        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        width: 0%;
+      }
+      .progress-timer {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+        color: var(--accent);
+        min-width: 60px;
+        text-align: right;
+      }
+
+      .section-divider {
+        background: var(--surface2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 14px 20px;
+        margin: 32px 0 8px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .section-divider-label {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+      }
+      .section-divider-title {
+        font-weight: 600;
+        font-size: 14px;
+        color: var(--text);
+      }
+      .section-divider-note {
+        font-size: 12px;
+        color: var(--text3);
+        margin-left: auto;
+      }
+
+      .q-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 32px;
+        margin-bottom: 24px;
+        display: none;
+        animation: fadeIn 0.4s ease both;
+      }
+      .q-card.active {
+        display: block;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .q-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+        flex-wrap: wrap;
+      }
+      .q-num {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--bg);
+        background: var(--accent);
+        padding: 4px 10px;
+        border-radius: 6px;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .q-num.bio-num {
+        background: var(--pink);
+      }
+      .q-meta {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .q-tag {
+        font-size: 11px;
+        padding: 3px 10px;
+        border-radius: 50px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+      .q-tag.chem {
+        background: rgba(6, 214, 160, 0.12);
+        color: var(--accent);
+      }
+      .q-tag.bio {
+        background: rgba(244, 114, 182, 0.15);
+        color: var(--pink);
+      }
+      .q-tag.type {
+        background: rgba(167, 139, 250, 0.12);
+        color: var(--purple);
+      }
+      .q-tag.hard {
+        background: rgba(239, 68, 68, 0.12);
+        color: var(--red);
+      }
+      .q-tag.med {
+        background: rgba(245, 158, 11, 0.12);
+        color: var(--amber);
+      }
+      .q-text {
+        font-size: 15.5px;
+        color: #fff;
+        line-height: 1.7;
+        margin-bottom: 20px;
+        white-space: pre-wrap;
+      }
+      .q-text table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 12px 0;
+        font-size: 14px;
+        white-space: normal;
+      }
+      .q-text table th,
+      .q-text table td {
+        padding: 8px 12px;
+        border: 1px solid var(--border);
+        text-align: left;
+      }
+      .q-text table th {
+        background: var(--surface2);
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      /* Assertion-Reason styled box */
+      .ar-block {
+        background: var(--surface2);
+        border-left: 3px solid var(--accent);
+        border-radius: 6px;
+        padding: 10px 14px;
+        margin-bottom: 8px;
+        font-size: 15px;
+        color: var(--text);
+      }
+      .ar-block.reason {
+        border-left-color: var(--purple);
+      }
+      .ar-label {
+        font-weight: 700;
+        color: var(--accent);
+        font-size: 13px;
+        display: block;
+        margin-bottom: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .ar-block.reason .ar-label {
+        color: var(--purple);
+      }
+
+      /* Passage / Case block */
+      .passage-block {
+        background: rgba(6, 214, 160, 0.04);
+        border: 1px solid rgba(6, 214, 160, 0.18);
+        border-radius: 10px;
+        padding: 16px 20px;
+        margin-bottom: 20px;
+        font-size: 14.5px;
+        color: var(--text2);
+        line-height: 1.8;
+      }
+      .passage-block b {
+        color: var(--accent);
+      }
+
+      .options {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .opt-btn {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 14px 18px;
+        background: var(--surface2);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        transition: all 0.2s;
+        text-align: left;
+        width: 100%;
+        font-size: 14.5px;
+        color: var(--text);
+        line-height: 1.5;
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+      .opt-btn:hover {
+        border-color: var(--accent);
+        background: rgba(6, 214, 160, 0.05);
+        transform: translateX(4px);
+      }
+      .opt-btn .opt-letter {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        color: var(--text3);
+        font-size: 13px;
+        min-width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        background: var(--surface3);
+        flex-shrink: 0;
+        margin-top: 1px;
+        transition: all 0.2s;
+      }
+      .opt-btn.selected {
+        border-color: var(--accent);
+        background: rgba(6, 214, 160, 0.08);
+      }
+      .opt-btn.selected .opt-letter {
+        background: var(--accent);
+        color: var(--bg);
+      }
+
+      .nav-btns {
+        display: flex;
+        gap: 12px;
+        margin-top: 24px;
+        flex-wrap: wrap;
+      }
+      .nav-btn {
+        padding: 10px 24px;
+        border-radius: 8px;
+        font-family: "IBM Plex Sans", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        border: 1.5px solid var(--border);
+        background: var(--surface2);
+        color: var(--text);
+      }
+      .nav-btn:hover {
+        border-color: var(--accent);
+      }
+      .nav-btn.primary {
+        background: linear-gradient(135deg, var(--accent), var(--pink));
+        border: none;
+        color: var(--bg);
+        font-weight: 700;
+        box-shadow: 0 2px 12px rgba(6, 214, 160, 0.2);
+      }
+      .nav-btn.primary:hover {
+        box-shadow: 0 4px 20px rgba(244, 114, 182, 0.32);
+        transform: translateY(-1px);
+      }
+      .nav-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+      .mark-review {
+        margin-left: auto;
+        font-size: 13px;
+        color: var(--amber);
+        background: rgba(245, 158, 11, 0.08);
+        border-color: rgba(245, 158, 11, 0.25);
+      }
+      .mark-review.marked {
+        background: rgba(245, 158, 11, 0.2);
+        border-color: var(--amber);
+      }
+      .clear-response {
+        font-size: 13px;
+        color: var(--red);
+        background: rgba(239, 68, 68, 0.08);
+        border-color: rgba(239, 68, 68, 0.25);
+      }
+      .clear-response:hover {
+        background: rgba(239, 68, 68, 0.15);
+        border-color: var(--red);
+      }
+
+      .palette-toggle {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: var(--bg);
+        border: none;
+        font-size: 20px;
+        font-weight: 700;
+        cursor: pointer;
+        z-index: 200;
+        box-shadow: 0 4px 20px rgba(6, 214, 160, 0.4);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s;
+      }
+      .palette-toggle:hover {
+        transform: scale(1.06);
+      }
+      .palette-toggle.active {
+        display: flex;
+      }
+      .palette-panel {
+        position: fixed;
+        bottom: 84px;
+        right: 24px;
+        width: 320px;
+        max-height: 420px;
+        overflow-y: auto;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 20px;
+        z-index: 200;
+        display: none;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      }
+      .palette-panel.open {
+        display: block;
+      }
+      .palette-title {
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 14px;
+        color: var(--text2);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .palette-grid {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        gap: 6px;
+      }
+      .palette-dot {
+        width: 32px;
+        height: 32px;
+        border-radius: 7px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 700;
+        cursor: pointer;
+        border: 1.5px solid var(--border);
+        background: var(--surface2);
+        color: var(--text3);
+        transition: all 0.15s;
+      }
+      .palette-dot:hover {
+        border-color: var(--accent);
+      }
+      .palette-dot.answered {
+        background: rgba(6, 214, 160, 0.15);
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .palette-dot.review {
+        background: rgba(245, 158, 11, 0.15);
+        border-color: var(--amber);
+        color: var(--amber);
+      }
+      .palette-dot.current {
+        box-shadow: 0 0 0 2px var(--accent);
+      }
+      .palette-legend {
+        display: flex;
+        gap: 16px;
+        margin-top: 14px;
+        font-size: 11px;
+        color: var(--text3);
+        flex-wrap: wrap;
+      }
+      .palette-legend span {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .legend-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 3px;
+      }
+
+      #resultsSection {
+        display: none;
+      }
+      .results-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 40px 30px;
+        max-width: 500px;
+        margin: 0 auto 40px;
+        text-align: center;
+      }
+      .results-card h2 {
+        font-family: "DM Serif Display", serif;
+        font-size: 32px;
+        color: #fff;
+        margin-bottom: 8px;
+      }
+      .score-ring {
+        width: 160px;
+        height: 160px;
+        margin: 24px auto;
+        position: relative;
+      }
+      .score-ring svg {
+        transform: rotate(-90deg);
+      }
+      .score-ring .ring-bg {
+        fill: none;
+        stroke: var(--surface3);
+        stroke-width: 10;
+      }
+      .score-ring .ring-fill {
+        fill: none;
+        stroke-width: 10;
+        stroke-linecap: round;
+        transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .score-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+      .score-center .pct {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 36px;
+        font-weight: 700;
+        color: #fff;
+      }
+      .score-center .of {
+        font-size: 13px;
+        color: var(--text3);
+      }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-top: 24px;
+      }
+      .stat-item {
+        padding: 14px 8px;
+        background: var(--surface2);
+        border-radius: var(--radius-sm);
+        text-align: center;
+      }
+      .stat-num {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 22px;
+        font-weight: 700;
+      }
+      .stat-lbl {
+        font-size: 11px;
+        color: var(--text3);
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        margin-top: 4px;
+      }
+      .stat-item.neet .stat-num { color: var(--accent2); }
+      .stat-item.correct .stat-num { color: var(--green); }
+      .stat-item.wrong .stat-num { color: var(--red); }
+      .stat-item.skip .stat-num { color: var(--amber); }
+
+      .chapter-breakdown {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 24px;
+        margin-bottom: 40px;
+      }
+      .chapter-breakdown h3 {
+        font-family: "DM Serif Display", serif;
+        font-size: 18px;
+        color: #fff;
+        margin-bottom: 20px;
+      }
+      .chapter-bar-wrap { margin-bottom: 16px; }
+      .chapter-bar-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .chapter-bar-track {
+        height: 8px;
+        background: var(--surface3);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .chapter-bar-fill {
+        height: 100%;
+        border-radius: 4px;
+        transition: width 1s ease;
+      }
+
+      .review-title {
+        font-family: "DM Serif Display", serif;
+        font-size: 28px;
+        color: #fff;
+        margin: 40px 0 12px;
+        text-align: center;
+      }
+      .review-sub {
+        text-align: center;
+        color: var(--text2);
+        font-size: 14px;
+        margin-bottom: 24px;
+      }
+      .review-filter {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+      }
+      .filter-btn {
+        padding: 8px 20px;
+        border-radius: 50px;
+        border: 1px solid var(--border);
+        background: transparent;
+        color: var(--text2);
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .filter-btn:hover,
+      .filter-btn.active {
+        background: var(--accent);
+        color: var(--bg);
+        border-color: var(--accent);
+      }
+      .review-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 28px;
+        margin-bottom: 20px;
+      }
+      .review-card.rc-correct { border-left: 4px solid var(--green); }
+      .review-card.rc-wrong { border-left: 4px solid var(--red); }
+      .review-card.rc-skipped { border-left: 4px solid var(--amber); }
+      .rc-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 14px;
+        flex-wrap: wrap;
+      }
+      .rc-badge {
+        font-size: 11px;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 5px;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+      }
+      .rc-badge.badge-correct { background: rgba(34,197,94,0.1); color: var(--green); border: 1px solid rgba(34,197,94,0.3); }
+      .rc-badge.badge-wrong { background: rgba(239,68,68,0.1); color: var(--red); border: 1px solid rgba(239,68,68,0.3); }
+      .rc-badge.badge-skipped { background: rgba(245,158,11,0.1); color: var(--amber); border: 1px solid rgba(245,158,11,0.3); }
+      .rc-q {
+        font-size: 14.5px;
+        line-height: 1.7;
+        margin-bottom: 16px;
+        color: var(--text);
+        white-space: pre-wrap;
+      }
+      .rc-opts { margin-bottom: 16px; }
+      .rc-opt {
+        padding: 10px 14px;
+        margin-bottom: 6px;
+        border-radius: 8px;
+        font-size: 13.5px;
+        line-height: 1.6;
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        border: 1.5px solid transparent;
+      }
+      .rc-opt.rc-opt-correct { background: rgba(34,197,94,0.08); border-color: rgba(34,197,94,0.3); }
+      .rc-opt.rc-opt-wrong { background: rgba(239,68,68,0.08); border-color: rgba(239,68,68,0.3); }
+      .rc-letter {
+        flex-shrink: 0;
+        width: 22px;
+        height: 22px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 700;
+        background: var(--border);
+        color: var(--text3);
+      }
+      .rc-opt.rc-opt-correct .rc-letter { background: var(--green); color: #fff; }
+      .rc-opt.rc-opt-wrong .rc-letter { background: var(--red); color: #fff; }
+      .rc-exp {
+        background: rgba(6, 214, 160, 0.05);
+        border: 1px solid rgba(6, 214, 160, 0.15);
+        border-radius: 10px;
+        padding: 18px 20px;
+      }
+      .rc-exp h4 {
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: var(--accent);
+        margin-bottom: 8px;
+      }
+      .rc-exp p {
+        font-size: 13.5px;
+        line-height: 1.75;
+        color: var(--text2);
+      }
+      .rc-exp p strong { color: var(--text); }
+      .rc-exp .ncert-ref {
+        display: inline-block;
+        margin-top: 8px;
+        font-size: 11px;
+        padding: 3px 8px;
+        background: rgba(6, 214, 160, 0.1);
+        border-radius: 4px;
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      .hidden { display: none !important; }
+
+      @media (max-width: 600px) {
+        .container { padding: 12px; }
+        .q-card { padding: 20px 16px; }
+        .hero h1 { font-size: 26px; }
+        .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        .progress-inner { gap: 10px; }
+        .palette-panel { width: calc(100vw - 40px); right: 20px; }
+        .review-card { padding: 20px 16px; }
+        .palette-grid { grid-template-columns: repeat(6, 1fr); }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero" id="heroSection">
+      <div class="hero-badge">NEET 2026 · Concept-Driven Paper</div>
+      <h1>Chemistry &amp; <span>Biology</span> — 60Q</h1>
+      <p>
+        60 NCERT-anchored questions spanning <em>Atomic Structure, Equilibrium,
+        Periodic Trends, Bonding, Groups 16 &amp; 17</em> and <em>Frog (Structural Organisation)</em>
+        — MCQs, Assertion-Reason, Match the Following, and Case-based questions.
+      </p>
+      <div class="hero-tags">
+        <span class="tag-chem">⚗️ 45 — Chemistry</span>
+        <span class="tag-bio">🐸 15 — Biology (Frog)</span>
+      </div>
+      <button class="start-btn" onclick="startQuiz()">Begin Test →</button>
+    </div>
+
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-inner">
+        <div class="progress-text">
+          <b id="qCounter">Q 1 / 60</b>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-timer" id="progressTimer">00:00</div>
+      </div>
+    </div>
+
+    <div class="container" id="quizArea"></div>
+    <div class="container" id="resultsSection"></div>
+
+    <button class="palette-toggle" id="paletteToggle" onclick="togglePalette()">☰</button>
+    <div class="palette-panel" id="palettePanel">
+      <div class="palette-title">Question Palette</div>
+      <div class="palette-grid" id="paletteGrid"></div>
+      <div class="palette-legend">
+        <span><div class="legend-dot" style="background: var(--surface2); border: 1px solid var(--border)"></div>Unseen</span>
+        <span><div class="legend-dot" style="background: rgba(6, 214, 160, 0.2)"></div>Answered</span>
+        <span><div class="legend-dot" style="background: rgba(245, 158, 11, 0.2)"></div>Review</span>
+      </div>
+    </div>
+
+    <script>
+      const AR_OPTS = [
+        "Both A and R are true, and R is the correct explanation of A",
+        "Both A and R are true, but R is NOT the correct explanation of A",
+        "A is true but R is false",
+        "A is false but R is true",
+      ];
+
+      const Q = [
+        /* ===== SECTION A — MCQs (Q1–Q30) ===== */
+        {
+          id: 1, ch: "Chemistry", sec: "A", type: "MCQ", diff: "Medium",
+          q: "The total number of orbitals associated with the principal quantum number n = 4 is:",
+          opts: ["8", "12", "16", "32"],
+          ans: 2,
+          exp: "For n = 4, total orbitals = n² = 16 (one 4s, three 4p, five 4d, seven 4f).",
+          ref: "NCERT Ch.2 — Atomic Structure",
+        },
+        {
+          id: 2, ch: "Chemistry", sec: "A", type: "MCQ", diff: "Medium",
+          q: "Which of the following sets of quantum numbers is NOT permitted?\n(a) n = 3, l = 2, mₗ = –2, mₛ = +½\n(b) n = 4, l = 0, mₗ = 0, mₛ = –½\n(c) n = 3, l = 3, mₗ = +2, mₛ = +½\n(d) n = 2, l = 1, mₗ = –1, mₛ = –½",
+          opts: [
+            "n = 3, l = 2, mₗ = –2, mₛ = +½",
+            "n = 4, l = 0, mₗ = 0, mₛ = –½",
+            "n = 3, l = 3, mₗ = +2, mₛ = +½",
+            "n = 2, l = 1, mₗ = –1, mₛ = –½",
+          ],
+          ans: 2,
+          exp: "For n = 3, the maximum value of l is (n–1) = 2, so l = 3 is not allowed.",
+          ref: "NCERT Ch.2 — Quantum Numbers",
+        },
+        {
+          id: 3, ch: "Chemistry", sec: "A", type: "MCQ", diff: "Easy",
+          q: "According to NCERT, the number of radial nodes in a 3p orbital is:",
+          opts: ["0", "1", "2", "3"],
+          ans: 1,
+          exp: "Radial nodes = n – l – 1 = 3 – 1 – 1 = 1.",
+          ref: "NCERT Ch.2 — Atomic Orbitals",
+        },
+        {
+          id: 4, ch: "Chemistry", sec: "A", type: "MCQ", diff: "Easy",
+          q: "The wavelength of a spectral line in the Balmer series of hydrogen corresponds to the transition:",
+          opts: [
+            "n = 1 → n = 2",
+            "n = 3 → n = 1",
+            "nₕᵢₘₕ → n = 2",
+            "nₕᵢₘₕ → n = 3",
+          ],
+          ans: 2,
+          exp: "Balmer series corresponds to transitions ending at n = 2 (visible region).",
+          ref: "NCERT Ch.2 — Hydrogen Spectrum",
+        },
+        {
+          id: 5, ch: "Chemistry", sec: "A", type: "MCQ", diff: "Medium",
+          q: "If the threshold frequency of a metal is ν₀ and the frequency of incident light is ν (ν > ν₀), the kinetic energy of the ejected photoelectron is:",
+          opts: ["hν", "hν₀", "h(ν – ν₀)", "h(ν + ν₀)"],
+          ans: 2,
+          exp: "Einstein's photoelectric equation: KE = hν – hν₀ = h(ν – ν₀).",
+          ref: "NCERT Ch.2 — Photoelectric Effect",
+        },
+        {
+          id: 6, ch: "Chemistry", sec: "A", type: "MCQ", diff: "Medium",
+          q: "The correct ground-state electronic configuration of Cr (Z = 24), justified by extra stability of half-filled 3d subshell, is:",
+          opts: [
+            "[Ar] 3d⁴ 4s²",
+            "[Ar] 3d⁵ 4s¹",
+            "[Ar] 3d⁶ 4s⁰",
+            "[Ar] 3d³ 4s²4p¹",
+          ],
+          ans: 1,
+          exp: "Half-filled 3d⁵ and 4s¹ give extra stability — NCERT anomaly for Cr.",
+          ref: "NCERT Ch.2 — Electronic Configuration",
+        },
+        {
+          id: 7, ch: "Chemistry", sec: "A", type: "MCQ", diff: "Hard",
+          q: "The uncertainty in position of an electron (mass = 9.1 × 10⁻³¹ kg) whose velocity is known with an uncertainty of 5.7 × 10⁵ m s⁻¹ is approximately (h = 6.626 × 10⁻³⁴ J s):",
+          opts: [
+            "~1.0 × 10⁻¹⁰ m",
+            "~1.0 × 10⁻⁸ m",
+            "~1.0 × 10⁻⁴ m",
+            "~1.0 × 10⁻² m",
+          ],
+          ans: 0,
+          exp: "Heisenberg: Δx ≥ h/(4π·m·Δv) ≈ 1.0 × 10⁻¹⁰ m.",
+          ref: "NCERT Ch.2 — Heisenberg Uncertainty",
+        },
+        {
+          id: 8, ch: "Chemistry", sec: "A", type: "MCQ", diff: "Medium",
+          q: "For the reaction N₂(g) + 3H₂(g) ⇌ 2NH₃(g), the relationship between Kₚ and Kc is:",
+          opts: [
+            "Kₚ = Kc",
+            "Kₚ = Kc(RT)",
+            "Kₚ = Kc(RT)⁻²",
+            "Kₚ = Kc(RT)²",
+          ],
+          ans: 2,
+          exp: "Δnₘ = 2 – (1+3) = –2, so Kₚ = Kc(RT)^Δn = Kc(RT)⁻².",
+          ref: "NCERT Ch.7 — Equilibrium",
+        },
+        {
+          id: 9, ch: "Chemistry", sec: "A", type: "MCQ", diff: "Easy",
+          q: "In a reaction at equilibrium, if Qc > Kc, then:",
+          opts: [
+            "Reaction proceeds in the forward direction",
+            "Reaction proceeds in the reverse direction",
+            "Reaction is at equilibrium",
+            "No prediction can be made",
+          ],
+          ans: 1,
+          exp: "When Qc > Kc, products are in excess; reaction shifts backward (reverse direction).",
+          ref: "NCERT Ch.7 — Reaction Quotient",
+        },
+        {
+          id: 10, ch: "Chemistry", sec: "A", type: "MCQ", diff: "Hard",
+          q: "The equilibrium concentration of H⁺ ions in a 0.01 M solution of HCN (Ka = 4 × 10⁻¹⁰) is approximately:",
+          opts: ["2 × 10⁻⁶ M", "4 × 10⁻⁹ M", "2 × 10⁻⁴ M", "1 × 10⁻² M"],
+          ans: 0,
+          exp: "[H⁺] = √(Ka × C) = √(4 × 10⁻¹⁰ × 10⁻²) = √(4 × 10⁻¹²) = 2 × 10⁻⁶ M.",
+          ref: "NCERT Ch.7 — Ionic Equilibrium",
+        },
+        {
+          id: 11, ch: "Chemistry", sec: "A", type: "MCQ", diff: "Easy",
+          q: "According to the Brønsted–Lowry concept, the conjugate base of HSO₄⁻ is:",
+          opts: ["H₂SO₄", "SO₄²⁻", "SO₃²⁻", "H₂O"],
+          ans: 1,
+          exp: "Conjugate base is formed by removing one H⁺ from HSO₄⁻, giving SO₄²⁻.",
+          ref: "NCERT Ch.7 — Brønsted-Lowry Concept",
+        },
+        {
+          id: 12, ch: "Chemistry", sec: "A", type: "MCQ", diff: "Medium",
+          q: "The solubility product (Ksp) of AgCl is 1.8 × 10⁻¹⁰. The solubility of AgCl in pure water is:",
+          opts: [
+            "1.34 × 10⁻⁵ mol L⁻¹",
+            "1.8 × 10⁻¹⁰ mol L⁻¹",
+            "1.34 × 10⁻¹⁰ mol L⁻¹",
+            "3.24 × 10⁻²⁰ mol L⁻¹",
+          ],
+          ans: 0,
+          exp: "S = √Ksp = √(1.8 × 10⁻¹⁰) ≈ 1.34 × 10⁻⁵ mol L⁻¹.",
+          ref: "NCERT Ch.7 — Solubility Product",
+        },
+        {
+          id: 13, ch: "Chemistry", sec: "A", type: "MCQ", diff: "Easy",
+          q: "An aqueous solution of CH₃COONa is:",
+          opts: ["Acidic (pH < 7)", "Neutral (pH = 7)", "Basic (pH > 7)", "Strongly acidic"],
+          ans: 2,
+          exp: "Salt of weak acid (CH₃COOH) + strong base (NaOH); anion hydrolysis makes solution basic.",
+          ref: "NCERT Ch.7 — Hydrolysis of Salts",
+        },
+        {
+          id: 14, ch: "Chemistry", sec: "A", type: "MCQ", diff: "Medium",
+          q: "The pH of a buffer solution containing 0.10 M CH₃COOH and 0.10 M CH₃COONa (pKa = 4.74) is:",
+          opts: ["3.74", "4.74", "5.74", "7.00"],
+          ans: 1,
+          exp: "pH = pKa + log([Salt]/[Acid]) = 4.74 + log(1) = 4.74.",
+          ref: "NCERT Ch.7 — Henderson-Hasselbalch",
+        },
+        {
+          id: 15, ch: "Chemistry", sec: "A", type: "MCQ", diff: "Hard",
+          q: "The correct order of second ionisation enthalpy is:",
+          opts: [
+            "Li > Be > B > C",
+            "C > B > Be > Li",
+            "Li > C > B > Be",
+            "Be > Li > B > C",
+          ],
+          ans: 0,
+          exp: "After losing one electron, Li⁺ has stable noble-gas configuration; removing another is extremely difficult, so Li has the highest IE₂.",
+          ref: "NCERT Ch.3 — Periodic Properties",
+        },
+        {
+          id: 16, ch: "Chemistry", sec: "A", type: "MCQ", diff: "Medium",
+          q: "The element with the most negative electron gain enthalpy is:",
+          opts: ["F", "Cl", "Br", "I"],
+          ans: 1,
+          exp: "Cl has more negative EGE than F due to small size of F and e⁻–e⁻ repulsion in compact 2p subshell.",
+          ref: "NCERT Ch.3 — Electron Gain Enthalpy",
+        },
+        {
+          id: 17, ch: "Chemistry", sec: "A", type: "MCQ", diff: "Hard",
+          q: "The correct order of atomic radii is:",
+          opts: [
+            "B > Al > Ga > In",
+            "B < Al > Ga < In",
+            "B < Ga < Al < In",
+            "B < Al < Ga < In",
+          ],
+          ans: 1,
+          exp: "Ga has slightly smaller radius than Al due to poor shielding by 3d electrons — NCERT exception.",
+          ref: "NCERT Ch.3 — Atomic Radius",
+        },
+        {
+          id: 18, ch: "Chemistry", sec: "A", type: "MCQ", diff: "Medium",
+          q: "Among the isoelectronic species N³⁻, O²⁻, F⁻, Na⁺, Mg²⁺, the correct order of ionic radii is:",
+          opts: [
+            "N³⁻ > O²⁻ > F⁻ > Na⁺ > Mg²⁺",
+            "Mg²⁺ > Na⁺ > F⁻ > O²⁻ > N³⁻",
+            "N³⁻ > F⁻ > O²⁻ > Mg²⁺ > Na⁺",
+            "F⁻ > O²⁻ > N³⁻ > Na⁺ > Mg²⁺",
+          ],
+          ans: 0,
+          exp: "In isoelectronic species, ionic radius decreases with increasing nuclear charge.",
+          ref: "NCERT Ch.3 — Ionic Radii",
+        },
+        {
+          id: 19, ch: "Chemistry", sec: "A", type: "MCQ", diff: "Medium",
+          q: "The first ionisation enthalpy of nitrogen is greater than that of oxygen. This is mainly due to:",
+          opts: [
+            "Greater nuclear charge of nitrogen",
+            "Smaller atomic size of nitrogen",
+            "Extra stability of half-filled 2p³ configuration of N",
+            "Higher electronegativity of oxygen",
+          ],
+          ans: 2,
+          exp: "Half-filled 2p³ configuration of N is extra stable; removing an electron from O disturbs a paired arrangement.",
+          ref: "NCERT Ch.3 — Ionisation Enthalpy",
+        },
+        {
+          id: 20, ch: "Chemistry", sec: "A", type: "MCQ", diff: "Medium",
+          q: "The acidic character of oxides of third period elements varies as:",
+          opts: [
+            "Na₂O < MgO < Al₂O₃ < SiO₂ < P₄O₁₀ < SO₃ < Cl₂O₇",
+            "Cl₂O₇ < SO₃ < P₄O₁₀ < SiO₂ < Al₂O₃ < MgO < Na₂O",
+            "Na₂O > MgO > Al₂O₃ > SiO₂ > SO₃",
+            "SiO₂ > SO₃ > Cl₂O₇",
+          ],
+          ans: 0,
+          exp: "Acidic character of oxides increases across a period as elements change from metallic to non-metallic.",
+          ref: "NCERT Ch.3 — Trends in Oxides",
+        },
+        {
+          id: 21, ch: "Chemistry", sec: "A", type: "MCQ", diff: "Medium",
+          q: "Back bonding is most prominent in which of the following molecules?",
+          opts: ["CH₄", "BF₃", "NH₃", "H₂O"],
+          ans: 1,
+          exp: "Lone pair on F donates into empty 2p orbital of B (2p–2p back-bonding) in BF₃.",
+          ref: "NCERT Ch.4 — Chemical Bonding",
+        },
+        {
+          id: 22, ch: "Chemistry", sec: "A", type: "MCQ", diff: "Medium",
+          q: "The correct order of boiling points of hydrogen halides is:",
+          opts: [
+            "HF > HCl > HBr > HI",
+            "HI > HBr > HCl > HF",
+            "HF > HI > HBr > HCl",
+            "HCl > HBr > HI > HF",
+          ],
+          ans: 2,
+          exp: "HF has strong H-bonding (highest BP); among others, BP increases with size/molecular mass: HI > HBr > HCl.",
+          ref: "NCERT Ch.9 — Group 17",
+        },
+        {
+          id: 23, ch: "Chemistry", sec: "A", type: "MCQ", diff: "Medium",
+          q: "The correct order of reducing power of hydrogen halides is:",
+          opts: [
+            "HF > HCl > HBr > HI",
+            "HI > HBr > HCl > HF",
+            "HCl > HF > HBr > HI",
+            "HBr > HI > HCl > HF",
+          ],
+          ans: 1,
+          exp: "H–X bond dissociation enthalpy decreases from HF to HI; HI most easily releases H• (strongest reducing nature).",
+          ref: "NCERT Ch.9 — Group 17",
+        },
+        {
+          id: 24, ch: "Chemistry", sec: "A", type: "MCQ", diff: "Easy",
+          q: "Which of the following does not show positive oxidation states?",
+          opts: ["F", "Cl", "Br", "I"],
+          ans: 0,
+          exp: "Fluorine is the most electronegative element; it shows only –1 oxidation state — no positive states.",
+          ref: "NCERT Ch.9 — Group 17",
+        },
+        {
+          id: 25, ch: "Chemistry", sec: "A", type: "MCQ", diff: "Easy",
+          q: "Amongst the elements of group 16, the element with the highest electronegativity is:",
+          opts: ["O", "S", "Se", "Te"],
+          ans: 0,
+          exp: "Electronegativity decreases down group 16; O is the most electronegative.",
+          ref: "NCERT Ch.9 — Group 16",
+        },
+        {
+          id: 26, ch: "Biology", sec: "A", type: "MCQ", diff: "Easy",
+          q: "In the frog (Rana tigrina), the upper jaw is called:",
+          opts: ["Mandible", "Maxilla", "Pharynx", "Glottis"],
+          ans: 1,
+          exp: "NCERT: upper jaw is maxilla, lower jaw is mandible.",
+          ref: "NCERT Ch.7 — Structural Organisation in Animals",
+        },
+        {
+          id: 27, ch: "Biology", sec: "A", type: "MCQ", diff: "Medium",
+          q: "The male frog can be distinguished from the female by the presence of:",
+          opts: [
+            "Copulatory pads on the first digit of the hind limbs and two vocal sacs",
+            "Copulatory pads on the first digit of the fore limbs and two vocal sacs",
+            "Tympanum on the sides of the head only",
+            "Nictitating membrane covering the eyes",
+          ],
+          ans: 1,
+          exp: "NCERT: male frog has copulatory (nuptial) pads on the first digit of fore limbs and two vocal sacs; females lack both.",
+          ref: "NCERT Ch.7 — Frog Morphology",
+        },
+        {
+          id: 28, ch: "Biology", sec: "A", type: "MCQ", diff: "Medium",
+          q: "The tongue of the frog is:",
+          opts: [
+            "Free at both ends, bifid at posterior tip",
+            "Free at anterior end, attached posteriorly and bifid at tip",
+            "Free posteriorly, attached anteriorly and bifid at tip",
+            "Attached at both ends and not bifid",
+          ],
+          ans: 2,
+          exp: "Tongue is attached anteriorly, free posteriorly and bifid at tip — used to catch insects.",
+          ref: "NCERT Ch.7 — Frog Anatomy",
+        },
+        {
+          id: 29, ch: "Biology", sec: "A", type: "MCQ", diff: "Easy",
+          q: "According to NCERT, gaseous exchange through the moist skin of the frog is called:",
+          opts: [
+            "Buccal respiration",
+            "Pulmonary respiration",
+            "Cutaneous respiration",
+            "Branchial respiration",
+          ],
+          ans: 2,
+          exp: "Gaseous exchange through moist skin, especially in water, is cutaneous respiration.",
+          ref: "NCERT Ch.7 — Frog Respiration",
+        },
+        {
+          id: 30, ch: "Biology", sec: "A", type: "MCQ", diff: "Easy",
+          q: "The heart of the frog is enclosed in a membrane called:",
+          opts: ["Pleura", "Peritoneum", "Pericardium", "Mesentery"],
+          ans: 2,
+          exp: "The heart lies in a membranous sac called pericardium containing pericardial fluid.",
+          ref: "NCERT Ch.7 — Frog Circulatory System",
+        },
+
+        /* ===== SECTION B — Assertion & Reason (Q31–Q44) ===== */
+        {
+          id: 31, ch: "Chemistry", sec: "B", type: "Assertion-Reason", diff: "Medium",
+          q: "Assertion (A): An orbital cannot hold more than two electrons, and these two must have opposite spins.\nReason (R): This is a statement of Pauli's Exclusion Principle — no two electrons in an atom can have the same set of four quantum numbers.",
+          opts: AR_OPTS,
+          ans: 0,
+          exp: "Both correct; R correctly explains A (Pauli's exclusion principle states no two electrons can have identical sets of four quantum numbers).",
+          ref: "NCERT Ch.2 — Pauli's Exclusion Principle",
+        },
+        {
+          id: 32, ch: "Chemistry", sec: "B", type: "Assertion-Reason", diff: "Medium",
+          q: "Assertion (A): The 2s orbital is lower in energy than the 2p orbital in a multi-electron atom.\nReason (R): The 2s electron experiences less shielding and greater penetration toward the nucleus compared to a 2p electron.",
+          opts: AR_OPTS,
+          ans: 0,
+          exp: "Both correct and R correctly explains A; 2s has higher probability near the nucleus (greater penetration), hence lower energy than 2p.",
+          ref: "NCERT Ch.2 — Orbital Energies",
+        },
+        {
+          id: 33, ch: "Chemistry", sec: "B", type: "Assertion-Reason", diff: "Medium",
+          q: "Assertion (A): Addition of an inert gas to the equilibrium mixture at constant volume does not change the equilibrium position of a gaseous reaction.\nReason (R): At constant volume, the partial pressures and concentrations of reacting species remain unchanged when an inert gas is added.",
+          opts: AR_OPTS,
+          ans: 0,
+          exp: "Adding inert gas at constant V does not change partial pressures/concentrations of reactants; equilibrium unchanged.",
+          ref: "NCERT Ch.7 — Le Chatelier's Principle",
+        },
+        {
+          id: 34, ch: "Chemistry", sec: "B", type: "Assertion-Reason", diff: "Medium",
+          q: "Assertion (A): A catalyst does not alter the equilibrium constant of a reaction.\nReason (R): A catalyst decreases the activation energy of both forward and reverse reactions by the same amount.",
+          opts: AR_OPTS,
+          ans: 0,
+          exp: "Catalyst lowers Ea of both directions equally, attaining equilibrium faster without changing K.",
+          ref: "NCERT Ch.7 — Catalysis & Equilibrium",
+        },
+        {
+          id: 35, ch: "Chemistry", sec: "B", type: "Assertion-Reason", diff: "Hard",
+          q: "Assertion (A): Pure water is a weak electrolyte.\nReason (R): The ionic product of water, Kw, at 298 K is 1.0 × 10⁻¹⁴.",
+          opts: AR_OPTS,
+          ans: 1,
+          exp: "Both true, but R is a consequence of A's weak electrolytic behaviour, not its cause.",
+          ref: "NCERT Ch.7 — Ionic Product of Water",
+        },
+        {
+          id: 36, ch: "Chemistry", sec: "B", type: "Assertion-Reason", diff: "Hard",
+          q: "Assertion (A): Common ion effect decreases the degree of dissociation of a weak electrolyte.\nReason (R): Addition of a common ion shifts the dissociation equilibrium of the weak electrolyte in the forward direction.",
+          opts: AR_OPTS,
+          ans: 2,
+          exp: "A is true; R is false — addition of common ion shifts the equilibrium backward (not forward), suppressing dissociation.",
+          ref: "NCERT Ch.7 — Common Ion Effect",
+        },
+        {
+          id: 37, ch: "Chemistry", sec: "B", type: "Assertion-Reason", diff: "Medium",
+          q: "Assertion (A): The electron gain enthalpy of chlorine is more negative than that of fluorine.\nReason (R): The small size of the F atom causes large electron–electron repulsions in its compact 2p subshell when an extra electron is added.",
+          opts: AR_OPTS,
+          ans: 0,
+          exp: "NCERT: F has more compact 2p subshell, so an added electron experiences greater repulsion; EGE of Cl is more negative. Both A and R are true, R explains A.",
+          ref: "NCERT Ch.3 — Electron Gain Enthalpy",
+        },
+        {
+          id: 38, ch: "Chemistry", sec: "B", type: "Assertion-Reason", diff: "Medium",
+          q: "Assertion (A): Fluorine exhibits only –1 oxidation state in its compounds.\nReason (R): Fluorine is the most electronegative element and has no d-orbitals in its valence shell.",
+          opts: AR_OPTS,
+          ans: 0,
+          exp: "F is most electronegative and lacks d-orbitals to expand its octet, so it only shows –1. Both A and R are true, R correctly explains A.",
+          ref: "NCERT Ch.9 — Group 17 Fluorine",
+        },
+        {
+          id: 39, ch: "Chemistry", sec: "B", type: "Assertion-Reason", diff: "Hard",
+          q: "Assertion (A): Among halogens, the bond dissociation enthalpy follows the order: Cl₂ > Br₂ > F₂ > I₂.\nReason (R): The small size of F atoms causes greater electron–electron repulsion among the lone pairs, weakening the F–F bond.",
+          opts: AR_OPTS,
+          ans: 0,
+          exp: "Order: Cl₂ > Br₂ > F₂ > I₂; F–F bond is weaker than expected due to lone-pair repulsion in small F atoms. Both true, R explains A.",
+          ref: "NCERT Ch.9 — Bond Dissociation Enthalpy",
+        },
+        {
+          id: 40, ch: "Chemistry", sec: "B", type: "Assertion-Reason", diff: "Easy",
+          q: "Assertion (A): H₂O is a liquid while H₂S is a gas at room temperature.\nReason (R): H₂O has strong intermolecular hydrogen bonding due to the small size and high electronegativity of oxygen, which is absent in H₂S.",
+          opts: AR_OPTS,
+          ans: 0,
+          exp: "Strong H-bonding in H₂O (due to high electronegativity and small size of O) explains high BP and liquid state.",
+          ref: "NCERT Ch.9 — Group 16 Hydrides",
+        },
+        {
+          id: 41, ch: "Chemistry", sec: "B", type: "Assertion-Reason", diff: "Medium",
+          q: "Assertion (A): Boron trifluoride (BF₃) is a weaker Lewis acid than BCl₃.\nReason (R): Effective 2p–2p back-bonding between F and B in BF₃ reduces the electron deficiency at boron.",
+          opts: AR_OPTS,
+          ans: 0,
+          exp: "Back-bonding from F lone pairs to empty 2p of B satisfies boron's electron deficiency; hence BF₃ is a weaker Lewis acid. Both true, R explains A.",
+          ref: "NCERT Ch.4 — Lewis Acids",
+        },
+        {
+          id: 42, ch: "Biology", sec: "B", type: "Assertion-Reason", diff: "Easy",
+          q: "Assertion (A): Frogs are poikilothermic animals.\nReason (R): Their body temperature varies with the temperature of their surroundings.",
+          opts: AR_OPTS,
+          ans: 0,
+          exp: "Frogs are cold-blooded (poikilothermic); body temperature varies with environment. Both true, R correctly explains A.",
+          ref: "NCERT Ch.7 — Frog Introduction",
+        },
+        {
+          id: 43, ch: "Biology", sec: "B", type: "Assertion-Reason", diff: "Easy",
+          q: "Assertion (A): Frogs undergo hibernation in winter and aestivation in summer.\nReason (R): During these periods, they remain concealed in deep burrows to protect themselves from extremes of temperature.",
+          opts: AR_OPTS,
+          ans: 0,
+          exp: "NCERT explicitly mentions hibernation (winter sleep) and aestivation (summer sleep) in deep burrows. Both true, R explains A.",
+          ref: "NCERT Ch.7 — Frog Behaviour",
+        },
+        {
+          id: 44, ch: "Biology", sec: "B", type: "Assertion-Reason", diff: "Medium",
+          q: "Assertion (A): Fertilisation in frog is external and takes place in water.\nReason (R): The male frog grasps the female by the axillae in a posture called amplexus, and eggs are fertilised as they are released.",
+          opts: AR_OPTS,
+          ans: 0,
+          exp: "External fertilisation in water; male holds female in amplexus by the axillae. Both true, R correctly explains A.",
+          ref: "NCERT Ch.7 — Frog Reproduction",
+        },
+
+        /* ===== SECTION C — Match the Following (Q45–Q52) ===== */
+        {
+          id: 45, ch: "Chemistry", sec: "C", type: "Match", diff: "Medium",
+          q: "Match Column I (Quantum number / rule) with Column II (Information given):\n\nColumn I\nA. Principal (n)\nB. Azimuthal (l)\nC. Magnetic (mₗ)\nD. Spin (mₛ)\n\nColumn II\ni. Orientation of orbital in space\nii. Size and energy of orbital\niii. Spin of the electron\niv. Shape of orbital (subshell)",
+          opts: [
+            "A-ii, B-iv, C-i, D-iii",
+            "A-iv, B-ii, C-iii, D-i",
+            "A-ii, B-i, C-iv, D-iii",
+            "A-i, B-ii, C-iv, D-iii",
+          ],
+          ans: 0,
+          exp: "n → size & energy; l → shape (subshell); mₗ → orientation in space; mₛ → spin.",
+          ref: "NCERT Ch.2 — Quantum Numbers",
+        },
+        {
+          id: 46, ch: "Chemistry", sec: "C", type: "Match", diff: "Hard",
+          q: "Match Column I (Spectral Series) with Column II (Spectral region):\n\nColumn I\nA. Lyman\nB. Balmer\nC. Paschen\nD. Brackett\n\nColumn II\ni. Infrared\nii. Ultraviolet\niii. Visible\niv. Infrared",
+          opts: [
+            "A-ii, B-iii, C-i, D-iv",
+            "A-iii, B-ii, C-iv, D-i",
+            "A-i, B-ii, C-iii, D-iv",
+            "A-iv, B-iii, C-ii, D-i",
+          ],
+          ans: 0,
+          exp: "Lyman — UV; Balmer — Visible; Paschen — Infrared; Brackett — Infrared.",
+          ref: "NCERT Ch.2 — Hydrogen Spectrum",
+        },
+        {
+          id: 47, ch: "Chemistry", sec: "C", type: "Match", diff: "Medium",
+          q: "Match Column I (Species) with Column II (pH nature of aqueous solution):\n\nColumn I\nA. NH₄Cl\nB. CH₃COONa\nC. NaCl\nD. CH₃COONH₄\n\nColumn II\ni. Neutral\nii. Acidic\niii. Basic\niv. ≈ Neutral (salt of weak acid–weak base)",
+          opts: [
+            "A-ii, B-iii, C-i, D-iv",
+            "A-iii, B-ii, C-iv, D-i",
+            "A-i, B-iv, C-iii, D-ii",
+            "A-iv, B-i, C-ii, D-iii",
+          ],
+          ans: 0,
+          exp: "NH₄Cl (weak base–strong acid → acidic); CH₃COONa (weak acid–strong base → basic); NaCl (neutral); CH₃COONH₄ (≈ neutral).",
+          ref: "NCERT Ch.7 — Hydrolysis of Salts",
+        },
+        {
+          id: 48, ch: "Chemistry", sec: "C", type: "Match", diff: "Medium",
+          q: "Match Column I (Property) with Column II (Correct trend):\n\nColumn I\nA. Atomic size in a period\nB. Ionisation enthalpy in a period\nC. Metallic character in a group\nD. Non-metallic character in a period\n\nColumn II\ni. Increases down the group\nii. Decreases across the period\niii. Increases across the period\niv. Increases across the period",
+          opts: [
+            "A-ii, B-iii, C-i, D-iv",
+            "A-iii, B-iv, C-ii, D-i",
+            "A-i, B-ii, C-iv, D-iii",
+            "A-iv, B-i, C-iii, D-ii",
+          ],
+          ans: 0,
+          exp: "Atomic size ↓ across period (ii); IE ↑ across period (iii); metallic character ↑ down group (i); non-metallic character ↑ across period (iv).",
+          ref: "NCERT Ch.3 — Periodic Properties",
+        },
+        {
+          id: 49, ch: "Chemistry", sec: "C", type: "Match", diff: "Hard",
+          q: "Match Column I (Hydride) with Column II (Characteristic):\n\nColumn I\nA. HF\nB. H₂O\nC. HI\nD. H₂Te\n\nColumn II\ni. Strongest reducing agent among HX\nii. Has strong H-bonding; weakest acid of HX\niii. Most thermally stable hydride of group 16\niv. Least thermally stable hydride of group 16",
+          opts: [
+            "A-ii, B-iii, C-i, D-iv",
+            "A-iii, B-ii, C-iv, D-i",
+            "A-i, B-ii, C-iv, D-iii",
+            "A-iv, B-i, C-iii, D-ii",
+          ],
+          ans: 0,
+          exp: "HF (weakest HX acid due to H-bonding — option ii); H₂O (most stable group-16 hydride — iii); HI (strongest reducing HX — i); H₂Te (least stable group-16 hydride — iv).",
+          ref: "NCERT Ch.9 — Halogen & Group 16 Hydrides",
+        },
+        {
+          id: 50, ch: "Biology", sec: "C", type: "Match", diff: "Medium",
+          q: "Match Column I (Organ/Part in frog) with Column II (Function):\n\nColumn I\nA. Bidder's canal\nB. Eustachian tube\nC. Nictitating membrane\nD. Cloaca\n\nColumn II\ni. Carries sperms from testis to cloaca via kidney & urinogenital duct\nii. Equalises air pressure between tympanum and buccal cavity\niii. Protects the eyes from water\niv. Common chamber for faeces, urine and sperms/eggs",
+          opts: [
+            "A-i, B-ii, C-iii, D-iv",
+            "A-ii, B-i, C-iv, D-iii",
+            "A-iii, B-iv, C-i, D-ii",
+            "A-iv, B-iii, C-ii, D-i",
+          ],
+          ans: 0,
+          exp: "A-i, B-ii, C-iii, D-iv, exactly per NCERT Ch.7 on Structural Organisation in Animals.",
+          ref: "NCERT Ch.7 — Frog Anatomy",
+        },
+        {
+          id: 51, ch: "Biology", sec: "C", type: "Match", diff: "Medium",
+          q: "Match Column I (Part of alimentary canal of frog) with Column II (Role):\n\nColumn I\nA. Buccal cavity\nB. Stomach\nC. Liver\nD. Gall bladder\n\nColumn II\ni. Secretes bile that helps in digestion\nii. Catches prey using sticky, bifid tongue\niii. Stores bile from the liver\niv. Secretes HCl and gastric juices for digestion",
+          opts: [
+            "A-ii, B-iv, C-i, D-iii",
+            "A-iii, B-i, C-iv, D-ii",
+            "A-iv, B-ii, C-iii, D-i",
+            "A-i, B-iii, C-ii, D-iv",
+          ],
+          ans: 0,
+          exp: "Buccal cavity catches prey (ii); stomach secretes HCl/gastric juice (iv); liver secretes bile (i); gall bladder stores bile (iii).",
+          ref: "NCERT Ch.7 — Frog Digestive System",
+        },
+        {
+          id: 52, ch: "Biology", sec: "C", type: "Match", diff: "Hard",
+          q: "Match Column I (Structure) with Column II (System of frog):\n\nColumn I\nA. Sinus venosus\nB. Mesonephric kidney\nC. Glottis\nD. Crura cerebri\n\nColumn II\ni. Respiratory\nii. Circulatory\niii. Nervous\niv. Excretory",
+          opts: [
+            "A-ii, B-iv, C-i, D-iii",
+            "A-i, B-iii, C-ii, D-iv",
+            "A-iii, B-ii, C-iv, D-i",
+            "A-iv, B-i, C-iii, D-ii",
+          ],
+          ans: 0,
+          exp: "Sinus venosus — circulatory (ii); mesonephric kidney — excretory (iv); glottis — respiratory (i); crura cerebri — nervous system/midbrain (iii).",
+          ref: "NCERT Ch.7 — Frog Organ Systems",
+        },
+
+        /* ===== SECTION D — Case-Based Questions (Q53–Q60) ===== */
+        {
+          id: 53, ch: "Chemistry", sec: "D", type: "Case-based", diff: "Medium",
+          passage: "Case I: Niels Bohr's model of the hydrogen atom explained line spectra by postulating stationary orbits with quantised angular momentum mvr = nh/2π. The energy of the nth Bohr orbit is given by Eₙ = –(2.18 × 10⁻¹⁸ J)/n² for the H atom. When an electron jumps from a higher to a lower orbit, a photon of definite frequency is emitted.",
+          q: "The energy required to remove an electron from the ground state of a hydrogen atom (ionisation energy) is:",
+          opts: [
+            "+2.18 × 10⁻¹⁸ J",
+            "–2.18 × 10⁻¹⁸ J",
+            "+1.09 × 10⁻¹⁸ J",
+            "Zero",
+          ],
+          ans: 0,
+          exp: "Ionisation energy = |E₁| = 2.18 × 10⁻¹⁸ J (positive energy is supplied to remove the electron).",
+          ref: "NCERT Ch.2 — Bohr's Model",
+        },
+        {
+          id: 54, ch: "Chemistry", sec: "D", type: "Case-based", diff: "Medium",
+          passage: "Case I: Niels Bohr's model of the hydrogen atom explained line spectra by postulating stationary orbits with quantised angular momentum mvr = nh/2π. The energy of the nth Bohr orbit is given by Eₙ = –(2.18 × 10⁻¹⁸ J)/n² for the H atom. When an electron jumps from a higher to a lower orbit, a photon of definite frequency is emitted.",
+          q: "Bohr's model fails to explain:",
+          opts: [
+            "Line spectrum of hydrogen",
+            "Stability of the hydrogen atom",
+            "Fine structure of spectral lines and spectra of multi-electron atoms",
+            "The quantisation of energy",
+          ],
+          ans: 2,
+          exp: "Bohr's model cannot explain fine structure, Zeeman/Stark effects or spectra of atoms with more than one electron.",
+          ref: "NCERT Ch.2 — Limitations of Bohr's Model",
+        },
+        {
+          id: 55, ch: "Chemistry", sec: "D", type: "Case-based", diff: "Medium",
+          passage: "Case II: A buffer solution resists change in pH on addition of small amounts of acid or base. For an acidic buffer of a weak acid HA (pKa) and its salt with a strong base, the pH is given by the Henderson–Hasselbalch equation: pH = pKa + log([Salt]/[Acid]). Human blood maintains a pH of 7.4 via a carbonic acid–bicarbonate buffer (H₂CO₃/HCO₃⁻).",
+          q: "For a buffer to have maximum buffer capacity, the ratio [Salt]/[Acid] should ideally be:",
+          opts: ["1 : 1", "10 : 1", "1 : 10", "100 : 1"],
+          ans: 0,
+          exp: "pH = pKa when [Salt]/[Acid] = 1; the buffer can neutralise both added acid and base almost equally, giving maximum buffer capacity.",
+          ref: "NCERT Ch.7 — Buffer Solutions",
+        },
+        {
+          id: 56, ch: "Chemistry", sec: "D", type: "Case-based", diff: "Hard",
+          passage: "Case II: A buffer solution resists change in pH on addition of small amounts of acid or base. For an acidic buffer of a weak acid HA (pKa) and its salt with a strong base, the pH is given by the Henderson–Hasselbalch equation: pH = pKa + log([Salt]/[Acid]). Human blood maintains a pH of 7.4 via a carbonic acid–bicarbonate buffer (H₂CO₃/HCO₃⁻).",
+          q: "If equal volumes of 0.1 M CH₃COOH and 0.05 M NaOH are mixed, the resulting solution:",
+          opts: [
+            "Is a strong acid solution",
+            "Acts as an acidic buffer",
+            "Is a neutral solution",
+            "Is a basic buffer",
+          ],
+          ans: 1,
+          exp: "Half of CH₃COOH is neutralised, producing an equimolar mixture of CH₃COOH and CH₃COONa — an acidic buffer.",
+          ref: "NCERT Ch.7 — Buffer Solutions",
+        },
+        {
+          id: 57, ch: "Chemistry", sec: "D", type: "Case-based", diff: "Medium",
+          passage: "Case III: The hydrides of group 16 (H₂O, H₂S, H₂Se, H₂Te) show anomalous behaviour — H₂O is a liquid with unusually high boiling point while the rest are gases. Acidic strength of group 16 hydrides increases down the group: H₂O < H₂S < H₂Se < H₂Te. Similarly for halogen hydrides, acidic strength increases in the order HF < HCl < HBr < HI. Thermal stability, however, decreases down both groups.",
+          q: "The increasing acidic strength of hydrogen halides HF < HCl < HBr < HI is best explained by:",
+          opts: [
+            "Increasing electronegativity of halogen down the group",
+            "Decreasing H–X bond dissociation enthalpy down the group",
+            "Increasing size of H atom",
+            "Increasing H-bonding strength down the group",
+          ],
+          ans: 1,
+          exp: "As H–X bond dissociation enthalpy decreases down the group, ease of H⁺ release increases → acidic strength increases.",
+          ref: "NCERT Ch.9 — Acidic Strength of HX",
+        },
+        {
+          id: 58, ch: "Chemistry", sec: "D", type: "Case-based", diff: "Easy",
+          passage: "Case III: The hydrides of group 16 (H₂O, H₂S, H₂Se, H₂Te) show anomalous behaviour — H₂O is a liquid with unusually high boiling point while the rest are gases. Acidic strength of group 16 hydrides increases down the group: H₂O < H₂S < H₂Se < H₂Te. Similarly for halogen hydrides, acidic strength increases in the order HF < HCl < HBr < HI. Thermal stability, however, decreases down both groups.",
+          q: "Which of the following is the most thermally stable?",
+          opts: ["H₂O", "H₂S", "H₂Se", "H₂Te"],
+          ans: 0,
+          exp: "Thermal stability of group-16 hydrides decreases down the group: H₂O > H₂S > H₂Se > H₂Te.",
+          ref: "NCERT Ch.9 — Group 16 Hydrides",
+        },
+        {
+          id: 59, ch: "Biology", sec: "D", type: "Case-based", diff: "Medium",
+          passage: "Case IV: The circulatory system of the frog is closed and consists of a three-chambered heart (two atria and one ventricle), blood vessels, and blood. A special venous connection — the hepatic portal system — carries blood from the intestine to the liver before it returns to the heart, while the renal portal system carries blood from the hind limbs to the kidneys. Lymph (without RBCs) also circulates through lymph channels.",
+          q: "Which of the following statements is correct about the heart of the frog?",
+          opts: [
+            "It has two atria and two ventricles",
+            "It has a single atrium and a single ventricle",
+            "It has two atria and one ventricle; a triangular structure called sinus venosus joins the right atrium",
+            "It has a single atrium, one ventricle and no sinus venosus",
+          ],
+          ans: 2,
+          exp: "NCERT: heart has two atria, one ventricle, and a triangular sinus venosus that joins the right atrium.",
+          ref: "NCERT Ch.7 — Frog Heart",
+        },
+        {
+          id: 60, ch: "Biology", sec: "D", type: "Case-based", diff: "Easy",
+          passage: "Case IV: The circulatory system of the frog is closed and consists of a three-chambered heart (two atria and one ventricle), blood vessels, and blood. A special venous connection — the hepatic portal system — carries blood from the intestine to the liver before it returns to the heart, while the renal portal system carries blood from the hind limbs to the kidneys. Lymph (without RBCs) also circulates through lymph channels.",
+          q: "The hepatic portal system of the frog carries blood from:",
+          opts: [
+            "Kidney to liver",
+            "Liver to heart",
+            "Intestine to liver",
+            "Heart to liver",
+          ],
+          ans: 2,
+          exp: "Hepatic portal system carries blood from alimentary canal (intestine) to the liver before returning to the heart.",
+          ref: "NCERT Ch.7 — Frog Circulatory System",
+        },
+      ];
+
+      const SEC_LABELS = {
+        A: { label: "Section A", title: "Multiple Choice Questions (Q1–Q30)", note: "4 marks each" },
+        B: { label: "Section B", title: "Assertion & Reason (Q31–Q44)", note: "4 marks each" },
+        C: { label: "Section C", title: "Match the Following (Q45–Q52)", note: "4 marks each" },
+        D: { label: "Section D", title: "Case-based Questions (Q53–Q60)", note: "4 marks each" },
+      };
+
+      const TOTAL = Q.length;
+      const LETTERS = ["A", "B", "C", "D"];
+      let currentQ = 0;
+      let userAnswers = new Array(TOTAL).fill(-1);
+      let reviewFlags = new Array(TOTAL).fill(false);
+      let submitted = false;
+      let timerSec = 0;
+      let timerInterval;
+
+      function chClass(ch) {
+        return ch === "Chemistry" ? "chem" : "bio";
+      }
+
+      function startQuiz() {
+        document.getElementById("heroSection").style.display = "none";
+        document.getElementById("progressWrap").classList.add("active");
+        document.getElementById("paletteToggle").classList.add("active");
+        buildAllCards();
+        buildPalette();
+        showQuestion(0);
+        startTimer();
+      }
+
+      function buildAllCards() {
+        const area = document.getElementById("quizArea");
+        let html = "";
+        let lastSec = "";
+
+        Q.forEach((q, i) => {
+          const tagCls = chClass(q.ch);
+          const numBioCls = tagCls === "bio" ? "bio-num" : "";
+          const diffClass = q.diff === "Hard" ? "hard" : q.diff === "Easy" ? "med" : "med";
+
+          // Section divider
+          if (q.sec !== lastSec) {
+            lastSec = q.sec;
+            const si = SEC_LABELS[q.sec];
+            html += `<div class="section-divider" id="sec-${q.sec}" style="display:none">
+              <span class="section-divider-label">${si.label}</span>
+              <span class="section-divider-title">${si.title}</span>
+              <span class="section-divider-note">${si.note}</span>
+            </div>`;
+          }
+
+          // Passage (case-based)
+          let passageHtml = "";
+          if (q.passage) {
+            // Only show if the PREVIOUS question is different passage or this is first in group
+            const prev = i > 0 ? Q[i-1] : null;
+            if (!prev || prev.passage !== q.passage) {
+              passageHtml = `<div class="passage-block"><b>📋 Passage:</b> ${q.passage}</div>`;
+            }
+          }
+
+          // Options
+          const optsHtml = q.opts.map((o, j) => `
+            <button class="opt-btn" id="opt-${i}-${j}" onclick="selectOpt(${i},${j})">
+              <span class="opt-letter">${LETTERS[j]}</span>
+              <span>${o}</span>
+            </button>
+          `).join("");
+
+          html += `<div class="q-card" id="qcard-${i}" data-sec="${q.sec}">
+            <div class="q-header">
+              <span class="q-num ${numBioCls}">Q${q.id}</span>
+              <div class="q-meta">
+                <span class="q-tag ${tagCls}">${q.ch}</span>
+                <span class="q-tag type">${q.type}</span>
+                <span class="q-tag ${diffClass}">${q.diff}</span>
+              </div>
+            </div>
+            ${passageHtml}
+            <div class="q-text">${q.q}</div>
+            <div class="options">${optsHtml}</div>
+            <div class="nav-btns">
+              <button class="nav-btn" onclick="prevQuestion()" ${i === 0 ? "disabled" : ""}>← Prev</button>
+              <button class="nav-btn primary" onclick="nextQuestion()" id="next-btn-${i}">
+                ${i === TOTAL - 1 ? "Finish →" : "Next →"}
+              </button>
+              <button class="nav-btn clear-response" onclick="clearResponse(${i})">✕ Clear</button>
+              <button class="nav-btn mark-review${reviewFlags[i] ? " marked" : ""}" id="mark-${i}" onclick="toggleReview(${i})">
+                ${reviewFlags[i] ? "★ Marked" : "☆ Mark for Review"}
+              </button>
+            </div>
+          </div>`;
+        });
+        area.innerHTML = html;
+      }
+
+      function showQuestion(idx) {
+        document.querySelectorAll(".q-card").forEach(c => c.classList.remove("active"));
+        document.querySelectorAll(".section-divider").forEach(d => (d.style.display = "none"));
+        document.getElementById(`qcard-${idx}`).classList.add("active");
+        currentQ = idx;
+        updateProgress();
+        updatePalette();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function selectOpt(qIdx, optIdx) {
+        if (submitted) return;
+        for (let i = 0; i < 4; i++) {
+          const el = document.getElementById(`opt-${qIdx}-${i}`);
+          if (el) el.classList.remove("selected");
+        }
+        document.getElementById(`opt-${qIdx}-${optIdx}`).classList.add("selected");
+        userAnswers[qIdx] = optIdx;
+        updatePalette();
+        updateProgress();
+      }
+
+      function clearResponse(qIdx) {
+        if (submitted) return;
+        userAnswers[qIdx] = -1;
+        for (let i = 0; i < 4; i++) {
+          const el = document.getElementById(`opt-${qIdx}-${i}`);
+          if (el) el.classList.remove("selected");
+        }
+        updatePalette();
+        updateProgress();
+      }
+
+      function nextQuestion() {
+        if (currentQ < TOTAL - 1) showQuestion(currentQ + 1);
+        else finishQuiz();
+      }
+
+      function prevQuestion() {
+        if (currentQ > 0) showQuestion(currentQ - 1);
+      }
+
+      function toggleReview(idx) {
+        reviewFlags[idx] = !reviewFlags[idx];
+        const btn = document.getElementById(`mark-${idx}`);
+        btn.classList.toggle("marked", reviewFlags[idx]);
+        btn.textContent = reviewFlags[idx] ? "★ Marked" : "☆ Mark for Review";
+        updatePalette();
+      }
+
+      function updateProgress() {
+        const answered = userAnswers.filter(a => a !== -1).length;
+        document.getElementById("qCounter").textContent = `Q ${currentQ + 1} / ${TOTAL}`;
+        document.getElementById("progressFill").style.width = (answered / TOTAL) * 100 + "%";
+      }
+
+      function buildPalette() {
+        const grid = document.getElementById("paletteGrid");
+        let html = "";
+        for (let i = 0; i < TOTAL; i++) {
+          html += `<div class="palette-dot" id="pdot-${i}" onclick="showQuestion(${i})">${i + 1}</div>`;
+        }
+        grid.innerHTML = html;
+      }
+
+      function updatePalette() {
+        for (let i = 0; i < TOTAL; i++) {
+          const dot = document.getElementById(`pdot-${i}`);
+          if (!dot) continue;
+          dot.className = "palette-dot";
+          if (i === currentQ) dot.classList.add("current");
+          if (userAnswers[i] !== -1) dot.classList.add("answered");
+          if (reviewFlags[i]) dot.classList.add("review");
+        }
+      }
+
+      function togglePalette() {
+        document.getElementById("palettePanel").classList.toggle("open");
+      }
+
+      function startTimer() {
+        timerInterval = setInterval(() => {
+          timerSec++;
+          const m = String(Math.floor(timerSec / 60)).padStart(2, "0");
+          const s = String(timerSec % 60).padStart(2, "0");
+          document.getElementById("progressTimer").textContent = `${m}:${s}`;
+        }, 1000);
+      }
+
+      function finishQuiz() {
+        if (!window._isReplay) {
+          const unanswered = userAnswers.filter(a => a === -1).length;
+          if (unanswered > 0) {
+            if (!confirm(`You have ${unanswered} unanswered question${unanswered > 1 ? "s" : ""}. Submit anyway?`))
+              return;
+          }
+        }
+        submitQuiz();
+      }
+
+      function saveAttempt(data) {
+        try {
+          const results = JSON.parse(localStorage.getItem("papResults") || "[]");
+          results.unshift(data);
+          localStorage.setItem("papResults", JSON.stringify(results));
+        } catch (e) {}
+      }
+
+      function submitQuiz() {
+        submitted = true;
+        clearInterval(timerInterval);
+
+        document.getElementById("quizArea").classList.add("hidden");
+        document.getElementById("paletteToggle").style.display = "none";
+        document.getElementById("palettePanel").style.display = "none";
+        document.getElementById("progressWrap").style.display = "none";
+
+        let correct = 0, wrong = 0, skipped = 0;
+        let chemCorrect = 0, chemTotal = 0, bioCorrect = 0, bioTotal = 0;
+
+        Q.forEach((q, i) => {
+          const isChem = q.ch === "Chemistry";
+          if (isChem) chemTotal++; else bioTotal++;
+          if (userAnswers[i] === -1) { skipped++; }
+          else if (userAnswers[i] === q.ans) {
+            correct++;
+            if (isChem) chemCorrect++; else bioCorrect++;
+          } else { wrong++; }
+        });
+
+        const neetScore = correct * 4 - wrong * 1;
+        const pct = Math.round((correct / TOTAL) * 100);
+        const circumference = 2 * Math.PI * 65;
+        const offset = circumference - (pct / 100) * circumference;
+        const ringColor = pct >= 80 ? "var(--green)" : pct >= 50 ? "var(--amber)" : "var(--red)";
+        const grade = pct >= 90 ? "Outstanding!" : pct >= 75 ? "Great Work!" : pct >= 50 ? "Keep Practicing!" : "Needs Revision";
+
+        const timeStr = document.getElementById("progressTimer").textContent;
+        const chemPct = chemTotal ? Math.round((chemCorrect / chemTotal) * 100) : 0;
+        const bioPct = bioTotal ? Math.round((bioCorrect / bioTotal) * 100) : 0;
+
+        if (!window._isReplay) {
+          saveAttempt({
+            id: Date.now(),
+            paperFile: "20AP1.html",
+            paperName: "Chemistry & Biology [60Q]",
+            paperTag: "60Q Practice",
+            correct, wrong, skipped,
+            totalQuestions: TOTAL, neetScore, maxScore: TOTAL * 4,
+            percentage: pct, timeTaken: timeStr, timerSeconds: timerSec,
+            userAnswers: [...userAnswers],
+          });
+        }
+
+        const res = document.getElementById("resultsSection");
+        res.style.display = "block";
+
+        let rhtml = `
+<div class="results-card">
+  <h2>${grade}</h2>
+  <div class="score-ring">
+    <svg width="160" height="160" viewBox="0 0 160 160">
+      <circle class="ring-bg" cx="80" cy="80" r="65"/>
+      <circle class="ring-fill" cx="80" cy="80" r="65"
+        stroke="${ringColor}"
+        stroke-dasharray="${circumference}"
+        stroke-dashoffset="${circumference}"
+        id="scoreRing"/>
+    </svg>
+    <div class="score-center">
+      <div class="pct">${pct}%</div>
+      <div class="of">${correct}/${TOTAL}</div>
+    </div>
+  </div>
+  <div class="stats-grid">
+    <div class="stat-item neet"><div class="stat-num">${neetScore}</div><div class="stat-lbl">NEET Score</div></div>
+    <div class="stat-item correct"><div class="stat-num">${correct}</div><div class="stat-lbl">Correct</div></div>
+    <div class="stat-item wrong"><div class="stat-num">${wrong}</div><div class="stat-lbl">Wrong</div></div>
+    <div class="stat-item skip"><div class="stat-num">${skipped}</div><div class="stat-lbl">Skipped</div></div>
+  </div>
+  <div style="margin-top:16px;font-size:13px;color:var(--text3)">Time: ${timeStr} · Max: ${TOTAL * 4}</div>
+</div>
+
+<div class="chapter-breakdown">
+  <h3>Subject Breakdown</h3>
+  <div class="chapter-bar-wrap">
+    <div class="chapter-bar-header">
+      <span style="color:var(--accent)">⚗️ Chemistry</span>
+      <span style="color:var(--text2)">${chemCorrect}/${chemTotal} (${chemPct}%)</span>
+    </div>
+    <div class="chapter-bar-track">
+      <div class="chapter-bar-fill" id="chemBar" style="width:0%;background:var(--accent)"></div>
+    </div>
+  </div>
+  <div class="chapter-bar-wrap">
+    <div class="chapter-bar-header">
+      <span style="color:var(--pink)">🐸 Biology (Frog)</span>
+      <span style="color:var(--text2)">${bioCorrect}/${bioTotal} (${bioPct}%)</span>
+    </div>
+    <div class="chapter-bar-track">
+      <div class="chapter-bar-fill" id="bioBar" style="width:0%;background:var(--pink)"></div>
+    </div>
+  </div>
+</div>
+
+<div class="review-title">Complete Walkthrough</div>
+<div class="review-sub">Every question reviewed with NCERT-based explanations.</div>
+<div class="review-filter">
+  <button class="filter-btn active" onclick="filterReview('all',this)">All (${TOTAL})</button>
+  <button class="filter-btn" onclick="filterReview('wrong',this)">❌ Wrong (${wrong})</button>
+  <button class="filter-btn" onclick="filterReview('skipped',this)">⏭️ Skipped (${skipped})</button>
+  <button class="filter-btn" onclick="filterReview('correct',this)">✅ Correct (${correct})</button>
+</div>
+<div id="reviewCards"></div>`;
+
+        res.innerHTML = rhtml;
+        renderReviewCards("all");
+
+        setTimeout(() => {
+          document.getElementById("scoreRing").style.strokeDashoffset = offset;
+          document.getElementById("chemBar").style.width = chemPct + "%";
+          document.getElementById("bioBar").style.width = bioPct + "%";
+        }, 100);
+
+        res.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function renderReviewCards(filter) {
+        const container = document.getElementById("reviewCards");
+        let html = "";
+
+        Q.forEach((q, i) => {
+          const ua = userAnswers[i];
+          const isCorrect = ua === q.ans;
+          const isSkipped = ua === -1;
+          const isWrong = !isCorrect && !isSkipped;
+
+          if (filter === "wrong" && !isWrong) return;
+          if (filter === "skipped" && !isSkipped) return;
+          if (filter === "correct" && !isCorrect) return;
+
+          let cardClass, badgeClass, badgeText;
+          if (isCorrect) { cardClass = "rc-correct"; badgeClass = "badge-correct"; badgeText = "✅ Correct"; }
+          else if (isSkipped) { cardClass = "rc-skipped"; badgeClass = "badge-skipped"; badgeText = "⏭️ Skipped"; }
+          else { cardClass = "rc-wrong"; badgeClass = "badge-wrong"; badgeText = "❌ Wrong"; }
+
+          const tagCls = chClass(q.ch);
+          const numBioCls = tagCls === "bio" ? "bio-num" : "";
+
+          // Passage in review
+          let passHtml = "";
+          if (q.passage) {
+            const prev = i > 0 ? Q[i-1] : null;
+            if (!prev || prev.passage !== q.passage) {
+              passHtml = `<div class="passage-block" style="margin-bottom:12px"><b>📋 Passage:</b> ${q.passage}</div>`;
+            }
+          }
+
+          html += `<div class="review-card ${cardClass}">
+            <div class="rc-header">
+              <span class="q-num ${numBioCls}">Q${q.id}</span>
+              <span class="q-tag ${tagCls}">${q.ch}</span>
+              <span class="rc-badge ${badgeClass}">${badgeText}</span>
+              <span style="font-size:11px;color:var(--text3);margin-left:auto">${q.type}</span>
+            </div>
+            ${passHtml}
+            <div class="rc-q">${q.q}</div>
+            <div class="rc-opts">`;
+
+          q.opts.forEach((o, j) => {
+            let optClass = "rc-opt";
+            let marker = LETTERS[j];
+            if (j === q.ans) { optClass += " rc-opt-correct"; marker = "✓"; }
+            else if (j === ua && isWrong) { optClass += " rc-opt-wrong"; marker = "✗"; }
+            html += `<div class="${optClass}">
+              <span class="rc-letter">${marker}</span>
+              <span>${o}</span>
+            </div>`;
+          });
+
+          html += `</div>
+            <div class="rc-exp">
+              <h4>💡 Explanation</h4>
+              <p>${q.exp}</p>
+              <span class="ncert-ref">📖 ${q.ref}</span>
+            </div>
+          </div>`;
+        });
+
+        if (!html)
+          html = `<p style="text-align:center;color:var(--text3);padding:30px 0">No questions match this filter.</p>`;
+        container.innerHTML = html;
+      }
+
+      function filterReview(type, btn) {
+        document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderReviewCards(type);
+      }
+
+      window.addEventListener("scroll", () => {
+        const pw = document.getElementById("progressWrap");
+        if (window.scrollY > 200) pw.classList.add("scrolled");
+        else pw.classList.remove("scrolled");
+      });
+
+      (function loadSavedAttempt() {
+        const params = new URLSearchParams(window.location.search);
+        const attemptId = params.get("attempt");
+        if (!attemptId) return;
+        const saved = JSON.parse(localStorage.getItem("papResults") || "[]");
+        const attempt = saved.find(r => r.id === Number(attemptId));
+        if (!attempt) return;
+        window._isReplay = true;
+        userAnswers = attempt.userAnswers;
+        timerSec = attempt.timerSeconds || 0;
+        const m = String(Math.floor(timerSec / 60)).padStart(2, "0");
+        const s = String(timerSec % 60).padStart(2, "0");
+        document.getElementById("progressTimer").textContent = `${m}:${s}`;
+        document.getElementById("heroSection").style.display = "none";
+        submitQuiz();
+      })();
+    </script>
+  </body>
+</html>
