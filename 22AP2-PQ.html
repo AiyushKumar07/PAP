@@ -1,0 +1,1760 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEET Biology PYQ Bank 2023–2025 | 90 Questions</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --bg: #0a0e17;
+        --surface: #111827;
+        --surface2: #1a2236;
+        --surface3: #222d44;
+        --border: #2a3654;
+        --text: #e2e8f0;
+        --text2: #94a3b8;
+        --text3: #64748b;
+        --accent: #06d6a0;
+        --accent2: #118ab2;
+        --red: #ef4444;
+        --green: #22c55e;
+        --amber: #f59e0b;
+        --purple: #a78bfa;
+        --pink: #f472b6;
+        --radius: 12px;
+        --radius-sm: 8px;
+      }
+      html { scroll-behavior: smooth; }
+      body {
+        font-family: "IBM Plex Sans", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background:
+          radial-gradient(ellipse at 20% 0%, rgba(6,214,160,0.06) 0%, transparent 50%),
+          radial-gradient(ellipse at 80% 100%, rgba(244,114,182,0.06) 0%, transparent 50%);
+        pointer-events: none;
+        z-index: 0;
+      }
+      .container {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 20px;
+        position: relative;
+        z-index: 1;
+      }
+      .hero {
+        text-align: center;
+        padding: 50px 20px 40px;
+        position: relative;
+      }
+      .hero-badge {
+        display: inline-block;
+        padding: 6px 18px;
+        border-radius: 50px;
+        background: rgba(6,214,160,0.12);
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 18px;
+        border: 1px solid rgba(6,214,160,0.2);
+      }
+      .hero h1 {
+        font-family: "DM Serif Display", serif;
+        font-size: clamp(28px, 5vw, 44px);
+        color: #fff;
+        margin-bottom: 12px;
+        line-height: 1.2;
+      }
+      .hero h1 span {
+        background: linear-gradient(135deg, var(--accent), var(--pink));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .hero p { color: var(--text2); font-size: 16px; max-width: 580px; margin: 0 auto 28px; }
+      .hero-tags {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 32px;
+      }
+      .hero-tags span { padding: 6px 16px; border-radius: 8px; font-size: 12px; font-weight: 600; }
+      .tag-chem { background: rgba(6,214,160,0.1); color: var(--accent); border: 1px solid rgba(6,214,160,0.22); }
+      .tag-bio { background: rgba(244,114,182,0.1); color: var(--pink); border: 1px solid rgba(244,114,182,0.22); }
+      .start-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 16px 48px;
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--bg);
+        background: linear-gradient(135deg, var(--accent), var(--pink));
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 25px rgba(6,214,160,0.3);
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+      .start-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 35px rgba(244,114,182,0.4);
+      }
+      .progress-wrap {
+        position: sticky;
+        top: 0; z-index: 100;
+        background: rgba(10,14,23,0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 14px 20px;
+        border-bottom: 1px solid var(--border);
+        display: none;
+        transition: box-shadow 0.3s;
+      }
+      .progress-wrap.active { display: block; }
+      .progress-wrap.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.4); }
+      .progress-inner {
+        max-width: 860px; margin: 0 auto;
+        display: flex; align-items: center; gap: 16px;
+      }
+      .progress-text { font-size: 13px; font-weight: 600; color: var(--text2); white-space: nowrap; min-width: 90px; }
+      .progress-text b { color: var(--accent); }
+      .progress-bar { flex: 1; height: 6px; background: var(--surface3); border-radius: 10px; overflow: hidden; }
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent), var(--pink));
+        border-radius: 10px;
+        transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+        width: 0%;
+      }
+      .progress-timer {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px; color: var(--accent); min-width: 60px; text-align: right;
+      }
+      .q-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 32px;
+        margin-bottom: 24px;
+        display: none;
+        animation: fadeIn 0.4s ease both;
+      }
+      .q-card.active { display: block; }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(12px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .q-header { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
+      .q-num {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px; font-weight: 700; color: var(--bg);
+        background: var(--accent); padding: 4px 10px; border-radius: 6px;
+        white-space: nowrap; flex-shrink: 0;
+      }
+      .q-num.bio-num { background: var(--pink); }
+      .q-meta { display: flex; gap: 8px; flex-wrap: wrap; }
+      .q-tag {
+        font-size: 11px; padding: 3px 10px; border-radius: 50px;
+        font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;
+      }
+      .q-tag.chem { background: rgba(6,214,160,0.12); color: var(--accent); }
+      .q-tag.bio { background: rgba(244,114,182,0.15); color: var(--pink); }
+      .q-tag.type { background: rgba(167,139,250,0.12); color: var(--purple); }
+      .q-tag.hard { background: rgba(239,68,68,0.12); color: var(--red); }
+      .q-tag.med { background: rgba(245,158,11,0.12); color: var(--amber); }
+      .q-tag.easy { background: rgba(34,197,94,0.12); color: var(--green); }
+      .q-text { font-size: 15.5px; color: #fff; line-height: 1.7; margin-bottom: 20px; white-space: pre-wrap; }
+      .q-chapter-badge {
+        display: inline-block;
+        font-size: 11px; padding: 3px 10px; border-radius: 50px;
+        font-weight: 600; letter-spacing: 0.5px;
+        background: rgba(17,138,178,0.12); color: var(--accent2);
+        border: 1px solid rgba(17,138,178,0.2);
+        margin-bottom: 10px;
+      }
+      .options { display: flex; flex-direction: column; gap: 10px; }
+      .opt-btn {
+        display: flex; align-items: flex-start; gap: 12px;
+        padding: 14px 18px;
+        background: var(--surface2);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius-sm);
+        cursor: pointer; transition: all 0.2s;
+        text-align: left; width: 100%;
+        font-size: 14.5px; color: var(--text); line-height: 1.5;
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+      .opt-btn:hover { border-color: var(--accent); background: rgba(6,214,160,0.05); transform: translateX(4px); }
+      .opt-btn .opt-letter {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700; color: var(--text3); font-size: 13px;
+        min-width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;
+        border-radius: 6px; background: var(--surface3); flex-shrink: 0; margin-top: 1px; transition: all 0.2s;
+      }
+      .opt-btn.selected { border-color: var(--accent); background: rgba(6,214,160,0.08); }
+      .opt-btn.selected .opt-letter { background: var(--accent); color: var(--bg); }
+      .nav-btns { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+      .nav-btn {
+        padding: 10px 24px; border-radius: 8px;
+        font-family: "IBM Plex Sans", sans-serif;
+        font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+        border: 1.5px solid var(--border); background: var(--surface2); color: var(--text);
+      }
+      .nav-btn:hover { border-color: var(--accent); }
+      .nav-btn.primary {
+        background: linear-gradient(135deg, var(--accent), var(--pink));
+        border: none; color: var(--bg); font-weight: 700;
+        box-shadow: 0 2px 12px rgba(6,214,160,0.2);
+      }
+      .nav-btn.primary:hover { box-shadow: 0 4px 20px rgba(244,114,182,0.32); transform: translateY(-1px); }
+      .nav-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+      .mark-review { margin-left: auto; font-size: 13px; color: var(--amber); background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.25); }
+      .mark-review.marked { background: rgba(245,158,11,0.2); border-color: var(--amber); }
+      .clear-response { font-size: 13px; color: var(--red); background: rgba(239,68,68,0.08); border-color: rgba(239,68,68,0.25); }
+      .clear-response:hover { background: rgba(239,68,68,0.15); border-color: var(--red); }
+      .palette-toggle {
+        position: fixed; bottom: 24px; right: 24px;
+        width: 48px; height: 48px; border-radius: 50%;
+        background: var(--accent); color: var(--bg);
+        border: none; font-size: 20px; font-weight: 700;
+        cursor: pointer; z-index: 200;
+        box-shadow: 0 4px 20px rgba(6,214,160,0.4);
+        display: none; align-items: center; justify-content: center; transition: transform 0.2s;
+      }
+      .palette-toggle:hover { transform: scale(1.06); }
+      .palette-toggle.active { display: flex; }
+      .palette-panel {
+        position: fixed; bottom: 84px; right: 24px;
+        width: 320px; max-height: 420px; overflow-y: auto;
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: 14px; padding: 20px; z-index: 200; display: none;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      }
+      .palette-panel.open { display: block; }
+      .palette-title { font-weight: 700; font-size: 14px; margin-bottom: 14px; color: var(--text2); text-transform: uppercase; letter-spacing: 1px; }
+      .palette-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 6px; }
+      .palette-dot {
+        width: 32px; height: 32px; border-radius: 7px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 11px; font-weight: 700; cursor: pointer;
+        border: 1.5px solid var(--border); background: var(--surface2); color: var(--text3); transition: all 0.15s;
+      }
+      .palette-dot:hover { border-color: var(--accent); }
+      .palette-dot.answered { background: rgba(6,214,160,0.15); border-color: var(--accent); color: var(--accent); }
+      .palette-dot.review { background: rgba(245,158,11,0.15); border-color: var(--amber); color: var(--amber); }
+      .palette-dot.current { box-shadow: 0 0 0 2px var(--accent); }
+      .palette-legend { display: flex; gap: 16px; margin-top: 14px; font-size: 11px; color: var(--text3); flex-wrap: wrap; }
+      .palette-legend span { display: flex; align-items: center; gap: 5px; }
+      .legend-dot { width: 10px; height: 10px; border-radius: 3px; }
+      #resultsSection { display: none; }
+      .results-card {
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: 16px; padding: 40px 30px;
+        max-width: 500px; margin: 0 auto 40px; text-align: center;
+      }
+      .results-card h2 { font-family: "DM Serif Display", serif; font-size: 32px; color: #fff; margin-bottom: 8px; }
+      .score-ring { width: 160px; height: 160px; margin: 24px auto; position: relative; }
+      .score-ring svg { transform: rotate(-90deg); }
+      .score-ring .ring-bg { fill: none; stroke: var(--surface3); stroke-width: 10; }
+      .score-ring .ring-fill { fill: none; stroke-width: 10; stroke-linecap: round; transition: stroke-dashoffset 1.5s cubic-bezier(0.4,0,0.2,1); }
+      .score-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); text-align: center; }
+      .score-center .pct { font-family: "JetBrains Mono", monospace; font-size: 36px; font-weight: 700; color: #fff; }
+      .score-center .of { font-size: 13px; color: var(--text3); }
+      .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 24px; }
+      .stat-item { padding: 14px 8px; background: var(--surface2); border-radius: var(--radius-sm); text-align: center; }
+      .stat-num { font-family: "JetBrains Mono", monospace; font-size: 22px; font-weight: 700; }
+      .stat-lbl { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+      .stat-item.neet .stat-num { color: var(--accent2); }
+      .stat-item.correct .stat-num { color: var(--green); }
+      .stat-item.wrong .stat-num { color: var(--red); }
+      .stat-item.skip .stat-num { color: var(--amber); }
+      .chapter-breakdown { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 40px; }
+      .chapter-breakdown h3 { font-family: "DM Serif Display", serif; font-size: 18px; color: #fff; margin-bottom: 20px; }
+      .chapter-bar-wrap { margin-bottom: 16px; }
+      .chapter-bar-header { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px; font-weight: 600; }
+      .chapter-bar-track { height: 8px; background: var(--surface3); border-radius: 4px; overflow: hidden; }
+      .chapter-bar-fill { height: 100%; border-radius: 4px; transition: width 1s ease; }
+      .review-title { font-family: "DM Serif Display", serif; font-size: 28px; color: #fff; margin: 40px 0 12px; text-align: center; }
+      .review-sub { text-align: center; color: var(--text2); font-size: 14px; margin-bottom: 24px; }
+      .review-filter { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
+      .filter-btn {
+        padding: 8px 20px; border-radius: 50px; border: 1px solid var(--border);
+        background: transparent; color: var(--text2); font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+      }
+      .filter-btn:hover, .filter-btn.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+      .review-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; margin-bottom: 20px; }
+      .review-card.rc-correct { border-left: 4px solid var(--green); }
+      .review-card.rc-wrong { border-left: 4px solid var(--red); }
+      .review-card.rc-skipped { border-left: 4px solid var(--amber); }
+      .rc-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+      .rc-badge { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 5px; text-transform: uppercase; letter-spacing: 0.6px; }
+      .rc-badge.badge-correct { background: rgba(34,197,94,0.1); color: var(--green); border: 1px solid rgba(34,197,94,0.3); }
+      .rc-badge.badge-wrong { background: rgba(239,68,68,0.1); color: var(--red); border: 1px solid rgba(239,68,68,0.3); }
+      .rc-badge.badge-skipped { background: rgba(245,158,11,0.1); color: var(--amber); border: 1px solid rgba(245,158,11,0.3); }
+      .rc-q { font-size: 14.5px; line-height: 1.7; margin-bottom: 16px; color: var(--text); white-space: pre-wrap; }
+      .rc-opts { margin-bottom: 16px; }
+      .rc-opt { padding: 10px 14px; margin-bottom: 6px; border-radius: 8px; font-size: 13.5px; line-height: 1.6; display: flex; align-items: flex-start; gap: 10px; border: 1.5px solid transparent; }
+      .rc-opt.rc-opt-correct { background: rgba(34,197,94,0.08); border-color: rgba(34,197,94,0.3); }
+      .rc-opt.rc-opt-wrong { background: rgba(239,68,68,0.08); border-color: rgba(239,68,68,0.3); }
+      .rc-letter { flex-shrink: 0; width: 22px; height: 22px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; background: var(--border); color: var(--text3); }
+      .rc-opt.rc-opt-correct .rc-letter { background: var(--green); color: #fff; }
+      .rc-opt.rc-opt-wrong .rc-letter { background: var(--red); color: #fff; }
+      .rc-exp { background: rgba(6,214,160,0.05); border: 1px solid rgba(6,214,160,0.15); border-radius: 10px; padding: 18px 20px; }
+      .rc-exp h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--accent); margin-bottom: 8px; }
+      .rc-exp p { font-size: 13.5px; line-height: 1.75; color: var(--text2); }
+      .rc-exp p strong { color: var(--text); }
+      .rc-exp .ncert-ref { display: inline-block; margin-top: 8px; font-size: 11px; padding: 3px 8px; background: rgba(6,214,160,0.1); border-radius: 4px; color: var(--accent); font-weight: 600; }
+      .hidden { display: none !important; }
+      @media (max-width: 600px) {
+        .container { padding: 12px; }
+        .q-card { padding: 20px 16px; }
+        .hero h1 { font-size: 26px; }
+        .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        .progress-inner { gap: 10px; }
+        .palette-panel { width: calc(100vw - 40px); right: 20px; }
+        .review-card { padding: 20px 16px; }
+        .palette-grid { grid-template-columns: repeat(6, 1fr); }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero" id="heroSection">
+      <div class="hero-badge">NEET 2026 · PYQ Revision Bank</div>
+      <h1>🧬 Biology <span>PYQ Bank</span> — 90Q</h1>
+      <p>90 genuine NEET UG Biology Past-Year Questions (2023–2025) aligned with the NEET 2026 (NMC-revised) syllabus. Sources: NTA official keys, Aakash, Allen, Physics Wallah, Selfstudys, ExamSIDE.</p>
+      <div class="hero-tags">
+        <span class="tag-bio">📅 30 — NEET 2023</span>
+        <span class="tag-chem">📅 30 — NEET 2024</span>
+        <span class="tag-bio">📅 30 — NEET 2025</span>
+      </div>
+      <button class="start-btn" onclick="startQuiz()">Begin Test →</button>
+    </div>
+
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-inner">
+        <div class="progress-text"><b id="qCounter">Q 1 / 90</b></div>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="progress-timer" id="progressTimer">00:00</div>
+      </div>
+    </div>
+
+    <div class="container" id="quizArea"></div>
+    <div class="container" id="resultsSection"></div>
+
+    <button class="palette-toggle" id="paletteToggle" onclick="togglePalette()">☰</button>
+    <div class="palette-panel" id="palettePanel">
+      <div class="palette-title">Question Palette</div>
+      <div class="palette-grid" id="paletteGrid"></div>
+      <div class="palette-legend">
+        <span><div class="legend-dot" style="background:var(--surface2);border:1px solid var(--border)"></div>Unseen</span>
+        <span><div class="legend-dot" style="background:rgba(6,214,160,0.2)"></div>Answered</span>
+        <span><div class="legend-dot" style="background:rgba(245,158,11,0.2)"></div>Review</span>
+      </div>
+    </div>
+
+    <script>
+      const Q = [
+    {
+      id: 1, ch: "Biology", chapter: "Plant Kingdom – Bryophytes", type: "MCQ", diff: "Medium", year: "2023",
+      q: "Assertion A: The first stage of gametophyte in the life cycle of moss is protonema stage. Reason R: Protonema develops directly from spores produced in capsule. Choose the most appropriate answer:",
+      opts: ["A is not correct but R is correct",
+        "Both A and R are correct and R is the correct explanation of A",
+        "Both A and R are correct but R is NOT the correct explanation of A",
+        "A is correct but R is not correct"],
+      ans: 1,
+      exp: "In moss, haploid spores formed in the capsule by meiosis germinate directly to give the juvenile gametophytic stage called protonema. Both statements are correct and R explains A.",
+      ref: "NEET 2023"
+    },
+    {
+      id: 2, ch: "Biology", chapter: "Biomolecules", type: "MCQ", diff: "Medium", year: "2023",
+      q: "Cellulose does not form blue colour with iodine because:",
+      opts: ["It breaks down when iodine reacts with it",
+        "It is a disaccharide",
+        "It is a helical molecule",
+        "It does not contain complex helices and hence cannot hold iodine molecules"],
+      ans: 3,
+      exp: "Starch (amylose) has helices that trap iodine giving blue-black colour. Cellulose, an unbranched β-1,4 polymer, lacks such helices, so iodine is not retained.",
+      ref: "NEET 2023"
+    },
+    {
+      id: 3, ch: "Biology", chapter: "Biodiversity & Conservation", type: "MCQ", diff: "Medium", year: "2023",
+      q: "Among 'The Evil Quartet', which one is considered the most important cause driving extinction of species?",
+      opts: ["Co-extinctions",
+        "Habitat loss and fragmentation",
+        "Over exploitation for economic gain",
+        "Alien species invasions"],
+      ans: 1,
+      exp: "According to NCERT, habitat loss and fragmentation is the most important cause driving extinctions among \"The Evil Quartet\".",
+      ref: "NEET 2023"
+    },
+    {
+      id: 4, ch: "Biology", chapter: "Photosynthesis – Calvin Cycle", type: "MCQ", diff: "Medium", year: "2023",
+      q: "How many ATP and NADPH₂ are required for the synthesis of one molecule of glucose during the Calvin cycle?",
+      opts: ["18 ATP and 16 NADPH₂",
+        "12 ATP and 12 NADPH₂",
+        "18 ATP and 12 NADPH₂",
+        "12 ATP and 16 NADPH₂"],
+      ans: 2,
+      exp: "One CO₂ fixation uses 3 ATP and 2 NADPH. For one glucose (6 CO₂), 6 turns are needed → 18 ATP and 12 NADPH.",
+      ref: "NEET 2023"
+    },
+    {
+      id: 5, ch: "Biology", chapter: "Molecular Basis of Inheritance", type: "MCQ", diff: "Medium", year: "2023",
+      q: "What is the role of RNA polymerase III in transcription in eukaryotes?",
+      opts: ["Transcription of only snRNAs",
+        "Transcription of rRNAs (28S, 18S and 5.8S)",
+        "Transcription of tRNA, 5S rRNA and snRNA",
+        "Transcription of precursor of mRNA"],
+      ans: 2,
+      exp: "RNA Pol-I transcribes 28S, 18S, 5.8S rRNAs; Pol-II transcribes hnRNA (pre-mRNA); Pol-III transcribes tRNA, 5S rRNA and snRNAs.",
+      ref: "NEET 2023"
+    },
+    {
+      id: 6, ch: "Biology", chapter: "Morphology of Flowering Plants", type: "MCQ", diff: "Medium", year: "2023",
+      q: "With respect to the stamens, pick out the characteristics specific to family Fabaceae:",
+      opts: ["Epiphyllous and dithecous anthers",
+        "Diadelphous and dithecous anthers",
+        "Polyadelphous and epipetalous stamens",
+        "Monoadelphous and monothecous anthers"],
+      ans: 1,
+      exp: "Fabaceae shows diadelphous (9)+1 stamens with dithecous anthers. Solanaceae has epipetalous stamens; Liliaceae has 6 stamens.",
+      ref: "NEET 2023"
+    },
+    {
+      id: 7, ch: "Biology", chapter: "Ecosystem", type: "MCQ", diff: "Medium", year: "2023",
+      q: "In the equation GPP – R = NPP, R here is:",
+      opts: ["Reproductive allocation",
+        "Photosynthetically active radiation",
+        "Respiratory quotient",
+        "Respiratory loss"],
+      ans: 3,
+      exp: "NPP = GPP – R, where R is respiratory loss by plants. NPP is biomass available for heterotrophs.",
+      ref: "NEET 2023"
+    },
+    {
+      id: 8, ch: "Biology", chapter: "Molecular Basis of Inheritance", type: "MCQ", diff: "Medium", year: "2023",
+      q: "Unequivocal proof that DNA is the genetic material was first proposed by:",
+      opts: ["Wilkins and Franklin",
+        "Frederick Griffith",
+        "Alfred Hershey and Martha Chase",
+        "Avery, MacLeod and McCarty"],
+      ans: 2,
+      exp: "The Hershey–Chase experiment (1952) using ³²P-labelled DNA and ³⁵S-labelled protein in phages gave unequivocal proof that DNA is the genetic material.",
+      ref: "NEET 2023"
+    },
+    {
+      id: 9, ch: "Biology", chapter: "Sexual Reproduction in Flowering Plants", type: "MCQ", diff: "Medium", year: "2023",
+      q: "In an angiosperm, the haploid, diploid and triploid structures of a fertilized embryo sac sequentially are:",
+      opts: ["Synergids, antipodals and polar nuclei",
+        "Synergids, primary endosperm nucleus and zygote",
+        "Antipodals, synergids, and primary endosperm nucleus",
+        "Synergids, zygote and primary endosperm nucleus"],
+      ans: 3,
+      exp: "Synergids (n), zygote (2n, egg + male gamete), and PEN (3n, 2 polar nuclei + male gamete).",
+      ref: "NEET 2023"
+    },
+    {
+      id: 10, ch: "Biology", chapter: "Biodiversity & Conservation", type: "MCQ", diff: "Medium", year: "2023",
+      q: "The historic Convention on Biological Diversity (\"Earth Summit\") was held in Rio de Janeiro in:",
+      opts: ["2002",
+        "1985",
+        "1992",
+        "1986"],
+      ans: 2,
+      exp: "The Earth Summit was held at Rio de Janeiro in 1992, calling upon nations to conserve biodiversity.",
+      ref: "NEET 2023"
+    },
+    {
+      id: 11, ch: "Biology", chapter: "Biotechnology", type: "MCQ", diff: "Medium", year: "2023",
+      q: "In the gene gun method, microparticles of ______ metal are used:",
+      opts: ["Silver",
+        "Copper",
+        "Zinc",
+        "Tungsten or gold"],
+      ans: 3,
+      exp: "In the biolistic (gene gun) method, DNA is coated onto gold or tungsten microparticles and shot into plant cells.",
+      ref: "NEET 2023"
+    },
+    {
+      id: 12, ch: "Biology", chapter: "Principles of Inheritance", type: "MCQ", diff: "Medium", year: "2023",
+      q: "The phenomenon of pleiotropism refers to:",
+      opts: ["more than two genes affecting a single character",
+        "presence of several alleles of a single gene controlling a single crossover",
+        "presence of two alleles, each of two genes controlling a single trait",
+        "a single gene affecting multiple phenotypic expression"],
+      ans: 3,
+      exp: "Pleiotropy = single gene with multiple phenotypic effects. Examples: phenylketonuria, sickle-cell anaemia.",
+      ref: "NEET 2023"
+    },
+    {
+      id: 13, ch: "Biology", chapter: "Plant Kingdom – Pteridophytes", type: "MCQ", diff: "Medium", year: "2023",
+      q: "Identify the pair of heterosporous pteridophytes:",
+      opts: ["Equisetum and Salvinia",
+        "Lycopodium and Selaginella",
+        "Selaginella and Salvinia",
+        "Psilotum and Salvinia"],
+      ans: 2,
+      exp: "Selaginella and Salvinia produce microspores and megaspores (heterosporous). Others are homosporous.",
+      ref: "NEET 2023"
+    },
+    {
+      id: 14, ch: "Biology", chapter: "Photosynthesis", type: "MCQ", diff: "Medium", year: "2023",
+      q: "Which combination is required for chemiosmosis?",
+      opts: ["Proton pump, electron gradient, NADP synthase",
+        "Membrane, proton pump, proton gradient, ATP synthase",
+        "Membrane, proton pump, proton gradient, NADP synthase",
+        "Proton pump, electron gradient, ATP synthase"],
+      ans: 1,
+      exp: "Chemiosmosis (Peter Mitchell) requires a membrane, proton pump creating a proton gradient, and ATP synthase (F₀–F₁) to synthesise ATP.",
+      ref: "NEET 2023"
+    },
+    {
+      id: 15, ch: "Biology", chapter: "Chromosomal Disorders", type: "MCQ", diff: "Medium", year: "2023",
+      q: "Which of the following are correct about Klinefelter's Syndrome? (A) First described by Langdon Down (B) Overall masculine development with some feminine features (C) Short stature (D) Mental retardation (E) Sterile individuals",
+      opts: ["A and E only",
+        "A and B only",
+        "C and D only",
+        "B and E only"],
+      ans: 3,
+      exp: "Klinefelter's (47,XXY): masculine with feminine features (gynaecomastia) and sterile. Langdon Down described Down's syndrome.",
+      ref: "NEET 2023"
+    },
+    {
+      id: 16, ch: "Biology", chapter: "lac Operon", type: "MCQ", diff: "Medium", year: "2023",
+      q: "Match lac operon genes: A. Gene 'a' B. Gene 'y' C. Gene 'i' D. Gene 'z' with I. β-galactosidase II. Transacetylase III. Permease IV. Repressor protein",
+      opts: ["A-III, B-I, C-IV, D-II",
+        "A-II, B-I, C-IV, D-III",
+        "A-II, B-III, C-IV, D-I",
+        "A-III, B-IV, C-I, D-II"],
+      ans: 2,
+      exp: "z → β-galactosidase; y → permease; a → transacetylase; i → repressor.",
+      ref: "NEET 2023"
+    },
+    {
+      id: 17, ch: "Biology", chapter: "Animal Tissues", type: "MCQ", diff: "Medium", year: "2023",
+      q: "Statement I: Ligaments are dense irregular tissue. Statement II: Cartilage is dense regular tissue.",
+      opts: ["Statement I is false but Statement II is true",
+        "Both statements are true",
+        "Both Statement I and Statement II are false",
+        "Statement I is true but Statement II is false"],
+      ans: 2,
+      exp: "Ligaments/tendons are dense regular connective tissue. Cartilage is specialised skeletal connective tissue. Both statements are false.",
+      ref: "NEET 2023"
+    },
+    {
+      id: 18, ch: "Biology", chapter: "Locomotion – Joints", type: "MCQ", diff: "Medium", year: "2023",
+      q: "Match: A. Cartilaginous joint B. Ball & Socket C. Fibrous joint D. Saddle joint with I. Flat skull bones II. Adjacent vertebrae III. Carpal-metacarpal of thumb IV. Humerus-pectoral girdle",
+      opts: ["A-II, B-IV, C-III, D-I",
+        "A-III, B-I, C-II, D-IV",
+        "A-II, B-IV, C-I, D-III",
+        "A-I, B-IV, C-III, D-II"],
+      ans: 2,
+      exp: "Cartilaginous → vertebrae; Ball & Socket → humerus-pectoral; Fibrous → skull; Saddle → thumb carpal-metacarpal.",
+      ref: "NEET 2023"
+    },
+    {
+      id: 19, ch: "Biology", chapter: "Reproductive Health – STDs", type: "MCQ", diff: "Medium", year: "2023",
+      q: "Which STD is completely curable when detected early?",
+      opts: ["HIV infection",
+        "Genital herpes",
+        "Gonorrhoea",
+        "Hepatitis-B"],
+      ans: 2,
+      exp: "Except HIV, Hepatitis-B and genital herpes, other STDs (Gonorrhoea, Syphilis, Chlamydiasis) are completely curable.",
+      ref: "NEET 2023"
+    },
+    {
+      id: 20, ch: "Biology", chapter: "Chemical Coordination", type: "MCQ", diff: "Medium", year: "2023",
+      q: "Match: A. CCK B. GIP C. ANF D. ADH with I. Kidney II. Heart III. Gastric gland IV. Pancreas",
+      opts: ["A-IV, B-II, C-III, D-I",
+        "A-IV, B-III, C-II, D-I",
+        "A-III, B-II, C-IV, D-I",
+        "A-II, B-IV, C-I, D-III"],
+      ans: 1,
+      exp: "CCK → pancreas; GIP → inhibits gastric gland; ANF → heart; ADH → kidney.",
+      ref: "NEET 2023"
+    },
+    {
+      id: 21, ch: "Biology", chapter: "Excretion – Animal Kingdom", type: "MCQ", diff: "Medium", year: "2023",
+      q: "Match: A. Taenia B. Paramoecium C. Periplaneta D. Pheretima with I. Nephridia II. Contractile vacuole III. Flame cells IV. Uricose gland",
+      opts: ["A-II, B-I, C-IV, D-III",
+        "A-I, B-II, C-III, D-IV",
+        "A-I, B-II, C-IV, D-III",
+        "A-III, B-II, C-IV, D-I"],
+      ans: 3,
+      exp: "Taenia → flame cells; Paramoecium → contractile vacuole; Periplaneta → uricose gland; Pheretima → nephridia.",
+      ref: "NEET 2023"
+    },
+    {
+      id: 22, ch: "Biology", chapter: "Human Eye", type: "MCQ", diff: "Medium", year: "2023",
+      q: "Match: A. Fovea B. Iris C. Blind spot D. Sclera with I. Visible coloured portion regulating pupil II. External dense CT layer III. Point of greatest visual acuity IV. Point where optic nerve leaves; no photoreceptors",
+      opts: ["A-II, B-I, C-III, D-IV",
+        "A-III, B-I, C-IV, D-II",
+        "A-IV, B-III, C-II, D-I",
+        "A-I, B-IV, C-III, D-II"],
+      ans: 1,
+      exp: "Fovea → greatest acuity (cones); Iris → coloured, pupil control; Blind spot → optic nerve exit; Sclera → outer dense CT.",
+      ref: "NEET 2023"
+    },
+    {
+      id: 23, ch: "Biology", chapter: "Animal Kingdom", type: "MCQ", diff: "Medium", year: "2023",
+      q: "Radial symmetry is NOT found in adults of phylum:",
+      opts: ["Echinodermata",
+        "Ctenophora",
+        "Hemichordata",
+        "Coelenterata"],
+      ans: 2,
+      exp: "Hemichordata shows bilateral symmetry. Coelenterata, Ctenophora and adult Echinodermata are radially symmetrical.",
+      ref: "NEET 2023"
+    },
+    {
+      id: 24, ch: "Biology", chapter: "Human Health – AIDS", type: "MCQ", diff: "Medium", year: "2023",
+      q: "In which blood corpuscles does HIV replicate and produce progeny viruses?",
+      opts: ["Eosinophils",
+        "T_H cells (Helper T lymphocytes)",
+        "B-lymphocytes",
+        "Basophils"],
+      ans: 1,
+      exp: "HIV infects and replicates in helper T-lymphocytes (CD4⁺), progressively depleting them and causing immune deficiency.",
+      ref: "NEET 2023"
+    },
+    {
+      id: 25, ch: "Biology", chapter: "Breathing & Exchange of Gases", type: "MCQ", diff: "Medium", year: "2023",
+      q: "Vital capacity of lung is:",
+      opts: ["IRV + ERV + TV",
+        "IRV + ERV",
+        "IRV + ERV + TV + RV",
+        "IRV + ERV + TV – RV"],
+      ans: 0,
+      exp: "VC = IRV + ERV + TV: maximum volume breathed in after forced expiration or out after forced inspiration.",
+      ref: "NEET 2023"
+    },
+    {
+      id: 26, ch: "Biology", chapter: "Human Health & Disease", type: "MCQ", diff: "Medium", year: "2023",
+      q: "Match: A. Ringworm B. Filariasis C. Malaria D. Pneumonia with I. Haemophilus influenzae II. Trichophyton III. Wuchereria bancrofti IV. Plasmodium vivax",
+      opts: ["A-III, B-II, C-IV, D-I",
+        "A-II, B-III, C-IV, D-I",
+        "A-II, B-III, C-I, D-IV",
+        "A-III, B-II, C-I, D-IV"],
+      ans: 1,
+      exp: "Ringworm → Trichophyton; Filariasis → W. bancrofti; Malaria → P. vivax; Pneumonia → H. influenzae/S. pneumoniae.",
+      ref: "NEET 2023"
+    },
+    {
+      id: 27, ch: "Biology", chapter: "Excretory System", type: "MCQ", diff: "Medium", year: "2023",
+      q: "Assertion A: Nephrons are of two types—Cortical and Juxtamedullary. Reason R: Juxtamedullary have short loop of Henle while cortical have longer.",
+      opts: ["A is false but R is true",
+        "Both A and R are true; R explains A",
+        "Both true; R NOT explanation",
+        "A is true but R is false"],
+      ans: 3,
+      exp: "Assertion correct. Reason false—juxtamedullary nephrons have LONG loops of Henle (vital for urine concentration); cortical have short loops.",
+      ref: "NEET 2023"
+    },
+    {
+      id: 28, ch: "Biology", chapter: "Circulation – ECG", type: "MCQ", diff: "Medium", year: "2023",
+      q: "Match ECG components: A. P-wave B. Q-wave C. QRS complex D. T-wave with I. Beginning of systole II. Repolarisation of ventricles III. Depolarisation of atria IV. Depolarisation of ventricles",
+      opts: ["A-I, B-II, C-III, D-IV",
+        "A-III, B-I, C-IV, D-II",
+        "A-IV, B-III, C-II, D-I",
+        "A-II, B-IV, C-I, D-III"],
+      ans: 1,
+      exp: "P → atrial depolarisation; Q → beginning of ventricular systole; QRS → ventricular depolarisation; T → ventricular repolarisation.",
+      ref: "NEET 2023"
+    },
+    {
+      id: 29, ch: "Biology", chapter: "Cockroach – Sexual Dimorphism", type: "MCQ", diff: "Medium", year: "2023",
+      q: "Characteristic feature of cockroach regarding sexual dimorphism:",
+      opts: ["Presence of anal cerci",
+        "Dark brown colour and anal cerci",
+        "Presence of anal styles",
+        "Presence of sclerites"],
+      ans: 2,
+      exp: "Both sexes have anal cerci, but only males bear anal styles on the 9th sternum—the key sexually dimorphic character.",
+      ref: "NEET 2023"
+    },
+    {
+      id: 30, ch: "Biology", chapter: "Animal Kingdom – Mammals", type: "MCQ", diff: "Medium", year: "2023",
+      q: "The unique mammalian characteristics are:",
+      opts: ["Pinna, monocondylic skull and mammary glands",
+        "Hairs, tympanic membrane and mammary glands",
+        "Hairs, pinna and mammary glands",
+        "Hairs, pinna and indirect development"],
+      ans: 2,
+      exp: "Hair, external ear (pinna) and mammary glands are unique distinguishing features of Mammalia.",
+      ref: "NEET 2023"
+    },
+    {
+      id: 31, ch: "Biology", chapter: "Molecular Basis of Inheritance", type: "MCQ", diff: "Medium", year: "2024",
+      q: "A transcription unit in DNA is defined primarily by three regions, from upstream to downstream:",
+      opts: ["Structural gene, Transposons, Operator gene",
+        "Inducer, Repressor, Structural gene",
+        "Promoter, Structural gene, Terminator",
+        "Repressor, Operator gene, Structural gene"],
+      ans: 2,
+      exp: "A transcription unit = Promoter (upstream) + Structural gene + Terminator (downstream).",
+      ref: "NEET 2024"
+    },
+    {
+      id: 32, ch: "Biology", chapter: "Pollination", type: "MCQ", diff: "Medium", year: "2024",
+      q: "Identify the set of correct statements: A. Vallisneria flowers are colourful with nectar. B. Water lily is not pollinated by water. C. In most water-pollinated species, pollen is protected from wetting. D. Pollen of some hydrophytes is long and ribbon-like. E. In some hydrophytes, pollen is carried passively inside water.",
+      opts: ["A, B, C and D only",
+        "A, C, D and E only",
+        "B, C, D and E only",
+        "C, D and E only"],
+      ans: 2,
+      exp: "Vallisneria flowers are small and colourless (A wrong). Water lily is insect-pollinated. B, C, D, E are correct per NCERT.",
+      ref: "NEET 2024"
+    },
+    {
+      id: 33, ch: "Biology", chapter: "Biomolecules", type: "MCQ", diff: "Medium", year: "2024",
+      q: "Lecithin is an example of:",
+      opts: ["Phospholipids",
+        "Glycerides",
+        "Carbohydrates",
+        "Amino acids"],
+      ans: 0,
+      exp: "Lecithin (phosphatidylcholine) is a phospholipid present in membranes and egg yolk.",
+      ref: "NEET 2024"
+    },
+    {
+      id: 34, ch: "Biology", chapter: "Biological Classification – Fungi", type: "MCQ", diff: "Medium", year: "2024",
+      q: "Match: A. Rhizopus B. Ustilago C. Puccinia D. Agaricus with I. Mushroom II. Smut III. Bread mould IV. Rust",
+      opts: ["A-I, B-III, C-II, D-IV",
+        "A-III, B-II, C-I, D-IV",
+        "A-IV, B-III, C-II, D-I",
+        "A-III, B-II, C-IV, D-I"],
+      ans: 3,
+      exp: "Rhizopus → bread mould; Ustilago → smut; Puccinia → rust; Agaricus → mushroom.",
+      ref: "NEET 2024"
+    },
+    {
+      id: 35, ch: "Biology", chapter: "Photosynthesis", type: "MCQ", diff: "Medium", year: "2024",
+      q: "How many ATP and NADPH are required per molecule of CO₂ fixed in Calvin cycle?",
+      opts: ["2 ATP and 2 NADPH",
+        "3 ATP and 3 NADPH",
+        "3 ATP and 2 NADPH",
+        "2 ATP and 3 NADPH"],
+      ans: 2,
+      exp: "Per CO₂: 3 ATP and 2 NADPH. Per glucose: 18 ATP and 12 NADPH.",
+      ref: "NEET 2024"
+    },
+    {
+      id: 36, ch: "Biology", chapter: "Organisms & Populations", type: "MCQ", diff: "Medium", year: "2024",
+      q: "In dN/dt = rN[(K−N)/K], K indicates:",
+      opts: ["Biotic potential",
+        "Carrying capacity",
+        "Population density",
+        "Intrinsic rate of natural increase"],
+      ans: 1,
+      exp: "K = carrying capacity—the maximum population size the environment can sustain.",
+      ref: "NEET 2024"
+    },
+    {
+      id: 37, ch: "Biology", chapter: "Anatomy of Flowering Plants", type: "MCQ", diff: "Medium", year: "2024",
+      q: "Bulliform cells are responsible for:",
+      opts: ["Protecting plant from salt stress",
+        "Increased photosynthesis in monocots",
+        "Storage of sugars",
+        "Inward curling of leaves in monocots"],
+      ans: 3,
+      exp: "Bulliform cells become flaccid on water loss, causing inward curling of leaves to reduce transpiration.",
+      ref: "NEET 2024"
+    },
+    {
+      id: 38, ch: "Biology", chapter: "Biological Classification", type: "MCQ", diff: "Medium", year: "2024",
+      q: "Which is NOT a criterion for classification of fungi?",
+      opts: ["Mode of nutrition",
+        "Mode of spore formation",
+        "Fruiting body",
+        "Morphology of mycelium"],
+      ans: 0,
+      exp: "All fungi are heterotrophic, so nutrition mode isn't used. Fungi are classified by mycelium, spore formation and fruiting bodies.",
+      ref: "NEET 2024"
+    },
+    {
+      id: 39, ch: "Biology", chapter: "Biodiversity", type: "MCQ", diff: "Medium", year: "2024",
+      q: "Tropical regions show greatest species richness because: A. Long undisturbed evolutionary time B. More seasonal environments C. More solar energy D. Constant environments promote niche specialization E. Tropical environments are constant and predictable",
+      opts: ["A and B only",
+        "A, B and E only",
+        "A, B and D only",
+        "A, C, D and E only"],
+      ans: 3,
+      exp: "Tropics are LESS seasonal (B wrong). Others—long time, solar energy, niche specialisation, constant predictable environments—are valid.",
+      ref: "NEET 2024"
+    },
+    {
+      id: 40, ch: "Biology", chapter: "Morphology", type: "MCQ", diff: "Medium", year: "2024",
+      q: "Which is an example of actinomorphic flower?",
+      opts: ["Cassia",
+        "Pisum",
+        "Sesbania",
+        "Datura"],
+      ans: 3,
+      exp: "Datura has radial symmetry (actinomorphic). Cassia, Pisum, Sesbania are zygomorphic.",
+      ref: "NEET 2024"
+    },
+    {
+      id: 41, ch: "Biology", chapter: "Cell – The Unit of Life", type: "MCQ", diff: "Medium", year: "2024",
+      q: "Match: A. Nucleolus B. Centriole C. Leucoplasts D. Golgi apparatus with I. Glycolipid formation II. Cartwheel organisation III. rRNA synthesis IV. Storing nutrients",
+      opts: ["A-II, B-III, C-I, D-IV",
+        "A-III, B-IV, C-II, D-I",
+        "A-I, B-II, C-III, D-IV",
+        "A-III, B-II, C-IV, D-I"],
+      ans: 3,
+      exp: "Nucleolus → rRNA; Centriole → cartwheel; Leucoplast → storage; Golgi → glycolipid/glycoprotein.",
+      ref: "NEET 2024"
+    },
+    {
+      id: 42, ch: "Biology", chapter: "Biotechnology", type: "MCQ", diff: "Medium", year: "2024",
+      q: "Hind II recognition sequence consists of:",
+      opts: ["6 bp",
+        "4 bp",
+        "10 bp",
+        "8 bp"],
+      ans: 0,
+      exp: "Hind II, the first restriction endonuclease discovered, recognises a 6-bp palindromic sequence.",
+      ref: "NEET 2024"
+    },
+    {
+      id: 43, ch: "Biology", chapter: "Biomolecules – Enzymes", type: "MCQ", diff: "Medium", year: "2024",
+      q: "The cofactor of carboxypeptidase is:",
+      opts: ["Niacin",
+        "Flavin",
+        "Haem",
+        "Zinc"],
+      ans: 3,
+      exp: "Carboxypeptidase is a Zn²⁺ metalloenzyme acting on C-terminal peptide bonds.",
+      ref: "NEET 2024"
+    },
+    {
+      id: 44, ch: "Biology", chapter: "Cell Cycle", type: "MCQ", diff: "Medium", year: "2024",
+      q: "Spindle fibres attach to kinetochores during:",
+      opts: ["Metaphase",
+        "Anaphase",
+        "Telophase",
+        "Prophase"],
+      ans: 0,
+      exp: "During metaphase, chromosomes align at equator and spindle fibres attach to kinetochores.",
+      ref: "NEET 2024"
+    },
+    {
+      id: 45, ch: "Biology", chapter: "Inheritance – Incomplete Dominance", type: "MCQ", diff: "Medium", year: "2024",
+      q: "Pink-flowered Snapdragon × red-flowered Snapdragon → progeny phenotypes?",
+      opts: ["Red and pink flowered plants",
+        "Only pink flowered plants",
+        "Red, Pink and white flowered plants",
+        "Only red flowered plants"],
+      ans: 0,
+      exp: "Snapdragon: RR=red, Rr=pink, rr=white. Rr × RR → 50% red + 50% pink.",
+      ref: "NEET 2024"
+    },
+    {
+      id: 46, ch: "Biology", chapter: "Enzyme Inhibition", type: "MCQ", diff: "Medium", year: "2024",
+      q: "Inhibition of succinic dehydrogenase by malonate is a classical example of:",
+      opts: ["Feedback inhibition",
+        "Competitive inhibition",
+        "Enzyme activation",
+        "Cofactor inhibition"],
+      ans: 1,
+      exp: "Malonate resembles succinate and competes for the active site—classic competitive inhibition.",
+      ref: "NEET 2024"
+    },
+    {
+      id: 47, ch: "Biology", chapter: "Plant Growth & Development", type: "MCQ", diff: "Medium", year: "2024",
+      q: "Spraying which PGR on sugarcane increases stem length and yield?",
+      opts: ["Gibberellin",
+        "Cytokinin",
+        "Abscisic acid",
+        "Auxin"],
+      ans: 0,
+      exp: "Gibberellins cause internodal elongation in sugarcane, raising yield by up to 20 tonnes per acre.",
+      ref: "NEET 2024"
+    },
+    {
+      id: 48, ch: "Biology", chapter: "Photorespiration", type: "MCQ", diff: "Medium", year: "2024",
+      q: "Statement I: In C3 plants, O₂ binds to RuBisCO, decreasing CO₂ fixation. Statement II: In C4 plants, mesophyll cells show very little photorespiration while bundle sheath cells do not show photorespiration.",
+      opts: ["Both statements are false",
+        "Statement I is true but Statement II is false",
+        "Statement I is false but Statement II is true",
+        "Both statements are true"],
+      ans: 1,
+      exp: "In C4 plants, mesophyll cells also don't show photorespiration (initial fixation is by PEPcase). Statement II is thus false.",
+      ref: "NEET 2024"
+    },
+    {
+      id: 49, ch: "Biology", chapter: "Respiration – TCA cycle", type: "MCQ", diff: "Medium", year: "2024",
+      q: "Which step in TCA cycle does NOT involve oxidation of substrate?",
+      opts: ["Succinic acid → Malic acid",
+        "Succinyl-CoA → Succinic acid",
+        "Isocitrate → α-ketoglutaric acid",
+        "Malic acid → Oxaloacetic acid"],
+      ans: 1,
+      exp: "Succinyl-CoA → Succinic acid is a substrate-level phosphorylation (GTP/ATP formed); no oxidation.",
+      ref: "NEET 2024"
+    },
+    {
+      id: 50, ch: "Biology", chapter: "Morphology – Fruits/Placentation", type: "MCQ", diff: "Medium", year: "2024",
+      q: "Match: A. Rose B. Pea C. Cotton D. Mango with I. Twisted aestivation II. Perigynous flower III. Drupe IV. Marginal placentation",
+      opts: ["A-I, B-II, C-III, D-IV",
+        "A-IV, B-III, C-II, D-I",
+        "A-II, B-III, C-IV, D-I",
+        "A-II, B-IV, C-I, D-III"],
+      ans: 3,
+      exp: "Rose → perigynous; Pea → marginal placentation; Cotton → twisted aestivation; Mango → drupe.",
+      ref: "NEET 2024"
+    },
+    {
+      id: 51, ch: "Biology", chapter: "Animal Kingdom", type: "MCQ", diff: "Medium", year: "2024",
+      q: "Consider: A. Annelids are true coelomates B. Poriferans are pseudocoelomates C. Aschelminthes are acoelomates D. Platyhelminthes are pseudocoelomates. Correct?",
+      opts: ["A only",
+        "C only",
+        "D only",
+        "B only"],
+      ans: 0,
+      exp: "Annelids are eucoelomates. Porifera → no coelom; Aschelminthes → pseudocoelomates; Platyhelminthes → acoelomates.",
+      ref: "NEET 2024"
+    },
+    {
+      id: 52, ch: "Biology", chapter: "Breathing", type: "MCQ", diff: "Medium", year: "2024",
+      q: "Which factors favour oxyhaemoglobin formation in alveoli?",
+      opts: ["High pO₂ and lesser H⁺ concentration",
+        "Low pCO₂ and high H⁺ concentration",
+        "Low pCO₂ and high temperature",
+        "High pO₂ and high pCO₂"],
+      ans: 0,
+      exp: "Oxyhaemoglobin formation is favoured by high pO₂, low pCO₂, low H⁺ (high pH), lower temperature.",
+      ref: "NEET 2024"
+    },
+    {
+      id: 53, ch: "Biology", chapter: "Joints", type: "MCQ", diff: "Medium", year: "2024",
+      q: "Match: A. Fibrous B. Cartilaginous C. Hinge D. Ball & socket with I. Adjacent vertebrae II. Humerus-pectoral III. Skull sutures IV. Knee",
+      opts: ["A-I, B-III, C-II, D-IV",
+        "A-II, B-III, C-I, D-IV",
+        "A-III, B-I, C-IV, D-II",
+        "A-IV, B-II, C-III, D-I"],
+      ans: 2,
+      exp: "Fibrous → skull; Cartilaginous → vertebrae; Hinge → knee; Ball-&-socket → humerus-pectoral.",
+      ref: "NEET 2024"
+    },
+    {
+      id: 54, ch: "Biology", chapter: "Endocrine System", type: "MCQ", diff: "Medium", year: "2024",
+      q: "Which is NOT a steroid hormone?",
+      opts: ["Testosterone",
+        "Progesterone",
+        "Glucagon",
+        "Cortisol"],
+      ans: 2,
+      exp: "Glucagon is a peptide hormone from pancreatic α-cells; others are steroids.",
+      ref: "NEET 2024"
+    },
+    {
+      id: 55, ch: "Biology", chapter: "Evolution", type: "MCQ", diff: "Medium", year: "2024",
+      q: "Flippers of penguins and dolphins are an example of:",
+      opts: ["Natural selection",
+        "Convergent evolution",
+        "Divergent evolution",
+        "Adaptive radiation"],
+      ans: 1,
+      exp: "Penguins (birds) and dolphins (mammals) independently evolved flipper-like forelimbs—convergent evolution (analogous organs).",
+      ref: "NEET 2024"
+    },
+    {
+      id: 56, ch: "Biology", chapter: "Hardy-Weinberg Principle", type: "MCQ", diff: "Medium", year: "2024",
+      q: "Which factor will NOT affect Hardy-Weinberg equilibrium?",
+      opts: ["Genetic drift",
+        "Gene migration",
+        "Constant gene pool",
+        "Genetic recombination"],
+      ans: 2,
+      exp: "Mutation, migration, drift, non-random mating, selection disturb HWE. A constant gene pool is the CONDITION for equilibrium. (Note: this was debated; NTA final key = C.)",
+      ref: "NEET 2024"
+    },
+    {
+      id: 57, ch: "Biology", chapter: "Human Reproduction", type: "MCQ", diff: "Medium", year: "2024",
+      q: "Which is NOT a component of the Fallopian tube?",
+      opts: ["Isthmus",
+        "Infundibulum",
+        "Ampulla",
+        "Uterine fundus"],
+      ans: 3,
+      exp: "Fallopian tube: infundibulum, ampulla, isthmus. Uterine fundus is the upper dome of uterus.",
+      ref: "NEET 2024"
+    },
+    {
+      id: 58, ch: "Biology", chapter: "Blood Groups", type: "MCQ", diff: "Medium", year: "2024",
+      q: "Father B⁺, mother A⁺, child O⁺. Their respective genotypes can be:",
+      opts: ["I^B i / I^A i / ii",
+        "I^B I^B / I^A I^A / ii",
+        "I^A I^B / i I^A / I^B i",
+        "I^A i / I^B i / I^A i"],
+      ans: 0,
+      exp: "Child O = ii → each parent must carry i. Father (B) = I^B i; Mother (A) = I^A i.",
+      ref: "NEET 2024"
+    },
+    {
+      id: 59, ch: "Biology", chapter: "Biotechnology", type: "MCQ", diff: "Medium", year: "2024",
+      q: "\"Ti plasmid\" of Agrobacterium tumefaciens stands for:",
+      opts: ["Tumor independent plasmid",
+        "Tumor inducing plasmid",
+        "Temperature independent plasmid",
+        "Tumour inhibiting plasmid"],
+      ans: 1,
+      exp: "Ti = Tumor-inducing plasmid; transfers T-DNA causing crown gall; used as a vector in plant genetic engineering.",
+      ref: "NEET 2024"
+    },
+    {
+      id: 60, ch: "Biology", chapter: "ECG", type: "MCQ", diff: "Medium", year: "2024",
+      q: "Match: A. P wave B. QRS C. T wave D. T-P gap with I. Heart electrically silent II. Ventricular depolarisation III. Atrial depolarisation IV. Ventricular repolarisation",
+      opts: ["A-III, B-II, C-IV, D-I",
+        "A-II, B-III, C-I, D-IV",
+        "A-IV, B-II, C-I, D-III",
+        "A-I, B-III, C-IV, D-II"],
+      ans: 0,
+      exp: "P → atrial depolarisation; QRS → ventricular depolarisation; T → ventricular repolarisation; T-P gap → electrically silent (diastole).",
+      ref: "NEET 2024"
+    },
+    {
+      id: 61, ch: "Biology", chapter: "Ecosystem", type: "MCQ", diff: "Medium", year: "2025",
+      q: "Which is the unit of productivity of an ecosystem?",
+      opts: ["(KCal m⁻²) yr⁻¹",
+        "g m⁻²",
+        "KCal m⁻²",
+        "KCal m⁻³"],
+      ans: 0,
+      exp: "Productivity (rate of biomass production) is expressed in g m⁻² yr⁻¹ or (KCal m⁻²) yr⁻¹.",
+      ref: "NEET 2025"
+    },
+    {
+      id: 62, ch: "Biology", chapter: "Human Reproduction", type: "MCQ", diff: "Medium", year: "2025",
+      q: "The first menstruation is called:",
+      opts: ["Ovulation",
+        "Menopause",
+        "Menarche",
+        "Diapause"],
+      ans: 2,
+      exp: "Menarche = first menstruation at puberty. Menopause = cessation around age 50.",
+      ref: "NEET 2025"
+    },
+    {
+      id: 63, ch: "Biology", chapter: "Animal Kingdom", type: "MCQ", diff: "Medium", year: "2025",
+      q: "Assertion: All vertebrates are chordates but all chordates are not vertebrates. Reason: Vertebrates possess notochord during embryonic period, replaced by vertebral column in adults.",
+      opts: ["A false, R true",
+        "Both true; R is correct explanation of A",
+        "Both true; R not correct explanation",
+        "A true, R false"],
+      ans: 1,
+      exp: "Protochordates (non-vertebrate chordates) exist; in vertebrates the notochord is replaced by vertebral column.",
+      ref: "NEET 2025"
+    },
+    {
+      id: 64, ch: "Biology", chapter: "Principles of Inheritance", type: "MCQ", diff: "Medium", year: "2025",
+      q: "Genes R and Y follow independent assortment. RRYY (round yellow) × rryy (wrinkled green). F2 phenotypic ratio?",
+      opts: ["9 : 7",
+        "1 : 2 : 1",
+        "3 : 1",
+        "9 : 3 : 3 : 1"],
+      ans: 3,
+      exp: "Classic Mendelian dihybrid F2 ratio: 9 Round Yellow : 3 Round Green : 3 Wrinkled Yellow : 1 Wrinkled Green.",
+      ref: "NEET 2025"
+    },
+    {
+      id: 65, ch: "Biology", chapter: "Biotechnology", type: "MCQ", diff: "Medium", year: "2025",
+      q: "Statement I: DNA fragments extracted from gel electrophoresis can be used in rDNA construction. Statement II: Smaller fragments are observed near anode while larger fragments are near the wells.",
+      opts: ["I incorrect, II correct",
+        "Both correct",
+        "Both incorrect",
+        "I correct, II incorrect"],
+      ans: 1,
+      exp: "Extracted fragments are used for rDNA. Smaller fragments migrate farther (near anode); larger stay near wells.",
+      ref: "NEET 2025"
+    },
+    {
+      id: 66, ch: "Biology", chapter: "Cell Division", type: "MCQ", diff: "Medium", year: "2025",
+      q: "Main function of spindle fibres during mitosis?",
+      opts: ["Regulate cell growth",
+        "Separate chromosomes",
+        "Synthesize new DNA",
+        "Repair damaged DNA"],
+      ans: 1,
+      exp: "Spindle fibres attach to kinetochores and separate sister chromatids to opposite poles.",
+      ref: "NEET 2025"
+    },
+    {
+      id: 67, ch: "Biology", chapter: "Female Gametophyte", type: "MCQ", diff: "Medium", year: "2025",
+      q: "How many meiotic and mitotic divisions for development of mature female gametophyte from megaspore mother cell in angiosperms?",
+      opts: ["No Meiosis and 2 Mitosis",
+        "2 Meiosis and 3 Mitosis",
+        "1 Meiosis and 2 Mitosis",
+        "1 Meiosis and 3 Mitosis"],
+      ans: 3,
+      exp: "MMC → 1 meiosis → 4 megaspores. Functional megaspore → 3 mitoses → 7-celled, 8-nucleate embryo sac.",
+      ref: "NEET 2025"
+    },
+    {
+      id: 68, ch: "Biology", chapter: "Immunity – Antibodies", type: "MCQ", diff: "Medium", year: "2025",
+      q: "Identify the statement that is NOT correct:",
+      opts: ["Constant region of heavy and light chains are at C-terminus",
+        "Each antibody has two light and two heavy chains",
+        "Heavy and light chains are held together by disulfide bonds",
+        "Antigen-binding site is located at C-terminal region"],
+      ans: 3,
+      exp: "Antigen-binding site is at the N-terminal (variable) region, not C-terminal.",
+      ref: "NEET 2025"
+    },
+    {
+      id: 69, ch: "Biology", chapter: "Biotechnology – Selectable Markers", type: "MCQ", diff: "Medium", year: "2025",
+      q: "Blue-white selection: Statement I: Blue colonies have DNA insert and are recombinant. Statement II: Colonies without blue colour have DNA insert and are recombinant.",
+      opts: ["I incorrect, II correct",
+        "Both correct",
+        "Both incorrect",
+        "I correct, II incorrect"],
+      ans: 0,
+      exp: "Insertional inactivation of β-galactosidase in recombinants → white colonies. Non-recombinants produce blue colour.",
+      ref: "NEET 2025"
+    },
+    {
+      id: 70, ch: "Biology", chapter: "Plant Kingdom – Bryophytes", type: "MCQ", diff: "Medium", year: "2025",
+      q: "In bryophytes, gemmae help in:",
+      opts: ["Gaseous exchange",
+        "Sexual reproduction",
+        "Asexual reproduction",
+        "Nutrient absorption"],
+      ans: 2,
+      exp: "Gemmae are multicellular asexual buds in gemma cups (e.g., Marchantia) that detach to form new plants.",
+      ref: "NEET 2025"
+    },
+    {
+      id: 71, ch: "Biology", chapter: "Biomolecules", type: "MCQ", diff: "Medium", year: "2025",
+      q: "Match: A. Adenosine B. Adenylic acid C. Adenine D. Alanine with I. Nitrogen base II. Nucleotide III. Nucleoside IV. Amino acid",
+      opts: ["A-II, B-III, C-I, D-IV",
+        "A-III, B-IV, C-II, D-I",
+        "A-III, B-II, C-IV, D-I",
+        "A-III, B-II, C-I, D-IV"],
+      ans: 3,
+      exp: "Adenosine = nucleoside; Adenylic acid = nucleotide; Adenine = N-base; Alanine = amino acid.",
+      ref: "NEET 2025"
+    },
+    {
+      id: 72, ch: "Biology", chapter: "Adrenal Medullary Hormones", type: "MCQ", diff: "Medium", year: "2025",
+      q: "Which are true about adrenal medullary hormones? (A) Pupillary constriction (B) Hyperglycemic (C) Piloerection (D) Increases strength of heart contraction",
+      opts: ["D only",
+        "C and D only",
+        "B, C and D only",
+        "A, C and D only"],
+      ans: 2,
+      exp: "Adrenaline/noradrenaline cause pupillary DILATION (not constriction), hyperglycaemia, piloerection, and increase heart contraction.",
+      ref: "NEET 2025"
+    },
+    {
+      id: 73, ch: "Biology", chapter: "Morphology", type: "MCQ", diff: "Medium", year: "2025",
+      q: "Which is an example of a zygomorphic flower?",
+      opts: ["Chilli",
+        "Petunia",
+        "Datura",
+        "Pea"],
+      ans: 3,
+      exp: "Pea (Pisum sativum) is zygomorphic (bilateral symmetry). Chilli, Petunia, Datura are actinomorphic.",
+      ref: "NEET 2025"
+    },
+    {
+      id: 74, ch: "Biology", chapter: "Genetic Code", type: "MCQ", diff: "Medium", year: "2025",
+      q: "Who proposed that genetic code should be made up of three nucleotides?",
+      opts: ["Franklin Stahl",
+        "George Gamow",
+        "Francis Crick",
+        "Jacque Monod"],
+      ans: 1,
+      exp: "George Gamow first proposed the triplet genetic code (since 4³ = 64 combinations).",
+      ref: "NEET 2025"
+    },
+    {
+      id: 75, ch: "Biology", chapter: "Evolution", type: "MCQ", diff: "Medium", year: "2025",
+      q: "Sweet potato and potato represent which type of evolution?",
+      opts: ["Analogy, divergent",
+        "Analogy, convergent",
+        "Homology, divergent",
+        "Homology, convergent"],
+      ans: 1,
+      exp: "Sweet potato (root) and potato (stem) store food—similar function, different origin—analogous structures from convergent evolution.",
+      ref: "NEET 2025"
+    },
+    {
+      id: 76, ch: "Biology", chapter: "Animal Kingdom – Cyclostomata", type: "MCQ", diff: "Medium", year: "2025",
+      q: "All living members of class Cyclostomata are:",
+      opts: ["Ectoparasite",
+        "Free living",
+        "Endoparasite",
+        "Symbiotic"],
+      ans: 0,
+      exp: "Cyclostomes (Petromyzon, Myxine) are ectoparasites on fishes with sucking, circular, jawless mouths.",
+      ref: "NEET 2025"
+    },
+    {
+      id: 77, ch: "Biology", chapter: "Histones", type: "MCQ", diff: "Medium", year: "2025",
+      q: "Histones are enriched with:",
+      opts: ["Phenylalanine & Arginine",
+        "Lysine & Arginine",
+        "Leucine & Lysine",
+        "Phenylalanine & Leucine"],
+      ans: 1,
+      exp: "Histones are positively charged basic proteins rich in lysine and arginine, binding negatively charged DNA.",
+      ref: "NEET 2025"
+    },
+    {
+      id: 78, ch: "Biology", chapter: "Population Ecology", type: "MCQ", diff: "Medium", year: "2025",
+      q: "Which equation represents Verhulst-Pearl logistic growth?",
+      opts: ["dN/dt = r(K−N)/K",
+        "dN/dt = r(K−N/K)",
+        "dN/dt = rN(K−N)/K",
+        "dN/dt = rN(N−K)/N"],
+      ans: 2,
+      exp: "Logistic growth (limited resources) gives sigmoid curve: dN/dt = rN[(K−N)/K].",
+      ref: "NEET 2025"
+    },
+    {
+      id: 79, ch: "Biology", chapter: "Photosynthesis – RuBisCO", type: "MCQ", diff: "Medium", year: "2025",
+      q: "Which statement about RuBisCO is true?",
+      opts: ["It catalyzes carboxylation of RuBP",
+        "It is active only in the dark",
+        "It has higher affinity for oxygen than CO₂",
+        "It is involved in photolysis of water"],
+      ans: 0,
+      exp: "RuBisCO catalyses carboxylation of RuBP in the Calvin cycle. Has higher affinity for CO₂ than O₂.",
+      ref: "NEET 2025"
+    },
+    {
+      id: 80, ch: "Biology", chapter: "Enzymes", type: "MCQ", diff: "Medium", year: "2025",
+      q: "The protein portion of an enzyme is called:",
+      opts: ["Prosthetic group",
+        "Cofactor",
+        "Coenzyme",
+        "Apoenzyme"],
+      ans: 3,
+      exp: "Apoenzyme = protein portion; apoenzyme + cofactor = holoenzyme.",
+      ref: "NEET 2025"
+    },
+    {
+      id: 81, ch: "Biology", chapter: "Innate Immunity", type: "MCQ", diff: "Medium", year: "2025",
+      q: "Which type of immunity is present at birth and is non-specific?",
+      opts: ["Humoral Immunity",
+        "Acquired Immunity",
+        "Innate Immunity",
+        "Cell-mediated Immunity"],
+      ans: 2,
+      exp: "Innate immunity is non-specific, present at birth (physical, physiological, cellular, cytokine barriers).",
+      ref: "NEET 2025"
+    },
+    {
+      id: 82, ch: "Biology", chapter: "Transcription – Termination", type: "MCQ", diff: "Medium", year: "2025",
+      q: "Which factor is important for termination of transcription (in prokaryotes)?",
+      opts: ["γ (gamma)",
+        "α (alpha)",
+        "σ (sigma)",
+        "ρ (rho)"],
+      ans: 3,
+      exp: "σ factor → initiation; ρ factor → termination of prokaryotic transcription.",
+      ref: "NEET 2025"
+    },
+    {
+      id: 83, ch: "Biology", chapter: "Endocrine", type: "MCQ", diff: "Medium", year: "2025",
+      q: "Which pituitary-released hormone is actually synthesized in the hypothalamus?",
+      opts: ["ACTH",
+        "LH",
+        "ADH",
+        "FSH"],
+      ans: 2,
+      exp: "ADH and oxytocin are synthesised in hypothalamus, stored/released by posterior pituitary (neurohypophysis).",
+      ref: "NEET 2025"
+    },
+    {
+      id: 84, ch: "Biology", chapter: "Biodiversity", type: "MCQ", diff: "Medium", year: "2025",
+      q: "Match: A. The Evil Quartet B. Ex situ conservation C. Lantana camara D. Dodo with I. Cryopreservation II. Alien species invasion III. Causes of biodiversity loss IV. Extinction",
+      opts: ["A-III, B-II, C-IV, D-I",
+        "A-III, B-II, C-I, D-IV",
+        "A-III, B-I, C-II, D-IV",
+        "A-III, B-IV, C-II, D-I"],
+      ans: 2,
+      exp: "Evil Quartet → causes of loss; Ex situ → cryopreservation; Lantana → invasive alien; Dodo → extinct species.",
+      ref: "NEET 2025"
+    },
+    {
+      id: 85, ch: "Biology", chapter: "Plant Growth Regulators", type: "MCQ", diff: "Medium", year: "2025",
+      q: "Statements: (A) Parthenocarpy can be induced by auxins. (B) PGRs can promote and inhibit growth. (C) Dedifferentiation is pre-requisite for re-differentiation. (D) ABA is a growth promoter. (E) Apical dominance promotes lateral buds.",
+      opts: ["B, D, E only",
+        "A, B, C only",
+        "A, C, E only",
+        "A, D, E only"],
+      ans: 1,
+      exp: "ABA is an inhibitor (stress hormone). Apical dominance SUPPRESSES lateral buds. A, B, C correct.",
+      ref: "NEET 2025"
+    },
+    {
+      id: 86, ch: "Biology", chapter: "Plant Kingdom", type: "MCQ", diff: "Medium", year: "2025",
+      q: "Match: A. Pteridophyte B. Bryophyte C. Angiosperm D. Gymnosperm with I. Salvia II. Ginkgo III. Polytrichum IV. Salvinia",
+      opts: ["A-IV, B-III, C-II, D-I",
+        "A-III, B-IV, C-II, D-I",
+        "A-IV, B-III, C-I, D-II",
+        "A-III, B-IV, C-I, D-II"],
+      ans: 2,
+      exp: "Salvinia (fern) = pteridophyte; Polytrichum (moss) = bryophyte; Salvia = angiosperm; Ginkgo = gymnosperm.",
+      ref: "NEET 2025"
+    },
+    {
+      id: 87, ch: "Biology", chapter: "Biotechnology Applications", type: "MCQ", diff: "Medium", year: "2025",
+      q: "Why can't insulin be given orally to diabetic patients?",
+      opts: ["Bioavailability will be increased",
+        "Strong immune response",
+        "It will be digested in the GI tract",
+        "Because of structural variation"],
+      ans: 2,
+      exp: "Insulin is a polypeptide; oral administration would lead to digestion by proteolytic enzymes—so it is injected.",
+      ref: "NEET 2025"
+    },
+    {
+      id: 88, ch: "Biology", chapter: "Respiration – Frog", type: "MCQ", diff: "Medium", year: "2025",
+      q: "\"Frogs respire in water by skin and buccal cavity and on land by skin, buccal cavity and lungs.\" Choose the correct answer:",
+      opts: ["False for both environments",
+        "True for water, false for land",
+        "True for both",
+        "False for water, true for land"],
+      ans: 3,
+      exp: "In water, frogs respire only cutaneously (skin). On land they use skin, buccal cavity and lungs.",
+      ref: "NEET 2025"
+    },
+    {
+      id: 89, ch: "Biology", chapter: "RNA Interference", type: "MCQ", diff: "Medium", year: "2025",
+      q: "Silencing of specific mRNA is possible via RNAi because of:",
+      opts: ["Non-complementary ssRNA",
+        "Complementary dsRNA",
+        "Inhibitory ssRNA",
+        "Complementary tRNA"],
+      ans: 1,
+      exp: "RNAi uses complementary dsRNA to bind target mRNA and prevent translation; used in nematode-resistant GM plants.",
+      ref: "NEET 2025"
+    },
+    {
+      id: 90, ch: "Biology", chapter: "Cardiac Regulation", type: "MCQ", diff: "Medium", year: "2025",
+      q: "Cardiac activities of the heart are regulated by: A. Nodal tissue B. Medulla oblongata neural centre C. Adrenal medullary hormones D. Adrenal cortical hormones",
+      opts: ["A, B and D only",
+        "A, B and C only",
+        "A, B, C and D",
+        "A, C and D only"],
+      ans: 1,
+      exp: "Heart is myogenic (nodal tissue). Medulla oblongata moderates via ANS. Adrenaline/noradrenaline increase cardiac output. Adrenal cortical hormones don't directly regulate cardiac activity.",
+      ref: "NEET 2025"
+    }
+      ];
+
+      const TOTAL = Q.length;
+      const LETTERS = ["A", "B", "C", "D"];
+      let currentQ = 0;
+      let userAnswers = new Array(TOTAL).fill(-1);
+      let reviewFlags = new Array(TOTAL).fill(false);
+      let submitted = false;
+      let timerSec = 0;
+      let timerInterval;
+
+      function chClass(ch) {
+        return ch === "Chemistry" ? "chem" : "bio";
+      }
+
+      function startQuiz() {
+        document.getElementById("heroSection").style.display = "none";
+        document.getElementById("progressWrap").classList.add("active");
+        document.getElementById("paletteToggle").classList.add("active");
+        buildAllCards();
+        buildPalette();
+        showQuestion(0);
+        startTimer();
+      }
+
+      function buildAllCards() {
+        const area = document.getElementById("quizArea");
+        let html = "";
+        Q.forEach((q, i) => {
+          const tagCls = chClass(q.ch);
+          const numBioCls = tagCls === "bio" ? "bio-num" : "";
+          const diffCls = q.diff === "Hard" ? "hard" : q.diff === "Easy" ? "easy" : "med";
+
+          const optsHtml = q.opts.map((o, j) => `
+            <button class="opt-btn" id="opt-${i}-${j}" onclick="selectOpt(${i},${j})">
+              <span class="opt-letter">${LETTERS[j]}</span>
+              <span>${o}</span>
+            </button>`).join("");
+
+          html += `<div class="q-card" id="qcard-${i}">
+            <div class="q-header">
+              <span class="q-num ${numBioCls}">Q${q.id}</span>
+              <div class="q-meta">
+                <span class="q-tag ${tagCls}">${q.ch}</span>
+                <span class="q-tag type">${q.type}</span>
+                <span class="q-tag ${diffCls}">${q.diff}</span>
+              </div>
+            </div>
+            <div class="q-chapter-badge">📌 ${q.chapter} · ${q.year}</div>
+            <div class="q-text">${q.q}</div>
+            <div class="options">${optsHtml}</div>
+            <div class="nav-btns">
+              <button class="nav-btn" onclick="prevQuestion()" ${i === 0 ? "disabled" : ""}>← Prev</button>
+              <button class="nav-btn primary" onclick="nextQuestion()">${i === TOTAL - 1 ? "Finish →" : "Next →"}</button>
+              <button class="nav-btn clear-response" onclick="clearResponse(${i})">✕ Clear</button>
+              <button class="nav-btn mark-review${reviewFlags[i] ? " marked" : ""}" id="mark-${i}" onclick="toggleReview(${i})">
+                ${reviewFlags[i] ? "★ Marked" : "☆ Mark for Review"}
+              </button>
+            </div>
+          </div>`;
+        });
+        area.innerHTML = html;
+      }
+
+      function showQuestion(idx) {
+        document.querySelectorAll(".q-card").forEach(c => c.classList.remove("active"));
+        document.getElementById(`qcard-${idx}`).classList.add("active");
+        currentQ = idx;
+        updateProgress();
+        updatePalette();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function selectOpt(qIdx, optIdx) {
+        if (submitted) return;
+        for (let i = 0; i < 4; i++) {
+          const el = document.getElementById(`opt-${qIdx}-${i}`);
+          if (el) el.classList.remove("selected");
+        }
+        document.getElementById(`opt-${qIdx}-${optIdx}`).classList.add("selected");
+        userAnswers[qIdx] = optIdx;
+        updatePalette();
+        updateProgress();
+      }
+
+      function clearResponse(qIdx) {
+        if (submitted) return;
+        userAnswers[qIdx] = -1;
+        for (let i = 0; i < 4; i++) {
+          const el = document.getElementById(`opt-${qIdx}-${i}`);
+          if (el) el.classList.remove("selected");
+        }
+        updatePalette();
+        updateProgress();
+      }
+
+      function nextQuestion() {
+        if (currentQ < TOTAL - 1) showQuestion(currentQ + 1);
+        else finishQuiz();
+      }
+
+      function prevQuestion() {
+        if (currentQ > 0) showQuestion(currentQ - 1);
+      }
+
+      function toggleReview(idx) {
+        reviewFlags[idx] = !reviewFlags[idx];
+        const btn = document.getElementById(`mark-${idx}`);
+        btn.classList.toggle("marked", reviewFlags[idx]);
+        btn.textContent = reviewFlags[idx] ? "★ Marked" : "☆ Mark for Review";
+        updatePalette();
+      }
+
+      function updateProgress() {
+        const answered = userAnswers.filter(a => a !== -1).length;
+        document.getElementById("qCounter").textContent = `Q ${currentQ + 1} / ${TOTAL}`;
+        document.getElementById("progressFill").style.width = (answered / TOTAL) * 100 + "%";
+      }
+
+      function buildPalette() {
+        const grid = document.getElementById("paletteGrid");
+        let html = "";
+        for (let i = 0; i < TOTAL; i++) {
+          html += `<div class="palette-dot" id="pdot-${i}" onclick="showQuestion(${i})">${i + 1}</div>`;
+        }
+        grid.innerHTML = html;
+      }
+
+      function updatePalette() {
+        for (let i = 0; i < TOTAL; i++) {
+          const dot = document.getElementById(`pdot-${i}`);
+          if (!dot) continue;
+          dot.className = "palette-dot";
+          if (i === currentQ) dot.classList.add("current");
+          if (userAnswers[i] !== -1) dot.classList.add("answered");
+          if (reviewFlags[i]) dot.classList.add("review");
+        }
+      }
+
+      function togglePalette() {
+        document.getElementById("palettePanel").classList.toggle("open");
+      }
+
+      function startTimer() {
+        timerInterval = setInterval(() => {
+          timerSec++;
+          const m = String(Math.floor(timerSec / 60)).padStart(2, "0");
+          const s = String(timerSec % 60).padStart(2, "0");
+          document.getElementById("progressTimer").textContent = `${m}:${s}`;
+        }, 1000);
+      }
+
+      function finishQuiz() {
+        if (!window._isReplay) {
+          const unanswered = userAnswers.filter(a => a === -1).length;
+          if (unanswered > 0) {
+            if (!confirm(`You have ${unanswered} unanswered question${unanswered > 1 ? "s" : ""}. Submit anyway?`)) return;
+          }
+        }
+        submitQuiz();
+      }
+
+      function saveAttempt(data) {
+        try {
+          const results = JSON.parse(localStorage.getItem("papResults") || "[]");
+          results.unshift(data);
+          localStorage.setItem("papResults", JSON.stringify(results));
+        } catch (e) {}
+      }
+
+      function submitQuiz() {
+        submitted = true;
+        clearInterval(timerInterval);
+        document.getElementById("quizArea").classList.add("hidden");
+        document.getElementById("paletteToggle").style.display = "none";
+        document.getElementById("palettePanel").style.display = "none";
+        document.getElementById("progressWrap").style.display = "none";
+
+        let correct = 0, wrong = 0, skipped = 0;
+        let y23Correct = 0, y23Total = 0, y24Correct = 0, y24Total = 0, y25Correct = 0, y25Total = 0;
+
+        Q.forEach((q, i) => {
+          if (q.year === "2023") y23Total++;
+          else if (q.year === "2024") y24Total++;
+          else y25Total++;
+
+          if (userAnswers[i] === -1) { skipped++; }
+          else if (userAnswers[i] === q.ans) {
+            correct++;
+            if (q.year === "2023") y23Correct++;
+            else if (q.year === "2024") y24Correct++;
+            else y25Correct++;
+          }
+          else { wrong++; }
+        });
+
+        const neetScore = correct * 4 - wrong * 1;
+        const pct = Math.round((correct / TOTAL) * 100);
+        const circumference = 2 * Math.PI * 65;
+        const offset = circumference - (pct / 100) * circumference;
+        const ringColor = pct >= 80 ? "var(--green)" : pct >= 50 ? "var(--amber)" : "var(--red)";
+        const grade = pct >= 90 ? "Outstanding!" : pct >= 75 ? "Great Work!" : pct >= 50 ? "Keep Practicing!" : "Needs Revision";
+
+        const timeStr = document.getElementById("progressTimer").textContent;
+        const y23Pct = y23Total ? Math.round((y23Correct / y23Total) * 100) : 0;
+        const y24Pct = y24Total ? Math.round((y24Correct / y24Total) * 100) : 0;
+        const y25Pct = y25Total ? Math.round((y25Correct / y25Total) * 100) : 0;
+
+        if (!window._isReplay) {
+          saveAttempt({
+            id: Date.now(),
+            paperFile: "22AP2-PQ.html",
+            paperName: "Biology PYQ Bank 2023–2025 [90Q]",
+            paperTag: "Bio PYQ 90Q",
+            correct, wrong, skipped,
+            totalQuestions: TOTAL, neetScore, maxScore: TOTAL * 4,
+            percentage: pct, timeTaken: timeStr, timerSeconds: timerSec,
+            userAnswers: [...userAnswers],
+          });
+        }
+
+        const res = document.getElementById("resultsSection");
+        res.style.display = "block";
+
+        let rhtml = `
+<div class="results-card">
+  <h2>${grade}</h2>
+  <div class="score-ring">
+    <svg width="160" height="160" viewBox="0 0 160 160">
+      <circle class="ring-bg" cx="80" cy="80" r="65"/>
+      <circle class="ring-fill" cx="80" cy="80" r="65"
+        stroke="${ringColor}"
+        stroke-dasharray="${circumference}"
+        stroke-dashoffset="${circumference}"
+        id="scoreRing"/>
+    </svg>
+    <div class="score-center">
+      <div class="pct">${pct}%</div>
+      <div class="of">${correct}/${TOTAL}</div>
+    </div>
+  </div>
+  <div class="stats-grid">
+    <div class="stat-item neet"><div class="stat-num">${neetScore}</div><div class="stat-lbl">NEET Score</div></div>
+    <div class="stat-item correct"><div class="stat-num">${correct}</div><div class="stat-lbl">Correct</div></div>
+    <div class="stat-item wrong"><div class="stat-num">${wrong}</div><div class="stat-lbl">Wrong</div></div>
+    <div class="stat-item skip"><div class="stat-num">${skipped}</div><div class="stat-lbl">Skipped</div></div>
+  </div>
+  <div style="margin-top:16px;font-size:13px;color:var(--text3)">Time: ${timeStr} · Max: ${TOTAL * 4}</div>
+</div>
+
+<div class="chapter-breakdown">
+  <h3>Year-wise Breakdown</h3>
+  <div class="chapter-bar-wrap">
+    <div class="chapter-bar-header">
+      <span style="color:var(--accent)">📅 NEET 2023 (Q1–Q30)</span>
+      <span style="color:var(--text2)">${y23Correct}/${y23Total} (${y23Pct}%)</span>
+    </div>
+    <div class="chapter-bar-track">
+      <div class="chapter-bar-fill" id="y23Bar" style="width:0%;background:var(--accent)"></div>
+    </div>
+  </div>
+  <div class="chapter-bar-wrap">
+    <div class="chapter-bar-header">
+      <span style="color:var(--pink)">📅 NEET 2024 (Q31–Q60)</span>
+      <span style="color:var(--text2)">${y24Correct}/${y24Total} (${y24Pct}%)</span>
+    </div>
+    <div class="chapter-bar-track">
+      <div class="chapter-bar-fill" id="y24Bar" style="width:0%;background:var(--pink)"></div>
+    </div>
+  </div>
+  <div class="chapter-bar-wrap">
+    <div class="chapter-bar-header">
+      <span style="color:var(--purple)">📅 NEET 2025 (Q61–Q90)</span>
+      <span style="color:var(--text2)">${y25Correct}/${y25Total} (${y25Pct}%)</span>
+    </div>
+    <div class="chapter-bar-track">
+      <div class="chapter-bar-fill" id="y25Bar" style="width:0%;background:var(--purple)"></div>
+    </div>
+  </div>
+</div>
+
+<div class="review-title">Complete Walkthrough</div>
+<div class="review-sub">Every question reviewed with NCERT-based explanations.</div>
+<div class="review-filter">
+  <button class="filter-btn active" onclick="filterReview('all',this)">All (${TOTAL})</button>
+  <button class="filter-btn" onclick="filterReview('wrong',this)">❌ Wrong (${wrong})</button>
+  <button class="filter-btn" onclick="filterReview('skipped',this)">⏭️ Skipped (${skipped})</button>
+  <button class="filter-btn" onclick="filterReview('correct',this)">✅ Correct (${correct})</button>
+</div>
+<div id="reviewCards"></div>`;
+
+        res.innerHTML = rhtml;
+        renderReviewCards("all");
+
+        setTimeout(() => {
+          document.getElementById("scoreRing").style.strokeDashoffset = offset;
+          document.getElementById("y23Bar").style.width = y23Pct + "%";
+          document.getElementById("y24Bar").style.width = y24Pct + "%";
+          document.getElementById("y25Bar").style.width = y25Pct + "%";
+        }, 100);
+
+        res.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function renderReviewCards(filter) {
+        const container = document.getElementById("reviewCards");
+        let html = "";
+        Q.forEach((q, i) => {
+          const ua = userAnswers[i];
+          const isCorrect = ua === q.ans;
+          const isSkipped = ua === -1;
+          const isWrong = !isCorrect && !isSkipped;
+
+          if (filter === "wrong" && !isWrong) return;
+          if (filter === "skipped" && !isSkipped) return;
+          if (filter === "correct" && !isCorrect) return;
+
+          let cardClass, badgeClass, badgeText;
+          if (isCorrect) { cardClass = "rc-correct"; badgeClass = "badge-correct"; badgeText = "✅ Correct"; }
+          else if (isSkipped) { cardClass = "rc-skipped"; badgeClass = "badge-skipped"; badgeText = "⏭️ Skipped"; }
+          else { cardClass = "rc-wrong"; badgeClass = "badge-wrong"; badgeText = "❌ Wrong"; }
+
+          const tagCls = chClass(q.ch);
+          const numBioCls = tagCls === "bio" ? "bio-num" : "";
+
+          html += `<div class="review-card ${cardClass}">
+            <div class="rc-header">
+              <span class="q-num ${numBioCls}">Q${q.id}</span>
+              <span class="q-tag ${tagCls}">${q.ch}</span>
+              <span class="rc-badge ${badgeClass}">${badgeText}</span>
+              <span style="font-size:11px;color:var(--text3);margin-left:auto">${q.type} · ${q.year}</span>
+            </div>
+            <div style="font-size:11px;color:var(--accent2);margin-bottom:10px;font-weight:600">📌 ${q.chapter}</div>
+            <div class="rc-q">${q.q}</div>
+            <div class="rc-opts">`;
+
+          q.opts.forEach((o, j) => {
+            let optClass = "rc-opt";
+            let marker = LETTERS[j];
+            if (j === q.ans) { optClass += " rc-opt-correct"; marker = "✓"; }
+            else if (j === ua && isWrong) { optClass += " rc-opt-wrong"; marker = "✗"; }
+            html += `<div class="${optClass}">
+              <span class="rc-letter">${marker}</span>
+              <span>${o}</span>
+            </div>`;
+          });
+
+          html += `</div>
+            <div class="rc-exp">
+              <h4>💡 Explanation</h4>
+              <p>${q.exp}</p>
+              <span class="ncert-ref">📖 ${q.ref}</span>
+            </div>
+          </div>`;
+        });
+
+        if (!html)
+          html = `<p style="text-align:center;color:var(--text3);padding:30px 0">No questions match this filter.</p>`;
+        container.innerHTML = html;
+      }
+
+      function filterReview(type, btn) {
+        document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderReviewCards(type);
+      }
+
+      window.addEventListener("scroll", () => {
+        const pw = document.getElementById("progressWrap");
+        if (window.scrollY > 200) pw.classList.add("scrolled");
+        else pw.classList.remove("scrolled");
+      });
+
+      (function loadSavedAttempt() {
+        const params = new URLSearchParams(window.location.search);
+        const attemptId = params.get("attempt");
+        if (!attemptId) return;
+        const saved = JSON.parse(localStorage.getItem("papResults") || "[]");
+        const attempt = saved.find(r => r.id === Number(attemptId));
+        if (!attempt) return;
+        window._isReplay = true;
+        userAnswers = attempt.userAnswers;
+        timerSec = attempt.timerSeconds || 0;
+        const m = String(Math.floor(timerSec / 60)).padStart(2, "0");
+        const s = String(timerSec % 60).padStart(2, "0");
+        document.getElementById("progressTimer").textContent = `${m}:${s}`;
+        document.getElementById("heroSection").style.display = "none";
+        submitQuiz();
+      })();
+    </script>
+  </body>
+</html>
