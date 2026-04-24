@@ -1,0 +1,807 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEET 2026 — Physics &amp; Biology Practice Paper (60Q)</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      :root {
+        --bg: #0a0e17;
+        --surface: #111827;
+        --surface2: #1a2236;
+        --surface3: #222d44;
+        --border: #2a3654;
+        --text: #e2e8f0;
+        --text2: #94a3b8;
+        --text3: #64748b;
+        --accent: #60a5fa;
+        --accent2: #06d6a0;
+        --red: #ef4444;
+        --green: #22c55e;
+        --amber: #f59e0b;
+        --purple: #a78bfa;
+        --pink: #f472b6;
+        --radius: 12px;
+        --radius-sm: 8px;
+      }
+      html { scroll-behavior: smooth; }
+      body {
+        font-family: "IBM Plex Sans", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          radial-gradient(ellipse at 20% 0%, rgba(96, 165, 250, 0.08) 0%, transparent 50%),
+          radial-gradient(ellipse at 80% 100%, rgba(244, 114, 182, 0.06) 0%, transparent 50%);
+        pointer-events: none;
+        z-index: 0;
+      }
+      .container { max-width: 860px; margin: 0 auto; padding: 20px; position: relative; z-index: 1; }
+      .hero { text-align: center; padding: 50px 20px 40px; position: relative; z-index: 1; }
+      .hero-badge {
+        display: inline-block;
+        padding: 6px 18px;
+        border-radius: 50px;
+        background: rgba(96, 165, 250, 0.12);
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 18px;
+        border: 1px solid rgba(96, 165, 250, 0.24);
+      }
+      .hero h1 {
+        font-family: "DM Serif Display", serif;
+        font-size: clamp(28px, 5vw, 44px);
+        color: #fff;
+        margin-bottom: 12px;
+        line-height: 1.2;
+      }
+      .hero h1 span {
+        background: linear-gradient(135deg, var(--accent), var(--pink));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .hero p { color: var(--text2); font-size: 16px; max-width: 620px; margin: 0 auto 28px; }
+      .hero-tags { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+      .hero-tags span { padding: 6px 16px; border-radius: 8px; font-size: 12px; font-weight: 600; }
+      .tag-phys { background: rgba(96, 165, 250, 0.1); color: var(--accent); border: 1px solid rgba(96, 165, 250, 0.24); }
+      .tag-bio { background: rgba(244, 114, 182, 0.1); color: var(--pink); border: 1px solid rgba(244, 114, 182, 0.22); }
+      .start-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 16px 48px;
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--bg);
+        background: linear-gradient(135deg, var(--accent), var(--pink));
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 25px rgba(96, 165, 250, 0.28);
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+      .start-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 35px rgba(244, 114, 182, 0.36); }
+      .progress-wrap {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(10, 14, 23, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 14px 20px;
+        border-bottom: 1px solid var(--border);
+        display: none;
+        transition: box-shadow 0.3s;
+      }
+      .progress-wrap.active { display: block; }
+      .progress-wrap.scrolled { box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4); }
+      .progress-inner { max-width: 860px; margin: 0 auto; display: flex; align-items: center; gap: 16px; }
+      .progress-text { font-size: 13px; font-weight: 600; color: var(--text2); white-space: nowrap; min-width: 90px; }
+      .progress-text b { color: var(--accent); }
+      .progress-bar { flex: 1; height: 6px; background: var(--surface3); border-radius: 10px; overflow: hidden; }
+      .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--pink)); border-radius: 10px; transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); width: 0%; }
+      .progress-timer { font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--accent); min-width: 60px; text-align: right; }
+      .section-divider {
+        background: var(--surface2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 18px 22px;
+        margin: 10px 0 20px;
+      }
+      .section-divider-label { display: block; color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+      .section-divider-title { display: block; color: #fff; font-family: "DM Serif Display", serif; font-size: 22px; margin-top: 2px; }
+      .section-divider-note { display: block; color: var(--text3); font-size: 13px; margin-top: 4px; }
+      .q-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 32px;
+        margin-bottom: 24px;
+        display: none;
+        animation: fadeIn 0.4s ease both;
+      }
+      .q-card.active { display: block; }
+      @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+      .q-header { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
+      .q-num {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--bg);
+        background: var(--accent);
+        padding: 4px 10px;
+        border-radius: 6px;
+        white-space: nowrap;
+      }
+      .q-num.bio-num { background: var(--pink); }
+      .q-meta { display: flex; gap: 8px; flex-wrap: wrap; }
+      .q-tag { font-size: 11px; padding: 3px 10px; border-radius: 50px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+      .q-tag.phys { background: rgba(96, 165, 250, 0.12); color: var(--accent); }
+      .q-tag.bio { background: rgba(244, 114, 182, 0.15); color: var(--pink); }
+      .q-tag.type { background: rgba(167, 139, 250, 0.12); color: var(--purple); }
+      .q-tag.med { background: rgba(245, 158, 11, 0.12); color: var(--amber); }
+      .chapter-badge {
+        display: inline-block;
+        font-size: 11px;
+        padding: 3px 10px;
+        border-radius: 50px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        background: rgba(17, 138, 178, 0.12);
+        color: var(--accent2);
+        border: 1px solid rgba(17, 138, 178, 0.2);
+        margin-bottom: 10px;
+      }
+      .q-text { font-size: 15.5px; color: #fff; line-height: 1.7; margin-bottom: 20px; white-space: pre-wrap; }
+      .options { display: flex; flex-direction: column; gap: 10px; }
+      .opt-btn {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 14px 18px;
+        background: var(--surface2);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        transition: all 0.2s;
+        text-align: left;
+        width: 100%;
+        font-size: 14.5px;
+        color: var(--text);
+        line-height: 1.5;
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+      .opt-btn:hover { border-color: var(--accent); background: rgba(96, 165, 250, 0.05); transform: translateX(4px); }
+      .opt-btn .opt-letter {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        color: var(--text3);
+        font-size: 13px;
+        min-width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        background: var(--surface3);
+        flex-shrink: 0;
+        margin-top: 1px;
+        transition: all 0.2s;
+      }
+      .opt-btn.selected { border-color: var(--accent); background: rgba(96, 165, 250, 0.08); }
+      .opt-btn.selected .opt-letter { background: var(--accent); color: var(--bg); }
+      .nav-btns { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+      .nav-btn {
+        padding: 10px 24px;
+        border-radius: 8px;
+        font-family: "IBM Plex Sans", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        border: 1.5px solid var(--border);
+        background: var(--surface2);
+        color: var(--text);
+      }
+      .nav-btn:hover { border-color: var(--accent); }
+      .nav-btn.primary { background: linear-gradient(135deg, var(--accent), var(--pink)); border: none; color: var(--bg); font-weight: 700; box-shadow: 0 2px 12px rgba(96, 165, 250, 0.2); }
+      .nav-btn.primary:hover { box-shadow: 0 4px 20px rgba(244, 114, 182, 0.32); transform: translateY(-1px); }
+      .nav-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+      .mark-review { margin-left: auto; font-size: 13px; color: var(--amber); background: rgba(245, 158, 11, 0.08); border-color: rgba(245, 158, 11, 0.25); }
+      .mark-review.marked { background: rgba(245, 158, 11, 0.2); border-color: var(--amber); }
+      .clear-response { font-size: 13px; color: var(--red); background: rgba(239, 68, 68, 0.08); border-color: rgba(239, 68, 68, 0.25); }
+      .palette-toggle {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: var(--bg);
+        border: none;
+        font-size: 20px;
+        font-weight: 700;
+        cursor: pointer;
+        z-index: 200;
+        box-shadow: 0 4px 20px rgba(96, 165, 250, 0.4);
+        display: none;
+        align-items: center;
+        justify-content: center;
+      }
+      .palette-toggle.active { display: flex; }
+      .palette-panel {
+        position: fixed;
+        bottom: 84px;
+        right: 24px;
+        width: 320px;
+        max-height: 420px;
+        overflow-y: auto;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 20px;
+        z-index: 200;
+        display: none;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      }
+      .palette-panel.open { display: block; }
+      .palette-title { font-weight: 700; font-size: 14px; margin-bottom: 14px; color: var(--text2); text-transform: uppercase; letter-spacing: 1px; }
+      .palette-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 6px; }
+      .palette-dot {
+        width: 32px;
+        height: 32px;
+        border-radius: 7px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 700;
+        cursor: pointer;
+        border: 1.5px solid var(--border);
+        background: var(--surface2);
+        color: var(--text3);
+        transition: all 0.15s;
+      }
+      .palette-dot:hover { border-color: var(--accent); }
+      .palette-dot.answered { background: rgba(96, 165, 250, 0.15); border-color: var(--accent); color: var(--accent); }
+      .palette-dot.review { background: rgba(245, 158, 11, 0.15); border-color: var(--amber); color: var(--amber); }
+      .palette-dot.current { box-shadow: 0 0 0 2px var(--accent); }
+      .palette-legend { display: flex; gap: 16px; margin-top: 14px; font-size: 11px; color: var(--text3); flex-wrap: wrap; }
+      .palette-legend span { display: flex; align-items: center; gap: 5px; }
+      .legend-dot { width: 10px; height: 10px; border-radius: 3px; }
+      #resultsSection { display: none; }
+      .results-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 40px 30px;
+        max-width: 500px;
+        margin: 0 auto 40px;
+        text-align: center;
+      }
+      .results-card h2 { font-family: "DM Serif Display", serif; font-size: 32px; color: #fff; margin-bottom: 8px; }
+      .score-ring { width: 160px; height: 160px; margin: 24px auto; position: relative; }
+      .score-ring svg { transform: rotate(-90deg); }
+      .score-ring .ring-bg { fill: none; stroke: var(--surface3); stroke-width: 10; }
+      .score-ring .ring-fill { fill: none; stroke-width: 10; stroke-linecap: round; transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1); }
+      .score-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; }
+      .score-center .pct { font-family: "JetBrains Mono", monospace; font-size: 36px; font-weight: 700; color: #fff; }
+      .score-center .of { font-size: 13px; color: var(--text3); }
+      .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 24px; }
+      .stat-item { padding: 14px 8px; background: var(--surface2); border-radius: var(--radius-sm); text-align: center; }
+      .stat-num { font-family: "JetBrains Mono", monospace; font-size: 22px; font-weight: 700; }
+      .stat-lbl { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+      .stat-item.neet .stat-num { color: var(--accent2); }
+      .stat-item.correct .stat-num { color: var(--green); }
+      .stat-item.wrong .stat-num { color: var(--red); }
+      .stat-item.skip .stat-num { color: var(--amber); }
+      .chapter-breakdown {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 24px;
+        margin-bottom: 40px;
+      }
+      .chapter-breakdown h3 { font-family: "DM Serif Display", serif; font-size: 18px; color: #fff; margin-bottom: 20px; }
+      .chapter-bar-wrap { margin-bottom: 16px; }
+      .chapter-bar-header { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px; font-weight: 600; }
+      .chapter-bar-track { height: 8px; background: var(--surface3); border-radius: 4px; overflow: hidden; }
+      .chapter-bar-fill { height: 100%; border-radius: 4px; transition: width 1s ease; }
+      .review-title { font-family: "DM Serif Display", serif; font-size: 28px; color: #fff; margin: 40px 0 12px; text-align: center; }
+      .review-sub { text-align: center; color: var(--text2); font-size: 14px; margin-bottom: 24px; }
+      .review-filter { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; }
+      .filter-btn { padding: 8px 16px; border-radius: 50px; border: 1px solid var(--border); background: var(--surface2); color: var(--text2); cursor: pointer; font-family: inherit; font-size: 13px; font-weight: 600; }
+      .filter-btn.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+      .review-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 24px;
+        margin-bottom: 20px;
+      }
+      .review-card.rc-correct { border-left: 4px solid var(--green); }
+      .review-card.rc-wrong { border-left: 4px solid var(--red); }
+      .review-card.rc-skipped { border-left: 4px solid var(--amber); }
+      .rc-header { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+      .rc-badge { font-size: 11px; padding: 3px 10px; border-radius: 50px; font-weight: 700; }
+      .rc-badge.badge-correct { background: rgba(34, 197, 94, 0.1); color: var(--green); border: 1px solid rgba(34, 197, 94, 0.3); }
+      .rc-badge.badge-wrong { background: rgba(239, 68, 68, 0.1); color: var(--red); border: 1px solid rgba(239, 68, 68, 0.3); }
+      .rc-badge.badge-skipped { background: rgba(245, 158, 11, 0.1); color: var(--amber); border: 1px solid rgba(245, 158, 11, 0.3); }
+      .rc-q { color: #fff; font-size: 15px; line-height: 1.7; margin-bottom: 14px; white-space: pre-wrap; }
+      .rc-opts { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+      .rc-opt { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; background: var(--surface2); border-radius: 8px; font-size: 14px; border: 1.5px solid transparent; }
+      .rc-opt.rc-opt-correct { background: rgba(34, 197, 94, 0.08); border-color: rgba(34, 197, 94, 0.3); }
+      .rc-opt.rc-opt-wrong { background: rgba(239, 68, 68, 0.08); border-color: rgba(239, 68, 68, 0.3); }
+      .rc-letter { min-width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-family: "JetBrains Mono", monospace; font-size: 12px; font-weight: 700; background: var(--surface3); color: var(--text3); }
+      .rc-opt.rc-opt-correct .rc-letter { background: var(--green); color: #fff; }
+      .rc-opt.rc-opt-wrong .rc-letter { background: var(--red); color: #fff; }
+      .rc-exp { background: rgba(96, 165, 250, 0.04); border: 1px solid rgba(96, 165, 250, 0.12); border-radius: 8px; padding: 12px 14px; font-size: 13.5px; color: var(--text2); }
+      .rc-exp h4 { color: var(--accent); margin-bottom: 4px; font-size: 13px; }
+      .hidden { display: none !important; }
+      @media (max-width: 600px) {
+        .container { padding: 12px; }
+        .q-card { padding: 20px 16px; }
+        .hero h1 { font-size: 26px; }
+        .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        .progress-inner { gap: 10px; }
+        .palette-panel { width: calc(100vw - 40px); right: 20px; }
+        .review-card { padding: 20px 16px; }
+        .palette-grid { grid-template-columns: repeat(6, 1fr); }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero" id="heroSection">
+      <div class="hero-badge">NEET 2026 · Practice Test</div>
+      <h1>Physics &amp; <span>Biology</span> — 60Q</h1>
+      <p>
+        60 syllabus-aligned questions from Fluid Mechanics, Thermodynamics, EMI, AC,
+        Biological Classification, Plant Kingdom, Animal Kingdom, and Anatomy of Flowering Plants.
+      </p>
+      <div class="hero-tags">
+        <span class="tag-phys">⚙️ 30 — Physics</span>
+        <span class="tag-bio">🌿 30 — Biology</span>
+      </div>
+      <button class="start-btn" onclick="startQuiz()">Begin Test →</button>
+    </div>
+
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-inner">
+        <div class="progress-text"><b id="qCounter">Q 1 / 60</b></div>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="progress-timer" id="progressTimer">00:00</div>
+      </div>
+    </div>
+
+    <div class="container" id="quizArea"></div>
+    <div class="container" id="resultsSection"></div>
+
+    <button class="palette-toggle" id="paletteToggle" onclick="togglePalette()">☰</button>
+    <div class="palette-panel" id="palettePanel">
+      <div class="palette-title">Question Palette</div>
+      <div class="palette-grid" id="paletteGrid"></div>
+      <div class="palette-legend">
+        <span><div class="legend-dot" style="background: var(--surface2); border: 1px solid var(--border)"></div>Unseen</span>
+        <span><div class="legend-dot" style="background: rgba(96, 165, 250, 0.2)"></div>Answered</span>
+        <span><div class="legend-dot" style="background: rgba(245, 158, 11, 0.2)"></div>Review</span>
+      </div>
+    </div>
+
+    <script>
+      const Q = [
+        { id: 1, ch: "Physics", chapter: "Fluid Mechanics", q: "Water flows through a horizontal pipe of varying cross-section. The cross-sectional areas at points A and B are 4 cm² and 2 cm² respectively. If the velocity of water at A is 2 m/s, the velocity at B is:", opts: ["1 m/s", "2 m/s", "4 m/s", "8 m/s"], ans: 2 },
+        { id: 2, ch: "Physics", chapter: "Fluid Mechanics", q: "According to Bernoulli’s theorem, for an ideal incompressible fluid flowing through a pipe of varying height:", opts: ["P + ½ρv² + ρgh = constant", "P + ½ρv² = constant", "½ρv² + ρgh = constant", "P + ρgh = constant"], ans: 0 },
+        { id: 3, ch: "Physics", chapter: "Fluid Mechanics", q: "A tank contains water up to a height of 5 m. A small hole is made at the bottom of the tank. The velocity of efflux of water will be (g = 10 m/s²):", opts: ["5 m/s", "10 m/s", "15 m/s", "20 m/s"], ans: 1 },
+        { id: 4, ch: "Physics", chapter: "Fluid Mechanics", q: "The terminal velocity of a small spherical ball falling through a viscous medium (Stokes’ law) is directly proportional to:", opts: ["Radius of the ball", "Square of the radius of the ball", "Cube of the radius of the ball", "Reciprocal of the radius"], ans: 1 },
+        { id: 5, ch: "Physics", chapter: "Fluid Mechanics", q: "Surface tension of a liquid is defined as the force acting per unit:", opts: ["Area of the surface", "Volume of the liquid", "Length of the surface", "Mass of the liquid"], ans: 2 },
+        { id: 6, ch: "Physics", chapter: "Fluid Mechanics", q: "The SI unit of coefficient of viscosity is:", opts: ["N·s/m²", "N/m²", "N·m/s", "N·m²"], ans: 0 },
+        { id: 7, ch: "Physics", chapter: "Fluid Mechanics", q: "A liquid flows through a horizontal tube. At two points the velocities are V₁ and V₂ and pressures are P₁ and P₂. If V₁ < V₂, then:", opts: ["P₁ < P₂", "P₁ > P₂", "P₁ = P₂", "Cannot be determined"], ans: 1 },
+        { id: 8, ch: "Physics", chapter: "Fluid Mechanics", q: "Water rises to a height of 10 cm in a capillary tube. If the radius of the tube is halved (keeping other factors constant), water will rise to a height of:", opts: ["5 cm", "10 cm", "20 cm", "40 cm"], ans: 2 },
+        { id: 9, ch: "Physics", chapter: "Thermodynamics", q: "The first law of thermodynamics is mathematically expressed as:", opts: ["dQ = dU + dW", "dQ = dU − dW", "dU = dQ + dW", "dW = dQ + dU"], ans: 0 },
+        { id: 10, ch: "Physics", chapter: "Thermodynamics", q: "In an isothermal process for an ideal gas:", opts: ["ΔU = 0", "ΔQ = 0", "ΔW = 0", "ΔP = 0"], ans: 0 },
+        { id: 11, ch: "Physics", chapter: "Thermodynamics", q: "The work done by a gas in an isobaric process is given by:", opts: ["W = nRT ln(V₂/V₁)", "W = PΔV", "W = 0", "W = ΔU"], ans: 1 },
+        { id: 12, ch: "Physics", chapter: "Thermodynamics", q: "In an isochoric process:", opts: ["Work done is zero", "Heat supplied is zero", "Change in internal energy is zero", "Temperature is constant"], ans: 0 },
+        { id: 13, ch: "Physics", chapter: "Thermodynamics", q: "In a cyclic process, the heat absorbed by the system is equal to:", opts: ["Change in internal energy", "Work done by the system", "Zero", "Work done on the system"], ans: 1 },
+        { id: 14, ch: "Physics", chapter: "Thermodynamics", q: "For an ideal monoatomic gas, the value of γ (ratio of specific heats Cₚ/Cᵥ) is:", opts: ["1", "5/3", "7/5", "4/3"], ans: 1 },
+        { id: 15, ch: "Physics", chapter: "Thermodynamics", q: "Work done by an ideal gas during an isothermal expansion from volume V₁ to V₂ at temperature T is:", opts: ["nRT(V₂ − V₁)", "nRT ln(V₂/V₁)", "nRT(V₁/V₂)", "PΔV"], ans: 1 },
+        { id: 16, ch: "Physics", chapter: "Thermodynamics", q: "The fraction of heat supplied that is used to do work during an isobaric process is:", opts: ["1/γ", "(γ − 1)/γ", "γ", "γ − 1"], ans: 1 },
+        { id: 17, ch: "Physics", chapter: "Electromagnetic Induction", q: "According to Faraday’s law of electromagnetic induction, the induced EMF is directly proportional to:", opts: ["Magnetic flux", "Rate of change of magnetic flux", "Rate of change of current", "Rate of change of electric field"], ans: 1 },
+        { id: 18, ch: "Physics", chapter: "Electromagnetic Induction", q: "Lenz’s law is a direct consequence of the conservation of:", opts: ["Mass", "Energy", "Charge", "Momentum"], ans: 1 },
+        { id: 19, ch: "Physics", chapter: "Electromagnetic Induction", q: "The SI unit of self-inductance is:", opts: ["Weber", "Tesla", "Henry", "Ohm"], ans: 2 },
+        { id: 20, ch: "Physics", chapter: "Electromagnetic Induction", q: "A rod of length L moves with velocity v perpendicular to a uniform magnetic field B. The motional EMF induced across the rod is:", opts: ["BLv", "BL/v", "Bv/L", "L/(Bv)"], ans: 0 },
+        { id: 21, ch: "Physics", chapter: "Electromagnetic Induction", q: "Eddy currents are used in:", opts: ["Induction furnace", "Electromagnetic braking", "Speedometer", "All of these"], ans: 3 },
+        { id: 22, ch: "Physics", chapter: "Electromagnetic Induction", q: "The energy stored in an inductor of inductance L carrying a current I is:", opts: ["LI", "½LI²", "LI²", "2LI²"], ans: 1 },
+        { id: 23, ch: "Physics", chapter: "Electromagnetic Induction", q: "Two coils have a mutual inductance of 5 mH. If the current in the primary coil changes at the rate of 1000 A/s, the EMF induced in the secondary coil is:", opts: ["5 V", "0.5 V", "50 V", "500 V"], ans: 0 },
+        { id: 24, ch: "Physics", chapter: "Alternating Current", q: "The RMS value of an alternating current of peak value I₀ is:", opts: ["I₀", "I₀/√2", "I₀·√2", "I₀/2"], ans: 1 },
+        { id: 25, ch: "Physics", chapter: "Alternating Current", q: "In a purely resistive AC circuit, the current and voltage are:", opts: ["In phase", "90° out of phase", "180° out of phase", "45° out of phase"], ans: 0 },
+        { id: 26, ch: "Physics", chapter: "Alternating Current", q: "In a purely inductive AC circuit, the current:", opts: ["Leads the voltage by 90°", "Lags the voltage by 90°", "Is in phase with the voltage", "Is 180° out of phase with the voltage"], ans: 1 },
+        { id: 27, ch: "Physics", chapter: "Alternating Current", q: "The capacitive reactance of a capacitor in an AC circuit of angular frequency ω is:", opts: ["ωC", "1/(ωC)", "ωL", "1/(ωL)"], ans: 1 },
+        { id: 28, ch: "Physics", chapter: "Alternating Current", q: "Resonance in a series LCR circuit occurs when:", opts: ["Xₗ = Xc", "Xₗ > Xc", "Xₗ < Xc", "Xₗ = 0"], ans: 0 },
+        { id: 29, ch: "Physics", chapter: "Alternating Current", q: "The power factor of an AC circuit containing a pure inductor is:", opts: ["0", "1", "0.5", "√2"], ans: 0 },
+        { id: 30, ch: "Physics", chapter: "Alternating Current", q: "A transformer works on the principle of:", opts: ["Self-induction", "Mutual induction", "Electrostatic induction", "Faraday’s law of electrolysis"], ans: 1 },
+        { id: 31, ch: "Biology", chapter: "Biological Classification", q: "The five-kingdom system of classification was proposed by:", opts: ["Carolus Linnaeus", "R. H. Whittaker", "Ernst Haeckel", "Copeland"], ans: 1 },
+        { id: 32, ch: "Biology", chapter: "Biological Classification", q: "Which of the following organisms belongs to kingdom Monera?", opts: ["Amoeba", "Bacteria", "Yeast", "Chlamydomonas"], ans: 1 },
+        { id: 33, ch: "Biology", chapter: "Biological Classification", q: "Methanogens, which produce methane in the guts of ruminants, belong to:", opts: ["Eubacteria", "Archaebacteria", "Cyanobacteria", "Actinomycetes"], ans: 1 },
+        { id: 34, ch: "Biology", chapter: "Biological Classification", q: "Which of the following protists is saprophytic and forms aggregations called plasmodium?", opts: ["Dinoflagellates", "Slime moulds", "Euglenoids", "Chrysophytes"], ans: 1 },
+        { id: 35, ch: "Biology", chapter: "Biological Classification", q: "The cell wall of most fungi is composed of:", opts: ["Cellulose", "Chitin", "Peptidoglycan", "Lignin"], ans: 1 },
+        { id: 36, ch: "Biology", chapter: "Biological Classification", q: "Viroids differ from viruses in that viroids:", opts: ["Lack a protein coat", "Contain DNA", "Are larger than viruses", "Have a complex protein capsid"], ans: 0 },
+        { id: 37, ch: "Biology", chapter: "Biological Classification", q: "Lichens represent a symbiotic association between:", opts: ["Algae and bacteria", "Fungi and bacteria", "Algae and fungi", "Fungi and bryophytes"], ans: 2 },
+        { id: 38, ch: "Biology", chapter: "Biological Classification", q: "Which of the following is a characteristic feature of kingdom Protista?", opts: ["Prokaryotic cells", "Always multicellular", "Eukaryotic and mostly unicellular", "Always autotrophic"], ans: 2 },
+        { id: 39, ch: "Biology", chapter: "Plant Kingdom", q: "Plant body is a thallus (not differentiated into root, stem and leaves) in:", opts: ["Algae only", "Bryophytes only", "Pteridophytes", "Both algae and some bryophytes"], ans: 3 },
+        { id: 40, ch: "Biology", chapter: "Plant Kingdom", q: "Bryophytes are known as the ‘amphibians of the plant kingdom’ because:", opts: ["They live in water only", "They require water for fertilization", "They live only on land", "They are dependent on animals"], ans: 1 },
+        { id: 41, ch: "Biology", chapter: "Plant Kingdom", q: "The first truly vascular plants (with xylem and phloem) are:", opts: ["Algae", "Bryophytes", "Pteridophytes", "Gymnosperms"], ans: 2 },
+        { id: 42, ch: "Biology", chapter: "Plant Kingdom", q: "Gymnosperms are characterized by the presence of:", opts: ["Naked seeds (not enclosed in a fruit)", "Seeds enclosed in fruits", "Absence of seeds", "Showy, brightly coloured flowers"], ans: 0 },
+        { id: 43, ch: "Biology", chapter: "Plant Kingdom", q: "Double fertilization is a unique and characteristic feature of:", opts: ["Algae", "Bryophytes", "Pteridophytes", "Angiosperms"], ans: 3 },
+        { id: 44, ch: "Biology", chapter: "Plant Kingdom", q: "The dominant phase in the life cycle of bryophytes is the:", opts: ["Sporophyte", "Gametophyte", "Both are equally dominant", "Neither is dominant"], ans: 1 },
+        { id: 45, ch: "Biology", chapter: "Plant Kingdom", q: "Red algae (Rhodophyceae) store food primarily in the form of:", opts: ["Starch", "Floridean starch", "Mannitol", "Laminarin"], ans: 1 },
+        { id: 46, ch: "Biology", chapter: "Animal Kingdom", q: "The body of members of phylum Porifera is supported by a skeleton made up of:", opts: ["Muscles and bones", "Spicules and spongin fibres", "A notochord", "Vertebrae"], ans: 1 },
+        { id: 47, ch: "Biology", chapter: "Animal Kingdom", q: "Cnidoblasts (stinging cells) are a characteristic feature of the phylum:", opts: ["Porifera", "Coelenterata (Cnidaria)", "Annelida", "Mollusca"], ans: 1 },
+        { id: 48, ch: "Biology", chapter: "Animal Kingdom", q: "The excretory organs in phylum Platyhelminthes are:", opts: ["Nephridia", "Flame cells (protonephridia)", "Malpighian tubules", "Kidneys"], ans: 1 },
+        { id: 49, ch: "Biology", chapter: "Animal Kingdom", q: "True metamerism (body segmentation) is a characteristic feature of phylum:", opts: ["Porifera", "Cnidaria", "Annelida", "Mollusca"], ans: 2 },
+        { id: 50, ch: "Biology", chapter: "Animal Kingdom", q: "The largest phylum in the animal kingdom, containing the maximum number of species, is:", opts: ["Chordata", "Arthropoda", "Mollusca", "Annelida"], ans: 1 },
+        { id: 51, ch: "Biology", chapter: "Animal Kingdom", q: "Which of the following best describes the respiratory organs of arthropods?", opts: ["Book lungs only", "Trachea only", "Gills only", "Gills, book lungs, book gills or trachea, depending on the species"], ans: 3 },
+        { id: 52, ch: "Biology", chapter: "Animal Kingdom", q: "The water vascular system, with tube feet for locomotion, is the characteristic feature of phylum:", opts: ["Mollusca", "Echinodermata", "Arthropoda", "Annelida"], ans: 1 },
+        { id: 53, ch: "Biology", chapter: "Animal Kingdom", q: "The notochord (at least at some stage of life) is present in all members of:", opts: ["Phylum Chordata", "Subphylum Vertebrata only", "Phylum Echinodermata", "Phylum Arthropoda"], ans: 0 },
+        { id: 54, ch: "Biology", chapter: "Anatomy of Flowering Plants", q: "Meristematic tissue is characterised by:", opts: ["Dead cells with thick walls", "Actively dividing cells with dense cytoplasm and thin walls", "Cells with thick lignified walls", "Cells with large central vacuoles and no division"], ans: 1 },
+        { id: 55, ch: "Biology", chapter: "Anatomy of Flowering Plants", q: "Which of the following is a complex permanent tissue in plants?", opts: ["Parenchyma", "Collenchyma", "Xylem", "Sclerenchyma"], ans: 2 },
+        { id: 56, ch: "Biology", chapter: "Anatomy of Flowering Plants", q: "In dicot roots, the vascular bundles are:", opts: ["Radial and exarch", "Radial and endarch", "Conjoint and endarch", "Conjoint and exarch"], ans: 0 },
+        { id: 57, ch: "Biology", chapter: "Anatomy of Flowering Plants", q: "A typical monocot stem is characterised by:", opts: ["Vascular bundles arranged in a ring", "Scattered vascular bundles in the ground tissue", "Presence of cambium in vascular bundles", "Well-developed secondary growth"], ans: 1 },
+        { id: 58, ch: "Biology", chapter: "Anatomy of Flowering Plants", q: "Bulliform cells, which help the leaf to roll inward during water stress, are found in:", opts: ["Dicot leaf", "Monocot leaf", "Dicot stem", "Monocot root"], ans: 1 },
+        { id: 59, ch: "Biology", chapter: "Anatomy of Flowering Plants", q: "Secondary growth (due to activity of vascular cambium) is generally absent in:", opts: ["Dicot stem", "Monocot stem", "Gymnosperms", "Dicot root"], ans: 1 },
+        { id: 60, ch: "Biology", chapter: "Anatomy of Flowering Plants", q: "Kranz anatomy, with prominent bundle-sheath cells around vascular bundles, is a characteristic feature of:", opts: ["C₃ plants", "C₄ plants", "CAM plants", "All green plants"], ans: 1 },
+      ];
+
+      const SEC_LABELS = {
+        P: { label: "Section A", title: "Physics (Q1–Q30)", note: "Fluid Mechanics, Thermodynamics, EMI, and AC" },
+        B: { label: "Section B", title: "Biology (Q31–Q60)", note: "Classification, Plant Kingdom, Animal Kingdom, and Anatomy" },
+      };
+      const TOTAL = Q.length;
+      const LETTERS = ["A", "B", "C", "D"];
+      let currentQ = 0;
+      let userAnswers = new Array(TOTAL).fill(-1);
+      let reviewFlags = new Array(TOTAL).fill(false);
+      let submitted = false;
+      let timerSec = 0;
+      let timerInterval;
+
+      function subjectClass(ch) {
+        return ch === "Physics" ? "phys" : "bio";
+      }
+
+      function sectionFor(q) {
+        return q.ch === "Physics" ? "P" : "B";
+      }
+
+      function startQuiz() {
+        document.getElementById("heroSection").style.display = "none";
+        document.getElementById("progressWrap").classList.add("active");
+        document.getElementById("paletteToggle").classList.add("active");
+        buildAllCards();
+        buildPalette();
+        showQuestion(0);
+        startTimer();
+      }
+
+      function buildAllCards() {
+        const area = document.getElementById("quizArea");
+        let html = "";
+        let lastSec = "";
+        Q.forEach((q, i) => {
+          const tagCls = subjectClass(q.ch);
+          const numBioCls = tagCls === "bio" ? "bio-num" : "";
+          const sec = sectionFor(q);
+          if (sec !== lastSec) {
+            lastSec = sec;
+            const si = SEC_LABELS[sec];
+            html += `<div class="section-divider" id="sec-${sec}" style="display:none">
+              <span class="section-divider-label">${si.label}</span>
+              <span class="section-divider-title">${si.title}</span>
+              <span class="section-divider-note">${si.note}</span>
+            </div>`;
+          }
+          const optsHtml = q.opts.map((o, j) => `
+            <button class="opt-btn" id="opt-${i}-${j}" onclick="selectOpt(${i},${j})">
+              <span class="opt-letter">${LETTERS[j]}</span>
+              <span>${o}</span>
+            </button>
+          `).join("");
+          html += `<div class="q-card" id="qcard-${i}" data-sec="${sec}">
+            <div class="q-header">
+              <span class="q-num ${numBioCls}">Q${q.id}</span>
+              <div class="q-meta">
+                <span class="q-tag ${tagCls}">${q.ch}</span>
+                <span class="q-tag type">MCQ</span>
+                <span class="q-tag med">Practice</span>
+              </div>
+            </div>
+            <div class="chapter-badge">${q.chapter}</div>
+            <div class="q-text">${q.q}</div>
+            <div class="options">${optsHtml}</div>
+            <div class="nav-btns">
+              <button class="nav-btn" onclick="prevQuestion()" ${i === 0 ? "disabled" : ""}>← Prev</button>
+              <button class="nav-btn primary" onclick="nextQuestion()">${i === TOTAL - 1 ? "Finish →" : "Next →"}</button>
+              <button class="nav-btn clear-response" onclick="clearResponse(${i})">✕ Clear</button>
+              <button class="nav-btn mark-review${reviewFlags[i] ? " marked" : ""}" id="mark-${i}" onclick="toggleReview(${i})">${reviewFlags[i] ? "★ Marked" : "☆ Mark for Review"}</button>
+            </div>
+          </div>`;
+        });
+        area.innerHTML = html;
+      }
+
+      function showQuestion(idx) {
+        document.querySelectorAll(".q-card").forEach(c => c.classList.remove("active"));
+        document.querySelectorAll(".section-divider").forEach(d => (d.style.display = "none"));
+        const card = document.getElementById(`qcard-${idx}`);
+        card.classList.add("active");
+        const divider = document.getElementById(`sec-${card.dataset.sec}`);
+        if (idx === 0 || sectionFor(Q[idx]) !== sectionFor(Q[idx - 1])) divider.style.display = "block";
+        currentQ = idx;
+        updateProgress();
+        updatePalette();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function selectOpt(qIdx, optIdx) {
+        if (submitted) return;
+        for (let i = 0; i < 4; i++) document.getElementById(`opt-${qIdx}-${i}`)?.classList.remove("selected");
+        document.getElementById(`opt-${qIdx}-${optIdx}`).classList.add("selected");
+        userAnswers[qIdx] = optIdx;
+        updatePalette();
+        updateProgress();
+      }
+
+      function clearResponse(qIdx) {
+        if (submitted) return;
+        userAnswers[qIdx] = -1;
+        for (let i = 0; i < 4; i++) document.getElementById(`opt-${qIdx}-${i}`)?.classList.remove("selected");
+        updatePalette();
+        updateProgress();
+      }
+
+      function nextQuestion() {
+        if (currentQ < TOTAL - 1) showQuestion(currentQ + 1);
+        else finishQuiz();
+      }
+
+      function prevQuestion() {
+        if (currentQ > 0) showQuestion(currentQ - 1);
+      }
+
+      function toggleReview(idx) {
+        reviewFlags[idx] = !reviewFlags[idx];
+        const btn = document.getElementById(`mark-${idx}`);
+        btn.classList.toggle("marked", reviewFlags[idx]);
+        btn.textContent = reviewFlags[idx] ? "★ Marked" : "☆ Mark for Review";
+        updatePalette();
+      }
+
+      function updateProgress() {
+        const answered = userAnswers.filter(a => a !== -1).length;
+        document.getElementById("qCounter").textContent = `Q ${currentQ + 1} / ${TOTAL}`;
+        document.getElementById("progressFill").style.width = (answered / TOTAL) * 100 + "%";
+      }
+
+      function buildPalette() {
+        const grid = document.getElementById("paletteGrid");
+        let html = "";
+        for (let i = 0; i < TOTAL; i++) html += `<div class="palette-dot" id="pdot-${i}" onclick="showQuestion(${i})">${i + 1}</div>`;
+        grid.innerHTML = html;
+      }
+
+      function updatePalette() {
+        for (let i = 0; i < TOTAL; i++) {
+          const dot = document.getElementById(`pdot-${i}`);
+          if (!dot) continue;
+          dot.className = "palette-dot";
+          if (i === currentQ) dot.classList.add("current");
+          if (userAnswers[i] !== -1) dot.classList.add("answered");
+          if (reviewFlags[i]) dot.classList.add("review");
+        }
+      }
+
+      function togglePalette() {
+        document.getElementById("palettePanel").classList.toggle("open");
+      }
+
+      function startTimer() {
+        timerInterval = setInterval(() => {
+          timerSec++;
+          const m = String(Math.floor(timerSec / 60)).padStart(2, "0");
+          const s = String(timerSec % 60).padStart(2, "0");
+          document.getElementById("progressTimer").textContent = `${m}:${s}`;
+        }, 1000);
+      }
+
+      function finishQuiz() {
+        if (!window._isReplay) {
+          const unanswered = userAnswers.filter(a => a === -1).length;
+          if (unanswered > 0 && !confirm(`You have ${unanswered} unanswered question${unanswered > 1 ? "s" : ""}. Submit anyway?`)) return;
+        }
+        submitQuiz();
+      }
+
+      function saveAttempt(data) {
+        try {
+          const results = JSON.parse(localStorage.getItem("papResults") || "[]");
+          results.unshift(data);
+          localStorage.setItem("papResults", JSON.stringify(results));
+        } catch (e) {}
+      }
+
+      function submitQuiz() {
+        submitted = true;
+        clearInterval(timerInterval);
+        document.getElementById("quizArea").classList.add("hidden");
+        document.getElementById("paletteToggle").style.display = "none";
+        document.getElementById("palettePanel").style.display = "none";
+        document.getElementById("progressWrap").style.display = "none";
+        let correct = 0, wrong = 0, skipped = 0;
+        let physCorrect = 0, physTotal = 0, bioCorrect = 0, bioTotal = 0;
+        Q.forEach((q, i) => {
+          const isPhys = q.ch === "Physics";
+          if (isPhys) physTotal++; else bioTotal++;
+          if (userAnswers[i] === -1) skipped++;
+          else if (userAnswers[i] === q.ans) {
+            correct++;
+            if (isPhys) physCorrect++; else bioCorrect++;
+          } else wrong++;
+        });
+        const neetScore = correct * 4 - wrong;
+        const pct = Math.round((correct / TOTAL) * 100);
+        const circumference = 2 * Math.PI * 65;
+        const offset = circumference - (pct / 100) * circumference;
+        const ringColor = pct >= 80 ? "var(--green)" : pct >= 50 ? "var(--amber)" : "var(--red)";
+        const grade = pct >= 90 ? "Outstanding!" : pct >= 75 ? "Great Work!" : pct >= 50 ? "Keep Practicing!" : "Needs Revision";
+        const timeStr = document.getElementById("progressTimer").textContent;
+        const physPct = physTotal ? Math.round((physCorrect / physTotal) * 100) : 0;
+        const bioPct = bioTotal ? Math.round((bioCorrect / bioTotal) * 100) : 0;
+        if (!window._isReplay) {
+          saveAttempt({
+            id: Date.now(),
+            paperFile: "23AP1.html",
+            paperName: "Physics & Biology Practice [60Q]",
+            paperTag: "60Q Practice",
+            correct, wrong, skipped,
+            totalQuestions: TOTAL, neetScore, maxScore: TOTAL * 4,
+            percentage: pct, timeTaken: timeStr, timerSeconds: timerSec,
+            userAnswers: [...userAnswers],
+          });
+        }
+        const res = document.getElementById("resultsSection");
+        res.style.display = "block";
+        res.innerHTML = `
+<div class="results-card">
+  <h2>${grade}</h2>
+  <div class="score-ring">
+    <svg width="160" height="160" viewBox="0 0 160 160">
+      <circle class="ring-bg" cx="80" cy="80" r="65"></circle>
+      <circle class="ring-fill" cx="80" cy="80" r="65" stroke="${ringColor}" stroke-dasharray="${circumference}" stroke-dashoffset="${circumference}" id="scoreRing"></circle>
+    </svg>
+    <div class="score-center"><div class="pct">${pct}%</div><div class="of">${correct}/${TOTAL}</div></div>
+  </div>
+  <div class="stats-grid">
+    <div class="stat-item neet"><div class="stat-num">${neetScore}</div><div class="stat-lbl">NEET Score</div></div>
+    <div class="stat-item correct"><div class="stat-num">${correct}</div><div class="stat-lbl">Correct</div></div>
+    <div class="stat-item wrong"><div class="stat-num">${wrong}</div><div class="stat-lbl">Wrong</div></div>
+    <div class="stat-item skip"><div class="stat-num">${skipped}</div><div class="stat-lbl">Skipped</div></div>
+  </div>
+  <div style="margin-top:16px;font-size:13px;color:var(--text3)">Time: ${timeStr} · Max: ${TOTAL * 4}</div>
+</div>
+<div class="chapter-breakdown">
+  <h3>Subject Breakdown</h3>
+  <div class="chapter-bar-wrap">
+    <div class="chapter-bar-header"><span style="color:var(--accent)">⚙️ Physics</span><span style="color:var(--text2)">${physCorrect}/${physTotal} (${physPct}%)</span></div>
+    <div class="chapter-bar-track"><div class="chapter-bar-fill" id="physBar" style="width:0%;background:var(--accent)"></div></div>
+  </div>
+  <div class="chapter-bar-wrap">
+    <div class="chapter-bar-header"><span style="color:var(--pink)">🌿 Biology</span><span style="color:var(--text2)">${bioCorrect}/${bioTotal} (${bioPct}%)</span></div>
+    <div class="chapter-bar-track"><div class="chapter-bar-fill" id="bioBar" style="width:0%;background:var(--pink)"></div></div>
+  </div>
+</div>
+<div class="review-title">Complete Review</div>
+<div class="review-sub">Answer key and selected responses for all questions.</div>
+<div class="review-filter">
+  <button class="filter-btn active" onclick="filterReview('all',this)">All (${TOTAL})</button>
+  <button class="filter-btn" onclick="filterReview('wrong',this)">Wrong (${wrong})</button>
+  <button class="filter-btn" onclick="filterReview('skipped',this)">Skipped (${skipped})</button>
+  <button class="filter-btn" onclick="filterReview('correct',this)">Correct (${correct})</button>
+</div>
+<div id="reviewCards"></div>`;
+        renderReviewCards("all");
+        setTimeout(() => {
+          document.getElementById("scoreRing").style.strokeDashoffset = offset;
+          document.getElementById("physBar").style.width = physPct + "%";
+          document.getElementById("bioBar").style.width = bioPct + "%";
+        }, 100);
+        res.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function renderReviewCards(filter) {
+        const container = document.getElementById("reviewCards");
+        let html = "";
+        Q.forEach((q, i) => {
+          const ua = userAnswers[i];
+          const isCorrect = ua === q.ans;
+          const isSkipped = ua === -1;
+          const isWrong = !isCorrect && !isSkipped;
+          if (filter === "wrong" && !isWrong) return;
+          if (filter === "skipped" && !isSkipped) return;
+          if (filter === "correct" && !isCorrect) return;
+          const tagCls = subjectClass(q.ch);
+          const numBioCls = tagCls === "bio" ? "bio-num" : "";
+          const status = isCorrect ? ["rc-correct", "badge-correct", "Correct"] : isSkipped ? ["rc-skipped", "badge-skipped", "Skipped"] : ["rc-wrong", "badge-wrong", "Wrong"];
+          html += `<div class="review-card ${status[0]}">
+            <div class="rc-header">
+              <span class="q-num ${numBioCls}">Q${q.id}</span>
+              <span class="q-tag ${tagCls}">${q.ch}</span>
+              <span class="q-tag type">${q.chapter}</span>
+              <span class="rc-badge ${status[1]}">${status[2]}</span>
+            </div>
+            <div class="rc-q">${q.q}</div>
+            <div class="rc-opts">`;
+          q.opts.forEach((o, j) => {
+            let optClass = "rc-opt";
+            let marker = LETTERS[j];
+            if (j === q.ans) { optClass += " rc-opt-correct"; marker = "✓"; }
+            else if (j === ua && isWrong) { optClass += " rc-opt-wrong"; marker = "✗"; }
+            html += `<div class="${optClass}"><span class="rc-letter">${marker}</span><span>${o}</span></div>`;
+          });
+          html += `</div>
+            <div class="rc-exp">
+              <h4>Answer Key</h4>
+              <p>Correct answer: <strong>${LETTERS[q.ans]}</strong> — ${q.opts[q.ans]}</p>
+            </div>
+          </div>`;
+        });
+        if (!html) html = `<p style="text-align:center;color:var(--text3);padding:30px 0">No questions match this filter.</p>`;
+        container.innerHTML = html;
+      }
+
+      function filterReview(type, btn) {
+        document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderReviewCards(type);
+      }
+
+      window.addEventListener("scroll", () => {
+        const pw = document.getElementById("progressWrap");
+        if (window.scrollY > 200) pw.classList.add("scrolled");
+        else pw.classList.remove("scrolled");
+      });
+
+      (function loadSavedAttempt() {
+        const params = new URLSearchParams(window.location.search);
+        const attemptId = params.get("attempt");
+        if (!attemptId) return;
+        const saved = JSON.parse(localStorage.getItem("papResults") || "[]");
+        const attempt = saved.find(r => r.id === Number(attemptId));
+        if (!attempt) return;
+        window._isReplay = true;
+        userAnswers = attempt.userAnswers;
+        timerSec = attempt.timerSeconds || 0;
+        const m = String(Math.floor(timerSec / 60)).padStart(2, "0");
+        const s = String(timerSec % 60).padStart(2, "0");
+        document.getElementById("progressTimer").textContent = `${m}:${s}`;
+        document.getElementById("heroSection").style.display = "none";
+        buildAllCards();
+        buildPalette();
+        submitQuiz();
+      })();
+    </script>
+  </body>
+</html>
