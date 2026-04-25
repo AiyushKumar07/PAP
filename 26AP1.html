@@ -1,0 +1,1178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEET Mock Test - Dual Nature & Excretion</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --bg: #0a0e17;
+        --surface: #111827;
+        --surface2: #1a2236;
+        --surface3: #222d44;
+        --border: #2a3654;
+        --text: #e2e8f0;
+        --text2: #94a3b8;
+        --text3: #64748b;
+        --accent: #06d6a0;
+        --accent2: #118ab2;
+        --red: #ef4444;
+        --green: #22c55e;
+        --amber: #f59e0b;
+        --purple: #a78bfa;
+        --pink: #f472b6;
+        --radius: 12px;
+        --radius-sm: 8px;
+      }
+      html { scroll-behavior: smooth; }
+      body {
+        font-family: "IBM Plex Sans", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background:
+          radial-gradient(ellipse at 20% 0%, rgba(6,214,160,0.06) 0%, transparent 50%),
+          radial-gradient(ellipse at 80% 100%, rgba(244,114,182,0.06) 0%, transparent 50%);
+        pointer-events: none;
+        z-index: 0;
+      }
+      .container {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 20px;
+        position: relative;
+        z-index: 1;
+      }
+      .hero {
+        text-align: center;
+        padding: 50px 20px 40px;
+        position: relative;
+      }
+      .hero-badge {
+        display: inline-block;
+        padding: 6px 18px;
+        border-radius: 50px;
+        background: rgba(6,214,160,0.12);
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 18px;
+        border: 1px solid rgba(6,214,160,0.2);
+      }
+      .hero h1 {
+        font-family: "DM Serif Display", serif;
+        font-size: clamp(28px, 5vw, 44px);
+        color: #fff;
+        margin-bottom: 12px;
+        line-height: 1.2;
+      }
+      .hero h1 span {
+        background: linear-gradient(135deg, var(--accent), var(--pink));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .hero p { color: var(--text2); font-size: 16px; max-width: 580px; margin: 0 auto 28px; }
+      .hero-tags {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 32px;
+      }
+      .hero-tags span { padding: 6px 16px; border-radius: 8px; font-size: 12px; font-weight: 600; }
+      .tag-chem { background: rgba(6,214,160,0.1); color: var(--accent); border: 1px solid rgba(6,214,160,0.22); }
+      .tag-bio { background: rgba(244,114,182,0.1); color: var(--pink); border: 1px solid rgba(244,114,182,0.22); }
+      .start-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 16px 48px;
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--bg);
+        background: linear-gradient(135deg, var(--accent), var(--pink));
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 25px rgba(6,214,160,0.3);
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+      .start-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 35px rgba(244,114,182,0.4);
+      }
+      .progress-wrap {
+        position: sticky;
+        top: 0; z-index: 100;
+        background: rgba(10,14,23,0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 14px 20px;
+        border-bottom: 1px solid var(--border);
+        display: none;
+        transition: box-shadow 0.3s;
+      }
+      .progress-wrap.active { display: block; }
+      .progress-wrap.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.4); }
+      .progress-inner {
+        max-width: 860px; margin: 0 auto;
+        display: flex; align-items: center; gap: 16px;
+      }
+      .progress-text { font-size: 13px; font-weight: 600; color: var(--text2); white-space: nowrap; min-width: 90px; }
+      .progress-text b { color: var(--accent); }
+      .progress-bar { flex: 1; height: 6px; background: var(--surface3); border-radius: 10px; overflow: hidden; }
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent), var(--pink));
+        border-radius: 10px;
+        transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+        width: 0%;
+      }
+      .progress-timer {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px; color: var(--accent); min-width: 60px; text-align: right;
+      }
+      .q-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 32px;
+        margin-bottom: 24px;
+        display: none;
+        animation: fadeIn 0.4s ease both;
+      }
+      .q-card.active { display: block; }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(12px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .q-header { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
+      .q-num {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px; font-weight: 700; color: var(--bg);
+        background: var(--accent); padding: 4px 10px; border-radius: 6px;
+        white-space: nowrap; flex-shrink: 0;
+      }
+      .q-num.bio-num { background: var(--pink); }
+      .q-meta { display: flex; gap: 8px; flex-wrap: wrap; }
+      .q-tag {
+        font-size: 11px; padding: 3px 10px; border-radius: 50px;
+        font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;
+      }
+      .q-tag.chem { background: rgba(6,214,160,0.12); color: var(--accent); }
+      .q-tag.bio { background: rgba(244,114,182,0.15); color: var(--pink); }
+      .q-tag.type { background: rgba(167,139,250,0.12); color: var(--purple); }
+      .q-tag.hard { background: rgba(239,68,68,0.12); color: var(--red); }
+      .q-tag.med { background: rgba(245,158,11,0.12); color: var(--amber); }
+      .q-tag.easy { background: rgba(34,197,94,0.12); color: var(--green); }
+      .q-text { font-size: 15.5px; color: #fff; line-height: 1.7; margin-bottom: 20px; white-space: pre-wrap; }
+      .q-chapter-badge {
+        display: inline-block;
+        font-size: 11px; padding: 3px 10px; border-radius: 50px;
+        font-weight: 600; letter-spacing: 0.5px;
+        background: rgba(17,138,178,0.12); color: var(--accent2);
+        border: 1px solid rgba(17,138,178,0.2);
+        margin-bottom: 10px;
+      }
+      .options { display: flex; flex-direction: column; gap: 10px; }
+      .opt-btn {
+        display: flex; align-items: flex-start; gap: 12px;
+        padding: 14px 18px;
+        background: var(--surface2);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius-sm);
+        cursor: pointer; transition: all 0.2s;
+        text-align: left; width: 100%;
+        font-size: 14.5px; color: var(--text); line-height: 1.5;
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+      .opt-btn:hover { border-color: var(--accent); background: rgba(6,214,160,0.05); transform: translateX(4px); }
+      .opt-btn .opt-letter {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700; color: var(--text3); font-size: 13px;
+        min-width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;
+        border-radius: 6px; background: var(--surface3); flex-shrink: 0; margin-top: 1px; transition: all 0.2s;
+      }
+      .opt-btn.selected { border-color: var(--accent); background: rgba(6,214,160,0.08); }
+      .opt-btn.selected .opt-letter { background: var(--accent); color: var(--bg); }
+      .nav-btns { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+      .nav-btn {
+        padding: 10px 24px; border-radius: 8px;
+        font-family: "IBM Plex Sans", sans-serif;
+        font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+        border: 1.5px solid var(--border); background: var(--surface2); color: var(--text);
+      }
+      .nav-btn:hover { border-color: var(--accent); }
+      .nav-btn.primary {
+        background: linear-gradient(135deg, var(--accent), var(--pink));
+        border: none; color: var(--bg); font-weight: 700;
+        box-shadow: 0 2px 12px rgba(6,214,160,0.2);
+      }
+      .nav-btn.primary:hover { box-shadow: 0 4px 20px rgba(244,114,182,0.32); transform: translateY(-1px); }
+      .nav-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+      .mark-review { margin-left: auto; font-size: 13px; color: var(--amber); background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.25); }
+      .mark-review.marked { background: rgba(245,158,11,0.2); border-color: var(--amber); }
+      .clear-response { font-size: 13px; color: var(--red); background: rgba(239,68,68,0.08); border-color: rgba(239,68,68,0.25); }
+      .clear-response:hover { background: rgba(239,68,68,0.15); border-color: var(--red); }
+      .palette-toggle {
+        position: fixed; bottom: 24px; right: 24px;
+        width: 48px; height: 48px; border-radius: 50%;
+        background: var(--accent); color: var(--bg);
+        border: none; font-size: 20px; font-weight: 700;
+        cursor: pointer; z-index: 200;
+        box-shadow: 0 4px 20px rgba(6,214,160,0.4);
+        display: none; align-items: center; justify-content: center; transition: transform 0.2s;
+      }
+      .palette-toggle:hover { transform: scale(1.06); }
+      .palette-toggle.active { display: flex; }
+      .palette-panel {
+        position: fixed; bottom: 84px; right: 24px;
+        width: 320px; max-height: 420px; overflow-y: auto;
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: 14px; padding: 20px; z-index: 200; display: none;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      }
+      .palette-panel.open { display: block; }
+      .palette-title { font-weight: 700; font-size: 14px; margin-bottom: 14px; color: var(--text2); text-transform: uppercase; letter-spacing: 1px; }
+      .palette-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 6px; }
+      .palette-dot {
+        width: 32px; height: 32px; border-radius: 7px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 11px; font-weight: 700; cursor: pointer;
+        border: 1.5px solid var(--border); background: var(--surface2); color: var(--text3); transition: all 0.15s;
+      }
+      .palette-dot:hover { border-color: var(--accent); }
+      .palette-dot.answered { background: rgba(6,214,160,0.15); border-color: var(--accent); color: var(--accent); }
+      .palette-dot.review { background: rgba(245,158,11,0.15); border-color: var(--amber); color: var(--amber); }
+      .palette-dot.current { box-shadow: 0 0 0 2px var(--accent); }
+      .palette-legend { display: flex; gap: 16px; margin-top: 14px; font-size: 11px; color: var(--text3); flex-wrap: wrap; }
+      .palette-legend span { display: flex; align-items: center; gap: 5px; }
+      .legend-dot { width: 10px; height: 10px; border-radius: 3px; }
+      #resultsSection { display: none; }
+      .results-card {
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: 16px; padding: 40px 30px;
+        max-width: 500px; margin: 0 auto 40px; text-align: center;
+      }
+      .results-card h2 { font-family: "DM Serif Display", serif; font-size: 32px; color: #fff; margin-bottom: 8px; }
+      .score-ring { width: 160px; height: 160px; margin: 24px auto; position: relative; }
+      .score-ring svg { transform: rotate(-90deg); }
+      .score-ring .ring-bg { fill: none; stroke: var(--surface3); stroke-width: 10; }
+      .score-ring .ring-fill { fill: none; stroke-width: 10; stroke-linecap: round; transition: stroke-dashoffset 1.5s cubic-bezier(0.4,0,0.2,1); }
+      .score-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); text-align: center; }
+      .score-center .pct { font-family: "JetBrains Mono", monospace; font-size: 36px; font-weight: 700; color: #fff; }
+      .score-center .of { font-size: 13px; color: var(--text3); }
+      .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 24px; }
+      .stat-item { padding: 14px 8px; background: var(--surface2); border-radius: var(--radius-sm); text-align: center; }
+      .stat-num { font-family: "JetBrains Mono", monospace; font-size: 22px; font-weight: 700; }
+      .stat-lbl { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+      .stat-item.neet .stat-num { color: var(--accent2); }
+      .stat-item.correct .stat-num { color: var(--green); }
+      .stat-item.wrong .stat-num { color: var(--red); }
+      .stat-item.skip .stat-num { color: var(--amber); }
+      .chapter-breakdown { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 40px; }
+      .chapter-breakdown h3 { font-family: "DM Serif Display", serif; font-size: 18px; color: #fff; margin-bottom: 20px; }
+      .chapter-bar-wrap { margin-bottom: 16px; }
+      .chapter-bar-header { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px; font-weight: 600; }
+      .chapter-bar-track { height: 8px; background: var(--surface3); border-radius: 4px; overflow: hidden; }
+      .chapter-bar-fill { height: 100%; border-radius: 4px; transition: width 1s ease; }
+      .review-title { font-family: "DM Serif Display", serif; font-size: 28px; color: #fff; margin: 40px 0 12px; text-align: center; }
+      .review-sub { text-align: center; color: var(--text2); font-size: 14px; margin-bottom: 24px; }
+      .review-filter { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
+      .filter-btn {
+        padding: 8px 20px; border-radius: 50px; border: 1px solid var(--border);
+        background: transparent; color: var(--text2); font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+      }
+      .filter-btn:hover, .filter-btn.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+      .review-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; margin-bottom: 20px; }
+      .review-card.rc-correct { border-left: 4px solid var(--green); }
+      .review-card.rc-wrong { border-left: 4px solid var(--red); }
+      .review-card.rc-skipped { border-left: 4px solid var(--amber); }
+      .rc-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+      .rc-badge { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 5px; text-transform: uppercase; letter-spacing: 0.6px; }
+      .rc-badge.badge-correct { background: rgba(34,197,94,0.1); color: var(--green); border: 1px solid rgba(34,197,94,0.3); }
+      .rc-badge.badge-wrong { background: rgba(239,68,68,0.1); color: var(--red); border: 1px solid rgba(239,68,68,0.3); }
+      .rc-badge.badge-skipped { background: rgba(245,158,11,0.1); color: var(--amber); border: 1px solid rgba(245,158,11,0.3); }
+      .rc-q { font-size: 14.5px; line-height: 1.7; margin-bottom: 16px; color: var(--text); white-space: pre-wrap; }
+      .rc-opts { margin-bottom: 16px; }
+      .rc-opt { padding: 10px 14px; margin-bottom: 6px; border-radius: 8px; font-size: 13.5px; line-height: 1.6; display: flex; align-items: flex-start; gap: 10px; border: 1.5px solid transparent; }
+      .rc-opt.rc-opt-correct { background: rgba(34,197,94,0.08); border-color: rgba(34,197,94,0.3); }
+      .rc-opt.rc-opt-wrong { background: rgba(239,68,68,0.08); border-color: rgba(239,68,68,0.3); }
+      .rc-letter { flex-shrink: 0; width: 22px; height: 22px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; background: var(--border); color: var(--text3); }
+      .rc-opt.rc-opt-correct .rc-letter { background: var(--green); color: #fff; }
+      .rc-opt.rc-opt-wrong .rc-letter { background: var(--red); color: #fff; }
+      .rc-exp { background: rgba(6,214,160,0.05); border: 1px solid rgba(6,214,160,0.15); border-radius: 10px; padding: 18px 20px; }
+      .rc-exp h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--accent); margin-bottom: 8px; }
+      .rc-exp p { font-size: 13.5px; line-height: 1.75; color: var(--text2); }
+      .rc-exp p strong { color: var(--text); }
+      .rc-exp .ncert-ref { display: inline-block; margin-top: 8px; font-size: 11px; padding: 3px 8px; background: rgba(6,214,160,0.1); border-radius: 4px; color: var(--accent); font-weight: 600; }
+      .hidden { display: none !important; }
+      @media (max-width: 600px) {
+        .container { padding: 12px; }
+        .q-card { padding: 20px 16px; }
+        .hero h1 { font-size: 26px; }
+        .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        .progress-inner { gap: 10px; }
+        .palette-panel { width: calc(100vw - 40px); right: 20px; }
+        .review-card { padding: 20px 16px; }
+        .palette-grid { grid-template-columns: repeat(6, 1fr); }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero" id="heroSection">
+      <div class="hero-badge">NEET 2026 · Mock Test</div>
+      <h1>Dual Nature & Excretory System</h1>
+      <p>A focused mock test on Dual Nature of Radiation and Matter, and Excretory Products and their Elimination.</p>
+      <div class="hero-tags">
+        <span class="tag-chem">⚛️ 12 — Physics (Dual Nature)</span>
+        <span class="tag-bio">🧬 11 — Biology (Excretory System)</span>
+      </div>
+      <button class="start-btn" onclick="startQuiz()">Begin Test →</button>
+    </div>
+
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-inner">
+        <div class="progress-text"><b id="qCounter">Q 1 / 23</b></div>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="progress-timer" id="progressTimer">00:00</div>
+      </div>
+    </div>
+
+    <div class="container" id="quizArea"></div>
+    <div class="container" id="resultsSection"></div>
+
+    <button class="palette-toggle" id="paletteToggle" onclick="togglePalette()">☰</button>
+    <div class="palette-panel" id="palettePanel">
+      <div class="palette-title">Question Palette</div>
+      <div class="palette-grid" id="paletteGrid"></div>
+      <div class="palette-legend">
+        <span><div class="legend-dot" style="background:var(--surface2);border:1px solid var(--border)"></div>Unseen</span>
+        <span><div class="legend-dot" style="background:rgba(6,214,160,0.2)"></div>Answered</span>
+        <span><div class="legend-dot" style="background:rgba(245,158,11,0.2)"></div>Review</span>
+      </div>
+    </div>
+
+    <script>
+      const AR_OPTS = [
+  "Both A and R are true, and R is the correct explanation of A",
+  "Both A and R are true, but R is NOT the correct explanation of A",
+  "A is true but R is false",
+  "A is false but R is true",
+];
+
+const Q = [
+  {
+    "id": 1,
+    "ch": "Physics",
+    "chapter": "Dual Nature",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "Threshold frequency depends on:",
+    "opts": [
+      "Intensity of light",
+      "Nature of metal",
+      "Work function of electron",
+      "Both B and C"
+    ],
+    "ans": 3,
+    "exp": "Threshold frequency depends on work function, which depends on nature of metal.",
+    "ref": "Mock Test"
+  },
+  {
+    "id": 2,
+    "ch": "Physics",
+    "chapter": "Dual Nature",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "Photoelectric effect supports:",
+    "opts": [
+      "Wave theory",
+      "Particle nature",
+      "Both equally",
+      "None"
+    ],
+    "ans": 1,
+    "exp": "Instant emission proves particle nature of light.",
+    "ref": "Mock Test"
+  },
+  {
+    "id": 3,
+    "ch": "Physics",
+    "chapter": "Dual Nature",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "Increasing intensity increases:",
+    "opts": [
+      "K.E of electrons",
+      "Number of electrons",
+      "Work function",
+      "Frequency"
+    ],
+    "ans": 1,
+    "exp": "Intensity controls number of emitted electrons.",
+    "ref": "Mock Test"
+  },
+  {
+    "id": 4,
+    "ch": "Physics",
+    "chapter": "Dual Nature",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "Einstein\u2019s equation is:",
+    "opts": [
+      "E = mc\u00b2",
+      "h\u03bd = W + KE",
+      "\u03bb = h/p",
+      "None"
+    ],
+    "ans": 1,
+    "exp": "Energy of photon splits into work function and kinetic energy.",
+    "ref": "Mock Test"
+  },
+  {
+    "id": 5,
+    "ch": "Physics",
+    "chapter": "Dual Nature",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "de Broglie wavelength is inversely proportional to:",
+    "opts": [
+      "Mass",
+      "Velocity",
+      "Momentum",
+      "Energy"
+    ],
+    "ans": 2,
+    "exp": "\u03bb = h/p",
+    "ref": "Mock Test"
+  },
+  {
+    "id": 6,
+    "ch": "Physics",
+    "chapter": "Dual Nature",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "Stopping potential depends on:",
+    "opts": [
+      "Intensity",
+      "Frequency",
+      "Area",
+      "Material"
+    ],
+    "ans": 1,
+    "exp": "It depends on maximum kinetic energy \u2192 frequency.",
+    "ref": "Mock Test"
+  },
+  {
+    "id": 7,
+    "ch": "Physics",
+    "chapter": "Dual Nature",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "Minimum energy required to remove electron is:",
+    "opts": [
+      "Photon energy",
+      "Work function",
+      "Threshold energy",
+      "K.E"
+    ],
+    "ans": 1,
+    "exp": "Work function is minimum required energy.",
+    "ref": "Mock Test"
+  },
+  {
+    "id": 8,
+    "ch": "Physics",
+    "chapter": "Dual Nature",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "If frequency increases, K.E:",
+    "opts": [
+      "Decreases",
+      "Increases",
+      "Constant",
+      "Zero"
+    ],
+    "ans": 1,
+    "exp": "Self explanatory",
+    "ref": "Mock Test"
+  },
+  {
+    "id": 9,
+    "ch": "Physics",
+    "chapter": "Dual Nature",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "Wave nature of electron proven by:",
+    "opts": [
+      "Photoelectric",
+      "Davisson-Germer",
+      "Compton",
+      "None"
+    ],
+    "ans": 1,
+    "exp": "Self explanatory",
+    "ref": "Mock Test"
+  },
+  {
+    "id": 10,
+    "ch": "Physics",
+    "chapter": "Dual Nature",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "Dual nature implies:",
+    "opts": [
+      "Only wave",
+      "Only particle",
+      "Both",
+      "None"
+    ],
+    "ans": 2,
+    "exp": "Self explanatory",
+    "ref": "Mock Test"
+  },
+  {
+    "id": 11,
+    "ch": "Biology",
+    "chapter": "Excretory System",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "Functional unit of kidney:",
+    "opts": [
+      "Neuron",
+      "Nephron",
+      "Alveoli",
+      "Tubule"
+    ],
+    "ans": 1,
+    "exp": "Self explanatory",
+    "ref": "Mock Test"
+  },
+  {
+    "id": 12,
+    "ch": "Biology",
+    "chapter": "Excretory System",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "Ultrafiltration occurs in:",
+    "opts": [
+      "PCT",
+      "Loop",
+      "Glomerulus",
+      "DCT"
+    ],
+    "ans": 2,
+    "exp": "Self explanatory",
+    "ref": "Mock Test"
+  },
+  {
+    "id": 13,
+    "ch": "Biology",
+    "chapter": "Excretory System",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "Filtrate enters Bowman's capsule due to:",
+    "opts": [
+      "Osmosis",
+      "Pressure",
+      "Diffusion",
+      "Active transport"
+    ],
+    "ans": 1,
+    "exp": "Self explanatory",
+    "ref": "Mock Test"
+  },
+  {
+    "id": 14,
+    "ch": "Biology",
+    "chapter": "Excretory System",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "Reabsorption mainly in:",
+    "opts": [
+      "PCT",
+      "Loop",
+      "DCT",
+      "Collecting duct"
+    ],
+    "ans": 0,
+    "exp": "Self explanatory",
+    "ref": "Mock Test"
+  },
+  {
+    "id": 15,
+    "ch": "Biology",
+    "chapter": "Excretory System",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "ADH acts on:",
+    "opts": [
+      "PCT",
+      "Loop",
+      "Collecting duct",
+      "Capsule"
+    ],
+    "ans": 2,
+    "exp": "Self explanatory",
+    "ref": "Mock Test"
+  },
+  {
+    "id": 16,
+    "ch": "Biology",
+    "chapter": "Excretory System",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "Urea formed in:",
+    "opts": [
+      "Kidney",
+      "Liver",
+      "Heart",
+      "Lungs"
+    ],
+    "ans": 1,
+    "exp": "Self explanatory",
+    "ref": "Mock Test"
+  },
+  {
+    "id": 17,
+    "ch": "Biology",
+    "chapter": "Excretory System",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "Maximum water reabsorption in:",
+    "opts": [
+      "PCT",
+      "Loop",
+      "DCT",
+      "CD"
+    ],
+    "ans": 0,
+    "exp": "Self explanatory",
+    "ref": "Mock Test"
+  },
+  {
+    "id": 18,
+    "ch": "Biology",
+    "chapter": "Excretory System",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "Counter current mechanism in:",
+    "opts": [
+      "PCT",
+      "Loop of Henle",
+      "DCT",
+      "Capsule"
+    ],
+    "ans": 1,
+    "exp": "Self explanatory",
+    "ref": "Mock Test"
+  },
+  {
+    "id": 19,
+    "ch": "Biology",
+    "chapter": "Excretory System",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "Renin is released by:",
+    "opts": [
+      "Liver",
+      "Kidney",
+      "Heart",
+      "Brain"
+    ],
+    "ans": 1,
+    "exp": "Self explanatory",
+    "ref": "Mock Test"
+  },
+  {
+    "id": 20,
+    "ch": "Biology",
+    "chapter": "Excretory System",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "Dialysis replaces:",
+    "opts": [
+      "Lung",
+      "Kidney",
+      "Liver",
+      "Heart"
+    ],
+    "ans": 1,
+    "exp": "Self explanatory",
+    "ref": "Mock Test"
+  },
+  {
+    "id": 21,
+    "ch": "Physics",
+    "chapter": "Dual Nature",
+    "type": "Assertion-Reason",
+    "diff": "Medium",
+    "q": "Assertion: Photoelectric effect is instantaneous.\n            Reason: Light behaves as particles.",
+    "opts": [
+      "Both true",
+      "Both false",
+      "A true R false",
+      "A false R true"
+    ],
+    "ans": 0,
+    "exp": "Self explanatory",
+    "ref": "Mock Test"
+  },
+  {
+    "id": 22,
+    "ch": "Biology",
+    "chapter": "Excretory System",
+    "type": "Assertion-Reason",
+    "diff": "Medium",
+    "q": "Assertion: Loop of Henle concentrates urine.\n            Reason: Counter current mechanism exists.",
+    "opts": [
+      "Both A and R are true, and R is the correct explanation of A",
+      "Both A and R are true, but R is NOT the correct explanation of A",
+      "A is true but R is false",
+      "A is false but R is true"
+    ],
+    "ans": 0,
+    "exp": "Self explanatory",
+    "ref": "Mock Test"
+  },
+  {
+    "id": 50,
+    "ch": "Physics",
+    "chapter": "Dual Nature",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "Highest energy photon has:",
+    "opts": [
+      "Low frequency",
+      "High frequency",
+      "Long wavelength",
+      "Low energy"
+    ],
+    "ans": 1,
+    "exp": "Self explanatory",
+    "ref": "Mock Test"
+  }
+];
+
+      const TOTAL = Q.length;
+
+      const LETTERS = ["A", "B", "C", "D"];
+      let currentQ = 0;
+      let userAnswers = new Array(TOTAL).fill(-1);
+      let reviewFlags = new Array(TOTAL).fill(false);
+      let submitted = false;
+      let timerSec = 0;
+      let timerInterval;
+
+      function chClass(ch) { return ch === "Physics" ? "chem" : "bio"; }
+
+      function startQuiz() {
+        document.getElementById("heroSection").style.display = "none";
+        document.getElementById("progressWrap").classList.add("active");
+        document.getElementById("paletteToggle").classList.add("active");
+        buildAllCards();
+        buildPalette();
+        showQuestion(0);
+        startTimer();
+      }
+
+      function buildAllCards() {
+        const area = document.getElementById("quizArea");
+        let html = "";
+        Q.forEach((q, i) => {
+          const tagCls = chClass(q.ch);
+          const numBioCls = tagCls === "bio" ? "bio-num" : "";
+          const diffCls = q.diff === "Hard" ? "hard" : q.diff === "Easy" ? "easy" : "med";
+
+          const optsHtml = q.opts.map((o, j) => `
+            <button class="opt-btn" id="opt-${i}-${j}" onclick="selectOpt(${i},${j})">
+              <span class="opt-letter">${LETTERS[j]}</span>
+              <span>${o}</span>
+            </button>`).join("");
+
+          html += `<div class="q-card" id="qcard-${i}">
+            <div class="q-header">
+              <span class="q-num ${numBioCls}">Q${q.id}</span>
+              <div class="q-meta">
+                <span class="q-tag ${tagCls}">${q.ch}</span>
+                <span class="q-tag type">${q.type}</span>
+                <span class="q-tag ${diffCls}">${q.diff}</span>
+              </div>
+            </div>
+            <div class="q-chapter-badge">📌 ${q.chapter}</div>
+            <div class="q-text">${q.q}</div>
+            <div class="options">${optsHtml}</div>
+            <div class="nav-btns">
+              <button class="nav-btn" onclick="prevQuestion()" ${i === 0 ? "disabled" : ""}>← Prev</button>
+              <button class="nav-btn primary" onclick="nextQuestion()">${i === TOTAL - 1 ? "Finish →" : "Next →"}</button>
+              <button class="nav-btn clear-response" onclick="clearResponse(${i})">✕ Clear</button>
+              <button class="nav-btn mark-review${reviewFlags[i] ? " marked" : ""}" id="mark-${i}" onclick="toggleReview(${i})">
+                ${reviewFlags[i] ? "★ Marked" : "☆ Mark for Review"}
+              </button>
+            </div>
+          </div>`;
+        });
+        area.innerHTML = html;
+      }
+
+      function showQuestion(idx) {
+        document.querySelectorAll(".q-card").forEach(c => c.classList.remove("active"));
+        document.getElementById(`qcard-${idx}`).classList.add("active");
+        currentQ = idx;
+        updateProgress();
+        updatePalette();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function selectOpt(qIdx, optIdx) {
+        if (submitted) return;
+        for (let i = 0; i < 4; i++) {
+          const el = document.getElementById(`opt-${qIdx}-${i}`);
+          if (el) el.classList.remove("selected");
+        }
+        document.getElementById(`opt-${qIdx}-${optIdx}`).classList.add("selected");
+        userAnswers[qIdx] = optIdx;
+        updatePalette();
+        updateProgress();
+      }
+
+      function clearResponse(qIdx) {
+        if (submitted) return;
+        userAnswers[qIdx] = -1;
+        for (let i = 0; i < 4; i++) {
+          const el = document.getElementById(`opt-${qIdx}-${i}`);
+          if (el) el.classList.remove("selected");
+        }
+        updatePalette();
+        updateProgress();
+      }
+
+      function nextQuestion() {
+        if (currentQ < TOTAL - 1) showQuestion(currentQ + 1);
+        else finishQuiz();
+      }
+
+      function prevQuestion() {
+        if (currentQ > 0) showQuestion(currentQ - 1);
+      }
+
+      function toggleReview(idx) {
+        reviewFlags[idx] = !reviewFlags[idx];
+        const btn = document.getElementById(`mark-${idx}`);
+        btn.classList.toggle("marked", reviewFlags[idx]);
+        btn.textContent = reviewFlags[idx] ? "★ Marked" : "☆ Mark for Review";
+        updatePalette();
+      }
+
+      function updateProgress() {
+        const answered = userAnswers.filter(a => a !== -1).length;
+        document.getElementById("qCounter").textContent = `Q ${currentQ + 1} / ${TOTAL}`;
+        document.getElementById("progressFill").style.width = (answered / TOTAL) * 100 + "%";
+      }
+
+      function buildPalette() {
+        const grid = document.getElementById("paletteGrid");
+        let html = "";
+        for (let i = 0; i < TOTAL; i++) {
+          html += `<div class="palette-dot" id="pdot-${i}" onclick="showQuestion(${i})">${i + 1}</div>`;
+        }
+        grid.innerHTML = html;
+      }
+
+      function updatePalette() {
+        for (let i = 0; i < TOTAL; i++) {
+          const dot = document.getElementById(`pdot-${i}`);
+          if (!dot) continue;
+          dot.className = "palette-dot";
+          if (i === currentQ) dot.classList.add("current");
+          if (userAnswers[i] !== -1) dot.classList.add("answered");
+          if (reviewFlags[i]) dot.classList.add("review");
+        }
+      }
+
+      function togglePalette() {
+        document.getElementById("palettePanel").classList.toggle("open");
+      }
+
+      function startTimer() {
+        timerInterval = setInterval(() => {
+          timerSec++;
+          const m = String(Math.floor(timerSec / 60)).padStart(2, "0");
+          const s = String(timerSec % 60).padStart(2, "0");
+          document.getElementById("progressTimer").textContent = `${m}:${s}`;
+        }, 1000);
+      }
+
+      function finishQuiz() {
+        if (!window._isReplay) {
+          const unanswered = userAnswers.filter(a => a === -1).length;
+          if (unanswered > 0) {
+            if (!confirm(`You have ${unanswered} unanswered question${unanswered > 1 ? "s" : ""}. Submit anyway?`)) return;
+          }
+        }
+        submitQuiz();
+      }
+
+      function saveAttempt(data) {
+        try {
+          const results = JSON.parse(localStorage.getItem("papResults") || "[]");
+          results.unshift(data);
+          localStorage.setItem("papResults", JSON.stringify(results));
+        } catch (e) {}
+      }
+
+      function submitQuiz() {
+        submitted = true;
+        clearInterval(timerInterval);
+        document.getElementById("quizArea").classList.add("hidden");
+        document.getElementById("paletteToggle").style.display = "none";
+        document.getElementById("palettePanel").style.display = "none";
+        document.getElementById("progressWrap").style.display = "none";
+
+        let correct = 0, wrong = 0, skipped = 0;
+        let secACorrect = 0, secATotal = 0, secBCorrect = 0, secBTotal = 0, secCCorrect = 0, secCTotal = 0, secDCorrect = 0, secDTotal = 0;
+
+        Q.forEach((q, i) => {
+          if (q.id <= 50) { secATotal++; }
+          else if (q.id <= 65) { secBTotal++; }
+          else if (q.id <= 80) { secCTotal++; }
+          else { secDTotal++; }
+          if (userAnswers[i] === -1) { skipped++; }
+          else if (userAnswers[i] === q.ans) { correct++;
+            if (q.id <= 50) secACorrect++;
+            else if (q.id <= 65) secBCorrect++;
+            else if (q.id <= 80) secCCorrect++;
+            else secDCorrect++;
+          }
+          else { wrong++; }
+        });
+
+        const neetScore = correct * 4 - wrong * 1;
+        const pct = Math.round((correct / TOTAL) * 100);
+        const circumference = 2 * Math.PI * 65;
+        const offset = circumference - (pct / 100) * circumference;
+        const ringColor = pct >= 80 ? "var(--green)" : pct >= 50 ? "var(--amber)" : "var(--red)";
+        const grade = pct >= 90 ? "Outstanding!" : pct >= 75 ? "Great Work!" : pct >= 50 ? "Keep Practicing!" : "Needs Revision";
+
+        const timeStr = document.getElementById("progressTimer").textContent;
+        const secAPct = secATotal ? Math.round((secACorrect / secATotal) * 100) : 0;
+        const secBPct = secBTotal ? Math.round((secBCorrect / secBTotal) * 100) : 0;
+        const secCPct = secCTotal ? Math.round((secCCorrect / secCTotal) * 100) : 0;
+        const secDPct = secDTotal ? Math.round((secDCorrect / secDTotal) * 100) : 0;
+
+        if (!window._isReplay) {
+          saveAttempt({
+            id: Date.now(),
+            paperFile: "26AP1.html",
+            paperName: "Dual Nature & Excretion Mock [23Q]",
+            paperTag: "Mock Test 23Q",
+            correct, wrong, skipped,
+            totalQuestions: TOTAL, neetScore, maxScore: TOTAL * 4,
+            percentage: pct, timeTaken: timeStr, timerSeconds: timerSec,
+            userAnswers: [...userAnswers],
+          });
+        }
+
+        const res = document.getElementById("resultsSection");
+        res.style.display = "block";
+
+        let rhtml = `
+<div class="results-card">
+  <h2>${grade}</h2>
+  <div class="score-ring">
+    <svg width="160" height="160" viewBox="0 0 160 160">
+      <circle class="ring-bg" cx="80" cy="80" r="65"/>
+      <circle class="ring-fill" cx="80" cy="80" r="65"
+        stroke="${ringColor}"
+        stroke-dasharray="${circumference}"
+        stroke-dashoffset="${circumference}"
+        id="scoreRing"/>
+    </svg>
+    <div class="score-center">
+      <div class="pct">${pct}%</div>
+      <div class="of">${correct}/${TOTAL}</div>
+    </div>
+  </div>
+  <div class="stats-grid">
+    <div class="stat-item neet"><div class="stat-num">${neetScore}</div><div class="stat-lbl">NEET Score</div></div>
+    <div class="stat-item correct"><div class="stat-num">${correct}</div><div class="stat-lbl">Correct</div></div>
+    <div class="stat-item wrong"><div class="stat-num">${wrong}</div><div class="stat-lbl">Wrong</div></div>
+    <div class="stat-item skip"><div class="stat-num">${skipped}</div><div class="stat-lbl">Skipped</div></div>
+  </div>
+  <div style="margin-top:16px;font-size:13px;color:var(--text3)">Time: ${timeStr} · Max: ${TOTAL * 4}</div>
+</div>
+
+<div class="chapter-breakdown">
+  <h3>Section Breakdown</h3>
+  <div class="chapter-bar-wrap">
+    <div class="chapter-bar-header">
+      <span style="color:var(--accent)">🧬 Section A — MCQ (Q1–Q50)</span>
+      <span style="color:var(--text2)">${secACorrect}/${secATotal} (${secAPct}%)</span>
+    </div>
+    <div class="chapter-bar-track">
+      <div class="chapter-bar-fill" id="secABar" style="width:0%;background:var(--accent)"></div>
+    </div>
+  </div>
+  <div class="chapter-bar-wrap">
+    <div class="chapter-bar-header">
+      <span style="color:var(--pink)">📋 Section B — Assertion-Reason (Q51–Q65)</span>
+      <span style="color:var(--text2)">${secBCorrect}/${secBTotal} (${secBPct}%)</span>
+    </div>
+    <div class="chapter-bar-track">
+      <div class="chapter-bar-fill" id="secBBar" style="width:0%;background:var(--pink)"></div>
+    </div>
+  </div>
+  <div class="chapter-bar-wrap">
+    <div class="chapter-bar-header">
+      <span style="color:var(--purple)">🔗 Section C — Match/Multi (Q66–Q80)</span>
+      <span style="color:var(--text2)">${secCCorrect}/${secCTotal} (${secCPct}%)</span>
+    </div>
+    <div class="chapter-bar-track">
+      <div class="chapter-bar-fill" id="secCBar" style="width:0%;background:var(--purple)"></div>
+    </div>
+  </div>
+  <div class="chapter-bar-wrap">
+    <div class="chapter-bar-header">
+      <span style="color:var(--amber)">📖 Section D — Case-based (Q81–Q90)</span>
+      <span style="color:var(--text2)">${secDCorrect}/${secDTotal} (${secDPct}%)</span>
+    </div>
+    <div class="chapter-bar-track">
+      <div class="chapter-bar-fill" id="secDBar" style="width:0%;background:var(--amber)"></div>
+    </div>
+  </div>
+</div>
+
+<div class="review-title">Complete Walkthrough</div>
+<div class="review-sub">Every question reviewed with NCERT-based explanations.</div>
+<div class="review-filter">
+  <button class="filter-btn active" onclick="filterReview('all',this)">All (${TOTAL})</button>
+  <button class="filter-btn" onclick="filterReview('wrong',this)">❌ Wrong (${wrong})</button>
+  <button class="filter-btn" onclick="filterReview('skipped',this)">⏭️ Skipped (${skipped})</button>
+  <button class="filter-btn" onclick="filterReview('correct',this)">✅ Correct (${correct})</button>
+</div>
+<div id="reviewCards"></div>`;
+
+        res.innerHTML = rhtml;
+        renderReviewCards("all");
+
+        setTimeout(() => {
+          document.getElementById("scoreRing").style.strokeDashoffset = offset;
+          document.getElementById("secABar").style.width = secAPct + "%";
+          document.getElementById("secBBar").style.width = secBPct + "%";
+          document.getElementById("secCBar").style.width = secCPct + "%";
+          document.getElementById("secDBar").style.width = secDPct + "%";
+        }, 100);
+
+        res.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function renderReviewCards(filter) {
+        const container = document.getElementById("reviewCards");
+        let html = "";
+        Q.forEach((q, i) => {
+          const ua = userAnswers[i];
+          const isCorrect = ua === q.ans;
+          const isSkipped = ua === -1;
+          const isWrong = !isCorrect && !isSkipped;
+
+          if (filter === "wrong" && !isWrong) return;
+          if (filter === "skipped" && !isSkipped) return;
+          if (filter === "correct" && !isCorrect) return;
+
+          let cardClass, badgeClass, badgeText;
+          if (isCorrect) { cardClass = "rc-correct"; badgeClass = "badge-correct"; badgeText = "✅ Correct"; }
+          else if (isSkipped) { cardClass = "rc-skipped"; badgeClass = "badge-skipped"; badgeText = "⏭️ Skipped"; }
+          else { cardClass = "rc-wrong"; badgeClass = "badge-wrong"; badgeText = "❌ Wrong"; }
+
+          const tagCls = chClass(q.ch);
+          const numBioCls = tagCls === "bio" ? "bio-num" : "";
+
+          html += `<div class="review-card ${cardClass}">
+            <div class="rc-header">
+              <span class="q-num ${numBioCls}">Q${q.id}</span>
+              <span class="q-tag ${tagCls}">${q.ch}</span>
+              <span class="rc-badge ${badgeClass}">${badgeText}</span>
+              <span style="font-size:11px;color:var(--text3);margin-left:auto">${q.type}</span>
+            </div>
+            <div style="font-size:11px;color:var(--accent2);margin-bottom:10px;font-weight:600">📌 ${q.chapter}</div>
+            <div class="rc-q">${q.q}</div>
+            <div class="rc-opts">`;
+
+          q.opts.forEach((o, j) => {
+            let optClass = "rc-opt";
+            let marker = LETTERS[j];
+            if (j === q.ans) { optClass += " rc-opt-correct"; marker = "✓"; }
+            else if (j === ua && isWrong) { optClass += " rc-opt-wrong"; marker = "✗"; }
+            html += `<div class="${optClass}">
+              <span class="rc-letter">${marker}</span>
+              <span>${o}</span>
+            </div>`;
+          });
+
+          html += `</div>
+            <div class="rc-exp">
+              <h4>💡 Explanation</h4>
+              <p>${q.exp}</p>
+              <span class="ncert-ref">📖 ${q.ref}</span>
+            </div>
+          </div>`;
+        });
+
+        if (!html)
+          html = `<p style="text-align:center;color:var(--text3);padding:30px 0">No questions match this filter.</p>`;
+        container.innerHTML = html;
+      }
+
+      function filterReview(type, btn) {
+        document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderReviewCards(type);
+      }
+
+      window.addEventListener("scroll", () => {
+        const pw = document.getElementById("progressWrap");
+        if (window.scrollY > 200) pw.classList.add("scrolled");
+        else pw.classList.remove("scrolled");
+      });
+
+      (function loadSavedAttempt() {
+        const params = new URLSearchParams(window.location.search);
+        const attemptId = params.get("attempt");
+        if (!attemptId) return;
+        const saved = JSON.parse(localStorage.getItem("papResults") || "[]");
+        const attempt = saved.find(r => r.id === Number(attemptId));
+        if (!attempt) return;
+        window._isReplay = true;
+        userAnswers = attempt.userAnswers;
+        timerSec = attempt.timerSeconds || 0;
+        const m = String(Math.floor(timerSec / 60)).padStart(2, "0");
+        const s = String(timerSec % 60).padStart(2, "0");
+        document.getElementById("progressTimer").textContent = `${m}:${s}`;
+        document.getElementById("heroSection").style.display = "none";
+        submitQuiz();
+      })();
+    
+    </script>
+  </body>
+</html>
