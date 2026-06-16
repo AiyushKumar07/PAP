@@ -1,0 +1,1098 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEET Mock Test - Biology Human Physiology</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --bg: #0a0e17;
+        --surface: #111827;
+        --surface2: #1a2236;
+        --surface3: #222d44;
+        --border: #2a3654;
+        --text: #e2e8f0;
+        --text2: #94a3b8;
+        --text3: #64748b;
+        --accent: #06d6a0;
+        --accent2: #118ab2;
+        --red: #ef4444;
+        --green: #22c55e;
+        --amber: #f59e0b;
+        --purple: #a78bfa;
+        --pink: #f472b6;
+        --radius: 12px;
+        --radius-sm: 8px;
+      }
+      html { scroll-behavior: smooth; }
+      body {
+        font-family: "IBM Plex Sans", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background:
+          radial-gradient(ellipse at 20% 0%, rgba(6,214,160,0.06) 0%, transparent 50%),
+          radial-gradient(ellipse at 80% 100%, rgba(244,114,182,0.06) 0%, transparent 50%);
+        pointer-events: none;
+        z-index: 0;
+      }
+      .container {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 20px;
+        position: relative;
+        z-index: 1;
+      }
+      .hero {
+        text-align: center;
+        padding: 50px 20px 40px;
+        position: relative;
+      }
+      .hero-badge {
+        display: inline-block;
+        padding: 6px 18px;
+        border-radius: 50px;
+        background: rgba(6,214,160,0.12);
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 18px;
+        border: 1px solid rgba(6,214,160,0.2);
+      }
+      .hero h1 {
+        font-family: "DM Serif Display", serif;
+        font-size: clamp(28px, 5vw, 44px);
+        color: #fff;
+        margin-bottom: 12px;
+        line-height: 1.2;
+      }
+      .hero h1 span {
+        background: linear-gradient(135deg, var(--accent), var(--pink));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .hero p { color: var(--text2); font-size: 16px; max-width: 580px; margin: 0 auto 28px; }
+      .hero-tags {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 32px;
+      }
+      .hero-tags span { padding: 6px 16px; border-radius: 8px; font-size: 12px; font-weight: 600; }
+      .tag-chem { background: rgba(6,214,160,0.1); color: var(--accent); border: 1px solid rgba(6,214,160,0.22); }
+      .tag-bio { background: rgba(244,114,182,0.1); color: var(--pink); border: 1px solid rgba(244,114,182,0.22); }
+      .start-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 16px 48px;
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--bg);
+        background: linear-gradient(135deg, var(--accent), var(--pink));
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 25px rgba(6,214,160,0.3);
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+      .start-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 35px rgba(244,114,182,0.4);
+      }
+      .progress-wrap {
+        position: sticky;
+        top: 0; z-index: 100;
+        background: rgba(10,14,23,0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 14px 20px;
+        border-bottom: 1px solid var(--border);
+        display: none;
+        transition: box-shadow 0.3s;
+      }
+      .progress-wrap.active { display: block; }
+      .progress-wrap.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.4); }
+      .progress-inner {
+        max-width: 860px; margin: 0 auto;
+        display: flex; align-items: center; gap: 16px;
+      }
+      .progress-text { font-size: 13px; font-weight: 600; color: var(--text2); white-space: nowrap; min-width: 90px; }
+      .progress-text b { color: var(--accent); }
+      .progress-bar { flex: 1; height: 6px; background: var(--surface3); border-radius: 10px; overflow: hidden; }
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent), var(--pink));
+        border-radius: 10px;
+        transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+        width: 0%;
+      }
+      .progress-timer {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px; color: var(--accent); min-width: 60px; text-align: right;
+      }
+      .q-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 32px;
+        margin-bottom: 24px;
+        display: none;
+        animation: fadeIn 0.4s ease both;
+      }
+      .q-card.active { display: block; }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(12px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .q-header { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
+      .q-num {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px; font-weight: 700; color: var(--bg);
+        background: var(--accent); padding: 4px 10px; border-radius: 6px;
+        white-space: nowrap; flex-shrink: 0;
+      }
+      .q-num.bio-num { background: var(--pink); }
+      .q-meta { display: flex; gap: 8px; flex-wrap: wrap; }
+      .q-tag {
+        font-size: 11px; padding: 3px 10px; border-radius: 50px;
+        font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;
+      }
+      .q-tag.chem { background: rgba(6,214,160,0.12); color: var(--accent); }
+      .q-tag.bio { background: rgba(244,114,182,0.15); color: var(--pink); }
+      .q-tag.type { background: rgba(167,139,250,0.12); color: var(--purple); }
+      .q-tag.hard { background: rgba(239,68,68,0.12); color: var(--red); }
+      .q-tag.med { background: rgba(245,158,11,0.12); color: var(--amber); }
+      .q-tag.easy { background: rgba(34,197,94,0.12); color: var(--green); }
+      .q-text { font-size: 15.5px; color: #fff; line-height: 1.7; margin-bottom: 20px; white-space: pre-wrap; }
+      .q-text table { margin: 10px 0; }
+      .q-text table th, .q-text table td { padding: 6px 10px; font-size: 14px; color: var(--text); }
+      .q-text table th { background: var(--surface3); color: var(--accent); }
+      .q-text table td { background: var(--surface2); }
+      .q-chapter-badge {
+        display: inline-block;
+        font-size: 11px; padding: 3px 10px; border-radius: 50px;
+        font-weight: 600; letter-spacing: 0.5px;
+        background: rgba(17,138,178,0.12); color: var(--accent2);
+        border: 1px solid rgba(17,138,178,0.2);
+        margin-bottom: 10px;
+      }
+      .options { display: flex; flex-direction: column; gap: 10px; }
+      .opt-btn {
+        display: flex; align-items: flex-start; gap: 12px;
+        padding: 14px 18px;
+        background: var(--surface2);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius-sm);
+        cursor: pointer; transition: all 0.2s;
+        text-align: left; width: 100%;
+        font-size: 14.5px; color: var(--text); line-height: 1.5;
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+      .opt-btn:hover { border-color: var(--accent); background: rgba(6,214,160,0.05); transform: translateX(4px); }
+      .opt-btn .opt-letter {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700; color: var(--text3); font-size: 13px;
+        min-width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;
+        border-radius: 6px; background: var(--surface3); flex-shrink: 0; margin-top: 1px; transition: all 0.2s;
+      }
+      .opt-btn.selected { border-color: var(--accent); background: rgba(6,214,160,0.08); }
+      .opt-btn.selected .opt-letter { background: var(--accent); color: var(--bg); }
+      .nav-btns { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+      .nav-btn {
+        padding: 10px 24px; border-radius: 8px;
+        font-family: "IBM Plex Sans", sans-serif;
+        font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+        border: 1.5px solid var(--border); background: var(--surface2); color: var(--text);
+      }
+      .nav-btn:hover { border-color: var(--accent); }
+      .nav-btn.primary {
+        background: linear-gradient(135deg, var(--accent), var(--pink));
+        border: none; color: var(--bg); font-weight: 700;
+        box-shadow: 0 2px 12px rgba(6,214,160,0.2);
+      }
+      .nav-btn.primary:hover { box-shadow: 0 4px 20px rgba(244,114,182,0.32); transform: translateY(-1px); }
+      .nav-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+      .mark-review { margin-left: auto; font-size: 13px; color: var(--amber); background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.25); }
+      .mark-review.marked { background: rgba(245,158,11,0.2); border-color: var(--amber); }
+      .clear-response { font-size: 13px; color: var(--red); background: rgba(239,68,68,0.08); border-color: rgba(239,68,68,0.25); }
+      .clear-response:hover { background: rgba(239,68,68,0.15); border-color: var(--red); }
+      .palette-toggle {
+        position: fixed; bottom: 24px; right: 24px;
+        width: 48px; height: 48px; border-radius: 50%;
+        background: var(--accent); color: var(--bg);
+        border: none; font-size: 20px; font-weight: 700;
+        cursor: pointer; z-index: 200;
+        box-shadow: 0 4px 20px rgba(6,214,160,0.4);
+        display: none; align-items: center; justify-content: center; transition: transform 0.2s;
+      }
+      .palette-toggle:hover { transform: scale(1.06); }
+      .palette-toggle.active { display: flex; }
+      .palette-panel {
+        position: fixed; bottom: 84px; right: 24px;
+        width: 320px; max-height: 420px; overflow-y: auto;
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: 14px; padding: 20px; z-index: 200; display: none;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      }
+      .palette-panel.open { display: block; }
+      .palette-title { font-weight: 700; font-size: 14px; margin-bottom: 14px; color: var(--text2); text-transform: uppercase; letter-spacing: 1px; }
+      .palette-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 6px; }
+      .palette-dot {
+        width: 32px; height: 32px; border-radius: 7px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 11px; font-weight: 700; cursor: pointer;
+        border: 1.5px solid var(--border); background: var(--surface2); color: var(--text3); transition: all 0.15s;
+      }
+      .palette-dot:hover { border-color: var(--accent); }
+      .palette-dot.answered { background: rgba(6,214,160,0.15); border-color: var(--accent); color: var(--accent); }
+      .palette-dot.review { background: rgba(245,158,11,0.15); border-color: var(--amber); color: var(--amber); }
+      .palette-dot.current { box-shadow: 0 0 0 2px var(--accent); }
+      .palette-legend { display: flex; gap: 16px; margin-top: 14px; font-size: 11px; color: var(--text3); flex-wrap: wrap; }
+      .palette-legend span { display: flex; align-items: center; gap: 5px; }
+      .legend-dot { width: 10px; height: 10px; border-radius: 3px; }
+      #resultsSection { display: none; }
+      .results-card {
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: 16px; padding: 40px 30px;
+        max-width: 500px; margin: 0 auto 40px; text-align: center;
+      }
+      .results-card h2 { font-family: "DM Serif Display", serif; font-size: 32px; color: #fff; margin-bottom: 8px; }
+      .score-ring { width: 160px; height: 160px; margin: 24px auto; position: relative; }
+      .score-ring svg { transform: rotate(-90deg); }
+      .score-ring .ring-bg { fill: none; stroke: var(--surface3); stroke-width: 10; }
+      .score-ring .ring-fill { fill: none; stroke-width: 10; stroke-linecap: round; transition: stroke-dashoffset 1.5s cubic-bezier(0.4,0,0.2,1); }
+      .score-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); text-align: center; }
+      .score-center .pct { font-family: "JetBrains Mono", monospace; font-size: 36px; font-weight: 700; color: #fff; }
+      .score-center .of { font-size: 13px; color: var(--text3); }
+      .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 24px; }
+      .stat-item { padding: 14px 8px; background: var(--surface2); border-radius: var(--radius-sm); text-align: center; }
+      .stat-num { font-family: "JetBrains Mono", monospace; font-size: 22px; font-weight: 700; }
+      .stat-lbl { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+      .stat-item.neet .stat-num { color: var(--accent2); }
+      .stat-item.correct .stat-num { color: var(--green); }
+      .stat-item.wrong .stat-num { color: var(--red); }
+      .stat-item.skip .stat-num { color: var(--amber); }
+      .chapter-breakdown { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 40px; }
+      .chapter-breakdown h3 { font-family: "DM Serif Display", serif; font-size: 18px; color: #fff; margin-bottom: 20px; }
+      .chapter-bar-wrap { margin-bottom: 16px; }
+      .chapter-bar-header { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px; font-weight: 600; }
+      .chapter-bar-track { height: 8px; background: var(--surface3); border-radius: 4px; overflow: hidden; }
+      .chapter-bar-fill { height: 100%; border-radius: 4px; transition: width 1s ease; }
+      .review-title { font-family: "DM Serif Display", serif; font-size: 28px; color: #fff; margin: 40px 0 12px; text-align: center; }
+      .review-sub { text-align: center; color: var(--text2); font-size: 14px; margin-bottom: 24px; }
+      .review-filter { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
+      .filter-btn {
+        padding: 8px 20px; border-radius: 50px; border: 1px solid var(--border);
+        background: transparent; color: var(--text2); font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+      }
+      .filter-btn:hover, .filter-btn.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+      .review-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; margin-bottom: 20px; }
+      .review-card.rc-correct { border-left: 4px solid var(--green); }
+      .review-card.rc-wrong { border-left: 4px solid var(--red); }
+      .review-card.rc-skipped { border-left: 4px solid var(--amber); }
+      .rc-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+      .rc-badge { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 5px; text-transform: uppercase; letter-spacing: 0.6px; }
+      .rc-badge.badge-correct { background: rgba(34,197,94,0.1); color: var(--green); border: 1px solid rgba(34,197,94,0.3); }
+      .rc-badge.badge-wrong { background: rgba(239,68,68,0.1); color: var(--red); border: 1px solid rgba(239,68,68,0.3); }
+      .rc-badge.badge-skipped { background: rgba(245,158,11,0.1); color: var(--amber); border: 1px solid rgba(245,158,11,0.3); }
+      .rc-q { font-size: 14.5px; line-height: 1.7; margin-bottom: 16px; color: var(--text); white-space: pre-wrap; }
+      .rc-q table { margin: 10px 0; }
+      .rc-q table th, .rc-q table td { padding: 6px 10px; font-size: 13px; color: var(--text); }
+      .rc-q table th { background: var(--surface3); color: var(--accent); }
+      .rc-q table td { background: var(--surface2); }
+      .rc-opts { margin-bottom: 16px; }
+      .rc-opt { padding: 10px 14px; margin-bottom: 6px; border-radius: 8px; font-size: 13.5px; line-height: 1.6; display: flex; align-items: flex-start; gap: 10px; border: 1.5px solid transparent; }
+      .rc-opt.rc-opt-correct { background: rgba(34,197,94,0.08); border-color: rgba(34,197,94,0.3); }
+      .rc-opt.rc-opt-wrong { background: rgba(239,68,68,0.08); border-color: rgba(239,68,68,0.3); }
+      .rc-letter { flex-shrink: 0; width: 22px; height: 22px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; background: var(--border); color: var(--text3); }
+      .rc-opt.rc-opt-correct .rc-letter { background: var(--green); color: #fff; }
+      .rc-opt.rc-opt-wrong .rc-letter { background: var(--red); color: #fff; }
+      .rc-exp { background: rgba(6,214,160,0.05); border: 1px solid rgba(6,214,160,0.15); border-radius: 10px; padding: 18px 20px; }
+      .rc-exp h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--accent); margin-bottom: 8px; }
+      .rc-exp p { font-size: 13.5px; line-height: 1.75; color: var(--text2); }
+      .rc-exp p strong { color: var(--text); }
+      .rc-exp .ncert-ref { display: inline-block; margin-top: 8px; font-size: 11px; padding: 3px 8px; background: rgba(6,214,160,0.1); border-radius: 4px; color: var(--accent); font-weight: 600; }
+      .hidden { display: none !important; }
+      @media (max-width: 600px) {
+        .container { padding: 12px; }
+        .q-card { padding: 20px 16px; }
+        .hero h1 { font-size: 26px; }
+        .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        .progress-inner { gap: 10px; }
+        .palette-panel { width: calc(100vw - 40px); right: 20px; }
+        .review-card { padding: 20px 16px; }
+        .palette-grid { grid-template-columns: repeat(6, 1fr); }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero" id="heroSection">
+      <div class="hero-badge">NEET 2026 · Mock Test</div>
+      <h1>Human Physiology — <span>Most Expected 20</span></h1>
+      <p>A focused mock test covering the most expected MCQs from Human Physiology — Breathing, Circulation, Excretion, Locomotion, Neural Control & Chemical Coordination.</p>
+      <div class="hero-tags">
+        <span class="tag-bio">🧬 20 — Biology (Human Physiology)</span>
+      </div>
+      <button class="start-btn" onclick="startQuiz()">Begin Test →</button>
+    </div>
+
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-inner">
+        <div class="progress-text"><b id="qCounter">Q 1 / 20</b></div>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="progress-timer" id="progressTimer">00:00</div>
+      </div>
+    </div>
+
+    <div class="container" id="quizArea"></div>
+    <div class="container" id="resultsSection"></div>
+
+    <button class="palette-toggle" id="paletteToggle" onclick="togglePalette()">☰</button>
+    <div class="palette-panel" id="palettePanel">
+      <div class="palette-title">Question Palette</div>
+      <div class="palette-grid" id="paletteGrid"></div>
+      <div class="palette-legend">
+        <span><div class="legend-dot" style="background:var(--surface2);border:1px solid var(--border)"></div>Unseen</span>
+        <span><div class="legend-dot" style="background:rgba(6,214,160,0.2)"></div>Answered</span>
+        <span><div class="legend-dot" style="background:rgba(245,158,11,0.2)"></div>Review</span>
+      </div>
+    </div>
+
+    <script>
+      const Q = [
+  {
+    "id": 1,
+    "ch": "Biology",
+    "chapter": "Breathing and Exchange of Gases",
+    "type": "True/False",
+    "diff": "Medium",
+    "q": "<strong>1. Classify each statement as True or False:</strong><br>I. Residual Volume (RV) averages 1100-1200 mL.<br>II. Expiratory Capacity (EC) = TV + ERV<br>III. Total Lung Capacity (TLC) = ERV + TV + IRV.<br>IV. Vital Capacity (VC) = ERV + TV + IRV.",
+    "opts": [
+      "(1) Statement I and II are true, Statement III and IV are false",
+      "(2) Statement I, II and IV are true, Statement III is false",
+      "(3) Statement I, II and III are true, Statement IV is false",
+      "(4) Statement II and IV are true, Statement I and III are false"
+    ],
+    "ans": 1,
+    "exp": "Total Lung Capacity (TLC) must also include Residual Volume (RV). Thus, TLC = RV + ERV + TV + IRV. Therefore, statement III is false, while I, II, and IV are correct standard respiratory definitions.",
+    "ref": "NCERT — Breathing and Exchange of Gases"
+  },
+  {
+    "id": 2,
+    "ch": "Biology",
+    "chapter": "Breathing and Exchange of Gases",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "<strong>2. Identify the correct matches.</strong><br>I. Respiratory rhythm centre - Medulla<br>II. Pneumotaxic centre - Pons<br>III. Chemosensitive area - Detects CO₂ and H⁺<br>IV. Oxygen role - Quite insignificant in regulation",
+    "opts": [
+      "(1) I and II only",
+      "(2) I, II and III only",
+      "(3) II, III and IV only",
+      "(4) I, II, III and IV"
+    ],
+    "ans": 3,
+    "exp": "All matches are correct as per standard physiological regulation of respiration. The role of oxygen in the regulation of respiratory rhythm is indeed quite insignificant compared to carbon dioxide and hydrogen ions.",
+    "ref": "NCERT — Breathing and Exchange of Gases (Regulation of Respiration)"
+  },
+  {
+    "id": 3,
+    "ch": "Biology",
+    "chapter": "Breathing and Exchange of Gases",
+    "type": "Match the Following",
+    "diff": "Medium",
+    "q": "<strong>3. Match Column I with Column II regarding respiratory volumes.</strong><br><table border=\"1\" style=\"border-collapse: collapse; width: 100%; text-align: left;\"><tr><th style=\"padding: 5px;\">Column I</th><th style=\"padding: 5px;\">Column II</th></tr><tr><td style=\"padding: 5px;\">A. Tidal Volume (TV)</td><td style=\"padding: 5px;\">P. TV + IRV</td></tr><tr><td style=\"padding: 5px;\">B. Inspiratory Capacity (IC)</td><td style=\"padding: 5px;\">Q. Approx 500 mL during normal breathing</td></tr><tr><td style=\"padding: 5px;\">C. Expiratory Capacity (EC)</td><td style=\"padding: 5px;\">R. ERV + RV</td></tr><tr><td style=\"padding: 5px;\">D. Functional Residual Capacity (FRC)</td><td style=\"padding: 5px;\">S. TV + ERV</td></tr><tr><td style=\"padding: 5px;\">E. Vital Capacity (VC)</td><td style=\"padding: 5px;\">T. ERV + TV + IRV</td></tr></table>",
+    "opts": [
+      "(1) A-R, B-T, C-Q, D-P, E-S",
+      "(2) A-P, B-Q, C-R, D-S, E-T",
+      "(3) A-Q, B-S, C-T, D-R, E-P",
+      "(4) A-Q, B-P, C-S, D-R, E-T"
+    ],
+    "ans": 3,
+    "exp": "TV is approx 500 mL (A-Q). IC = TV + IRV (B-P). EC = TV + ERV (C-S). FRC = ERV + RV (D-R). VC = ERV + TV + IRV (E-T).",
+    "ref": "NCERT — Breathing and Exchange of Gases (Respiratory Volumes and Capacities)"
+  },
+  {
+    "id": 4,
+    "ch": "Biology",
+    "chapter": "Breathing and Exchange of Gases",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "<strong>4. Select the option that contains the correct statements.</strong><br>I. A gradient is present for CO₂ from tissues to blood and blood to alveoli.<br>II. Solubility of the gases as well as the thickness of the membranes involved in diffusion are some important factors that can affect the rate of diffusion.<br>III. Partial pressures (in mm Hg) of Oxygen in alveoli is 159.<br>IV. Partial pressures (in mm Hg) of Oxygen in tissues is 40.",
+    "opts": [
+      "(1) I, II and IV only",
+      "(2) I, III and IV only",
+      "(3) II, III and IV only",
+      "(4) I, II and III only"
+    ],
+    "ans": 0,
+    "exp": "Statement III is incorrect because the partial pressure of oxygen in the alveoli is 104 mm Hg, not 159 mm Hg (159 mm Hg is the PO₂ of atmospheric air).",
+    "ref": "NCERT — Breathing and Exchange of Gases (Exchange of Gases)"
+  },
+  {
+    "id": 5,
+    "ch": "Biology",
+    "chapter": "Breathing and Exchange of Gases",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "<strong>5. Identify the correct matches.</strong><br>I. Diffusion membrane - much less than a millimetre, 3 layers<br>II. CO₂ gradient - Tissues → blood → alveoli<br>III. O₂ gradient - Alveoli → blood → tissues<br>IV. CO₂ solubility - Lower than O₂",
+    "opts": [
+      "(1) I and II only",
+      "(2) II and III only",
+      "(3) I, II and III only",
+      "(4) I, II, III and IV"
+    ],
+    "ans": 2,
+    "exp": "Statement IV is incorrect because the solubility of carbon dioxide is 20-25 times higher than that of oxygen.",
+    "ref": "NCERT — Breathing and Exchange of Gases"
+  },
+  {
+    "id": 6,
+    "ch": "Biology",
+    "chapter": "Body Fluids and Circulation",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "<strong>6. Select the option that contains correct statements about ECG.</strong><br>I. An electrocardiogram (ECG) is a graphical representation of the electrical activity of the heart during a cardiac cycle.<br>II. A standard ECG is obtained by attaching electrical leads to both wrists and the left ankle.<br>III. The P-wave represents depolarisation of the atria leading to atrial contraction.<br>IV. The QRS complex represents ventricular repolarisation.",
+    "opts": [
+      "(1) I, II, and III only",
+      "(2) I and IV only",
+      "(3) I, II, III, and IV",
+      "(4) II, III, and IV only"
+    ],
+    "ans": 0,
+    "exp": "Statement IV is incorrect. The QRS complex represents ventricular depolarisation, which leads to ventricular contraction. The T-wave represents ventricular repolarisation.",
+    "ref": "NCERT — Body Fluids and Circulation (ECG)"
+  },
+  {
+    "id": 7,
+    "ch": "Biology",
+    "chapter": "Body Fluids and Circulation",
+    "type": "Match the Following",
+    "diff": "Medium",
+    "q": "<strong>7. Match the circulation types with their functions.</strong><br>I. Pulmonary circulation - Right ventricle → lungs → left atrium<br>II. Systemic circulation - Supplies nutrients and oxygen to tissues<br>III. Hepatic portal system - Blood from intestine → liver<br>IV. Coronary circulation - Blood to cardiac musculature<br>V. Tunica intima - Inner lining of squamous endothelium",
+    "opts": [
+      "(1) I, II, and V only",
+      "(2) I, II, III, IV, and V",
+      "(3) II, III, and IV",
+      "(4) I, III, and V only"
+    ],
+    "ans": 1,
+    "exp": "All the given statements (I to V) regarding types of circulation and blood vessel layers correctly match their descriptions and anatomical pathways.",
+    "ref": "NCERT — Body Fluids and Circulation (Double Circulation)"
+  },
+  {
+    "id": 8,
+    "ch": "Biology",
+    "chapter": "Body Fluids and Circulation",
+    "type": "Fill in the Blanks",
+    "diff": "Medium",
+    "q": "<strong>8. Fill in the blanks:</strong><br>At the beginning of the cardiac cycle, all four chambers are in (a) ___.<br>The SAN generates an (b) ___ which stimulates atria to contract, causing (c) ___.<br>This increases ventricular filling by about 30 per cent.<br>The impulse then passes to the ventricles via the (d) ___, leading to (e) ___.<br>As the ventricles relax later, the closure of (f) ___ prevents backflow of blood into the ventricles.",
+    "opts": [
+      "(1) (a) joint diastole; (b) action potential; (c) atrial systole; (d) AVN and AV bundle; (e) ventricular systole; (f) semilunar valves",
+      "(2) (a) atrial systole; (b) action potential; (c) ventricular systole; (d) SAN; (e) atrial diastole; (f) bicuspid valves",
+      "(3) (a) joint systole; (b) nerve impulse; (c) atrial diastole; (d) Purkinje fibres; (e) atrial contraction; (f) tricuspid valve",
+      "(4) (a) joint diastole; (b) nerve impulse; (c) ventricular diastole; (d) semilunar valves; (e) atrial systole; (f) aortic valves"
+    ],
+    "ans": 0,
+    "exp": "The heart cycle begins in joint diastole. The SAN triggers an action potential causing atrial systole. Conduction through AVN/AV bundle causes ventricular systole. Semilunar valves close to prevent backflow during relaxation.",
+    "ref": "NCERT — Body Fluids and Circulation (Cardiac Cycle)"
+  },
+  {
+    "id": 9,
+    "ch": "Biology",
+    "chapter": "Excretory Products and Their Elimination",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "<strong>9. Identify the correct matches:</strong><br>I. Counter current in Henle's loop - Opposite direction filtrate flow in its two limbs<br>II. Counter current in vasa recta - Opposite direction blood flow in its two limbs<br>III. NaCl - Transported by ascending limb of Henle's loop; exchanged with descending vasa recta; returned to interstitium by ascending vasa recta<br>IV. Urea - Enters thin ascending limb in small amounts; carried back to interstitium by collecting tubule",
+    "opts": [
+      "(1) I and II only",
+      "(2) II and IV only",
+      "(3) I, II and III only",
+      "(4) I, II, III and IV"
+    ],
+    "ans": 3,
+    "exp": "All matches are correct descriptions of the counter-current mechanism that helps concentrate urine.",
+    "ref": "NCERT — Excretory Products (Mechanism of Concentration of the Filtrate)"
+  },
+  {
+    "id": 10,
+    "ch": "Biology",
+    "chapter": "Excretory Products and Their Elimination",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "<strong>10. Identify the single correct statement about regions A, B, C (referring to the counter-current mechanism diagram).</strong><br>I. Interstitial fluid in A (cortex) is 300 mOsmolL⁻¹.<br>II. Interstitium of B is less concentrated than the cortex.<br>III. C has the lowest urea contribution to osmolarity.<br>IV. The cortico medullary osmotic gradient decreases from A → B → C.",
+    "opts": [
+      "(1) I only",
+      "(2) II only",
+      "(3) III only",
+      "(4) IV only"
+    ],
+    "ans": 0,
+    "exp": "The interstitial fluid in the cortex (Region A) is 300 mOsmolL⁻¹. The medullary gradient increases (not decreases) from A to C (up to 1200 mOsmolL⁻¹), making statements II and IV false. Urea significantly contributes to the high osmolarity in the inner medulla (C), making III false.",
+    "ref": "NCERT — Excretory Products (Mechanism of Concentration of the Filtrate)"
+  },
+  {
+    "id": 11,
+    "ch": "Biology",
+    "chapter": "Excretory Products and Their Elimination",
+    "type": "Match the Following",
+    "diff": "Medium",
+    "q": "<strong>11. Match Column I with Column II.</strong><br><table border=\"1\" style=\"border-collapse: collapse; width: 100%; text-align: left;\"><tr><th style=\"padding: 5px;\">Column I</th><th style=\"padding: 5px;\">Column II</th></tr><tr><td style=\"padding: 5px;\">A. Haemodialysis</td><td style=\"padding: 5px;\">P. Porous; permits diffusion based on concentration gradient</td></tr><tr><td style=\"padding: 5px;\">B. Dialysing fluid</td><td style=\"padding: 5px;\">Q. Blood drained from an artery enters artificial kidney after heparin; cleared blood returned via a vein with anti-heparin</td></tr><tr><td style=\"padding: 5px;\">C. Cellophane membrane</td><td style=\"padding: 5px;\">R. Same composition as plasma except nitrogenous wastes</td></tr><tr><td style=\"padding: 5px;\">D. Kidney transplantation</td><td style=\"padding: 5px;\">S. Inflammation of glomeruli of kidney</td></tr><tr><td style=\"padding: 5px;\">E. Glomerulonephritis</td><td style=\"padding: 5px;\">T. Functioning kidney from donor, preferably a close relative</td></tr></table>",
+    "opts": [
+      "(1) A-P, B-R, C-Q, D-S, E-T",
+      "(2) A-Q, B-P, C-R, D-T, E-S",
+      "(3) A-Q, B-R, C-P, D-T, E-S",
+      "(4) A-R, B-Q, C-P, D-S, E-T"
+    ],
+    "ans": 2,
+    "exp": "Haemodialysis involves draining blood and passing it through an artificial kidney (A-Q). Dialysing fluid lacks nitrogenous wastes (B-R). The Cellophane membrane is porous for diffusion (C-P). Kidney transplantation utilizes a donor kidney (D-T). Glomerulonephritis is the inflammation of glomeruli (E-S).",
+    "ref": "NCERT — Excretory Products (Disorders of the Excretory System)"
+  },
+  {
+    "id": 12,
+    "ch": "Biology",
+    "chapter": "Excretory Products and Their Elimination",
+    "type": "Fill in the Blanks",
+    "diff": "Easy",
+    "q": "<strong>12. Fill in the blanks:</strong><br>Each kidney of an adult human measures (a) ___ cm in length, (b) ___ cm in width and (c) ___ cm in thickness with an average weight of (d) ___ g.<br>The medulla is divided into conical masses called (e) ___ projecting into the calyces, while the cortex extends between them as (f) ___.",
+    "opts": [
+      "(1) (a) 5-7; (b) 10-12; (c) 2-3; (d) 100-150; (e) renal pelvis; (f) calyces",
+      "(2) (a) 2-3; (b) 10-12; (c) 5-7; (d) 200-220; (e) renal columns; (f) pyramids",
+      "(3) (a) Antennal glands; (b) nitrogen metabolism; (c) molluscs; (d) reptiles; (e) Protonephridia; (f) amphibians",
+      "(4) (a) 10-12; (b) 5-7; (c) 2-3; (d) 120-170; (e) medullary pyramids; (f) Columns of Bertini"
+    ],
+    "ans": 3,
+    "exp": "Adult human kidney dimensions are: 10-12 cm (length), 5-7 cm (width), 2-3 cm (thickness), and 120-170 g (weight). Conical masses are medullary pyramids, and cortical extensions are the Columns of Bertini.",
+    "ref": "NCERT — Excretory Products (Human Excretory System)"
+  },
+  {
+    "id": 13,
+    "ch": "Biology",
+    "chapter": "Locomotion and Movement",
+    "type": "True/False",
+    "diff": "Medium",
+    "q": "<strong>13. Classify each statement as True or False:</strong><br>I. Each myofibril has alternate dark and light bands on it.<br>II. The light band (I-band) contains actin; the dark band (A-band) contains myosin.<br>III. In a resting state, the edges of thin filaments on either side of the thick filaments partially overlap the free ends of the thick filaments, leaving the central part of the thick filaments.<br>IV. The central part of thick filament, not overlapped by thin filaments, is called the Z line.",
+    "opts": [
+      "(1) Statement I and II are true, Statement III and IV are false",
+      "(2) Statement II and III are true, Statement I and IV are false",
+      "(3) Statements I, II and III are true, Statement IV is false",
+      "(4) Statement I and IV are true, Statement II and III are false"
+    ],
+    "ans": 2,
+    "exp": "Statement IV is false because the central part of the thick filament, not overlapped by thin filaments, is called the 'H zone', not the Z line. Statements I, II, and III describe correct muscle structure facts.",
+    "ref": "NCERT — Locomotion and Movement (Muscle)"
+  },
+  {
+    "id": 14,
+    "ch": "Biology",
+    "chapter": "Locomotion and Movement",
+    "type": "Fill in the Blanks",
+    "diff": "Easy",
+    "q": "<strong>14. Fill in the blanks:</strong><br>The bones of the (a) ___ along with their (b) ___ constitute the appendicular skeleton.<br>Each limb is made of (c) ___ bones.<br>The hand (fore limb) contains (d) ___ carpals, (e) ___ metacarpals, and (f) ___ phalanges.",
+    "opts": [
+      "(1) (a) vertebral column; (b) ribs; (c) 28; (d) 7; (e) 4; (f) 16",
+      "(2) (a) limbs; (b) skull; (c) 32; (d) 8; (e) 5; (f) 15",
+      "(3) (a) legs; (b) vertebrae; (c) 30; (d) 7; (e) 5; (f) 12",
+      "(4) (a) limbs; (b) girdles; (c) 30; (d) 8; (e) 5; (f) 14"
+    ],
+    "ans": 3,
+    "exp": "The appendicular skeleton is constituted by the limbs and girdles. Each limb consists of 30 bones. The hand contains 8 carpals, 5 metacarpals, and 14 phalanges.",
+    "ref": "NCERT — Locomotion and Movement (Skeletal System)"
+  },
+  {
+    "id": 15,
+    "ch": "Biology",
+    "chapter": "Locomotion and Movement",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "<strong>15. Select the option that contains correct statements about actin and myosin filaments.</strong><br>I. Each actin (thin) filament is made of two 'F' (filamentous) actins helically wound to each other.<br>II. Two filaments of another protein, tropomyosin, also run close to the 'F' actins throughout its length.<br>III. A complex protein Troponin is distributed at regular intervals on the tropomyosin; in the resting state a subunit of troponin masks the active binding sites for myosin on the actin filaments.<br>IV. Each myosin (thick) filament is a polymerised protein made of many monomeric proteins called Meromyosins; each meromyosin has a globular head with a short arm and a tail (HMM and LMM).",
+    "opts": [
+      "(1) I and II only",
+      "(2) I, II and III only",
+      "(3) II, III and IV only",
+      "(4) I, II, III and IV"
+    ],
+    "ans": 3,
+    "exp": "All the given statements accurately describe the detailed ultrastructure of contractile proteins, actin and myosin.",
+    "ref": "NCERT — Locomotion and Movement (Structure of Contractile Proteins)"
+  },
+  {
+    "id": 16,
+    "ch": "Biology",
+    "chapter": "Neural Control and Coordination",
+    "type": "Fill in the Blanks",
+    "diff": "Medium",
+    "q": "<strong>16. Fill in the blanks:</strong><br>At an electrical synapse, the membranes of pre- and post-synaptic neurons are in (a) ___ proximity and allow (b) ___ of current.<br>At a chemical synapse, the membranes are separated by a (c) ___ called the synaptic cleft.<br>When an impulse reaches the axon terminal, (d) ___ containing (e) ___ fuse with the plasma membrane and release their contents, which bind to (f) ___ on the post-synaptic membrane.",
+    "opts": [
+      "(1) (a) close; (b) direct flow; (c) fluid-filled space; (d) synaptic vesicles; (e) neurotransmitters; (f) receptors",
+      "(2) (a) distant; (b) diffusion; (c) nucleus; (d) lysosomes; (e) enzymes; (f) channels",
+      "(3) (a) close; (b) diffusion; (c) membrane; (d) Golgi bodies; (e) neurotransmitters; (f) mitochondria",
+      "(4) (a) distant; (b) direct flow; (c) membrane; (d) vesicles; (e) hormones; (f) receptors"
+    ],
+    "ans": 0,
+    "exp": "Electrical synapses are in close proximity permitting direct flow of current. Chemical synapses involve a fluid-filled space (cleft) where synaptic vesicles release neurotransmitters that bind to target receptors.",
+    "ref": "NCERT — Neural Control and Coordination (Transmission of Impulse)"
+  },
+  {
+    "id": 17,
+    "ch": "Biology",
+    "chapter": "Neural Control and Coordination",
+    "type": "True/False",
+    "diff": "Hard",
+    "q": "<strong>17. Classify each statement as True or False:</strong><br>I. At the resting state, the axonal membrane is polarised.<br>II. The rapid influx of Na⁺ at the site of stimulus reverses the polarity and is called depolarisation.<br>III. On the inner surface, current flows from the excited region towards the region ahead, while on the outer surface, current flows in the opposite direction to complete the circuit.<br>IV. Diffusion of K⁺ to the outside restores the resting potential and the fibre becomes once more responsive to further stimulation.",
+    "opts": [
+      "(1) Statement I and II are true; Statement III and IV are false",
+      "(2) Statement II and III are true; Statement I and IV are false",
+      "(3) Statement I, II and III are true; Statement IV is false",
+      "(4) All Statements are true"
+    ],
+    "ans": 3,
+    "exp": "All listed statements are factually correct descriptions of generation and conduction of nerve impulse across an axon membrane.",
+    "ref": "NCERT — Neural Control and Coordination (Generation and Conduction of Nerve Impulse)"
+  },
+  {
+    "id": 18,
+    "ch": "Biology",
+    "chapter": "Neural Control and Coordination",
+    "type": "Match the Following",
+    "diff": "Medium",
+    "q": "<strong>18. Match Column I with Column II.</strong><br><table border=\"1\" style=\"border-collapse: collapse; width: 100%; text-align: left;\"><tr><th style=\"padding: 5px;\">Column I</th><th style=\"padding: 5px;\">Column II</th></tr><tr><td style=\"padding: 5px;\">A. Cerebral cortex</td><td style=\"padding: 5px;\">P. Part of hindbrain</td></tr><tr><td style=\"padding: 5px;\">B. Thalamus</td><td style=\"padding: 5px;\">Q. Major coordinating centre for sensory and motor signalling</td></tr><tr><td style=\"padding: 5px;\">C. Hypothalamus</td><td style=\"padding: 5px;\">R. Lies between the thalamus / hypothalamus and pons</td></tr><tr><td style=\"padding: 5px;\">D. Midbrain</td><td style=\"padding: 5px;\">S. Contains centres controlling body temperature</td></tr><tr><td style=\"padding: 5px;\">E. Cerebellum</td><td style=\"padding: 5px;\">T. Outer grey layer of the cerebrum that contains motor areas, sensory areas and association areas</td></tr></table>",
+    "opts": [
+      "(1) A-S, B-Q, C-T, D-P, E-R",
+      "(2) A-Q, B-T, C-S, D-R, E-P",
+      "(3) A-T, B-Q, C-S, D-R, E-P",
+      "(4) A-R, B-S, C-T, D-Q, E-P"
+    ],
+    "ans": 2,
+    "exp": "Cerebral cortex is the outer grey layer (A-T). Thalamus coordinates signalling (B-Q). Hypothalamus controls body temperature (C-S). Midbrain lies between diencephalon and pons (D-R). Cerebellum is part of the hindbrain (E-P).",
+    "ref": "NCERT — Neural Control and Coordination (Hindbrain/Brain Parts)"
+  },
+  {
+    "id": 19,
+    "ch": "Biology",
+    "chapter": "Chemical Coordination and Integration",
+    "type": "True/False",
+    "diff": "Medium",
+    "q": "<strong>19. Classify each statement as True or False:</strong><br>I. Gastrin acts on the gastric glands and stimulates secretion of hydrochloric acid and pepsinogen.<br>II. Secretin acts on the exocrine pancreas and stimulates secretion of water and bicarbonate ions.<br>III. Cholecystokinin (CCK) acts on pancreas and gall bladder and stimulates secretion of pancreatic enzymes and bile juice, respectively.<br>IV. Gastric inhibitory peptide (GIP) stimulates gastric secretion and motility.",
+    "opts": [
+      "(1) Statement IV is false. Statement I, II and III are true",
+      "(2) Statement I and II are true, Statement III and IV are false",
+      "(3) All four are true",
+      "(4) Statement II and IV are true, Statement I and III are false"
+    ],
+    "ans": 0,
+    "exp": "Gastric Inhibitory Peptide (GIP) actually inhibits gastric secretion and motility. Therefore, statement IV is false. Statements I, II, and III are correct.",
+    "ref": "NCERT — Chemical Coordination and Integration (Hormones of Gastrointestinal Tract)"
+  },
+  {
+    "id": 20,
+    "ch": "Biology",
+    "chapter": "Chemical Coordination and Integration",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "<strong>20. Which of the following statements about the labelled parts A and B is correct?</strong><br><em>(Note: In the diagram, 'A' binds to a membrane receptor initiating a 2nd messenger cascade: Response 1 → Generation of second messenger → Biochemical responses → Physiological responses. 'B' enters the cell and interacts directly with the genome/intracellular structures.)</em>",
+    "opts": [
+      "(1) Label A represents a steroid hormone that enters the target cell and directly regulates gene expression.",
+      "(2) Label B represents a peptide hormone that binds to membrane-bound receptors and generates second messengers.",
+      "(3) Label A represents a peptide hormone (for example FSH) that binds to membrane bound receptors and generates second messengers, whereas Label B represents a steroid hormone (for example estrogen) that binds to intracellular receptors and regulates gene expression.",
+      "(4) Label B represents an amino-acid derivative hormone that produces only cyclic AMP without gene-level regulation."
+    ],
+    "ans": 2,
+    "exp": "Label A indicates a hormone that cannot enter the cell and binds to membrane receptors (e.g., peptide/protein hormones like FSH), working via second messengers (cAMP/Ca++). Label B represents a hormone that enters the cell and regulates gene expression directly (e.g., steroid hormones like estrogen).",
+    "ref": "NCERT — Chemical Coordination and Integration (Mechanism of Hormone Action)"
+  }
+];
+
+      const TOTAL = Q.length;
+
+      const LETTERS = ["A", "B", "C", "D"];
+      let currentQ = 0;
+      let userAnswers = new Array(TOTAL).fill(-1);
+      let reviewFlags = new Array(TOTAL).fill(false);
+      let submitted = false;
+      let timerSec = 0;
+      let timerInterval;
+
+      function chClass(ch) { return ch === "Physics" ? "chem" : "bio"; }
+
+      function startQuiz() {
+        document.getElementById("heroSection").style.display = "none";
+        document.getElementById("progressWrap").classList.add("active");
+        document.getElementById("paletteToggle").classList.add("active");
+        buildAllCards();
+        buildPalette();
+        showQuestion(0);
+        startTimer();
+      }
+
+      function buildAllCards() {
+        const area = document.getElementById("quizArea");
+        let html = "";
+        Q.forEach((q, i) => {
+          const tagCls = chClass(q.ch);
+          const numBioCls = tagCls === "bio" ? "bio-num" : "";
+          const diffCls = q.diff === "Hard" ? "hard" : q.diff === "Easy" ? "easy" : "med";
+
+          const optsHtml = q.opts.map((o, j) => `
+            <button class="opt-btn" id="opt-${i}-${j}" onclick="selectOpt(${i},${j})">
+              <span class="opt-letter">${LETTERS[j]}</span>
+              <span>${o}</span>
+            </button>`).join("");
+
+          html += `<div class="q-card" id="qcard-${i}">
+            <div class="q-header">
+              <span class="q-num ${numBioCls}">Q${q.id}</span>
+              <div class="q-meta">
+                <span class="q-tag ${tagCls}">${q.ch}</span>
+                <span class="q-tag type">${q.type}</span>
+                <span class="q-tag ${diffCls}">${q.diff}</span>
+              </div>
+            </div>
+            <div class="q-chapter-badge">📌 ${q.chapter}</div>
+            <div class="q-text">${q.q}</div>
+            <div class="options">${optsHtml}</div>
+            <div class="nav-btns">
+              <button class="nav-btn" onclick="prevQuestion()" ${i === 0 ? "disabled" : ""}>← Prev</button>
+              <button class="nav-btn primary" onclick="nextQuestion()">${i === TOTAL - 1 ? "Finish →" : "Next →"}</button>
+              <button class="nav-btn clear-response" onclick="clearResponse(${i})">✕ Clear</button>
+              <button class="nav-btn mark-review${reviewFlags[i] ? " marked" : ""}" id="mark-${i}" onclick="toggleReview(${i})">
+                ${reviewFlags[i] ? "★ Marked" : "☆ Mark for Review"}
+              </button>
+            </div>
+          </div>`;
+        });
+        area.innerHTML = html;
+      }
+
+      function showQuestion(idx) {
+        document.querySelectorAll(".q-card").forEach(c => c.classList.remove("active"));
+        document.getElementById(`qcard-${idx}`).classList.add("active");
+        currentQ = idx;
+        updateProgress();
+        updatePalette();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function selectOpt(qIdx, optIdx) {
+        if (submitted) return;
+        for (let i = 0; i < 4; i++) {
+          const el = document.getElementById(`opt-${qIdx}-${i}`);
+          if (el) el.classList.remove("selected");
+        }
+        document.getElementById(`opt-${qIdx}-${optIdx}`).classList.add("selected");
+        userAnswers[qIdx] = optIdx;
+        updatePalette();
+        updateProgress();
+      }
+
+      function clearResponse(qIdx) {
+        if (submitted) return;
+        userAnswers[qIdx] = -1;
+        for (let i = 0; i < 4; i++) {
+          const el = document.getElementById(`opt-${qIdx}-${i}`);
+          if (el) el.classList.remove("selected");
+        }
+        updatePalette();
+        updateProgress();
+      }
+
+      function nextQuestion() {
+        if (currentQ < TOTAL - 1) showQuestion(currentQ + 1);
+        else finishQuiz();
+      }
+
+      function prevQuestion() {
+        if (currentQ > 0) showQuestion(currentQ - 1);
+      }
+
+      function toggleReview(idx) {
+        reviewFlags[idx] = !reviewFlags[idx];
+        const btn = document.getElementById(`mark-${idx}`);
+        btn.classList.toggle("marked", reviewFlags[idx]);
+        btn.textContent = reviewFlags[idx] ? "★ Marked" : "☆ Mark for Review";
+        updatePalette();
+      }
+
+      function updateProgress() {
+        const answered = userAnswers.filter(a => a !== -1).length;
+        document.getElementById("qCounter").textContent = `Q ${currentQ + 1} / ${TOTAL}`;
+        document.getElementById("progressFill").style.width = (answered / TOTAL) * 100 + "%";
+      }
+
+      function buildPalette() {
+        const grid = document.getElementById("paletteGrid");
+        let html = "";
+        for (let i = 0; i < TOTAL; i++) {
+          html += `<div class="palette-dot" id="pdot-${i}" onclick="showQuestion(${i})">${i + 1}</div>`;
+        }
+        grid.innerHTML = html;
+      }
+
+      function updatePalette() {
+        for (let i = 0; i < TOTAL; i++) {
+          const dot = document.getElementById(`pdot-${i}`);
+          if (!dot) continue;
+          dot.className = "palette-dot";
+          if (i === currentQ) dot.classList.add("current");
+          if (userAnswers[i] !== -1) dot.classList.add("answered");
+          if (reviewFlags[i]) dot.classList.add("review");
+        }
+      }
+
+      function togglePalette() {
+        document.getElementById("palettePanel").classList.toggle("open");
+      }
+
+      function startTimer() {
+        timerInterval = setInterval(() => {
+          timerSec++;
+          const m = String(Math.floor(timerSec / 60)).padStart(2, "0");
+          const s = String(timerSec % 60).padStart(2, "0");
+          document.getElementById("progressTimer").textContent = `${m}:${s}`;
+        }, 1000);
+      }
+
+      function finishQuiz() {
+        if (!window._isReplay) {
+          const unanswered = userAnswers.filter(a => a === -1).length;
+          if (unanswered > 0) {
+            if (!confirm(`You have ${unanswered} unanswered question${unanswered > 1 ? "s" : ""}. Submit anyway?`)) return;
+          }
+        }
+        submitQuiz();
+      }
+
+      function saveAttempt(data) {
+        try {
+          const results = JSON.parse(localStorage.getItem("papResults") || "[]");
+          results.unshift(data);
+          localStorage.setItem("papResults", JSON.stringify(results));
+        } catch (e) {}
+      }
+
+      function submitQuiz() {
+        submitted = true;
+        clearInterval(timerInterval);
+        document.getElementById("quizArea").classList.add("hidden");
+        document.getElementById("paletteToggle").style.display = "none";
+        document.getElementById("palettePanel").style.display = "none";
+        document.getElementById("progressWrap").style.display = "none";
+
+        let correct = 0, wrong = 0, skipped = 0;
+
+        const chapterStats = {};
+        Q.forEach((q, i) => {
+          if (!chapterStats[q.chapter]) chapterStats[q.chapter] = { correct: 0, total: 0 };
+          chapterStats[q.chapter].total++;
+          if (userAnswers[i] === -1) { skipped++; }
+          else if (userAnswers[i] === q.ans) { correct++; chapterStats[q.chapter].correct++; }
+          else { wrong++; }
+        });
+
+        const neetScore = correct * 4 - wrong * 1;
+        const pct = Math.round((correct / TOTAL) * 100);
+        const circumference = 2 * Math.PI * 65;
+        const offset = circumference - (pct / 100) * circumference;
+        const ringColor = pct >= 80 ? "var(--green)" : pct >= 50 ? "var(--amber)" : "var(--red)";
+        const grade = pct >= 90 ? "Outstanding!" : pct >= 75 ? "Great Work!" : pct >= 50 ? "Keep Practicing!" : "Needs Revision";
+
+        const timeStr = document.getElementById("progressTimer").textContent;
+
+        if (!window._isReplay) {
+          saveAttempt({
+            id: Date.now(),
+            paperFile: "16JU1.html",
+            paperName: "Human Physiology — Most Expected 20",
+            paperTag: "Biology 20Q",
+            correct, wrong, skipped,
+            totalQuestions: TOTAL, neetScore, maxScore: TOTAL * 4,
+            percentage: pct, timeTaken: timeStr, timerSeconds: timerSec,
+            userAnswers: [...userAnswers],
+          });
+        }
+
+        const chapterColors = ["var(--accent)", "var(--pink)", "var(--purple)", "var(--amber)", "var(--accent2)", "var(--green)"];
+        let chapterBarsHtml = "";
+        Object.entries(chapterStats).forEach(([ch, s], idx) => {
+          const cPct = Math.round((s.correct / s.total) * 100);
+          const color = chapterColors[idx % chapterColors.length];
+          chapterBarsHtml += `
+  <div class="chapter-bar-wrap">
+    <div class="chapter-bar-header">
+      <span style="color:${color}">📌 ${ch}</span>
+      <span style="color:var(--text2)">${s.correct}/${s.total} (${cPct}%)</span>
+    </div>
+    <div class="chapter-bar-track">
+      <div class="chapter-bar-fill" id="chBar-${idx}" style="width:0%;background:${color}"></div>
+    </div>
+  </div>`;
+        });
+
+        const res = document.getElementById("resultsSection");
+        res.style.display = "block";
+
+        let rhtml = `
+<div class="results-card">
+  <h2>${grade}</h2>
+  <div class="score-ring">
+    <svg width="160" height="160" viewBox="0 0 160 160">
+      <circle class="ring-bg" cx="80" cy="80" r="65"/>
+      <circle class="ring-fill" cx="80" cy="80" r="65"
+        stroke="${ringColor}"
+        stroke-dasharray="${circumference}"
+        stroke-dashoffset="${circumference}"
+        id="scoreRing"/>
+    </svg>
+    <div class="score-center">
+      <div class="pct">${pct}%</div>
+      <div class="of">${correct}/${TOTAL}</div>
+    </div>
+  </div>
+  <div class="stats-grid">
+    <div class="stat-item neet"><div class="stat-num">${neetScore}</div><div class="stat-lbl">NEET Score</div></div>
+    <div class="stat-item correct"><div class="stat-num">${correct}</div><div class="stat-lbl">Correct</div></div>
+    <div class="stat-item wrong"><div class="stat-num">${wrong}</div><div class="stat-lbl">Wrong</div></div>
+    <div class="stat-item skip"><div class="stat-num">${skipped}</div><div class="stat-lbl">Skipped</div></div>
+  </div>
+  <div style="margin-top:16px;font-size:13px;color:var(--text3)">Time: ${timeStr} · Max: ${TOTAL * 4}</div>
+</div>
+
+<div class="chapter-breakdown">
+  <h3>Chapter Breakdown</h3>
+  ${chapterBarsHtml}
+</div>
+
+<div class="review-title">Complete Walkthrough</div>
+<div class="review-sub">Every question reviewed with NCERT-based explanations.</div>
+<div class="review-filter">
+  <button class="filter-btn active" onclick="filterReview('all',this)">All (${TOTAL})</button>
+  <button class="filter-btn" onclick="filterReview('wrong',this)">❌ Wrong (${wrong})</button>
+  <button class="filter-btn" onclick="filterReview('skipped',this)">⏭️ Skipped (${skipped})</button>
+  <button class="filter-btn" onclick="filterReview('correct',this)">✅ Correct (${correct})</button>
+</div>
+<div id="reviewCards"></div>`;
+
+        res.innerHTML = rhtml;
+        renderReviewCards("all");
+
+        setTimeout(() => {
+          document.getElementById("scoreRing").style.strokeDashoffset = offset;
+          Object.keys(chapterStats).forEach((ch, idx) => {
+            const bar = document.getElementById(`chBar-${idx}`);
+            if (bar) bar.style.width = Math.round((chapterStats[ch].correct / chapterStats[ch].total) * 100) + "%";
+          });
+        }, 100);
+
+        res.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function renderReviewCards(filter) {
+        const container = document.getElementById("reviewCards");
+        let html = "";
+        Q.forEach((q, i) => {
+          const ua = userAnswers[i];
+          const isCorrect = ua === q.ans;
+          const isSkipped = ua === -1;
+          const isWrong = !isCorrect && !isSkipped;
+
+          if (filter === "wrong" && !isWrong) return;
+          if (filter === "skipped" && !isSkipped) return;
+          if (filter === "correct" && !isCorrect) return;
+
+          let cardClass, badgeClass, badgeText;
+          if (isCorrect) { cardClass = "rc-correct"; badgeClass = "badge-correct"; badgeText = "✅ Correct"; }
+          else if (isSkipped) { cardClass = "rc-skipped"; badgeClass = "badge-skipped"; badgeText = "⏭️ Skipped"; }
+          else { cardClass = "rc-wrong"; badgeClass = "badge-wrong"; badgeText = "❌ Wrong"; }
+
+          const tagCls = chClass(q.ch);
+          const numBioCls = tagCls === "bio" ? "bio-num" : "";
+
+          html += `<div class="review-card ${cardClass}">
+            <div class="rc-header">
+              <span class="q-num ${numBioCls}">Q${q.id}</span>
+              <span class="q-tag ${tagCls}">${q.ch}</span>
+              <span class="rc-badge ${badgeClass}">${badgeText}</span>
+              <span style="font-size:11px;color:var(--text3);margin-left:auto">${q.type}</span>
+            </div>
+            <div style="font-size:11px;color:var(--accent2);margin-bottom:10px;font-weight:600">📌 ${q.chapter}</div>
+            <div class="rc-q">${q.q}</div>
+            <div class="rc-opts">`;
+
+          q.opts.forEach((o, j) => {
+            let optClass = "rc-opt";
+            let marker = LETTERS[j];
+            if (j === q.ans) { optClass += " rc-opt-correct"; marker = "✓"; }
+            else if (j === ua && isWrong) { optClass += " rc-opt-wrong"; marker = "✗"; }
+            html += `<div class="${optClass}">
+              <span class="rc-letter">${marker}</span>
+              <span>${o}</span>
+            </div>`;
+          });
+
+          html += `</div>
+            <div class="rc-exp">
+              <h4>💡 Explanation</h4>
+              <p>${q.exp}</p>
+              <span class="ncert-ref">📖 ${q.ref}</span>
+            </div>
+          </div>`;
+        });
+
+        if (!html)
+          html = `<p style="text-align:center;color:var(--text3);padding:30px 0">No questions match this filter.</p>`;
+        container.innerHTML = html;
+      }
+
+      function filterReview(type, btn) {
+        document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderReviewCards(type);
+      }
+
+      window.addEventListener("scroll", () => {
+        const pw = document.getElementById("progressWrap");
+        if (window.scrollY > 200) pw.classList.add("scrolled");
+        else pw.classList.remove("scrolled");
+      });
+
+      (function loadSavedAttempt() {
+        const params = new URLSearchParams(window.location.search);
+        const attemptId = params.get("attempt");
+        if (!attemptId) return;
+        const saved = JSON.parse(localStorage.getItem("papResults") || "[]");
+        const attempt = saved.find(r => r.id === Number(attemptId));
+        if (!attempt) return;
+        window._isReplay = true;
+        userAnswers = attempt.userAnswers;
+        timerSec = attempt.timerSeconds || 0;
+        const m = String(Math.floor(timerSec / 60)).padStart(2, "0");
+        const s = String(timerSec % 60).padStart(2, "0");
+        document.getElementById("progressTimer").textContent = `${m}:${s}`;
+        document.getElementById("heroSection").style.display = "none";
+        submitQuiz();
+      })();
+    
+    </script>
+  </body>
+</html>
