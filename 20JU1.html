@@ -1,0 +1,1319 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEET Mock Test - Physics & Biology</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --bg: #0a0e17;
+        --surface: #111827;
+        --surface2: #1a2236;
+        --surface3: #222d44;
+        --border: #2a3654;
+        --text: #e2e8f0;
+        --text2: #94a3b8;
+        --text3: #64748b;
+        --accent: #06d6a0;
+        --accent2: #118ab2;
+        --red: #ef4444;
+        --green: #22c55e;
+        --amber: #f59e0b;
+        --purple: #a78bfa;
+        --pink: #f472b6;
+        --radius: 12px;
+        --radius-sm: 8px;
+      }
+      html { scroll-behavior: smooth; }
+      body {
+        font-family: "IBM Plex Sans", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background:
+          radial-gradient(ellipse at 20% 0%, rgba(6,214,160,0.06) 0%, transparent 50%),
+          radial-gradient(ellipse at 80% 100%, rgba(244,114,182,0.06) 0%, transparent 50%);
+        pointer-events: none;
+        z-index: 0;
+      }
+      .container {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 20px;
+        position: relative;
+        z-index: 1;
+      }
+      .hero {
+        text-align: center;
+        padding: 50px 20px 40px;
+        position: relative;
+      }
+      .hero-badge {
+        display: inline-block;
+        padding: 6px 18px;
+        border-radius: 50px;
+        background: rgba(6,214,160,0.12);
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 18px;
+        border: 1px solid rgba(6,214,160,0.2);
+      }
+      .hero h1 {
+        font-family: "DM Serif Display", serif;
+        font-size: clamp(28px, 5vw, 44px);
+        color: #fff;
+        margin-bottom: 12px;
+        line-height: 1.2;
+      }
+      .hero h1 span {
+        background: linear-gradient(135deg, var(--accent), var(--pink));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .hero p { color: var(--text2); font-size: 16px; max-width: 580px; margin: 0 auto 28px; }
+      .hero-tags {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 32px;
+      }
+      .hero-tags span { padding: 6px 16px; border-radius: 8px; font-size: 12px; font-weight: 600; }
+      .tag-chem { background: rgba(6,214,160,0.1); color: var(--accent); border: 1px solid rgba(6,214,160,0.22); }
+      .tag-bio { background: rgba(244,114,182,0.1); color: var(--pink); border: 1px solid rgba(244,114,182,0.22); }
+      .start-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 16px 48px;
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--bg);
+        background: linear-gradient(135deg, var(--accent), var(--pink));
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 25px rgba(6,214,160,0.3);
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+      .start-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 35px rgba(244,114,182,0.4);
+      }
+      .progress-wrap {
+        position: sticky;
+        top: 0; z-index: 100;
+        background: rgba(10,14,23,0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 14px 20px;
+        border-bottom: 1px solid var(--border);
+        display: none;
+        transition: box-shadow 0.3s;
+      }
+      .progress-wrap.active { display: block; }
+      .progress-wrap.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.4); }
+      .progress-inner {
+        max-width: 860px; margin: 0 auto;
+        display: flex; align-items: center; gap: 16px;
+      }
+      .progress-text { font-size: 13px; font-weight: 600; color: var(--text2); white-space: nowrap; min-width: 90px; }
+      .progress-text b { color: var(--accent); }
+      .progress-bar { flex: 1; height: 6px; background: var(--surface3); border-radius: 10px; overflow: hidden; }
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent), var(--pink));
+        border-radius: 10px;
+        transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+        width: 0%;
+      }
+      .progress-timer {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px; color: var(--accent); min-width: 60px; text-align: right;
+      }
+      .q-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 32px;
+        margin-bottom: 24px;
+        display: none;
+        animation: fadeIn 0.4s ease both;
+      }
+      .q-card.active { display: block; }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(12px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .q-header { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
+      .q-num {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px; font-weight: 700; color: var(--bg);
+        background: var(--accent); padding: 4px 10px; border-radius: 6px;
+        white-space: nowrap; flex-shrink: 0;
+      }
+      .q-num.bio-num { background: var(--pink); }
+      .q-meta { display: flex; gap: 8px; flex-wrap: wrap; }
+      .q-tag {
+        font-size: 11px; padding: 3px 10px; border-radius: 50px;
+        font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;
+      }
+      .q-tag.chem { background: rgba(6,214,160,0.12); color: var(--accent); }
+      .q-tag.bio { background: rgba(244,114,182,0.15); color: var(--pink); }
+      .q-tag.type { background: rgba(167,139,250,0.12); color: var(--purple); }
+      .q-tag.hard { background: rgba(239,68,68,0.12); color: var(--red); }
+      .q-tag.med { background: rgba(245,158,11,0.12); color: var(--amber); }
+      .q-tag.easy { background: rgba(34,197,94,0.12); color: var(--green); }
+      .q-text { font-size: 15.5px; color: #fff; line-height: 1.7; margin-bottom: 20px; white-space: pre-wrap; }
+      .q-text table { margin: 10px 0; }
+      .q-text table th, .q-text table td { padding: 6px 10px; font-size: 14px; color: var(--text); }
+      .q-text table th { background: var(--surface3); color: var(--accent); }
+      .q-text table td { background: var(--surface2); }
+      .q-chapter-badge {
+        display: inline-block;
+        font-size: 11px; padding: 3px 10px; border-radius: 50px;
+        font-weight: 600; letter-spacing: 0.5px;
+        background: rgba(17,138,178,0.12); color: var(--accent2);
+        border: 1px solid rgba(17,138,178,0.2);
+        margin-bottom: 10px;
+      }
+      .options { display: flex; flex-direction: column; gap: 10px; }
+      .opt-btn {
+        display: flex; align-items: flex-start; gap: 12px;
+        padding: 14px 18px;
+        background: var(--surface2);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius-sm);
+        cursor: pointer; transition: all 0.2s;
+        text-align: left; width: 100%;
+        font-size: 14.5px; color: var(--text); line-height: 1.5;
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+      .opt-btn:hover { border-color: var(--accent); background: rgba(6,214,160,0.05); transform: translateX(4px); }
+      .opt-btn .opt-letter {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700; color: var(--text3); font-size: 13px;
+        min-width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;
+        border-radius: 6px; background: var(--surface3); flex-shrink: 0; margin-top: 1px; transition: all 0.2s;
+      }
+      .opt-btn.selected { border-color: var(--accent); background: rgba(6,214,160,0.08); }
+      .opt-btn.selected .opt-letter { background: var(--accent); color: var(--bg); }
+      .nav-btns { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+      .nav-btn {
+        padding: 10px 24px; border-radius: 8px;
+        font-family: "IBM Plex Sans", sans-serif;
+        font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+        border: 1.5px solid var(--border); background: var(--surface2); color: var(--text);
+      }
+      .nav-btn:hover { border-color: var(--accent); }
+      .nav-btn.primary {
+        background: linear-gradient(135deg, var(--accent), var(--pink));
+        border: none; color: var(--bg); font-weight: 700;
+        box-shadow: 0 2px 12px rgba(6,214,160,0.2);
+      }
+      .nav-btn.primary:hover { box-shadow: 0 4px 20px rgba(244,114,182,0.32); transform: translateY(-1px); }
+      .nav-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+      .mark-review { margin-left: auto; font-size: 13px; color: var(--amber); background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.25); }
+      .mark-review.marked { background: rgba(245,158,11,0.2); border-color: var(--amber); }
+      .clear-response { font-size: 13px; color: var(--red); background: rgba(239,68,68,0.08); border-color: rgba(239,68,68,0.25); }
+      .clear-response:hover { background: rgba(239,68,68,0.15); border-color: var(--red); }
+      .palette-toggle {
+        position: fixed; bottom: 24px; right: 24px;
+        width: 48px; height: 48px; border-radius: 50%;
+        background: var(--accent); color: var(--bg);
+        border: none; font-size: 20px; font-weight: 700;
+        cursor: pointer; z-index: 200;
+        box-shadow: 0 4px 20px rgba(6,214,160,0.4);
+        display: none; align-items: center; justify-content: center; transition: transform 0.2s;
+      }
+      .palette-toggle:hover { transform: scale(1.06); }
+      .palette-toggle.active { display: flex; }
+      .palette-panel {
+        position: fixed; bottom: 84px; right: 24px;
+        width: 320px; max-height: 420px; overflow-y: auto;
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: 14px; padding: 20px; z-index: 200; display: none;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      }
+      .palette-panel.open { display: block; }
+      .palette-title { font-weight: 700; font-size: 14px; margin-bottom: 14px; color: var(--text2); text-transform: uppercase; letter-spacing: 1px; }
+      .palette-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 6px; }
+      .palette-dot {
+        width: 32px; height: 32px; border-radius: 7px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 11px; font-weight: 700; cursor: pointer;
+        border: 1.5px solid var(--border); background: var(--surface2); color: var(--text3); transition: all 0.15s;
+      }
+      .palette-dot:hover { border-color: var(--accent); }
+      .palette-dot.answered { background: rgba(6,214,160,0.15); border-color: var(--accent); color: var(--accent); }
+      .palette-dot.review { background: rgba(245,158,11,0.15); border-color: var(--amber); color: var(--amber); }
+      .palette-dot.current { box-shadow: 0 0 0 2px var(--accent); }
+      .palette-legend { display: flex; gap: 16px; margin-top: 14px; font-size: 11px; color: var(--text3); flex-wrap: wrap; }
+      .palette-legend span { display: flex; align-items: center; gap: 5px; }
+      .legend-dot { width: 10px; height: 10px; border-radius: 3px; }
+      #resultsSection { display: none; }
+      .results-card {
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: 16px; padding: 40px 30px;
+        max-width: 500px; margin: 0 auto 40px; text-align: center;
+      }
+      .results-card h2 { font-family: "DM Serif Display", serif; font-size: 32px; color: #fff; margin-bottom: 8px; }
+      .score-ring { width: 160px; height: 160px; margin: 24px auto; position: relative; }
+      .score-ring svg { transform: rotate(-90deg); }
+      .score-ring .ring-bg { fill: none; stroke: var(--surface3); stroke-width: 10; }
+      .score-ring .ring-fill { fill: none; stroke-width: 10; stroke-linecap: round; transition: stroke-dashoffset 1.5s cubic-bezier(0.4,0,0.2,1); }
+      .score-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); text-align: center; }
+      .score-center .pct { font-family: "JetBrains Mono", monospace; font-size: 36px; font-weight: 700; color: #fff; }
+      .score-center .of { font-size: 13px; color: var(--text3); }
+      .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 24px; }
+      .stat-item { padding: 14px 8px; background: var(--surface2); border-radius: var(--radius-sm); text-align: center; }
+      .stat-num { font-family: "JetBrains Mono", monospace; font-size: 22px; font-weight: 700; }
+      .stat-lbl { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+      .stat-item.neet .stat-num { color: var(--accent2); }
+      .stat-item.correct .stat-num { color: var(--green); }
+      .stat-item.wrong .stat-num { color: var(--red); }
+      .stat-item.skip .stat-num { color: var(--amber); }
+      .chapter-breakdown { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 40px; }
+      .chapter-breakdown h3 { font-family: "DM Serif Display", serif; font-size: 18px; color: #fff; margin-bottom: 20px; }
+      .chapter-bar-wrap { margin-bottom: 16px; }
+      .chapter-bar-header { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px; font-weight: 600; }
+      .chapter-bar-track { height: 8px; background: var(--surface3); border-radius: 4px; overflow: hidden; }
+      .chapter-bar-fill { height: 100%; border-radius: 4px; transition: width 1s ease; }
+      .review-title { font-family: "DM Serif Display", serif; font-size: 28px; color: #fff; margin: 40px 0 12px; text-align: center; }
+      .review-sub { text-align: center; color: var(--text2); font-size: 14px; margin-bottom: 24px; }
+      .review-filter { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
+      .filter-btn {
+        padding: 8px 20px; border-radius: 50px; border: 1px solid var(--border);
+        background: transparent; color: var(--text2); font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+      }
+      .filter-btn:hover, .filter-btn.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+      .review-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; margin-bottom: 20px; }
+      .review-card.rc-correct { border-left: 4px solid var(--green); }
+      .review-card.rc-wrong { border-left: 4px solid var(--red); }
+      .review-card.rc-skipped { border-left: 4px solid var(--amber); }
+      .rc-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+      .rc-badge { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 5px; text-transform: uppercase; letter-spacing: 0.6px; }
+      .rc-badge.badge-correct { background: rgba(34,197,94,0.1); color: var(--green); border: 1px solid rgba(34,197,94,0.3); }
+      .rc-badge.badge-wrong { background: rgba(239,68,68,0.1); color: var(--red); border: 1px solid rgba(239,68,68,0.3); }
+      .rc-badge.badge-skipped { background: rgba(245,158,11,0.1); color: var(--amber); border: 1px solid rgba(245,158,11,0.3); }
+      .rc-q { font-size: 14.5px; line-height: 1.7; margin-bottom: 16px; color: var(--text); white-space: pre-wrap; }
+      .rc-q table { margin: 10px 0; }
+      .rc-q table th, .rc-q table td { padding: 6px 10px; font-size: 13px; color: var(--text); }
+      .rc-q table th { background: var(--surface3); color: var(--accent); }
+      .rc-q table td { background: var(--surface2); }
+      .rc-opts { margin-bottom: 16px; }
+      .rc-opt { padding: 10px 14px; margin-bottom: 6px; border-radius: 8px; font-size: 13.5px; line-height: 1.6; display: flex; align-items: flex-start; gap: 10px; border: 1.5px solid transparent; }
+      .rc-opt.rc-opt-correct { background: rgba(34,197,94,0.08); border-color: rgba(34,197,94,0.3); }
+      .rc-opt.rc-opt-wrong { background: rgba(239,68,68,0.08); border-color: rgba(239,68,68,0.3); }
+      .rc-letter { flex-shrink: 0; width: 22px; height: 22px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; background: var(--border); color: var(--text3); }
+      .rc-opt.rc-opt-correct .rc-letter { background: var(--green); color: #fff; }
+      .rc-opt.rc-opt-wrong .rc-letter { background: var(--red); color: #fff; }
+      .rc-exp { background: rgba(6,214,160,0.05); border: 1px solid rgba(6,214,160,0.15); border-radius: 10px; padding: 18px 20px; }
+      .rc-exp h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--accent); margin-bottom: 8px; }
+      .rc-exp p { font-size: 13.5px; line-height: 1.75; color: var(--text2); }
+      .rc-exp p strong { color: var(--text); }
+      .rc-exp .ncert-ref { display: inline-block; margin-top: 8px; font-size: 11px; padding: 3px 8px; background: rgba(6,214,160,0.1); border-radius: 4px; color: var(--accent); font-weight: 600; }
+      .hidden { display: none !important; }
+      @media (max-width: 600px) {
+        .container { padding: 12px; }
+        .q-card { padding: 20px 16px; }
+        .hero h1 { font-size: 26px; }
+        .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        .progress-inner { gap: 10px; }
+        .palette-panel { width: calc(100vw - 40px); right: 20px; }
+        .review-card { padding: 20px 16px; }
+        .palette-grid { grid-template-columns: repeat(6, 1fr); }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero" id="heroSection">
+      <div class="hero-badge">NEET 2026 · Mock Test</div>
+      <h1>Full Syllabus — <span>Mixed Mock Test</span></h1>
+      <p>A focused mock test covering selected questions from Physics, Chemistry, and Biology.</p>
+      <div class="hero-tags">
+        <span class="tag-chem">⚛️ 48 — Physics, Chemistry & Biology</span>
+      </div>
+      <button class="start-btn" onclick="startQuiz()">Begin Test →</button>
+    </div>
+
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-inner">
+        <div class="progress-text"><b id="qCounter">Q 1 / 48</b></div>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="progress-timer" id="progressTimer">00:00</div>
+      </div>
+    </div>
+
+    <div class="container" id="quizArea"></div>
+    <div class="container" id="resultsSection"></div>
+
+    <button class="palette-toggle" id="paletteToggle" onclick="togglePalette()">☰</button>
+    <div class="palette-panel" id="palettePanel">
+      <div class="palette-title">Question Palette</div>
+      <div class="palette-grid" id="paletteGrid"></div>
+      <div class="palette-legend">
+        <span><div class="legend-dot" style="background:var(--surface2);border:1px solid var(--border)"></div>Unseen</span>
+        <span><div class="legend-dot" style="background:rgba(6,214,160,0.2)"></div>Answered</span>
+        <span><div class="legend-dot" style="background:rgba(245,158,11,0.2)"></div>Review</span>
+      </div>
+    </div>
+
+    <script>
+      const Q = [
+  {
+    "id": 1,
+    "subject": "Physics",
+    "ch": "Work, Energy and Power",
+    "type": "MCQ",
+    "diff": "Easy",
+    "q": "A force F = (x\u00b2 \u2212 4x + 5) N acts on a particle. If its kinetic energy at x = 1 m is 10 J, then its kinetic energy at x = 5 m is:",
+    "options": ["16 J", "18 J", "20 J", "22 J"],
+    "ans": 1
+  },
+  {
+    "id": 2,
+    "subject": "Physics",
+    "ch": "System of Particles and Rotational Motion",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "A solid sphere and hollow sphere of the same mass and radius are released from rest on two identical rough inclined planes. At the instant the solid sphere reaches the bottom, the ratio of the kinetic energies of rotation (solid : hollow) is:",
+    "options": ["5 : 9", "2 : 3", "3 : 5", "25 : 49"],
+    "ans": 4
+  },
+  {
+    "id": 3,
+    "subject": "Physics",
+    "ch": "Electrostatic Potential and Capacitance",
+    "type": "MCQ",
+    "diff": "Easy",
+    "q": "A capacitor of capacitance 4 \u03bcF is charged to 100 V. It is then connected in parallel to an uncharged capacitor of 6 \u03bcF. The amount of energy lost during redistribution is:",
+    "options": ["0.06 J", "0.08 J", "0.12 J", "0.20 J"],
+    "ans": 3
+  },
+  {
+    "id": 4,
+    "subject": "Physics",
+    "ch": "Oscillations",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "A particle performs SHM with amplitude 20 cm. When its displacement is 12 cm from the mean position, its speed is 8 m/s. The angular frequency is:",
+    "options": ["2 rad/s", "4 rad/s", "6 rad/s", "8 rad/s"],
+    "ans": 2
+  },
+  {
+    "id": 5,
+    "subject": "Physics",
+    "ch": "System of Particles and Rotational Motion",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "A uniform rod of length L and mass M is hinged at one end. A bullet of mass M/4 moving perpendicular to the rod with speed v gets embedded at the free end. The angular velocity just after collision is:",
+    "options": ["3v/7L", "6v/7L", "9v/7L", "12v/7L"],
+    "ans": 1
+  },
+  {
+    "id": 6,
+    "subject": "Physics",
+    "ch": "Moving Charges and Magnetism",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "Two long parallel wires carry currents I and 4I in opposite directions. The distance between them is d. The point where the net magnetic field becomes zero lies at:",
+    "options": [
+      "d/3 from wire carrying I (between wires)",
+      "d from wire carrying I on its outer side",
+      "d/3 from wire carrying 4I outside",
+      "No finite point exists"
+    ],
+    "ans": 1
+  },
+  {
+    "id": 7,
+    "subject": "Physics",
+    "ch": "Dual Nature of Radiation and Matter",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "A photon of wavelength 400 nm strikes a metal surface whose work function is 2 eV. The emitted photoelectron enters a magnetic field perpendicular to its velocity and moves in a circle of radius 1.2 \u00d7 10\u207b\u2074 m. The magnetic field is closest to:",
+    "options": ["0.10 T", "0.15 T", "0.20 T", "0.25 T"],
+    "ans": 2
+  },
+  {
+    "id": 8,
+    "subject": "Physics",
+    "ch": "Laws of Motion",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "A block of mass m is placed on a rough wedge of mass 4m. The coefficient of friction is sufficient to prevent slipping. If a horizontal force F is applied on the wedge, the minimum value of F required so that the block just loses contact with the wedge inclined at 45\u00b0 is:",
+    "options": ["5 mg", "10 mg", "15 mg", "20 mg"],
+    "ans": 1
+  },
+  {
+    "id": 9,
+    "subject": "Physics",
+    "ch": "Electromagnetic Induction",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "A uniform magnetic field B exists in the region y > 0 directed along +z. A square loop of side a lies in the x-y plane with one side along the y-axis and its center at the origin. The loop has resistance R. It is pulled with a constant velocity v along +y direction. The current induced in the loop is:",
+    "options": ["Bav/R", "Ba\u00b2v / [R(y + a/2)\u00b2]", "Ba\u00b2v / [R(y + a)]", "Ba\u00b2v / (Ry)"],
+    "ans": 1
+  },
+  {
+    "id": 10,
+    "subject": "Physics",
+    "ch": "System of Particles and Rotational Motion",
+    "type": "MCQ",
+    "diff": "Hard",
+    "q": "A solid sphere of radius R is rolling without slipping on a horizontal surface with linear speed v. It collides elastically with a fixed vertical wall and rebounds with the same linear speed v. The change in its angular momentum about the point of contact with the ground during the collision is:",
+    "options": [
+      "-(4/7)mvR k\u0302",
+      "(4/7)mvR k\u0302",
+      "-(2/7)mvR k\u0302",
+      "(2/7)mvR k\u0302"
+    ],
+    "ans": 2
+  },
+  {
+    "id": 11,
+    "subject": "Physics",
+    "ch": "Ray Optics and Optical Instruments",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "Two identical thin lenses of focal length f are kept coaxially at a separation of 2f in air. An object is placed on the principal axis at a distance 3f from the first lens. The final image formed by the combination is:",
+    "options": [
+      "Real, inverted and at a distance 6f from the first lens",
+      "Real, inverted and at a distance 2f from the second lens",
+      "Virtual, erect and at a distance 6f from the first lens",
+      "Virtual, erect and at a distance 2f from the second lens"
+    ],
+    "ans": 1
+  },
+  {
+    "id": 12,
+    "subject": "Physics",
+    "ch": "Motion in a Straight Line",
+    "type": "MCQ",
+    "diff": "Easy",
+    "q": "A ball is thrown vertically upward with a speed of 20 m/s. The maximum height reached by the ball is (take g = 10 m/s\u00b2):",
+    "options": ["10 m", "20 m", "40 m", "5 m"],
+    "ans": 2
+  },
+  {
+    "id": 13,
+    "subject": "Physics",
+    "ch": "Gravitation",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "The escape velocity from the surface of a planet is 11.2 km/s. If the radius of the planet is halved while its mass remains unchanged, the new escape velocity is approximately:",
+    "options": ["5.6 km/s", "11.2 km/s", "15.8 km/s", "22.4 km/s"],
+    "ans": 3
+  },
+  {
+    "id": 14,
+    "subject": "Physics",
+    "ch": "Thermodynamics",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "An ideal gas undergoes an isothermal expansion. Which of the following statements is correct?",
+    "options": [
+      "\u0394U > 0 and Q = 0",
+      "\u0394U = 0 and Q = W",
+      "W = 0 and Q = \u0394U",
+      "Q = 0 and W = \u2212\u0394U"
+    ],
+    "ans": 2
+  },
+  {
+    "id": 15,
+    "subject": "Physics",
+    "ch": "Current Electricity",
+    "type": "MCQ",
+    "diff": "Easy",
+    "q": "Three resistors of 2 \u03a9, 3 \u03a9 and 6 \u03a9 are connected in parallel. The equivalent resistance of the combination is:",
+    "options": ["1 \u03a9", "11 \u03a9", "0.5 \u03a9", "6 \u03a9"],
+    "ans": 1
+  },
+  {
+    "id": 16,
+    "subject": "Physics",
+    "ch": "Atoms",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "In the Bohr model of the hydrogen atom, the ratio of the radius of the second orbit to that of the first orbit is:",
+    "options": ["2 : 1", "4 : 1", "1 : 4", "8 : 1"],
+    "ans": 2
+  },
+
+  {
+    "id": 17,
+    "subject": "Chemistry",
+    "ch": "Some Basic Concepts of Chemistry",
+    "type": "MCQ",
+    "diff": "Easy",
+    "q": "The number of oxygen atoms present in 0.25 mol of CO\u2082 is (N\u2090 = 6.022 \u00d7 10\u00b2\u00b3):",
+    "options": ["1.5 \u00d7 10\u00b2\u00b3", "3.01 \u00d7 10\u00b2\u00b3", "6.02 \u00d7 10\u00b2\u00b3", "1.2 \u00d7 10\u00b2\u2074"],
+    "ans": 2
+  },
+  {
+    "id": 18,
+    "subject": "Chemistry",
+    "ch": "Thermodynamics",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "For a reaction at 300 K, \u0394H = +30 kJ mol\u207b\u00b9 and \u0394S = +100 J K\u207b\u00b9 mol\u207b\u00b9. The reaction is:",
+    "options": [
+      "Spontaneous at all temperatures",
+      "Non-spontaneous at all temperatures",
+      "At equilibrium at 300 K (spontaneous above 300 K)",
+      "Spontaneous only below 300 K"
+    ],
+    "ans": 3
+  },
+  {
+    "id": 19,
+    "subject": "Chemistry",
+    "ch": "Equilibrium",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "For the reaction N\u2082(g) + 3H\u2082(g) \u21cc 2NH\u2083(g), the relationship between K\u209a and K\u1d04 is:",
+    "options": ["K\u209a = K\u1d04 (RT)\u00b2", "K\u209a = K\u1d04 (RT)\u207b\u00b2", "K\u209a = K\u1d04 (RT)", "K\u209a = K\u1d04"],
+    "ans": 2
+  },
+  {
+    "id": 20,
+    "subject": "Chemistry",
+    "ch": "Electrochemistry",
+    "type": "MCQ",
+    "diff": "Easy",
+    "q": "Given E\u00b0(Zn\u00b2\u207a/Zn) = \u22120.76 V and E\u00b0(Cu\u00b2\u207a/Cu) = +0.34 V, the standard EMF of the Daniell cell is:",
+    "options": ["0.42 V", "1.10 V", "\u22121.10 V", "0.34 V"],
+    "ans": 2
+  },
+  {
+    "id": 21,
+    "subject": "Chemistry",
+    "ch": "Chemical Kinetics",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "The half-life of a first-order reaction is 20 minutes. The time required for the concentration of the reactant to fall to 1/8 of its initial value is:",
+    "options": ["40 min", "60 min", "80 min", "160 min"],
+    "ans": 2
+  },
+  {
+    "id": 22,
+    "subject": "Chemistry",
+    "ch": "Solutions",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "The molality of a solution containing 18 g of glucose (molar mass = 180 g mol\u207b\u00b9) dissolved in 500 g of water is:",
+    "options": ["0.1 m", "0.2 m", "0.5 m", "1.0 m"],
+    "ans": 2
+  },
+  {
+    "id": 23,
+    "subject": "Chemistry",
+    "ch": "Structure of Atom",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "Which of the following sets of quantum numbers (n, l, m, s) is NOT permissible?",
+    "options": [
+      "3, 2, \u22122, +\u00bd",
+      "2, 1, 0, \u2212\u00bd",
+      "2, 2, +1, +\u00bd",
+      "4, 3, \u22123, +\u00bd"
+    ],
+    "ans": 3
+  },
+  {
+    "id": 24,
+    "subject": "Chemistry",
+    "ch": "Hydrocarbons",
+    "type": "MCQ",
+    "diff": "Easy",
+    "q": "The number of structural (chain) isomers possible for C\u2085H\u2081\u2082 is:",
+    "options": ["2", "3", "4", "5"],
+    "ans": 2
+  },
+  {
+    "id": 25,
+    "subject": "Chemistry",
+    "ch": "Haloalkanes and Haloarenes",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "Which of the following alkyl halides undergoes an S\u20991 reaction most readily?",
+    "options": ["CH\u2083Cl", "CH\u2083CH\u2082Cl", "(CH\u2083)\u2082CHCl", "(CH\u2083)\u2083CCl"],
+    "ans": 4
+  },
+  {
+    "id": 26,
+    "subject": "Chemistry",
+    "ch": "Organic Chemistry \u2013 Some Basic Principles and Techniques",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "Which of the following is the most stable carbocation?",
+    "options": ["CH\u2083\u207a", "CH\u2083CH\u2082\u207a", "(CH\u2083)\u2082CH\u207a", "C\u2086H\u2085CH\u2082\u207a (benzyl)"],
+    "ans": 4
+  },
+  {
+    "id": 27,
+    "subject": "Chemistry",
+    "ch": "Aldehydes, Ketones and Carboxylic Acids",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "Which of the following compounds gives a positive iodoform test?",
+    "options": [
+      "Acetaldehyde (CH\u2083CHO)",
+      "Benzaldehyde (C\u2086H\u2085CHO)",
+      "Formaldehyde (HCHO)",
+      "Acetic acid (CH\u2083COOH)"
+    ],
+    "ans": 1
+  },
+  {
+    "id": 28,
+    "subject": "Chemistry",
+    "ch": "Biomolecules",
+    "type": "MCQ",
+    "diff": "Easy",
+    "q": "The bond that links two amino acids together in a protein is a:",
+    "options": ["Glycosidic bond", "Peptide bond", "Phosphodiester bond", "Hydrogen bond"],
+    "ans": 2
+  },
+  {
+    "id": 29,
+    "subject": "Chemistry",
+    "ch": "Classification of Elements and Periodicity in Properties",
+    "type": "MCQ",
+    "diff": "Easy",
+    "q": "Which of the following elements has the largest atomic radius?",
+    "options": ["Na", "K", "Mg", "Al"],
+    "ans": 2
+  },
+  {
+    "id": 30,
+    "subject": "Chemistry",
+    "ch": "Chemical Bonding and Molecular Structure",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "The hybridization of the central atom and the shape of the SF\u2086 molecule are:",
+    "options": [
+      "sp\u00b3, tetrahedral",
+      "sp\u00b3d, trigonal bipyramidal",
+      "sp\u00b3d\u00b2, octahedral",
+      "sp\u00b2, trigonal planar"
+    ],
+    "ans": 3
+  },
+  {
+    "id": 31,
+    "subject": "Chemistry",
+    "ch": "Coordination Compounds",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "The oxidation state of cobalt in the complex [Co(NH\u2083)\u2085Cl]Cl\u2082 is:",
+    "options": ["+1", "+2", "+3", "+4"],
+    "ans": 3
+  },
+  {
+    "id": 32,
+    "subject": "Chemistry",
+    "ch": "The d- and f-Block Elements",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "Which of the following ions is colourless in aqueous solution?",
+    "options": ["Cu\u00b2\u207a", "Fe\u00b3\u207a", "Zn\u00b2\u207a", "Ni\u00b2\u207a"],
+    "ans": 3
+  },
+
+  {
+    "id": 33,
+    "subject": "Biology",
+    "ch": "Principles of Inheritance and Variation",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "A couple has four children, each with a different blood group (A, B, AB and O). What are the most likely genotypes of the parents?",
+    "options": [
+      "I^A I^A \u00d7 I^B I^B",
+      "I^A i \u00d7 I^B i",
+      "I^A I^B \u00d7 i i",
+      "I^A i \u00d7 I^B I^B"
+    ],
+    "ans": 2
+  },
+  {
+    "id": 34,
+    "subject": "Biology",
+    "ch": "Principles of Inheritance and Variation",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "A hemophilic man marries a phenotypically normal woman whose father was hemophilic. What is the probability that their first child will be a hemophilic son?",
+    "options": ["50%", "25%", "75%", "0%"],
+    "ans": 2
+  },
+  {
+    "id": 35,
+    "subject": "Biology",
+    "ch": "Human Reproduction",
+    "type": "Statement Based MCQ",
+    "diff": "Medium",
+    "q": "Consider the following statements regarding the hormonal regulation of the human menstrual cycle:\nA. FSH secretion is inhibited by high estrogen levels during the luteal phase.\nB. The LH surge is triggered by positive feedback of estrogen on the anterior pituitary.\nC. Progesterone maintains endometrial thickness after ovulation by acting on the hypothalamus.\nD. Corpus luteum regression occurs if fertilization does not take place, leading to a decline in progesterone and estrogen.\nSelect the correct statements:",
+    "options": ["A, B and D only", "B and C only", "B and D only", "A, B, C and D"],
+    "ans": 1
+  },
+  {
+    "id": 36,
+    "subject": "Biology",
+    "ch": "Molecular Basis of Inheritance",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "During DNA replication in eukaryotes, several enzymes and proteins function simultaneously. Which of the following pairs is incorrectly matched?",
+    "options": [
+      "DNA polymerase \u03b1 - synthesis of RNA primer",
+      "DNA polymerase \u03b4 - elongation of leading and lagging strands",
+      "Topoisomerase - introduces negative supercoils",
+      "Ligase - joins Okazaki fragments"
+    ],
+    "ans": 3
+  },
+  {
+    "id": 37,
+    "subject": "Biology",
+    "ch": "Cell: Structure and Function",
+    "type": "MCQ",
+    "diff": "Easy",
+    "q": "Which of the following statements is correct regarding the location of metabolic pathways in eukaryotic cells?",
+    "options": [
+      "Glycolysis occurs in the cytoplasm, Krebs cycle in the cytoplasm, and oxidative phosphorylation in the inner mitochondrial membrane.",
+      "Glycolysis occurs in the cytoplasm, Krebs cycle in the mitochondrial matrix, and oxidative phosphorylation in the inner mitochondrial membrane.",
+      "Glycolysis occurs in the mitochondrial matrix, Krebs cycle in the cytoplasm, and oxidative phosphorylation in the inner mitochondrial membrane.",
+      "Glycolysis occurs in the cytoplasm, Krebs cycle in the mitochondrial matrix, and oxidative phosphorylation in the outer mitochondrial membrane."
+    ],
+    "ans": 2
+  },
+  {
+    "id": 38,
+    "subject": "Biology",
+    "ch": "Photosynthesis in Higher Plants",
+    "type": "Statement Based MCQ",
+    "diff": "Medium",
+    "q": "Which of the following statements regarding photosynthesis is correct?\nA. Cyclic photophosphorylation occurs only in Photosystem I and produces ATP but not NADPH.\nB. Photorespiration reduces photosynthetic efficiency by consuming O\u2082 and releasing CO\u2082 without producing ATP or sugar.\nC. The Calvin cycle consumes ATP and NADPH to fix carbon dioxide in the stroma.\nD. Oxygen evolved during photosynthesis comes from carbon dioxide.\nSelect the correct statements:",
+    "options": ["A, B and C only", "A, B and D only", "B, C and D only", "A, C and D only"],
+    "ans": 1
+  },
+  {
+    "id": 39,
+    "subject": "Biology",
+    "ch": "Human Health and Disease",
+    "type": "Statement Based MCQ",
+    "diff": "Medium",
+    "q": "Read the following statements regarding the human immune system:\nA. Helper T-cells activate both B-cells and cytotoxic T-cells.\nB. Plasma cells are short-lived, antibody-secreting cells derived from B-cells.\nC. Memory B-cells are formed during secondary immune response only.\nD. Interferons are produced in response to viral infections and prevent viral replication in adjacent cells.\nWhich of the statements are correct?",
+    "options": ["A, B and D only", "A, C and D only", "B, C and D only", "All of the above"],
+    "ans": 1
+  },
+  {
+    "id": 40,
+    "subject": "Biology",
+    "ch": "Principles of Inheritance and Variation",
+    "type": "MCQ",
+    "diff": "Easy",
+    "q": "In a dihybrid test cross involving two linked genes A and B (distance between them 20 cM), what percentage of offspring will exhibit recombinant phenotypes?",
+    "options": ["10%", "20%", "40%", "80%"],
+    "ans": 2
+  },
+  {
+    "id": 41,
+    "subject": "Biology",
+    "ch": "Biodiversity and Conservation",
+    "type": "Statement Based MCQ",
+    "diff": "Medium",
+    "q": "Consider the following statements:\nA. The historic Convention on Biological Diversity held at Rio de Janeiro in 1992 reaffirmed sovereign rights of nations over their biological resources.\nB. India possesses more than 8% of the total global biodiversity despite having only about 2.4% of the world's land area.\nC. Ecologists estimate that the global species diversity is about 87 million.\nD. Alexander von Humboldt described the species-area relationship using a rectangular hyperbola.\nWhich of the above statements are correct?",
+    "options": ["A, B and D only", "A and D only", "B and C only", "A, C and D only"],
+    "ans": 2
+  },
+  {
+    "id": 42,
+    "subject": "Biology",
+    "ch": "Ecosystem",
+    "type": "MCQ",
+    "diff": "Easy",
+    "q": "In an ecosystem, the rate of production of organic matter during photosynthesis is called:",
+    "options": [
+      "Net primary productivity",
+      "Secondary productivity",
+      "Gross primary productivity",
+      "Standing state"
+    ],
+    "ans": 3
+  },
+  {
+    "id": 43,
+    "subject": "Biology",
+    "ch": "Body Fluids and Circulation",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "In a healthy human subject, stimulation of juxtaglomerular cells is most likely to occur under which of the following conditions?",
+    "options": [
+      "Increased glomerular filtration rate and elevated sodium concentration in distal convoluted tubule",
+      "Decreased blood pressure in afferent arteriole and reduced sodium delivery to distal convoluted tubule",
+      "Increased osmolarity of blood plasma and elevated atrial natriuretic factor secretion",
+      "Reduced hydrostatic pressure accompanied by increased hydrostatic pressure in glomerular capillaries"
+    ],
+    "ans": 2
+  },
+  {
+    "id": 44,
+    "subject": "Biology",
+    "ch": "Principles of Inheritance and Variation",
+    "type": "MCQ",
+    "diff": "Easy",
+    "q": "In a dihybrid cross involving two linked genes in Drosophila, the recombination frequency was observed to be 18%. Which of the following conclusions is most appropriate?",
+    "options": [
+      "The genes assort independently due to crossing over in every meiosis",
+      "The genes are located on different chromosomes separated by 18 map units",
+      "The genes are linked on the same chromosome and separated by 18 centimorgans",
+      "The genes exhibit complete linkage but occasional mutation causes recombinants"
+    ],
+    "ans": 3
+  },
+  {
+    "id": 45,
+    "subject": "Biology",
+    "ch": "Biotechnology: Principles and Processes",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "A recombinant DNA molecule is introduced into a bacterial host using a plasmid vector carrying genes for tetracycline resistance and ampicillin resistance. The foreign DNA is inserted within the ampicillin resistance gene. Which of the following colonies most likely contains the recombinant plasmid?",
+    "options": [
+      "Colonies growing on ampicillin but not on tetracycline",
+      "Colonies growing on tetracycline but not on ampicillin",
+      "Colonies growing on both tetracycline and ampicillin",
+      "Colonies unable to grow on either tetracycline or ampicillin"
+    ],
+    "ans": 2
+  },
+  {
+    "id": 46,
+    "subject": "Biology",
+    "ch": "Human Reproduction",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "During human embryonic development, if cleavage divisions occur normally but trophoblast formation fails completely, which of the following events would most likely be directly affected first?",
+    "options": [
+      "Formation of primitive streak",
+      "Implantation into endometrium",
+      "Gastrulation and germ layer differentiation",
+      "Differentiation of inner cell mass into embryo proper"
+    ],
+    "ans": 2
+  },
+  {
+    "id": 47,
+    "subject": "Biology",
+    "ch": "Evolution",
+    "type": "MCQ",
+    "diff": "Medium",
+    "q": "In a population in Hardy-Weinberg equilibrium, the frequency of the recessive allele (q) is 0.4. The frequency of heterozygous individuals in the population is:",
+    "options": ["0.16", "0.36", "0.48", "0.24"],
+    "ans": 3
+  },
+  {
+    "id": 48,
+    "subject": "Biology",
+    "ch": "Cell Cycle and Cell Division",
+    "type": "MCQ",
+    "diff": "Easy",
+    "q": "The replication (synthesis) of DNA in a eukaryotic cell occurs during which phase of the cell cycle?",
+    "options": ["G\u2081 phase", "S phase", "G\u2082 phase", "M phase"],
+    "ans": 2
+  }
+];
+      const TOTAL = Q.length;
+
+      const LETTERS = ["A", "B", "C", "D"];
+      let currentQ = 0;
+      let userAnswers = new Array(TOTAL).fill(-1);
+      let reviewFlags = new Array(TOTAL).fill(false);
+      let submitted = false;
+      let timerSec = 0;
+      let timerInterval;
+
+      function chClass(ch) { return ch === "Physics" ? "chem" : "bio"; }
+
+      function startQuiz() {
+        document.getElementById("heroSection").style.display = "none";
+        document.getElementById("progressWrap").classList.add("active");
+        document.getElementById("paletteToggle").classList.add("active");
+        buildAllCards();
+        buildPalette();
+        showQuestion(0);
+        startTimer();
+      }
+
+      function buildAllCards() {
+        const area = document.getElementById("quizArea");
+        let html = "";
+        Q.forEach((q, i) => {
+          const tagCls = chClass(q.ch);
+          const numBioCls = tagCls === "bio" ? "bio-num" : "";
+          const diffCls = q.diff === "Hard" ? "hard" : q.diff === "Easy" ? "easy" : "med";
+
+          const optsHtml = q.opts.map((o, j) => `
+            <button class="opt-btn" id="opt-${i}-${j}" onclick="selectOpt(${i},${j})">
+              <span class="opt-letter">${LETTERS[j]}</span>
+              <span>${o}</span>
+            </button>`).join("");
+
+          html += `<div class="q-card" id="qcard-${i}">
+            <div class="q-header">
+              <span class="q-num ${numBioCls}">Q${q.id}</span>
+              <div class="q-meta">
+                <span class="q-tag ${tagCls}">${q.ch}</span>
+                <span class="q-tag type">${q.type}</span>
+                <span class="q-tag ${diffCls}">${q.diff}</span>
+              </div>
+            </div>
+            <div class="q-chapter-badge">📌 ${q.chapter}</div>
+            <div class="q-text">${q.q}</div>
+            <div class="options">${optsHtml}</div>
+            <div class="nav-btns">
+              <button class="nav-btn" onclick="prevQuestion()" ${i === 0 ? "disabled" : ""}>← Prev</button>
+              <button class="nav-btn primary" onclick="nextQuestion()">${i === TOTAL - 1 ? "Finish →" : "Next →"}</button>
+              <button class="nav-btn clear-response" onclick="clearResponse(${i})">✕ Clear</button>
+              <button class="nav-btn mark-review${reviewFlags[i] ? " marked" : ""}" id="mark-${i}" onclick="toggleReview(${i})">
+                ${reviewFlags[i] ? "★ Marked" : "☆ Mark for Review"}
+              </button>
+            </div>
+          </div>`;
+        });
+        area.innerHTML = html;
+      }
+
+      function showQuestion(idx) {
+        document.querySelectorAll(".q-card").forEach(c => c.classList.remove("active"));
+        document.getElementById(`qcard-${idx}`).classList.add("active");
+        currentQ = idx;
+        updateProgress();
+        updatePalette();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function selectOpt(qIdx, optIdx) {
+        if (submitted) return;
+        for (let i = 0; i < 4; i++) {
+          const el = document.getElementById(`opt-${qIdx}-${i}`);
+          if (el) el.classList.remove("selected");
+        }
+        document.getElementById(`opt-${qIdx}-${optIdx}`).classList.add("selected");
+        userAnswers[qIdx] = optIdx;
+        updatePalette();
+        updateProgress();
+      }
+
+      function clearResponse(qIdx) {
+        if (submitted) return;
+        userAnswers[qIdx] = -1;
+        for (let i = 0; i < 4; i++) {
+          const el = document.getElementById(`opt-${qIdx}-${i}`);
+          if (el) el.classList.remove("selected");
+        }
+        updatePalette();
+        updateProgress();
+      }
+
+      function nextQuestion() {
+        if (currentQ < TOTAL - 1) showQuestion(currentQ + 1);
+        else finishQuiz();
+      }
+
+      function prevQuestion() {
+        if (currentQ > 0) showQuestion(currentQ - 1);
+      }
+
+      function toggleReview(idx) {
+        reviewFlags[idx] = !reviewFlags[idx];
+        const btn = document.getElementById(`mark-${idx}`);
+        btn.classList.toggle("marked", reviewFlags[idx]);
+        btn.textContent = reviewFlags[idx] ? "★ Marked" : "☆ Mark for Review";
+        updatePalette();
+      }
+
+      function updateProgress() {
+        const answered = userAnswers.filter(a => a !== -1).length;
+        document.getElementById("qCounter").textContent = `Q ${currentQ + 1} / ${TOTAL}`;
+        document.getElementById("progressFill").style.width = (answered / TOTAL) * 100 + "%";
+      }
+
+      function buildPalette() {
+        const grid = document.getElementById("paletteGrid");
+        let html = "";
+        for (let i = 0; i < TOTAL; i++) {
+          html += `<div class="palette-dot" id="pdot-${i}" onclick="showQuestion(${i})">${i + 1}</div>`;
+        }
+        grid.innerHTML = html;
+      }
+
+      function updatePalette() {
+        for (let i = 0; i < TOTAL; i++) {
+          const dot = document.getElementById(`pdot-${i}`);
+          if (!dot) continue;
+          dot.className = "palette-dot";
+          if (i === currentQ) dot.classList.add("current");
+          if (userAnswers[i] !== -1) dot.classList.add("answered");
+          if (reviewFlags[i]) dot.classList.add("review");
+        }
+      }
+
+      function togglePalette() {
+        document.getElementById("palettePanel").classList.toggle("open");
+      }
+
+      function startTimer() {
+        timerInterval = setInterval(() => {
+          timerSec++;
+          const m = String(Math.floor(timerSec / 60)).padStart(2, "0");
+          const s = String(timerSec % 60).padStart(2, "0");
+          document.getElementById("progressTimer").textContent = `${m}:${s}`;
+        }, 1000);
+      }
+
+      function finishQuiz() {
+        if (!window._isReplay) {
+          const unanswered = userAnswers.filter(a => a === -1).length;
+          if (unanswered > 0) {
+            if (!confirm(`You have ${unanswered} unanswered question${unanswered > 1 ? "s" : ""}. Submit anyway?`)) return;
+          }
+        }
+        submitQuiz();
+      }
+
+      function saveAttempt(data) {
+        try {
+          const results = JSON.parse(localStorage.getItem("papResults") || "[]");
+          results.unshift(data);
+          localStorage.setItem("papResults", JSON.stringify(results));
+        } catch (e) {}
+      }
+
+      function submitQuiz() {
+        submitted = true;
+        clearInterval(timerInterval);
+        document.getElementById("quizArea").classList.add("hidden");
+        document.getElementById("paletteToggle").style.display = "none";
+        document.getElementById("palettePanel").style.display = "none";
+        document.getElementById("progressWrap").style.display = "none";
+
+        let correct = 0, wrong = 0, skipped = 0;
+
+        const chapterStats = {};
+        Q.forEach((q, i) => {
+          if (!chapterStats[q.chapter]) chapterStats[q.chapter] = { correct: 0, total: 0 };
+          chapterStats[q.chapter].total++;
+          if (userAnswers[i] === -1) { skipped++; }
+          else if (userAnswers[i] === q.ans) { correct++; chapterStats[q.chapter].correct++; }
+          else { wrong++; }
+        });
+
+        const neetScore = correct * 4 - wrong * 1;
+        const pct = Math.round((correct / TOTAL) * 100);
+        const circumference = 2 * Math.PI * 65;
+        const offset = circumference - (pct / 100) * circumference;
+        const ringColor = pct >= 80 ? "var(--green)" : pct >= 50 ? "var(--amber)" : "var(--red)";
+        const grade = pct >= 90 ? "Outstanding!" : pct >= 75 ? "Great Work!" : pct >= 50 ? "Keep Practicing!" : "Needs Revision";
+
+        const timeStr = document.getElementById("progressTimer").textContent;
+
+        if (!window._isReplay) {
+          saveAttempt({
+            id: Date.now(),
+            paperFile: "16JU1.html",
+            paperName: "Human Physiology — Most Expected 20",
+            paperTag: "Biology 20Q",
+            correct, wrong, skipped,
+            totalQuestions: TOTAL, neetScore, maxScore: TOTAL * 4,
+            percentage: pct, timeTaken: timeStr, timerSeconds: timerSec,
+            userAnswers: [...userAnswers],
+          });
+        }
+
+        const chapterColors = ["var(--accent)", "var(--pink)", "var(--purple)", "var(--amber)", "var(--accent2)", "var(--green)"];
+        let chapterBarsHtml = "";
+        Object.entries(chapterStats).forEach(([ch, s], idx) => {
+          const cPct = Math.round((s.correct / s.total) * 100);
+          const color = chapterColors[idx % chapterColors.length];
+          chapterBarsHtml += `
+  <div class="chapter-bar-wrap">
+    <div class="chapter-bar-header">
+      <span style="color:${color}">📌 ${ch}</span>
+      <span style="color:var(--text2)">${s.correct}/${s.total} (${cPct}%)</span>
+    </div>
+    <div class="chapter-bar-track">
+      <div class="chapter-bar-fill" id="chBar-${idx}" style="width:0%;background:${color}"></div>
+    </div>
+  </div>`;
+        });
+
+        const res = document.getElementById("resultsSection");
+        res.style.display = "block";
+
+        let rhtml = `
+<div class="results-card">
+  <h2>${grade}</h2>
+  <div class="score-ring">
+    <svg width="160" height="160" viewBox="0 0 160 160">
+      <circle class="ring-bg" cx="80" cy="80" r="65"/>
+      <circle class="ring-fill" cx="80" cy="80" r="65"
+        stroke="${ringColor}"
+        stroke-dasharray="${circumference}"
+        stroke-dashoffset="${circumference}"
+        id="scoreRing"/>
+    </svg>
+    <div class="score-center">
+      <div class="pct">${pct}%</div>
+      <div class="of">${correct}/${TOTAL}</div>
+    </div>
+  </div>
+  <div class="stats-grid">
+    <div class="stat-item neet"><div class="stat-num">${neetScore}</div><div class="stat-lbl">NEET Score</div></div>
+    <div class="stat-item correct"><div class="stat-num">${correct}</div><div class="stat-lbl">Correct</div></div>
+    <div class="stat-item wrong"><div class="stat-num">${wrong}</div><div class="stat-lbl">Wrong</div></div>
+    <div class="stat-item skip"><div class="stat-num">${skipped}</div><div class="stat-lbl">Skipped</div></div>
+  </div>
+  <div style="margin-top:16px;font-size:13px;color:var(--text3)">Time: ${timeStr} · Max: ${TOTAL * 4}</div>
+</div>
+
+<div class="chapter-breakdown">
+  <h3>Chapter Breakdown</h3>
+  ${chapterBarsHtml}
+</div>
+
+<div class="review-title">Complete Walkthrough</div>
+<div class="review-sub">Every question reviewed with NCERT-based explanations.</div>
+<div class="review-filter">
+  <button class="filter-btn active" onclick="filterReview('all',this)">All (${TOTAL})</button>
+  <button class="filter-btn" onclick="filterReview('wrong',this)">❌ Wrong (${wrong})</button>
+  <button class="filter-btn" onclick="filterReview('skipped',this)">⏭️ Skipped (${skipped})</button>
+  <button class="filter-btn" onclick="filterReview('correct',this)">✅ Correct (${correct})</button>
+</div>
+<div id="reviewCards"></div>`;
+
+        res.innerHTML = rhtml;
+        renderReviewCards("all");
+
+        setTimeout(() => {
+          document.getElementById("scoreRing").style.strokeDashoffset = offset;
+          Object.keys(chapterStats).forEach((ch, idx) => {
+            const bar = document.getElementById(`chBar-${idx}`);
+            if (bar) bar.style.width = Math.round((chapterStats[ch].correct / chapterStats[ch].total) * 100) + "%";
+          });
+        }, 100);
+
+        res.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function renderReviewCards(filter) {
+        const container = document.getElementById("reviewCards");
+        let html = "";
+        Q.forEach((q, i) => {
+          const ua = userAnswers[i];
+          const isCorrect = ua === q.ans;
+          const isSkipped = ua === -1;
+          const isWrong = !isCorrect && !isSkipped;
+
+          if (filter === "wrong" && !isWrong) return;
+          if (filter === "skipped" && !isSkipped) return;
+          if (filter === "correct" && !isCorrect) return;
+
+          let cardClass, badgeClass, badgeText;
+          if (isCorrect) { cardClass = "rc-correct"; badgeClass = "badge-correct"; badgeText = "✅ Correct"; }
+          else if (isSkipped) { cardClass = "rc-skipped"; badgeClass = "badge-skipped"; badgeText = "⏭️ Skipped"; }
+          else { cardClass = "rc-wrong"; badgeClass = "badge-wrong"; badgeText = "❌ Wrong"; }
+
+          const tagCls = chClass(q.ch);
+          const numBioCls = tagCls === "bio" ? "bio-num" : "";
+
+          html += `<div class="review-card ${cardClass}">
+            <div class="rc-header">
+              <span class="q-num ${numBioCls}">Q${q.id}</span>
+              <span class="q-tag ${tagCls}">${q.ch}</span>
+              <span class="rc-badge ${badgeClass}">${badgeText}</span>
+              <span style="font-size:11px;color:var(--text3);margin-left:auto">${q.type}</span>
+            </div>
+            <div style="font-size:11px;color:var(--accent2);margin-bottom:10px;font-weight:600">📌 ${q.chapter}</div>
+            <div class="rc-q">${q.q}</div>
+            <div class="rc-opts">`;
+
+          q.opts.forEach((o, j) => {
+            let optClass = "rc-opt";
+            let marker = LETTERS[j];
+            if (j === q.ans) { optClass += " rc-opt-correct"; marker = "✓"; }
+            else if (j === ua && isWrong) { optClass += " rc-opt-wrong"; marker = "✗"; }
+            html += `<div class="${optClass}">
+              <span class="rc-letter">${marker}</span>
+              <span>${o}</span>
+            </div>`;
+          });
+
+          html += `</div>
+            <div class="rc-exp">
+              <h4>💡 Explanation</h4>
+              <p>${q.exp}</p>
+              <span class="ncert-ref">📖 ${q.ref}</span>
+            </div>
+          </div>`;
+        });
+
+        if (!html)
+          html = `<p style="text-align:center;color:var(--text3);padding:30px 0">No questions match this filter.</p>`;
+        container.innerHTML = html;
+      }
+
+      function filterReview(type, btn) {
+        document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderReviewCards(type);
+      }
+
+      window.addEventListener("scroll", () => {
+        const pw = document.getElementById("progressWrap");
+        if (window.scrollY > 200) pw.classList.add("scrolled");
+        else pw.classList.remove("scrolled");
+      });
+
+      (function loadSavedAttempt() {
+        const params = new URLSearchParams(window.location.search);
+        const attemptId = params.get("attempt");
+        if (!attemptId) return;
+        const saved = JSON.parse(localStorage.getItem("papResults") || "[]");
+        const attempt = saved.find(r => r.id === Number(attemptId));
+        if (!attempt) return;
+        window._isReplay = true;
+        userAnswers = attempt.userAnswers;
+        timerSec = attempt.timerSeconds || 0;
+        const m = String(Math.floor(timerSec / 60)).padStart(2, "0");
+        const s = String(timerSec % 60).padStart(2, "0");
+        document.getElementById("progressTimer").textContent = `${m}:${s}`;
+        document.getElementById("heroSection").style.display = "none";
+        submitQuiz();
+      })();
+    
+    </script>
+  </body>
+</html>
